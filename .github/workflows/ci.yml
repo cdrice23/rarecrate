@@ -1,0 +1,86 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  setup:
+    name: 'Setup'
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+  eslint:
+    name: 'Eslint check'
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - name: Get SHA8 for key matching
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: 'Cache .eslintcache'
+        id: cache-eslint
+        uses: actions/cache@v2
+        with:
+          path: '.eslintcache'
+          key: ${{ runner.os }}-eslintcache-${{ steps.vars.outputs.sha_short }}
+          restore-keys: |
+            ${{ runner.os }}-eslintcache-
+      - run: yarn lint:eslint
+  types:
+    name: 'Type check'
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - run: yarn lint:types
+  format:
+    name: 'Code format check'
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - run: yarn lint:format
+  jest:
+    name: 'Unit Tests'
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - run: yarn test:ci
+  build:
+    name: 'Prod build check'
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - run: yarn dev:build
+  publish-chromatic:
+    name: Storybook publish
+    runs-on: ubuntu-20.04
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-dependencies
+        name: 'Setup dependencies'
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitOnceUploaded: true
