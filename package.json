@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "prettier --config .prettierrc './**/*.ts' './**/*.tsx' '.storybook/*' --write",
+    "lint": "yarn lint:eslint && yarn lint:types && yarn lint:format",
+    "lint:eslint": "eslint ./ --ext .js,.jsx,.ts,.tsx --cache --cache-strategy content --cache-location .eslintcache",
+    "lint:types": "tsc --noEmit",
+    "lint:format": "prettier --config .prettierrc './**/*.ts' './**/*.tsx' '.storybook/*' --check",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@types/node": "20.3.2",
@@ -17,6 +23,19 @@
     "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.63.6",
     "typescript": "5.1.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.24",
+    "@storybook/addon-interactions": "^7.0.24",
+    "@storybook/addon-links": "^7.0.24",
+    "@storybook/blocks": "^7.0.24",
+    "@storybook/nextjs": "^7.0.24",
+    "@storybook/react": "^7.0.24",
+    "@storybook/testing-library": "^0.0.14-next.2",
+    "eslint-plugin-storybook": "^0.6.12",
+    "prettier": "2.8.8",
+    "storybook": "^7.0.24"
   }
 }
