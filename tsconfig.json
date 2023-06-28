@@ -23,6 +23,19 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "linterOptions": {
+    "exclude": ["node_modules"]
+  },
+  "include": [
+    "*.config.js",
+    "*.config.mjs",
+    ".eslintrc.js",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "types/**/*.d.ts",
+    "database/graphql/*.ts",
+    "database/prisma/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
