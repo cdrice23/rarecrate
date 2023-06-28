@@ -1,0 +1,26 @@
+name: 'Setup dependencies'
+description: 'A support action to reduce duplication in "ci" workflow'
+outputs:
+  #  Propagates the output of actions/setup-node@v2
+  cache-hit:
+    value: ${{ steps.setup-node.outputs.cache-hit }}
+    description: 'A boolean value to indicate if a cache was hit'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v2
+      id: setup-node
+      with:
+        node-version: '16.x'
+        cache: 'yarn'
+    - name: Cache Node Modules
+      id: node-cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          node-modules-
+    - name: Install modules
+      shell: bash
+      run: yarn install --frozen-lockfile --ignore-scripts && yarn run prisma generate
