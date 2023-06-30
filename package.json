@@ -7,6 +7,9 @@
     "build": "next build",
     "dev:build": "dotenv -e .env.development -- next build",
     "start": "next start",
+    "db:dev": "dotenv -e .env.development -- prisma studio",
+    "db:push": "dotenv -e .env.development -- prisma db push",
+    "db:seed": "dotenv -e .env.development -- prisma db seed",
     "format": "prettier --config .prettierrc './**/*.ts' './**/*.tsx' '.storybook/*' --write",
     "lint": "yarn lint:eslint && yarn lint:types && yarn lint:format",
     "lint:eslint": "eslint ./ --ext .js,.jsx,.ts,.tsx --cache --cache-strategy content --cache-location .eslintcache",
@@ -15,6 +18,10 @@
     "test:ci": "jest --ci --coverage --passWithNoTests",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "prisma": {
+    "schema": "db/prisma/schema.prisma",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} db/prisma/seed.ts"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^2.6.3",
