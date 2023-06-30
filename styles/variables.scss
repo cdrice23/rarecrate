@@ -1,0 +1,30 @@
+/* SASS COMMON VARS */
+// SPACES
+$space-smallest: 4px;
+$space-smaller: 6px;
+$space-small: 8px;
+$space-medium: 16px;
+$space-large: 24px;
+$space-larger: 32px;
+$space-largest: 48px;
+
+// SHADOWS
+$shadow-default: 0px 4px 16px rgba(0, 0, 0, 0.08);
+$shadow-primary-glow: 0px 4px 16px #57ACDC;
+
+// TRANSITIONS
+$transition-fastest: 100ms ease-in-out;
+$transition-fast: 200ms ease-in-out;
+$transition-medium: 400ms ease-in-out;
+
+// MEASUREMENTS
+$bar-collapsed: 60px;
+$bar-expanded: 250px;
+$bar-mobile-height: 80px;
+
+$border-radius: 4px;
+
+// BREAKPOINTS
+$bp-phone: 600px;
+$bp-tablet: 768px;
+$bp-large: 1200px;

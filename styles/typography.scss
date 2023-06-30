@@ -1,0 +1,64 @@
+html {
+  font-size: 10px;
+  font-family: 'Rubik', 'Helvetica', 'Source Sans Pro', Arial, sans-serif;
+}
+
+body {
+  color: var(--on-background);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p,
+a,
+li,
+button,
+input,
+label,
+option,
+div {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-weight: 200;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 1.6rem;
+  weight: 200;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: $space-medium;
+}

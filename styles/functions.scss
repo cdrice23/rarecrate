@@ -1,0 +1,39 @@
+// USE RGB COLORS LIKE THIS: rgba(var(--primary-rgb), 0.5);
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin hexToHSL($hex, $name) {
+  @if $hex == null {
+    $hex: #000000;
+  }
+  --#{$name}-h: #{hue($hex)};
+  --#{$name}-s: #{saturation($hex)};
+  --#{$name}-l: #{lightness($hex)};
+}
+
+@mixin generateCSSVars($hex, $name) {
+  @if $hex == null {
+    $hex: #000000;
+  }
+  --#{$name}: #{$hex};
+  --#{$name}-rgb: #{hexToRGB($hex)};
+  @include hexToHSL($hex, $name);
+}
+
+@function lightnessAdjust($lightnessMultiplier, $color) {
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: calc(var(#{$color+'-l'}) * #{$lightnessMultiplier});
+  @return hsl($color-h, $color-s, $color-l);
+}
+
+@mixin animate($animation,$duration,$method,$times){
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name){
+  @keyframes #{$name}{
+      @content;
+  }
+}
