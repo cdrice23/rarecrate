@@ -14,10 +14,155 @@ enum Role {
 }
 
 model User {
-  id            String   @id @default(cuid())
-  email         String?  @unique
+  id            Int       @id @default(autoincrement())
+  email         String?   @unique
   emailVerified Boolean?
-  role          Role     @default(USER)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profiles      Profile[]
+}
+
+model Profile {
+  id                     Int             @id @default(autoincrement())
+  user                   User            @relation(fields: [userId], references: [id])
+  userId                 Int             @unique
+  username               String          @unique
+  isPrivate              Boolean         @default(false)
+  bio                    String?
+  image                  String?
+  followers              Follows[]       @relation("Follows")
+  following              Follows[]       @relation("Following")
+  crates                 Crate[]         @relation("CreatedByProfile")
+  favorites              Crate[]         @relation("FavoritedByProfile")
+  socialLinks            SocialLink[]
+  followRequestsSent     FollowRequest[] @relation("FollowRequestSent")
+  followRequestsReceived FollowRequest[] @relation("FollowRequestReceived")
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+}
+
+model Crate {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String?
+  creator     Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
+  creatorId   Int
+  favoritedBy Profile[]    @relation("FavoritedByProfile")
+  labels      Label[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  isRanked    Boolean      @default(false)
+  albums      CrateAlbum[]
+
+  @@index([creatorId])
+}
+
+model Follows {
+  id          Int     @id @default(autoincrement())
+  follower    Profile @relation("Follows", fields: [followerId], references: [id])
+  followerId  Int
+  following   Profile @relation("Following", fields: [followingId], references: [id])
+  followingId Int
+
+  @@index([followerId])
+  @@index([followingId])
+}
+
+model SocialLink {
+  id        Int     @id @default(autoincrement())
+  platform  String
+  username  String
+  profile   Profile @relation(fields: [profileId], references: [id])
+  profileId Int
+
+  @@index([profileId])
+}
+
+model FollowRequest {
+  id            Int           @id @default(autoincrement())
+  sender        Profile       @relation("FollowRequestSent", fields: [senderId], references: [id])
+  senderId      Int
+  receiver      Profile       @relation("FollowRequestReceived", fields: [receiverId], references: [id])
+  receiverId    Int
+  requestStatus RequestStatus
+  sentAt        DateTime      @default(now())
+
+  @@index([senderId])
+  @@index([receiverId])
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model Album {
+  id              Int          @id @default(autoincrement())
+  discogsMasterId Int
+  title           String
+  artist          String
+  label           String
+  releaseYear     Int
+  genres          Genre[]
+  subgenres       Subgenre[]
+  imageUrl        String
+  crates          CrateAlbum[]
+  tracklist       Tracklist[]
+}
+
+model Genre {
+  id      Int    @id @default(autoincrement())
+  name    String
+  album   Album  @relation(fields: [albumId], references: [id])
+  albumId Int
+
+  @@index([albumId])
+}
+
+model Subgenre {
+  id      Int    @id @default(autoincrement())
+  name    String
+  album   Album  @relation(fields: [albumId], references: [id])
+  albumId Int
+
+  @@index([albumId])
+}
+
+model Tracklist {
+  id      Int    @id @default(autoincrement())
+  name    String
+  album   Album  @relation(fields: [albumId], references: [id])
+  albumId Int
+
+  @@index([albumId])
+}
+
+model CrateAlbum {
+  id      Int   @id @default(autoincrement())
+  crate   Crate @relation(fields: [crateId], references: [id])
+  crateId Int
+  album   Album @relation(fields: [albumId], references: [id])
+  albumId Int
+  rank    Int?  @default(0)
+  tags    Tag[]
+
+  @@index([crateId])
+  @@index([albumId])
+}
+
+model Label {
+  id     Int     @id @default(autoincrement())
+  name   String
+  crates Crate[]
+}
+
+model Tag {
+  id           Int         @id @default(autoincrement())
+  name         String
+  CrateAlbum   CrateAlbum? @relation(fields: [crateAlbumId], references: [id])
+  crateAlbumId Int?
+
+  @@index([crateAlbumId])
 }
