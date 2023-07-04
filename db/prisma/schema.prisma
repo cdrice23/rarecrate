@@ -166,3 +166,7 @@ model Tag {
 
   @@index([crateAlbumId])
 }
+
+model HelloWorld {
+  id Int @id
+}

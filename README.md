@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rare Crate
+Production site here: https://rarecrate.vercel.app/
 
-## Getting Started
+## PlanetScale Local Development
+You will likely be working with PlanetScale in the following capacities:
+- Using the development db data to build locally
+- Making changes to the development db schema
+- Deploying changes for the development db schema to production
 
-First, run the development server:
+### PRE-REQUISITE: Install PlanetScale CLI
+Pre-requisite to install PlanetScale CLI - by running the following commands on a Mac:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- `brew install planetscale/tap/pscale`
+- `brew install mysql-client`
+- `brew upgrade pscale`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+From: https://github.com/planetscale/cli#installation (+ instructions for other OS)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Using the Development DB Data to Build Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Open a connection to the development branch so your local env can use it for development.
+    - In a new terminal tab, run `pscale connect rarecrate development`
+        - `development` is the branch used for local development data
+    - In your main terminal tab, run `yarn dev`
+        - `.env.development` is configured to connect to the PlanetScale development DB branch 
 
-## Learn More
+*Note: we use the recommended username + pw connection vs. the proxy connection. For more information, see: https://planetscale.com/docs/tutorials/connect-any-application*
 
-To learn more about Next.js, take a look at the following resources:
+### Making changes to the development db schema
+Whereas normally for a paid PlanetScale account you can create multiple development branches, our free account uses only a development and production branch; therefore any changes to the schema will entail the following:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Make sure you are connected to the development branch:
+    - In a new terminal tab, run `pscale connect rarecrate development`
+- Next, make your changes to the application and the Prisma Schema as needed, and push those changes to the development branch:
+    - `yarn db:push` will push your schema changes up to the development branch.
+    - Your local app development can use those new fields immediately once they are pushed to the DB branch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Deploying Changes for the Development DB Schema to Production Branch
+- Once your development branch is ready and everything is working locally, you can create a deploy request for the migration:
+    - `pscale deploy-request create rarecrate development`
+        - This will create a PR within PlanetScale where you can check out the migration and where PlanetScale will highlight any schema conflicts that may occur with this change.
+- Once the migration has been looked over and approved, you can merge the deploy-request using one of two methods:
+    - Deploy through the PlanetScale dashboard, which will update the schema on `development` branch.
+    - Take note of the deploy request # from the previous command and run `pscale deploy-request deploy rarecrate deploy-request-number`. If successful, you should see a message like `Successfully queued [some id] from development for deployment to main.`
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Backfilling Data
+Keep in mind that when updating schemas locally and in production, you will need to do a separate data migration task (both for development and production), as PlanetScale deployments only update the database schemas.
