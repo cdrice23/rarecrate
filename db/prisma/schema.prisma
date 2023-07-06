@@ -31,8 +31,8 @@ model Profile {
   isPrivate              Boolean         @default(false)
   bio                    String?
   image                  String?
-  followers              Follows[]       @relation("Follows")
-  following              Follows[]       @relation("Following")
+  followers              Follow[]        @relation("Follows")
+  following              Follow[]        @relation("Following")
   crates                 Crate[]         @relation("CreatedByProfile")
   favorites              Crate[]         @relation("FavoritedByProfile")
   socialLinks            SocialLink[]
@@ -44,7 +44,7 @@ model Profile {
 
 model Crate {
   id          Int          @id @default(autoincrement())
-  name        String
+  title       String
   description String?
   creator     Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
   creatorId   Int
@@ -58,7 +58,7 @@ model Crate {
   @@index([creatorId])
 }
 
-model Follows {
+model Follow {
   id          Int     @id @default(autoincrement())
   follower    Profile @relation("Follows", fields: [followerId], references: [id])
   followerId  Int
@@ -70,13 +70,21 @@ model Follows {
 }
 
 model SocialLink {
-  id        Int     @id @default(autoincrement())
-  platform  String
-  username  String
-  profile   Profile @relation(fields: [profileId], references: [id])
-  profileId Int
+  id         Int            @id @default(autoincrement())
+  platform   SocialPlatform @relation(fields: [platformId], references: [id])
+  platformId Int
+  username   String
+  profile    Profile        @relation(fields: [profileId], references: [id])
+  profileId  Int
 
   @@index([profileId])
+  @@index([platformId])
+}
+
+model SocialPlatform {
+  id          Int          @id @default(autoincrement())
+  name        String
+  socialLinks SocialLink[]
 }
 
 model FollowRequest {
@@ -99,7 +107,7 @@ enum RequestStatus {
 }
 
 model Album {
-  id              Int          @id @default(autoincrement())
+  id              Int             @id @default(autoincrement())
   discogsMasterId Int
   title           String
   artist          String
@@ -109,30 +117,30 @@ model Album {
   subgenres       Subgenre[]
   imageUrl        String
   crates          CrateAlbum[]
-  tracklist       Tracklist[]
+  tracklist       TracklistItem[]
 }
 
 model Genre {
-  id      Int    @id @default(autoincrement())
-  name    String
-  album   Album  @relation(fields: [albumId], references: [id])
-  albumId Int
-
-  @@index([albumId])
+  id        Int        @id @default(autoincrement())
+  name      String
+  albums    Album[]
+  subgenres Subgenre[]
 }
 
 model Subgenre {
-  id      Int    @id @default(autoincrement())
-  name    String
-  album   Album  @relation(fields: [albumId], references: [id])
-  albumId Int
+  id            Int     @id @default(autoincrement())
+  name          String
+  albums        Album[]
+  parentGenre   Genre   @relation(fields: [parentGenreId], references: [id])
+  parentGenreId Int
 
-  @@index([albumId])
+  @@index([parentGenreId])
 }
 
-model Tracklist {
+model TracklistItem {
   id      Int    @id @default(autoincrement())
-  name    String
+  title   String
+  order   Int
   album   Album  @relation(fields: [albumId], references: [id])
   albumId Int
 
@@ -153,9 +161,10 @@ model CrateAlbum {
 }
 
 model Label {
-  id     Int     @id @default(autoincrement())
-  name   String
-  crates Crate[]
+  id         Int     @id @default(autoincrement())
+  name       String
+  isStandard Boolean
+  crates     Crate[]
 }
 
 model Tag {
@@ -165,8 +174,4 @@ model Tag {
   crateAlbumId Int?
 
   @@index([crateAlbumId])
-}
-
-model HelloWorld {
-  id Int @id
 }
