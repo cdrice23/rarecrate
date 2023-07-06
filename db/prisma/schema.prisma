@@ -8,16 +8,11 @@ datasource db {
   relationMode = "prisma"
 }
 
-enum Role {
-  SUPERADMIN
-  USER
-}
-
 model User {
   id            Int       @id @default(autoincrement())
   email         String?   @unique
   emailVerified Boolean?
-  role          Role      @default(USER)
+  role          String    @default("USER")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   profiles      Profile[]
@@ -70,40 +65,26 @@ model Follow {
 }
 
 model SocialLink {
-  id         Int            @id @default(autoincrement())
-  platform   SocialPlatform @relation(fields: [platformId], references: [id])
-  platformId Int
-  username   String
-  profile    Profile        @relation(fields: [profileId], references: [id])
-  profileId  Int
+  id        Int     @id @default(autoincrement())
+  platform  String
+  username  String
+  profile   Profile @relation(fields: [profileId], references: [id])
+  profileId Int
 
   @@index([profileId])
-  @@index([platformId])
-}
-
-model SocialPlatform {
-  id          Int          @id @default(autoincrement())
-  name        String
-  socialLinks SocialLink[]
 }
 
 model FollowRequest {
-  id            Int           @id @default(autoincrement())
-  sender        Profile       @relation("FollowRequestSent", fields: [senderId], references: [id])
+  id            Int      @id @default(autoincrement())
+  sender        Profile  @relation("FollowRequestSent", fields: [senderId], references: [id])
   senderId      Int
-  receiver      Profile       @relation("FollowRequestReceived", fields: [receiverId], references: [id])
+  receiver      Profile  @relation("FollowRequestReceived", fields: [receiverId], references: [id])
   receiverId    Int
-  requestStatus RequestStatus
-  sentAt        DateTime      @default(now())
+  requestStatus String
+  sentAt        DateTime @default(now())
 
   @@index([senderId])
   @@index([receiverId])
-}
-
-enum RequestStatus {
-  PENDING
-  ACCEPTED
-  REJECTED
 }
 
 model Album {
