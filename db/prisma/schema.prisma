@@ -149,10 +149,7 @@ model Label {
 }
 
 model Tag {
-  id           Int         @id @default(autoincrement())
-  name         String
-  CrateAlbum   CrateAlbum? @relation(fields: [crateAlbumId], references: [id])
-  crateAlbumId Int?
-
-  @@index([crateAlbumId])
+  id         Int          @id @default(autoincrement())
+  name       String
+  crateAlbum CrateAlbum[]
 }
