@@ -21,7 +21,7 @@
   },
   "prisma": {
     "schema": "db/prisma/schema.prisma",
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} db/prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} db/prisma/seeds/seed.ts"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^2.6.3",
