@@ -1,5 +1,5 @@
-import { userSeedArray as users } from '@/core/constants/seedHelpers/user';
-import { profileSeedArray as profiles } from '@/core/constants/seedHelpers/profile';
+import { userSeedArray as users } from '../../../core/constants/seedHelpers/user';
+import { profileSeedArray as profiles } from '../../../core/constants/seedHelpers/profile';
 import { followSeedArray as follows } from '@/core/constants/seedHelpers/follow';
 import { followRequestSeedArray as followRequests } from '@/core/constants/seedHelpers/followRequest';
 import { socialLinkSeedArray as socialLinks } from '@/core/constants/seedHelpers/socialLink';
@@ -11,28 +11,25 @@ import { tagSeedArray as tags } from '@/core/constants/seedHelpers/tag';
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-async function main() {
-  // for (let user of users) {
-  //   await prisma.user.connectOrCreate({
-  //     where: {},
-  //     create: {
-  //       profiles: {
-  //         connectOrCreate: user.profiles.map(profile => ({
-  //           where: { userId: profile.userId },
-  //           create: {
-  //             ...profile,
-  //             follows: {
-  //               connectOrCreate: profile.follows.map(follow => ({
-  //                 where: { id: follow.id },
-  //                 create: follow,
-  //               })),
-  //             },
-  //           },
-  //         })),
-  //       },
-  //     },
-  //   });
-  // }
+export async function main() {
+  for (let user of users) {
+    await prisma.user.create({
+      data: {
+        email: user.email,
+        emailVerified: user.emailverified,
+        role: user.role,
+      },
+      // profiles: {
+      //   connectOrCreate: profiles.map(profile => ({
+      //     where: { hname: profile.hname },
+      //     create: {
+      //       username: profile.username,
+      //       bio: profile.bio
+      //     },
+      //   })),
+      // },
+    });
+  }
 }
 
 main()
