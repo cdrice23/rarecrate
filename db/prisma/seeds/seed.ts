@@ -5,8 +5,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  // await bigUserSeed();
-  await resetDb();
+  await bigUserSeed();
+  // await resetDb();
 }
 
 main()
