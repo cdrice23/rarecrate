@@ -6,6 +6,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag40,tag232',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -15,6 +17,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag226,tag59',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -24,6 +28,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag97,tag113',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -33,6 +39,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag242,tag163',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -42,6 +50,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag174,tag60,tag37',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -51,6 +61,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag242,tag202',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -60,6 +72,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag6,tag21',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -69,6 +83,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag216,tag155',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -78,6 +94,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag209,tag219,tag51',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -87,6 +105,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag188,tag198',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -96,6 +116,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag72,tag63',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -105,6 +127,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag103',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -114,6 +138,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag105,tag100',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -123,6 +149,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag186',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -132,6 +160,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag84',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -141,6 +171,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag45,tag109,tag114,tag197',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -150,6 +182,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag5',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -159,6 +193,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag9,tag128',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -168,6 +204,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag157',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -177,6 +215,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag176,tag172',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -186,6 +226,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag101,tag48',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -195,6 +237,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag69',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -204,6 +248,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag187',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -213,6 +259,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag38',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -222,6 +270,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag174,tag226,tag53',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -231,6 +281,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag187,tag241,tag119',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -240,6 +292,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag152',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -249,6 +303,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag89,tag154,tag197,tag169',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -258,6 +314,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag103',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -267,6 +325,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag140',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -276,6 +336,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag64,tag225,tag25',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -285,6 +347,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag116,tag92',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -294,6 +358,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag66,tag220,tag180',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -303,6 +369,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag1,tag178',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -312,6 +380,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag20,tag16',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -321,6 +391,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag205,tag36',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -330,6 +402,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag138,tag229',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -339,6 +413,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag148,tag139',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -348,6 +424,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag96,tag113,tag171',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -357,6 +435,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag181,tag11,tag174',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -366,6 +446,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag220,tag46,tag187',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -375,6 +457,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag134,tag42,tag192',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -384,6 +468,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag152,tag54',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -393,6 +479,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag59,tag180',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -402,6 +490,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag237,tag201',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -411,6 +501,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag191,tag203',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -420,6 +512,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag241,tag2,tag191',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -429,6 +523,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag40,tag238',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -438,6 +534,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag75,tag86,tag1,tag66,tag166',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -447,6 +545,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag122,tag202',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -456,6 +556,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag85,tag22',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -465,6 +567,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag48,tag133,tag46',
+    album: 'album67',
+    halbumtitle: 'Sound of Silver',
     undefined: '',
   },
   {
@@ -474,6 +578,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag102,tag150',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -483,6 +589,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag195,tag102',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -492,6 +600,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag184,tag2',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -501,6 +611,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag171,tag76',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -510,6 +622,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag53,tag165',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -519,6 +633,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag39,tag23',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -528,6 +644,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag5,tag58',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -537,6 +655,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag153,tag103',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -546,6 +666,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag127,tag147',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -555,6 +677,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag240,tag98,tag143',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -564,6 +688,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag108,tag101',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -573,6 +699,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag178,tag235,tag121,tag220',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -582,6 +710,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag145,tag6',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -591,6 +721,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag127,tag108',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -600,6 +732,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag69,tag37',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -609,6 +743,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag96,tag151',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -618,6 +754,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag77,tag133',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -627,6 +765,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag42,tag79',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -636,6 +776,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag170,tag63,tag191',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -645,6 +787,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag142,tag201,tag27,tag187',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -654,6 +798,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag196,tag120,tag221',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -663,6 +809,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag1,tag8',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -672,6 +820,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag41,tag45',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -681,6 +831,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag175,tag229',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -690,6 +842,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag11,tag93',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -699,6 +853,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag16,tag170,tag249',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -708,6 +864,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag3,tag161',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -717,6 +875,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag213,tag191',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -726,6 +886,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag92,tag127',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -735,6 +897,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag56,tag178',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -744,6 +908,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag31,tag210',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -753,6 +919,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag94,tag23,tag221',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -762,6 +930,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag164,tag171',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -771,6 +941,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag82,tag91',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -780,6 +952,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag250,tag131',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -789,6 +963,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag152,tag58',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -798,6 +974,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag73,tag105',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -807,6 +985,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag94,tag137',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -816,6 +996,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag37,tag210',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -825,6 +1007,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag182,tag83',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -834,6 +1018,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag196,tag236,tag198,tag68',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -843,6 +1029,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag166,tag107,tag221',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -852,6 +1040,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag231,tag64',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -861,6 +1051,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag135,tag47',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -870,6 +1062,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag221,tag144,tag74',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -879,6 +1073,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag70,tag47',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -888,6 +1084,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag36,tag68,tag132',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -897,6 +1095,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag165,tag73',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -906,6 +1106,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag9,tag231',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -915,6 +1117,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag156,tag195',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -924,6 +1128,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag156,tag34,tag81',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -933,6 +1139,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag142,tag135',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -942,6 +1150,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag221,tag85,tag188',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -951,6 +1161,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag111,tag27',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -960,6 +1172,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag171,tag179,tag84,tag131',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -969,6 +1183,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag34,tag22',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -978,6 +1194,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag134,tag189',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -987,6 +1205,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag168,tag154',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -996,6 +1216,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag80,tag23',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -1005,6 +1227,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag113,tag230',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -1014,6 +1238,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag79,tag231,tag22',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -1023,6 +1249,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag49,tag64',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -1032,6 +1260,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag169,tag60',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -1041,6 +1271,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag44,tag2',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -1050,6 +1282,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag11,tag106',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -1059,6 +1293,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag248,tag171',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -1068,6 +1304,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag137,tag72',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -1077,6 +1315,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag78,tag92',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -1086,6 +1326,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag17,tag152',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -1095,6 +1337,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag190',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -1104,6 +1348,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag138',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -1113,6 +1359,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag7',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -1122,6 +1370,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag72,tag209',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -1131,6 +1381,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag174',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -1140,6 +1392,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag108,tag246,tag233',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -1149,6 +1403,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag120',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -1158,6 +1414,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag89,tag230',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -1167,6 +1425,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag174',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -1176,6 +1436,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag247,tag190',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -1185,6 +1447,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag164,tag91',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -1194,6 +1458,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag47,tag164,tag10',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -1203,6 +1469,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag239,tag123,tag201',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -1212,6 +1480,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag37,tag233',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -1221,6 +1491,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag89,tag244',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -1230,6 +1502,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag127,tag200',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -1239,6 +1513,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag207,tag24,tag215',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -1248,6 +1524,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag38,tag124',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -1257,6 +1535,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag141,tag143',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -1266,6 +1546,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag29,tag136',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -1275,6 +1557,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag17,tag195,tag148,tag196',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -1284,6 +1568,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag130,tag65,tag146',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -1293,6 +1579,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag249,tag198',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -1302,6 +1590,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag191,tag213',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -1311,6 +1601,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag207,tag173',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -1320,6 +1612,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag122,tag104,tag116',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -1329,6 +1623,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag196,tag248',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -1338,6 +1634,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag115,tag139',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -1347,6 +1645,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag62,tag126',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -1356,6 +1656,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag123,tag28,tag93',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -1365,6 +1667,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag221,tag32,tag186',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -1374,6 +1678,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag244,tag39',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -1383,6 +1689,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag52,tag8',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -1392,6 +1700,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag48,tag67',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -1401,6 +1711,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag10,tag132',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -1410,6 +1722,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag4,tag189',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -1419,6 +1733,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag182,tag62',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -1428,6 +1744,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag44,tag66',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -1437,6 +1755,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag118,tag9,tag152,tag50',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -1446,6 +1766,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag105,tag65',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -1455,6 +1777,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag64,tag246,tag38',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -1464,6 +1788,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag191,tag14',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -1473,6 +1799,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag187,tag15',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -1482,6 +1810,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag18,tag89,tag132',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -1491,6 +1821,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag163,tag40',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -1500,6 +1832,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag23,tag56',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -1509,6 +1843,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag199,tag129',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -1518,6 +1854,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag33,tag85',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -1527,6 +1865,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag36,tag214',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -1536,6 +1876,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag169,tag247',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -1545,6 +1887,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag138,tag247,tag144',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -1554,6 +1898,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag38,tag233,tag183',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -1563,6 +1909,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag149,tag75',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -1572,6 +1920,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag39,tag5,tag178',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -1581,6 +1931,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag136,tag54,tag9',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -1590,6 +1942,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag109,tag173',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -1599,6 +1953,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag32,tag123,tag108',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -1608,6 +1964,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag233,tag73',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -1617,6 +1975,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag159,tag171',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -1626,6 +1986,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag205,tag128,tag66',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -1635,6 +1997,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag125,tag120,tag5',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -1644,6 +2008,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag159,tag195',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -1653,6 +2019,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag50,tag33',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -1662,6 +2030,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag148,tag230',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -1671,6 +2041,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag174,tag34',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -1680,6 +2052,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag19,tag4',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -1689,6 +2063,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag62,tag216',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -1698,6 +2074,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag243,tag146',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -1707,6 +2085,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag218,tag223,tag28',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -1716,6 +2096,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag141,tag230',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -1725,6 +2107,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag102,tag246',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -1734,6 +2118,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag192,tag145',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -1743,6 +2129,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag22,tag8',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -1752,6 +2140,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag213,tag94',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -1761,6 +2151,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag58,tag45',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -1770,6 +2162,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag143,tag81,tag183',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -1779,6 +2173,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag86,tag42',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -1788,6 +2184,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag29,tag26',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -1797,6 +2195,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag237,tag33',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -1806,6 +2206,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag178,tag38',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -1815,6 +2217,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag244,tag215,tag210',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -1824,6 +2228,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag135,tag104,tag148',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -1833,6 +2239,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag161,tag126,tag137,tag206',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -1842,6 +2250,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag179,tag156',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -1851,6 +2261,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag225,tag161,tag215',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -1860,6 +2272,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag219,tag70',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -1869,6 +2283,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag3,tag47',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -1878,6 +2294,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag210,tag137',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -1887,6 +2305,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag26,tag149',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -1896,6 +2316,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag161,tag214,tag10',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -1905,6 +2327,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag155,tag178,tag70',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -1914,6 +2338,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag112,tag166,tag158',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -1923,6 +2349,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag83,tag232,tag173',
+    album: 'album67',
+    halbumtitle: 'Sound of Silver',
     undefined: '',
   },
   {
@@ -1932,6 +2360,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag6,tag119',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -1941,6 +2371,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag144,tag179,tag249',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -1950,6 +2382,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag167,tag134,tag112',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -1959,6 +2393,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag81,tag103,tag105',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -1968,6 +2404,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag131,tag126,tag16',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -1977,6 +2415,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag28,tag241',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -1986,6 +2426,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag210,tag33',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -1995,6 +2437,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag208,tag36',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -2004,6 +2448,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag244,tag37',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -2013,6 +2459,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag47,tag167',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -2022,6 +2470,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag176,tag204',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -2031,6 +2481,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag55,tag158,tag22',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -2040,6 +2492,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag14,tag151',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -2049,6 +2503,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag49,tag192',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -2058,6 +2514,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag24,tag91',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -2067,6 +2525,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag179,tag96',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -2076,6 +2536,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag63',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -2085,6 +2547,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag114,tag17',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -2094,6 +2558,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag80,tag154',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -2103,6 +2569,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag218,tag211',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -2112,6 +2580,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag236',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -2121,6 +2591,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag87,tag67',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -2130,6 +2602,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag245',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -2139,6 +2613,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag49',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -2148,6 +2624,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag89,tag231',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -2157,6 +2635,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag196',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -2166,6 +2646,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag50,tag12',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -2175,6 +2657,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag91,tag233',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -2184,6 +2668,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag42,tag164,tag50,tag31',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -2193,6 +2679,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag132,tag9',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -2202,6 +2690,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag165,tag191,tag28',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -2211,6 +2701,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag17,tag65,tag60',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -2220,6 +2712,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag190,tag111,tag211',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -2229,6 +2723,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag148,tag164',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -2238,6 +2734,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag82,tag142',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -2247,6 +2745,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag209,tag13,tag220',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -2256,6 +2756,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag83,tag242',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -2265,6 +2767,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag215,tag201',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -2274,6 +2778,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag221,tag227',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -2283,6 +2789,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag59,tag119',
+    album: 'album130',
+    halbumtitle: 'Songs in the Key of Life',
     undefined: '',
   },
   {
@@ -2292,6 +2800,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag229,tag60',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -2301,6 +2811,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag148,tag47',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -2310,6 +2822,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag169,tag74,tag18',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -2319,6 +2833,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag174,tag132',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -2328,6 +2844,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag223,tag100,tag137,tag237',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -2337,6 +2855,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag142,tag25',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -2346,6 +2866,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag206,tag218,tag41',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -2355,6 +2877,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag167,tag43',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -2364,6 +2888,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag99,tag55',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -2373,6 +2899,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag96,tag39,tag80',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -2382,6 +2910,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag8,tag14,tag173,tag156',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -2391,6 +2921,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag126,tag226',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -2400,6 +2932,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag120,tag35,tag118',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -2409,6 +2943,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag71,tag149',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -2418,6 +2954,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag7,tag107,tag193',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -2427,6 +2965,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag152,tag32',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -2436,6 +2976,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag228,tag146',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -2445,6 +2987,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag3,tag84',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -2454,6 +2998,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag164,tag98',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -2463,6 +3009,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag1,tag41',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -2472,6 +3020,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag213,tag144',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -2481,6 +3031,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag190,tag135,tag22',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -2490,6 +3042,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag147,tag172',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -2499,6 +3053,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag136,tag157,tag180',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -2508,6 +3064,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag5,tag228',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -2517,6 +3075,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag63,tag40',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -2526,6 +3086,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag155,tag214,tag82',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -2535,6 +3097,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag172,tag169,tag220',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -2544,6 +3108,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag35,tag59',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -2553,6 +3119,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag220,tag202',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -2562,6 +3130,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag25,tag42',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -2571,6 +3141,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag106,tag194,tag49',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -2580,6 +3152,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag138,tag69',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -2589,6 +3163,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag237,tag54',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -2598,6 +3174,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag26,tag105',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -2607,6 +3185,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag174,tag201',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -2616,6 +3196,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag14,tag155',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -2625,6 +3207,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag116,tag216,tag127',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -2634,6 +3218,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag31,tag44',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -2643,6 +3229,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag182,tag175,tag143,tag27',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -2652,6 +3240,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag209,tag239',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -2661,6 +3251,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag60,tag136',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -2670,6 +3262,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag8,tag186',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -2679,6 +3273,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag215,tag101',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -2688,6 +3284,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag48,tag168',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -2697,6 +3295,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag203,tag44,tag130',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -2706,6 +3306,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag33,tag26',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -2715,6 +3317,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag166,tag119',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -2724,6 +3328,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag180,tag40,tag175',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -2733,6 +3339,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag69,tag215',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -2742,6 +3350,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag168,tag165',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -2751,6 +3361,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag188,tag174',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -2760,6 +3372,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag239,tag211,tag113',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -2769,6 +3383,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag73,tag210',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -2778,6 +3394,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag74,tag93',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -2787,6 +3405,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag35,tag213,tag36',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -2796,6 +3416,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag93,tag68,tag132,tag140',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -2805,6 +3427,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag76,tag30',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -2814,6 +3438,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag52,tag39',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -2823,6 +3449,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag100,tag42',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -2832,6 +3460,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag216,tag12',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -2841,6 +3471,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag127,tag122',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -2850,6 +3482,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag158,tag41',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -2859,6 +3493,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag77,tag19',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -2868,6 +3504,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag81,tag150',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -2877,6 +3515,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag82,tag9',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -2886,6 +3526,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag110,tag149',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -2895,6 +3537,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag80,tag124,tag64',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -2904,6 +3548,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag59,tag234',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -2913,6 +3559,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag193,tag160',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -2922,6 +3570,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag81,tag34,tag148',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -2931,6 +3581,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag178,tag117',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -2940,6 +3592,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag79,tag158',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -2949,6 +3603,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag174,tag112',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -2958,6 +3614,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag249,tag32,tag171',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -2967,6 +3625,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag229,tag173',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -2976,6 +3636,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag102,tag63,tag12',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -2985,6 +3647,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag236,tag37',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -2994,6 +3658,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag65,tag191',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -3003,6 +3669,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag122,tag127,tag201',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -3012,6 +3680,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag201,tag64',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -3021,6 +3691,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag57,tag183',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -3030,6 +3702,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag186,tag98,tag240',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -3039,6 +3713,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag79,tag231',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -3048,6 +3724,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag17,tag74,tag40',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -3057,6 +3735,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag221,tag99',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -3066,6 +3746,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag14',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -3075,6 +3757,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag138',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -3084,6 +3768,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag118',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -3093,6 +3779,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag145',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -3102,6 +3790,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag249',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -3111,6 +3801,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag188,tag178',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -3120,6 +3812,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag162',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -3129,6 +3823,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag82',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -3138,6 +3834,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag175,tag56',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -3147,6 +3845,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag118,tag130',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -3156,6 +3856,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag203,tag138,tag131',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -3165,6 +3867,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag243,tag211,tag111',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -3174,6 +3878,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag114,tag108',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -3183,6 +3889,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag143,tag121',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -3192,6 +3900,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag20,tag180',
+    album: 'album8',
+    halbumtitle: "Whatever People Say I Am, That's What I'm Not",
     undefined: '',
   },
   {
@@ -3201,6 +3911,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag245,tag147,tag46',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -3210,6 +3922,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag159,tag244',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -3219,6 +3933,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag161,tag23',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -3228,6 +3944,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag30,tag165,tag3',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -3237,6 +3955,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag108,tag80,tag84',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -3246,6 +3966,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag170,tag88',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -3255,6 +3977,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag102,tag165',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -3264,6 +3988,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag42,tag213',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -3273,6 +3999,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag184,tag57',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -3282,6 +4010,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag29,tag237',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -3291,6 +4021,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag43,tag77,tag4',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -3300,6 +4032,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag159,tag94,tag146',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -3309,6 +4043,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag184,tag154',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -3318,6 +4054,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag81,tag91',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -3327,6 +4065,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag12,tag186',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -3336,6 +4076,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag185,tag222',
+    album: 'album128',
+    halbumtitle: 'St. Vincent',
     undefined: '',
   },
   {
@@ -3345,6 +4087,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag132,tag205,tag43',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -3354,6 +4098,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag41,tag180',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -3363,6 +4109,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag23,tag149',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -3372,6 +4120,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag249,tag178',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -3381,6 +4131,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag91,tag122',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -3390,6 +4142,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag111,tag203,tag102',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -3399,6 +4153,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag50,tag35',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -3408,6 +4164,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag157,tag147',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -3417,6 +4175,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag9,tag240,tag15,tag183',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -3426,6 +4186,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag5,tag221',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -3435,6 +4197,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag127,tag149',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -3444,6 +4208,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag204,tag114,tag43',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -3453,6 +4219,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag238,tag79',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -3462,6 +4230,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag207,tag40',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -3471,6 +4241,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag153,tag158',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -3480,6 +4252,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag125,tag51,tag115',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -3489,6 +4263,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag65,tag107,tag186,tag173',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -3498,6 +4274,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag96,tag95,tag34',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -3507,6 +4285,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag225,tag84,tag195,tag38',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -3516,6 +4296,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag34,tag249,tag126',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -3525,6 +4307,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag135,tag152',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -3534,6 +4318,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag215,tag247',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -3543,6 +4329,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag78,tag179,tag185',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -3552,6 +4340,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag104,tag33',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -3561,6 +4351,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag211,tag136',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -3570,6 +4362,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag131,tag89,tag227,tag17',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -3579,6 +4373,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag56,tag157',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -3588,6 +4384,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag113,tag242',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -3597,6 +4395,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag142,tag161',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -3606,6 +4406,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag3,tag171',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -3615,6 +4417,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag204,tag79',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -3624,6 +4428,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag89,tag116,tag17,tag221',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -3633,6 +4439,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag40,tag120',
+    album: 'album128',
+    halbumtitle: 'St. Vincent',
     undefined: '',
   },
   {
@@ -3642,6 +4450,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag87,tag207',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -3651,6 +4461,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag155,tag182',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -3660,6 +4472,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag109,tag87,tag166',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -3669,6 +4483,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag121,tag171,tag43',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -3678,6 +4494,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag221,tag77',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -3687,6 +4505,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag150,tag121,tag70',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -3696,6 +4516,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag122,tag205',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -3705,6 +4527,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag192,tag131,tag29',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -3714,6 +4538,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag242,tag46',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -3723,6 +4549,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag157,tag150',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -3732,6 +4560,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag186,tag209',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -3741,6 +4571,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag28,tag99',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -3750,6 +4582,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag232,tag80,tag220',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -3759,6 +4593,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag70,tag33,tag232',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -3768,6 +4604,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag38,tag211',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -3777,6 +4615,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag204,tag157',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -3786,6 +4626,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag122,tag206',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -3795,6 +4637,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag158,tag103',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -3804,6 +4648,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag122,tag171',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -3813,6 +4659,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag60,tag90,tag132',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -3822,6 +4670,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag95,tag9',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -3831,6 +4681,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag37,tag241,tag182',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -3840,6 +4692,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag197,tag40',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -3849,6 +4703,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag159,tag168,tag137',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -3858,6 +4714,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag47,tag132',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -3867,6 +4725,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag193,tag250,tag35',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -3876,6 +4736,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag56,tag66,tag142',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -3885,6 +4747,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag236,tag209',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -3894,6 +4758,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag246,tag17',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -3903,6 +4769,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag26,tag12',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -3912,6 +4780,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag72,tag188',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -3921,6 +4791,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag158,tag79',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -3930,6 +4802,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag74,tag71',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -3939,6 +4813,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag228,tag125',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -3948,6 +4824,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag160,tag15',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -3957,6 +4835,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag173,tag36',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -3966,6 +4846,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag113,tag25,tag91',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -3975,6 +4857,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag35,tag196',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -3984,6 +4868,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag140,tag3',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -3993,6 +4879,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag14,tag85',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -4002,6 +4890,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag237,tag171',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -4011,6 +4901,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag127,tag95,tag26,tag249',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -4020,6 +4912,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag49,tag230',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -4029,6 +4923,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag63,tag87,tag233',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -4038,6 +4934,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag225,tag176',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -4047,6 +4945,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag207,tag45',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -4056,6 +4956,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag241',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -4065,6 +4967,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag109,tag218',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -4074,6 +4978,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag46',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -4083,6 +4989,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag126,tag196,tag163',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -4092,6 +5000,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag165',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -4101,6 +5011,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag22',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -4110,6 +5022,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag144,tag43,tag19,tag118',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -4119,6 +5033,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag165,tag121',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -4128,6 +5044,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag88',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -4137,6 +5055,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag224',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -4146,6 +5066,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag187,tag184,tag32,tag41,tag114',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -4155,6 +5077,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag13,tag16',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -4164,6 +5088,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag225,tag101',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -4173,6 +5099,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag82,tag194',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -4182,6 +5110,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag165,tag107,tag215',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -4191,6 +5121,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag110,tag217',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -4200,6 +5132,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag69,tag161',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -4209,6 +5143,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag224,tag233',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -4218,6 +5154,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag192,tag159',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -4227,6 +5165,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag78,tag107',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -4236,6 +5176,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag56,tag72',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -4245,6 +5187,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag194,tag115',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -4254,6 +5198,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag249,tag138',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -4263,6 +5209,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag31,tag44',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -4272,6 +5220,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag174,tag32',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -4281,6 +5231,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag68,tag198',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -4290,6 +5242,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag146,tag157,tag36',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -4299,6 +5253,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag96,tag69',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -4308,6 +5264,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag210,tag88',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -4317,6 +5275,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag132,tag15',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -4326,6 +5286,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag240,tag135',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -4335,6 +5297,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag236,tag204',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -4344,6 +5308,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag99,tag163',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -4353,6 +5319,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag87,tag191,tag98',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -4362,6 +5330,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag209,tag140,tag133',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -4371,6 +5341,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag52,tag140',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -4380,6 +5352,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag181,tag193,tag128',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -4389,6 +5363,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag35,tag224',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -4398,6 +5374,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag219,tag63',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -4407,6 +5385,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag29,tag223',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -4416,6 +5396,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag168,tag170,tag136,tag112',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -4425,6 +5407,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag30,tag183',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -4434,6 +5418,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag8,tag32',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -4443,6 +5429,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag35,tag45',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -4452,6 +5440,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag219,tag196',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -4461,6 +5451,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag124,tag138',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -4470,6 +5462,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag172,tag165',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -4479,6 +5473,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag246,tag183',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -4488,6 +5484,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag18,tag177',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -4497,6 +5495,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag118,tag232',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -4506,6 +5506,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag60,tag138',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -4515,6 +5517,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag71,tag100',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -4524,6 +5528,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag52,tag219',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -4533,6 +5539,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag182,tag144',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -4542,6 +5550,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag185,tag233',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -4551,6 +5561,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag105,tag51',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -4560,6 +5572,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag246,tag63,tag197,tag244',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -4569,6 +5583,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag150,tag117,tag10',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -4578,6 +5594,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag75,tag46',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -4587,6 +5605,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag101,tag93',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -4596,6 +5616,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag120,tag43,tag139',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -4605,6 +5627,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag36,tag152',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -4614,6 +5638,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag237,tag229,tag150',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -4623,6 +5649,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag248,tag20',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -4632,6 +5660,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag53,tag222',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -4641,6 +5671,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag76,tag200',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -4650,6 +5682,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag123,tag92,tag130',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -4659,6 +5693,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag105,tag80',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -4668,6 +5704,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag164,tag25',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -4677,6 +5715,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag149,tag208',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -4686,6 +5726,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag168,tag10',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -4695,6 +5737,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag104,tag135,tag157',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -4704,6 +5748,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag229,tag26,tag199',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -4713,6 +5759,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag14,tag174',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -4722,6 +5770,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag151,tag39',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -4731,6 +5781,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag228,tag68',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -4740,6 +5792,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag182,tag166',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -4749,6 +5803,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag207,tag228,tag156,tag131',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -4758,6 +5814,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag17,tag179',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -4767,6 +5825,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag107,tag88,tag135',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -4776,6 +5836,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag79,tag235',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -4785,6 +5847,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag42,tag121,tag37',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -4794,6 +5858,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag188,tag137',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -4803,6 +5869,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag23,tag85,tag179',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -4812,6 +5880,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag10,tag2',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -4821,6 +5891,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag212,tag199',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -4830,6 +5902,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag195,tag191',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -4839,6 +5913,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag39,tag92',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -4848,6 +5924,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag239,tag165,tag140,tag177',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -4857,6 +5935,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag139,tag143',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -4866,6 +5946,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag122,tag120',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -4875,6 +5957,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag55,tag240',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -4884,6 +5968,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag117,tag18',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -4893,6 +5979,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag74,tag8',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -4902,6 +5990,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag38,tag118,tag125',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -4911,6 +6001,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag132,tag95',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -4920,6 +6012,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag118,tag235',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -4929,6 +6023,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag227,tag138,tag217',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -4938,6 +6034,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag3,tag175',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -4947,6 +6045,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag103,tag155',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -4956,6 +6056,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag21,tag118',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -4965,6 +6067,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag94,tag126',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -4974,6 +6078,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag112,tag57',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -4983,6 +6089,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag89,tag113',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -4992,6 +6100,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag35,tag74',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -5001,6 +6111,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag55,tag85,tag178',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -5010,6 +6122,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag130,tag50',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -5019,6 +6133,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag66,tag232',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -5028,6 +6144,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag54,tag5',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -5037,6 +6155,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag215,tag178,tag27',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -5046,6 +6166,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag227,tag27',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -5055,6 +6177,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag59,tag141',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -5064,6 +6188,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag195,tag87',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -5073,6 +6199,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag46',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -5082,6 +6210,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag232',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -5091,6 +6221,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag29',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -5100,6 +6232,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag95',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -5109,6 +6243,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag27,tag1',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -5118,6 +6254,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag208,tag116,tag86',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -5127,6 +6265,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag243',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -5136,6 +6276,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag5,tag38,tag12,tag136,tag27',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -5145,6 +6287,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag192,tag140',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -5154,6 +6298,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag223,tag222',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -5163,6 +6309,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag214,tag66',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -5172,6 +6320,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag66,tag212',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -5181,6 +6331,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag78,tag103,tag134',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -5190,6 +6342,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag93,tag84',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -5199,6 +6353,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag13,tag33',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -5208,6 +6364,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag14,tag248,tag179',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -5217,6 +6375,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag44,tag36',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -5226,6 +6386,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag238,tag222',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -5235,6 +6397,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag27,tag227,tag213,tag88',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -5244,6 +6408,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag48,tag74',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -5253,6 +6419,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag52,tag237,tag155',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -5262,6 +6430,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag37,tag167',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -5271,6 +6441,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag185,tag223',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -5280,6 +6452,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag161,tag144,tag246,tag190',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -5289,6 +6463,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag148,tag123',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -5298,6 +6474,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag96,tag124,tag81',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -5307,6 +6485,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag151,tag188',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -5316,6 +6496,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag120,tag165',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -5325,6 +6507,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag20,tag144,tag74',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -5334,6 +6518,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag180,tag119,tag128',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -5343,6 +6529,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag123,tag230,tag158',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -5352,6 +6540,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag68,tag97',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -5361,6 +6551,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag130,tag30',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -5370,6 +6562,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag141,tag4,tag210',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -5379,6 +6573,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag192,tag176',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -5388,6 +6584,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag67,tag150',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -5397,6 +6595,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag198,tag41,tag210',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -5406,6 +6606,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag55,tag50,tag10',
+    album: 'album141',
+    halbumtitle: 'London Calling',
     undefined: '',
   },
   {
@@ -5415,6 +6617,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag163,tag41',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -5424,6 +6628,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag46,tag154,tag200',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -5433,6 +6639,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag249,tag7',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -5442,6 +6650,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag69,tag136',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -5451,6 +6661,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag194,tag103',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -5460,6 +6672,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag79,tag37',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -5469,6 +6683,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag27,tag38',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -5478,6 +6694,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag49,tag76,tag33,tag170',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -5487,6 +6705,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag2,tag154',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -5496,6 +6716,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag235,tag11',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -5505,6 +6727,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag105,tag237',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -5514,6 +6738,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag118,tag91',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -5523,6 +6749,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag235,tag9',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -5532,6 +6760,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag167,tag140',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -5541,6 +6771,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag157,tag185,tag114',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -5550,6 +6782,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag201,tag219',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -5559,6 +6793,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag14,tag57',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -5568,6 +6804,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag155,tag28,tag193,tag178',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -5577,6 +6815,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag3,tag201',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -5586,6 +6826,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag151,tag68',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -5595,6 +6837,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag139,tag239,tag83',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -5604,6 +6848,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag136,tag143',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -5613,6 +6859,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag250,tag208',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -5622,6 +6870,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag20,tag96',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -5631,6 +6881,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag140,tag120,tag81',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -5640,6 +6892,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag59,tag32',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -5649,6 +6903,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag10,tag48',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -5658,6 +6914,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag194,tag155,tag136',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -5667,6 +6925,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag190,tag150',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -5676,6 +6936,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag162,tag218',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -5685,6 +6947,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag80,tag14',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -5694,6 +6958,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag38,tag4',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -5703,6 +6969,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag170,tag69',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -5712,6 +6980,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag248,tag217',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -5721,6 +6991,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag97,tag218,tag84',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -5730,6 +7002,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag83,tag31',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -5739,6 +7013,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag64,tag165,tag87',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -5748,6 +7024,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag41,tag115',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -5757,6 +7035,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag216,tag137',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -5766,6 +7046,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag151,tag69,tag41',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -5775,6 +7057,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag12,tag35',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -5784,6 +7068,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag108,tag9,tag217',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -5793,6 +7079,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag71,tag140',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -5802,6 +7090,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag149,tag186',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -5811,6 +7101,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag241,tag76',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -5820,6 +7112,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag34,tag39,tag20,tag233',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -5829,6 +7123,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag121,tag89',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -5838,6 +7134,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag101,tag193',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -5847,6 +7145,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag148,tag221',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -5856,6 +7156,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag188,tag96,tag200',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -5865,6 +7167,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag24,tag129',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -5874,6 +7178,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag232,tag42,tag184',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -5883,6 +7189,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag236,tag51,tag204,tag142',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -5892,6 +7200,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag11,tag133',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -5901,6 +7211,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag109,tag172',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -5910,6 +7222,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag25,tag98',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -5919,6 +7233,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag239,tag71',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -5928,6 +7244,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag170,tag92',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -5937,6 +7255,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag146,tag182',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -5946,6 +7266,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag65,tag188,tag99',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -5955,6 +7277,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag42,tag119,tag105',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -5964,6 +7288,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag173,tag229',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -5973,6 +7299,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag99,tag66',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -5982,6 +7310,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag44,tag54',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -5991,6 +7321,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag205,tag93,tag161',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -6000,6 +7332,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag178,tag99',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -6009,6 +7343,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag9,tag169',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -6018,6 +7354,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag204,tag221',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -6027,6 +7365,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag246,tag218,tag231',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -6036,6 +7376,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag195,tag79,tag148',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -6045,6 +7387,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag230,tag143',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -6054,6 +7398,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag186,tag236,tag225',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -6063,6 +7409,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag97',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -6072,6 +7420,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag176,tag62,tag195',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -6081,6 +7431,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag247',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -6090,6 +7442,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag41',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -6099,6 +7453,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag80,tag186',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -6108,6 +7464,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag106',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -6117,6 +7475,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag201',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -6126,6 +7486,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag1,tag173,tag75',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -6135,6 +7497,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag177,tag132,tag105',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -6144,6 +7508,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag6,tag215,tag201',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -6153,6 +7519,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag82,tag117',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -6162,6 +7530,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag56,tag217,tag174',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -6171,6 +7541,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag4,tag183',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -6180,6 +7552,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag53,tag242,tag228,tag93',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -6189,6 +7563,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag16,tag163',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -6198,6 +7574,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag55,tag88,tag98',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -6207,6 +7585,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag241,tag1,tag3,tag127,tag167',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -6216,6 +7596,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag195,tag115,tag240',
+    album: 'album25',
+    halbumtitle: 'For Emma, Forever Ago',
     undefined: '',
   },
   {
@@ -6225,6 +7607,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag178,tag72,tag173',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -6234,6 +7618,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag46,tag144,tag105',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -6243,6 +7629,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag206,tag26,tag180,tag220',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -6252,6 +7640,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag111,tag31',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -6261,6 +7651,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag87,tag104,tag193',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -6270,6 +7662,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag241',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -6279,6 +7673,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag155,tag20',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -6288,6 +7684,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag204,tag70,tag81',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -6297,6 +7695,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag174,tag88,tag194',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -6306,6 +7706,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag241,tag231,tag144,tag186',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -6315,6 +7717,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag222,tag56',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -6324,6 +7728,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag50,tag201',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -6333,6 +7739,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag249,tag237,tag202',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -6342,6 +7750,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag1,tag180',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -6351,6 +7761,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag61,tag20',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -6360,6 +7772,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag138,tag232,tag165',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -6369,6 +7783,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag115,tag30',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -6378,6 +7794,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag244,tag220',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -6387,6 +7805,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag214,tag162',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -6396,6 +7816,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag128,tag232,tag69',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -6405,6 +7827,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag24,tag114',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -6414,6 +7838,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag32,tag152',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -6423,6 +7849,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag107,tag128',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -6432,6 +7860,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag204,tag242',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -6441,6 +7871,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag125,tag94',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -6450,6 +7882,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag129,tag6',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -6459,6 +7893,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag231,tag168',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -6468,6 +7904,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag22,tag13',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -6477,6 +7915,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag61,tag56',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -6486,6 +7926,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag152,tag197',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -6495,6 +7937,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag232,tag215',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -6504,6 +7948,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag48,tag4',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -6513,6 +7959,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag191,tag180',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -6522,6 +7970,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag142,tag161',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -6531,6 +7981,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag83,tag123,tag18',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -6540,6 +7992,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag228,tag250',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -6549,6 +8003,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag191,tag169',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -6558,6 +8014,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag69,tag45,tag23',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -6567,6 +8025,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag73,tag163',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -6576,6 +8036,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag164,tag149',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -6585,6 +8047,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag212,tag13,tag138,tag41',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -6594,6 +8058,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag34,tag181,tag172',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -6603,6 +8069,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag62,tag54,tag3,tag33',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -6612,6 +8080,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag91,tag71,tag138',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -6621,6 +8091,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag146,tag106',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -6630,6 +8102,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag84,tag233',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -6639,6 +8113,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag127,tag205,tag34',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -6648,6 +8124,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag99,tag46',
+    album: 'album96',
+    halbumtitle: 'Easter',
     undefined: '',
   },
   {
@@ -6657,6 +8135,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag16,tag107,tag138',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -6666,6 +8146,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag227,tag27,tag50',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -6675,6 +8157,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag15,tag89',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -6684,6 +8168,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag153,tag127',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -6693,6 +8179,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag249,tag49',
+    album: 'album155',
+    halbumtitle: 'Exile on Main St.',
     undefined: '',
   },
   {
@@ -6702,6 +8190,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag89,tag164,tag32,tag30',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -6711,6 +8201,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag64,tag142,tag164',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -6720,6 +8212,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag47,tag71',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -6729,6 +8223,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag86,tag88',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -6738,6 +8234,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag60,tag100,tag234',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -6747,6 +8245,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag105,tag168',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -6756,6 +8256,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag8,tag18',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -6765,6 +8267,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag7,tag201',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -6774,6 +8278,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag28,tag170',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -6783,6 +8289,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag221,tag35',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -6792,6 +8300,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag171,tag108,tag82,tag26',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -6801,6 +8311,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag77,tag177',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -6810,6 +8322,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag217,tag89',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -6819,6 +8333,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag150,tag82',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -6828,6 +8344,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag210,tag201,tag110',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -6837,6 +8355,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag84,tag120',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -6846,6 +8366,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag59,tag162',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -6855,6 +8377,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag36,tag69',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -6864,6 +8388,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag106,tag101',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -6873,6 +8399,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag238,tag74,tag95',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -6882,6 +8410,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag186,tag232',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -6891,6 +8421,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag14,tag211',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -6900,6 +8432,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag55,tag91,tag72',
+    album: 'album8',
+    halbumtitle: "Whatever People Say I Am, That's What I'm Not",
     undefined: '',
   },
   {
@@ -6909,6 +8443,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag161,tag86,tag172',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -6918,6 +8454,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag196,tag60',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -6927,6 +8465,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag78,tag63',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -6936,6 +8476,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag142,tag31',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -6945,6 +8487,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag197,tag234',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -6954,6 +8498,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag246,tag28',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -6963,6 +8509,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag56,tag76,tag173,tag86',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -6972,6 +8520,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag174,tag145',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -6981,6 +8531,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag78,tag191,tag225',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -6990,6 +8542,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag55,tag217',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -6999,6 +8553,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag60,tag185',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -7008,6 +8564,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag129,tag248',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -7017,6 +8575,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag108,tag169,tag44',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -7026,6 +8586,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag198,tag66',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -7035,6 +8597,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag180',
+    album: 'album25',
+    halbumtitle: 'For Emma, Forever Ago',
     undefined: '',
   },
   {
@@ -7044,6 +8608,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag109,tag7,tag160',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -7053,6 +8619,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag218',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -7062,6 +8630,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag112,tag137',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -7071,6 +8641,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag233',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -7080,6 +8652,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag156',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -7089,6 +8663,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag226',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -7098,6 +8674,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag168',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -7107,6 +8685,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag153',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -7116,6 +8696,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag189,tag121,tag8',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -7125,6 +8707,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag248,tag131,tag147,tag172',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -7134,6 +8718,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag205,tag97,tag181',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -7143,6 +8729,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag72,tag165,tag234',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -7152,6 +8740,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag90,tag61',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -7161,6 +8751,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag241,tag94',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -7170,6 +8762,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag91',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -7179,6 +8773,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag149,tag31',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -7188,6 +8784,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag23,tag37',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -7197,6 +8795,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag132,tag111,tag59',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -7206,6 +8806,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag79,tag85',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -7215,6 +8817,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag223,tag107,tag133',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -7224,6 +8828,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag198,tag61',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -7233,6 +8839,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag5,tag104,tag148',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -7242,6 +8850,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag104,tag133',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -7251,6 +8861,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag206,tag74,tag235',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -7260,6 +8872,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag24,tag170,tag33',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -7269,6 +8883,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag132,tag95,tag217',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -7278,6 +8894,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag79,tag40',
+    album: 'album181',
+    halbumtitle: 'Mingus Ah Um',
     undefined: '',
   },
   {
@@ -7287,6 +8905,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag70,tag148',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -7296,6 +8916,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag65,tag144',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -7305,6 +8927,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag75,tag204',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -7314,6 +8938,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag74,tag17',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -7323,6 +8949,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag108,tag68',
+    album: 'album25',
+    halbumtitle: 'For Emma, Forever Ago',
     undefined: '',
   },
   {
@@ -7332,6 +8960,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag176,tag123,tag44',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -7341,6 +8971,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag87,tag110,tag35,tag85',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -7350,6 +8982,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag151,tag187',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -7359,6 +8993,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag224,tag39',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -7368,6 +9004,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag20,tag16',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -7377,6 +9015,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag211,tag57',
+    album: 'album128',
+    halbumtitle: 'St. Vincent',
     undefined: '',
   },
   {
@@ -7386,6 +9026,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag130,tag19',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -7395,6 +9037,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag144,tag146',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -7404,6 +9048,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag72,tag214',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -7413,6 +9059,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag60,tag4,tag63,tag226',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -7422,6 +9070,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag147,tag72',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -7431,6 +9081,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag141,tag209',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -7440,6 +9092,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag45,tag195,tag207',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -7449,6 +9103,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag29,tag1',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -7458,6 +9114,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag44,tag81',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -7467,6 +9125,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag73,tag195',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -7476,6 +9136,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag71,tag176',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -7485,6 +9147,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag36,tag228',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -7494,6 +9158,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag222,tag223',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -7503,6 +9169,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag116,tag110',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -7512,6 +9180,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag245,tag13,tag143',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -7521,6 +9191,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag65,tag212,tag74,tag134',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -7530,6 +9202,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag200,tag250,tag59',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -7539,6 +9213,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag54,tag11',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -7548,6 +9224,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag214,tag60',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -7557,6 +9235,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag152,tag148',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -7566,6 +9246,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag171,tag150',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -7575,6 +9257,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag179,tag162',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -7584,6 +9268,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag18,tag192',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -7593,6 +9279,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag221,tag174,tag100',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -7602,6 +9290,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag162,tag83',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -7611,6 +9301,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag144',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -7620,6 +9312,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag123,tag178',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -7629,6 +9323,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag140,tag171,tag150',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -7638,6 +9334,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag139,tag7',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -7647,6 +9345,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag157,tag199',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -7656,6 +9356,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag74,tag9',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -7665,6 +9367,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag192,tag174',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -7674,6 +9378,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag203,tag200',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -7683,6 +9389,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag243,tag220',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -7692,6 +9400,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag170,tag249',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -7701,6 +9411,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag204,tag34',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -7710,6 +9422,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag175,tag241',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -7719,6 +9433,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag188,tag58,tag70',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -7728,6 +9444,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag200,tag93',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -7737,6 +9455,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag235,tag49',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -7746,6 +9466,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag150,tag21',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -7755,6 +9477,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag205,tag59',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -7764,6 +9488,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag233,tag201',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -7773,6 +9499,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag102,tag167',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -7782,6 +9510,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag181,tag172',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -7791,6 +9521,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag56,tag73,tag110,tag242',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -7800,6 +9532,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag53,tag245',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -7809,6 +9543,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag230,tag33',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -7818,6 +9554,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag19,tag241',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -7827,6 +9565,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag135,tag239',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -7836,6 +9576,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag218,tag164',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -7845,6 +9587,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag61,tag104',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -7854,6 +9598,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag103,tag222,tag71',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -7863,6 +9609,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag29,tag17',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -7872,6 +9620,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag28,tag190',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -7881,6 +9631,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag29,tag56,tag205',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -7890,6 +9642,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag191,tag198',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -7899,6 +9653,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag196,tag69',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -7908,6 +9664,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag48,tag243',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -7917,6 +9675,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag152,tag229',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -7926,6 +9686,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag47,tag88,tag141',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -7935,6 +9697,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag181,tag105,tag143,tag86',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -7944,6 +9708,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag60,tag35',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -7953,6 +9719,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag182,tag208,tag201',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -7962,6 +9730,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag202,tag70,tag5',
+    album: 'album72',
+    halbumtitle: "What's Going On",
     undefined: '',
   },
   {
@@ -7971,6 +9741,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag81,tag236',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -7980,6 +9752,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag148,tag234',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -7989,6 +9763,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag124,tag203,tag191',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -7998,6 +9774,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag39,tag222',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -8007,6 +9785,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag250,tag247,tag44',
+    album: 'album226',
+    halbumtitle: 'Around the World',
     undefined: '',
   },
   {
@@ -8016,6 +9796,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag225,tag4',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -8025,6 +9807,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag109',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -8034,6 +9818,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag176,tag7,tag184',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -8043,6 +9829,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag113,tag208',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -8052,6 +9840,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag225,tag135',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -8061,6 +9851,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag235',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -8070,6 +9862,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag30,tag81,tag63',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -8079,6 +9873,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag13',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -8088,6 +9884,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag125',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -8097,6 +9895,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag12',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -8106,6 +9906,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag192,tag197,tag168,tag87',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -8115,6 +9917,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag216,tag45',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -8124,6 +9928,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag84,tag142',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -8133,6 +9939,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag89,tag170,tag87,tag192',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -8142,6 +9950,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag133,tag28,tag63',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -8151,6 +9961,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag97,tag151',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -8160,6 +9972,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag155,tag161',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -8169,6 +9983,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag218,tag11',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -8178,6 +9994,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag35,tag207',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -8187,6 +10005,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag127,tag70',
+    album: 'album233',
+    halbumtitle: 'Silent Shout',
     undefined: '',
   },
   {
@@ -8196,6 +10016,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag162,tag51',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -8205,6 +10027,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag168,tag183',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -8214,6 +10038,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag122,tag236',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -8223,6 +10049,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag216,tag232',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -8232,6 +10060,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag133,tag18,tag67,tag16',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -8241,6 +10071,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag21,tag55',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -8250,6 +10082,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag197,tag221',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -8259,6 +10093,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag222,tag171',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -8268,6 +10104,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag40,tag140',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -8277,6 +10115,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag68,tag172,tag125',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -8286,6 +10126,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag75,tag189',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -8295,6 +10137,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag130,tag129,tag126',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -8304,6 +10148,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag240,tag211,tag204',
+    album: 'album20',
+    halbumtitle: 'Parklife',
     undefined: '',
   },
   {
@@ -8313,6 +10159,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag6,tag12,tag32',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -8322,6 +10170,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag208,tag10',
+    album: 'album126',
+    halbumtitle: 'Siamese Dream',
     undefined: '',
   },
   {
@@ -8331,6 +10181,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag163,tag74,tag85',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -8340,6 +10192,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag41,tag88',
+    album: 'album59',
+    halbumtitle: 'Blue',
     undefined: '',
   },
   {
@@ -8349,6 +10203,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag190,tag14',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -8358,6 +10214,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag47,tag209',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -8367,6 +10225,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag210,tag52,tag214',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -8376,6 +10236,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag234,tag131,tag107',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -8385,6 +10247,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag144,tag114,tag44,tag175',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -8394,6 +10258,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag104,tag19',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -8403,6 +10269,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag152,tag217,tag206',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -8412,6 +10280,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag99,tag102,tag242',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -8421,6 +10291,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag206,tag162',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -8430,6 +10302,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag32,tag185,tag182',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -8439,6 +10313,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag10,tag200,tag223',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -8448,6 +10324,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag187,tag28,tag215',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -8457,6 +10335,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag16,tag146',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -8466,6 +10346,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag155,tag24',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -8475,6 +10357,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag107,tag206',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -8484,6 +10368,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag39,tag206,tag38',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -8493,6 +10379,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag52,tag112',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -8502,6 +10390,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag242,tag154,tag225',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -8511,6 +10401,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag107,tag140,tag183,tag105',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -8520,6 +10412,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag247,tag156',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -8529,6 +10423,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag109,tag91,tag236',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -8538,6 +10434,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag62,tag217',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -8547,6 +10445,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag166,tag99',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -8556,6 +10456,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag69,tag198',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -8565,6 +10467,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag166,tag89',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -8574,6 +10478,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag137,tag32',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -8583,6 +10489,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag134,tag85',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -8592,6 +10500,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag17,tag150',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -8601,6 +10511,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag123,tag218,tag182',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -8610,6 +10522,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag19,tag5',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -8619,6 +10533,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag231,tag120,tag61',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -8628,6 +10544,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag99,tag231',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -8637,6 +10555,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag242,tag121',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -8646,6 +10566,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag4,tag171',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -8655,6 +10577,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag143,tag77',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -8664,6 +10588,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag33,tag9',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -8673,6 +10599,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag16,tag190',
+    album: 'album141',
+    halbumtitle: 'London Calling',
     undefined: '',
   },
   {
@@ -8682,6 +10610,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag82,tag72',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -8691,6 +10621,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag53,tag186',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -8700,6 +10632,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag18,tag48',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -8709,6 +10643,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag117,tag219',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -8718,6 +10654,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag178,tag217',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -8727,6 +10665,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag202,tag104',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -8736,6 +10676,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag156,tag104,tag193',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -8745,6 +10687,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag20,tag75',
+    album: 'album68',
+    halbumtitle: 'Led Zeppelin II',
     undefined: '',
   },
   {
@@ -8754,6 +10698,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag103,tag107',
+    album: 'album130',
+    halbumtitle: 'Songs in the Key of Life',
     undefined: '',
   },
   {
@@ -8763,6 +10709,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag226,tag215',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -8772,6 +10720,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag171,tag215,tag238',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -8781,6 +10731,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag189,tag193,tag101',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -8790,6 +10742,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag87,tag75',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -8799,6 +10753,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag230,tag34',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -8808,6 +10764,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag246,tag235,tag79',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -8817,6 +10775,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag203,tag187',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -8826,6 +10786,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag68,tag148,tag232',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -8835,6 +10797,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag186,tag228',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -8844,6 +10808,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag33,tag1',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -8853,6 +10819,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag90,tag216',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -8862,6 +10830,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag101,tag67,tag136',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -8871,6 +10841,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag119,tag34',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -8880,6 +10852,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag66,tag17',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -8889,6 +10863,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag204,tag30',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -8898,6 +10874,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag214,tag47,tag2',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -8907,6 +10885,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag227,tag79,tag249,tag132',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -8916,6 +10896,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag207,tag124,tag75',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -8925,6 +10907,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag165,tag40',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -8934,6 +10918,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag218,tag224',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -8943,6 +10929,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag3,tag209',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -8952,6 +10940,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag148,tag244',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -8961,6 +10951,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag94,tag155',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -8970,6 +10962,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag127,tag140,tag32,tag53',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -8979,6 +10973,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag8,tag213',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -8988,6 +10984,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag107,tag142',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -8997,6 +10995,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag79,tag84',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -9006,6 +11006,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag182,tag95',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -9015,6 +11017,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag32',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -9024,6 +11028,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag139',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -9033,6 +11039,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag55',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -9042,6 +11050,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag4',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -9051,6 +11061,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag154',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -9060,6 +11072,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag87,tag76,tag222,tag94',
+    album: 'album141',
+    halbumtitle: 'London Calling',
     undefined: '',
   },
   {
@@ -9069,6 +11083,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag247,tag184,tag31',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -9078,6 +11094,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag222',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -9087,6 +11105,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag149,tag203',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -9096,6 +11116,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag27,tag11',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -9105,6 +11127,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag36,tag46',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -9114,6 +11138,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag29,tag248',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -9123,6 +11149,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag200,tag4,tag8',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -9132,6 +11160,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag4,tag172',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -9141,6 +11171,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag20,tag112',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -9150,6 +11182,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag175,tag72',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -9159,6 +11193,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag100,tag17,tag200',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -9168,6 +11204,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag165,tag117',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -9177,6 +11215,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag9,tag140',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -9186,6 +11226,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag88,tag115',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -9195,6 +11237,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag185,tag14',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -9204,6 +11248,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag89,tag15,tag228,tag86',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -9213,6 +11259,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag213,tag4',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -9222,6 +11270,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag207,tag132',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -9231,6 +11281,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag30,tag89',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -9240,6 +11292,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag63,tag99',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -9249,6 +11303,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag206,tag224',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -9258,6 +11314,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag225,tag200',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -9267,6 +11325,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag128,tag156,tag102',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -9276,6 +11336,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag248,tag25',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -9285,6 +11347,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag14,tag193',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -9294,6 +11358,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag247,tag103,tag157',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -9303,6 +11369,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag170,tag119',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -9312,6 +11380,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag72,tag185',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -9321,6 +11391,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag136,tag173',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -9330,6 +11402,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag142,tag193,tag42',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -9339,6 +11413,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag243,tag120,tag246',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -9348,6 +11424,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag41,tag177',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -9357,6 +11435,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag250,tag221',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -9366,6 +11446,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag167,tag68',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -9375,6 +11457,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag33,tag179',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -9384,6 +11468,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag16,tag151',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -9393,6 +11479,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag245,tag98',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -9402,6 +11490,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag6,tag72,tag204',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -9411,6 +11501,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag223,tag25',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -9420,6 +11512,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag90,tag94',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -9429,6 +11523,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag171,tag131',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -9438,6 +11534,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag22,tag132',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -9447,6 +11545,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag178,tag87,tag135',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -9456,6 +11556,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag105',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -9465,6 +11567,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag223',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -9474,6 +11578,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag43',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -9483,6 +11589,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag184',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -9492,6 +11600,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag237',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -9501,6 +11611,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag92,tag198,tag63',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -9510,6 +11622,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag84,tag36',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -9519,6 +11633,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag218',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -9528,6 +11644,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag206,tag38',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -9537,6 +11655,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag217',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -9546,6 +11666,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag10,tag40',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -9555,6 +11677,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag40',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -9564,6 +11688,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag206,tag210',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -9573,6 +11699,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag80',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -9582,6 +11710,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag223,tag105',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -9591,6 +11721,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag206,tag12',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -9600,6 +11732,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag109,tag19',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -9609,6 +11743,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag105',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -9618,6 +11754,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag4',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -9627,6 +11765,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag16',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -9636,6 +11776,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag11,tag158',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -9645,6 +11787,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag167',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -9654,6 +11798,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag164,tag102',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -9663,6 +11809,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag34',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -9672,6 +11820,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag192,tag232',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -9681,6 +11831,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag206,tag199',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -9690,6 +11842,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag241',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -9699,6 +11853,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag24,tag16,tag156',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -9708,6 +11864,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag7,tag202,tag234',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -9717,6 +11875,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag227',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -9726,6 +11886,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag38',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -9735,6 +11897,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag13,tag95',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -9744,6 +11908,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag28,tag64',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -9753,6 +11919,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag97,tag140',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -9762,6 +11930,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag88',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -9771,6 +11941,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag224',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -9780,6 +11952,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag78',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -9789,6 +11963,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag21',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -9798,6 +11974,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag183',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -9807,6 +11985,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag117',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -9816,6 +11996,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag230',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -9825,6 +12007,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag172',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -9834,6 +12018,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag2,tag36',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -9843,6 +12029,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag186',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -9852,6 +12040,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag105,tag10,tag162',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -9861,6 +12051,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag93',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -9870,6 +12062,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag214,tag63,tag232',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -9879,6 +12073,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag233',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -9888,6 +12084,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag133',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -9897,6 +12095,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag183',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -9906,6 +12106,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag152,tag92,tag11',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -9915,6 +12117,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag147',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -9924,6 +12128,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag218,tag207',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -9933,6 +12139,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag38',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -9942,6 +12150,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag33',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -9951,6 +12161,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag138,tag151,tag215,tag3',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -9960,6 +12172,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag59',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -9969,6 +12183,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag78,tag192',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -9978,6 +12194,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag241',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -9987,6 +12205,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag151,tag95',
+    album: 'album155',
+    halbumtitle: 'Exile on Main St.',
     undefined: '',
   },
   {
@@ -9996,6 +12216,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag218,tag86,tag139',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -10005,6 +12227,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag85',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -10014,6 +12238,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag10',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -10023,6 +12249,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag50,tag141',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -10032,6 +12260,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag156',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -10041,6 +12271,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag118,tag201,tag63',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -10050,6 +12282,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag61',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -10059,6 +12293,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag142',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -10068,6 +12304,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag177,tag213',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -10077,6 +12315,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag3,tag164',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -10086,6 +12326,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag120,tag230',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -10095,6 +12337,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag47,tag59',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -10104,6 +12348,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag120,tag87,tag215',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -10113,6 +12359,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag151,tag25',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -10122,6 +12370,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag246,tag199',
+    album: 'album141',
+    halbumtitle: 'London Calling',
     undefined: '',
   },
   {
@@ -10131,6 +12381,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag163,tag47',
+    album: 'album226',
+    halbumtitle: 'Around the World',
     undefined: '',
   },
   {
@@ -10140,6 +12392,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag87',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -10149,6 +12403,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag15,tag171',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -10158,6 +12414,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag122,tag49',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -10167,6 +12425,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag99,tag188',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -10176,6 +12436,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag31,tag51',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -10185,6 +12447,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag97,tag23',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -10194,6 +12458,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag223,tag149',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -10203,6 +12469,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag111,tag187',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -10212,6 +12480,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag112',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -10221,6 +12491,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag232',
+    album: 'album8',
+    halbumtitle: "Whatever People Say I Am, That's What I'm Not",
     undefined: '',
   },
   {
@@ -10230,6 +12502,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag114,tag20,tag58',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -10239,6 +12513,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag122,tag123,tag78',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -10248,6 +12524,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag46',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -10257,6 +12535,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag162',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -10266,6 +12546,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag43',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -10275,6 +12557,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag82',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -10284,6 +12568,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag163',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -10293,6 +12579,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag48',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -10302,6 +12590,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag225,tag39',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -10311,6 +12601,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag12',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -10320,6 +12612,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag71',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -10329,6 +12623,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag38,tag130',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -10338,6 +12634,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag230,tag23',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -10347,6 +12645,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag122,tag16',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -10356,6 +12656,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag202',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -10365,6 +12667,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag243',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -10374,6 +12678,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag200,tag95',
+    album: 'album96',
+    halbumtitle: 'Easter',
     undefined: '',
   },
   {
@@ -10383,6 +12689,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag41',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -10392,6 +12700,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag231',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -10401,6 +12711,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag152,tag94,tag182',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -10410,6 +12722,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag221',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -10419,6 +12733,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag191,tag46,tag85',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -10428,6 +12744,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag237',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -10437,6 +12755,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag7,tag187',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -10446,6 +12766,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag197',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -10455,6 +12777,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag210',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -10464,6 +12788,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag95',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -10473,6 +12799,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag222',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -10482,6 +12810,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag77,tag129',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -10491,6 +12821,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag20',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -10500,6 +12832,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag198,tag243',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -10509,6 +12843,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag75,tag48,tag27',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -10518,6 +12854,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag35',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -10527,6 +12865,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag135',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -10536,6 +12876,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag149',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -10545,6 +12887,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag162',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -10554,6 +12898,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag210,tag31',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -10563,6 +12909,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag183',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -10572,6 +12920,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag86,tag150',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -10581,6 +12931,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag119',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -10590,6 +12942,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag163',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -10599,6 +12953,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag170',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -10608,6 +12964,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag48',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -10617,6 +12975,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag31,tag230',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -10626,6 +12986,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag41',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -10635,6 +12997,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag240,tag143,tag1,tag168',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -10644,6 +13008,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag88,tag43',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -10653,6 +13019,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag6',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -10662,6 +13030,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag134',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -10671,6 +13041,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag250',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -10680,6 +13052,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag2',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -10689,6 +13063,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag136,tag194',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -10698,6 +13074,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag152',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -10707,6 +13085,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag236,tag183',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -10716,6 +13096,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag44,tag67',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -10725,6 +13107,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag100',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -10734,6 +13118,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag112,tag148',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -10743,6 +13129,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag246,tag142',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -10752,6 +13140,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag92,tag6,tag76',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -10761,6 +13151,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag107',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -10770,6 +13162,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag168',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -10779,6 +13173,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag17',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -10788,6 +13184,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag23,tag244',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -10797,6 +13195,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag174,tag106,tag171',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -10806,6 +13206,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag189',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -10815,6 +13217,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag217',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -10824,6 +13228,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag144,tag130,tag215',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -10833,6 +13239,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag126,tag210',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -10842,6 +13250,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag242,tag108',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -10851,6 +13261,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag77,tag237',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -10860,6 +13272,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag112',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -10869,6 +13283,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag206,tag18',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -10878,6 +13294,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag113,tag8,tag188',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -10887,6 +13305,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag62,tag205',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -10896,6 +13316,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag209,tag39',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -10905,6 +13327,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag16',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -10914,6 +13338,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag9',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -10923,6 +13349,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag160',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -10932,6 +13360,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag47,tag50',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -10941,6 +13371,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag89',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -10950,6 +13382,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag120',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -10959,6 +13393,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag97,tag24',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -10968,6 +13404,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag33,tag172',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -10977,6 +13415,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag209,tag76,tag183,tag78',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -10986,6 +13426,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag153',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -10995,6 +13437,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag95',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -11004,6 +13448,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag81',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -11013,6 +13459,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag173,tag197',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -11022,6 +13470,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag50,tag136',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -11031,6 +13481,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag214,tag79',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -11040,6 +13492,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag235',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -11049,6 +13503,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag58',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -11058,6 +13514,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag52',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -11067,6 +13525,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag208,tag116',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -11076,6 +13536,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag10,tag50',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -11085,6 +13547,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag143,tag89',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -11094,6 +13558,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag118',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -11103,6 +13569,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag181,tag56',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -11112,6 +13580,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag111,tag125',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -11121,6 +13591,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag154,tag83',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -11130,6 +13602,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag174',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -11139,6 +13613,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag233',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -11148,6 +13624,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag65',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -11157,6 +13635,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag55,tag90',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -11166,6 +13646,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag120,tag222',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -11175,6 +13657,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag222',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -11184,6 +13668,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag118,tag199,tag191',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -11193,6 +13679,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag89,tag141',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -11202,6 +13690,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag27,tag219,tag107,tag231',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -11211,6 +13701,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag97',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -11220,6 +13712,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag20,tag27',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -11229,6 +13723,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag97',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -11238,6 +13734,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag45,tag169',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -11247,6 +13745,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag4',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -11256,6 +13756,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag222',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -11265,6 +13767,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag101',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -11274,6 +13778,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag38,tag195,tag112',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -11283,6 +13789,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag141',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -11292,6 +13800,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag164,tag160',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -11301,6 +13811,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag248',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -11310,6 +13822,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag46',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -11319,6 +13833,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag59,tag192,tag170,tag110',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -11328,6 +13844,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag92,tag201',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -11337,6 +13855,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag136',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -11346,6 +13866,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag132',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -11355,6 +13877,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag104',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -11364,6 +13888,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag34,tag88,tag103',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -11373,6 +13899,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag66',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -11382,6 +13910,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag181,tag223',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -11391,6 +13921,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag97,tag124,tag51',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -11400,6 +13932,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag212',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -11409,6 +13943,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag74,tag93',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -11418,6 +13954,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag148',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -11427,6 +13965,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag31,tag222',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -11436,6 +13976,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag176,tag142',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -11445,6 +13987,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag68',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -11454,6 +13998,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag64',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -11463,6 +14009,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag82',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -11472,6 +14020,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag145',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -11481,6 +14031,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag184',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -11490,6 +14042,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag151,tag101',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -11499,6 +14053,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag155',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -11508,6 +14064,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag20',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -11517,6 +14075,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag238',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -11526,6 +14086,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag221',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -11535,6 +14097,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag165',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -11544,6 +14108,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag18,tag9',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -11553,6 +14119,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag66',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -11562,6 +14130,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag120',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -11571,6 +14141,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag60,tag47',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -11580,6 +14152,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag149,tag166,tag184',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -11589,6 +14163,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag92',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -11598,6 +14174,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag93',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -11607,6 +14185,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag96,tag172',
+    album: 'album189',
+    halbumtitle: 'Take Five',
     undefined: '',
   },
   {
@@ -11616,6 +14196,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag76,tag88',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -11625,6 +14207,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag26',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -11634,6 +14218,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag4,tag5',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -11643,6 +14229,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag249',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -11652,6 +14240,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag76',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -11661,6 +14251,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag78',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -11670,6 +14262,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag24',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -11679,6 +14273,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag138,tag116,tag139,tag82',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -11688,6 +14284,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag236',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -11697,6 +14295,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag183',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -11706,6 +14306,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag239,tag192',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -11715,6 +14317,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag229',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -11724,6 +14328,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag73',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -11733,6 +14339,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag165',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -11742,6 +14350,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag195,tag203',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -11751,6 +14361,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag43,tag52',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -11760,6 +14372,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag175,tag25',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -11769,6 +14383,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag247',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -11778,6 +14394,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag143',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -11787,6 +14405,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag178',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -11796,6 +14416,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag182,tag123,tag165,tag142',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -11805,6 +14427,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag27,tag181',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -11814,6 +14438,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag207',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -11823,6 +14449,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag150',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -11832,6 +14460,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag118,tag16',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -11841,6 +14471,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag210,tag130',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -11850,6 +14482,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag232',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -11859,6 +14493,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag25,tag181,tag212',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -11868,6 +14504,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag187',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -11877,6 +14515,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag46',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -11886,6 +14526,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag150',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -11895,6 +14537,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag250',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -11904,6 +14548,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag111',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -11913,6 +14559,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag40,tag224',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -11922,6 +14570,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag169',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -11931,6 +14581,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag79',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -11940,6 +14592,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag185',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -11949,6 +14603,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag183',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -11958,6 +14614,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag240',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -11967,6 +14625,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag86,tag201,tag151',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -11976,6 +14636,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 1,
     tags: 'tag111,tag173',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -11985,6 +14647,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 2,
     tags: 'tag146,tag12,tag172',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -11994,6 +14658,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 3,
     tags: 'tag61,tag16',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -12003,6 +14669,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 4,
     tags: 'tag49,tag235,tag122',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -12012,6 +14680,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 5,
     tags: 'tag58,tag229',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -12021,6 +14691,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 6,
     tags: 'tag134,tag38',
+    album: 'album232',
+    halbumtitle: 'Untrue',
     undefined: '',
   },
   {
@@ -12030,6 +14702,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 7,
     tags: 'tag166,tag104',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -12039,6 +14713,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 8,
     tags: 'tag141,tag214',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -12048,6 +14724,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 9,
     tags: 'tag164,tag245',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -12057,6 +14735,8 @@ export const crateAlbumSeedArray = [
     hisranked: true,
     rank: 10,
     tags: 'tag6,tag122,tag76',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -12066,6 +14746,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag48',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -12075,6 +14757,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag85',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -12084,6 +14768,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag96',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -12093,6 +14779,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag45',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -12102,6 +14790,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag42',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -12111,6 +14801,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag56,tag163',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -12120,6 +14812,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag120,tag96,tag183',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -12129,6 +14823,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag202,tag146',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -12138,6 +14834,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag195',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -12147,6 +14845,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag82,tag101',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -12156,6 +14856,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag146,tag215,tag70',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -12165,6 +14867,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag246',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -12174,6 +14878,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag196,tag231',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -12183,6 +14889,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag210,tag168,tag123',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -12192,6 +14900,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag162',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -12201,6 +14911,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag188,tag76,tag157',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -12210,6 +14922,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag8',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -12219,6 +14933,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag214,tag75',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -12228,6 +14944,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag4',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -12237,6 +14955,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag137,tag193',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -12246,6 +14966,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag238,tag176',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -12255,6 +14977,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag85,tag235',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -12264,6 +14988,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag19',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -12273,6 +14999,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag43',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -12282,6 +15010,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag100',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -12291,6 +15021,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag211',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -12300,6 +15032,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag191,tag224,tag142',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -12309,6 +15043,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag82,tag228',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -12318,6 +15054,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag185,tag4,tag146',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -12327,6 +15065,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag73',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -12336,6 +15076,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag39,tag135',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -12345,6 +15087,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag8,tag185',
+    album: 'album138',
+    halbumtitle: "Sgt. Pepper's Lonely Hearts Club Band",
     undefined: '',
   },
   {
@@ -12354,6 +15098,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag71',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -12363,6 +15109,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag111',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -12372,6 +15120,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag74,tag52',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -12381,6 +15131,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag19,tag65',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -12390,6 +15142,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag188,tag37',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -12399,6 +15153,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag231,tag207',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -12408,6 +15164,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag9',
+    album: 'album222',
+    halbumtitle: 'Autobahn',
     undefined: '',
   },
   {
@@ -12417,6 +15175,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag206,tag4',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -12426,6 +15186,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag238,tag213',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -12435,6 +15197,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag94',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -12444,6 +15208,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag154',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -12453,6 +15219,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag144',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -12462,6 +15230,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag215,tag110,tag122',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -12471,6 +15241,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag97',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -12480,6 +15252,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag156',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -12489,6 +15263,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag57',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -12498,6 +15274,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag72',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -12507,6 +15285,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag21,tag214,tag95',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -12516,6 +15296,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag112,tag207',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -12525,6 +15307,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag215,tag156',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -12534,6 +15318,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag179',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -12543,6 +15329,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag139,tag136',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -12552,6 +15340,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag148',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -12561,6 +15351,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag191,tag172',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -12570,6 +15362,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag113,tag25',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -12579,6 +15373,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag227,tag215',
+    album: 'album130',
+    halbumtitle: 'Songs in the Key of Life',
     undefined: '',
   },
   {
@@ -12588,6 +15384,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag87',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -12597,6 +15395,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag66,tag84',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -12606,6 +15406,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag12,tag94',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -12615,6 +15417,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag46',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -12624,6 +15428,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag185,tag169,tag177',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -12633,6 +15439,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag50',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -12642,6 +15450,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag35,tag21',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -12651,6 +15461,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag119,tag220',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -12660,6 +15472,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag88,tag198,tag113,tag196',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -12669,6 +15483,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag205',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -12678,6 +15494,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag140,tag9',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -12687,6 +15505,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag53,tag85',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -12696,6 +15516,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag169,tag178',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -12705,6 +15527,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag59,tag175',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -12714,6 +15538,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag97,tag183',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -12723,6 +15549,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag2',
+    album: 'album222',
+    halbumtitle: 'Autobahn',
     undefined: '',
   },
   {
@@ -12732,6 +15560,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag238,tag149',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -12741,6 +15571,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag107,tag93',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -12750,6 +15582,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag104',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -12759,6 +15593,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag126',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -12768,6 +15604,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag35',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -12777,6 +15615,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag2',
+    album: 'album72',
+    halbumtitle: "What's Going On",
     undefined: '',
   },
   {
@@ -12786,6 +15626,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag185',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -12795,6 +15637,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag73,tag41',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -12804,6 +15648,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag34,tag174',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -12813,6 +15659,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag152',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -12822,6 +15670,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag151',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -12831,6 +15681,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag89',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -12840,6 +15692,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag9',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -12849,6 +15703,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag225',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -12858,6 +15714,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag171,tag32',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -12867,6 +15725,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag15,tag114,tag240,tag111',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -12876,6 +15736,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag234',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -12885,6 +15747,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag215',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -12894,6 +15758,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag110,tag35',
+    album: 'album233',
+    halbumtitle: 'Silent Shout',
     undefined: '',
   },
   {
@@ -12903,6 +15769,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag194,tag147',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -12912,6 +15780,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag201',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -12921,6 +15791,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag192,tag219',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -12930,6 +15802,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag24,tag206',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -12939,6 +15813,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag211',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -12948,6 +15824,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag147',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -12957,6 +15835,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag93,tag143',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -12966,6 +15846,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag101',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -12975,6 +15857,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag30',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -12984,6 +15868,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag29',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -12993,6 +15879,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag242',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -13002,6 +15890,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag29',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -13011,6 +15901,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag147',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -13020,6 +15912,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag214',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -13029,6 +15923,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag67',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -13038,6 +15934,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag227,tag151',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -13047,6 +15945,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag173,tag60',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -13056,6 +15956,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag194',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -13065,6 +15967,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag154',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -13074,6 +15978,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag101',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -13083,6 +15989,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag173',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -13092,6 +16000,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag155',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -13101,6 +16011,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag146',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -13110,6 +16022,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag97,tag125',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -13119,6 +16033,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag10',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -13128,6 +16044,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag126',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -13137,6 +16055,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag219',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -13146,6 +16066,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag4,tag98',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -13155,6 +16077,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag22,tag193',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -13164,6 +16088,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag18',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -13173,6 +16099,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag182,tag95',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -13182,6 +16110,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag188,tag237',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -13191,6 +16121,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag185',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -13200,6 +16132,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag229',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -13209,6 +16143,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag79',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -13218,6 +16154,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag86',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -13227,6 +16165,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag165,tag140',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -13236,6 +16176,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag35,tag117',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -13245,6 +16187,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag120,tag167,tag192,tag196',
+    album: 'album11',
+    halbumtitle: 'Licensed to Ill',
     undefined: '',
   },
   {
@@ -13254,6 +16198,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag152,tag209',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -13263,6 +16209,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag202',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -13272,6 +16220,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag138,tag36',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -13281,6 +16231,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag147,tag5,tag88,tag80',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -13290,6 +16242,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag87,tag96,tag42',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -13299,6 +16253,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag151,tag137',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -13308,6 +16264,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag190',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -13317,6 +16275,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag236',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -13326,6 +16286,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag169',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -13335,6 +16297,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag173,tag28',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -13344,6 +16308,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag214',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -13353,6 +16319,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag234',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -13362,6 +16330,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag236,tag189',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -13371,6 +16341,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag195',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -13380,6 +16352,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag95',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -13389,6 +16363,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag158',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -13398,6 +16374,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag158',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -13407,6 +16385,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag149,tag76',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -13416,6 +16396,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag238,tag163',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -13425,6 +16407,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag79',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -13434,6 +16418,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag129,tag194',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -13443,6 +16429,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag63',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -13452,6 +16440,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag79',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -13461,6 +16451,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag163',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -13470,6 +16462,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag80,tag35',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -13479,6 +16473,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag30,tag106',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -13488,6 +16484,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag72,tag24',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -13497,6 +16495,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag41',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -13506,6 +16506,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag208,tag228',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -13515,6 +16517,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag194,tag173,tag117',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -13524,6 +16528,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag206',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -13533,6 +16539,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag230',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -13542,6 +16550,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag88',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -13551,6 +16561,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag112',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -13560,6 +16572,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag213',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -13569,6 +16583,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag237,tag12',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -13578,6 +16594,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag241',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -13587,6 +16605,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag118',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -13596,6 +16616,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag87,tag248',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -13605,6 +16627,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag138',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -13614,6 +16638,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag144,tag119',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -13623,6 +16649,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag87,tag159',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -13632,6 +16660,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag168',
+    album: 'album160',
+    halbumtitle: 'Meat Is Murder',
     undefined: '',
   },
   {
@@ -13641,6 +16671,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag186,tag183',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -13650,6 +16682,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag205',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -13659,6 +16693,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag78,tag229',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -13668,6 +16704,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag15,tag203',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -13677,6 +16715,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag248,tag61,tag100',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -13686,6 +16726,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag31',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -13695,6 +16737,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag46',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -13704,6 +16748,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag52,tag54',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -13713,6 +16759,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag124',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -13722,6 +16770,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag158',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -13731,6 +16781,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag207',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -13740,6 +16792,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag14',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -13749,6 +16803,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag110,tag79',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -13758,6 +16814,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag38,tag194,tag220',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -13767,6 +16825,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag190',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -13776,6 +16836,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag236',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -13785,6 +16847,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag124',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -13794,6 +16858,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag72,tag181',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -13803,6 +16869,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag151',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -13812,6 +16880,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag207,tag202',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -13821,6 +16891,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag240,tag45,tag141',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -13830,6 +16902,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag57',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -13839,6 +16913,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag95,tag75',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -13848,6 +16924,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag148',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -13857,6 +16935,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag210',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -13866,6 +16946,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag20,tag126',
+    album: 'album68',
+    halbumtitle: 'Led Zeppelin II',
     undefined: '',
   },
   {
@@ -13875,6 +16957,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag143,tag138',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -13884,6 +16968,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag216',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -13893,6 +16979,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag56,tag194',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -13902,6 +16990,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag71',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -13911,6 +17001,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag66,tag80',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -13920,6 +17012,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag183,tag230',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -13929,6 +17023,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag119,tag19,tag67',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -13938,6 +17034,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag168',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -13947,6 +17045,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag46,tag110',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -13956,6 +17056,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag3',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -13965,6 +17067,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag58',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -13974,6 +17078,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag15',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -13983,6 +17089,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag173,tag223',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -13992,6 +17100,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag194',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -14001,6 +17111,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag229',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -14010,6 +17122,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag142,tag138',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -14019,6 +17133,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag155',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -14028,6 +17144,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag105,tag202,tag190',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -14037,6 +17155,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag130',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -14046,6 +17166,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag174',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -14055,6 +17177,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag208',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -14064,6 +17188,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag170',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -14073,6 +17199,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag187',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -14082,6 +17210,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag144,tag53,tag238',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -14091,6 +17221,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag108',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -14100,6 +17232,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag93,tag83',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -14109,6 +17243,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag77,tag34',
+    album: 'album155',
+    halbumtitle: 'Exile on Main St.',
     undefined: '',
   },
   {
@@ -14118,6 +17254,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag12,tag45',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -14127,6 +17265,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag111',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -14136,6 +17276,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag104',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -14145,6 +17287,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag78,tag49',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -14154,6 +17298,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag137,tag57,tag12,tag3',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -14163,6 +17309,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag114',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -14172,6 +17320,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag215',
+    album: 'album136',
+    halbumtitle: 'Revolver',
     undefined: '',
   },
   {
@@ -14181,6 +17331,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag134',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -14190,6 +17342,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag35,tag73',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -14199,6 +17353,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag145,tag196',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -14208,6 +17364,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag99,tag123,tag173',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -14217,6 +17375,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag63',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -14226,6 +17386,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag194,tag2',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -14235,6 +17397,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag122',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -14244,6 +17408,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag52,tag212',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -14253,6 +17419,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag166',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -14262,6 +17430,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag198',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -14271,6 +17441,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag77,tag186',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -14280,6 +17452,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag189',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -14289,6 +17463,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag40',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -14298,6 +17474,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag44',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -14307,6 +17485,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag215',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -14316,6 +17496,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag142,tag110,tag240',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -14325,6 +17507,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag122,tag227',
+    album: 'album181',
+    halbumtitle: 'Mingus Ah Um',
     undefined: '',
   },
   {
@@ -14334,6 +17518,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag34,tag65',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -14343,6 +17529,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag109',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -14352,6 +17540,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag184,tag106,tag44,tag47',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -14361,6 +17551,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag71',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -14370,6 +17562,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag98,tag135',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -14379,6 +17573,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag72',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -14388,6 +17584,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag54',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -14397,6 +17595,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag39',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -14406,6 +17606,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag82,tag105',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -14415,6 +17617,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag165,tag162',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -14424,6 +17628,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag174',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -14433,6 +17639,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag138',
+    album: 'album72',
+    halbumtitle: "What's Going On",
     undefined: '',
   },
   {
@@ -14442,6 +17650,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag128,tag215',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -14451,6 +17661,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag20,tag142',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -14460,6 +17672,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag107',
+    album: 'album128',
+    halbumtitle: 'St. Vincent',
     undefined: '',
   },
   {
@@ -14469,6 +17683,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag205,tag63',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -14478,6 +17694,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag45',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -14487,6 +17705,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag185,tag38',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -14496,6 +17716,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag153,tag241,tag41',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -14505,6 +17727,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag32',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -14514,6 +17738,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag18',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -14523,6 +17749,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag226,tag91',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -14532,6 +17760,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag177,tag214,tag141',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -14541,6 +17771,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag10',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -14550,6 +17782,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag124',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -14559,6 +17793,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag239',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -14568,6 +17804,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag175,tag127',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -14577,6 +17815,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag238',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -14586,6 +17826,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag80,tag25',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -14595,6 +17837,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag7,tag156',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -14604,6 +17848,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag122,tag175',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -14613,6 +17859,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag89,tag225',
+    album: 'album226',
+    halbumtitle: 'Around the World',
     undefined: '',
   },
   {
@@ -14622,6 +17870,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag76',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -14631,6 +17881,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag176',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -14640,6 +17892,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag206',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -14649,6 +17903,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag63',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -14658,6 +17914,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag196,tag12',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -14667,6 +17925,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag88',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -14676,6 +17936,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag90',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -14685,6 +17947,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag68,tag149',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -14694,6 +17958,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag92',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -14703,6 +17969,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag9,tag18',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -14712,6 +17980,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag6',
+    album: 'album199',
+    halbumtitle: 'Ramones',
     undefined: '',
   },
   {
@@ -14721,6 +17991,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag28,tag64,tag183',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -14730,6 +18002,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag183,tag222',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -14739,6 +18013,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag206',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -14748,6 +18024,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag4',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -14757,6 +18035,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag206',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -14766,6 +18046,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag19',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -14775,6 +18057,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag39,tag36',
+    album: 'album155',
+    halbumtitle: 'Exile on Main St.',
     undefined: '',
   },
   {
@@ -14784,6 +18068,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag186',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -14793,6 +18079,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag161',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -14802,6 +18090,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag6,tag181',
+    album: 'album248',
+    halbumtitle: 'Black Sands',
     undefined: '',
   },
   {
@@ -14811,6 +18101,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag68,tag159',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -14820,6 +18112,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag1',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -14829,6 +18123,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag116',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -14838,6 +18134,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag32,tag247',
+    album: 'album68',
+    halbumtitle: 'Led Zeppelin II',
     undefined: '',
   },
   {
@@ -14847,6 +18145,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag96,tag111',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -14856,6 +18156,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag196',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -14865,6 +18167,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag124',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -14874,6 +18178,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag138,tag49',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -14883,6 +18189,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -14892,6 +18200,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag181,tag232',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -14901,6 +18211,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag250,tag20',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -14910,6 +18222,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag250,tag113,tag215',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -14919,6 +18233,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag114,tag20',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -14928,6 +18244,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag64,tag208',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -14937,6 +18255,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag190',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -14946,6 +18266,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag202',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -14955,6 +18277,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag22',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -14964,6 +18288,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag11',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -14973,6 +18299,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag78,tag91',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -14982,6 +18310,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag1',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -14991,6 +18321,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag96,tag223,tag86,tag167',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -15000,6 +18332,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag86',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -15009,6 +18343,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag183,tag131,tag40,tag156',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -15018,6 +18354,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag92,tag90,tag174',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -15027,6 +18365,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag126,tag195,tag193',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -15036,6 +18376,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag98',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -15045,6 +18387,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag195,tag74',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -15054,6 +18398,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag186,tag111',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -15063,6 +18409,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag114',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -15072,6 +18420,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag138,tag243',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -15081,6 +18431,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag144',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -15090,6 +18442,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag82,tag131',
+    album: 'album128',
+    halbumtitle: 'St. Vincent',
     undefined: '',
   },
   {
@@ -15099,6 +18453,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag11',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -15108,6 +18464,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag151,tag224',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -15117,6 +18475,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag146',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -15126,6 +18486,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag197,tag25',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -15135,6 +18497,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag141',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -15144,6 +18508,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag141',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -15153,6 +18519,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag18',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -15162,6 +18530,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag30,tag73',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -15171,6 +18541,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag194,tag36',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -15180,6 +18552,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag164,tag11',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -15189,6 +18563,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag181,tag192',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -15198,6 +18574,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag114,tag122',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -15207,6 +18585,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag228',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -15216,6 +18596,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag204',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -15225,6 +18607,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag66',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -15234,6 +18618,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag250',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -15243,6 +18629,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag179',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -15252,6 +18640,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag215,tag246',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -15261,6 +18651,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag173,tag243,tag57',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -15270,6 +18662,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag3,tag158',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -15279,6 +18673,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag222',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -15288,6 +18684,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag85,tag15',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -15297,6 +18695,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag163,tag155',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -15306,6 +18706,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag74,tag186',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -15315,6 +18717,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag215',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -15324,6 +18728,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag151,tag37',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -15333,6 +18739,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag41,tag47,tag60',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -15342,6 +18750,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag10',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -15351,6 +18761,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag167,tag228',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -15360,6 +18772,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag157',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -15369,6 +18783,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag241,tag185',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -15378,6 +18794,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag103,tag99',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -15387,6 +18805,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag99',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -15396,6 +18816,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag204,tag207',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -15405,6 +18827,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag249',
+    album: 'album33',
+    halbumtitle: 'Hunky Dory',
     undefined: '',
   },
   {
@@ -15414,6 +18838,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag103',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -15423,6 +18849,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag34,tag159,tag36',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -15432,6 +18860,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag3,tag83',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -15441,6 +18871,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag212,tag197',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -15450,6 +18882,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag118',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -15459,6 +18893,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag84',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -15468,6 +18904,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag52',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -15477,6 +18915,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag201,tag241',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -15486,6 +18926,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag88,tag243',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -15495,6 +18937,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag68',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -15504,6 +18948,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag216,tag64',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -15513,6 +18959,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag50',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -15522,6 +18970,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag163,tag178',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -15531,6 +18981,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag3,tag236',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -15540,6 +18992,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag208',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -15549,6 +19003,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag55',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -15558,6 +19014,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag72',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -15567,6 +19025,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag248',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -15576,6 +19036,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag19',
+    album: 'album53',
+    halbumtitle: 'Appetite for Destruction',
     undefined: '',
   },
   {
@@ -15585,6 +19047,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag115,tag248',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -15594,6 +19058,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag115,tag240',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -15603,6 +19069,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag229',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -15612,6 +19080,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag134',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -15621,6 +19091,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag98',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -15630,6 +19102,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag49',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -15639,6 +19113,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag164',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -15648,6 +19124,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag140,tag205,tag29',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -15657,6 +19135,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag94,tag36',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -15666,6 +19146,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag182,tag140',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -15675,6 +19157,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag139',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -15684,6 +19168,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag230,tag64,tag115,tag79,tag229',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -15693,6 +19179,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag236,tag243',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -15702,6 +19190,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag237,tag91',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -15711,6 +19201,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag191,tag172',
+    album: 'album237',
+    halbumtitle: 'Music for the Jilted Generation',
     undefined: '',
   },
   {
@@ -15720,6 +19212,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag189',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -15729,6 +19223,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag230,tag248,tag241,tag122',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -15738,6 +19234,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag231,tag3',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -15747,6 +19245,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag177,tag5,tag164',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -15756,6 +19256,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag73,tag194',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -15765,6 +19267,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag191,tag198',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -15774,6 +19278,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag28',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -15783,6 +19289,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag248,tag139,tag183',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -15792,6 +19300,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag204,tag92',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -15801,6 +19311,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag225',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -15810,6 +19322,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag86,tag205,tag171',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -15819,6 +19333,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag234',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -15828,6 +19344,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag64,tag232,tag169',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -15837,6 +19355,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag68',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -15846,6 +19366,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag204,tag55',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -15855,6 +19377,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag49,tag190',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -15864,6 +19388,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag219',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -15873,6 +19399,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag72,tag6,tag230',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -15882,6 +19410,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag76,tag160',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -15891,6 +19421,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag9,tag1,tag216,tag143',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -15900,6 +19432,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag119',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -15909,6 +19443,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag25',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -15918,6 +19454,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag109,tag71',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -15927,6 +19465,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag206',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -15936,6 +19476,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag114,tag125',
+    album: 'album96',
+    halbumtitle: 'Easter',
     undefined: '',
   },
   {
@@ -15945,6 +19487,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag108',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -15954,6 +19498,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag23,tag73,tag178',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -15963,6 +19509,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag74,tag105',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -15972,6 +19520,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag36,tag109',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -15981,6 +19531,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag59,tag51,tag72',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -15990,6 +19542,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag214',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -15999,6 +19553,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag240,tag35',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -16008,6 +19564,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag120,tag151',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -16017,6 +19575,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag242',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -16026,6 +19586,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag225',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -16035,6 +19597,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag41',
+    album: 'album57',
+    halbumtitle: 'Johnny Cash at San Quentin',
     undefined: '',
   },
   {
@@ -16044,6 +19608,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag74,tag88,tag109,tag57',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -16053,6 +19619,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag37,tag26,tag195',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -16062,6 +19630,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag225',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -16071,6 +19641,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag145,tag6',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -16080,6 +19652,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag212',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -16089,6 +19663,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag28,tag181',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -16098,6 +19674,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag179',
+    album: 'album208',
+    halbumtitle: 'Smash',
     undefined: '',
   },
   {
@@ -16107,6 +19685,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag20,tag132',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -16116,6 +19696,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag69',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -16125,6 +19707,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag108,tag41,tag67',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -16134,6 +19718,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag78',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -16143,6 +19729,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag171,tag139',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -16152,6 +19740,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag105,tag120',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -16161,6 +19751,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag154',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -16170,6 +19762,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag143',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -16179,6 +19773,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag108,tag245',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -16188,6 +19784,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag218,tag142',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -16197,6 +19795,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag231',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -16206,6 +19806,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag123',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -16215,6 +19817,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag12',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -16224,6 +19828,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag200,tag151',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -16233,6 +19839,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag145',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -16242,6 +19850,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag184',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -16251,6 +19861,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag100',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -16260,6 +19872,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag147,tag237',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -16269,6 +19883,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag104',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -16278,6 +19894,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag8',
+    album: 'album132',
+    halbumtitle: 'Remain in Light',
     undefined: '',
   },
   {
@@ -16287,6 +19905,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag167',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -16296,6 +19916,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag79',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -16305,6 +19927,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag37',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -16314,6 +19938,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag73',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -16323,6 +19949,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag57',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -16332,6 +19960,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag131,tag27',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -16341,6 +19971,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag96',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -16350,6 +19982,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag115',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -16359,6 +19993,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag244',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -16368,6 +20004,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag6,tag145',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -16377,6 +20015,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag114',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -16386,6 +20026,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag127',
+    album: 'album222',
+    halbumtitle: 'Autobahn',
     undefined: '',
   },
   {
@@ -16395,6 +20037,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag179,tag5,tag66',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -16404,6 +20048,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag184,tag193,tag229',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -16413,6 +20059,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag80',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -16422,6 +20070,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag199',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -16431,6 +20081,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag173,tag50',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -16440,6 +20092,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag120,tag102,tag74',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -16449,6 +20103,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag229',
+    album: 'album181',
+    halbumtitle: 'Mingus Ah Um',
     undefined: '',
   },
   {
@@ -16458,6 +20114,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag74',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -16467,6 +20125,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag7',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -16476,6 +20136,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag38',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -16485,6 +20147,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag157',
+    album: 'album243',
+    halbumtitle: 'Rounds',
     undefined: '',
   },
   {
@@ -16494,6 +20158,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag112,tag201',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -16503,6 +20169,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag219',
+    album: 'album127',
+    halbumtitle: 'Doggystyle',
     undefined: '',
   },
   {
@@ -16512,6 +20180,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag86,tag184',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -16521,6 +20191,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag28,tag76',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -16530,6 +20202,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag76',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -16539,6 +20213,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag126',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -16548,6 +20224,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag164,tag136,tag243',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -16557,6 +20235,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag51,tag25',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -16566,6 +20246,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag31,tag125,tag134',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -16575,6 +20257,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag124,tag236',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -16584,6 +20268,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag147,tag30',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -16593,6 +20279,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag160',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -16602,6 +20290,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag106',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -16611,6 +20301,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag164,tag13,tag225',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -16620,6 +20312,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag74,tag55,tag82,tag155',
+    album: 'album126',
+    halbumtitle: 'Siamese Dream',
     undefined: '',
   },
   {
@@ -16629,6 +20323,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag85,tag13',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -16638,6 +20334,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag174,tag84',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -16647,6 +20345,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag236,tag243',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -16656,6 +20356,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag88,tag37,tag182',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -16665,6 +20367,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag31,tag238',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -16674,6 +20378,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag206',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -16683,6 +20389,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag94',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -16692,6 +20400,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag170',
+    album: 'album174',
+    halbumtitle: 'Moondance',
     undefined: '',
   },
   {
@@ -16701,6 +20411,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag166',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -16710,6 +20422,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag43',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -16719,6 +20433,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag172,tag147',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -16728,6 +20444,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag153',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -16737,6 +20455,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag116',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -16746,6 +20466,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag182',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -16755,6 +20477,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag148,tag172',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -16764,6 +20488,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag14',
+    album: 'album80',
+    halbumtitle: 'Bitches Brew',
     undefined: '',
   },
   {
@@ -16773,6 +20499,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag247',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -16782,6 +20510,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag63',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -16791,6 +20521,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag241',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -16800,6 +20532,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag106,tag242',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -16809,6 +20543,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag106,tag11,tag232,tag141',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -16818,6 +20554,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag43,tag144,tag202',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -16827,6 +20565,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag177,tag49',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -16836,6 +20576,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag27,tag125',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -16845,6 +20587,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag39,tag185',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -16854,6 +20598,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag19',
+    album: 'album13',
+    halbumtitle: 'Ill Communication',
     undefined: '',
   },
   {
@@ -16863,6 +20609,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag91',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -16872,6 +20620,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag88',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -16881,6 +20631,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag89',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -16890,6 +20642,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag68',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -16899,6 +20653,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag9,tag240',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -16908,6 +20664,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag131',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -16917,6 +20675,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag94',
+    album: 'album112',
+    halbumtitle: 'News of the World',
     undefined: '',
   },
   {
@@ -16926,6 +20686,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag35',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -16935,6 +20697,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag142',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -16944,6 +20708,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag142,tag90',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -16953,6 +20719,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag12',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -16962,6 +20730,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag167',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -16971,6 +20741,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag56',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -16980,6 +20752,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag86,tag94',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -16989,6 +20763,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag188,tag147',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -16998,6 +20774,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag96',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -17007,6 +20785,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag41,tag19',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -17016,6 +20796,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag91',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -17025,6 +20807,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag97',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -17034,6 +20818,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag129,tag137',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -17043,6 +20829,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag41',
+    album: 'album12',
+    halbumtitle: "Paul's Boutique",
     undefined: '',
   },
   {
@@ -17052,6 +20840,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag185,tag171,tag32',
+    album: 'album211',
+    halbumtitle: 'Social Distortion',
     undefined: '',
   },
   {
@@ -17061,6 +20851,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag218',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -17070,6 +20862,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag102',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -17079,6 +20873,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag122,tag194',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -17088,6 +20884,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag14',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -17097,6 +20895,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag140',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -17106,6 +20906,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag118,tag197',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -17115,6 +20917,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag134',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -17124,6 +20928,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag76,tag178',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -17133,6 +20939,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag153,tag91',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -17142,6 +20950,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag237',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -17151,6 +20961,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag231,tag16',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -17160,6 +20972,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag63',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -17169,6 +20983,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag91',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -17178,6 +20994,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag9,tag231',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -17187,6 +21005,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag134,tag108',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -17196,6 +21016,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag219',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -17205,6 +21027,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag243',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -17214,6 +21038,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag24,tag70',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -17223,6 +21049,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag91,tag69,tag223',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -17232,6 +21060,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag142',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -17241,6 +21071,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag170',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -17250,6 +21082,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag180,tag43,tag223,tag175',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -17259,6 +21093,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag16',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -17268,6 +21104,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag149,tag83',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -17277,6 +21115,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag45',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -17286,6 +21126,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag218',
+    album: 'album146',
+    halbumtitle: 'The Soft Bulletin',
     undefined: '',
   },
   {
@@ -17295,6 +21137,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag124,tag214,tag151,tag234',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -17304,6 +21148,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag97',
+    album: 'album197',
+    halbumtitle: 'Now He Sings, Now He Sobs',
     undefined: '',
   },
   {
@@ -17313,6 +21159,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag85,tag149,tag165,tag127',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -17322,6 +21170,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag89,tag31,tag100',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -17331,6 +21181,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag237,tag23',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -17340,6 +21192,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag198',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -17349,6 +21203,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag28,tag157',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -17358,6 +21214,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag34',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -17367,6 +21225,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag154,tag129',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -17376,6 +21236,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag80',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -17385,6 +21247,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag31,tag240',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -17394,6 +21258,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag113',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -17403,6 +21269,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag232',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -17412,6 +21280,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag56,tag235',
+    album: 'album6',
+    halbumtitle: 'Funeral',
     undefined: '',
   },
   {
@@ -17421,6 +21291,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag142,tag212',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -17430,6 +21302,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag62,tag243',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -17439,6 +21313,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag78',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -17448,6 +21324,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag122,tag109',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -17457,6 +21335,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag115,tag123,tag40',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -17466,6 +21346,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag59,tag76,tag45',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -17475,6 +21357,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag135',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -17484,6 +21368,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag246',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -17493,6 +21379,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag208,tag188,tag190',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -17502,6 +21390,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag214,tag249,tag50',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -17511,6 +21401,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag71,tag139',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -17520,6 +21412,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag192,tag108,tag214',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -17529,6 +21423,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag233,tag74',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -17538,6 +21434,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag94,tag89',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -17547,6 +21445,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag59,tag176',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -17556,6 +21456,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag80',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -17565,6 +21467,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag144,tag69,tag191',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -17574,6 +21478,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag204,tag62',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -17583,6 +21489,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag142',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -17592,6 +21500,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag63',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -17601,6 +21511,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag178',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -17610,6 +21522,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag52,tag43',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -17619,6 +21533,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag71',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -17628,6 +21544,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag83',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -17637,6 +21555,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag175',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -17646,6 +21566,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag150,tag31',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -17655,6 +21577,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag84',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -17664,6 +21588,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag24,tag231,tag62',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -17673,6 +21599,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag113,tag123',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -17682,6 +21610,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag37',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -17691,6 +21621,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag79',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -17700,6 +21632,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag179',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -17709,6 +21643,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag131',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -17718,6 +21654,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag218',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -17727,6 +21665,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag42',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -17736,6 +21676,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag105,tag139',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -17745,6 +21687,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag250',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -17754,6 +21698,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag186,tag32',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -17763,6 +21709,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag142',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -17772,6 +21720,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag246',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -17781,6 +21731,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag139',
+    album: 'album203',
+    halbumtitle: 'Bad Brains',
     undefined: '',
   },
   {
@@ -17790,6 +21742,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag7',
+    album: 'album170',
+    halbumtitle: 'Ænima',
     undefined: '',
   },
   {
@@ -17799,6 +21753,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag132',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -17808,6 +21764,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag192,tag63,tag1',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -17817,6 +21775,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag126,tag228',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -17826,6 +21786,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag250',
+    album: 'album222',
+    halbumtitle: 'Autobahn',
     undefined: '',
   },
   {
@@ -17835,6 +21797,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag89',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -17844,6 +21808,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag232',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -17853,6 +21819,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag131,tag8',
+    album: 'album183',
+    halbumtitle: 'The Shape of Jazz to Come',
     undefined: '',
   },
   {
@@ -17862,6 +21830,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag55',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -17871,6 +21841,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag82,tag3',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -17880,6 +21852,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag59,tag1',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -17889,6 +21863,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag151,tag25',
+    album: 'album202',
+    halbumtitle: 'Walk Among Us',
     undefined: '',
   },
   {
@@ -17898,6 +21874,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag8,tag62',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -17907,6 +21885,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag66',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -17916,6 +21896,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag85,tag61,tag165',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -17925,6 +21907,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag120',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -17934,6 +21918,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag62,tag121,tag15',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -17943,6 +21929,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag248,tag190,tag171,tag110,tag156',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -17952,6 +21940,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag132',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -17961,6 +21951,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag144,tag181,tag129,tag100',
+    album: 'album174',
+    halbumtitle: 'Moondance',
     undefined: '',
   },
   {
@@ -17970,6 +21962,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag75',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -17979,6 +21973,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag247',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -17988,6 +21984,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag152',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -17997,6 +21995,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag86',
+    album: 'album13',
+    halbumtitle: 'Ill Communication',
     undefined: '',
   },
   {
@@ -18006,6 +22006,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag153,tag100,tag13',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -18015,6 +22017,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag219',
+    album: 'album239',
+    halbumtitle: 'Exit Planet Dust',
     undefined: '',
   },
   {
@@ -18024,6 +22028,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag7',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -18033,6 +22039,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag247',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -18042,6 +22050,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag3,tag33',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -18051,6 +22061,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag80,tag211',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -18060,6 +22072,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag222',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -18069,6 +22083,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag215',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -18078,6 +22094,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag81,tag3',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -18087,6 +22105,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag156',
+    album: 'album190',
+    halbumtitle: 'My Favorite Things',
     undefined: '',
   },
   {
@@ -18096,6 +22116,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag23',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -18105,6 +22127,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag84,tag239,tag211',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -18114,6 +22138,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag121,tag244',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -18123,6 +22149,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag72',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -18132,6 +22160,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag69,tag68',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -18141,6 +22171,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag168,tag96',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -18150,6 +22182,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag200,tag211',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -18159,6 +22193,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag64,tag12',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -18168,6 +22204,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag15',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -18177,6 +22215,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag2',
+    album: 'album169',
+    halbumtitle: 'xx',
     undefined: '',
   },
   {
@@ -18186,6 +22226,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag165,tag169',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -18195,6 +22237,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag12',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -18204,6 +22248,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag126,tag37',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -18213,6 +22259,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag107,tag228',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -18222,6 +22270,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag55,tag129',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -18231,6 +22281,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag96,tag66',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -18240,6 +22292,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag240',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -18249,6 +22303,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag32,tag108',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -18258,6 +22314,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag222,tag183',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -18267,6 +22325,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag173',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -18276,6 +22336,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag133',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -18285,6 +22347,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag1',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -18294,6 +22358,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag42,tag220',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -18303,6 +22369,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag143,tag19,tag61,tag159',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -18312,6 +22380,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag191,tag137',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -18321,6 +22391,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag104,tag58',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -18330,6 +22402,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag132,tag43',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -18339,6 +22413,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag173,tag234',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -18348,6 +22424,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag55',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -18357,6 +22435,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag80,tag72,tag187',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -18366,6 +22446,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag128',
+    album: 'album118',
+    halbumtitle: 'Kid A',
     undefined: '',
   },
   {
@@ -18375,6 +22457,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag237,tag183',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -18384,6 +22468,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag162',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -18393,6 +22479,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag125,tag93',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -18402,6 +22490,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag249,tag229',
+    album: 'album111',
+    halbumtitle: 'A Night at the Opera',
     undefined: '',
   },
   {
@@ -18411,6 +22501,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag90,tag226',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -18420,6 +22512,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag246',
+    album: 'album171',
+    halbumtitle: 'The Joshua Tree',
     undefined: '',
   },
   {
@@ -18429,6 +22523,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag35,tag227',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -18438,6 +22534,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag179',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -18447,6 +22545,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag175',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -18456,6 +22556,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag204,tag84',
+    album: 'album141',
+    halbumtitle: 'London Calling',
     undefined: '',
   },
   {
@@ -18465,6 +22567,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag182,tag199',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -18474,6 +22578,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag176',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -18483,6 +22589,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag47',
+    album: 'album174',
+    halbumtitle: 'Moondance',
     undefined: '',
   },
   {
@@ -18492,6 +22600,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag107',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -18501,6 +22611,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag109,tag179',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -18510,6 +22622,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag48',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -18519,6 +22633,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag208',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -18528,6 +22644,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag162,tag19',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -18537,6 +22655,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag97',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -18546,6 +22666,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag247,tag135',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -18555,6 +22677,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag7,tag115',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -18564,6 +22688,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag170,tag95,tag26',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -18573,6 +22699,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag86,tag136',
+    album: 'album30',
+    halbumtitle: 'A Rush of Blood to the Head',
     undefined: '',
   },
   {
@@ -18582,6 +22710,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag177',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -18591,6 +22721,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag103',
+    album: 'album225',
+    halbumtitle: 'Enjoy the Silence',
     undefined: '',
   },
   {
@@ -18600,6 +22732,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag213',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -18609,6 +22743,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag105,tag206',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -18618,6 +22754,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag179,tag169,tag10',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -18627,6 +22765,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag52,tag169,tag195',
+    album: 'album156',
+    halbumtitle: 'Let It Bleed',
     undefined: '',
   },
   {
@@ -18636,6 +22776,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag135,tag238',
+    album: 'album94',
+    halbumtitle: 'Aquemini',
     undefined: '',
   },
   {
@@ -18645,6 +22787,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag6,tag58',
+    album: 'album36',
+    halbumtitle: 'Violator',
     undefined: '',
   },
   {
@@ -18654,6 +22798,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag55',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -18663,6 +22809,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag217,tag54,tag246,tag116',
+    album: 'album42',
+    halbumtitle: 'The Idler Wheel...',
     undefined: '',
   },
   {
@@ -18672,6 +22820,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag121',
+    album: 'album67',
+    halbumtitle: 'Sound of Silver',
     undefined: '',
   },
   {
@@ -18681,6 +22831,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag146,tag145',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -18690,6 +22842,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag146,tag8',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -18699,6 +22853,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag212,tag99,tag67,tag65',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -18708,6 +22864,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag109,tag78',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -18717,6 +22875,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag202',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -18726,6 +22886,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag29',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -18735,6 +22897,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag152',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -18744,6 +22908,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag162',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -18753,6 +22919,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag225',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -18762,6 +22930,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag205,tag115',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -18771,6 +22941,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag247,tag13,tag175',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -18780,6 +22952,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag47',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -18789,6 +22963,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag216,tag109',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -18798,6 +22974,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag240,tag201',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -18807,6 +22985,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag236,tag231',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -18816,6 +22996,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag85,tag137,tag19',
+    album: 'album234',
+    halbumtitle: 'Music Has the Right to Children',
     undefined: '',
   },
   {
@@ -18825,6 +23007,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag222,tag91',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -18834,6 +23018,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag15,tag45',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -18843,6 +23029,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag192,tag182',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -18852,6 +23040,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag47,tag220',
+    album: 'album50',
+    halbumtitle: 'Demon Days',
     undefined: '',
   },
   {
@@ -18861,6 +23051,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag198,tag173',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -18870,6 +23062,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag190,tag79',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -18879,6 +23073,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag138,tag145',
+    album: 'album201',
+    halbumtitle: 'Raw Power',
     undefined: '',
   },
   {
@@ -18888,6 +23084,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag186',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -18897,6 +23095,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag39',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -18906,6 +23106,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag67,tag241',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -18915,6 +23117,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag42,tag45',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -18924,6 +23128,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag94,tag168',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -18933,6 +23139,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag56,tag37',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -18942,6 +23150,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag141',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -18951,6 +23161,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag118',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -18960,6 +23172,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag211,tag195',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -18969,6 +23183,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag221',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -18978,6 +23194,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag183,tag171',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -18987,6 +23205,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag186,tag172',
+    album: 'album152',
+    halbumtitle: 'Life After Death',
     undefined: '',
   },
   {
@@ -18996,6 +23216,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag56',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -19005,6 +23227,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag110,tag16',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -19014,6 +23238,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag122',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -19023,6 +23249,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag43',
+    album: 'album191',
+    halbumtitle: 'A Night in Tunisia',
     undefined: '',
   },
   {
@@ -19032,6 +23260,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag85',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -19041,6 +23271,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag74',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -19050,6 +23282,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag71',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -19059,6 +23293,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag241,tag92',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -19068,6 +23304,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag159',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -19077,6 +23315,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag72,tag25',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -19086,6 +23326,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag161',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -19095,6 +23337,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag88,tag33',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -19104,6 +23348,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag108,tag10',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -19113,6 +23359,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag105',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -19122,6 +23370,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag237',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -19131,6 +23381,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag63,tag172',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -19140,6 +23392,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag223,tag173',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -19149,6 +23403,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag8',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -19158,6 +23414,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag39,tag213',
+    album: 'album185',
+    halbumtitle: 'The Black Saint and the Sinner Lady',
     undefined: '',
   },
   {
@@ -19167,6 +23425,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag105,tag235',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -19176,6 +23436,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag84',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -19185,6 +23447,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag229,tag209,tag5',
+    album: 'album177',
+    halbumtitle: 'Yankee Hotel Foxtrot',
     undefined: '',
   },
   {
@@ -19194,6 +23458,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag30,tag215',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -19203,6 +23469,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag49',
+    album: 'album45',
+    halbumtitle: 'Rumours',
     undefined: '',
   },
   {
@@ -19212,6 +23480,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag250',
+    album: 'album43',
+    halbumtitle: 'Fleet Foxes',
     undefined: '',
   },
   {
@@ -19221,6 +23491,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag13',
+    album: 'album150',
+    halbumtitle: 'High Violet',
     undefined: '',
   },
   {
@@ -19230,6 +23502,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag86,tag149,tag50',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -19239,6 +23513,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag245,tag186',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -19248,6 +23524,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag103',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -19257,6 +23535,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag51',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -19266,6 +23546,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag42',
+    album: 'album210',
+    halbumtitle: 'Complete Discography',
     undefined: '',
   },
   {
@@ -19275,6 +23557,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag116,tag123',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -19284,6 +23568,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag228',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -19293,6 +23579,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag184,tag31',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -19302,6 +23590,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag211',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -19311,6 +23601,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag171',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -19320,6 +23612,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag27,tag44,tag117',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -19329,6 +23623,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag90,tag47',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -19338,6 +23634,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag205',
+    album: 'album121',
+    halbumtitle: 'In Rainbows',
     undefined: '',
   },
   {
@@ -19347,6 +23645,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag241,tag249,tag129',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -19356,6 +23656,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag83',
+    album: 'album217',
+    halbumtitle: 'Let It Be',
     undefined: '',
   },
   {
@@ -19365,6 +23667,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag214',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -19374,6 +23678,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag206,tag136,tag56',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -19383,6 +23689,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag85,tag69',
+    album: 'album90',
+    halbumtitle: 'In Utero',
     undefined: '',
   },
   {
@@ -19392,6 +23700,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag52',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -19401,6 +23711,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag100',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -19410,6 +23722,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag83',
+    album: 'album209',
+    halbumtitle: '...And Out Come the Wolves',
     undefined: '',
   },
   {
@@ -19419,6 +23733,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag216,tag16',
+    album: 'album98',
+    halbumtitle: 'Ten',
     undefined: '',
   },
   {
@@ -19428,6 +23744,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag192',
+    album: 'album218',
+    halbumtitle: 'Young, Loud and Snotty',
     undefined: '',
   },
   {
@@ -19437,6 +23755,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag234,tag123',
+    album: 'album40',
+    halbumtitle: 'The Marshall Mathers LP',
     undefined: '',
   },
   {
@@ -19446,6 +23766,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag25',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -19455,6 +23777,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag234,tag181,tag151',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -19464,6 +23788,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag14,tag142',
+    album: 'album41',
+    halbumtitle: 'The Slim Shady LP',
     undefined: '',
   },
   {
@@ -19473,6 +23799,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag25,tag196',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -19482,6 +23810,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag127,tag16,tag28',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -19491,6 +23821,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag39',
+    album: 'album25',
+    halbumtitle: 'For Emma, Forever Ago',
     undefined: '',
   },
   {
@@ -19500,6 +23832,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag182,tag64',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -19509,6 +23843,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag65',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -19518,6 +23854,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag27',
+    album: 'album59',
+    halbumtitle: 'Blue',
     undefined: '',
   },
   {
@@ -19527,6 +23865,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag249,tag157,tag44',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -19536,6 +23876,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag199',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -19545,6 +23887,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag191,tag160',
+    album: 'album70',
+    halbumtitle: 'Physical Graffiti',
     undefined: '',
   },
   {
@@ -19554,6 +23898,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag76,tag151',
+    album: 'album55',
+    halbumtitle: 'American IV: The Man Comes Around',
     undefined: '',
   },
   {
@@ -19563,6 +23909,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag153,tag169,tag221',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -19572,6 +23920,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag249',
+    album: 'album115',
+    halbumtitle: 'Automatic for the People',
     undefined: '',
   },
   {
@@ -19581,6 +23931,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag141',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -19590,6 +23942,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag42,tag204',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -19599,6 +23953,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag174,tag227',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -19608,6 +23964,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag17,tag119,tag242',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -19617,6 +23975,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag245,tag86',
+    album: 'album148',
+    halbumtitle: 'Are You Experienced',
     undefined: '',
   },
   {
@@ -19626,6 +23986,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag176',
+    album: 'album75',
+    halbumtitle: 'Master of Puppets',
     undefined: '',
   },
   {
@@ -19635,6 +23997,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag118,tag246',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -19644,6 +24008,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag208,tag40',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -19653,6 +24019,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag101,tag212',
+    album: 'album67',
+    halbumtitle: 'Sound of Silver',
     undefined: '',
   },
   {
@@ -19662,6 +24030,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag64,tag149',
+    album: 'album72',
+    halbumtitle: "What's Going On",
     undefined: '',
   },
   {
@@ -19671,6 +24041,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag115',
+    album: 'album17',
+    halbumtitle: 'Lemonade',
     undefined: '',
   },
   {
@@ -19680,6 +24052,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag56',
+    album: 'album166',
+    halbumtitle: 'White Blood Cells',
     undefined: '',
   },
   {
@@ -19689,6 +24063,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag183',
+    album: 'album122',
+    halbumtitle: 'Rage Against the Machine',
     undefined: '',
   },
   {
@@ -19698,6 +24074,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag207,tag148,tag54',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -19707,6 +24085,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag54,tag245',
+    album: 'album247',
+    halbumtitle: 'In Colour',
     undefined: '',
   },
   {
@@ -19716,6 +24096,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag78,tag239',
+    album: 'album212',
+    halbumtitle: 'Energy',
     undefined: '',
   },
   {
@@ -19725,6 +24107,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag141,tag184,tag5',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -19734,6 +24118,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag214,tag67,tag47,tag86',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -19743,6 +24129,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag175',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -19752,6 +24140,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag237,tag247,tag168',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -19761,6 +24151,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag36,tag142',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -19770,6 +24162,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag167,tag109',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -19779,6 +24173,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag209',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -19788,6 +24184,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag96',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -19797,6 +24195,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag97',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -19806,6 +24206,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag247',
+    album: 'album66',
+    halbumtitle: 'LCD Soundsystem',
     undefined: '',
   },
   {
@@ -19815,6 +24217,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag70',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -19824,6 +24228,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag236',
+    album: 'album233',
+    halbumtitle: 'Silent Shout',
     undefined: '',
   },
   {
@@ -19833,6 +24239,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag237',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -19842,6 +24250,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag32,tag11',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -19851,6 +24261,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag228',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -19860,6 +24272,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag36',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -19869,6 +24283,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag35,tag32',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -19878,6 +24294,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag23',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -19887,6 +24305,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag95',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -19896,6 +24316,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag124,tag178',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -19905,6 +24327,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag120,tag212',
+    album: 'album184',
+    halbumtitle: 'Ella Fitzgerald Sings the Cole Porter Songbook',
     undefined: '',
   },
   {
@@ -19914,6 +24338,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag206,tag23',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -19923,6 +24349,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag209',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -19932,6 +24360,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag59,tag65',
+    album: 'album2',
+    halbumtitle: 'Songs in A Minor',
     undefined: '',
   },
   {
@@ -19941,6 +24371,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag87,tag49',
+    album: 'album3',
+    halbumtitle: 'Back to Black',
     undefined: '',
   },
   {
@@ -19950,6 +24382,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag40',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -19959,6 +24393,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag221,tag65',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -19968,6 +24404,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag19',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -19977,6 +24415,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag107',
+    album: 'album174',
+    halbumtitle: 'Moondance',
     undefined: '',
   },
   {
@@ -19986,6 +24426,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag56,tag100,tag144',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -19995,6 +24437,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag147,tag13',
+    album: 'album106',
+    halbumtitle: 'Dummy',
     undefined: '',
   },
   {
@@ -20004,6 +24448,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag73,tag217',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -20013,6 +24459,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag115',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -20022,6 +24470,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag22',
+    album: 'album130',
+    halbumtitle: 'Songs in the Key of Life',
     undefined: '',
   },
   {
@@ -20031,6 +24481,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag62,tag26',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -20040,6 +24492,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag161,tag183,tag35',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -20049,6 +24503,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag26,tag112',
+    album: 'album7',
+    halbumtitle: 'The Suburbs',
     undefined: '',
   },
   {
@@ -20058,6 +24514,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag26',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -20067,6 +24525,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag212',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -20076,6 +24536,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag28',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -20085,6 +24547,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag142,tag241',
+    album: 'album87',
+    halbumtitle: 'Let Love In',
     undefined: '',
   },
   {
@@ -20094,6 +24558,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag159,tag219',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -20103,6 +24569,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag148',
+    album: 'album29',
+    halbumtitle: 'Tapestry',
     undefined: '',
   },
   {
@@ -20112,6 +24580,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag201',
+    album: 'album39',
+    halbumtitle: 'Elvis Presley',
     undefined: '',
   },
   {
@@ -20121,6 +24591,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag235,tag52,tag3',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -20130,6 +24602,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag192,tag189,tag56',
+    album: 'album192',
+    halbumtitle: 'The Köln Concert',
     undefined: '',
   },
   {
@@ -20139,6 +24613,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag52',
+    album: 'album34',
+    halbumtitle: 'The Rise and Fall of Ziggy Stardust and the Spiders from Mars',
     undefined: '',
   },
   {
@@ -20148,6 +24624,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag169,tag151,tag246',
+    album: 'album134',
+    halbumtitle: 'Abbey Road',
     undefined: '',
   },
   {
@@ -20157,6 +24635,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag225,tag197,tag162',
+    album: 'album44',
+    halbumtitle: 'Fleetwood Mac',
     undefined: '',
   },
   {
@@ -20166,6 +24646,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag51,tag206',
+    album: 'album222',
+    halbumtitle: 'Autobahn',
     undefined: '',
   },
   {
@@ -20175,6 +24657,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag12,tag40',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -20184,6 +24668,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag22,tag184',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -20193,6 +24679,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag91',
+    album: 'album100',
+    halbumtitle: 'The Wall',
     undefined: '',
   },
   {
@@ -20202,6 +24690,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag153',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -20211,6 +24701,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag14,tag51',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -20220,6 +24712,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag227,tag16',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -20229,6 +24723,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag92',
+    album: 'album9',
+    halbumtitle: 'I Never Loved a Man the Way I Love You',
     undefined: '',
   },
   {
@@ -20238,6 +24734,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag25',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -20247,6 +24745,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag44',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -20256,6 +24756,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag77',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -20265,6 +24767,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag89',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -20274,6 +24778,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag184,tag130',
+    album: 'album105',
+    halbumtitle: 'Stories from the City, Stories from the Sea',
     undefined: '',
   },
   {
@@ -20283,6 +24789,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag34,tag184',
+    album: 'album26',
+    halbumtitle: 'Born in the U.S.A.',
     undefined: '',
   },
   {
@@ -20292,6 +24800,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag242,tag190',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -20301,6 +24811,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag148',
+    album: 'album14',
+    halbumtitle: 'Odelay',
     undefined: '',
   },
   {
@@ -20310,6 +24822,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag177,tag201,tag38',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -20319,6 +24833,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag126',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -20328,6 +24844,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag13,tag206,tag156',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -20337,6 +24855,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag216',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -20346,6 +24866,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag219,tag169',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -20355,6 +24877,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag196',
+    album: 'album153',
+    halbumtitle: 'The Fat of the Land',
     undefined: '',
   },
   {
@@ -20364,6 +24888,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag96',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -20373,6 +24899,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag239',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -20382,6 +24910,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag1,tag169',
+    album: 'album229',
+    halbumtitle: 'Play',
     undefined: '',
   },
   {
@@ -20391,6 +24921,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag20,tag68,tag143',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -20400,6 +24932,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag158,tag206,tag205',
+    album: 'album16',
+    halbumtitle: 'Beyoncé',
     undefined: '',
   },
   {
@@ -20409,6 +24943,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag178,tag12,tag93',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -20418,6 +24954,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag34,tag184',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -20427,6 +24965,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag92,tag12',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -20436,6 +24976,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag75,tag14',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -20445,6 +24987,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag181,tag10',
+    album: 'album162',
+    halbumtitle: 'Is This It',
     undefined: '',
   },
   {
@@ -20454,6 +24998,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag129,tag88',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -20463,6 +25009,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag187,tag148',
+    album: 'album145',
+    halbumtitle: 'Hotel California',
     undefined: '',
   },
   {
@@ -20472,6 +25020,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag166,tag140',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -20481,6 +25031,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag140,tag218',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -20490,6 +25042,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag52',
+    album: 'album88',
+    halbumtitle: 'The Downward Spiral',
     undefined: '',
   },
   {
@@ -20499,6 +25053,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag234,tag228',
+    album: 'album161',
+    halbumtitle: 'The Queen Is Dead',
     undefined: '',
   },
   {
@@ -20508,6 +25064,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag22',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -20517,6 +25075,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag97,tag8',
+    album: 'album4',
+    halbumtitle: 'Frank',
     undefined: '',
   },
   {
@@ -20526,6 +25086,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag49,tag75',
+    album: 'album5',
+    halbumtitle: 'Selected Ambient Works 85-92',
     undefined: '',
   },
   {
@@ -20535,6 +25097,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag164,tag81',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -20544,6 +25108,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag59',
+    album: 'album147',
+    halbumtitle: 'The Score',
     undefined: '',
   },
   {
@@ -20553,6 +25119,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag65,tag192',
+    album: 'album198',
+    halbumtitle: "Moanin'",
     undefined: '',
   },
   {
@@ -20562,6 +25130,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag214,tag17',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -20571,6 +25141,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag234',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -20580,6 +25152,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag236,tag1',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -20589,6 +25163,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag143,tag6,tag139',
+    album: 'album240',
+    halbumtitle: 'Moon Safari',
     undefined: '',
   },
   {
@@ -20598,6 +25174,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag248',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -20607,6 +25185,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag70,tag184,tag189',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -20616,6 +25196,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag163,tag1',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -20625,6 +25207,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag194,tag167',
+    album: 'album96',
+    halbumtitle: 'Easter',
     undefined: '',
   },
   {
@@ -20634,6 +25218,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag32,tag241,tag232',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -20643,6 +25229,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag202,tag162',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -20652,6 +25240,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag4',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -20661,6 +25251,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag201,tag117,tag4',
+    album: 'album114',
+    halbumtitle: 'Songs for the Deaf',
     undefined: '',
   },
   {
@@ -20670,6 +25262,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag30,tag82',
+    album: 'album228',
+    halbumtitle: 'Dig Your Own Hole',
     undefined: '',
   },
   {
@@ -20679,6 +25273,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag110,tag71',
+    album: 'album155',
+    halbumtitle: 'Exile on Main St.',
     undefined: '',
   },
   {
@@ -20688,6 +25284,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag198,tag113',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -20697,6 +25295,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag50,tag30',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -20706,6 +25306,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag27,tag127,tag237',
+    album: 'album91',
+    halbumtitle: "(What's the Story) Morning Glory?",
     undefined: '',
   },
   {
@@ -20715,6 +25317,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag133',
+    album: 'album63',
+    halbumtitle: 'To Pimp a Butterfly',
     undefined: '',
   },
   {
@@ -20724,6 +25328,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag133,tag22',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -20733,6 +25339,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag111',
+    album: 'album73',
+    halbumtitle: 'Mezzanine',
     undefined: '',
   },
   {
@@ -20742,6 +25350,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag232,tag214,tag210',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -20751,6 +25361,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag127,tag169',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -20760,6 +25372,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag69,tag209,tag149,tag50',
+    album: 'album62',
+    halbumtitle: 'good kid, m.A.A.d city',
     undefined: '',
   },
   {
@@ -20769,6 +25383,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag194',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -20778,6 +25394,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag60',
+    album: 'album54',
+    halbumtitle: 'The Blueprint',
     undefined: '',
   },
   {
@@ -20787,6 +25405,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag200,tag148',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -20796,6 +25416,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag214',
+    album: 'album230',
+    halbumtitle: 'Born Slippy .NUXX',
     undefined: '',
   },
   {
@@ -20805,6 +25427,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag161',
+    album: 'album65',
+    halbumtitle: 'The Miseducation of Lauryn Hill',
     undefined: '',
   },
   {
@@ -20814,6 +25438,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag48,tag99,tag26',
+    album: 'album69',
+    halbumtitle: 'Led Zeppelin IV',
     undefined: '',
   },
   {
@@ -20823,6 +25449,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag123,tag91',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -20832,6 +25460,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag183,tag94,tag215',
+    album: 'album58',
+    halbumtitle: 'American Recordings',
     undefined: '',
   },
   {
@@ -20841,6 +25471,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag107,tag17',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -20850,6 +25482,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag12,tag182',
+    album: 'album124',
+    halbumtitle: 'Ágætis byrjun',
     undefined: '',
   },
   {
@@ -20859,6 +25493,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag212,tag157',
+    album: 'album174',
+    halbumtitle: 'Moondance',
     undefined: '',
   },
   {
@@ -20868,6 +25504,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag203,tag76,tag181',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -20877,6 +25515,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag60,tag50',
+    album: 'album219',
+    halbumtitle: 'Suffer',
     undefined: '',
   },
   {
@@ -20886,6 +25526,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag152',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -20895,6 +25537,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag139,tag176,tag213',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -20904,6 +25548,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag142,tag191',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
   {
@@ -20913,6 +25559,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag247,tag136',
+    album: 'album93',
+    halbumtitle: 'Definitely Maybe',
     undefined: '',
   },
   {
@@ -20922,6 +25570,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag98,tag173',
+    album: 'album188',
+    halbumtitle: 'Birth of the Cool',
     undefined: '',
   },
   {
@@ -20931,6 +25581,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag37,tag120',
+    album: 'album23',
+    halbumtitle: 'Time Out of Mind',
     undefined: '',
   },
   {
@@ -20940,6 +25592,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag157',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -20949,6 +25603,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag245,tag190',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -20958,6 +25614,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag250,tag228',
+    album: 'album133',
+    halbumtitle: 'Pet Sounds',
     undefined: '',
   },
   {
@@ -20967,6 +25625,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag26',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -20976,6 +25636,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag57,tag222',
+    album: 'album120',
+    halbumtitle: 'The Bends',
     undefined: '',
   },
   {
@@ -20985,6 +25647,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag208',
+    album: 'album206',
+    halbumtitle: 'Fresh Fruit for Rotting Vegetables',
     undefined: '',
   },
   {
@@ -20994,6 +25658,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag34',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -21003,6 +25669,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag140,tag149',
+    album: 'album68',
+    halbumtitle: 'Led Zeppelin II',
     undefined: '',
   },
   {
@@ -21012,6 +25680,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag174',
+    album: 'album89',
+    halbumtitle: 'Nevermind',
     undefined: '',
   },
   {
@@ -21021,6 +25691,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag112',
+    album: 'album22',
+    halbumtitle: 'Highway 61 Revisited',
     undefined: '',
   },
   {
@@ -21030,6 +25702,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag101',
+    album: 'album143',
+    halbumtitle: 'Disintegration',
     undefined: '',
   },
   {
@@ -21039,6 +25713,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag116,tag92',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -21048,6 +25724,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag20,tag208,tag42',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -21057,6 +25735,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag146',
+    album: 'album245',
+    halbumtitle: 'Richard D. James Album',
     undefined: '',
   },
   {
@@ -21066,6 +25746,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag202,tag47',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -21075,6 +25757,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag59,tag84',
+    album: 'album46',
+    halbumtitle: 'Tango in the Night',
     undefined: '',
   },
   {
@@ -21084,6 +25768,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag9,tag30',
+    album: 'album227',
+    halbumtitle: 'Blue Lines',
     undefined: '',
   },
   {
@@ -21093,6 +25779,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag125,tag157',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -21102,6 +25790,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag194',
+    album: 'album59',
+    halbumtitle: 'Blue',
     undefined: '',
   },
   {
@@ -21111,6 +25801,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag52,tag179,tag216,tag64',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -21120,6 +25812,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag185,tag41',
+    album: 'album172',
+    halbumtitle: 'Achtung Baby',
     undefined: '',
   },
   {
@@ -21129,6 +25823,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag117,tag209',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -21138,6 +25834,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag171,tag145',
+    album: 'album72',
+    halbumtitle: "What's Going On",
     undefined: '',
   },
   {
@@ -21147,6 +25845,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag66,tag247',
+    album: 'album96',
+    halbumtitle: 'Easter',
     undefined: '',
   },
   {
@@ -21156,6 +25856,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag61',
+    album: 'album32',
+    halbumtitle: 'Random Access Memories',
     undefined: '',
   },
   {
@@ -21165,6 +25867,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag45,tag143,tag219,tag200',
+    album: 'album178',
+    halbumtitle: 'A Love Supreme',
     undefined: '',
   },
   {
@@ -21174,6 +25878,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag81',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -21183,6 +25889,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag88,tag152',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -21192,6 +25900,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag250,tag214,tag142',
+    album: 'album116',
+    halbumtitle: 'Out of Time',
     undefined: '',
   },
   {
@@ -21201,6 +25911,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag25,tag147',
+    album: 'album99',
+    halbumtitle: 'The Dark Side of the Moon',
     undefined: '',
   },
   {
@@ -21210,6 +25922,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag123',
+    album: 'album28',
+    halbumtitle: 'Darkness on the Edge of Town',
     undefined: '',
   },
   {
@@ -21219,6 +25933,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag78',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -21228,6 +25944,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag19,tag198',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -21237,6 +25955,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag120,tag175',
+    album: 'album119',
+    halbumtitle: 'OK Computer',
     undefined: '',
   },
   {
@@ -21246,6 +25966,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag134',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -21255,6 +25977,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag20',
+    album: 'album186',
+    halbumtitle: 'Head Hunters',
     undefined: '',
   },
   {
@@ -21264,6 +25988,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag1,tag8',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -21273,6 +25999,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag169,tag165',
+    album: 'album52',
+    halbumtitle: 'Dookie',
     undefined: '',
   },
   {
@@ -21282,6 +26010,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag146,tag126,tag179',
+    album: 'album56',
+    halbumtitle: 'At Folsom Prison',
     undefined: '',
   },
   {
@@ -21291,6 +26021,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag67,tag192,tag247',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -21300,6 +26032,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag82,tag220,tag28,tag83',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -21309,6 +26043,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag152,tag106',
+    album: 'album205',
+    halbumtitle: 'Damned Damned Damned',
     undefined: '',
   },
   {
@@ -21318,6 +26054,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag222,tag83',
+    album: 'album235',
+    halbumtitle: 'Oxygène',
     undefined: '',
   },
   {
@@ -21327,6 +26065,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag121,tag231,tag97,tag150',
+    album: 'album151',
+    halbumtitle: 'Ready to Die',
     undefined: '',
   },
   {
@@ -21336,6 +26076,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag22,tag43',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -21345,6 +26087,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag243,tag250',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -21354,6 +26098,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag132,tag87',
+    album: 'album15',
+    halbumtitle: 'Sea Change',
     undefined: '',
   },
   {
@@ -21363,6 +26109,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag112,tag184',
+    album: 'album244',
+    halbumtitle: 'West End Girls',
     undefined: '',
   },
   {
@@ -21372,6 +26120,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag131,tag159',
+    album: 'album97',
+    halbumtitle: 'Graceland',
     undefined: '',
   },
   {
@@ -21381,6 +26131,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag57',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -21390,6 +26142,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag213,tag207,tag236',
+    album: 'album158',
+    halbumtitle: 'Things Fall Apart',
     undefined: '',
   },
   {
@@ -21399,6 +26153,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag114,tag245,tag182',
+    album: 'album223',
+    halbumtitle: 'I Feel Love',
     undefined: '',
   },
   {
@@ -21408,6 +26164,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag102,tag224,tag157',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -21417,6 +26175,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag20',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -21426,6 +26186,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag231,tag244',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -21435,6 +26197,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag182',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -21444,6 +26208,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag40,tag186',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -21453,6 +26219,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag67',
+    album: 'album182',
+    halbumtitle: 'Giant Steps',
     undefined: '',
   },
   {
@@ -21462,6 +26230,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag52,tag13',
+    album: 'album48',
+    halbumtitle: 'Channel Orange',
     undefined: '',
   },
   {
@@ -21471,6 +26241,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag83,tag235',
+    album: 'album142',
+    halbumtitle: 'The Clash',
     undefined: '',
   },
   {
@@ -21480,6 +26252,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag11',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -21489,6 +26263,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag4,tag12',
+    album: 'album207',
+    halbumtitle: 'Milo Goes to College',
     undefined: '',
   },
   {
@@ -21498,6 +26274,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag190,tag19',
+    album: 'album204',
+    halbumtitle: 'Damaged',
     undefined: '',
   },
   {
@@ -21507,6 +26285,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag10,tag73',
+    album: 'album64',
+    halbumtitle: 'DAMN.',
     undefined: '',
   },
   {
@@ -21516,6 +26296,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag120,tag103',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -21525,6 +26307,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag246,tag187',
+    album: 'album149',
+    halbumtitle: 'Hot Fuss',
     undefined: '',
   },
   {
@@ -21534,6 +26318,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag174,tag143',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -21543,6 +26329,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag84,tag247',
+    album: 'album74',
+    halbumtitle: 'Metallica (The Black Album)',
     undefined: '',
   },
   {
@@ -21552,6 +26340,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag111,tag31',
+    album: 'album24',
+    halbumtitle: 'Legend',
     undefined: '',
   },
   {
@@ -21561,6 +26351,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag178',
+    album: 'album49',
+    halbumtitle: 'In the Wee Small Hours',
     undefined: '',
   },
   {
@@ -21570,6 +26362,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag214',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -21579,6 +26373,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag38,tag227,tag184',
+    album: 'album79',
+    halbumtitle: 'Dangerous',
     undefined: '',
   },
   {
@@ -21588,6 +26384,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag61,tag46',
+    album: 'album236',
+    halbumtitle: 'Blue Monday',
     undefined: '',
   },
   {
@@ -21597,6 +26395,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag245',
+    album: 'album129',
+    halbumtitle: 'Innervisions',
     undefined: '',
   },
   {
@@ -21606,6 +26406,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag186,tag53',
+    album: 'album221',
+    halbumtitle: 'Punks Not Dead',
     undefined: '',
   },
   {
@@ -21615,6 +26417,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag7,tag16',
+    album: 'album194',
+    halbumtitle: 'The Complete Ella Fitzgerald Song Books',
     undefined: '',
   },
   {
@@ -21624,6 +26428,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag130,tag170',
+    album: 'album86',
+    halbumtitle: 'Harvest Moon',
     undefined: '',
   },
   {
@@ -21633,6 +26439,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag179,tag159,tag77',
+    album: 'album19',
+    halbumtitle: 'Blur',
     undefined: '',
   },
   {
@@ -21642,6 +26450,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag220,tag122,tag144,tag77',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -21651,6 +26461,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag111,tag98,tag189',
+    album: 'album76',
+    halbumtitle: 'Metallica',
     undefined: '',
   },
   {
@@ -21660,6 +26472,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag175,tag61',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -21669,6 +26483,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag46,tag156,tag96',
+    album: 'album140',
+    halbumtitle: 'Brothers',
     undefined: '',
   },
   {
@@ -21678,6 +26494,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag93,tag111',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -21687,6 +26505,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag184,tag160',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -21696,6 +26516,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag231',
+    album: 'album109',
+    halbumtitle: 'Purple Rain',
     undefined: '',
   },
   {
@@ -21705,6 +26527,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag44,tag197',
+    album: 'album249',
+    halbumtitle: 'Enemy of the World',
     undefined: '',
   },
   {
@@ -21714,6 +26538,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag248,tag158',
+    album: 'album224',
+    halbumtitle: 'Cars',
     undefined: '',
   },
   {
@@ -21723,6 +26549,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag228,tag172,tag166,tag220',
+    album: 'album117',
+    halbumtitle: 'Amnesiac',
     undefined: '',
   },
   {
@@ -21732,6 +26560,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag99,tag231',
+    album: 'album246',
+    halbumtitle: 'Moderat',
     undefined: '',
   },
   {
@@ -21741,6 +26571,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag250',
+    album: 'album159',
+    halbumtitle: 'Mellon Collie and the Infinite Sadness',
     undefined: '',
   },
   {
@@ -21750,6 +26582,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag66,tag194,tag216',
+    album: 'album83',
+    halbumtitle: 'Illmatic',
     undefined: '',
   },
   {
@@ -21759,6 +26593,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag133',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -21768,6 +26604,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag32,tag96,tag11,tag97,tag233,tag162',
+    album: 'album241',
+    halbumtitle: 'Trans-Europe Express',
     undefined: '',
   },
   {
@@ -21777,6 +26615,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag180,tag156,tag38,tag51,tag177',
+    album: 'album168',
+    halbumtitle: "Who's Next",
     undefined: '',
   },
   {
@@ -21786,6 +26626,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag185,tag189,tag191,tag16,tag46',
+    album: 'album78',
+    halbumtitle: 'Thriller',
     undefined: '',
   },
   {
@@ -21795,6 +26637,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag21,tag29,tag228,tag210,tag25,tag197',
+    album: 'album102',
+    halbumtitle: 'Rid of Me',
     undefined: '',
   },
   {
@@ -21804,6 +26648,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag242,tag176,tag106,tag63,tag153',
+    album: 'album104',
+    halbumtitle: 'Let England Shake',
     undefined: '',
   },
   {
@@ -21813,6 +26659,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag209,tag225,tag156,tag6,tag188',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -21822,6 +26670,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag28,tag27,tag134,tag250,tag247,tag40',
+    album: 'album163',
+    halbumtitle: 'Loaded',
     undefined: '',
   },
   {
@@ -21831,6 +26681,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag103,tag211,tag90,tag180,tag81,tag195,tag61',
+    album: 'album27',
+    halbumtitle: 'Born to Run',
     undefined: '',
   },
   {
@@ -21840,6 +26692,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag12,tag121,tag192,tag29,tag167',
+    album: 'album187',
+    halbumtitle: 'Bird and Diz',
     undefined: '',
   },
   {
@@ -21849,6 +26703,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag168,tag134,tag226,tag158,tag245,tag24',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -21858,6 +26714,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag160,tag142,tag109,tag174,tag220,tag66,tag15',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -21867,6 +26725,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag197,tag94,tag36,tag198,tag167,tag76',
+    album: 'album231',
+    halbumtitle: 'Cross',
     undefined: '',
   },
   {
@@ -21876,6 +26736,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag146,tag240,tag203,tag116,tag199',
+    album: 'album60',
+    halbumtitle: 'Unknown Pleasures',
     undefined: '',
   },
   {
@@ -21885,6 +26747,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag38,tag124,tag214,tag201,tag16,tag183',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -21894,6 +26758,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag56,tag177,tag141,tag26,tag133',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -21903,6 +26769,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag244,tag93,tag126,tag230',
+    album: 'album216',
+    halbumtitle: 'Repeater',
     undefined: '',
   },
   {
@@ -21912,6 +26780,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag8,tag82,tag105,tag149,tag73',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -21921,6 +26791,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag218,tag238,tag88,tag149,tag45',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -21930,6 +26802,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag26,tag29,tag158,tag166,tag240',
+    album: 'album195',
+    halbumtitle: 'Saxophone Colossus',
     undefined: '',
   },
   {
@@ -21939,6 +26813,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag5,tag238,tag192,tag206,tag33',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -21948,6 +26824,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag32,tag223,tag203,tag185',
+    album: 'album77',
+    halbumtitle: 'Off the Wall',
     undefined: '',
   },
   {
@@ -21957,6 +26835,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag76',
+    album: 'album51',
+    halbumtitle: 'American Idiot',
     undefined: '',
   },
   {
@@ -21966,6 +26846,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag187',
+    album: 'album8',
+    halbumtitle: "Whatever People Say I Am, That's What I'm Not",
     undefined: '',
   },
   {
@@ -21975,6 +26857,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag240,tag2',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -21984,6 +26868,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag136,tag32',
+    album: 'album108',
+    halbumtitle: "Sign o' the Times",
     undefined: '',
   },
   {
@@ -21993,6 +26879,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag167',
+    album: 'album113',
+    halbumtitle: 'Rated R',
     undefined: '',
   },
   {
@@ -22002,6 +26890,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag239,tag144',
+    album: 'album165',
+    halbumtitle: 'Elephant',
     undefined: '',
   },
   {
@@ -22011,6 +26901,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag174',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -22020,6 +26912,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag18,tag165',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -22029,6 +26923,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag11,tag69',
+    album: 'album226',
+    halbumtitle: 'Around the World',
     undefined: '',
   },
   {
@@ -22038,6 +26934,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag23,tag153,tag47,tag145,tag231',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -22047,6 +26945,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag119,tag193',
+    album: 'album31',
+    halbumtitle: 'Discovery',
     undefined: '',
   },
   {
@@ -22056,6 +26956,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag155,tag47',
+    album: 'album123',
+    halbumtitle: 'Californication',
     undefined: '',
   },
   {
@@ -22065,6 +26967,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag230,tag25',
+    album: 'album10',
+    halbumtitle: 'Check Your Head',
     undefined: '',
   },
   {
@@ -22074,6 +26978,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag75,tag14,tag151',
+    album: 'album61',
+    halbumtitle: 'My Beautiful Dark Twisted Fantasy',
     undefined: '',
   },
   {
@@ -22083,6 +26989,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag104,tag170',
+    album: 'album233',
+    halbumtitle: 'Silent Shout',
     undefined: '',
   },
   {
@@ -22092,6 +27000,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag193,tag114',
+    album: 'album157',
+    halbumtitle: 'Sticky Fingers',
     undefined: '',
   },
   {
@@ -22101,6 +27011,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag192,tag119,tag210,tag144',
+    album: 'album164',
+    halbumtitle: 'The Velvet Underground & Nico',
     undefined: '',
   },
   {
@@ -22110,6 +27022,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag41,tag81',
+    album: 'album103',
+    halbumtitle: 'Dry',
     undefined: '',
   },
   {
@@ -22119,6 +27033,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag162,tag110',
+    album: 'album18',
+    halbumtitle: 'Post',
     undefined: '',
   },
   {
@@ -22128,6 +27044,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag189,tag178',
+    album: 'album110',
+    halbumtitle: 'It Takes a Nation of Millions to Hold Us Back',
     undefined: '',
   },
   {
@@ -22137,6 +27055,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag163,tag127',
+    album: 'album101',
+    halbumtitle: 'Wish You Were Here',
     undefined: '',
   },
   {
@@ -22146,6 +27066,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag31,tag40,tag52,tag213',
+    album: 'album200',
+    halbumtitle: "Never Mind the Bollocks, Here's the Sex Pistols",
     undefined: '',
   },
   {
@@ -22155,6 +27077,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag2,tag176,tag232',
+    album: 'album95',
+    halbumtitle: 'Horses',
     undefined: '',
   },
   {
@@ -22164,6 +27088,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag157,tag143',
+    album: 'album131',
+    halbumtitle: 'Illinois',
     undefined: '',
   },
   {
@@ -22173,6 +27099,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag237,tag139',
+    album: 'album137',
+    halbumtitle: 'Rubber Soul',
     undefined: '',
   },
   {
@@ -22182,6 +27110,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag199,tag210,tag248,tag168',
+    album: 'album38',
+    halbumtitle: 'Either/Or',
     undefined: '',
   },
   {
@@ -22191,6 +27121,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag231,tag125',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -22200,6 +27132,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag178,tag202',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -22209,6 +27143,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag134,tag121,tag98',
+    album: 'album215',
+    halbumtitle: '(GI)',
     undefined: '',
   },
   {
@@ -22218,6 +27154,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag165,tag183,tag116',
+    album: 'album135',
+    halbumtitle: 'Help!',
     undefined: '',
   },
   {
@@ -22227,6 +27165,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag7,tag235,tag182',
+    album: 'album175',
+    halbumtitle: 'Weezer (The Blue Album)',
     undefined: '',
   },
   {
@@ -22236,6 +27176,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag85,tag93',
+    album: 'album81',
+    halbumtitle: 'Kind of Blue',
     undefined: '',
   },
   {
@@ -22245,6 +27187,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag196,tag168,tag166',
+    album: 'album47',
+    halbumtitle: 'The Colour and the Shape',
     undefined: '',
   },
   {
@@ -22254,6 +27198,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag79,tag31',
+    album: 'album154',
+    halbumtitle: 'Beggars Banquet',
     undefined: '',
   },
   {
@@ -22263,6 +27209,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag102',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -22272,6 +27220,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag103,tag145,tag193',
+    album: 'album180',
+    halbumtitle: 'Blue Train',
     undefined: '',
   },
   {
@@ -22281,6 +27231,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag150,tag48',
+    album: 'album21',
+    halbumtitle: 'Blonde on Blonde',
     undefined: '',
   },
   {
@@ -22290,6 +27242,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag172,tag68',
+    album: 'album238',
+    halbumtitle: 'Timeless',
     undefined: '',
   },
   {
@@ -22299,6 +27253,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag53,tag163',
+    album: 'album144',
+    halbumtitle: 'The Doors',
     undefined: '',
   },
   {
@@ -22308,6 +27264,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag91,tag108,tag78',
+    album: 'album35',
+    halbumtitle: 'Blackstar',
     undefined: '',
   },
   {
@@ -22317,6 +27275,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag100,tag199',
+    album: 'album84',
+    halbumtitle: 'After the Gold Rush',
     undefined: '',
   },
   {
@@ -22326,6 +27286,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag16,tag27',
+    album: 'album125',
+    halbumtitle: 'Bridge over Troubled Water',
     undefined: '',
   },
   {
@@ -22335,6 +27297,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag58,tag217,tag144',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -22344,6 +27308,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag71,tag51,tag40',
+    album: 'album92',
+    halbumtitle: 'Be Here Now',
     undefined: '',
   },
   {
@@ -22353,6 +27319,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag250,tag34',
+    album: 'album220',
+    halbumtitle: 'Zen Arcade',
     undefined: '',
   },
   {
@@ -22362,6 +27330,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag224,tag213,tag127',
+    album: 'album193',
+    halbumtitle: 'Maiden Voyage',
     undefined: '',
   },
   {
@@ -22371,6 +27341,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag64,tag249',
+    album: 'album179',
+    halbumtitle: 'Time Out',
     undefined: '',
   },
   {
@@ -22380,6 +27352,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag217,tag192',
+    album: 'album139',
+    halbumtitle: 'The Beatles (The White Album)',
     undefined: '',
   },
   {
@@ -22389,6 +27363,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag106,tag115',
+    album: 'album214',
+    halbumtitle: 'Los Angeles',
     undefined: '',
   },
   {
@@ -22398,6 +27374,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag128,tag24',
+    album: 'album213',
+    halbumtitle: 'Singles Going Steady',
     undefined: '',
   },
   {
@@ -22407,6 +27385,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag95,tag123',
+    album: 'album196',
+    halbumtitle: 'Out to Lunch!',
     undefined: '',
   },
   {
@@ -22416,6 +27396,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag156,tag55',
+    album: 'album85',
+    halbumtitle: 'Harvest',
     undefined: '',
   },
   {
@@ -22425,6 +27407,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag84,tag126',
+    album: 'album1',
+    halbumtitle: 'Back in Black',
     undefined: '',
   },
   {
@@ -22434,6 +27418,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag205,tag152,tag206',
+    album: 'album82',
+    halbumtitle: 'Loveless',
     undefined: '',
   },
   {
@@ -22443,6 +27429,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag244,tag65',
+    album: 'album167',
+    halbumtitle: 'Tommy',
     undefined: '',
   },
   {
@@ -22452,6 +27440,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag144,tag223,tag180',
+    album: 'album173',
+    halbumtitle: 'Modern Vampires of the City',
     undefined: '',
   },
   {
@@ -22461,6 +27451,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag59,tag234',
+    album: 'album176',
+    halbumtitle: 'Summerteeth',
     undefined: '',
   },
   {
@@ -22470,6 +27462,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag33,tag34,tag135',
+    album: 'album37',
+    halbumtitle: 'The Chronic',
     undefined: '',
   },
   {
@@ -22479,6 +27473,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag114,tag194',
+    album: 'album107',
+    halbumtitle: 1999,
     undefined: '',
   },
   {
@@ -22488,6 +27484,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag226,tag142,tag136',
+    album: 'album242',
+    halbumtitle: 'From Here to Eternity',
     undefined: '',
   },
   {
@@ -22497,6 +27495,8 @@ export const crateAlbumSeedArray = [
     hisranked: false,
     rank: '',
     tags: 'tag42,tag75',
+    album: 'album71',
+    halbumtitle: 'Ray of Light',
     undefined: '',
   },
 ];

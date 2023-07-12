@@ -10,68 +10,84 @@ const prisma = new PrismaClient();
 export async function main() {
   // // Create Crates
   // for (let crate of crates) {
-  //   const createdUser = await prisma.user.create({
-  //     data: {
-  //       email: user.email,
-  //       emailVerified: user.emailverified,
-  //       role: user.role,
-  //     },
-  //   });
-  //   const matchedProfile = profiles.find(p => p.userid === user.id);
-  //   if (matchedProfile) {
-  //     const existingProfile = await prisma.profile.findFirst({
-  //       where: {
-  //         username: matchedProfile.username,
-  //         isPrivate: matchedProfile.isprivate,
-  //         bio: matchedProfile.bio,
-  //       },
-  //     });
-  //     if (existingProfile) {
-  //       await prisma.user.update({
-  //         where: { id: createdUser.id },
-  //         data: {
-  //           profiles: { connect: { id: existingProfile.id } },
-  //         },
-  //       });
-  //     } else {
-  //       await prisma.profile.create({
-  //         data: {
-  //           username: matchedProfile.username,
-  //           isPrivate: matchedProfile.isprivate,
-  //           bio: matchedProfile.bio,
-  //           user: { connect: { id: createdUser.id } },
-  //         },
-  //       });
-  //     }
-  //   }
-  // }
-  // console.log('Crates created and linked to Profiles. Moving on to Labels.');
-  // // Create labels
-  // for (const socialLink of socialLinks) {
-  //   const socialProfile = profiles.find(p => p.id === socialLink.profileid);
-  //   if (socialProfile) {
+  //   const creatorProfile = profiles.find(p => p.id === crate.creatorid);
+
+  //   if (creatorProfile) {
   //     const dbProfile = await prisma.profile.findFirst({
-  //       where: { username: socialProfile.username },
+  //       where: { username: creatorProfile.username },
   //     });
+
   //     if (dbProfile) {
-  //       const existingSocialLink = await prisma.socialLink.findFirst({
+  //       const existingCrate = await prisma.crate.findFirst({
   //         where: {
-  //           platform: socialLink.platform,
-  //           username: dbProfile.username,
-  //           profile: {id: dbProfile.id}
+  //           title: crate.title,
+  //           description: crate.description,
+  //           creator: { id: dbProfile.id },
+  //           isRanked: crate.isranked,
   //         },
   //       });
-  //       if (!existingSocialLink) {
-  //         await prisma.socialLink.create({
+
+  //       let dbFavorited = [];
+  //       if (crate.favoritedby) {
+  //         const favoritedUsernames = crate.favoritedby
+  //           .split(',')
+  //           .map(profileId => profiles.find(p => p.id === profileId)?.username);
+  //         dbFavorited = await prisma.profile
+  //           .findMany({
+  //             where: { username: { in: favoritedUsernames } },
+  //             select: { id: true },
+  //           })
+  //           .then((profiles: any) => profiles.map((profile: any) => profile.id));
+  //       }
+
+  //       if (!existingCrate) {
+  //         await prisma.crate.create({
   //           data: {
-  //             platform: socialLink.platform,
-  //             username: socialLink.username,
-  //             profile: { connect: { id: dbProfile.id } },
+  //             title: crate.title,
+  //             description: crate.description,
+  //             creator: { connect: { id: dbProfile.id } },
+  //             isRanked: crate.isranked,
+  //             favoritedBy: crate.favoritedby
+  //               ? { connect: dbFavorited.map((profileId: any) => ({ id: profileId })) }
+  //               : undefined,
   //           },
   //         });
   //       }
   //     }
   //   }
   // }
-  // console.log('Labels created. End of script.');
+
+  // console.log('Crates created and linked to Profiles. Moving on to Labels.');
+  // Create labels
+  for (let label of labels) {
+    const existingLabel = await prisma.label.findFirst({
+      where: {
+        name: label.name,
+        isStandard: label.isstandard,
+      },
+    });
+
+    let dbCrates = [];
+    if (label.crates) {
+      const crateNames = label.crates.split(',').map(crateId => crates.find(p => p.id === crateId)?.title);
+      dbCrates = await prisma.crate
+        .findMany({
+          where: { title: { in: crateNames } },
+          select: { id: true },
+        })
+        .then((crates: any) => crates.map((crate: any) => crate.id));
+    }
+
+    if (!existingLabel) {
+      await prisma.label.create({
+        data: {
+          name: label.name,
+          isStandard: label.isstandard,
+          crates: label.crates ? { connect: dbCrates.map((crateId: any) => ({ id: crateId })) } : undefined,
+        },
+      });
+    }
+  }
+
+  console.log('Labels created. End of script.');
 }
