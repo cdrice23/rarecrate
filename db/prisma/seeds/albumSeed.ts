@@ -30,7 +30,7 @@ export async function main() {
       });
 
       if (existingGenre) {
-        return existingGenre;
+        return { ...existingGenre };
       } else {
         return prisma.genre.create({
           data: { name: genre },
@@ -40,14 +40,14 @@ export async function main() {
     const createdGenres = await Promise.all(genrePromises);
 
     // Create or connect the Subgenre records
-    const styles = masterRelease.styles;
+    const styles = masterRelease.subgenres;
     const subgenrePromises = styles.map(async (subgenre: string) => {
       const existingSubgenre = await prisma.subgenre.findFirst({
         where: { name: subgenre },
       });
 
       if (existingSubgenre) {
-        return existingSubgenre;
+        return { ...existingSubgenre };
       } else {
         const parentGenreName = genres[0];
         const parentGenre = createdGenres.find(genre => genre.name === parentGenreName);
@@ -65,28 +65,35 @@ export async function main() {
     // Create the Album record
     await prisma.album.create({
       data: {
-        discogsMasterId: masterRelease.main_release,
+        discogsMasterId: masterRelease.discogsMasterId,
         title: masterRelease.title,
-        artist: masterRelease.artists[0].name,
-        label: masterRelease.labels[0].name,
-        releaseYear: masterRelease.year,
+        artist: masterRelease.artist,
+        label: masterRelease.label,
+        releaseYear: parseInt(masterRelease.releaseYear),
         genres: { connect: createdGenres.map(genre => ({ id: genre.id })) },
         subgenres: { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) },
-        imageUrl: masterRelease.imageUrl,
+        // imageUrl: masterRelease.imageUrl,
+        imageUrl: '',
+        tracklist: {
+          create: masterRelease.tracklist.map((item: any) => ({
+            title: item.name,
+            order: item.order,
+          })),
+        },
       },
     });
 
-    // Create the TracklistItem records
-    const tracklist = masterRelease.tracklist;
-    const tracklistPromises = tracklist.map(async (track: any) => {
-      return prisma.tracklistItem.create({
-        data: {
-          title: track.title,
-          order: track.position,
-          album: { connect: { discogsMasterId: masterRelease.main_release } },
-        },
-      });
-    });
-    await Promise.all(tracklistPromises);
+    // // Create the TracklistItem records
+    // const tracklist = masterRelease.tracklist;
+    // const tracklistPromises = tracklist.map(async (track: any) => {
+    //   return prisma.tracklistItem.create({
+    //     data: {
+    //       title: track.name,
+    //       order: track.order,
+    //       album: { connect: { discogsMasterId: masterRelease.main_release } },
+    //     },
+    //   });
+    // });
+    // await Promise.all(tracklistPromises);
   }
 }
