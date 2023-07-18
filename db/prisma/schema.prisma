@@ -96,7 +96,7 @@ model Album {
   releaseYear     Int
   genres          Genre[]
   subgenres       Subgenre[]
-  imageUrl        String
+  imageUrl        String          @default("")
   crates          CrateAlbum[]
   tracklist       TracklistItem[]
 }

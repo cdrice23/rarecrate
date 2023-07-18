@@ -8,56 +8,56 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 export async function main() {
-  // // Create Crates
-  // for (let crate of crates) {
-  //   const creatorProfile = profiles.find(p => p.id === crate.creatorid);
+  // Create Crates
+  for (let crate of crates) {
+    const creatorProfile = profiles.find(p => p.id === crate.creatorid);
 
-  //   if (creatorProfile) {
-  //     const dbProfile = await prisma.profile.findFirst({
-  //       where: { username: creatorProfile.username },
-  //     });
+    if (creatorProfile) {
+      const dbProfile = await prisma.profile.findFirst({
+        where: { username: creatorProfile.username },
+      });
 
-  //     if (dbProfile) {
-  //       const existingCrate = await prisma.crate.findFirst({
-  //         where: {
-  //           title: crate.title,
-  //           description: crate.description,
-  //           creator: { id: dbProfile.id },
-  //           isRanked: crate.isranked,
-  //         },
-  //       });
+      if (dbProfile) {
+        const existingCrate = await prisma.crate.findFirst({
+          where: {
+            title: crate.title,
+            description: crate.description,
+            creator: { id: dbProfile.id },
+            isRanked: crate.isranked,
+          },
+        });
 
-  //       let dbFavorited = [];
-  //       if (crate.favoritedby) {
-  //         const favoritedUsernames = crate.favoritedby
-  //           .split(',')
-  //           .map(profileId => profiles.find(p => p.id === profileId)?.username);
-  //         dbFavorited = await prisma.profile
-  //           .findMany({
-  //             where: { username: { in: favoritedUsernames } },
-  //             select: { id: true },
-  //           })
-  //           .then((profiles: any) => profiles.map((profile: any) => profile.id));
-  //       }
+        let dbFavorited = [];
+        if (crate.favoritedby) {
+          const favoritedUsernames = crate.favoritedby
+            .split(',')
+            .map(profileId => profiles.find(p => p.id === profileId)?.username);
+          dbFavorited = await prisma.profile
+            .findMany({
+              where: { username: { in: favoritedUsernames } },
+              select: { id: true },
+            })
+            .then((profiles: any) => profiles.map((profile: any) => profile.id));
+        }
 
-  //       if (!existingCrate) {
-  //         await prisma.crate.create({
-  //           data: {
-  //             title: crate.title,
-  //             description: crate.description,
-  //             creator: { connect: { id: dbProfile.id } },
-  //             isRanked: crate.isranked,
-  //             favoritedBy: crate.favoritedby
-  //               ? { connect: dbFavorited.map((profileId: any) => ({ id: profileId })) }
-  //               : undefined,
-  //           },
-  //         });
-  //       }
-  //     }
-  //   }
-  // }
+        if (!existingCrate) {
+          await prisma.crate.create({
+            data: {
+              title: crate.title,
+              description: crate.description,
+              creator: { connect: { id: dbProfile.id } },
+              isRanked: crate.isranked,
+              favoritedBy: crate.favoritedby
+                ? { connect: dbFavorited.map((profileId: any) => ({ id: profileId })) }
+                : undefined,
+            },
+          });
+        }
+      }
+    }
+  }
 
-  // console.log('Crates created and linked to Profiles. Moving on to Labels.');
+  console.log('Crates created and linked to Profiles. Moving on to Labels.');
   // Create labels
   for (let label of labels) {
     const existingLabel = await prisma.label.findFirst({

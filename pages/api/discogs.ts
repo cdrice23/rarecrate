@@ -63,7 +63,6 @@ function processDiscogsSearch(data: any, searchTitle: any) {
   const albumReleases = data.results.filter(
     (release: any) => release.format.includes('Album') && release.title && release.year && release.master_id,
   );
-  console.log(albumReleases.length);
   // Sort the releases by their similarity to the search prompts, then by release order
   albumReleases.sort((a: any, b: any) => {
     const similarityScoreTitleA = calculateSimilarity(searchTitle, a.title);
