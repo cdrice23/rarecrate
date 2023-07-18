@@ -82,18 +82,5 @@ export async function main() {
         },
       },
     });
-
-    // // Create the TracklistItem records
-    // const tracklist = masterRelease.tracklist;
-    // const tracklistPromises = tracklist.map(async (track: any) => {
-    //   return prisma.tracklistItem.create({
-    //     data: {
-    //       title: track.name,
-    //       order: track.order,
-    //       album: { connect: { discogsMasterId: masterRelease.main_release } },
-    //     },
-    //   });
-    // });
-    // await Promise.all(tracklistPromises);
   }
 }

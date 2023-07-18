@@ -1,10 +1,10 @@
 export const albumSeedArray = [
-  {
-    id: 'album1',
-    artist: 'AC/DC',
-    title: 'Back in Black',
-    undefined: '',
-  },
+  // {
+  //   id: 'album1',
+  //   artist: 'AC/DC',
+  //   title: 'Back in Black',
+  //   undefined: '',
+  // },
   // {
   //   id: 'album2',
   //   artist: 'Alicia Keys',
@@ -450,12 +450,6 @@ export const albumSeedArray = [
   //   undefined: '',
   // },
   // {
-  //   id: 'album76',
-  //   artist: 'Metallica',
-  //   title: 'Metallica',
-  //   undefined: '',
-  // },
-  // {
   //   id: 'album77',
   //   artist: 'Michael Jackson',
   //   title: 'Off the Wall',
@@ -757,7 +751,7 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album127',
-  //   artist: 'Snoop Doggy Dogg',
+  //   artist: 'Snoop Dogg',
   //   title: 'Doggystyle',
   //   undefined: '',
   // },
@@ -865,7 +859,7 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album145',
-  //   artist: 'The Eagles',
+  //   artist: 'Eagles',
   //   title: 'Hotel California',
   //   undefined: '',
   // },
@@ -877,7 +871,7 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album147',
-  //   artist: 'The Fugees',
+  //   artist: 'Fugees',
   //   title: 'The Score',
   //   undefined: '',
   // },
@@ -901,13 +895,13 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album151',
-  //   artist: 'The Notorious B.I.G.',
+  //   artist: 'Notorious B.I.G.',
   //   title: 'Ready to Die',
   //   undefined: '',
   // },
   // {
   //   id: 'album152',
-  //   artist: 'The Notorious B.I.G.',
+  //   artist: 'Notorious B.I.G.',
   //   title: 'Life After Death',
   //   undefined: '',
   // },
@@ -1016,7 +1010,7 @@ export const albumSeedArray = [
   // {
   //   id: 'album170',
   //   artist: 'Tool',
-  //   title: 'Ænima',
+  //   title: 'Undertow',
   //   undefined: '',
   // },
   // {
@@ -1046,13 +1040,7 @@ export const albumSeedArray = [
   // {
   //   id: 'album175',
   //   artist: 'Weezer',
-  //   title: 'Weezer (The Blue Album)',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album176',
-  //   artist: 'Wilco',
-  //   title: 'Summerteeth',
+  //   title: 'Weezer',
   //   undefined: '',
   // },
   // {
@@ -1113,12 +1101,6 @@ export const albumSeedArray = [
   //   id: 'album186',
   //   artist: 'Herbie Hancock',
   //   title: 'Head Hunters',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album187',
-  //   artist: 'Charlie Parker and Dizzy Gillespie',
-  //   title: 'Bird and Diz',
   //   undefined: '',
   // },
   // {
@@ -1207,7 +1189,7 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album202',
-  //   artist: 'The Misfits',
+  //   artist: 'Misfits',
   //   title: 'Walk Among Us',
   //   undefined: '',
   // },
@@ -1256,7 +1238,7 @@ export const albumSeedArray = [
   // {
   //   id: 'album210',
   //   artist: 'Minor Threat',
-  //   title: 'Complete Discography',
+  //   title: 'Minor Threat',
   //   undefined: '',
   // },
   // {
@@ -1273,8 +1255,8 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album213',
-  //   artist: 'The Buzzcocks',
-  //   title: 'Singles Going Steady',
+  //   artist: 'Buzzcocks',
+  //   title: 'Love Bites',
   //   undefined: '',
   // },
   // {
@@ -1285,7 +1267,7 @@ export const albumSeedArray = [
   // },
   // {
   //   id: 'album215',
-  //   artist: 'The Germs',
+  //   artist: 'Germs',
   //   title: '(GI)',
   //   undefined: '',
   // },
@@ -1332,30 +1314,6 @@ export const albumSeedArray = [
   //   undefined: '',
   // },
   // {
-  //   id: 'album223',
-  //   artist: 'Donna Summer',
-  //   title: 'I Feel Love',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album224',
-  //   artist: 'Gary Numan',
-  //   title: 'Cars',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album225',
-  //   artist: 'Depeche Mode',
-  //   title: 'Enjoy the Silence',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album226',
-  //   artist: 'Daft Punk',
-  //   title: 'Around the World',
-  //   undefined: '',
-  // },
-  // {
   //   id: 'album227',
   //   artist: 'Massive Attack',
   //   title: 'Blue Lines',
@@ -1371,12 +1329,6 @@ export const albumSeedArray = [
   //   id: 'album229',
   //   artist: 'Moby',
   //   title: 'Play',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album230',
-  //   artist: 'Underworld',
-  //   title: 'Born Slippy .NUXX',
   //   undefined: '',
   // },
   // {
@@ -1412,7 +1364,7 @@ export const albumSeedArray = [
   // {
   //   id: 'album236',
   //   artist: 'New Order',
-  //   title: 'Blue Monday',
+  //   title: 'Brotherhood',
   //   undefined: '',
   // },
   // {
@@ -1439,58 +1391,58 @@ export const albumSeedArray = [
   //   title: 'Moon Safari',
   //   undefined: '',
   // },
-  // {
-  //   id: 'album241',
-  //   artist: 'Kraftwerk',
-  //   title: 'Trans-Europe Express',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album242',
-  //   artist: 'Giorgio Moroder',
-  //   title: 'From Here to Eternity',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album243',
-  //   artist: 'Four Tet',
-  //   title: 'Rounds',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album244',
-  //   artist: 'Pet Shop Boys',
-  //   title: 'West End Girls',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album245',
-  //   artist: 'Aphex Twin',
-  //   title: 'Richard D. James Album',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album246',
-  //   artist: 'Moderat',
-  //   title: 'Moderat',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album247',
-  //   artist: 'Jamie xx',
-  //   title: 'In Colour',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album248',
-  //   artist: 'Bonobo',
-  //   title: 'Black Sands',
-  //   undefined: '',
-  // },
-  // {
-  //   id: 'album249',
-  //   artist: 'Four Year Strong',
-  //   title: 'Enemy of the World',
-  //   undefined: '',
-  // },
+  {
+    id: 'album241',
+    artist: 'Kraftwerk',
+    title: 'Trans-Europe Express',
+    undefined: '',
+  },
+  {
+    id: 'album242',
+    artist: 'Giorgio Moroder',
+    title: 'From Here to Eternity',
+    undefined: '',
+  },
+  {
+    id: 'album243',
+    artist: 'Four Tet',
+    title: 'Rounds',
+    undefined: '',
+  },
+  {
+    id: 'album244',
+    artist: 'Pet Shop Boys',
+    title: 'West End Girls',
+    undefined: '',
+  },
+  {
+    id: 'album245',
+    artist: 'Aphex Twin',
+    title: 'Richard D. James Album',
+    undefined: '',
+  },
+  {
+    id: 'album246',
+    artist: 'Moderat',
+    title: 'Moderat',
+    undefined: '',
+  },
+  {
+    id: 'album247',
+    artist: 'Jamie xx',
+    title: 'In Colour',
+    undefined: '',
+  },
+  {
+    id: 'album248',
+    artist: 'Bonobo',
+    title: 'Black Sands',
+    undefined: '',
+  },
+  {
+    id: 'album249',
+    artist: 'Four Year Strong',
+    title: 'Enemy of the World',
+    undefined: '',
+  },
 ];

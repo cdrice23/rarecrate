@@ -24,7 +24,7 @@ model Profile {
   userId                 Int             @unique
   username               String          @unique
   isPrivate              Boolean         @default(false)
-  bio                    String?
+  bio                    String?         @db.Text
   image                  String?
   followers              Follow[]        @relation("Follows")
   following              Follow[]        @relation("Following")
@@ -40,7 +40,7 @@ model Profile {
 model Crate {
   id          Int          @id @default(autoincrement())
   title       String
-  description String?
+  description String?      @db.Text
   creator     Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
   creatorId   Int
   favoritedBy Profile[]    @relation("FavoritedByProfile")
@@ -120,7 +120,7 @@ model Subgenre {
 
 model TracklistItem {
   id      Int    @id @default(autoincrement())
-  title   String
+  title   String @db.Text
   order   Int
   album   Album  @relation(fields: [albumId], references: [id])
   albumId Int
