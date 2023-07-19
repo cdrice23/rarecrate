@@ -3,7 +3,7 @@ import { main as resetDb } from './resetDb';
 import { main as bigCrateSeed } from './bigCrateSeed';
 import { main as albumSeed } from './albumSeed';
 import { main as connectAlbumSeed } from './connectAlbumSeed';
-// import { main as getAlbumUrls } from './getAlbumUrls';
+import { main as getAlbumImageUrls } from './getAlbumImageUrls';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -14,7 +14,7 @@ async function main() {
   // await bigCrateSeed();
   // await albumSeed();
   // await connectAlbumSeed();
-  // await getAlbumUrls();
+  await getAlbumImageUrls();
   // await resetDb();
 }
 
