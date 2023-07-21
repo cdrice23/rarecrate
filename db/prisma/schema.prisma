@@ -99,6 +99,7 @@ model Album {
   imageUrl        String          @default("")
   crates          CrateAlbum[]
   tracklist       TracklistItem[]
+  recordLabel     RecordLabel[]
 }
 
 model Genre {
@@ -152,4 +153,17 @@ model Tag {
   id         Int          @id @default(autoincrement())
   name       String
   crateAlbum CrateAlbum[]
+}
+
+model RecordLabel {
+  id             Int     @id @default(autoincrement())
+  name           String
+  discogsLabelId Int     @unique
+  releases       Album[]
+}
+
+model RecordCompany {
+  id             Int    @id @default(autoincrement())
+  name           String
+  discogsLabelId Int    @unique
 }

@@ -1,0 +1,62 @@
+import axios from 'axios';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export async function main(): Promise<void> {
+  const delayFetchPaginatedResults = 60000 / 60; // runs 60 times per minute (1x/s)
+
+  const results = await fetchPaginatedResults(101, delayFetchPaginatedResults);
+
+  for (let result of results) {
+    await prisma.recordCompany.create({ data: {
+      name: result.label.name,
+      discogsLabelId: result.label.discogsLabelId
+    } });
+    
+  }
+
+  console.log('Seed script completed successfully!');
+}
+
+async function fetchPaginatedResults(page: number, delay: number): Promise<any[]> {
+  const apiUrl = `https://api.discogs.com/database/search?type=label&page=${page}&per_page=100`;
+
+  const response = await makeDelayedRequest(apiUrl, delay);
+
+  const nextPageUrl = response.data.pagination.urls.next;
+  const nextPageNumber = response.data.pagination.page + 1;
+  const totalPages = response.data.pagination.pages;
+
+  const nextPageResults = await Promise.all(
+    response.data.results.map(async (result: any) => {
+      return {
+        label: {
+          name: result.title,
+          discogsLabelId: result.id,
+        },
+      };
+    })
+  );
+
+  if (nextPageNumber <= totalPages && nextPageUrl !== null) {
+    const remainingResults = await fetchPaginatedResults(nextPageNumber, delay);
+    return [...nextPageResults, ...remainingResults];
+  } else {
+    return nextPageResults;
+  }
+}
+
+async function makeDelayedRequest(url: string, delay: number): Promise<any> {
+  return new Promise((resolve) => {
+    setTimeout(async () => {
+      resolve(
+        await axios.get(url, {
+          headers: {
+            Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+          },
+        })
+      );
+    }, delay);
+  });
+}

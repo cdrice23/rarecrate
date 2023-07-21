@@ -11,12 +11,13 @@ export async function main() {
   // await prisma.tracklistItem.deleteMany();
   // await prisma.album.deleteMany();
   // await prisma.tag.deleteMany();
-  const albums = await prisma.album.findMany();
+  // const albums = await prisma.album.findMany();
 
-  for (const album of albums) {
-    await prisma.album.update({
-      where: { id: album.id },
-      data: { imageUrl: undefined },
-    });
-  }
+  // for (const album of albums) {
+  //   await prisma.album.update({
+  //     where: { id: album.id },
+  //     data: { imageUrl: undefined },
+  //   });
+  // }
+  await prisma.recordLabel.deleteMany();
 }
