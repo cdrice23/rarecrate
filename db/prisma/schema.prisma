@@ -99,7 +99,6 @@ model Album {
   imageUrl        String          @default("")
   crates          CrateAlbum[]
   tracklist       TracklistItem[]
-  recordLabel     RecordLabel[]
 }
 
 model Genre {
@@ -155,15 +154,18 @@ model Tag {
   crateAlbum CrateAlbum[]
 }
 
-model RecordLabel {
-  id             Int     @id @default(autoincrement())
-  name           String
-  discogsLabelId Int     @unique
-  releases       Album[]
+model CronJob {
+  id         Int       @id @default(autoincrement())
+  scriptName String    @unique
+  path       String
+  runs       CronRun[]
 }
 
-model RecordCompany {
-  id             Int    @id @default(autoincrement())
-  name           String
-  discogsLabelId Int    @unique
+model CronRun {
+  id                 Int       @id @default(autoincrement())
+  createdAt          DateTime  @default(now())
+  completedAt        DateTime?
+  lastProcessedLabel String?
+  cronJob            CronJob   @relation(fields: [cronJobId], references: [id])
+  cronJobId          Int       @unique
 }
