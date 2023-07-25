@@ -2,8 +2,8 @@ name: Run getAlbums.ts script
 
 on:
   schedule:
-    # 10:35 PM CST
-    - cron: '38 3 * * *'
+    # 10:43 PM CST
+    - cron: '43 3 * * *'
 
 jobs:
   run_script:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Install Yarn
         run: npm install -g yarn
