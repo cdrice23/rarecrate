@@ -3,7 +3,7 @@ name: Run getAlbums.ts script
 on:
   schedule:
     # 10:43 PM CST
-    - cron: '43 3 * * *'
+    - cron: '58 3 * * *'
 
 jobs:
   run_script:
@@ -23,6 +23,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+
+      - name: Set up environment variables
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL_DEV }}" >> $GITHUB_ENV
+          echo "DISCOGS_API_KEY=${{ secrets.DISCOGS_API_KEY }}" >> $GITHUB_ENV
+          echo "DISCOGS_API_SECRET=${{ secrets.DISCOGS_API_SECRET }}" >> $GITHUB_ENV
 
       - name: Run getAlbums.ts script
         run: yarn cron:run:getAlbums
