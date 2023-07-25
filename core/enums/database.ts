@@ -16,3 +16,11 @@ enum SocialPlatform {
   YOUTUBE,
   DISCOGS,
 }
+
+enum SearchModel {
+  ALBUM,
+  CRATE,
+  PROFILE,
+  LABEL,
+  TAG,
+}

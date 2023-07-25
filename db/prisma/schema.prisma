@@ -35,22 +35,24 @@ model Profile {
   followRequestsReceived FollowRequest[] @relation("FollowRequestReceived")
   createdAt              DateTime        @default(now())
   updatedAt              DateTime        @updatedAt
+  searchAndSelectCount   Int             @default(0)
 
   @@index([userId])
 }
 
 model Crate {
-  id          Int          @id @default(autoincrement())
-  title       String
-  description String?      @db.Text
-  creator     Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
-  creatorId   Int
-  favoritedBy Profile[]    @relation("FavoritedByProfile")
-  labels      Label[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
-  isRanked    Boolean      @default(false)
-  albums      CrateAlbum[]
+  id                   Int          @id @default(autoincrement())
+  title                String
+  description          String?      @db.Text
+  creator              Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
+  creatorId            Int
+  favoritedBy          Profile[]    @relation("FavoritedByProfile")
+  labels               Label[]
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  isRanked             Boolean      @default(false)
+  albums               CrateAlbum[]
+  searchAndSelectCount Int          @default(0)
 
   @@index([creatorId])
 }
@@ -90,17 +92,18 @@ model FollowRequest {
 }
 
 model Album {
-  id              Int             @id @default(autoincrement())
-  discogsMasterId Int             @unique
-  title           String
-  artist          String
-  label           String
-  releaseYear     Int?
-  genres          Genre[]
-  subgenres       Subgenre[]
-  imageUrl        String          @default("")
-  crates          CrateAlbum[]
-  tracklist       TracklistItem[]
+  id                   Int             @id @default(autoincrement())
+  discogsMasterId      Int             @unique
+  title                String
+  artist               String
+  label                String
+  releaseYear          Int?
+  genres               Genre[]
+  subgenres            Subgenre[]
+  imageUrl             String          @default("")
+  crates               CrateAlbum[]
+  tracklist            TracklistItem[]
+  searchAndSelectCount Int             @default(0)
 }
 
 model Genre {
@@ -144,16 +147,18 @@ model CrateAlbum {
 }
 
 model Label {
-  id         Int     @id @default(autoincrement())
-  name       String
-  isStandard Boolean
-  crates     Crate[]
+  id                   Int     @id @default(autoincrement())
+  name                 String
+  isStandard           Boolean
+  crates               Crate[]
+  searchAndSelectCount Int     @default(0)
 }
 
 model Tag {
-  id         Int          @id @default(autoincrement())
-  name       String
-  crateAlbum CrateAlbum[]
+  id                   Int          @id @default(autoincrement())
+  name                 String
+  crateAlbum           CrateAlbum[]
+  searchAndSelectCount Int          @default(0)
 }
 
 model CronJob {
@@ -172,4 +177,12 @@ model CronRun {
   cronJobId          Int
 
   @@index([cronJobId])
+}
+
+model SelectedSearchResult {
+  id           Int    @id @default(autoincrement())
+  searchTerm   String
+  searchResult String
+  resultType   String
+  selectedId   Int
 }
