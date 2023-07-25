@@ -2,8 +2,8 @@ name: Run getAlbums.ts script
 
 on:
   schedule:
-    # 9:55 PM CST
-    - cron: '27 3 * * *'
+    # 10:35 PM CST
+    - cron: '35 4 * * *'
 
 jobs:
   run_script:
