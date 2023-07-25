@@ -1,0 +1,28 @@
+name: Run getAlbums.ts script
+
+on:
+  schedule:
+    # 9:55 PM CST
+    - cron: '5 4 * * *'
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run getAlbums.ts script
+        run: yarn cron:run:getAlbums
