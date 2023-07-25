@@ -15,7 +15,7 @@ async function main() {
   // await albumSeed();
   // await connectAlbumSeed();
   // await getAlbumImageUrls();
-  // await resetDb();
+  await resetDb();
 }
 
 main()

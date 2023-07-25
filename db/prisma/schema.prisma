@@ -21,7 +21,7 @@ model User {
 model Profile {
   id                     Int             @id @default(autoincrement())
   user                   User            @relation(fields: [userId], references: [id])
-  userId                 Int             @unique
+  userId                 Int
   username               String          @unique
   isPrivate              Boolean         @default(false)
   bio                    String?         @db.Text
@@ -35,6 +35,8 @@ model Profile {
   followRequestsReceived FollowRequest[] @relation("FollowRequestReceived")
   createdAt              DateTime        @default(now())
   updatedAt              DateTime        @updatedAt
+
+  @@index([userId])
 }
 
 model Crate {
@@ -93,7 +95,7 @@ model Album {
   title           String
   artist          String
   label           String
-  releaseYear     Int
+  releaseYear     Int?
   genres          Genre[]
   subgenres       Subgenre[]
   imageUrl        String          @default("")
@@ -167,5 +169,7 @@ model CronRun {
   completedAt        DateTime?
   lastProcessedLabel String?
   cronJob            CronJob   @relation(fields: [cronJobId], references: [id])
-  cronJobId          Int       @unique
+  cronJobId          Int
+
+  @@index([cronJobId])
 }

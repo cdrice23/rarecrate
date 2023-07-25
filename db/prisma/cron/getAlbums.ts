@@ -22,25 +22,21 @@ const initCronRun = async () => {
   });
 
   // Get the last Label that was used in the last cron job run
-  let lastProcessedLabel = lastRun[0]?.lastProcessedLabel || null;
+  let lastProcessedLabel = lastRun ? lastRun.runs[0]?.lastProcessedLabel : 'Vandelay Industries';
 
   // Step 2 & 3: Create a new CronRun record and set targetEndTime
   const startAt = new Date();
-  const endAt = new Date(startAt.getTime() + 3 * 60 * 60 * 1000); // 3 Hours from now
+  // const endAt = new Date(startAt.getTime() + 3 * 60 * 60 * 1000); // 3 Hours from now
+  const endAt = new Date(startAt.getTime() + 30000); // end in 30 seconds
+  console.log(startAt.toLocaleString());
+  console.log(endAt.toLocaleString());
 
   const newCronRun = await prisma.cronRun.create({
     data: {
       createdAt: startAt,
       cronJob: {
         connect: {
-          id:
-            (
-              await prisma.cronJob.findUnique({
-                where: {
-                  scriptName: 'getAlbums.ts',
-                },
-              })
-            )?.id || undefined,
+          id: 1,
         },
       },
     },
@@ -52,14 +48,18 @@ const initCronRun = async () => {
   // Truncate the array of record labels to cycle through for the run based on the index of the last processed label
   const startLabelIndex = recordLabelSearchArray.findIndex(label => label.name === lastProcessedLabel);
   const labelArray: any =
-    startLabelIndex === -1 ? recordLabelSearchArray : recordLabelSearchArray.slice(startLabelIndex);
+    startLabelIndex === -1 ? recordLabelSearchArray : recordLabelSearchArray.slice(startLabelIndex + 1);
   let i = 0; // initialize index
   while (new Date().getTime() <= endAt.getTime() && i < labelArray.length) {
     const currentLabel: string = labelArray[i].name;
+    console.log(`Now evaluating: ${currentLabel}`);
 
     // Step 6 & 7: Create an array labelSearchData that has all masters from the label search
     const labelSearchData = await searchDiscogsMasterByLabel(1, 1000, currentLabel);
 
+    console.log(`Total records to process: ${labelSearchData.length}`);
+    let count = 0;
+    let previousWholePercent = 0;
     // Step 8: loop through each searchResult
     for (let result of labelSearchData) {
       // Step 9: Hit master_id endpoint to get remaining album details
@@ -69,21 +69,21 @@ const initCronRun = async () => {
       const dbAlbum = {
         discogsMasterId: result.master_id,
         title: masterDetails.title,
-        artist: masterDetails.artist[0],
-        label: result.labels[0],
-        releaseYear: result.year,
+        artist: masterDetails.artist,
+        label: result.label[0],
+        releaseYear: result.year ?? null,
         genres: result.genre,
         subgenres: result.style,
         tracklist: masterDetails.tracklist.map((track: any, i: number) => ({
           order: i + 1,
           name: track.title,
         })),
-        imageUrl: result.images[0].uri,
+        imageUrl: result.cover_image,
       };
 
       // Step 11: Create/connect genres + subgenres and create albums
       // Create or connect the Genre records
-      const genres = result.genres;
+      const genres = result.genre;
       const genrePromises = genres.map(async (genre: string) => {
         const existingGenre = await prisma.genre.findFirst({
           where: { name: genre },
@@ -100,7 +100,7 @@ const initCronRun = async () => {
       const createdGenres = await Promise.all(genrePromises);
 
       // Create or connect the Subgenre records
-      const styles = result.subgenres;
+      const styles = result.style;
       const subgenrePromises = styles.map(async (subgenre: string) => {
         const existingSubgenre = await prisma.subgenre.findFirst({
           where: { name: subgenre },
@@ -122,26 +122,44 @@ const initCronRun = async () => {
       });
       const createdSubgenres = await Promise.all(subgenrePromises);
 
-      // Create the Album record
-      await prisma.album.create({
-        data: {
+      // Check if master already exists in Albums
+      const existingAlbum = await prisma.album.findUnique({
+        where: {
           discogsMasterId: dbAlbum.discogsMasterId,
-          title: dbAlbum.title,
-          artist: dbAlbum.artist,
-          label: dbAlbum.label,
-          releaseYear: parseInt(dbAlbum.releaseYear),
-          genres: { connect: createdGenres.map(genre => ({ id: genre.id })) },
-          subgenres: { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) },
-          // imageUrl: masterRelease.imageUrl,
-          imageUrl: dbAlbum.imageUrl,
-          tracklist: {
-            create: dbAlbum.tracklist.map((item: any) => ({
-              title: item.name,
-              order: item.order,
-            })),
-          },
         },
       });
+
+      // Create the Album record if not existing
+      if (!existingAlbum) {
+        await prisma.album.create({
+          data: {
+            discogsMasterId: dbAlbum.discogsMasterId,
+            title: dbAlbum.title,
+            artist: dbAlbum.artist,
+            label: dbAlbum.label,
+            releaseYear: dbAlbum.releaseYear ? parseInt(dbAlbum.releaseYear) : null,
+            genres: { connect: createdGenres.map(genre => ({ id: genre.id })) },
+            subgenres: { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) },
+            // imageUrl: masterRelease.imageUrl,
+            imageUrl: dbAlbum.imageUrl,
+            tracklist: {
+              create: dbAlbum.tracklist.map((item: any) => ({
+                title: item.name,
+                order: item.order,
+              })),
+            },
+          },
+        });
+      }
+
+      // Iterate count and calculate percentage of total releases processed
+      count++;
+      const percentageComplete = Math.floor((count / labelSearchData.length) * 100);
+
+      if (percentageComplete > previousWholePercent) {
+        console.log(`${percentageComplete}% completed`);
+        previousWholePercent = percentageComplete;
+      }
     }
 
     // Step 12: Set lastProcessedLabel as currentLabel
@@ -177,9 +195,9 @@ async function getMasterDetails(masterId: number) {
   const response = await makeDelayedRequest(apiUrl, 1000);
 
   return {
-    title: response.title,
-    artist: response.artists[0],
-    tracklist: response.tracklist,
+    title: response.data.title,
+    artist: response.data.artists[0].name,
+    tracklist: response.data.tracklist,
   };
 }
 

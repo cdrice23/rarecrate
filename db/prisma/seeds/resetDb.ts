@@ -19,5 +19,19 @@ export async function main() {
   //     data: { imageUrl: undefined },
   //   });
   // }
-  await prisma.recordLabel.deleteMany();
+  // await prisma.recordLabel.deleteMany();
+  await prisma.tracklistItem.deleteMany({
+    where: {
+      id: {
+        gte: 8917,
+      },
+    },
+  });
+  await prisma.album.deleteMany({
+    where: {
+      id: {
+        gte: 709,
+      },
+    },
+  });
 }
