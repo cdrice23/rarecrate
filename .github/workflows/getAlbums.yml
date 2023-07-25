@@ -1,9 +1,9 @@
-name: Run getAlbums.ts script
+name: Nightly getAlbums run
 
 on:
   schedule:
-    # 10:43 PM CST
-    - cron: '58 3 * * *'
+    # Runs nightly @ 2 AM CST for ~3 hours
+    - cron: '0 8 * * *'
 
 jobs:
   run_script:
