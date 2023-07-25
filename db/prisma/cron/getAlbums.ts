@@ -26,8 +26,8 @@ const initCronRun = async () => {
 
   // Step 2 & 3: Create a new CronRun record and set targetEndTime
   const startAt = new Date();
-  // const endAt = new Date(startAt.getTime() + 3 * 60 * 60 * 1000); // 3 Hours from now
-  const endAt = new Date(startAt.getTime() + 30000); // end in 30 seconds
+  const endAt = new Date(startAt.getTime() + 3 * 60 * 60 * 1000); // 3 Hours from now
+  // const endAt = new Date(startAt.getTime() + 30000); // end in 30 seconds
   console.log(startAt.toLocaleString());
   console.log(endAt.toLocaleString());
 
