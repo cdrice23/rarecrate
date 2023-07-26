@@ -62,94 +62,97 @@ const initCronRun = async () => {
     let previousWholePercent = 0;
     // Step 8: loop through each searchResult
     for (let result of labelSearchData) {
-      // Step 9: Hit master_id endpoint to get remaining album details
-      const masterDetails = await getMasterDetails(result.master_id);
-
-      // Step 10: create dbAlbum from frankenstein details + result
-      const dbAlbum = {
-        discogsMasterId: result.master_id,
-        title: masterDetails.title,
-        artist: masterDetails.artist,
-        label: result.label[0],
-        releaseYear: result.year ?? null,
-        genres: result.genre,
-        subgenres: result.style,
-        tracklist: masterDetails.tracklist.map((track: any, i: number) => ({
-          order: i + 1,
-          name: track.title,
-        })),
-        imageUrl: result.cover_image,
-      };
-
-      // Step 11: Create/connect genres + subgenres and create albums
-      // Create or connect the Genre records
-      const genres = result.genre;
-      const genrePromises = genres.map(async (genre: string) => {
-        const existingGenre = await prisma.genre.findFirst({
-          where: { name: genre },
-        });
-
-        if (existingGenre) {
-          return { ...existingGenre };
-        } else {
-          return prisma.genre.create({
-            data: { name: genre },
-          });
-        }
-      });
-      const createdGenres = await Promise.all(genrePromises);
-
-      // Create or connect the Subgenre records
-      const styles = result.style;
-      const subgenrePromises = styles.map(async (subgenre: string) => {
-        const existingSubgenre = await prisma.subgenre.findFirst({
-          where: { name: subgenre },
-        });
-
-        if (existingSubgenre) {
-          return { ...existingSubgenre };
-        } else {
-          const parentGenreName = genres[0];
-          const parentGenre = createdGenres.find(genre => genre.name === parentGenreName);
-
-          return prisma.subgenre.create({
-            data: {
-              name: subgenre,
-              parentGenre: { connect: { id: parentGenre.id } },
-            },
-          });
-        }
-      });
-      const createdSubgenres = await Promise.all(subgenrePromises);
-
       // Check if master already exists in Albums
       const existingAlbum = await prisma.album.findUnique({
         where: {
-          discogsMasterId: dbAlbum.discogsMasterId,
+          discogsMasterId: result.master_id,
         },
       });
 
       // Create the Album record if not existing
       if (!existingAlbum) {
-        await prisma.album.create({
-          data: {
-            discogsMasterId: dbAlbum.discogsMasterId,
-            title: dbAlbum.title,
-            artist: dbAlbum.artist,
-            label: dbAlbum.label,
-            releaseYear: dbAlbum.releaseYear ? parseInt(dbAlbum.releaseYear) : null,
-            genres: { connect: createdGenres.map(genre => ({ id: genre.id })) },
-            subgenres: { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) },
-            // imageUrl: masterRelease.imageUrl,
-            imageUrl: dbAlbum.imageUrl,
-            tracklist: {
-              create: dbAlbum.tracklist.map((item: any) => ({
-                title: item.name,
-                order: item.order,
-              })),
+        // Step 9: Hit master_id endpoint to get remaining album details
+        const masterDetails = await getMasterDetails(result.master_id);
+
+        // If no artist or title from getMasterDetails, skip record
+        if (masterDetails.artist && masterDetails.title) {
+          // Step 10: create dbAlbum from frankenstein details + result
+          const dbAlbum = {
+            discogsMasterId: result.master_id,
+            title: masterDetails.title,
+            artist: masterDetails.artist,
+            label: result.label[0],
+            releaseYear: result.year ?? null,
+            genres: result.genre,
+            subgenres: result.style,
+            tracklist: masterDetails.tracklist.map((track: any, i: number) => ({
+              order: i + 1,
+              name: track.title,
+            })),
+            imageUrl: result.cover_image,
+          };
+
+          // Step 11: Create/connect genres + subgenres and create albums
+          // Create or connect the Genre records
+          const genres = result.genre;
+          const genrePromises = genres.map(async (genre: string) => {
+            const existingGenre = await prisma.genre.findFirst({
+              where: { name: genre },
+            });
+
+            if (existingGenre) {
+              return { ...existingGenre };
+            } else {
+              return prisma.genre.create({
+                data: { name: genre },
+              });
+            }
+          });
+          const createdGenres = await Promise.all(genrePromises);
+
+          // Create or connect the Subgenre records
+          const styles = result.style;
+          const subgenrePromises = styles.map(async (subgenre: string) => {
+            const existingSubgenre = await prisma.subgenre.findFirst({
+              where: { name: subgenre },
+            });
+
+            if (existingSubgenre) {
+              return { ...existingSubgenre };
+            } else {
+              const parentGenreName = genres[0];
+              const parentGenre = createdGenres.find(genre => genre.name === parentGenreName);
+
+              return prisma.subgenre.create({
+                data: {
+                  name: subgenre,
+                  parentGenre: { connect: { id: parentGenre.id } },
+                },
+              });
+            }
+          });
+          const createdSubgenres = await Promise.all(subgenrePromises);
+
+          await prisma.album.create({
+            data: {
+              discogsMasterId: dbAlbum.discogsMasterId,
+              title: dbAlbum.title,
+              artist: dbAlbum.artist,
+              label: dbAlbum.label,
+              releaseYear: dbAlbum.releaseYear ? parseInt(dbAlbum.releaseYear) : null,
+              genres: { connect: createdGenres.map(genre => ({ id: genre.id })) },
+              subgenres: { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) },
+              // imageUrl: masterRelease.imageUrl,
+              imageUrl: dbAlbum.imageUrl,
+              tracklist: {
+                create: dbAlbum.tracklist.map((item: any) => ({
+                  title: item.name,
+                  order: item.order,
+                })),
+              },
             },
-          },
-        });
+          });
+        }
       }
 
       // Iterate count and calculate percentage of total releases processed
@@ -193,10 +196,12 @@ initCronRun()
 async function getMasterDetails(masterId: number) {
   const apiUrl = `https://api.discogs.com/masters/${masterId}`;
   const response = await makeDelayedRequest(apiUrl, 1000);
+  // console.log(`masterId: ${masterId}`)
+  // console.log(response.data.artists)
 
   return {
-    title: response.data.title,
-    artist: response.data.artists[0].name,
+    title: response.data.title ?? null,
+    artist: response.data.artists ? response.data.artists[0].name : null,
     tracklist: response.data.tracklist,
   };
 }

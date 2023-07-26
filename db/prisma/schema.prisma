@@ -19,40 +19,42 @@ model User {
 }
 
 model Profile {
-  id                     Int             @id @default(autoincrement())
-  user                   User            @relation(fields: [userId], references: [id])
+  id                     Int              @id @default(autoincrement())
+  user                   User             @relation(fields: [userId], references: [id])
   userId                 Int
-  username               String          @unique
-  isPrivate              Boolean         @default(false)
-  bio                    String?         @db.Text
+  username               String           @unique
+  isPrivate              Boolean          @default(false)
+  bio                    String?          @db.Text
   image                  String?
-  followers              Follow[]        @relation("Follows")
-  following              Follow[]        @relation("Following")
-  crates                 Crate[]         @relation("CreatedByProfile")
-  favorites              Crate[]         @relation("FavoritedByProfile")
+  followers              Follow[]         @relation("Follows")
+  following              Follow[]         @relation("Following")
+  crates                 Crate[]          @relation("CreatedByProfile")
+  favorites              Crate[]          @relation("FavoritedByProfile")
   socialLinks            SocialLink[]
-  followRequestsSent     FollowRequest[] @relation("FollowRequestSent")
-  followRequestsReceived FollowRequest[] @relation("FollowRequestReceived")
-  createdAt              DateTime        @default(now())
-  updatedAt              DateTime        @updatedAt
-  searchAndSelectCount   Int             @default(0)
+  followRequestsSent     FollowRequest[]  @relation("FollowRequestSent")
+  followRequestsReceived FollowRequest[]  @relation("FollowRequestReceived")
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  searchAndSelectCount   Int              @default(0)
+  recommendations        Recommendation[]
 
   @@index([userId])
 }
 
 model Crate {
-  id                   Int          @id @default(autoincrement())
+  id                   Int              @id @default(autoincrement())
   title                String
-  description          String?      @db.Text
-  creator              Profile      @relation("CreatedByProfile", fields: [creatorId], references: [id])
+  description          String?          @db.Text
+  creator              Profile          @relation("CreatedByProfile", fields: [creatorId], references: [id])
   creatorId            Int
-  favoritedBy          Profile[]    @relation("FavoritedByProfile")
+  favoritedBy          Profile[]        @relation("FavoritedByProfile")
   labels               Label[]
-  createdAt            DateTime     @default(now())
-  updatedAt            DateTime     @updatedAt
-  isRanked             Boolean      @default(false)
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  isRanked             Boolean          @default(false)
   albums               CrateAlbum[]
-  searchAndSelectCount Int          @default(0)
+  searchAndSelectCount Int              @default(0)
+  recommendedIn        Recommendation[]
 
   @@index([creatorId])
 }
@@ -185,4 +187,18 @@ model SelectedSearchResult {
   searchResult String
   resultType   String
   selectedId   Int
+}
+
+model Recommendation {
+  id        Int      @id @default(autoincrement())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId Int
+  crate     Crate    @relation(fields: [crateId], references: [id])
+  crateId   Int
+  seen      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([profileId])
+  @@index([crateId])
 }

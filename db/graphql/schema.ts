@@ -143,4 +143,51 @@ export const typeDefs = `
     cronJob: CronJob
     cronJobId: Int
   }
+
+  type Query {
+    getUser(id: ID!): User
+    listUsers: [User]!
+  
+    getProfile(id: ID!): Profile
+    listProfiles: [Profile]!
+  
+    getCrate(id: ID!): Crate
+    listCrates: [Crate]!
+  
+    getFollow(id: ID!): Follow
+    listFollows: [Follow]!
+  
+    getSocialLink(id: ID!): SocialLink
+    listSocialLinks: [SocialLink]!
+  
+    getFollowRequest(id: ID!): FollowRequest
+    listFollowRequests: [FollowRequest]!
+  
+    getAlbum(id: ID!): Album
+    listAlbums: [Album]!
+  
+    getGenre(id: ID!): Genre
+    listGenres: [Genre]!
+  
+    getSubgenre(id: ID!): Subgenre
+    listSubgenres: [Subgenre]!
+  
+    getTracklistItem(id: ID!): TracklistItem
+    listTracklistItems: [TracklistItem]!
+  
+    getCrateAlbum(id: ID!): CrateAlbum
+    listCrateAlbums: [CrateAlbum]!
+  
+    getLabel(id: ID!): Label
+    listLabels: [Label]!
+  
+    getTag(id: ID!): Tag
+    listTags: [Tag]!
+  
+    getCronJob(id: ID!): CronJob
+    listCronJobs: [CronJob]!
+  
+    getCronRun(id: ID!): CronRun
+    listCronRuns: [CronRun]!
+  }
 `;
