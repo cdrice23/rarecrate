@@ -2,5 +2,5 @@ html {
   background: var(--background);
 }
 
-// @import 'layouts/public.scss';
-// @import 'layouts/dashboard.scss';
+@import 'layouts/public.scss';
+@import 'layouts/authed.scss';

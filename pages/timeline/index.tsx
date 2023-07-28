@@ -2,6 +2,8 @@ import { AuthedLayout } from '@/lib/layouts/Authed';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
+import authed from '../../core/helpers/authed';
+
 const DiscoverPage = (props: any) => {
   const { user, isLoading } = useUser();
   return (
@@ -14,3 +16,5 @@ const DiscoverPage = (props: any) => {
 };
 
 export default DiscoverPage;
+
+export const getServerSideProps = authed();

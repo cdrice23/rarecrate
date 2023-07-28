@@ -1,0 +1,12 @@
+@import 'lib/styles/variables.scss';
+
+.settings-content-wrapper {
+  .settings-form-wrapper {
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: block;
+    margin-top: $space-larger;
+    padding: $space-large;
+  }
+}

@@ -1,6 +1,5 @@
 import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
-
-// export default handleAuth()
+import { Route } from '../../../core/enums/routes';
 
 interface Error {
   status?: number;
@@ -11,7 +10,7 @@ export default handleAuth({
     try {
       // Pass custom parameters to login
       await handleLogin(req, res, {
-        returnTo: '/discover',
+        returnTo: Route.Timeline,
       });
     } catch (error) {
       res.status(error.status || 400).json({ message: error.message });

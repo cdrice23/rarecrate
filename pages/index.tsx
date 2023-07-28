@@ -4,7 +4,6 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 const Landing = (props: any) => {
   const { user, isLoading } = useUser();
-  console.log(user);
   return (
     <PublicLayout>
       <h1>This is the Landing Page</h1>
