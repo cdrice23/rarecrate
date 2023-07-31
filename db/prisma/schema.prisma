@@ -100,9 +100,9 @@ model FollowRequest {
 model Album {
   id                   Int             @id @default(autoincrement())
   discogsMasterId      Int             @unique
-  title                String
+  title                String          @db.Text
   artist               String
-  label                String
+  label                String          @db.Text
   releaseYear          Int?
   genres               Genre[]
   subgenres            Subgenre[]
