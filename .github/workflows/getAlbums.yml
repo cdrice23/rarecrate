@@ -2,8 +2,8 @@ name: Nightly getAlbums run
 
 on:
   schedule:
-    # Runs nightly @ 2 AM CST for ~3 hours
-    - cron: '0 8 * * *'
+    # Runs nightly @ 1 AM CST for ~4.5 hours
+    - cron: '0 7 * * *'
 
 jobs:
   run_script:
