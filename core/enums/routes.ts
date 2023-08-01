@@ -9,4 +9,5 @@ export enum Route {
   Search = '/search',
   Dig = '/dig',
   Profile = '/profile',
+  AddCrate = '/create',
 }

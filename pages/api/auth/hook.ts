@@ -4,7 +4,6 @@ import { prisma } from '../../../db/prismaClient';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, user, secret } = req.body;
-  console.log(req.body.user);
 
   if (req.method !== 'POST') {
     return res.status(403).json({ message: 'Method not allowed' });

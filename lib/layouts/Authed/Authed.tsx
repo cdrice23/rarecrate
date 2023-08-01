@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 import styles from './Authed.module.scss';
+import NavBar from './NavBar';
+import cx from 'classnames';
 
 interface PublicLayoutProps {
   children: ReactNode;
@@ -8,7 +10,8 @@ interface PublicLayoutProps {
 const AuthedLayout = ({ children }: PublicLayoutProps) => {
   return (
     <>
-      <div className={styles.wrapper}>{children}</div>
+      <div className={cx('wrapper')}>{children}</div>
+      <NavBar className={cx('navBar')}></NavBar>
     </>
   );
 };
