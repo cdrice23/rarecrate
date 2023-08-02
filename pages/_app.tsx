@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 import '@/styles/globals.scss';
 
 import { client } from '../db/apollo';
+import { LocalStateProvider } from '@/lib/context/state';
 
 export default function App({ Component, pageProps }: any) {
   return (
@@ -12,11 +13,13 @@ export default function App({ Component, pageProps }: any) {
       <Head>
         <title>Rare Crate</title>
       </Head>
-      <UserProvider>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </UserProvider>
+      <LocalStateProvider>
+        <UserProvider>
+          <ApolloProvider client={client}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </UserProvider>
+      </LocalStateProvider>
     </>
   );
 }
