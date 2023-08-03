@@ -64,6 +64,7 @@ type Profile {
 
 type Query {
   getProfileById(userId: Int!): Profile
+  helloWorld: String
 }
 
 type Subgenre {

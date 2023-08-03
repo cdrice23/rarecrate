@@ -8,3 +8,10 @@ export const GET_PROFILE_BY_ID = gql`
     }
   }
 `;
+
+// testing endpoint
+export const HELLO_WORLD = gql`
+  query HelloWorld {
+    helloWorld
+  }
+`;

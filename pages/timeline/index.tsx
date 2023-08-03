@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_PROFILE_BY_ID } from '@/db/graphql/clientQueries';
+import { GET_PROFILE_BY_ID, HELLO_WORLD } from '@/db/graphql/clientQueries';
 
 interface TimelineProps {
   userId?: number;
@@ -19,8 +19,10 @@ interface TimelineProps {
 const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => {
   const { setUserId, setEmail, setProfileId, setUsername } = useLocalState();
   const { loading, error, data } = useQuery(GET_PROFILE_BY_ID, {
-    variables: { userId: userId },
+    variables: { userId: 1208 },
   });
+
+  console.log(data);
 
   useEffect(() => {
     if (userId) {
@@ -30,21 +32,21 @@ const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => 
     if (email) {
       setEmail(email);
     }
-    if (!loading && !error && data) {
-      if (!profileId) {
-        setProfileId(data.getProfileById.id);
-      }
+    // if (!loading && !error && data) {
+    //   if (!profileId) {
+    //     setProfileId(data.getProfileById.id);
+    //   }
 
-      if (!username) {
-        setUsername(data.getProfileById.username);
-      }
-    }
+    //   if (!username) {
+    //     setUsername(data.getProfileById.username);
+    //   }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, email, loading, error, data]);
 
   return (
     <AuthedLayout>
-      {!loading && <h1>{`Hi, ${username} - this is the Crate Digging Page!`}</h1>}
+      {!loading && <h1>{`Hi, ${email} - this is the Crate Digging Page!`}</h1>}
       <p>{`Your userId is ${userId}`}</p>
       <p>This will be the first page upon login.</p>
       <LinkButton href="/api/auth/logout">Logout of Rare Crate</LinkButton>
