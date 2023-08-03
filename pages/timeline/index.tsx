@@ -7,23 +7,21 @@ import { useQuery } from '@apollo/client';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_PROFILE_BY_ID, HELLO_WORLD } from '@/db/graphql/clientQueries';
+import { GET_PROFILE_BY_ID } from '@/db/graphql/clientQueries';
 
 interface TimelineProps {
   userId?: number;
   email?: string;
-  profileId?: string;
+  profileId?: number;
   username?: string;
 }
 
-const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => {
-  const { setUserId, setEmail, setProfileId, setUsername } = useLocalState();
+const TimelinePage = ({ userId, email }: TimelineProps) => {
+  const { setUserId, setEmail, setProfileId, setUsername, profileId, username } = useLocalState();
   const { loading, error, data } = useQuery(GET_PROFILE_BY_ID, {
     variables: { userId: 1208 },
   });
   const userProfiles = data?.getProfileById;
-
-  console.log(userProfiles?.[0].username || 'Waiting');
 
   useEffect(() => {
     if (userId) {
@@ -33,24 +31,24 @@ const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => 
     if (email) {
       setEmail(email);
     }
-    // if (!loading && !error && data) {
-    //   if (!profileId) {
-    //     setProfileId(data.getProfileById.id);
-    //   }
+    if (!loading && !error && userProfiles) {
+      if (!profileId) {
+        setProfileId(userProfiles[0].id);
+      }
 
-    //   if (!username) {
-    //     setUsername(data.getProfileById.username);
-    //   }
-    // }
+      if (!username) {
+        setUsername(userProfiles[0].username);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, email, loading, error, data]);
 
   return (
     <AuthedLayout>
-      {!loading && !error && userProfiles && (
+      {!loading && !error && profileId && username && (
         <>
-          <h1>{`Hi, ${userProfiles[0].username} - this is the Crate Digging Page!`}</h1>
-          <p>{`Your profileId is ${userProfiles[0].id}`}</p>
+          <h1>{`Hi, ${username} - this is the Crate Digging Page!`}</h1>
+          <p>{`Your profileId is ${profileId}`}</p>
         </>
       )}
       <p>This will be the first page upon login.</p>
