@@ -64,11 +64,12 @@ model Crate {
 }
 
 model Follow {
-  id          Int     @id @default(autoincrement())
-  follower    Profile @relation("Follows", fields: [followerId], references: [id])
+  id          Int      @id @default(autoincrement())
+  follower    Profile  @relation("Follows", fields: [followerId], references: [id])
   followerId  Int
-  following   Profile @relation("Following", fields: [followingId], references: [id])
+  following   Profile  @relation("Following", fields: [followingId], references: [id])
   followingId Int
+  createdAt   DateTime @default(now())
 
   @@index([followerId])
   @@index([followingId])

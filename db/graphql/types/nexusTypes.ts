@@ -439,7 +439,7 @@ import {
   SelectedSearchResult as PrismaSelectedSearchResult,
   Recommendation as PrismaRecommendation,
 } from 'nexus-prisma';
-import { GraphQLDateTime } from 'graphql-iso-date';
+// import { DateTime } from './nexusScalars'
 
 export const User = objectType({
   name: PrismaUser.$name,
@@ -456,13 +456,11 @@ export const User = objectType({
     t.field(PrismaUser.role.name, {
       type: PrismaUser.role.type,
     });
-    t.field(PrismaUser.createdAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.createdAt,
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
     });
-    t.field(PrismaUser.updatedAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.updatedAt,
+    t.nonNull.field('updatedAt', {
+      type: 'DateTime',
     });
     t.field(PrismaUser.profiles.name, {
       type: Profile,
@@ -501,13 +499,11 @@ export const Profile = objectType({
     t.field(PrismaProfile.image.name, {
       type: PrismaProfile.image.type,
     });
-    t.field(PrismaProfile.createdAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.createdAt,
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
     });
-    t.field(PrismaProfile.updatedAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.updatedAt,
+    t.nonNull.field('updatedAt', {
+      type: 'DateTime',
     });
     t.field(PrismaProfile.searchAndSelectCount.name, {
       type: PrismaProfile.searchAndSelectCount.type,
@@ -613,13 +609,11 @@ export const Crate = objectType({
     t.field(PrismaCrate.creatorId.name, {
       type: PrismaCrate.creatorId.type,
     });
-    t.field(PrismaCrate.createdAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.createdAt,
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
     });
-    t.field(PrismaCrate.updatedAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.updatedAt,
+    t.nonNull.field('updatedAt', {
+      type: 'DateTime',
     });
     t.field(PrismaCrate.isRanked.name, {
       type: PrismaCrate.isRanked.type,
@@ -688,6 +682,9 @@ export const Follow = objectType({
     t.field(PrismaFollow.followingId.name, {
       type: PrismaFollow.followingId.type,
     });
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
+    });
   },
 });
 
@@ -733,9 +730,8 @@ export const FollowRequest = objectType({
     t.field(PrismaFollowRequest.requestStatus.name, {
       type: PrismaFollowRequest.requestStatus.type,
     });
-    t.field(PrismaFollowRequest.sentAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.sentAt,
+    t.nonNull.field('sentAt', {
+      type: 'DateTime',
     });
   },
 });
@@ -932,13 +928,11 @@ export const CronRun = objectType({
     t.field(PrismaCronRun.id.name, {
       type: PrismaCronRun.id.type,
     });
-    t.field(PrismaCronRun.createdAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.createdAt,
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
     });
-    t.field(PrismaCronRun.completedAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.completedAt,
+    t.nonNull.field('completedAt', {
+      type: 'DateTime',
     });
     t.field(PrismaCronRun.lastProcessedLabel.name, {
       type: PrismaCronRun.lastProcessedLabel.type,
@@ -993,14 +987,6 @@ export const Recommendation = objectType({
     });
     t.field(PrismaRecommendation.seen.name, {
       type: PrismaRecommendation.seen.type,
-    });
-    t.field(PrismaRecommendation.createdAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.createdAt,
-    });
-    t.field(PrismaRecommendation.updatedAt.name, {
-      type: GraphQLDateTime,
-      resolve: parent => parent.updatedAt,
     });
   },
 });

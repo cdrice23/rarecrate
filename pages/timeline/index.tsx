@@ -21,8 +21,9 @@ const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => 
   const { loading, error, data } = useQuery(GET_PROFILE_BY_ID, {
     variables: { userId: 1208 },
   });
+  const userProfiles = data?.getProfileById;
 
-  console.log(data);
+  console.log(userProfiles?.[0].username || 'Waiting');
 
   useEffect(() => {
     if (userId) {
@@ -46,8 +47,12 @@ const TimelinePage = ({ userId, email, profileId, username }: TimelineProps) => 
 
   return (
     <AuthedLayout>
-      {!loading && <h1>{`Hi, ${email} - this is the Crate Digging Page!`}</h1>}
-      <p>{`Your userId is ${userId}`}</p>
+      {!loading && !error && userProfiles && (
+        <>
+          <h1>{`Hi, ${userProfiles[0].username} - this is the Crate Digging Page!`}</h1>
+          <p>{`Your profileId is ${userProfiles[0].id}`}</p>
+        </>
+      )}
       <p>This will be the first page upon login.</p>
       <LinkButton href="/api/auth/logout">Logout of Rare Crate</LinkButton>
     </AuthedLayout>
