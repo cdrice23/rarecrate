@@ -120,7 +120,7 @@ type Profile {
 }
 
 type Query {
-  getProfileById(userId: Int!): [Profile!]!
+  getUsernameById(userId: Int!): [Profile!]!
 }
 
 type Recommendation {

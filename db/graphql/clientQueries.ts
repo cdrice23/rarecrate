@@ -1,17 +1,10 @@
 import { gql } from '@apollo/client';
 
-export const GET_PROFILE_BY_ID = gql`
-  query GetProfileById($userId: Int!) {
-    getProfileById(userId: $userId) {
+export const GET_USERNAME_BY_ID = gql`
+  query GetUsernameById($userId: Int!) {
+    getUsernameById(userId: $userId) {
       id
       username
     }
-  }
-`;
-
-// testing endpoint
-export const HELLO_WORLD = gql`
-  query HelloWorld {
-    helloWorld
   }
 `;

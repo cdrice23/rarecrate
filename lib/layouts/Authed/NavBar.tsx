@@ -8,15 +8,6 @@ type NavBarProps = {
 };
 
 export const NavBar = ({ usernameMain, className }: NavBarProps) => {
-  const { setUserId, setEmail, setProfileIdMain, setUsernameMain } = useLocalState();
-  const handleLogOut = () => {
-    // Reset the local state to default values
-    setUserId(null);
-    setEmail('');
-    setProfileIdMain(null);
-    setUsernameMain('');
-  };
-
   return (
     <div className={className}>
       <LinkButton href={Route.Timeline}>
@@ -34,7 +25,7 @@ export const NavBar = ({ usernameMain, className }: NavBarProps) => {
       <LinkButton href={Route.Profile + `/${usernameMain}`}>
         <span>Profile</span>
       </LinkButton>
-      <LinkButton href={PublicRoute.Logout} onClick={handleLogOut}>
+      <LinkButton href={PublicRoute.Logout}>
         <span>Logout</span>
       </LinkButton>
     </div>

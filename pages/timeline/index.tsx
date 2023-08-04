@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_PROFILE_BY_ID } from '@/db/graphql/clientQueries';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientQueries';
 
 interface TimelineProps {
   userId?: number;
@@ -17,12 +17,11 @@ interface TimelineProps {
 
 const TimelinePage = ({ userId, email }: TimelineProps) => {
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
-  const { loading, error, data } = useQuery(GET_PROFILE_BY_ID, {
+  const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
     // variables: { userId },
     variables: { userId: 1298 },
   });
-  const userProfiles = data?.getProfileById;
 
   useEffect(() => {
     if (userId) {
@@ -32,6 +31,9 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
     if (email) {
       setEmail(email);
     }
+
+    const userProfiles = data?.getUsernameById;
+
     if (!loading && !error && userProfiles) {
       if (!profileIdMain) {
         setProfileIdMain(userProfiles[0].id);
