@@ -4,23 +4,23 @@ import useLocalStorage from '../../core/hooks/useLocalStorage';
 export interface StateInt {
   userId?: number;
   email?: string;
-  profileId?: number;
-  username?: string;
+  profileIdMain?: number;
+  usernameMain?: string;
   setUserId: (val: number | null) => void;
   setEmail: (val: string) => void;
-  setProfileId: (val: number | null) => void;
-  setUsername: (val: string) => void;
+  setProfileIdMain: (val: number | null) => void;
+  setUsernameMain: (val: string) => void;
 }
 
 const stateContextDefaults: StateInt = {
   userId: null,
   email: '',
-  profileId: null,
-  username: '',
+  profileIdMain: null,
+  usernameMain: '',
   setUserId: () => {},
   setEmail: () => {},
-  setProfileId: () => {},
-  setUsername: () => {},
+  setProfileIdMain: () => {},
+  setUsernameMain: () => {},
 };
 
 const LocalStateContext = createContext<StateInt>(stateContextDefaults);
@@ -32,18 +32,18 @@ interface PropsInt {
 export function LocalStateProvider({ children }: PropsInt) {
   const [userId, setUserId] = useLocalStorage<number | null>('userId', null);
   const [email, setEmail] = useLocalStorage<string>('email', '');
-  const [profileId, setProfileId] = useLocalStorage<number | null>('profileId', null);
-  const [username, setUsername] = useLocalStorage<string>('username', '');
+  const [profileIdMain, setProfileIdMain] = useLocalStorage<number | null>('profileId', null);
+  const [usernameMain, setUsernameMain] = useLocalStorage<string>('username', '');
 
   const sharedState: StateInt = {
     userId,
     email,
-    profileId,
-    username,
+    profileIdMain,
+    usernameMain,
     setUserId,
     setEmail,
-    setProfileId,
-    setUsername,
+    setProfileIdMain,
+    setUsernameMain,
   };
 
   return <LocalStateContext.Provider value={sharedState}>{children}</LocalStateContext.Provider>;

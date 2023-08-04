@@ -4,12 +4,14 @@ import { ReactNode } from 'react';
 interface LinkProps {
   href: string;
   children: ReactNode;
+  className?: string;
+  onClick?: () => void;
 }
 
-const LinkButton = ({ href, children }: LinkProps) => {
+const LinkButton = ({ href, children, onClick }: LinkProps) => {
   return (
     <Link href={href} passHref>
-      {children}
+      <button onClick={onClick}>{children}</button>
     </Link>
   );
 };

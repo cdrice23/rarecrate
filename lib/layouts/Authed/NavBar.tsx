@@ -1,47 +1,42 @@
-import { ReactNode } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { Route, PublicRoute } from '../../../core/enums/routes';
+import { useLocalState } from '@/lib/context/state';
 
 type NavBarProps = {
+  usernameMain: string;
   className: string;
 };
 
-export const NavBar = ({ className }: NavBarProps) => {
-  const router = useRouter();
+export const NavBar = ({ usernameMain, className }: NavBarProps) => {
+  const { setUserId, setEmail, setProfileIdMain, setUsernameMain } = useLocalState();
+  const handleLogOut = () => {
+    // Reset the local state to default values
+    setUserId(null);
+    setEmail('');
+    setProfileIdMain(null);
+    setUsernameMain('');
+  };
 
   return (
     <div className={className}>
-      <Link href={Route.Timeline} passHref>
-        <span>
-          <p>Timeline</p>
-        </span>
-      </Link>
-      <Link href={Route.Dig} passHref>
-        <span>
-          <p>Crate Digging</p>
-        </span>
-      </Link>
-      <Link href={Route.AddCrate} passHref>
-        <span>
-          <p>Add Crate</p>
-        </span>
-      </Link>
-      <Link href={Route.Search} passHref>
-        <span>
-          <p>Search</p>
-        </span>
-      </Link>
-      <Link href={Route.Profile} passHref>
-        <span>
-          <p>Profile</p>
-        </span>
-      </Link>
-      <Link href={PublicRoute.Logout} passHref>
-        <span>
-          <p>Logout</p>
-        </span>
-      </Link>
+      <LinkButton href={Route.Timeline}>
+        <span>Timeline</span>
+      </LinkButton>
+      <LinkButton href={Route.Dig}>
+        <span>Crate Digging</span>
+      </LinkButton>
+      <LinkButton href={Route.AddCrate}>
+        <span>Add Crate</span>
+      </LinkButton>
+      <LinkButton href={Route.Search}>
+        <span>Search</span>
+      </LinkButton>
+      <LinkButton href={Route.Profile + `/${usernameMain}`}>
+        <span>Profile</span>
+      </LinkButton>
+      <LinkButton href={PublicRoute.Logout} onClick={handleLogOut}>
+        <span>Logout</span>
+      </LinkButton>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
-import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
 
@@ -17,9 +16,11 @@ interface TimelineProps {
 }
 
 const TimelinePage = ({ userId, email }: TimelineProps) => {
-  const { setUserId, setEmail, setProfileId, setUsername, profileId, username } = useLocalState();
+  const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   const { loading, error, data } = useQuery(GET_PROFILE_BY_ID, {
-    variables: { userId: 1208 },
+    // real variable to get authed user
+    // variables: { userId },
+    variables: { userId: 1298 },
   });
   const userProfiles = data?.getProfileById;
 
@@ -32,27 +33,39 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
       setEmail(email);
     }
     if (!loading && !error && userProfiles) {
-      if (!profileId) {
-        setProfileId(userProfiles[0].id);
+      if (!profileIdMain) {
+        setProfileIdMain(userProfiles[0].id);
       }
 
-      if (!username) {
-        setUsername(userProfiles[0].username);
+      if (!usernameMain) {
+        setUsernameMain(userProfiles[0].username);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, email, loading, error, data]);
 
   return (
-    <AuthedLayout>
-      {!loading && !error && profileId && username && (
+    <AuthedLayout usernameMain={usernameMain}>
+      {error ? (
         <>
-          <h1>{`Hi, ${username} - this is the Crate Digging Page!`}</h1>
-          <p>{`Your profileId is ${profileId}`}</p>
+          <h1>Error</h1>
+          <p>{error.message}</p>
         </>
-      )}
-      <p>This will be the first page upon login.</p>
-      <LinkButton href="/api/auth/logout">Logout of Rare Crate</LinkButton>
+      ) : loading ? (
+        <h1>Loading...</h1>
+      ) : profileIdMain && usernameMain ? (
+        <>
+          <h1>{`Timeline`}</h1>
+          <div>
+            <h3>{`Local State:`}</h3>
+            <p>{`userId (auth): ${userId}`}</p>
+            <p>{`email (auth): ${email}`}</p>
+            <p>{`Main Profile Id: ${profileIdMain}`}</p>
+            <p>{`Main Profile Username: ${usernameMain}`}</p>
+          </div>
+          <h3>Note: This will be the first page upon login.</h3>
+        </>
+      ) : null}
     </AuthedLayout>
   );
 };
