@@ -408,3 +408,33 @@
     padding: 8px;
   }
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  // grid-gap: 10px;
+
+  .pane {
+    grid-column: 1 / span 12;
+    text-align: center;
+
+    .sectionTitle {
+      margin-bottom: 8px;
+      color: blue;
+    }
+
+    .listActions {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        padding: 4px;
+      }
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+}

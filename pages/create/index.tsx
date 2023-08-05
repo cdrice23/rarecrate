@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
+import cx from 'classnames';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -47,7 +49,7 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
   }, [userId, email, loading, error, data]);
 
   return (
-    <AuthedLayout usernameMain={usernameMain}>
+    <AuthedLayout>
       {error ? (
         <>
           <h1>Error</h1>
@@ -57,14 +59,16 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
         <h1>Loading...</h1>
       ) : profileIdMain && usernameMain ? (
         <>
-          <h1>{`Add Crate`}</h1>
-          <div>
+          <Pane>
+            <h1>{`Add Crate`}</h1>
+          </Pane>
+          <Pane>
             <h3>{`Local State:`}</h3>
             <p>{`userId (auth): ${userId}`}</p>
             <p>{`email (auth): ${email}`}</p>
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
-          </div>
+          </Pane>
         </>
       ) : null}
     </AuthedLayout>

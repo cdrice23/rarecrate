@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
+import cx from 'classnames';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -22,8 +24,6 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
     // variables: { userId },
     variables: { userId: 1298 },
   });
-
-  console.log(error);
 
   useEffect(() => {
     if (userId) {
@@ -49,7 +49,7 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
   }, [userId, email, loading, error, data]);
 
   return (
-    <AuthedLayout usernameMain={usernameMain}>
+    <AuthedLayout>
       {error ? (
         <>
           <h1>Error</h1>
@@ -59,15 +59,19 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
         <h1>Loading...</h1>
       ) : profileIdMain && usernameMain ? (
         <>
-          <h1>{`Timeline`}</h1>
-          <div>
+          <Pane>
+            <h1>{`Timeline`}</h1>
+          </Pane>
+          <Pane>
+            <h3>Note: This will be the first page upon login.</h3>
+          </Pane>
+          <Pane>
             <h3>{`Local State:`}</h3>
             <p>{`userId (auth): ${userId}`}</p>
             <p>{`email (auth): ${email}`}</p>
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
-          </div>
-          <h3>Note: This will be the first page upon login.</h3>
+          </Pane>
         </>
       ) : null}
     </AuthedLayout>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface LinkProps {
-  href: string;
+  href?: string | null;
   children: ReactNode;
   className?: string;
 }

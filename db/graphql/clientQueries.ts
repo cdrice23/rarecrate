@@ -21,6 +21,23 @@ export const GET_MAIN_PROFILE = gql`
       isPrivate
       bio
       image
+      socialLinks {
+        id
+        username
+        platform
+      }
+      followers {
+        id
+      }
+      following {
+        id
+      }
+      crates {
+        id
+      }
+      favorites {
+        id
+      }
     }
   }
 `;
