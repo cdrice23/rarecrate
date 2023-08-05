@@ -7,6 +7,8 @@ type NavBarProps = {
 };
 
 export const NavBar = ({ usernameMain, className }: NavBarProps) => {
+  if (!usernameMain) return null;
+
   return (
     <div className={className}>
       <LinkButton href={Route.Timeline}>

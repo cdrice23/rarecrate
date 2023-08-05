@@ -120,7 +120,7 @@ type Profile {
 }
 
 type Query {
-  getProfileByUsername(username: String!): Profile!
+  getProfile(id: Int, username: String): Profile!
   getUsernameById(userId: Int!): [Profile!]!
 }
 

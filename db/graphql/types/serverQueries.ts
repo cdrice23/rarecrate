@@ -1,4 +1,4 @@
-import { queryType, nonNull, intArg, stringArg } from 'nexus';
+import { queryType, nonNull, intArg, stringArg, nullable } from 'nexus';
 import { Profile as NexusProfile } from './nexusTypes';
 
 export const ProfileQueries = queryType({
@@ -18,21 +18,16 @@ export const ProfileQueries = queryType({
         });
       },
     });
-    t.nonNull.field('getProfileByUsername', {
+    t.nonNull.field('getProfile', {
       type: NexusProfile,
       args: {
-        username: nonNull(stringArg()),
+        id: nullable(intArg()),
+        username: nullable(stringArg()),
       },
-      resolve: async (_, { username }, ctx) => {
+      resolve: async (_, { id, username }, ctx) => {
+        const where = id ? { id } : { username };
         return await ctx.prisma.profile.findUnique({
-          where: { username: username },
-          select: {
-            id: true,
-            username: true,
-            isPrivate: true,
-            bio: true,
-            image: true,
-          },
+          where,
         });
       },
     });

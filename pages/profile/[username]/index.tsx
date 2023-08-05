@@ -3,10 +3,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
 
 import authed from '../../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID, GET_PROFILE_BY_USERNAME } from '@/db/graphql/clientQueries';
+import { GET_MAIN_PROFILE } from '@/db/graphql/clientQueries';
 
 interface ProfileProps {
   userId?: number;
@@ -16,18 +17,15 @@ interface ProfileProps {
 }
 
 const ProfilePage = ({ userId, email }: ProfileProps) => {
+  const router = useRouter();
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
-  const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
+  const { loading, error, data } = useQuery(GET_MAIN_PROFILE, {
     // real variable to get authed user
     // variables: { userId },
-    variables: { userId: 1208 },
+    variables: { userId: 1208, username: router.query.username },
   });
 
-  const getProfile = useQuery(GET_PROFILE_BY_USERNAME, {
-    // real variable to get authed user
-    // variables: { userId },
-    variables: { username: 'rogerfederer' },
-  });
+  const profileData = data?.getProfile;
 
   useEffect(() => {
     if (userId) {
@@ -71,6 +69,14 @@ const ProfilePage = ({ userId, email }: ProfileProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </div>
+          <div>
+            <h3>{`Profile Data:`}</h3>
+            <p>{`Profile ID: ${profileData.id}`}</p>
+            <p>{`image: ${profileData.image}`}</p>
+            <p>{`Username: ${profileData.username}`}</p>
+            <p>{`Profile Type: ${profileData.isPrivate ? 'Private' : 'Public'}`}</p>
+            <p>{`Bio: ${profileData.bio}`}</p>
+          </div>
         </>
       ) : null}
     </AuthedLayout>
@@ -87,16 +93,6 @@ export const getServerSideProps = authed(async context => {
     props: {
       userId: prismaUser.id,
       email: auth0User.email,
-      username: 'ricechrisdtreat',
     },
   };
 });
-
-// export const getServerSideProps = authed(async context => {
-//   const { username } = context.query;
-//   return {
-//     props: {
-//       username,
-//     },
-//   };
-// });

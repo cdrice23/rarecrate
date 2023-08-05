@@ -9,9 +9,13 @@ export const GET_USERNAME_BY_ID = gql`
   }
 `;
 
-export const GET_PROFILE_BY_USERNAME = gql`
-  query GetProfileByUsername($username: String!) {
-    getProfileByUsername(username: $username) {
+export const GET_MAIN_PROFILE = gql`
+  query GetMainProfile($userId: Int!, $id: Int, $username: String) {
+    getUsernameById(userId: $userId) {
+      id
+      username
+    }
+    getProfile(id: $id, username: $username) {
       id
       username
       isPrivate

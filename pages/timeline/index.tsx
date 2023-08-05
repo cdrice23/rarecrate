@@ -23,6 +23,8 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
     variables: { userId: 1298 },
   });
 
+  console.log(error);
+
   useEffect(() => {
     if (userId) {
       setUserId(userId);
