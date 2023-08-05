@@ -1,6 +1,5 @@
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { Route, PublicRoute } from '../../../core/enums/routes';
-import { useLocalState } from '@/lib/context/state';
 
 type NavBarProps = {
   usernameMain: string;

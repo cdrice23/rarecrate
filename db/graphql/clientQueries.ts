@@ -8,3 +8,15 @@ export const GET_USERNAME_BY_ID = gql`
     }
   }
 `;
+
+export const GET_PROFILE_BY_USERNAME = gql`
+  query GetProfileByUsername($username: String!) {
+    getProfileByUsername(username: $username) {
+      id
+      username
+      isPrivate
+      bio
+      image
+    }
+  }
+`;

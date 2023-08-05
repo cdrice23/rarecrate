@@ -5,13 +5,12 @@ interface LinkProps {
   href: string;
   children: ReactNode;
   className?: string;
-  onClick?: () => void;
 }
 
-const LinkButton = ({ href, children, onClick }: LinkProps) => {
+const LinkButton = ({ href, children }: LinkProps) => {
   return (
     <Link href={href} passHref>
-      <button onClick={onClick}>{children}</button>
+      <button>{children}</button>
     </Link>
   );
 };

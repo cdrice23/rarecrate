@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 
 import authed from '../../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID } from '@/db/graphql/clientQueries';
+import { GET_USERNAME_BY_ID, GET_PROFILE_BY_USERNAME } from '@/db/graphql/clientQueries';
 
 interface ProfileProps {
   userId?: number;
@@ -21,6 +21,12 @@ const ProfilePage = ({ userId, email }: ProfileProps) => {
     // real variable to get authed user
     // variables: { userId },
     variables: { userId: 1208 },
+  });
+
+  const getProfile = useQuery(GET_PROFILE_BY_USERNAME, {
+    // real variable to get authed user
+    // variables: { userId },
+    variables: { username: 'rogerfederer' },
   });
 
   useEffect(() => {

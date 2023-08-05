@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from './Public.module.scss';
+import cx from 'classnames';
 
 interface PublicLayoutProps {
   children: ReactNode;
@@ -8,7 +8,7 @@ interface PublicLayoutProps {
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (
     <>
-      <div className={styles.wrapper}>{children}</div>
+      <div className={cx('wrapper')}>{children}</div>
     </>
   );
 };
