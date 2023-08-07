@@ -396,8 +396,9 @@
 }
 
 .navBar {
-  position: absolute;
-  bottom: 8px;
+  background-color: thistle;
+  position: sticky;
+  bottom: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -412,10 +413,58 @@
 .container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: row;
+  justify-content: center;
   // grid-gap: 10px;
+
+  .listActions {
+    grid-column: 1 / span 12;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-around;
+
+    button {
+      padding: 4px;
+    }
+  }
+  
+  .pane.crateSummaryPane {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .paneSectionFull {
+    grid-column: 1 / span 12;
+
+    .profileBar {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin: 8px;
+
+      .image {
+        margin-left: 16px;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background-color: grey;
+        border-radius: 50px;
+      }
+
+      .username {
+        margin-left: 16px;
+        flex-grow: 1;
+        text-align: left;
+      }
+    }
+  }
 
   .pane {
     grid-column: 1 / span 12;
+    display: grid;
     text-align: center;
 
     .sectionTitle {
@@ -423,14 +472,14 @@
       color: blue;
     }
 
-    .listActions {
-      margin-top: 16px;
-      display: flex;
-      justify-content: space-around;
-
-      button {
-        padding: 4px;
-      }
+    .crateSummary {
+      width: 50%;
+      display: inline-block;
+      margin: 8px;
+      background-color: lightblue;
+      height: 200px;
+      max-height: 200px;
+      place-self: center;
     }
   }
 

@@ -87,23 +87,43 @@ export const Profile = objectType({
       type: PrismaProfile.searchAndSelectCount.type,
     });
     t.list.field('followers', {
-      type: Follow,
+      type: Profile,
       resolve: (parent, _args, ctx) => {
-        return ctx.prisma.profile
-          .findUnique({
-            where: { id: parent.id },
+        return ctx.prisma.follow
+          .findMany({
+            where: { followingId: parent.id },
+            select: {
+              id: true,
+              follower: {
+                select: {
+                  id: true,
+                  username: true,
+                  image: true,
+                },
+              },
+            },
           })
-          .followers();
+          .then(follows => follows.map(follow => follow.follower));
       },
     });
     t.list.field('following', {
-      type: Follow,
+      type: Profile,
       resolve: (parent, _args, ctx) => {
-        return ctx.prisma.profile
-          .findUnique({
-            where: { id: parent.id },
+        return ctx.prisma.follow
+          .findMany({
+            where: { followerId: parent.id },
+            select: {
+              id: true,
+              following: {
+                select: {
+                  id: true,
+                  username: true,
+                  image: true,
+                },
+              },
+            },
           })
-          .following();
+          .then(follows => follows.map(follow => follow.following));
       },
     });
     t.list.field('crates', {
@@ -123,7 +143,17 @@ export const Profile = objectType({
           .findUnique({
             where: { id: parent.id },
           })
-          .favorites();
+          .favorites({
+            include: {
+              creator: {
+                select: {
+                  id: true,
+                  image: true,
+                  username: true,
+                },
+              },
+            },
+          });
       },
     });
     t.list.field('socialLinks', {

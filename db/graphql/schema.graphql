@@ -105,8 +105,8 @@ type Profile {
   favorites: [Crate]
   followRequestsReceived: [FollowRequest]
   followRequestsSent: [FollowRequest]
-  followers: [Follow]
-  following: [Follow]
+  followers: [Profile]
+  following: [Profile]
   id: Int!
   image: String
   isPrivate: Boolean!

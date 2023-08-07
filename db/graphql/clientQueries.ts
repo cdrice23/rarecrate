@@ -41,3 +41,57 @@ export const GET_MAIN_PROFILE = gql`
     }
   }
 `;
+
+// Summary view of Followers/Following from Profile Page
+export const GET_PROFILE_FOLLOWERINGS = gql`
+  query GetProfileFollowerings($id: Int, $username: String) {
+    getProfile(id: $id, username: $username) {
+      followers {
+        id
+        image
+        username
+      }
+      following {
+        id
+        image
+        username
+      }
+    }
+  }
+`;
+
+// Summary view of Crate/Favorites from Profile Page
+export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
+  query GetCratesAndFavorites($id: Int, $username: String) {
+    getProfile(id: $id, username: $username) {
+      image
+      crates {
+        id
+        title
+        labels {
+          id
+          isStandard
+        }
+        favoritedBy {
+          id
+        }
+      }
+      favorites {
+        id
+        title
+        labels {
+          id
+          isStandard
+        }
+        creator {
+          id
+          image
+          username
+        }
+        favoritedBy {
+          id
+        }
+      }
+    }
+  }
+`;

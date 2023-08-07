@@ -52,13 +52,17 @@ h3 {
 
 h4 {
   font-size: 1.6rem;
-  weight: 200;
+  // weight: 200;
 }
 
 a {
   text-decoration: none;
 }
 
-p {
-  margin-bottom: $space-medium;
+// p {
+//   margin-bottom: $space-medium;
+// }
+
+ul {
+  list-style-position: inside;
 }
