@@ -2,6 +2,8 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery } from '@apollo/client';
 import { GET_PROFILE_CRATES_AND_FAVORITES } from '@/db/graphql/clientQueries';
 import cx from 'classnames';
+import { useState } from 'react';
+import { CrateDetail } from '../CrateDetail/CrateDetail';
 
 type CrateSummaryPaneProps = {
   username: string;
@@ -9,6 +11,7 @@ type CrateSummaryPaneProps = {
 };
 
 const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
+  const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
     variables: { username: username },
   });
@@ -27,12 +30,24 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
       ) : crateSummaryData ? (
         listType === 'crates' ? (
           <>
+            <CrateDetail
+              show={showCrateDetail}
+              onClose={() => {
+                setShowCrateDetail(false);
+              }}
+            />
             <Pane>
               <h3>Crates:</h3>
             </Pane>
             <Pane crateSummaryPane={true}>
               {crateSummaryData.crates.map((crate, index) => (
-                <div key={index} className={cx('crateSummary')}>
+                <button
+                  key={index}
+                  className={cx('crateSummary')}
+                  onClick={() => {
+                    setShowCrateDetail(true);
+                  }}
+                >
                   <p>{crate.title}</p>
                   <p>{`Image: ${crateSummaryData.image}`}</p>
                   <p>{`Favorited By: ${crate.favoritedBy.length} people`}</p>
@@ -41,18 +56,30 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
-                </div>
+                </button>
               ))}
             </Pane>
           </>
         ) : (
           <>
+            <CrateDetail
+              show={showCrateDetail}
+              onClose={() => {
+                setShowCrateDetail(false);
+              }}
+            />
             <Pane>
               <h3>Favorites:</h3>
             </Pane>
             <Pane crateSummaryPane={true}>
               {crateSummaryData.favorites.map((crate, index) => (
-                <div key={index} className={cx('crateSummary')}>
+                <button
+                  key={index}
+                  className={cx('crateSummary')}
+                  onClick={() => {
+                    setShowCrateDetail(true);
+                  }}
+                >
                   <p>{crate.title}</p>
                   <p>{`Image: ${crateSummaryData.image}`}</p>
                   <p>{`Favorited By: ${crate.favoritedBy.length} people`}</p>
@@ -61,7 +88,7 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
-                </div>
+                </button>
               ))}
             </Pane>
           </>
