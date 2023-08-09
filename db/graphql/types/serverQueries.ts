@@ -1,5 +1,5 @@
-import { queryType, nonNull, intArg, stringArg, nullable } from 'nexus';
-import { Profile as NexusProfile } from './nexusTypes';
+import { queryType, nonNull, intArg, stringArg, nullable, extendType, list } from 'nexus';
+import { Profile as NexusProfile, Crate as NexusCrate, CrateAlbum as NexusCrateAlbum } from './nexusTypes';
 
 export const ProfileQueries = queryType({
   definition(t) {
@@ -28,6 +28,61 @@ export const ProfileQueries = queryType({
         const where = id ? { id } : { username };
         return await ctx.prisma.profile.findUnique({
           where,
+        });
+      },
+    });
+  },
+});
+
+export const CrateQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.field('getCrate', {
+      type: NexusCrate,
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve: async (_, { id }, ctx) => {
+        return await ctx.prisma.crate.findUnique({
+          where: { id },
+        });
+      },
+    });
+  },
+});
+
+export const CrateAlbumQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.list.field('crateAlbums', {
+      type: NexusCrateAlbum,
+      args: {
+        ids: nonNull(list(intArg())),
+      },
+      resolve: async (_, { ids }, ctx) => {
+        return await ctx.prisma.crateAlbum.findMany({
+          where: {
+            id: {
+              in: ids,
+            },
+          },
+          include: {
+            crate: true,
+            album: {
+              select: {
+                genres: true,
+                subgenres: true,
+                tracklist: true,
+                id: true,
+                title: true,
+                artist: true,
+                label: true,
+                releaseYear: true,
+                imageUrl: true,
+              },
+            },
+            tags: true,
+          },
         });
       },
     });

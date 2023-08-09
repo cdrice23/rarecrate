@@ -95,3 +95,71 @@ export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
     }
   }
 `;
+
+// Detail View of Crate
+export const GET_CRATE_DETAIL = gql`
+  query GetCrateDetail($id: Int!) {
+    getCrate(id: $id) {
+      id
+      title
+      description
+      creator {
+        id
+        username
+        image
+      }
+      favoritedBy {
+        id
+        username
+        image
+      }
+      labels {
+        id
+        name
+        isStandard
+      }
+      isRanked
+      albums {
+        id
+      }
+    }
+  }
+`;
+
+// Details of CrateAlbums
+export const GET_CRATE_ALBUMS = gql`
+  query GetCrateAlbums($ids: [Int!]!) {
+    crateAlbums(ids: $ids) {
+      id
+      crate {
+        id
+      }
+      album {
+        id
+        title
+        artist
+        label
+        releaseYear
+        genres {
+          id
+          name
+        }
+        subgenres {
+          id
+          name
+        }
+        imageUrl
+        tracklist {
+          id
+          title
+          order
+        }
+      }
+      rank
+      tags {
+        id
+        name
+      }
+    }
+  }
+`;

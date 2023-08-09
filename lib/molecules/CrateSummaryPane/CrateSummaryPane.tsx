@@ -11,6 +11,7 @@ type CrateSummaryPaneProps = {
 };
 
 const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
+  const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
     variables: { username: username },
@@ -31,6 +32,7 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
         listType === 'crates' ? (
           <>
             <CrateDetail
+              activeCrateId={activeCrate}
               show={showCrateDetail}
               onClose={() => {
                 setShowCrateDetail(false);
@@ -45,6 +47,7 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                   key={index}
                   className={cx('crateSummary')}
                   onClick={() => {
+                    setActiveCrate(crate.id);
                     setShowCrateDetail(true);
                   }}
                 >
@@ -63,6 +66,7 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
         ) : (
           <>
             <CrateDetail
+              activeCrateId={activeCrate}
               show={showCrateDetail}
               onClose={() => {
                 setShowCrateDetail(false);
@@ -77,6 +81,7 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                   key={index}
                   className={cx('crateSummary')}
                   onClick={() => {
+                    setActiveCrate(crate.id);
                     setShowCrateDetail(true);
                   }}
                 >

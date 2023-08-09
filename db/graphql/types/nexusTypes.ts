@@ -213,6 +213,19 @@ export const Crate = objectType({
     });
     t.field(PrismaCrate.creator.name, {
       type: Profile,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.crate
+          .findUnique({
+            where: { id: parent.id },
+          })
+          .creator({
+            select: {
+              id: true,
+              username: true,
+              image: true,
+            },
+          });
+      },
     });
     t.field(PrismaCrate.creatorId.name, {
       type: PrismaCrate.creatorId.type,
@@ -236,7 +249,13 @@ export const Crate = objectType({
           .findUnique({
             where: { id: parent.id },
           })
-          .favoritedBy();
+          .favoritedBy({
+            select: {
+              id: true,
+              image: true,
+              username: true,
+            },
+          });
       },
     });
     t.list.field('labels', {
@@ -365,10 +384,10 @@ export const Album = objectType({
     t.field(PrismaAlbum.releaseYear.name, {
       type: PrismaAlbum.releaseYear.type,
     });
-    t.field(PrismaAlbum.genres.name, {
+    t.list.field(PrismaAlbum.genres.name, {
       type: Genre,
     });
-    t.field(PrismaAlbum.subgenres.name, {
+    t.list.field(PrismaAlbum.subgenres.name, {
       type: Subgenre,
     });
     t.field(PrismaAlbum.imageUrl.name, {
@@ -377,7 +396,7 @@ export const Album = objectType({
     t.field(PrismaAlbum.crates.name, {
       type: CrateAlbum,
     });
-    t.field(PrismaAlbum.tracklist.name, {
+    t.list.field(PrismaAlbum.tracklist.name, {
       type: TracklistItem,
     });
     t.field(PrismaAlbum.searchAndSelectCount.name, {

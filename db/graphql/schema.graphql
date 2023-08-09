@@ -6,15 +6,15 @@ type Album {
   artist: String!
   crates: CrateAlbum
   discogsMasterId: Int!
-  genres: Genre
+  genres: [Genre]
   id: Int!
   imageUrl: String!
   label: String!
   releaseYear: Int
   searchAndSelectCount: Int!
-  subgenres: Subgenre
+  subgenres: [Subgenre]
   title: String!
-  tracklist: TracklistItem
+  tracklist: [TracklistItem]
 }
 
 type Crate {
@@ -120,6 +120,8 @@ type Profile {
 }
 
 type Query {
+  crateAlbums(ids: [Int]!): [CrateAlbum]
+  getCrate(id: Int!): Crate!
   getProfile(id: Int, username: String): Profile!
   getUsernameById(userId: Int!): [Profile!]!
 }

@@ -1,12 +1,122 @@
 import { Modal } from '@/lib/atoms/Modal/Modal';
+import { useQuery } from '@apollo/client';
+import { GET_CRATE_DETAIL } from '@/db/graphql/clientQueries';
+import { useState } from 'react';
+
+type ProfileBadgeData = {
+  id: number;
+  username: string;
+  image: string;
+};
+
+type LabelData = {
+  id: number;
+  name: string;
+  isStandard: boolean;
+};
+
+type CrateDetailData = {
+  id: string;
+  title: string;
+  description: string;
+  creator: ProfileBadgeData;
+  favoritedBy: ProfileBadgeData[];
+  isRanked: boolean;
+  labels: LabelData[];
+  albums: [
+    {
+      id: number;
+    },
+  ];
+};
+
+type CrateDetailFaceProps = {
+  data: CrateDetailData;
+  handleSwitch: (newFace: 'front' | 'back') => void;
+};
 
 type CrateDetailProps = {
+  activeCrateId?: number;
   show?: boolean;
   onClose: () => void;
 };
 
-const CrateDetail = ({ show, onClose }: CrateDetailProps) => {
-  return <Modal content={<div>{`I'm a modal!`}</div>} title="Modal Title" show={show} onClose={onClose} />;
+const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
+  const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');
+  const { loading, error, data } = useQuery(GET_CRATE_DETAIL, {
+    variables: { id: activeCrateId },
+  });
+  const handleSwitch = (newFace: 'front' | 'back') => {
+    setDetailFace(newFace);
+  };
+
+  const crateData = data?.getCrate;
+  const defaultModal = <div>{`I'm a modal! The current active crate id is: ${activeCrateId}`}</div>;
+
+  return (
+    <>
+      {error ? (
+        <>
+          <h1>Error</h1>
+          <p>{error.message}</p>
+        </>
+      ) : loading ? (
+        <h1>Loading...</h1>
+      ) : crateData ? (
+        detailFace === 'front' ? (
+          <Modal
+            content={<CrateDetailFront data={crateData} handleSwitch={handleSwitch} />}
+            title="Modal Title"
+            show={show}
+            onClose={onClose}
+          />
+        ) : (
+          <Modal
+            content={<CrateDetailBack data={crateData} handleSwitch={handleSwitch} />}
+            title="Modal Title"
+            show={show}
+            onClose={onClose}
+          />
+        )
+      ) : null}
+    </>
+  );
+};
+
+const CrateDetailFront = ({ data, handleSwitch }: CrateDetailFaceProps) => {
+  return (
+    <>
+      <div>
+        <h4>{data.title}</h4>
+        <p>{`Labels: ${data.labels.filter(label => label.isStandard === true).length} standard, ${
+          data.labels.filter(label => label.isStandard === false).length
+        } non-standard`}</p>
+        <p>{`Image: ${data.creator.image}`}</p>
+        <p>{`Favorites: ${data.favoritedBy.length}`}</p>
+      </div>
+      <button onClick={() => handleSwitch('back')}>Switch to Back</button>
+    </>
+  );
+};
+
+const CrateDetailBack = ({ data, handleSwitch }: CrateDetailFaceProps) => {
+  return (
+    <>
+      <div>
+        <h4>{data.title}</h4>
+        <p>{`Image: ${data.creator.image}`}</p>
+        <p>{`Creator: ${data.creator.username}`}</p>
+        <p>{data.description}</p>
+        <p>{`Favorites: ${data.favoritedBy.length}`}</p>
+        <ul>
+          {data.labels.map(label => (
+            <li key={label.id}>{`${label.isStandard ? 'Standard' : 'Non-Standard'}: ${label.name}`}</li>
+          ))}
+        </ul>
+      </div>
+      <button onClick={() => handleSwitch('front')}>Switch to Front</button>
+    </>
+  );
 };
 
 export { CrateDetail };
