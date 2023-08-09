@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import cx from 'classnames';
 
 interface LinkProps {
   href?: string | null;
@@ -7,10 +8,10 @@ interface LinkProps {
   className?: string;
 }
 
-const LinkButton = ({ href, children }: LinkProps) => {
+const LinkButton = ({ href, children, className }: LinkProps) => {
   return (
     <Link href={href} passHref>
-      <button>{children}</button>
+      <button className={className}>{children}</button>
     </Link>
   );
 };

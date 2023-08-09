@@ -2,6 +2,8 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery } from '@apollo/client';
 import { GET_PROFILE_FOLLOWERINGS } from '@/db/graphql/clientQueries';
 import cx from 'classnames';
+import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
+import { Route } from '@/core/enums/routes';
 
 type FolloweringPaneProps = {
   username: string;
@@ -33,10 +35,10 @@ const FolloweringPane = ({ username, listType }: FolloweringPaneProps) => {
             </div>
             <div>
               {followeringData.followers.map((profile, index) => (
-                <div key={index} className={cx('profileBar')}>
+                <LinkButton href={Route.Profile + `/${profile.username}`} key={index} className={cx('profileBar')}>
                   <p className={cx('image')}>{profile.image ?? 'P'}</p>
                   <p className={cx('username')}>{profile.username}</p>
-                </div>
+                </LinkButton>
               ))}
             </div>
           </>
@@ -47,10 +49,10 @@ const FolloweringPane = ({ username, listType }: FolloweringPaneProps) => {
             </Pane>
             <Pane>
               {followeringData.following.map((profile, index) => (
-                <div key={index} className={cx('profileBar')}>
+                <LinkButton href={Route.Profile + `/${profile.username}`} key={index} className={cx('profileBar')}>
                   <p className={cx('image')}>{profile.image ?? 'P'}</p>
                   <p className={cx('username')}>{profile.username}</p>
-                </div>
+                </LinkButton>
               ))}
             </Pane>
           </>

@@ -8,10 +8,11 @@ import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { FolloweringPane } from '@/lib/molecules/FolloweringPane/FolloweringPane';
 import { CrateSummaryPane } from '@/lib/molecules/CrateSummaryPane/CrateSummaryPane';
+import { ProfilePane } from '@/lib/molecules/ProfilePane/ProfilePane';
 
 import authed from '../../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_MAIN_PROFILE } from '@/db/graphql/clientQueries';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientQueries';
 
 interface ProfileProps {
   userId?: number;
@@ -24,14 +25,19 @@ const ProfilePage = ({ userId, email }: ProfileProps) => {
   const router = useRouter();
   const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('followers');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
-  const { loading, error, data } = useQuery(GET_MAIN_PROFILE, {
+  const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
     // variables: { userId },
-    variables: { userId: 1208, username: router.query.username },
+    variables: { userId: 1208 },
   });
 
-  const profileData = data?.getProfile;
-  console.log(profileData);
+  console.log(profileIdMain);
+
+  const handlePaneSelect = (pane: 'followers' | 'following' | 'crates' | 'favorites') => {
+    setActivePane(pane);
+  };
+
+  const currentProfile = Array.isArray(router.query.username) ? router.query.username[0] : router.query.username;
 
   useEffect(() => {
     if (userId) {
@@ -77,51 +83,19 @@ const ProfilePage = ({ userId, email }: ProfileProps) => {
               <p>{`Main Profile Username: ${usernameMain}`}</p>
             </div>
           </Pane>
-          <Pane>
-            <div className={cx('paneSectionFull')}>
-              <h3 className={cx('sectionTitle')}>{`Profile Data:`}</h3>
-              <p>{`Profile ID: ${profileData.id}`}</p>
-              <p>{`image: ${profileData.image}`}</p>
-              <p>{`Username: ${profileData.username}`}</p>
-              <p>{`Profile Type: ${profileData.isPrivate ? 'Private' : 'Public'}`}</p>
-              <p>{`Bio: ${profileData.bio}`}</p>
-              <ul>
-                {profileData.socialLinks.map(link => (
-                  <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
-                ))}
-              </ul>
-            </div>
-          </Pane>
-          <div className={cx('listActions')}>
-            <button onClick={() => setActivePane('followers')}>
-              <h3>Followers</h3>
-              <h4>{profileData.followers.length}</h4>
-            </button>
-            <button onClick={() => setActivePane('following')}>
-              <h3>Following</h3>
-              <h4>{profileData.following.length}</h4>
-            </button>
-            <button onClick={() => setActivePane('crates')}>
-              <h3>Crates</h3>
-              <h4>{profileData.crates.length}</h4>
-            </button>
-            <button onClick={() => setActivePane('favorites')}>
-              <h3>Favorites</h3>
-              <h4>{profileData.favorites.length}</h4>
-            </button>
-          </div>
+          <ProfilePane username={currentProfile} handlePaneSelect={handlePaneSelect} mainProfile={profileIdMain} />
           {activePane === 'followers' ? (
             <div className={cx('paneSectionFull')}>
-              <FolloweringPane username={profileData.username} listType="followers" />
+              <FolloweringPane username={currentProfile} listType="followers" />
             </div>
           ) : activePane === 'following' ? (
             <div className={cx('paneSectionFull')}>
-              <FolloweringPane username={profileData.username} listType="following" />
+              <FolloweringPane username={currentProfile} listType="following" />
             </div>
           ) : activePane === 'crates' ? (
-            <CrateSummaryPane username={profileData.username} listType="crates" />
+            <CrateSummaryPane username={currentProfile} listType="crates" mainProfile={profileIdMain} />
           ) : (
-            <CrateSummaryPane username={profileData.username} listType="favorites" />
+            <CrateSummaryPane username={currentProfile} listType="favorites" mainProfile={profileIdMain} />
           )}
         </>
       ) : null}

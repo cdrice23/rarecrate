@@ -4,13 +4,16 @@ import { GET_PROFILE_CRATES_AND_FAVORITES } from '@/db/graphql/clientQueries';
 import cx from 'classnames';
 import { useState } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
+import { Heart } from '@phosphor-icons/react';
+import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 
 type CrateSummaryPaneProps = {
   username: string;
+  mainProfile: number;
   listType: 'crates' | 'favorites';
 };
 
-const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
+const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
@@ -59,6 +62,12 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
+                  <BinaryIconButton
+                    icon={<Heart />}
+                    checkStatus={Boolean(
+                      crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                    )}
+                  />
                 </button>
               ))}
             </Pane>
@@ -93,6 +102,12 @@ const CrateSummaryPane = ({ username, listType }: CrateSummaryPaneProps) => {
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
+                  <BinaryIconButton
+                    icon={<Heart />}
+                    checkStatus={Boolean(
+                      crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                    )}
+                  />
                 </button>
               ))}
             </Pane>
