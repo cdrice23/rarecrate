@@ -511,13 +511,16 @@
     color: var(--on-surface);
     display: block;
     width: 95%;
-    height: auto;
+    // height: auto;
+    height: 90vh;
     min-height: 200px;
     position: absolute;
     top: 10vh;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 600px;
+    max-width: 800px;
+    overflow-y: auto;
+
 
     .modal-header {
       color: var(--on-background-alt);
@@ -555,5 +558,45 @@
       }
     }
 
+  }
+}
+
+.crateAlbumGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // gap: 10px;
+
+  .crateAlbum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rankBadge {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background-color: red;
+      border-radius: 16px;
+      height: 16px;
+      width: 16px;
+      position: relative;
+      top: -140px;
+      left: 16px;
+    }
+
+    .back {
+      height: 300px;
+      width: 300px;
+
+      .tracklist {
+        overflow-y: auto;
+        height: 100px;
+      }
+
+      p {
+        margin: 4px;
+      }
+    }
   }
 }

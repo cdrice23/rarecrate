@@ -120,8 +120,7 @@ type Profile {
 }
 
 type Query {
-  crateAlbums(ids: [Int]!): [CrateAlbum]
-  getCrate(id: Int!): Crate!
+  getCrateDetailWithAlbums(id: Int!): Crate!
   getProfile(id: Int, username: String): Profile!
   getUsernameById(userId: Int!): [Profile!]!
 }

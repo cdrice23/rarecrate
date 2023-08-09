@@ -479,6 +479,20 @@ export const CrateAlbum = objectType({
     });
     t.field(PrismaCrateAlbum.album.name, {
       type: Album,
+      resolve: async (root, _, ctx) => {
+        const album = await ctx.prisma.album.findUnique({
+          where: {
+            id: root.albumId,
+          },
+          include: {
+            genres: true,
+            subgenres: true,
+            tracklist: true,
+          },
+        });
+
+        return album;
+      },
     });
     t.field(PrismaCrateAlbum.albumId.name, {
       type: PrismaCrateAlbum.albumId.type,
@@ -488,6 +502,17 @@ export const CrateAlbum = objectType({
     });
     t.list.field(PrismaCrateAlbum.tags.name, {
       type: Tag,
+      resolve: async (root, _, ctx) => {
+        const tags = await ctx.prisma.crateAlbum
+          .findUnique({
+            where: {
+              id: root.id,
+            },
+          })
+          .tags();
+
+        return tags;
+      },
     });
   },
 });
