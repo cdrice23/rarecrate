@@ -1,6 +1,6 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery } from '@apollo/client';
-import { GET_PROFILE_FOLLOWERINGS } from '@/db/graphql/clientQueries';
+import { GET_PROFILE_FOLLOWERINGS } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { Route } from '@/core/enums/routes';

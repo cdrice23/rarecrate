@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_PROFILE } from '@/db/graphql/clientQueries';
+import { GET_PROFILE } from '@/db/graphql/clientOperations';
 import { DotsThreeVertical } from '@phosphor-icons/react';
 
 type ProfilePaneProps = {
@@ -16,6 +16,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
   });
 
   const profileData = data?.getProfile;
+  console.log(profileData);
   const isMain = Boolean(mainProfile === profileData?.id);
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
 

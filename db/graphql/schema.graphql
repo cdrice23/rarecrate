@@ -73,11 +73,23 @@ type Follow {
   id: Int!
 }
 
+type FollowAndOrRequest {
+  follow: Follow
+  followRequest: FollowRequest
+}
+
+input FollowOrRequestInput {
+  follower: Int!
+  following: Int!
+  followingIsPrivate: Boolean!
+  requestStatus: RequestStatus
+}
+
 type FollowRequest {
   id: Int!
   receiver: Profile
   receiverId: Int!
-  requestStatus: String!
+  requestStatus: RequestStatus
   sender: Profile
   senderId: Int!
   sentAt: DateTime!
@@ -96,6 +108,13 @@ type Label {
   isStandard: Boolean!
   name: String!
   searchAndSelectCount: Int!
+}
+
+type Mutation {
+  acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  rejectFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  unfollowProfile(input: FollowOrRequestInput!): Follow
 }
 
 type Profile {
@@ -132,6 +151,12 @@ type Recommendation {
   profile: Profile
   profileId: Int!
   seen: Boolean!
+}
+
+enum RequestStatus {
+  ACCEPTED
+  PENDING
+  REJECTED
 }
 
 type SelectedSearchResult {

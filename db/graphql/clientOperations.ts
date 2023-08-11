@@ -145,3 +145,73 @@ export const GET_CRATE_DETAIL_WITH_ALBUMS = gql`
     }
   }
 `;
+
+// Mutations for Following/Sending Follow Request/etc.
+export const CREATE_NEW_FOLLOW_OR_REQUEST = gql`
+  mutation CreateNewFollowOrRequest($input: FollowOrRequestInput!) {
+    createNewFollowOrRequest(input: $input) {
+      id
+      follower {
+        id
+      }
+      followerId
+      following {
+        id
+      }
+      followingId
+      createdAt
+    }
+  }
+`;
+
+export const UNFOLLOW_PROFILE = gql`
+  mutation UnfollowProfile($input: FollowOrRequestInput!) {
+    unfollowProfile(input: $input) {
+      id
+      follower {
+        id
+      }
+      followerId
+      following {
+        id
+      }
+      followingId
+    }
+  }
+`;
+
+export const REJECT_FOLLOW_REQUEST = gql`
+  mutation RejectFollowRequest($input: FollowOrRequestInput!) {
+    rejectFollowRequest(input: $input) {
+      id
+      sender {
+        id
+      }
+      senderId
+      receiver {
+        id
+      }
+      receiverId
+      requestStatus
+      sentAt
+    }
+  }
+`;
+
+export const ACCEPT_FOLLOW_REQUEST = gql`
+  mutation AcceptFollowRequest($input: FollowOrRequestInput!) {
+    acceptFollowRequest(input: $input) {
+      id
+      sender {
+        id
+      }
+      senderId
+      receiver {
+        id
+      }
+      receiverId
+      requestStatus
+      sentAt
+    }
+  }
+`;

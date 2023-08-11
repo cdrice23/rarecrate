@@ -1,15 +1,15 @@
-enum Role {
+export enum Role {
   SUPERADMIN,
   USER,
 }
 
-enum RequestStatus {
+export enum RequestStatus {
   PENDING,
   ACCEPTED,
   REJECTED,
 }
 
-enum SocialPlatform {
+export enum SocialPlatform {
   TWITTER,
   INSTAGRAM,
   SPOTIFY,
@@ -17,7 +17,7 @@ enum SocialPlatform {
   DISCOGS,
 }
 
-enum SearchModel {
+export enum SearchModel {
   ALBUM,
   CRATE,
   PROFILE,

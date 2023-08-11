@@ -1,6 +1,6 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery } from '@apollo/client';
-import { GET_PROFILE_CRATES_AND_FAVORITES } from '@/db/graphql/clientQueries';
+import { GET_PROFILE_CRATES_AND_FAVORITES } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import { useState } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';

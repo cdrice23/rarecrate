@@ -1,6 +1,6 @@
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { useQuery } from '@apollo/client';
-import { GET_CRATE_DETAIL_WITH_ALBUMS } from '@/db/graphql/clientQueries';
+import { GET_CRATE_DETAIL_WITH_ALBUMS } from '@/db/graphql/clientOperations';
 import { useState } from 'react';
 import cx from 'classnames';
 import { CrateAlbumData, CrateAlbum } from '../CrateAlbum/CrateAlbum';

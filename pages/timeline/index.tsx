@@ -8,7 +8,7 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID } from '@/db/graphql/clientQueries';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations';
 
 interface TimelineProps {
   userId?: number;

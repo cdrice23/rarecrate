@@ -18,6 +18,7 @@ import {
   SelectedSearchResult as PrismaSelectedSearchResult,
   Recommendation as PrismaRecommendation,
 } from 'nexus-prisma';
+import { RequestStatusEnum } from './nexusEnums';
 
 export const User = objectType({
   name: PrismaUser.$name,
@@ -355,7 +356,7 @@ export const FollowRequest = objectType({
       type: PrismaFollowRequest.receiverId.type,
     });
     t.field(PrismaFollowRequest.requestStatus.name, {
-      type: PrismaFollowRequest.requestStatus.type,
+      type: RequestStatusEnum,
     });
     t.nonNull.field('sentAt', {
       type: 'DateTime',
@@ -640,5 +641,13 @@ export const Recommendation = objectType({
     t.field(PrismaRecommendation.seen.name, {
       type: PrismaRecommendation.seen.type,
     });
+  },
+});
+
+export const FollowAndOrRequest = objectType({
+  name: 'FollowAndOrRequest',
+  definition(t) {
+    t.field('follow', { type: Follow });
+    t.field('followRequest', { type: FollowRequest });
   },
 });
