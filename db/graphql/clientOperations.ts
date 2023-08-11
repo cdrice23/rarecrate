@@ -42,6 +42,7 @@ export const GET_PROFILE = gql`
 export const GET_PROFILE_FOLLOWERINGS = gql`
   query GetProfileFollowerings($id: Int, $username: String) {
     getProfile(id: $id, username: $username) {
+      id
       followers {
         id
         image
@@ -60,6 +61,7 @@ export const GET_PROFILE_FOLLOWERINGS = gql`
 export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
   query GetCratesAndFavorites($id: Int, $username: String) {
     getProfile(id: $id, username: $username) {
+      id
       image
       crates {
         id
@@ -150,16 +152,24 @@ export const GET_CRATE_DETAIL_WITH_ALBUMS = gql`
 export const CREATE_NEW_FOLLOW_OR_REQUEST = gql`
   mutation CreateNewFollowOrRequest($input: FollowOrRequestInput!) {
     createNewFollowOrRequest(input: $input) {
-      id
-      follower {
+      follow {
         id
+        follower {
+          id
+        }
+        following {
+          id
+        }
       }
-      followerId
-      following {
+      followRequest {
         id
+        sender {
+          id
+        }
+        receiver {
+          id
+        }
       }
-      followingId
-      createdAt
     }
   }
 `;
@@ -168,14 +178,14 @@ export const UNFOLLOW_PROFILE = gql`
   mutation UnfollowProfile($input: FollowOrRequestInput!) {
     unfollowProfile(input: $input) {
       id
+      followerId
       follower {
         id
       }
-      followerId
+      followingId
       following {
         id
       }
-      followingId
     }
   }
 `;

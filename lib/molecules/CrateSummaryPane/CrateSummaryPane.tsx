@@ -46,7 +46,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
             </Pane>
             <Pane crateSummaryPane={true}>
               {crateSummaryData.crates.map((crate, index) => (
-                <button
+                <div
                   key={index}
                   className={cx('crateSummary')}
                   onClick={() => {
@@ -68,7 +68,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
                       crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
                     )}
                   />
-                </button>
+                </div>
               ))}
             </Pane>
           </>

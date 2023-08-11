@@ -1,8 +1,9 @@
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_PROFILE, CREATE_NEW_FOLLOW_OR_REQUEST, UNFOLLOW_PROFILE } from '@/db/graphql/clientOperations';
 import { DotsThreeVertical } from '@phosphor-icons/react';
+import { useApolloClient } from '@apollo/client';
 
 type ProfilePaneProps = {
   username: string;
@@ -16,9 +17,79 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
   });
 
   const profileData = data?.getProfile;
-  console.log(profileData);
   const isMain = Boolean(mainProfile === profileData?.id);
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
+
+  console.log(useApolloClient().cache.extract());
+
+  const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {
+    update: (cache, { data }) => {
+      const newFollow = data?.createNewFollowOrRequest?.follow;
+
+      if (newFollow) {
+        const newFollowerRef = cache.writeFragment({
+          data: newFollow.follower,
+          fragment: gql`
+            fragment NewFollower on Profile {
+              id
+            }
+          `,
+        });
+
+        cache.modify({
+          id: cache.identify(profileData),
+          fields: {
+            followers(existingFollowers = []) {
+              return [...existingFollowers, newFollowerRef];
+            },
+          },
+        });
+      }
+    },
+  });
+
+  const [unfollowProfile] = useMutation(UNFOLLOW_PROFILE, {
+    update: (cache, { data }) => {
+      const unfollowedProfile = data?.unfollowProfile;
+
+      if (unfollowedProfile) {
+        cache.modify({
+          id: cache.identify(profileData),
+          fields: {
+            followers(existingFollowers = [], { readField }) {
+              return existingFollowers.filter(
+                followerRef => unfollowedProfile.followerId !== readField('id', followerRef),
+              );
+            },
+          },
+        });
+      }
+    },
+  });
+
+  const handleFollowClick = isFollowing => {
+    if (isFollowing) {
+      unfollowProfile({
+        variables: {
+          input: {
+            follower: mainProfile,
+            following: profileData?.id,
+            followingIsPrivate: profileData?.isPrivate,
+          },
+        },
+      });
+    } else {
+      createNewFollowOrRequest({
+        variables: {
+          input: {
+            follower: mainProfile,
+            following: profileData?.id,
+            followingIsPrivate: profileData?.isPrivate,
+          },
+        },
+      });
+    }
+  };
 
   return (
     <>
@@ -44,7 +115,9 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
                   <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
                 ))}
               </ul>
-              {!isMain && <button>{isFollowing ? 'Following' : 'Follow'}</button>}
+              {!isMain && (
+                <button onClick={() => handleFollowClick(isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</button>
+              )}
               {isMain && (
                 <button>
                   <p>Edit Profile</p>

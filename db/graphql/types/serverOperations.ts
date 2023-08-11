@@ -110,8 +110,12 @@ export const FollowMutations = mutationType({
               follower: { connect: { id: follower } },
               following: { connect: { id: following } },
             },
+            include: {
+              follower: true,
+              following: true,
+            },
           });
-          return follow;
+          return { follow, followRequest: null };
         } else {
           const followRequest = await prisma.followRequest.create({
             data: {
@@ -119,8 +123,12 @@ export const FollowMutations = mutationType({
               receiver: { connect: { id: following } },
               requestStatus: 'PENDING',
             },
+            include: {
+              sender: true,
+              receiver: true,
+            },
           });
-          return followRequest;
+          return { follow: null, followRequest };
         }
       },
     });
@@ -134,10 +142,28 @@ export const FollowMutations = mutationType({
         const { follower, following } = input;
         const prisma = ctx.prisma;
 
-        const deletedFollow = await prisma.follow.deleteMany({
+        const followToDelete = await prisma.follow.findFirst({
           where: {
             followerId: follower,
             followingId: following,
+          },
+        });
+
+        console.log(followToDelete);
+
+        if (!followToDelete) {
+          throw new Error('Follow record not found');
+        }
+
+        const deletedFollow = {
+          ...followToDelete,
+        };
+
+        console.log(deletedFollow);
+
+        await prisma.follow.delete({
+          where: {
+            id: followToDelete.id,
           },
         });
 
