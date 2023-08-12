@@ -440,9 +440,7 @@
       width: calc(100% - 16px);
       display: flex;
       align-items: center;
-      margin: 8px;
-      border: 1px black;
-       
+      margin: 8px;   
 
       .image {
         margin-left: 16px;
@@ -597,6 +595,52 @@
       }
 
       p {
+        margin: 4px;
+      }
+    }
+  }
+}
+
+// Stylings for the FollowRequestPane
+
+.followRequestPane {
+  grid-column: 1 / span 12;
+
+  .profileBar {
+    height: 40px;
+    width: calc(100% - 16px);
+    border: 1px grey solid;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin: 4px;   
+
+    &:hover {
+      background-color: antiquewhite;
+    }
+
+    .image {
+      margin-left: 16px;
+      height: 16px;
+      width: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background-color: grey;
+      border-radius: 50px;
+    }
+
+    .username {
+      margin-left: 16px;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .buttons {
+      margin-right: 16px;
+      
+      button {
         margin: 4px;
       }
     }

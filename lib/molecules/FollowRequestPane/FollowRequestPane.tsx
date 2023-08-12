@@ -2,7 +2,7 @@ import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
-import { DotsThree } from '@phosphor-icons/react';
+import { DotsThree, Check, X } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 
 type FollowRequestPaneProps = {
@@ -30,11 +30,19 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
         <h1>Loading...</h1>
       ) : data ? (
         <Pane>
-          <div className={cx('paneSectionFull')}>
+          <div className={cx('followRequestPane')}>
             {followRequestData.map((profile, index) => (
               <div key={index} className={cx('profileBar')}>
                 <p className={cx('image')}>{profile.sender.image ?? 'P'}</p>
                 <p className={cx('username')}>{profile.sender.username}</p>
+                <div className={cx('buttons')}>
+                  <button>
+                    <Check />
+                  </button>
+                  <button>
+                    <X />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
