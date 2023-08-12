@@ -5,6 +5,7 @@ import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { FollowRequestPane } from '@/lib/molecules/FollowRequestPane/FollowRequestPane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -22,7 +23,7 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
   const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
     // variables: { userId },
-    variables: { userId: 1298 },
+    variables: { userId: 1222 },
   });
 
   useEffect(() => {
@@ -72,6 +73,7 @@ const TimelinePage = ({ userId, email }: TimelineProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
+          <FollowRequestPane mainProfile={profileIdMain} />
         </>
       ) : null}
     </AuthedLayout>

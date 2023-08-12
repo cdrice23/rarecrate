@@ -13,6 +13,7 @@ import {
   Profile as NexusProfile,
   Crate as NexusCrate,
   Follow as NexusFollow,
+  FollowRequest as NexusFollowRequest,
   FollowAndOrRequest as NexusFollowAndOrRequest,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
@@ -74,6 +75,28 @@ export const CrateQueries = extendType({
           ...crate,
           ...crateAlbums,
         };
+      },
+    });
+  },
+});
+
+export const FollowRequestQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('getPendingFollowRequests', {
+      type: NexusFollowRequest,
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve: async (_, { id }, ctx) => {
+        return await ctx.prisma.followRequest.findMany({
+          where: { receiverId: id, requestStatus: 'PENDING' },
+          select: {
+            id: true,
+            sender: true,
+            receiver: true,
+          },
+        });
       },
     });
   },

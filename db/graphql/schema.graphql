@@ -140,6 +140,7 @@ type Profile {
 
 type Query {
   getCrateDetailWithAlbums(id: Int!): Crate!
+  getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getUsernameById(userId: Int!): [Profile!]!
 }

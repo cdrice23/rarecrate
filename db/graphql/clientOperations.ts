@@ -148,6 +148,25 @@ export const GET_CRATE_DETAIL_WITH_ALBUMS = gql`
   }
 `;
 
+// Getting Follow Requests on Timeline
+export const GET_PENDING_FOLLOW_REQUESTS = gql`
+  query GetPendingFollowRequests($id: Int!) {
+    getPendingFollowRequests(id: $id) {
+      id
+      sender {
+        id
+        image
+        username
+      }
+      receiver {
+        id
+        image
+        username
+      }
+    }
+  }
+`;
+
 // Mutations for Following/Sending Follow Request/etc.
 export const CREATE_NEW_FOLLOW_OR_REQUEST = gql`
   mutation CreateNewFollowOrRequest($input: FollowOrRequestInput!) {
