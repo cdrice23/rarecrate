@@ -22,7 +22,7 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
   const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
     // variables: { userId },
-    variables: { userId: 1222 },
+    variables: { userId: 1286 },
   });
 
   useEffect(() => {

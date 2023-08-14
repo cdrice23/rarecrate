@@ -221,7 +221,6 @@ export const REJECT_FOLLOW_REQUEST = gql`
         id
       }
       receiverId
-      requestStatus
       sentAt
     }
   }
@@ -230,17 +229,29 @@ export const REJECT_FOLLOW_REQUEST = gql`
 export const ACCEPT_FOLLOW_REQUEST = gql`
   mutation AcceptFollowRequest($input: FollowOrRequestInput!) {
     acceptFollowRequest(input: $input) {
-      id
-      sender {
+      followRequest {
         id
+        sender {
+          id
+        }
+        senderId
+        receiver {
+          id
+        }
+        receiverId
+        sentAt
       }
-      senderId
-      receiver {
+      follow {
         id
+        follower {
+          id
+          username
+          image
+        }
+        following {
+          id
+        }
       }
-      receiverId
-      requestStatus
-      sentAt
     }
   }
 `;

@@ -108,7 +108,7 @@ export const FollowOrRequestInput = inputObjectType({
   definition(t) {
     t.nonNull.int('follower');
     t.nonNull.int('following');
-    t.nonNull.boolean('followingIsPrivate');
+    t.nullable.boolean('followingIsPrivate');
     t.nullable.field('requestStatus', {
       type: RequestStatusEnum,
     });
@@ -195,16 +195,19 @@ export const FollowMutations = mutationType({
     });
 
     t.field('rejectFollowRequest', {
-      type: NexusFollowAndOrRequest,
+      type: NexusFollowRequest,
       args: {
         input: nonNull(FollowOrRequestInput),
       },
       resolve: async (_, { input }, ctx) => {
         const { follower, following } = input;
-        const followRequest = await ctx.prisma.followRequest.findFirst({
+        const followRequest = await ctx.prisma.followRequest.findMany({
           where: {
             sender: { id: follower },
             receiver: { id: following },
+          },
+          orderBy: {
+            sentAt: 'desc',
           },
         });
 
@@ -213,11 +216,11 @@ export const FollowMutations = mutationType({
         }
 
         const updatedFollowRequest = await ctx.prisma.followRequest.update({
-          where: { id: followRequest.id },
+          where: { id: followRequest[0].id },
           data: { requestStatus: 'REJECTED' },
         });
 
-        return { followRequest: updatedFollowRequest };
+        return updatedFollowRequest;
       },
     });
 
@@ -229,10 +232,13 @@ export const FollowMutations = mutationType({
       resolve: async (_, { input }, ctx) => {
         const { follower, following } = input;
 
-        const followRequest = await ctx.prisma.followRequest.findFirst({
+        const followRequest = await ctx.prisma.followRequest.findMany({
           where: {
             sender: { id: follower },
             receiver: { id: following },
+          },
+          orderBy: {
+            sentAt: 'desc',
           },
         });
 
@@ -241,14 +247,14 @@ export const FollowMutations = mutationType({
         }
 
         const updatedFollowRequest = await ctx.prisma.followRequest.update({
-          where: { id: followRequest.id },
+          where: { id: followRequest[0].id },
           data: { requestStatus: 'ACCEPTED' },
         });
 
         const follow = await ctx.prisma.follow.create({
           data: {
-            follower: { connect: { id: followRequest.senderId } },
-            following: { connect: { id: followRequest.receiverId } },
+            follower: { connect: { id: updatedFollowRequest.senderId } },
+            following: { connect: { id: updatedFollowRequest.receiverId } },
           },
         });
 

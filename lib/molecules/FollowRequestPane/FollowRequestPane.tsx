@@ -1,7 +1,11 @@
 import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
+import {
+  GET_PENDING_FOLLOW_REQUESTS,
+  ACCEPT_FOLLOW_REQUEST,
+  REJECT_FOLLOW_REQUEST,
+} from '@/db/graphql/clientOperations';
 import { DotsThree, Check, X } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 
@@ -15,9 +19,61 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
   });
 
   const followRequestData = data?.getPendingFollowRequests;
-  console.log(followRequestData);
 
-  // console.log(useApolloClient().cache.extract());
+  const [rejectFollowRequest] = useMutation(REJECT_FOLLOW_REQUEST, {
+    update(cache, { data: { rejectFollowRequest } }) {
+      cache.evict({ id: cache.identify(rejectFollowRequest) });
+    },
+  });
+
+  const [acceptFollowRequest] = useMutation(ACCEPT_FOLLOW_REQUEST, {
+    update(cache, { data: { acceptFollowRequest } }) {
+      cache.evict({ id: cache.identify(acceptFollowRequest.followRequest) });
+
+      const newFollowerRef = cache.writeFragment({
+        data: acceptFollowRequest.follow.follower,
+        fragment: gql`
+          fragment NewFollower on Profile {
+            id
+          }
+        `,
+      });
+
+      // FIX THIS BIT
+      cache.modify({
+        id: cache.identify(acceptFollowRequest.follow.following),
+        fields: {
+          followers(existingFollowers = []) {
+            return [...existingFollowers, newFollowerRef];
+          },
+        },
+      });
+    },
+  });
+
+  const handleAccept = event => {
+    acceptFollowRequest({
+      variables: {
+        input: {
+          follower: Number(event.currentTarget.id),
+          following: mainProfile,
+        },
+      },
+    });
+  };
+
+  const handleReject = event => {
+    rejectFollowRequest({
+      variables: {
+        input: {
+          follower: Number(event.currentTarget.id),
+          following: mainProfile,
+        },
+      },
+    });
+  };
+
+  console.log(useApolloClient().cache.extract());
 
   return (
     <>
@@ -36,10 +92,10 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
                 <p className={cx('image')}>{profile.sender.image ?? 'P'}</p>
                 <p className={cx('username')}>{profile.sender.username}</p>
                 <div className={cx('buttons')}>
-                  <button>
+                  <button id={profile.sender.id} onClick={event => handleAccept(event)}>
                     <Check />
                   </button>
-                  <button>
+                  <button id={profile.sender.id} onClick={event => handleReject(event)}>
                     <X />
                   </button>
                 </div>

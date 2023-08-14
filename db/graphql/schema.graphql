@@ -81,7 +81,7 @@ type FollowAndOrRequest {
 input FollowOrRequestInput {
   follower: Int!
   following: Int!
-  followingIsPrivate: Boolean!
+  followingIsPrivate: Boolean
   requestStatus: RequestStatus
 }
 
@@ -113,7 +113,7 @@ type Label {
 type Mutation {
   acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
-  rejectFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   unfollowProfile(input: FollowOrRequestInput!): Follow
 }
 
