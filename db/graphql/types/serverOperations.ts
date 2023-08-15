@@ -240,6 +240,10 @@ export const FollowMutations = mutationType({
           orderBy: {
             sentAt: 'desc',
           },
+          include: {
+            sender: true,
+            receiver: true,
+          },
         });
 
         if (!followRequest) {
@@ -249,6 +253,10 @@ export const FollowMutations = mutationType({
         const updatedFollowRequest = await ctx.prisma.followRequest.update({
           where: { id: followRequest[0].id },
           data: { requestStatus: 'ACCEPTED' },
+          include: {
+            sender: true,
+            receiver: true,
+          },
         });
 
         const follow = await ctx.prisma.follow.create({

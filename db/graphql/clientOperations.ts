@@ -237,6 +237,8 @@ export const ACCEPT_FOLLOW_REQUEST = gql`
         senderId
         receiver {
           id
+          username
+          image
         }
         receiverId
         sentAt

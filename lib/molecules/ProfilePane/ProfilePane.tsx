@@ -36,11 +36,32 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
           `,
         });
 
+        const newFollowingRef = cache.writeFragment({
+          data: newFollow.following,
+          fragment: gql`
+            fragment NewFollowing on Profile {
+              id
+            }
+          `,
+        });
+
         cache.modify({
           id: cache.identify(profileData),
           fields: {
             followers(existingFollowers = []) {
               return [...existingFollowers, newFollowerRef];
+            },
+          },
+        });
+
+        cache.modify({
+          id: cache.identify({
+            __typename: 'Profile',
+            id: mainProfile,
+          }),
+          fields: {
+            following(existingFollowing = []) {
+              return [...existingFollowing, newFollowingRef];
             },
           },
         });
@@ -59,6 +80,20 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
             followers(existingFollowers = [], { readField }) {
               return existingFollowers.filter(
                 followerRef => unfollowedProfile.followerId !== readField('id', followerRef),
+              );
+            },
+          },
+        });
+
+        cache.modify({
+          id: cache.identify({
+            __typename: 'Profile',
+            id: mainProfile,
+          }),
+          fields: {
+            following(existingFollowing = [], { readField }) {
+              return existingFollowing.filter(
+                followingRef => unfollowedProfile.followingId !== readField('id', followingRef),
               );
             },
           },

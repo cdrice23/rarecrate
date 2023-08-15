@@ -28,7 +28,13 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
 
   const [acceptFollowRequest] = useMutation(ACCEPT_FOLLOW_REQUEST, {
     update(cache, { data: { acceptFollowRequest } }) {
-      cache.evict({ id: cache.identify(acceptFollowRequest.followRequest) });
+      cache.evict({
+        id: cache.identify({
+          __typename: 'FollowRequest',
+          id: acceptFollowRequest.followRequest.id,
+        }),
+      });
+      cache.gc();
 
       const newFollowerRef = cache.writeFragment({
         data: acceptFollowRequest.follow.follower,
@@ -39,9 +45,32 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
         `,
       });
 
-      // FIX THIS BIT
+      const newFollowingRef = cache.writeFragment({
+        data: acceptFollowRequest.follow.following,
+        fragment: gql`
+          fragment NewFollowing on Profile {
+            id
+          }
+        `,
+      });
+
       cache.modify({
-        id: cache.identify(acceptFollowRequest.follow.following),
+        id: cache.identify({
+          __typename: 'Profile',
+          id: acceptFollowRequest.follow.follower.id,
+        }),
+        fields: {
+          following(existingFollowing = []) {
+            return [...existingFollowing, newFollowingRef];
+          },
+        },
+      });
+
+      cache.modify({
+        id: cache.identify({
+          __typename: 'Profile',
+          id: acceptFollowRequest.follow.following.id,
+        }),
         fields: {
           followers(existingFollowers = []) {
             return [...existingFollowers, newFollowerRef];

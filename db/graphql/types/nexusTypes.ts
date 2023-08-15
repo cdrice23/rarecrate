@@ -300,12 +300,32 @@ export const Follow = objectType({
     });
     t.field(PrismaFollow.follower.name, {
       type: Profile,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.profile.findUnique({
+          where: { id: parent.followerId },
+          select: {
+            id: true,
+            image: true,
+            username: true,
+          },
+        });
+      },
     });
     t.field(PrismaFollow.followerId.name, {
       type: PrismaFollow.followerId.type,
     });
     t.field(PrismaFollow.following.name, {
       type: Profile,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.profile.findUnique({
+          where: { id: parent.followingId },
+          select: {
+            id: true,
+            image: true,
+            username: true,
+          },
+        });
+      },
     });
     t.field(PrismaFollow.followingId.name, {
       type: PrismaFollow.followingId.type,
