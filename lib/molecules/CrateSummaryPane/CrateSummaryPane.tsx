@@ -181,7 +181,8 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
                   <BinaryIconButton
                     icon={<Heart />}
                     checkStatus={Boolean(
-                      crateSummaryData?.favorites[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                      crateSummaryData?.favorites[index].favoritedBy.filter(p => p.id === Number(mainProfile)).length >
+                        0,
                     )}
                     handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
                   />

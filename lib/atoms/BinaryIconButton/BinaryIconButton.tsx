@@ -17,7 +17,7 @@ const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps)
 
   return (
     <button onClick={event => handleClick(event)}>
-      {cloneElement(icon, { weight: checked ? 'fill' : 'regular', ...icon.props })}
+      {cloneElement(icon, { weight: checkStatus ? 'fill' : 'regular', ...icon.props })}
     </button>
   );
 };
