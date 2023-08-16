@@ -12,7 +12,7 @@ const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps)
   const handleClick = event => {
     event.stopPropagation();
     setChecked(!checked);
-    handler ? handler(!checked) : null;
+    handler ? handler(checked) : null;
   };
 
   return (
