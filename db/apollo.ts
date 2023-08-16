@@ -5,5 +5,17 @@ export const client = new ApolloClient({
   headers: {
     'Content-Type': 'application/json',
   },
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Crate: {
+        fields: {
+          favoritedBy: {
+            merge(existing = [], incoming) {
+              return [...incoming];
+            },
+          },
+        },
+      },
+    },
+  }),
 });

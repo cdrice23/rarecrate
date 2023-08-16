@@ -25,42 +25,34 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
   });
 
   const crateSummaryData = data?.getProfile;
+  console.log(crateSummaryData);
   const isMain = Boolean(crateSummaryData?.id === mainProfile);
 
   const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
     update: (cache, { data: { addCrateToFavorites } }) => {
-      // const newFavoritedByRef = cache.writeFragment({
-      //   data: { __typename: 'Profile', id: mainProfile },
-      //   fragment: gql`
-      //     fragment NewProfile on Profile {
-      //       id
-      //     }
-      //   `,
-      // });
-
-      const newFavoriteRef = cache.writeFragment({
-        data: addCrateToFavorites,
-        fragment: gql`
-          fragment NewFavorite on Crate {
-            id
-          }
-        `,
+      cache.modify({
+        id: cache.identify(addCrateToFavorites),
+        fields: {
+          favoritedBy(existingFavoritedBy = []) {
+            return addCrateToFavorites.favoritedBy;
+          },
+        },
       });
-
-      // cache.modify({
-      //   id: cache.identify({ __typename: 'Crate', id: addCrateToFavorites.id }),
-      //   fields: {
-      //     favoritedBy(existingFavoritedBy = []) {
-      //       return [...existingFavoritedBy, newFavoritedByRef];
-      //     },
-      //   },
-      // });
 
       cache.modify({
         id: cache.identify({ __typename: 'Profile', id: mainProfile }),
         fields: {
           favorites(existingFavorites = []) {
-            return [...existingFavorites, newFavoriteRef];
+            const newFragment = cache.writeFragment({
+              data: addCrateToFavorites,
+              fragment: gql`
+                fragment NewFavorite on Crate {
+                  id
+                }
+              `,
+            });
+
+            return [...existingFavorites, newFragment];
           },
         },
       });
@@ -68,48 +60,25 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
   });
 
   const [removeCrateFromFavorites] = useMutation(REMOVE_CRATE_FROM_FAVORITES, {
-    // update: (cache, { data: { removeCrateFromFavorites } }) => {
-    // cache.modify({
-    //   id: cache.identify(removeCrateFromFavorites),
-    //   fields: {
-    //     favoritedBy(existingFavoritedBy = [], { readField }) {
-    //       return existingFavoritedBy.filter(favoritedByRef => readField('id', favoritedByRef) !== mainProfile);
-    //     },
-    //   },
-    // });
-    // cache.modify({
-    //   id: cache.identify({ __typename: 'Crate', id: removeCrateFromFavorites.id }),
-    //   fields: {
-    //     favoritedBy(existingFavoritedBy = [], { readField }) {
-    //       return existingFavoritedBy.filter(favoritedByRef => readField('id', favoritedByRef) !== mainProfile);
-    //     },
-    //   },
-    // });
-    // cache.writeFragment({
-    //   id: cache.identify(removeCrateFromFavorites),
-    //   fragment: gql`
-    //     fragment UpdatedFavoritedBy on Crate {
-    //       favoritedBy {
-    //         __typename
-    //         ... on Profile {
-    //           id
-    //         }
-    //       }
-    //     }
-    //   `,
-    //   data: { favoritedBy: removeCrateFromFavorites.favoritedBy },
-    // });
-    // cache.modify({
-    //   id: cache.identify({ __typename: 'Profile', id: mainProfile }),
-    //   fields: {
-    //     favorites(existingFavorites = [], { readField }) {
-    //       return existingFavorites.filter(
-    //         favoriteRef => removeCrateFromFavorites.id !== readField('id', favoriteRef),
-    //       );
-    //     },
-    //   },
-    // });
-    // },
+    update: (cache, { data: { removeCrateFromFavorites } }) => {
+      cache.modify({
+        id: cache.identify(removeCrateFromFavorites),
+        fields: {
+          favoritedBy(existingFavoritedBy = []) {
+            return existingFavoritedBy.filter(profile => profile.id !== mainProfile);
+          },
+        },
+      });
+
+      cache.modify({
+        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
+        fields: {
+          favorites(existingFavorites = [], { readField }) {
+            return existingFavorites.filter(crate => readField('id', crate) !== removeCrateFromFavorites.id);
+          },
+        },
+      });
+    },
   });
 
   const handleFavoriteToggle = (checkStatus, crateId, mainProfile) => {
