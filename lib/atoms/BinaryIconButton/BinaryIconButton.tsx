@@ -3,7 +3,7 @@ import { useState, cloneElement, ReactElement } from 'react';
 interface BinaryIconButtonProps {
   icon: ReactElement;
   checkStatus: boolean;
-  handler?: () => void;
+  handler?: (...args) => void;
 }
 
 const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps) => {
@@ -12,11 +12,13 @@ const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps)
   const handleClick = event => {
     event.stopPropagation();
     setChecked(!checked);
-    handler ? handler() : null;
+    handler ? handler(!checked) : null;
   };
 
   return (
-    <button onClick={handleClick}>{cloneElement(icon, { weight: checked ? 'fill' : 'regular', ...icon.props })}</button>
+    <button onClick={event => handleClick(event)}>
+      {cloneElement(icon, { weight: checked ? 'fill' : 'regular', ...icon.props })}
+    </button>
   );
 };
 

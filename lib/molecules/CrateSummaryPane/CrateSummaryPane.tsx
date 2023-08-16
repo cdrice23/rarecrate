@@ -1,6 +1,10 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { useQuery } from '@apollo/client';
-import { GET_PROFILE_CRATES_AND_FAVORITES } from '@/db/graphql/clientOperations';
+import { useQuery, useMutation, gql } from '@apollo/client';
+import {
+  GET_PROFILE_CRATES_AND_FAVORITES,
+  ADD_CRATE_TO_FAVORITES,
+  REMOVE_CRATE_FROM_FAVORITES,
+} from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import { useState } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
@@ -21,6 +25,80 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
   });
 
   const crateSummaryData = data?.getProfile;
+  const isMain = Boolean(crateSummaryData?.id === mainProfile);
+
+  const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
+    update: (cache, { data: { addCrateToFavorites } }) => {
+      cache.modify({
+        id: cache.identify(addCrateToFavorites),
+        fields: {
+          favoritedBy(existingFavoritedBy = []) {
+            return addCrateToFavorites.favoritedBy;
+          },
+        },
+      });
+
+      cache.modify({
+        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
+        fields: {
+          favorites(existingFavorites = []) {
+            const newFragment = cache.writeFragment({
+              data: addCrateToFavorites,
+              fragment: gql`
+                fragment NewFavorite on Crate {
+                  id
+                }
+              `,
+            });
+
+            return [...existingFavorites, newFragment];
+          },
+        },
+      });
+    },
+  });
+
+  const [removeCrateFromFavorites] = useMutation(REMOVE_CRATE_FROM_FAVORITES, {
+    update: (cache, { data: { removeCrateFromFavorites } }) => {
+      cache.modify({
+        id: cache.identify(removeCrateFromFavorites),
+        fields: {
+          favoritedBy(existingFavoritedBy = []) {
+            return existingFavoritedBy.filter(profile => profile.id !== mainProfile);
+          },
+        },
+      });
+
+      cache.modify({
+        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
+        fields: {
+          favorites(existingFavorites = []) {
+            return existingFavorites.filter(crate => crate.id !== removeCrateFromFavorites.id);
+          },
+        },
+      });
+    },
+  });
+
+  //currentCheckStatus: boolean, crateId: number, mainProfile: number
+
+  const handleFavoriteToggle = (checkStatus, crateId, mainProfile) => {
+    // const mutationFunction = currentCheckStatus ? removeCrateFromFavorites : addCrateToFavorites;
+
+    // mutationFunction({
+    //   variables: {
+    //     input: {
+    //       crateId: crateId,
+    //       profileId: mainProfile,
+    //     },
+    //   },
+    // });
+    // console.log(`Current check status passed in is: ${event.currentTarget}`);
+    // event.preventDefault();
+    console.log(`Check status is: ${checkStatus}`);
+    console.log(`Crate ID is: ${crateId}`);
+    console.log(`Main Profile is: ${mainProfile}`);
+  };
 
   return (
     <Pane>
@@ -62,12 +140,15 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
-                  <BinaryIconButton
-                    icon={<Heart />}
-                    checkStatus={Boolean(
-                      crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
-                    )}
-                  />
+                  {!isMain && (
+                    <BinaryIconButton
+                      icon={<Heart />}
+                      checkStatus={Boolean(
+                        crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                      )}
+                      handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
+                    />
+                  )}
                 </div>
               ))}
             </Pane>
@@ -86,10 +167,12 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
             </Pane>
             <Pane crateSummaryPane={true}>
               {crateSummaryData.favorites.map((crate, index) => (
-                <button
+                <div
                   key={index}
                   className={cx('crateSummary')}
-                  onClick={() => {
+                  onClick={event => {
+                    // event.stopPropagation();
+                    // console.log(event.currentTarget);
                     setActiveCrate(crate.id);
                     setShowCrateDetail(true);
                   }}
@@ -105,10 +188,11 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
                   <BinaryIconButton
                     icon={<Heart />}
                     checkStatus={Boolean(
-                      crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                      crateSummaryData?.favorites[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
                     )}
+                    handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
                   />
-                </button>
+                </div>
               ))}
             </Pane>
           </>

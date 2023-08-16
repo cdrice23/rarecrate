@@ -51,7 +51,7 @@ const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
   const crateData = data?.getCrateDetailWithAlbums;
   const defaultModal = <div>{`I'm a modal! The current active crate id is: ${activeCrateId}`}</div>;
 
-  console.log(crateData?.albums);
+  // console.log(crateData?.albums);
 
   return (
     <>

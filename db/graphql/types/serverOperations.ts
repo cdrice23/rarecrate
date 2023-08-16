@@ -115,6 +115,14 @@ export const FollowOrRequestInput = inputObjectType({
   },
 });
 
+export const CrateProfileInput = inputObjectType({
+  name: 'CrateProfileInput',
+  definition(t) {
+    t.nonNull.int('crateId');
+    t.nonNull.int('profileId');
+  },
+});
+
 // MUTATIONS
 export const FollowMutations = mutationType({
   definition(t) {
@@ -181,8 +189,6 @@ export const FollowMutations = mutationType({
         const deletedFollow = {
           ...followToDelete,
         };
-
-        console.log(deletedFollow);
 
         await prisma.follow.delete({
           where: {
@@ -267,6 +273,55 @@ export const FollowMutations = mutationType({
         });
 
         return { followRequest: updatedFollowRequest, follow };
+      },
+    });
+  },
+});
+
+export const CrateMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('addCrateToFavorites', {
+      type: NexusCrate,
+      args: {
+        input: nonNull(CrateProfileInput),
+      },
+      resolve: async (_, { input }, ctx) => {
+        const { crateId, profileId } = input;
+        const crate = await ctx.prisma.crate.update({
+          where: {
+            id: crateId,
+          },
+          data: {
+            favoritedBy: {
+              connect: { id: profileId },
+            },
+          },
+        });
+
+        return crate;
+      },
+    });
+
+    t.field('removeCrateFromFavorites', {
+      type: NexusCrate,
+      args: {
+        input: nonNull(CrateProfileInput),
+      },
+      resolve: async (_, { input }, ctx) => {
+        const { crateId, profileId } = input;
+        const crate = await ctx.prisma.crate.update({
+          where: {
+            id: crateId,
+          },
+          data: {
+            favoritedBy: {
+              disconnect: { id: profileId },
+            },
+          },
+        });
+
+        return crate;
       },
     });
   },

@@ -257,3 +257,36 @@ export const ACCEPT_FOLLOW_REQUEST = gql`
     }
   }
 `;
+
+//Mutations for Favoriting/Unfavoriting a Crate
+export const ADD_CRATE_TO_FAVORITES = gql`
+  mutation AddCrateToFavorites($input: CrateProfileInput!) {
+    addCrateToFavorites(input: $input) {
+      id
+      title
+      labels {
+        id
+        isStandard
+      }
+      favoritedBy {
+        id
+      }
+    }
+  }
+`;
+
+export const REMOVE_CRATE_FROM_FAVORITES = gql`
+  mutation RemoveCrateFromFavorites($input: CrateProfileInput!) {
+    removeCrateFromFavorites(input: $input) {
+      id
+      title
+      labels {
+        id
+        isStandard
+      }
+      favoritedBy {
+        id
+      }
+    }
+  }
+`;

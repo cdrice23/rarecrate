@@ -43,6 +43,11 @@ type CrateAlbum {
   tags: [Tag]
 }
 
+input CrateProfileInput {
+  crateId: Int!
+  profileId: Int!
+}
+
 type CronJob {
   id: Int!
   path: String!
@@ -112,8 +117,10 @@ type Label {
 
 type Mutation {
   acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  addCrateToFavorites(input: CrateProfileInput!): Crate
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
+  removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
 }
 
