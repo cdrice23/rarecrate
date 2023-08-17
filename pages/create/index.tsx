@@ -5,6 +5,7 @@ import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { CrateForm } from '@/lib/molecules/CrateForm/CrateForm';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -69,6 +70,7 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
+          <CrateForm />
         </>
       ) : null}
     </AuthedLayout>
