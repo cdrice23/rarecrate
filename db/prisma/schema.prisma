@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 generator nexusPrisma {
@@ -159,6 +160,8 @@ model Label {
   isStandard           Boolean
   crates               Crate[]
   searchAndSelectCount Int     @default(0)
+
+  @@fulltext([name])
 }
 
 model Tag {

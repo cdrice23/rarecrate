@@ -1,5 +1,10 @@
 import { queryType, nonNull, intArg, stringArg, nullable, extendType } from 'nexus';
-import { Profile as NexusProfile, Crate as NexusCrate, FollowRequest as NexusFollowRequest } from './nexusTypes';
+import {
+  Profile as NexusProfile,
+  Crate as NexusCrate,
+  FollowRequest as NexusFollowRequest,
+  Label as NexusLabel,
+} from './nexusTypes';
 
 // GET QUERIES
 export const ProfileQueries = queryType({
@@ -79,6 +84,36 @@ export const FollowRequestQueries = extendType({
             sender: true,
             receiver: true,
           },
+        });
+      },
+    });
+  },
+});
+
+export const LabelQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('searchLabels', {
+      type: NexusLabel,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.label.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: [
+            {
+              _relevance: {
+                fields: ['name'],
+                search: searchTerm,
+                sort: 'desc',
+              },
+            },
+          ],
         });
       },
     });

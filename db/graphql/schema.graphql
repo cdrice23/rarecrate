@@ -150,6 +150,7 @@ type Query {
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getUsernameById(userId: Int!): [Profile!]!
+  searchLabels(searchTerm: String!): [Label]!
 }
 
 type Recommendation {

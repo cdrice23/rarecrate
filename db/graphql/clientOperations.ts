@@ -290,3 +290,14 @@ export const REMOVE_CRATE_FROM_FAVORITES = gql`
     }
   }
 `;
+
+// Add Crate Operations
+export const SEARCH_LABELS = gql`
+  query SearchLabels($searchTerm: String!) {
+    searchLabels(searchTerm: $searchTerm) {
+      id
+      name
+      isStandard
+    }
+  }
+`;
