@@ -68,7 +68,7 @@ const initCronRun = async () => {
     console.log(`Now evaluating: ${currentLabel}`);
 
     // Step 6 & 7: Create an array labelSearchData that has all masters from the label search
-    const labelSearchData = await searchDiscogsMasterByLabel(1, 1000, currentLabel);
+    const labelSearchData = await searchDiscogsMasterByLabel(1, 1200, currentLabel);
 
     console.log(`Total records to process: ${labelSearchData.length}`);
     let count = 0;
@@ -184,7 +184,7 @@ const initCronRun = async () => {
     // Increment index
     i++;
     // Cooldown for 1s to reduce CPU usage
-    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1200);
   }
 
   // Step 13: Update the CronRun with endTime and lastProcessedLabel
@@ -208,7 +208,7 @@ initCronRun()
 // Helpers
 async function getMasterDetails(masterId: number) {
   const apiUrl = `https://api.discogs.com/masters/${masterId}`;
-  const response = await makeDelayedRequest(apiUrl, 1000);
+  const response = await makeDelayedRequest(apiUrl, 1200);
   // console.log(`masterId: ${masterId}`)
   // console.log(response.data.artists)
 
@@ -243,14 +243,9 @@ async function searchDiscogsMasterByLabel(
   // On initial search, if limited by Discogs 10k result limit, truncate search to only include US masters
   let truncateSearch = checkCount;
   if (page === 1) {
-    const queryRes = await axios.get(
+    const queryRes = await makeDelayedRequest(
       `https://api.discogs.com/database/search?format=album&page=${page}&per_page=100&type=master&label=${label}`,
-      {
-        headers: {
-          Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
-          'User-Agent': user_agents[Math.floor(Math.random() * user_agents.length)],
-        },
-      },
+      1200,
     );
     const totalCount = queryRes.data.pagination.items;
     totalCount > 10000 ? (truncateSearch = true) : (truncateSearch = false);

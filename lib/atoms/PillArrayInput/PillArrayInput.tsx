@@ -10,6 +10,12 @@ interface PillArrayProps {
   label: string;
 }
 
+const labelOptions = [
+  { id: 1, name: 'Great' },
+  { id: 2, name: 'Awesome' },
+  { id: 3, name: 'Cool!' },
+];
+
 const PillArray = ({ name, value, onChange, label }: PillArrayProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
@@ -38,6 +44,9 @@ const PillArray = ({ name, value, onChange, label }: PillArrayProps) => {
                 <Field
                   name={`${name}[${value.length}]`}
                   value={newPill}
+                  list="labelList"
+                  id="labelInput"
+                  // as="select"
                   onChange={event => {
                     setNewPill(event.target.value);
                   }}
@@ -48,7 +57,20 @@ const PillArray = ({ name, value, onChange, label }: PillArrayProps) => {
                       setNewPill('');
                     }
                   }}
+                  // onSelect={event => {
+                  //   push(event.target.value);
+                  //   setShowAddPill(false);
+                  //   setNewPill('');
+                  // }}
                 />
+                <datalist id="labelList">
+                  {labelOptions.map(option => (
+                    <option key={option.id} value={option.name}>
+                      {option.name}
+                    </option>
+                  ))}
+                </datalist>
+                {/* </Field> */}
               </div>
             ) : (
               <button onClick={() => setShowAddPill(true)} className={cx('addButton')} type="button">
