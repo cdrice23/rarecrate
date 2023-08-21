@@ -1,4 +1,4 @@
-import { queryType, nonNull, intArg, stringArg, nullable, extendType } from 'nexus';
+import { queryType, nonNull, intArg, stringArg, nullable, extendType, booleanArg } from 'nexus';
 import {
   Profile as NexusProfile,
   Crate as NexusCrate,
@@ -114,6 +114,25 @@ export const LabelQueries = extendType({
               },
             },
           ],
+        });
+      },
+    });
+
+    t.list.field('getTopLabels', {
+      type: NexusLabel,
+      args: {
+        quantity: intArg(),
+        includeStandard: booleanArg(),
+      },
+      resolve: async (_, { quantity = 20, includeStandard = false }, ctx) => {
+        return await ctx.prisma.label.findMany({
+          where: {
+            isStandard: includeStandard ? undefined : false,
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: quantity,
         });
       },
     });

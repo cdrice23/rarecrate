@@ -654,17 +654,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  input {
-    margin: 8px;
-    width: 300px;
-  }
 }
 
 .pillArray {
   width: 600px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  background-color: azure;
 
   .addButton {
     width: 24px;
@@ -676,11 +673,25 @@
     background-color: aquamarine;
     border-radius: 16px;
     padding: 4px;
-    
 
     .pillName {
       margin-right: 4px;
-      display: inline;
+      display: inline-block;
     }
   }
+}
+
+// DropdownCombobox Stylings
+.inputSection {
+  display: flex;
+}
+
+.menu {
+  max-height: 150px;
+  overflow-y: scroll;
+  background-color: #eee;
+  padding: 0px;
+  list-style: none;
+  position: absolute;
+  z-index: 100;
 }

@@ -301,3 +301,13 @@ export const SEARCH_LABELS = gql`
     }
   }
 `;
+
+export const GET_TOP_LABELS = gql`
+  query GetTopLabels($quantity: Int, $includeStandard: Boolean) {
+    getTopLabels(quantity: $quantity, includeStandard: $includeStandard) {
+      id
+      name
+      isStandard
+    }
+  }
+`;
