@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build:nexus-typegen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only db/graphql/schema.ts",
-    "build": "npm run build:nexus-typegen && next build",
+    "build": "npm run build:nexus-typegen && next build --experimental-specifier-resolution=node",
     "dev:build": "dotenv -e .env.development -- next build",
     "start": "next start",
     "db:dev": "dotenv -e .env.development -- prisma studio",
