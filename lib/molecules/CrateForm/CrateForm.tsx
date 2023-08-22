@@ -18,6 +18,11 @@ import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 const onSubmit = async (values, actions) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   console.log(values);
+  const newLabels = values.labels.filter(label => label.isNew);
+  const existingLabels = values.labels.filter(label => !label.hasOwnProperty('isNew'));
+  console.log('New labels', newLabels);
+  console.log('Existing labels:', existingLabels);
+
   actions.resetForm();
 };
 

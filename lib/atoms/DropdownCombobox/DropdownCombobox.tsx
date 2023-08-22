@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
-import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
-import { useLazyQuery } from '@apollo/client';
 
 const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, searchQuery, loading }) => {
-  // const [inputItems, setInputItems] = useState([...listItems]);
-  const [inputItems, setInputItems] = useState(listItems || []);
-  // const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_LABELS);
+  const [inputItems, setInputItems] = useState([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   console.log(inputItems);
 
@@ -16,21 +13,19 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
     setInputItems(listItems);
   }, [listItems]);
 
-  const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
+  const { getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
-      // // Filter the menu based on input values - OG filter
-      // const filteredItem = inputItems.filter(item =>
-      //   item[itemLabel].toLowerCase().startsWith(inputValue.toLowerCase()),
-      // );
-      // setInputItems(filteredItem);
-
-      // Use the Search Labels query
-      if (inputItems) {
+      // When typing, run the passed search query
+      if (inputValue) {
+        setIsOpen(true);
         searchQuery({ variables: { searchTerm: inputValue } });
       }
 
-      // If we need to "add a new Label", update the text on the item
+      if (inputValue === '') {
+        setIsOpen(false);
+      }
+      // If we need to "add a new item"(i.e. not an existing item in search), update the text on the item
       updateNewPill(inputValue);
     },
     onHighlightedIndexChange: ({ highlightedIndex }) => {
@@ -48,6 +43,7 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
             onKeyDown: event => {
               if (event.key === 'Enter') {
                 enterHandler();
+                setInputItems([]);
               }
             },
           })}
@@ -73,6 +69,7 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
                   onClick: () => {
                     updateNewPill(inputItems[highlightedIndex][itemLabel]);
                     enterHandler();
+                    setInputItems([]);
                   },
                 })}
               >

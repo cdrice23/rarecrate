@@ -6,21 +6,19 @@ import cx from 'classnames';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
 
-import { useLazyQuery } from '@apollo/client';
-import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
-
 interface PillArrayProps {
   name: string;
   value: string[];
   label: string;
   itemLabel: string;
   listItems: any[];
+  loading: boolean;
+  searchQuery: () => void;
 }
 
-const PillArray = ({ name, value, label, itemLabel, listItems }: PillArrayProps) => {
+const PillArray = ({ name, value, label, itemLabel, listItems, loading, searchQuery }: PillArrayProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
-  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_LABELS);
   console.log(value);
 
   return (
@@ -38,15 +36,13 @@ const PillArray = ({ name, value, label, itemLabel, listItems }: PillArrayProps)
             {showAddPill ? (
               <OutsideClickHandler onOutsideClick={() => setShowAddPill(false)}>
                 <DropdownCombobox
-                  listItems={data?.searchLabels ?? []}
+                  listItems={listItems}
                   loading={loading}
                   searchQuery={searchQuery}
                   itemLabel={itemLabel}
                   enterHandler={() => {
                     // If newPill is in the itemArray, push the existing item into the array
-                    const existingItem = data?.searchLabels.find(
-                      obj => obj[itemLabel].toLowerCase() === newPill.toLowerCase(),
-                    );
+                    const existingItem = listItems.find(obj => obj[itemLabel].toLowerCase() === newPill.toLowerCase());
                     if (existingItem) {
                       push(existingItem);
                     }
