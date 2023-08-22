@@ -15,6 +15,9 @@ const nextConfig = {
   images: {
     domains: ['i.discogs.com'],
   },
+  experimental: {
+    esmExternals: true,
+  },
 };
 
 module.exports = nextConfig;
