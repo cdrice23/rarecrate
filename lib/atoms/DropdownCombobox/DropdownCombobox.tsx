@@ -4,15 +4,22 @@ import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
 
 const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel }) => {
-  const [inputItems, setInputItems] = useState(listItems.map(item => item[itemLabel]));
+  const [inputItems, setInputItems] = useState([...listItems]);
   const { isOpen, getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
-      setInputItems(inputItems.filter(item => item.toLowerCase().startsWith(inputValue.toLowerCase())));
+      // Filter the menu based on input values
+      const filteredItem = inputItems.filter(item =>
+        item[itemLabel].toLowerCase().startsWith(inputValue.toLowerCase()),
+      );
+      setInputItems(filteredItem);
+      // If we need to "add a new Label", update the text on the item
       updateNewPill(inputValue);
     },
     onHighlightedIndexChange: ({ highlightedIndex }) => {
-      updateNewPill(inputItems[highlightedIndex]);
+      if (highlightedIndex !== -1) {
+        updateNewPill(inputItems[highlightedIndex][itemLabel]);
+      }
     },
   });
 
@@ -38,17 +45,17 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel })
           inputItems.map((item, index) => (
             <li
               style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-              key={`${item}${index}`}
+              key={`${item[itemLabel]}${index}`}
               {...getItemProps({
                 item,
                 index,
                 onClick: () => {
-                  updateNewPill(inputItems[highlightedIndex]);
+                  updateNewPill(inputItems[highlightedIndex][itemLabel]);
                   enterHandler();
                 },
               })}
             >
-              {item}
+              {item[itemLabel]}
             </li>
           ))}
       </ul>

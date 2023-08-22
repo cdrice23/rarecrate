@@ -1,7 +1,7 @@
 import { ErrorMessage, FieldArray, Field } from 'formik';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useState } from 'react';
-import { X, Plus } from '@phosphor-icons/react';
+import { Plus } from '@phosphor-icons/react';
 import cx from 'classnames';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
@@ -9,42 +9,15 @@ import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
 interface PillArrayProps {
   name: string;
   value: string[];
-  onChange?: (event) => void;
   label: string;
+  itemLabel: string;
+  listItems: any[];
 }
 
-const exampleLabels = [
-  { id: 1, name: 'Neptunium' },
-  { id: 2, name: 'Plutonium' },
-  { id: 3, name: 'Americium' },
-  { id: 4, name: 'Curium' },
-  { id: 5, name: 'Berkelium' },
-  { id: 6, name: 'Californium' },
-  { id: 7, name: 'Einsteinium' },
-  { id: 8, name: 'Fermium' },
-  { id: 9, name: 'Mendelevium' },
-  { id: 10, name: 'Nobelium' },
-  { id: 11, name: 'Lawrencium' },
-  { id: 12, name: 'Rutherfordium' },
-  { id: 13, name: 'Dubnium' },
-  { id: 14, name: 'Seaborgium' },
-  { id: 15, name: 'Bohrium' },
-  { id: 16, name: 'Hassium' },
-  { id: 17, name: 'Meitnerium' },
-  { id: 18, name: 'Darmstadtium' },
-  { id: 19, name: 'Roentgenium' },
-  { id: 20, name: 'Copernicium' },
-  { id: 21, name: 'Nihonium' },
-  { id: 22, name: 'Flerovium' },
-  { id: 23, name: 'Moscovium' },
-  { id: 24, name: 'Livermorium' },
-  { id: 25, name: 'Tennessine' },
-  { id: 26, name: 'Oganesson' },
-];
-
-const PillArray = ({ name, value, label }: PillArrayProps) => {
+const PillArray = ({ name, value, label, itemLabel, listItems }: PillArrayProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
+  console.log(value);
 
   return (
     <>
@@ -55,14 +28,28 @@ const PillArray = ({ name, value, label }: PillArrayProps) => {
         {({ insert, remove, push }) => (
           <div className={cx('pillArray')}>
             {value.length > 0 &&
-              value.map((pill, index) => <Pill key={index} name={pill} removeHandler={() => remove(index)} />)}
+              value.map((pill, index) => (
+                <Pill key={index} name={pill[itemLabel]} removeHandler={() => remove(index)} />
+              ))}
             {showAddPill ? (
               <OutsideClickHandler onOutsideClick={() => setShowAddPill(false)}>
                 <DropdownCombobox
-                  listItems={exampleLabels}
-                  itemLabel={'name'}
+                  listItems={listItems}
+                  itemLabel={itemLabel}
                   enterHandler={() => {
-                    push(newPill);
+                    // If newPill is in the itemArray, push the existing item into the array
+                    const existingItem = listItems.find(obj => obj[itemLabel].toLowerCase() === newPill.toLowerCase());
+                    if (existingItem) {
+                      push(existingItem);
+                    }
+                    // Otherwise, push a new item into the array
+                    else {
+                      push({
+                        id: listItems.length,
+                        name: newPill,
+                      });
+                    }
+                    // Do cleanup
                     setShowAddPill(false);
                     setNewPill('');
                   }}

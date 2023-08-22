@@ -4,6 +4,7 @@ import { crateFormSchema } from '@/core/helpers/validation';
 import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import cx from 'classnames';
 import { PillArray } from '@/lib/atoms/PillArrayInput/PillArrayInput';
+import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 
 // Needed items
 // title - check
@@ -50,7 +51,7 @@ const CrateForm = () => {
             label="Description"
           />
           <ToggleInput name="isRanked" label="Ranked?" />
-          <PillArray name="labels" value={values.labels} label="Labels" />
+          <LabelSearchInput value={values.labels} />
           <button disabled={isSubmitting} type="submit">
             Submit
           </button>
