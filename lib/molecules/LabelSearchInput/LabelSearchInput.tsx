@@ -1,4 +1,5 @@
 import { PillArray } from '@/lib/atoms/PillArrayInput/PillArrayInput';
+import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
 
 const exampleLabels = [
   { id: 1, name: 'Neptunium' },

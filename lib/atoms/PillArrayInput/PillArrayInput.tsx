@@ -6,6 +6,9 @@ import cx from 'classnames';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
 
+import { useLazyQuery } from '@apollo/client';
+import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
+
 interface PillArrayProps {
   name: string;
   value: string[];
@@ -17,6 +20,7 @@ interface PillArrayProps {
 const PillArray = ({ name, value, label, itemLabel, listItems }: PillArrayProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
+  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_LABELS);
   console.log(value);
 
   return (
@@ -34,19 +38,23 @@ const PillArray = ({ name, value, label, itemLabel, listItems }: PillArrayProps)
             {showAddPill ? (
               <OutsideClickHandler onOutsideClick={() => setShowAddPill(false)}>
                 <DropdownCombobox
-                  listItems={listItems}
+                  listItems={data?.searchLabels ?? []}
+                  loading={loading}
+                  searchQuery={searchQuery}
                   itemLabel={itemLabel}
                   enterHandler={() => {
                     // If newPill is in the itemArray, push the existing item into the array
-                    const existingItem = listItems.find(obj => obj[itemLabel].toLowerCase() === newPill.toLowerCase());
+                    const existingItem = data?.searchLabels.find(
+                      obj => obj[itemLabel].toLowerCase() === newPill.toLowerCase(),
+                    );
                     if (existingItem) {
                       push(existingItem);
                     }
                     // Otherwise, push a new item into the array
                     else {
                       push({
-                        id: listItems.length,
-                        name: newPill,
+                        isNew: true,
+                        [itemLabel]: newPill,
                       });
                     }
                     // Do cleanup
