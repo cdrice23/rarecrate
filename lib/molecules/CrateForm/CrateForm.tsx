@@ -3,8 +3,8 @@ import { TextInput } from '@/lib/atoms/TextInput/TextInput';
 import { crateFormSchema } from '@/core/helpers/validation';
 import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import cx from 'classnames';
-import { PillArray } from '@/lib/atoms/PillArrayInput/PillArrayInput';
 import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
+import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
 
 // Needed items
 // title - check
@@ -57,6 +57,7 @@ const CrateForm = () => {
           />
           <ToggleInput name="isRanked" label="Ranked?" />
           <LabelSearchInput value={values.labels} />
+          <CrateAlbumArrayInput name="crateAlbums" value={values.crateAlbums} />
           <button disabled={isSubmitting} type="submit">
             Submit
           </button>

@@ -6,9 +6,9 @@ import cx from 'classnames';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
 
-interface PillArrayProps {
+interface PillArrayInputProps {
   name: string;
-  value: string[];
+  value: any[];
   label: string;
   itemLabel: string;
   listItems: any[];
@@ -16,7 +16,7 @@ interface PillArrayProps {
   searchQuery: () => void;
 }
 
-const PillArray = ({ name, value, label, itemLabel, listItems, loading, searchQuery }: PillArrayProps) => {
+const PillArrayInput = ({ name, value, label, itemLabel, listItems, loading, searchQuery }: PillArrayInputProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
   // console.log(value);
@@ -72,4 +72,4 @@ const PillArray = ({ name, value, label, itemLabel, listItems, loading, searchQu
   );
 };
 
-export { PillArray };
+export { PillArrayInput };

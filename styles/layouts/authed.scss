@@ -695,3 +695,32 @@
   position: absolute;
   z-index: 100;
 }
+
+// CrateAlbumArrayInput stylings
+.albumArray {
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: steelblue;
+
+  .crateAlbumWrapper {
+    border-radius: 16px;
+    margin: 8px;
+    width: 95%;
+    background-color: gainsboro;
+    height: 75px;
+    display: flex;
+    align-items: center;
+
+    .description {
+      margin: 16px;
+      flex-grow: 1;
+    }
+
+    button {
+      margin: 16px;
+    }
+  }
+}

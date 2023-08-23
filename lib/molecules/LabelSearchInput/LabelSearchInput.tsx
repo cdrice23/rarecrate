@@ -1,4 +1,4 @@
-import { PillArray } from '@/lib/atoms/PillArrayInput/PillArrayInput';
+import { PillArrayInput } from '@/lib/atoms/PillArrayInput/PillArrayInput';
 import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
 import { useLazyQuery } from '@apollo/client';
 
@@ -7,7 +7,7 @@ const LabelSearchInput = ({ value }) => {
 
   return (
     <>
-      <PillArray
+      <PillArrayInput
         name="labels"
         value={value}
         label="Labels"
