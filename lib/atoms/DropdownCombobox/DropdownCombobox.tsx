@@ -6,8 +6,9 @@ import cx from 'classnames';
 const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
 
-  console.log(inputItems);
+  // console.log(inputItems);
 
   useEffect(() => {
     setInputItems(listItems);
@@ -16,10 +17,19 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
   const { getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     items: inputItems,
     onInputValueChange: ({ inputValue }) => {
+      // Clear previous debounce timeout
+      if (debounceTimeout) {
+        clearTimeout(debounceTimeout);
+      }
+
       // When typing, run the passed search query
       if (inputValue) {
         setIsOpen(true);
-        searchQuery({ variables: { searchTerm: inputValue } });
+        // Debounce to wait 300ms after user stops typing
+        const newDebounceTimeout = setTimeout(() => {
+          searchQuery({ variables: { searchTerm: inputValue } });
+        }, 300);
+        setDebounceTimeout(newDebounceTimeout);
       }
 
       if (inputValue === '') {

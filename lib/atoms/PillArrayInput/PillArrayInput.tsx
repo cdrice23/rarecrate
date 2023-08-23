@@ -19,7 +19,7 @@ interface PillArrayProps {
 const PillArray = ({ name, value, label, itemLabel, listItems, loading, searchQuery }: PillArrayProps) => {
   const [showAddPill, setShowAddPill] = useState<boolean>(false);
   const [newPill, setNewPill] = useState<string>('');
-  console.log(value);
+  // console.log(value);
 
   return (
     <>
