@@ -4,6 +4,7 @@ import { main as bigCrateSeed } from './bigCrateSeed';
 import { main as albumSeed } from './albumSeed';
 import { main as connectAlbumSeed } from './connectAlbumSeed';
 import { main as getAlbumImageUrls } from './getAlbumImageUrls';
+import { fixTagDuplicates } from '../backfill/fixTagDuplicates';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -15,7 +16,8 @@ async function main() {
   // await albumSeed();
   // await connectAlbumSeed();
   // await getAlbumImageUrls();
-  await resetDb();
+  // await resetDb();
+  await fixTagDuplicates();
 }
 
 main()
