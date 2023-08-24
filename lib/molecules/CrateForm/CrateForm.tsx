@@ -57,7 +57,7 @@ const CrateForm = () => {
           />
           <ToggleInput name="isRanked" label="Ranked?" />
           <LabelSearchInput value={values.labels} />
-          <CrateAlbumArrayInput name="crateAlbums" value={values.crateAlbums} />
+          <CrateAlbumArrayInput value={values.crateAlbums} />
           <button disabled={isSubmitting} type="submit">
             Submit
           </button>

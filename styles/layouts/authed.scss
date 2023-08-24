@@ -656,34 +656,74 @@
   justify-content: center;
 }
 
-.pillArray {
+.labelArray {
   width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: azure;
 
-  .addButton {
-    width: 24px;
-    height: 24px;
-  }
-
-  .pill {
-    margin: 8px;
-    background-color: aquamarine;
-    border-radius: 16px;
-    padding: 4px;
-
-    .pillName {
-      margin-right: 4px;
-      display: inline-block;
+  .pillArray {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: azure;
+  
+    .addButton {
+      margin: 8px;
+      width: 24px;
+      height: 24px;
+    }
+  
+    .pill {
+      margin: 8px;
+      background-color: aquamarine;
+      border-radius: 16px;
+      padding: 4px;
+  
+      .pillName {
+        margin-right: 4px;
+        display: inline-block;
+      }
     }
   }
 }
 
+.tagArray {
+  width: 100%;
+  margin-top: 4px;
+
+  .pillArray {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: azure;
+
+     > button {
+      margin: 8px;
+    }
+  
+    .addButton {
+      width: 24px;
+      height: 24px;
+    }
+  
+    .pill {
+      margin: 4px;
+      background-color: aquamarine;
+      border-radius: 16px;
+      padding: 4px;
+  
+      .pillName {
+        margin-right: 4px;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
 // DropdownCombobox Stylings
 .inputSection {
   display: flex;
+  align-items: center;
+  margin: 8px;
 }
 
 .menu {
@@ -717,9 +757,10 @@
     .description {
       margin: 16px;
       flex-grow: 1;
+      min-width: 100px;
     }
 
-    button {
+    .closeButton {
       margin: 16px;
     }
   }

@@ -6,22 +6,19 @@ import cx from 'classnames';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
 
 interface CrateAlbumArrayInputProps {
-  name: string;
   value: any[];
 }
 
-const CrateAlbumArrayInput = ({ name, value }: CrateAlbumArrayInputProps) => {
+const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
   const [searchPrompt, setSearchPrompt] = useState<string>('');
-  // console.log(searchPrompt);
-  // const [newPill, setNewPill] = useState<string>('');
-  console.log(value);
+  // console.log(value);
 
   return (
     <>
       <label>
         <h4>{`Albums`}</h4>
       </label>
-      <FieldArray name={name}>
+      <FieldArray name={'crateAlbums'}>
         {({ insert, remove, push, form: { setFieldValue } }) => (
           <>
             <Field
@@ -31,8 +28,9 @@ const CrateAlbumArrayInput = ({ name, value }: CrateAlbumArrayInputProps) => {
               onChange={event => setSearchPrompt(event.target.value)}
               onKeyDown={event => {
                 if (event.key === 'Enter') {
-                  // console.log(`You're searching for: ${searchPrompt}`);
-                  push({ title: searchPrompt, artist: 'The Band' });
+                  event.preventDefault();
+                  push({ title: searchPrompt, artist: 'The Band', tags: [] });
+                  setSearchPrompt('');
                 }
               }}
             />
@@ -42,6 +40,7 @@ const CrateAlbumArrayInput = ({ name, value }: CrateAlbumArrayInputProps) => {
                   <CrateAlbumInput
                     data={album}
                     key={index}
+                    id={index}
                     removeHandler={() => remove(index)}
                     tagHandler={tag => {
                       let newValue = [...value];
