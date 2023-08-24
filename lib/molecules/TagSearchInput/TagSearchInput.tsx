@@ -1,9 +1,9 @@
 import { PillArrayInput } from '@/lib/atoms/PillArrayInput/PillArrayInput';
-import { SEARCH_LABELS } from '@/db/graphql/clientOperations';
+import { SEARCH_TAGS } from '@/db/graphql/clientOperations';
 import { useLazyQuery } from '@apollo/client';
 
 const TagSearchInput = ({ value, name }) => {
-  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_LABELS);
+  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_TAGS);
 
   return (
     <>
@@ -12,7 +12,7 @@ const TagSearchInput = ({ value, name }) => {
         value={value}
         label="Tags"
         itemLabel={'name'}
-        listItems={data?.searchLabels ?? []}
+        listItems={data?.searchTags ?? []}
         loading={loading}
         searchQuery={searchQuery}
         type="tagArray"

@@ -112,6 +112,8 @@ model Album {
   crates               CrateAlbum[]
   tracklist            TracklistItem[]
   searchAndSelectCount Int             @default(0)
+
+  @@fulltext([title, artist])
 }
 
 model Genre {
@@ -169,6 +171,8 @@ model Tag {
   name                 String
   crateAlbum           CrateAlbum[]
   searchAndSelectCount Int          @default(0)
+
+  @@fulltext([name])
 }
 
 model CronJob {

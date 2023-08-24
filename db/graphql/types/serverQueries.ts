@@ -4,6 +4,7 @@ import {
   Crate as NexusCrate,
   FollowRequest as NexusFollowRequest,
   Label as NexusLabel,
+  Tag as NexusTag,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -129,6 +130,51 @@ export const LabelQueries = extendType({
           where: {
             isStandard: includeStandard ? undefined : false,
           },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: quantity,
+        });
+      },
+    });
+  },
+});
+
+export const TagQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('searchTags', {
+      type: NexusTag,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.tag.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: [
+            {
+              _relevance: {
+                fields: ['name'],
+                search: searchTerm,
+                sort: 'desc',
+              },
+            },
+          ],
+        });
+      },
+    });
+
+    t.list.field('getTopTags', {
+      type: NexusTag,
+      args: {
+        quantity: intArg(),
+      },
+      resolve: async (_, { quantity = 20 }, ctx) => {
+        return await ctx.prisma.label.findMany({
           orderBy: {
             searchAndSelectCount: 'desc',
           },

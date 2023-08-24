@@ -37,17 +37,7 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
             <div className={cx('albumArray')}>
               {value.length > 0 &&
                 value.map((album, index) => (
-                  <CrateAlbumInput
-                    data={album}
-                    key={index}
-                    id={index}
-                    removeHandler={() => remove(index)}
-                    tagHandler={tag => {
-                      let newValue = [...value];
-                      newValue[index].tag = tag;
-                      setFieldValue(name, newValue);
-                    }}
-                  />
+                  <CrateAlbumInput data={album} key={index} id={index} removeHandler={() => remove(index)} />
                 ))}
             </div>
           </>

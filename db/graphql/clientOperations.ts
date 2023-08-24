@@ -311,3 +311,21 @@ export const GET_TOP_LABELS = gql`
     }
   }
 `;
+
+export const SEARCH_TAGS = gql`
+  query SearchTags($searchTerm: String!) {
+    searchTags(searchTerm: $searchTerm) {
+      id
+      name
+    }
+  }
+`;
+
+export const GET_TOP_TAGS = gql`
+  query GetTopTags($quantity: Int, $includeStandard: Boolean) {
+    getTopTags(quantity: $quantity, includeStandard: $includeStandard) {
+      id
+      name
+    }
+  }
+`;
