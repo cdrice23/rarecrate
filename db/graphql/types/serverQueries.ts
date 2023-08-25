@@ -5,6 +5,7 @@ import {
   FollowRequest as NexusFollowRequest,
   Label as NexusLabel,
   Tag as NexusTag,
+  Album as NexusAlbum,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -180,6 +181,77 @@ export const TagQueries = extendType({
           },
           take: quantity,
         });
+      },
+    });
+  },
+});
+
+export const AlbumQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('searchPrismaAlbums', {
+      type: NexusAlbum,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        // OG search algo
+        const titleResults = await ctx.prisma.album.findMany({
+          where: {
+            title: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            _relevance: {
+              fields: ['title'],
+              search: searchTerm,
+              sort: 'desc',
+            },
+          },
+        });
+
+        const artistResults = await ctx.prisma.album.findMany({
+          where: {
+            artist: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            _relevance: {
+              fields: ['artist'],
+              search: searchTerm,
+              sort: 'desc',
+            },
+          },
+        });
+
+        const combinedResults = [...titleResults, ...artistResults];
+
+        return combinedResults.sort((a, b) => b._relevance - a._relevance);
+        // const exactMatches = await ctx.prisma.album.findMany({
+        //   where: {
+        //     OR: [
+        //       { title: { contains: searchTerm } },
+        //       { artist: { contains: searchTerm } },
+        //     ],
+        //   },
+        // });
+
+        // const sortedMatches = exactMatches.sort((a, b) => {
+        //   const aTitleLengthDiff = Math.abs(a.title.length - searchTerm.length);
+        //   const bTitleLengthDiff = Math.abs(b.title.length - searchTerm.length);
+        //   const aArtistLengthDiff = Math.abs(a.artist.length - searchTerm.length);
+        //   const bArtistLengthDiff = Math.abs(b.artist.length - searchTerm.length);
+
+        //   if (aTitleLengthDiff === bTitleLengthDiff) {
+        //     return aArtistLengthDiff - bArtistLengthDiff;
+        //   }
+
+        //   return aTitleLengthDiff - bTitleLengthDiff;
+        // });
+
+        // return sortedMatches;
       },
     });
   },

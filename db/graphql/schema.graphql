@@ -153,6 +153,7 @@ type Query {
   getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
   searchLabels(searchTerm: String!): [Label]!
+  searchPrismaAlbums(searchTerm: String!): [Album]!
   searchTags(searchTerm: String!): [Tag]!
 }
 

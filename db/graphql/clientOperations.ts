@@ -329,3 +329,15 @@ export const GET_TOP_TAGS = gql`
     }
   }
 `;
+
+export const SEARCH_PRISMA_ALBUMS = gql`
+  query SearchPrismaAlbums($searchTerm: String!) {
+    searchPrismaAlbums(searchTerm: $searchTerm) {
+      id
+      title
+      artist
+      discogsMasterId
+      imageUrl
+    }
+  }
+`;

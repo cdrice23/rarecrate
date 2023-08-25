@@ -113,7 +113,8 @@ model Album {
   tracklist            TracklistItem[]
   searchAndSelectCount Int             @default(0)
 
-  @@fulltext([title, artist])
+  @@fulltext([title])
+  @@fulltext([artist])
 }
 
 model Genre {
