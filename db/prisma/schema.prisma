@@ -115,6 +115,7 @@ model Album {
 
   @@fulltext([title])
   @@fulltext([artist])
+  @@fulltext([title, artist])
 }
 
 model Genre {

@@ -189,69 +189,88 @@ export const TagQueries = extendType({
 export const AlbumQueries = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('searchPrismaAlbums', {
+    t.nonNull.list.field('searchPrismaAlbumsExact', {
       type: NexusAlbum,
       args: {
         searchTerm: nonNull(stringArg()),
       },
       resolve: async (_, { searchTerm }, ctx) => {
-        // OG search algo
-        const titleResults = await ctx.prisma.album.findMany({
+        const results = await ctx.prisma.album.findMany({
           where: {
-            title: {
-              contains: searchTerm,
-            },
+            OR: [
+              {
+                artist: searchTerm,
+              },
+              {
+                title: searchTerm,
+              },
+            ],
           },
-          orderBy: {
-            _relevance: {
-              fields: ['title'],
-              search: searchTerm,
-              sort: 'desc',
+          orderBy: [
+            {
+              searchAndSelectCount: 'desc',
             },
-          },
+          ],
         });
 
-        const artistResults = await ctx.prisma.album.findMany({
-          where: {
-            artist: {
-              contains: searchTerm,
-            },
-          },
-          orderBy: {
-            _relevance: {
-              fields: ['artist'],
-              search: searchTerm,
-              sort: 'desc',
-            },
-          },
+        const ids = new Set();
+        const uniqueResults = results.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
         });
 
-        const combinedResults = [...titleResults, ...artistResults];
+        return uniqueResults;
+      },
+    });
 
-        return combinedResults.sort((a, b) => b._relevance - a._relevance);
-        // const exactMatches = await ctx.prisma.album.findMany({
-        //   where: {
-        //     OR: [
-        //       { title: { contains: searchTerm } },
-        //       { artist: { contains: searchTerm } },
-        //     ],
-        //   },
-        // });
+    t.nonNull.list.field('searchPrismaAlbumsContains', {
+      type: NexusAlbum,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const results = await ctx.prisma.album.findMany({
+          where: {
+            OR: [
+              {
+                artist: {
+                  contains: searchTerm,
+                },
+              },
+              {
+                title: {
+                  contains: searchTerm,
+                },
+              },
+            ],
+          },
+          orderBy: [
+            {
+              _relevance: {
+                fields: ['artist', 'title'],
+                search: searchTerm,
+                sort: 'desc',
+              },
+            },
+            {
+              searchAndSelectCount: 'desc',
+            },
+          ],
+        });
 
-        // const sortedMatches = exactMatches.sort((a, b) => {
-        //   const aTitleLengthDiff = Math.abs(a.title.length - searchTerm.length);
-        //   const bTitleLengthDiff = Math.abs(b.title.length - searchTerm.length);
-        //   const aArtistLengthDiff = Math.abs(a.artist.length - searchTerm.length);
-        //   const bArtistLengthDiff = Math.abs(b.artist.length - searchTerm.length);
+        const ids = new Set();
+        const uniqueResults = results.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
 
-        //   if (aTitleLengthDiff === bTitleLengthDiff) {
-        //     return aArtistLengthDiff - bArtistLengthDiff;
-        //   }
-
-        //   return aTitleLengthDiff - bTitleLengthDiff;
-        // });
-
-        // return sortedMatches;
+        return uniqueResults;
       },
     });
   },
