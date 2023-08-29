@@ -1,17 +1,32 @@
 import { ErrorMessage, FieldArray, Field } from 'formik';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useState } from 'react';
-import { Plus, X } from '@phosphor-icons/react';
 import cx from 'classnames';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
+import { AlbumSearchCombobox } from '../AlbumSearchCombobox/AlbumSearchCombobox';
+import { SEARCH_PRISMA_ALBUMS } from '@/db/graphql/clientOperations';
+import { useLazyQuery } from '@apollo/client';
 
 interface CrateAlbumArrayInputProps {
   value: any[];
 }
 
+interface QueriedAlbum {
+  id?: number;
+  title: string;
+  artist;
+  string;
+  imageUrl: string;
+  discogsMasterId: string;
+  isNew?: boolean;
+}
+
 const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
+  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
-  // console.log(value);
+  const [selectedAlbum, setSelectedAlbum] = useState<QueriedAlbum>(null);
+
+  const searchResults = data?.searchPrismaAlbums;
 
   return (
     <>
@@ -21,18 +36,26 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
       <FieldArray name={'crateAlbums'}>
         {({ insert, remove, push, form: { setFieldValue } }) => (
           <>
-            <Field
-              name={'AlbumSearch'}
+            <AlbumSearchCombobox
               value={searchPrompt}
-              placeholder="Search Albums"
-              onChange={event => setSearchPrompt(event.target.value)}
-              onKeyDown={event => {
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  push({ title: searchPrompt, artist: 'The Band', tags: [] });
-                  setSearchPrompt('');
+              listItems={searchResults ?? []}
+              loading={loading}
+              searchQuery={searchQuery}
+              enterHandler={album => {
+                // If album has a Prisma Id, then return the Prisma object
+                if (album.id) {
+                  push(album);
+                }
+                // Otherwise, mark the object as an item that needs to be added to the db
+                else {
+                  push({
+                    ...album,
+                    isNew: true,
+                  });
                 }
               }}
+              updateSearchPrompt={setSearchPrompt}
+              updateSelectedAlbum={setSelectedAlbum}
             />
             <div className={cx('albumArray')}>
               {value.length > 0 &&

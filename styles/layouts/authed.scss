@@ -738,7 +738,7 @@
 
 // CrateAlbumArrayInput stylings
 .albumArray {
-  width: 600px;
+  width: 1000px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -754,10 +754,14 @@
     display: flex;
     align-items: center;
 
-    .description {
+    .albumCover {
       margin: 16px;
+    }
+
+    .description {
+      margin: 8px;
       flex-grow: 1;
-      min-width: 100px;
+      min-width: 200px;
     }
 
     .closeButton {

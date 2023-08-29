@@ -189,44 +189,7 @@ export const TagQueries = extendType({
 export const AlbumQueries = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('searchPrismaAlbumsExact', {
-      type: NexusAlbum,
-      args: {
-        searchTerm: nonNull(stringArg()),
-      },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const results = await ctx.prisma.album.findMany({
-          where: {
-            OR: [
-              {
-                artist: searchTerm,
-              },
-              {
-                title: searchTerm,
-              },
-            ],
-          },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
-        });
-
-        const ids = new Set();
-        const uniqueResults = results.filter(album => {
-          if (!ids.has(album.id)) {
-            ids.add(album.id);
-            return true;
-          }
-          return false;
-        });
-
-        return uniqueResults;
-      },
-    });
-
-    t.nonNull.list.field('searchPrismaAlbumsContains', {
+    t.nonNull.list.field('searchPrismaAlbums', {
       type: NexusAlbum,
       args: {
         searchTerm: nonNull(stringArg()),
@@ -248,13 +211,6 @@ export const AlbumQueries = extendType({
             ],
           },
           orderBy: [
-            {
-              _relevance: {
-                fields: ['artist', 'title'],
-                search: searchTerm,
-                sort: 'desc',
-              },
-            },
             {
               searchAndSelectCount: 'desc',
             },

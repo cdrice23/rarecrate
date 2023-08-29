@@ -3,12 +3,21 @@ import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
 
-const AlbumSearchCombobox = ({ enterHandler, updateNewPill, listItems, searchQuery, loading }) => {
+const AlbumSearchCombobox = ({
+  value,
+  enterHandler,
+  updateSearchPrompt,
+  listItems,
+  searchQuery,
+  loading,
+  updateSelectedAlbum,
+}) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
 
-  // console.log(inputItems);
+  const [selectedItem, setSelectedItem] = useState(null);
+  console.log(selectedItem);
 
   useEffect(() => {
     setInputItems(listItems);
@@ -16,33 +25,7 @@ const AlbumSearchCombobox = ({ enterHandler, updateNewPill, listItems, searchQue
 
   const { getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     items: inputItems,
-    onInputValueChange: ({ inputValue }) => {
-      // Clear previous debounce timeout
-      if (debounceTimeout) {
-        clearTimeout(debounceTimeout);
-      }
-
-      // When typing, run the passed search query
-      if (inputValue) {
-        setIsOpen(true);
-        // Debounce to wait 300ms after user stops typing
-        const newDebounceTimeout = setTimeout(() => {
-          searchQuery({ variables: { searchTerm: inputValue } });
-        }, 300);
-        setDebounceTimeout(newDebounceTimeout);
-      }
-
-      if (inputValue === '') {
-        setIsOpen(false);
-      }
-      // If we need to "add a new item"(i.e. not an existing item in search), update the text on the item
-      updateNewPill(inputValue);
-    },
-    onHighlightedIndexChange: ({ highlightedIndex }) => {
-      if (highlightedIndex !== -1 && inputItems) {
-        updateNewPill(inputItems[highlightedIndex]);
-      }
-    },
+    itemToString: (item: any) => (item ? item.title : ''),
   });
 
   return (
@@ -50,14 +33,43 @@ const AlbumSearchCombobox = ({ enterHandler, updateNewPill, listItems, searchQue
       <div className={cx('inputSection')}>
         <input
           {...getInputProps({
+            value,
+            placeholder: 'Search Albums',
             onKeyDown: event => {
               if (event.key === 'Enter') {
-                enterHandler();
+                clearTimeout(debounceTimeout);
+                setDebounceTimeout(null);
+                setIsOpen(false);
+                setSelectedItem(inputItems[highlightedIndex]);
+                enterHandler(inputItems[highlightedIndex]);
                 setInputItems([]);
+                updateSearchPrompt('');
+              }
+            },
+            onChange: event => {
+              const inputValue = event.currentTarget.value;
+              setIsOpen(true);
+              // Clear previous debounce timeout
+              if (debounceTimeout) {
+                clearTimeout(debounceTimeout);
+              }
+
+              // When typing, run the passed search query
+              if (inputValue !== selectedItem?.title) {
+                // Debounce to wait 300ms after user stops typing
+                const newDebounceTimeout = setTimeout(() => {
+                  searchQuery({ variables: { searchTerm: inputValue } });
+                }, 300);
+                setDebounceTimeout(newDebounceTimeout);
+              }
+
+              updateSearchPrompt(inputValue);
+
+              if (inputValue === '') {
+                setIsOpen(false);
               }
             },
           })}
-          maxLength={30}
         />
         <button type="button" {...getToggleButtonProps()} aria-label="toggle menu">
           <CaretDown />
@@ -65,7 +77,6 @@ const AlbumSearchCombobox = ({ enterHandler, updateNewPill, listItems, searchQue
       </div>
       <ul {...getMenuProps()} className={cx('menu')}>
         {isOpen &&
-          inputItems.length > 0 &&
           (loading ? (
             <li>Loading...</li>
           ) : (
@@ -76,10 +87,15 @@ const AlbumSearchCombobox = ({ enterHandler, updateNewPill, listItems, searchQue
                 {...getItemProps({
                   item,
                   index,
-                  onClick: () => {
-                    updateNewPill(inputItems[highlightedIndex]);
-                    enterHandler();
+                  onClick: event => {
+                    clearTimeout(debounceTimeout);
+                    setDebounceTimeout(null);
+                    setIsOpen(false);
+                    updateSelectedAlbum(inputItems[highlightedIndex]);
+                    setSelectedItem(inputItems[highlightedIndex]);
+                    enterHandler(inputItems[highlightedIndex]);
                     setInputItems([]);
+                    updateSearchPrompt('');
                   },
                 })}
               >
