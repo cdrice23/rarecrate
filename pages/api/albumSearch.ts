@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         title: query,
         format: 'album',
         type: 'master',
-        per_page: 100,
+        per_page: 15,
         key: true,
       },
       headers: {
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         artist: query,
         format: 'album',
         type: 'master',
-        per_page: 100,
+        per_page: 15,
         key: true,
       },
       headers: {
@@ -35,11 +35,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       },
     });
 
-    // const formattedResults = searchResponse.data.results.map(result => ({
-    //   discogsMasterId: result.id,
-    // }))
+    const combinedResults = [...searchByTitle.data.results, ...searchByArtist.data.results];
 
-    res.status(200).json([...searchByTitle.data.results, ...searchByArtist.data.results].length);
+    const resultIds = combinedResults.map(result => ({
+      discogsMasterId: result.id,
+    }));
+
+    let formattedResults = [];
+    for (let id of resultIds) {
+      // Update code here
+      const releaseDetails = await axios.get(`https://api.discogs.com/masters/${id.discogsMasterId}`, {
+        headers: {
+          Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+        },
+      });
+
+      const formattedResult = {
+        discogsMasterId: id,
+        title: releaseDetails.data.title,
+        artist: releaseDetails.data.artists[0].name,
+        imageUrl: releaseDetails.data.images[0].uri,
+      };
+
+      formattedResults.push(formattedResult);
+    }
+
+    res.status(200).json(formattedResults);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while processing the request.' });

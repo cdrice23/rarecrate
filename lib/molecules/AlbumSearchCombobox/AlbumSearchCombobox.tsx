@@ -5,6 +5,8 @@ import cx from 'classnames';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import OutsideClickHandler from 'react-outside-click-handler';
+import greySquareImage from '@/core/constants/placeholders/grey_square.png';
+import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 
 const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItems, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);
@@ -83,7 +85,6 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
             <>
               {inputItems.map((item, index) => (
                 <li
-                  className={cx('searchResult')}
                   key={`album${index}`}
                   {...getItemProps({
                     item,
@@ -99,7 +100,8 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
                     },
                   })}
                 >
-                  <motion.div
+                  {/* <motion.div
+                    className={cx('searchResult')}
                     onViewportEnter={() => {
                       if (index === inputItems.length - 1) {
                         console.log(`${item.title} is the last item!`);
@@ -107,16 +109,20 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
                     }}
                   >
                     <Image src={item.imageUrl} height={55} width={55} alt={item.title} className={cx('albumCover')} />
-                  </motion.div>
-                  <div className={cx('description')}>
-                    <h3>{item.title}</h3>
-                    <p>{item.artist}</p>
-                  </div>
+                    <div className={cx('description')}>
+                      <h3>{item.title}</h3>
+                      <p>{item.artist}</p>
+                    </div>
+                  </motion.div> */}
+                  <AlbumSearchResult
+                    index={index}
+                    title={item.title}
+                    artist={item.artist}
+                    imageUrl={item.imageUrl}
+                    lastIndex={inputItems.length - 1}
+                  />
                 </li>
               ))}
-              {/* <li className={cx('searchDiscogsButton')} onClick={() => console.log('Search Discogs!')}>
-                <h3>Search Discogs?</h3>
-              </li> */}
             </>
           ) : (
             !loading && inputItems.length === 0 && <li>No results found</li>
