@@ -262,7 +262,8 @@
     .authed-content-module {
       display: block;
       height: 100vh;
-      overflow-y: scroll;
+      overflow-y: auto;
+      overflow-x: auto;
       padding-bottom: 60px;
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -728,7 +729,8 @@
 
 .menu {
   max-height: 150px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
   background-color: #eee;
   padding: 0px;
   list-style: none;
@@ -769,3 +771,42 @@
     }
   }
 }
+
+// Search bar stylings
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .searchMenu {
+    min-width: 167px;
+    top: 100%;
+  }
+  
+  .searchDiscogsButton {
+    min-height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #bde4ff;
+    }
+  }
+
+  .searchResult {
+    padding: 4px;
+    width: 600px;
+    display: flex;
+
+    &:hover {
+      background-color: #bde4ff;
+    }
+
+    .description {
+      margin-left: 16px;
+    }
+  }
+}
+

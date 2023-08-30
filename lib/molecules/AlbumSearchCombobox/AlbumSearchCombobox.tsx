@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import OutsideClickHandler from 'react-outside-click-handler';
 
-const AlbumSearchCombobox = ({
-  value,
-  enterHandler,
-  updateSearchPrompt,
-  listItems,
-  searchQuery,
-  loading,
-  updateSelectedAlbum,
-}) => {
+const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItems, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
-
   const [selectedItem, setSelectedItem] = useState(null);
-  console.log(selectedItem);
 
   useEffect(() => {
     setInputItems(listItems);
@@ -29,79 +22,104 @@ const AlbumSearchCombobox = ({
   });
 
   return (
-    <div>
+    <div className={cx('searchInput')}>
       <div className={cx('inputSection')}>
-        <input
-          {...getInputProps({
-            value,
-            placeholder: 'Search Albums',
-            onKeyDown: event => {
-              if (event.key === 'Enter') {
-                clearTimeout(debounceTimeout);
-                setDebounceTimeout(null);
-                setIsOpen(false);
-                setSelectedItem(inputItems[highlightedIndex]);
-                enterHandler(inputItems[highlightedIndex]);
-                setInputItems([]);
-                updateSearchPrompt('');
-              }
-            },
-            onChange: event => {
-              const inputValue = event.currentTarget.value;
-              setIsOpen(true);
-              // Clear previous debounce timeout
-              if (debounceTimeout) {
-                clearTimeout(debounceTimeout);
-              }
+        <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+          <input
+            {...getInputProps({
+              value,
+              placeholder: 'Search Albums',
+              onKeyDown: event => {
+                if (event.key === 'Enter') {
+                  clearTimeout(debounceTimeout);
+                  setDebounceTimeout(null);
+                  setIsOpen(false);
+                  setSelectedItem(inputItems[highlightedIndex]);
+                  enterHandler(inputItems[highlightedIndex]);
+                  setInputItems([]);
+                  updateSearchPrompt('');
+                }
+              },
+              onChange: event => {
+                const inputValue = event.currentTarget.value;
+                setIsOpen(true);
+                // Clear previous debounce timeout
+                if (debounceTimeout) {
+                  clearTimeout(debounceTimeout);
+                }
 
-              // When typing, run the passed search query
-              if (inputValue !== selectedItem?.title) {
-                // Debounce to wait 300ms after user stops typing
-                const newDebounceTimeout = setTimeout(() => {
-                  searchQuery({ variables: { searchTerm: inputValue } });
-                }, 300);
-                setDebounceTimeout(newDebounceTimeout);
-              }
+                // When typing, run the passed search query
+                if (inputValue !== selectedItem?.title) {
+                  // Debounce to wait 300ms after user stops typing
+                  const newDebounceTimeout = setTimeout(() => {
+                    searchQuery({ variables: { searchTerm: inputValue } });
+                  }, 300);
+                  setDebounceTimeout(newDebounceTimeout);
+                }
 
-              updateSearchPrompt(inputValue);
+                updateSearchPrompt(inputValue);
 
-              if (inputValue === '') {
-                setIsOpen(false);
-              }
-            },
-          })}
-        />
+                if (inputValue === '') {
+                  setIsOpen(false);
+                }
+              },
+              onFocus: () => {
+                if (value !== '') {
+                  setIsOpen(true);
+                }
+              },
+            })}
+          />
+        </OutsideClickHandler>
         <button type="button" {...getToggleButtonProps()} aria-label="toggle menu">
           <CaretDown />
         </button>
       </div>
-      <ul {...getMenuProps()} className={cx('menu')}>
+      <ul {...getMenuProps()} className={cx('menu', 'searchMenu')}>
         {isOpen &&
           (loading ? (
-            <li>Loading...</li>
+            <li>Searching...</li>
+          ) : inputItems.length > 0 ? (
+            <>
+              {inputItems.map((item, index) => (
+                <li
+                  className={cx('searchResult')}
+                  key={`album${index}`}
+                  {...getItemProps({
+                    item,
+                    index,
+                    onClick: () => {
+                      clearTimeout(debounceTimeout);
+                      setDebounceTimeout(null);
+                      setIsOpen(false);
+                      setSelectedItem(inputItems[highlightedIndex]);
+                      enterHandler(inputItems[highlightedIndex]);
+                      setInputItems([]);
+                      updateSearchPrompt('');
+                    },
+                  })}
+                >
+                  <motion.div
+                    onViewportEnter={() => {
+                      if (index === inputItems.length - 1) {
+                        console.log(`${item.title} is the last item!`);
+                      }
+                    }}
+                  >
+                    <Image src={item.imageUrl} height={55} width={55} alt={item.title} className={cx('albumCover')} />
+                  </motion.div>
+                  <div className={cx('description')}>
+                    <h3>{item.title}</h3>
+                    <p>{item.artist}</p>
+                  </div>
+                </li>
+              ))}
+              {/* <li className={cx('searchDiscogsButton')} onClick={() => console.log('Search Discogs!')}>
+                <h3>Search Discogs?</h3>
+              </li> */}
+            </>
           ) : (
-            inputItems.map((item, index) => (
-              <li
-                style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-                key={`album${index}`}
-                {...getItemProps({
-                  item,
-                  index,
-                  onClick: event => {
-                    clearTimeout(debounceTimeout);
-                    setDebounceTimeout(null);
-                    setIsOpen(false);
-                    updateSelectedAlbum(inputItems[highlightedIndex]);
-                    setSelectedItem(inputItems[highlightedIndex]);
-                    enterHandler(inputItems[highlightedIndex]);
-                    setInputItems([]);
-                    updateSearchPrompt('');
-                  },
-                })}
-              >
-                <div>{item.title}</div>
-              </li>
-            ))
+            !loading && inputItems.length === 0 && <li>No results found</li>
           ))}
       </ul>
     </div>

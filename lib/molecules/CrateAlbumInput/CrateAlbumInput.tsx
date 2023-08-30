@@ -12,7 +12,9 @@ interface CrateAlbumInputProps {
 const CrateAlbumInput = ({ data, id, removeHandler }: CrateAlbumInputProps) => {
   return (
     <div className={cx('crateAlbumWrapper')}>
-      <Image src={data.imageUrl} height={55} width={55} alt={data.title} className={cx('albumCover')} />
+      <div>
+        <Image src={data.imageUrl} height={55} width={55} alt={data.title} className={cx('albumCover')} />
+      </div>
       <div className={cx('description')}>
         <h3>{data.title}</h3>
         <p>{data.artist}</p>

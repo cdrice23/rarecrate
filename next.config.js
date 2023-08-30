@@ -13,7 +13,7 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ['i.discogs.com'],
+    domains: ['i.discogs.com', 'st.discogs.com'],
   },
 };
 

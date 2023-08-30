@@ -11,20 +11,18 @@ interface CrateAlbumArrayInputProps {
   value: any[];
 }
 
-interface QueriedAlbum {
+type QueriedAlbum = {
   id?: number;
   title: string;
-  artist;
-  string;
+  artist: string;
   imageUrl: string;
   discogsMasterId: string;
   isNew?: boolean;
-}
+};
 
 const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
-  const [selectedAlbum, setSelectedAlbum] = useState<QueriedAlbum>(null);
 
   const searchResults = data?.searchPrismaAlbums;
 
@@ -34,7 +32,7 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
         <h4>{`Albums`}</h4>
       </label>
       <FieldArray name={'crateAlbums'}>
-        {({ insert, remove, push, form: { setFieldValue } }) => (
+        {({ insert, remove, push }) => (
           <>
             <AlbumSearchCombobox
               value={searchPrompt}
@@ -44,18 +42,17 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
               enterHandler={album => {
                 // If album has a Prisma Id, then return the Prisma object
                 if (album.id) {
-                  push(album);
+                  push(album as QueriedAlbum);
                 }
                 // Otherwise, mark the object as an item that needs to be added to the db
                 else {
                   push({
                     ...album,
                     isNew: true,
-                  });
+                  } as QueriedAlbum);
                 }
               }}
               updateSearchPrompt={setSearchPrompt}
-              updateSelectedAlbum={setSelectedAlbum}
             />
             <div className={cx('albumArray')}>
               {value.length > 0 &&
