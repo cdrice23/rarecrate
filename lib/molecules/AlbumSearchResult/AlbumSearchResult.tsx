@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
-import greySquareImage from '@/core/constants/placeholders/grey_square.png';
+import greySquareImage from '../../../core/constants/placeholders/grey_square.png';
 import cx from 'classnames';
 
 interface AlbumSearchResultProps {

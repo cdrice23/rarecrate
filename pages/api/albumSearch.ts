@@ -6,36 +6,55 @@ dotenv.config();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { query } = req.query;
+    const { query, selectedPage = 1, perPage = 15, expArtistResults = 0, expTitleResults = 0 } = req.query;
 
-    // Make a GET request to the Discogs API search endpoint
-    const searchByTitle = await axios.get('https://api.discogs.com/database/search', {
-      params: {
-        title: query,
-        format: 'album',
-        type: 'master',
-        per_page: 15,
-        key: true,
-      },
-      headers: {
-        Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
-      },
-    });
+    let searchByTitleResults = [];
+    let totalTitleResults = expTitleResults;
+    let searchByArtistResults = [];
+    let totalArtistResults = expArtistResults;
+    // Ensure that the selectedPage won't error when requested
+    if ((selectedPage as number) * (perPage as number) > (expTitleResults as number)) {
+      // Make a GET request to the Discogs API search endpoint
+      const response = await axios.get('https://api.discogs.com/database/search', {
+        params: {
+          title: query,
+          format: 'album',
+          type: 'master',
+          per_page: perPage,
+          page: selectedPage,
+          key: true,
+        },
+        headers: {
+          Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+        },
+      });
 
-    const searchByArtist = await axios.get('https://api.discogs.com/database/search', {
-      params: {
-        artist: query,
-        format: 'album',
-        type: 'master',
-        per_page: 15,
-        key: true,
-      },
-      headers: {
-        Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
-      },
-    });
+      searchByTitleResults = [...response.data.results];
+      totalTitleResults = response.data.pagination.items;
+    }
 
-    const combinedResults = [...searchByTitle.data.results, ...searchByArtist.data.results];
+    // Ensure that the selectedPage won't error when requested
+    if ((selectedPage as number) * (perPage as number) > (expArtistResults as number)) {
+      // Make a GET request to the Discogs API search endpoint
+      const response = await axios.get('https://api.discogs.com/database/search', {
+        params: {
+          artist: query,
+          format: 'album',
+          type: 'master',
+          per_page: perPage,
+          page: selectedPage,
+          key: true,
+        },
+        headers: {
+          Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+        },
+      });
+
+      searchByArtistResults = [...response.data.results];
+      totalArtistResults = response.data.pagination.items;
+    }
+
+    const combinedResults = [...searchByTitleResults, ...searchByArtistResults];
 
     const resultIds = combinedResults.map(result => ({
       discogsMasterId: result.id,
@@ -60,7 +79,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       formattedResults.push(formattedResult);
     }
 
-    res.status(200).json(formattedResults);
+    // First time, need to return total expected items for each query
+    const response = {
+      expArtistResults: totalArtistResults,
+      expTitleResults: totalTitleResults,
+      formattedResults,
+    };
+
+    res.status(200).json(response);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while processing the request.' });

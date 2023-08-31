@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import OutsideClickHandler from 'react-outside-click-handler';
-import greySquareImage from '@/core/constants/placeholders/grey_square.png';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
+import { fetchDiscogsResults } from '@/core/helpers/discogs';
 
 const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItems, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);
