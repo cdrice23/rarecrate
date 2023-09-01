@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
@@ -6,7 +6,15 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { fetchDiscogsResults } from '../../../core/helpers/discogs';
 
-const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItems, searchQuery, loading }) => {
+const AlbumSearchCombobox = ({
+  value,
+  enterHandler,
+  updateSearchPrompt,
+  listItems,
+  searchQuery,
+  loading,
+  triggerDiscogsSearch,
+}) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
@@ -16,6 +24,18 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
   const [expTitleResults, setExpTitleResults] = useState(0);
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
 
+  const ulRef = useRef(null);
+
+  // If no db results, trigger discogsSearch
+  useEffect(() => {
+    if (triggerDiscogsSearch) {
+      // console.log('trigger the search!');
+      handleDiscogsSearch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerDiscogsSearch]);
+
+  // Load list items from graphQL query
   useEffect(() => {
     setInputItems(listItems);
   }, [listItems]);
@@ -25,10 +45,30 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
     itemToString: (item: any) => (item ? item.title : ''),
   });
 
+  const handleDiscogsSearch = async () => {
+    setLoadingDiscogs(true);
+    const newResults = await fetchDiscogsResults(value, selectedPage, 15, expArtistResults, expTitleResults);
+    setExpArtistResults(Number(newResults.expArtistResults));
+    setExpTitleResults(Number(newResults.expTitleResults));
+    setSelectedPage(selectedPage + 1);
+    const updatedResults = [...inputItems, ...newResults.formattedResults];
+    const uniqueUpdatedResults = updatedResults.filter(
+      (v, i, a) => a.findIndex(t => t.discogsMasterId === v.discogsMasterId) === i,
+    );
+    setInputItems(uniqueUpdatedResults);
+    setLoadingDiscogs(false);
+  };
+
   return (
     <div className={cx('searchInput')}>
       <div className={cx('inputSection')}>
-        <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+        <OutsideClickHandler
+          onOutsideClick={event => {
+            if (!ulRef.current || !ulRef.current.contains(event.target)) {
+              setIsOpen(false);
+            }
+          }}
+        >
           <input
             {...getInputProps({
               value,
@@ -84,7 +124,7 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
           <CaretDown />
         </button>
       </div>
-      <ul {...getMenuProps()} className={cx('menu', 'searchMenu')}>
+      <ul {...getMenuProps({ ref: ulRef })} className={cx('menu', 'searchMenu')}>
         {isOpen &&
           (loading ? (
             <li>Searching...</li>
@@ -93,15 +133,16 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
               {inputItems.map((item, index) => (
                 <li
                   key={`album${index}`}
+                  style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
                   {...getItemProps({
                     item,
                     index,
-                    onClick: () => {
+                    onMouseDown: () => {
                       clearTimeout(debounceTimeout);
                       setDebounceTimeout(null);
                       setIsOpen(false);
-                      setSelectedItem(inputItems[highlightedIndex]);
-                      enterHandler(inputItems[highlightedIndex]);
+                      setSelectedItem(inputItems[index]);
+                      enterHandler(inputItems[index]);
                       setInputItems([]);
                       updateSearchPrompt('');
                     },
@@ -113,36 +154,14 @@ const AlbumSearchCombobox = ({ value, enterHandler, updateSearchPrompt, listItem
                     artist={item.artist}
                     imageUrl={item.imageUrl}
                     lastIndex={inputItems.length - 1}
-                    handleDiscogsSearch={async () => {
-                      setLoadingDiscogs(true);
-                      // Call fetchDiscogsResults
-                      console.log(`We're running the search`);
-                      const newResults = await fetchDiscogsResults(
-                        value,
-                        selectedPage,
-                        15,
-                        expArtistResults,
-                        expTitleResults,
-                      );
-                      // Update the states accordingly
-                      setExpArtistResults(Number(newResults.expArtistResults));
-                      setExpTitleResults(Number(newResults.expTitleResults));
-                      setSelectedPage(selectedPage + 1);
-                      // Push response into end of inputItems & filter out dupes
-                      const updatedResults = [...inputItems, ...newResults.formattedResults];
-                      const uniqueUpdatedResults = updatedResults.filter(
-                        (v, i, a) => a.findIndex(t => t.discogsMasterId === v.discogsMasterId) === i,
-                      );
-                      setInputItems(uniqueUpdatedResults);
-                      setLoadingDiscogs(false);
-                    }}
+                    handleDiscogsSearch={handleDiscogsSearch}
                   />
                 </li>
               ))}
               {loadingDiscogs && <li>Searching for additional albums...</li>}
             </>
           ) : (
-            !loading && inputItems.length === 0 && <li>No results found</li>
+            !loadingDiscogs && <li>No results found</li>
           ))}
       </ul>
     </div>

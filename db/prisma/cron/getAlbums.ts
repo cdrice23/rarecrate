@@ -4,18 +4,18 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const user_agents = [
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15',
-  'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1',
-  'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Mobile Safari/537.36',
-  'Mozilla/5.0 (Linux; Android 11; SM-G975U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Mobile Safari/537.36 EdgA/46.1.2.5140',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.78',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 OPR/77.0.4054.277',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Vivaldi/4.1.2369.11',
-];
+// const user_agents = [
+//   'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
+//   'Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0',
+//   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36 OPR/38.0.2220.41',
+//   'Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00',
+//   'Opera/9.60 (Windows NT 6.0; U; en) Presto/2.1.1',
+//   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59',
+//   'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+//   'Mozilla/5.0 (compatible; YandexAccessibilityBot/3.0; +http://yandex.com/bots)',
+//   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+//   'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'
+// ];
 
 const initCronRun = async () => {
   const currentScript = 'getAlbumsFromRecordLabelString';
@@ -39,7 +39,8 @@ const initCronRun = async () => {
 
   // Step 2 & 3: Create a new CronRun record and set targetEndTime
   const startAt = new Date();
-  const endAt = new Date(startAt.getTime() + 5 * 60 * 60 * 1000); // End 5 Hours from now
+  // const endAt = new Date(startAt.getTime() + 5 * 60 * 60 * 1000); // End 5 Hours from now
+  const endAt = new Date(startAt.getTime() + 1.5 * 60 * 60 * 1000); // End 1.5 Hours from now
   // const endAt = new Date(startAt.getTime() + 30000); // end in 30 seconds
   console.log(startAt.toLocaleString());
   console.log(endAt.toLocaleString());
@@ -226,7 +227,8 @@ async function makeDelayedRequest(url: string, delay: number): Promise<any> {
         await axios.get(url, {
           headers: {
             Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
-            'User-Agent': user_agents[Math.floor(Math.random() * user_agents.length)],
+            // 'User-Agent': user_agents[Math.floor(Math.random() * user_agents.length)],
+            'User-Agent': 'RareCrate/1.0 (+https://github.com/cdrice23;)',
           },
         }),
       );

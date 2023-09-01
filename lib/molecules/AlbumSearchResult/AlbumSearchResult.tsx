@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { motion } from 'framer-motion';
-import greySquareImage from '../../../core/constants/placeholders/grey_square.png';
+import { easeInOut, easeOut, motion } from 'framer-motion';
+// import greySquareImage from '../../../public/grey_square.png';
 import cx from 'classnames';
 
 interface AlbumSearchResultProps {
@@ -21,7 +21,7 @@ const AlbumSearchResult = ({
   artist,
   handleDiscogsSearch,
 }: AlbumSearchResultProps) => {
-  const [src, setSrc] = useState<string | StaticImageData>(greySquareImage);
+  const [src, setSrc] = useState<string | StaticImageData>('/grey_square.png');
 
   return (
     <motion.div
@@ -37,13 +37,13 @@ const AlbumSearchResult = ({
         setSrc(imageUrl);
       }}
       onHoverEnd={() => {
-        setSrc(greySquareImage);
+        setSrc('/grey_square.png');
       }}
     >
       <motion.div
         className={cx('albumCover')}
         animate={{
-          opacity: src === greySquareImage ? 0 : 1,
+          opacity: src === '/grey_square.png' ? 0 : 1,
           transition: { duration: 0.3 },
         }}
       >

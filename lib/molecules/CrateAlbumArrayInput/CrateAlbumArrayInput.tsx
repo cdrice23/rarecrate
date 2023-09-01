@@ -1,6 +1,5 @@
 import { ErrorMessage, FieldArray, Field } from 'formik';
-import OutsideClickHandler from 'react-outside-click-handler';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
 import { AlbumSearchCombobox } from '../AlbumSearchCombobox/AlbumSearchCombobox';
@@ -23,8 +22,19 @@ type QueriedAlbum = {
 const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
+  const [triggerDiscogsSearch, setTriggerDiscogsSearch] = useState<boolean>(false);
 
   const searchResults = data?.searchPrismaAlbums;
+
+  // Check if search returns db items, otherwise trigger a discogs search
+  useEffect(() => {
+    if (data && data.searchPrismaAlbums.length === 0) {
+      // Query completed, but no results were returned
+      setTriggerDiscogsSearch(true);
+    } else {
+      setTriggerDiscogsSearch(false);
+    }
+  }, [data]);
 
   return (
     <>
@@ -40,19 +50,22 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
               loading={loading}
               searchQuery={searchQuery}
               enterHandler={album => {
-                // If album has a Prisma Id, then return the Prisma object
-                if (album.id) {
-                  push(album as QueriedAlbum);
-                }
-                // Otherwise, mark the object as an item that needs to be added to the db
-                else {
-                  push({
-                    ...album,
-                    isNew: true,
-                  } as QueriedAlbum);
+                if (album) {
+                  // If album has a Prisma Id, then return the Prisma object
+                  if (album.id) {
+                    push(album as QueriedAlbum);
+                  }
+                  // Otherwise, mark the object as an item that needs to be added to the db
+                  else {
+                    push({
+                      ...album,
+                      isNew: true,
+                    } as QueriedAlbum);
+                  }
                 }
               }}
               updateSearchPrompt={setSearchPrompt}
+              triggerDiscogsSearch={triggerDiscogsSearch}
             />
             <div className={cx('albumArray')}>
               {value.length > 0 &&
