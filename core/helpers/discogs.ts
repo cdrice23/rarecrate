@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export function calculateSimilarity(searchPrompt: string, value: string): number {
   const searchLower = searchPrompt.toLowerCase();
@@ -33,16 +33,26 @@ export function calculateSimilarity(searchPrompt: string, value: string): number
   return similarityScore;
 }
 
-export async function fetchDiscogsResults(query: string, selectedPage: number, perPage: number, expArtistResults: number, expTitleResults: number) {
-  const response = await axios.get('http://localhost:3000/api/discogs', {
-    params: {
-      query,
-      selectedPage,
-      perPage,
-      expArtistResults,
-      expTitleResults
-    },
-  });
-
-  return response.data;
-};
+export async function fetchDiscogsResults(
+  query: string,
+  selectedPage: number,
+  perPage: number,
+  expArtistResults: number,
+  expTitleResults: number,
+) {
+  try {
+    const response = await axios.get('http://localhost:3000/api/albumSearch', {
+      params: {
+        query,
+        selectedPage,
+        perPage,
+        expArtistResults,
+        expTitleResults,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}

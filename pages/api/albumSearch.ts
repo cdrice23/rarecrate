@@ -9,11 +9,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { query, selectedPage = 1, perPage = 15, expArtistResults = 0, expTitleResults = 0 } = req.query;
 
     let searchByTitleResults = [];
-    let totalTitleResults = expTitleResults;
+    let totalTitleResults = Number(expTitleResults);
     let searchByArtistResults = [];
-    let totalArtistResults = expArtistResults;
+    let totalArtistResults = Number(expArtistResults);
+
     // Ensure that the selectedPage won't error when requested
-    if ((selectedPage as number) * (perPage as number) > (expTitleResults as number)) {
+    if ((selectedPage as number) * (perPage as number) <= (totalTitleResults as number) || totalTitleResults === 0) {
       // Make a GET request to the Discogs API search endpoint
       const response = await axios.get('https://api.discogs.com/database/search', {
         params: {
@@ -34,7 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Ensure that the selectedPage won't error when requested
-    if ((selectedPage as number) * (perPage as number) > (expArtistResults as number)) {
+    if ((selectedPage as number) * (perPage as number) <= (totalArtistResults as number) || totalArtistResults === 0) {
       // Make a GET request to the Discogs API search endpoint
       const response = await axios.get('https://api.discogs.com/database/search', {
         params: {

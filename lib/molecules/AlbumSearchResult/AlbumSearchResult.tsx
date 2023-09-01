@@ -10,17 +10,27 @@ interface AlbumSearchResultProps {
   title: string;
   imageUrl: string;
   artist: string;
+  handleDiscogsSearch: () => void;
 }
 
-const AlbumSearchResult = ({ index, lastIndex, title, imageUrl, artist }: AlbumSearchResultProps) => {
+const AlbumSearchResult = ({
+  index,
+  lastIndex,
+  title,
+  imageUrl,
+  artist,
+  handleDiscogsSearch,
+}: AlbumSearchResultProps) => {
   const [src, setSrc] = useState<string | StaticImageData>(greySquareImage);
 
   return (
     <motion.div
       className={cx('searchResult')}
-      onViewportEnter={() => {
+      onViewportEnter={async () => {
         if (index === lastIndex) {
-          console.log(`${title} is the last item!`);
+          // console.log(`${title} is the last item!`);
+          console.log(`You hit the last item!`);
+          await handleDiscogsSearch();
         }
       }}
       onHoverStart={() => {
