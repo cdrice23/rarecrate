@@ -2,16 +2,37 @@ import cx from 'classnames';
 import { X } from '@phosphor-icons/react';
 import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 interface CrateAlbumInputProps {
   id: number;
   data: any;
   removeHandler: () => void;
+  initialRank?: number;
+  setFieldValue: (name, value) => void;
 }
 
-const CrateAlbumInput = ({ data, id, removeHandler }: CrateAlbumInputProps) => {
+const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue }: CrateAlbumInputProps) => {
+  useEffect(() => {
+    setFieldValue(`crateAlbums.${id}.order`, Number(initialRank));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={cx('crateAlbumWrapper')}>
+      {initialRank && (
+        <div className={cx('albumRank')}>
+          <input
+            name={`crateAlbums.${id}.order`}
+            placeholder="Rank"
+            type="number"
+            value={data.order ?? initialRank}
+            onChange={event => {
+              setFieldValue(`crateAlbums.${id}.order`, Number(event.currentTarget.value));
+            }}
+          />
+        </div>
+      )}
       <div>
         <Image src={data.imageUrl} height={55} width={55} alt={data.title} className={cx('albumCover')} />
       </div>

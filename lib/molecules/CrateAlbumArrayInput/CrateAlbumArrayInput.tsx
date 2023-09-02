@@ -42,7 +42,7 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
         <h4>{`Albums`}</h4>
       </label>
       <FieldArray name={'crateAlbums'}>
-        {({ insert, remove, push }) => (
+        {({ insert, remove, push, form: { setFieldValue } }) => (
           <>
             <AlbumSearchCombobox
               value={searchPrompt}
@@ -70,7 +70,14 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
             <div className={cx('albumArray')}>
               {value.length > 0 &&
                 value.map((album, index) => (
-                  <CrateAlbumInput data={album} key={index} id={index} removeHandler={() => remove(index)} />
+                  <CrateAlbumInput
+                    data={album}
+                    key={index}
+                    id={index}
+                    removeHandler={() => remove(index)}
+                    initialRank={index + 1}
+                    setFieldValue={setFieldValue}
+                  />
                 ))}
             </div>
           </>

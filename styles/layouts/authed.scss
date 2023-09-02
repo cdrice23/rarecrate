@@ -756,6 +756,18 @@
     display: flex;
     align-items: center;
 
+    .albumRank {
+      margin: 16px;
+      width: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > input {
+        width: 40px;
+      }
+    }
+
     .albumCover {
       margin: 16px;
     }
