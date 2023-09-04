@@ -6,15 +6,6 @@ import cx from 'classnames';
 import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
 
-// Needed items
-// title - check
-// description - check
-// labels - check
-// isRanked - check
-// Albums
-// Tags
-// order
-
 const onSubmit = async (values, actions) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
   console.log(values);
@@ -57,7 +48,7 @@ const CrateForm = () => {
           />
           <ToggleInput name="isRanked" label="Ranked?" />
           <LabelSearchInput value={values.labels} />
-          <CrateAlbumArrayInput value={values.crateAlbums} />
+          <CrateAlbumArrayInput value={values.crateAlbums} isRanked={values.isRanked} />
           <button disabled={isSubmitting} type="submit">
             Submit
           </button>

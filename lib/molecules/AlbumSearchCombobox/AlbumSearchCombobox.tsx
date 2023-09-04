@@ -5,6 +5,7 @@ import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { fetchDiscogsResults } from '../../../core/helpers/discogs';
+import { list } from 'nexus';
 
 const AlbumSearchCombobox = ({
   value,
@@ -45,6 +46,8 @@ const AlbumSearchCombobox = ({
     itemToString: (item: any) => (item ? item.title : ''),
   });
 
+  console.log(inputItems);
+
   const handleDiscogsSearch = async () => {
     setLoadingDiscogs(true);
     const newResults = await fetchDiscogsResults(value, selectedPage, 15, expArtistResults, expTitleResults);
@@ -80,7 +83,7 @@ const AlbumSearchCombobox = ({
                   setIsOpen(false);
                   setSelectedItem(inputItems[highlightedIndex]);
                   enterHandler(inputItems[highlightedIndex]);
-                  setInputItems([]);
+                  // setInputItems([]);
                   updateSearchPrompt('');
                 }
               },
@@ -91,7 +94,6 @@ const AlbumSearchCombobox = ({
                 setSelectedPage(1);
                 setExpArtistResults(0);
                 setExpTitleResults(0);
-                setIsOpen(true);
                 // Clear previous debounce timeout
                 if (debounceTimeout) {
                   clearTimeout(debounceTimeout);
@@ -99,9 +101,11 @@ const AlbumSearchCombobox = ({
 
                 // When typing, run the passed search query
                 if (inputValue !== selectedItem?.title) {
+                  setIsOpen(true);
                   // Debounce to wait 300ms after user stops typing
                   const newDebounceTimeout = setTimeout(() => {
                     searchQuery({ variables: { searchTerm: inputValue } });
+                    console.log('You are done typing');
                   }, 300);
                   setDebounceTimeout(newDebounceTimeout);
                 }
@@ -143,7 +147,7 @@ const AlbumSearchCombobox = ({
                       setIsOpen(false);
                       setSelectedItem(inputItems[index]);
                       enterHandler(inputItems[index]);
-                      setInputItems([]);
+                      // setInputItems([]);
                       updateSearchPrompt('');
                     },
                   })}
@@ -161,7 +165,7 @@ const AlbumSearchCombobox = ({
               {loadingDiscogs && <li>Searching for additional albums...</li>}
             </>
           ) : (
-            !loadingDiscogs && <li>No results found</li>
+            !loading && !loadingDiscogs && !debounceTimeout && inputItems.length === 0 && <li>No results found</li>
           ))}
       </ul>
     </div>

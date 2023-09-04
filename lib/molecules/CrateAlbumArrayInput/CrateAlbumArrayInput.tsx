@@ -8,6 +8,7 @@ import { useLazyQuery } from '@apollo/client';
 
 interface CrateAlbumArrayInputProps {
   value: any[];
+  isRanked: boolean;
 }
 
 type QueriedAlbum = {
@@ -19,10 +20,11 @@ type QueriedAlbum = {
   isNew?: boolean;
 };
 
-const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
+const CrateAlbumArrayInput = ({ value, isRanked }: CrateAlbumArrayInputProps) => {
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
   const [triggerDiscogsSearch, setTriggerDiscogsSearch] = useState<boolean>(false);
+  console.log('Is Ranked?', isRanked);
 
   const searchResults = data?.searchPrismaAlbums;
 
@@ -75,7 +77,7 @@ const CrateAlbumArrayInput = ({ value }: CrateAlbumArrayInputProps) => {
                     key={index}
                     id={index}
                     removeHandler={() => remove(index)}
-                    initialRank={index + 1}
+                    initialRank={isRanked ? index + 1 : null}
                     setFieldValue={setFieldValue}
                   />
                 ))}
