@@ -24,7 +24,6 @@ const CrateAlbumArrayInput = ({ value, isRanked }: CrateAlbumArrayInputProps) =>
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
   const [triggerDiscogsSearch, setTriggerDiscogsSearch] = useState<boolean>(false);
-  console.log('Is Ranked?', isRanked);
 
   const searchResults = data?.searchPrismaAlbums;
 
@@ -79,6 +78,7 @@ const CrateAlbumArrayInput = ({ value, isRanked }: CrateAlbumArrayInputProps) =>
                     removeHandler={() => remove(index)}
                     initialRank={isRanked ? index + 1 : null}
                     setFieldValue={setFieldValue}
+                    isRanked={isRanked}
                   />
                 ))}
             </div>

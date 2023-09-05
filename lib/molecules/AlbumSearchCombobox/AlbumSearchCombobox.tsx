@@ -5,7 +5,6 @@ import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { fetchDiscogsResults } from '../../../core/helpers/discogs';
-import { list } from 'nexus';
 
 const AlbumSearchCombobox = ({
   value,
@@ -45,8 +44,6 @@ const AlbumSearchCombobox = ({
     items: inputItems,
     itemToString: (item: any) => (item ? item.title : ''),
   });
-
-  console.log(inputItems);
 
   const handleDiscogsSearch = async () => {
     setLoadingDiscogs(true);

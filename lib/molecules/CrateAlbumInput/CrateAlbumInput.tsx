@@ -10,13 +10,18 @@ interface CrateAlbumInputProps {
   removeHandler: () => void;
   initialRank?: number;
   setFieldValue: (name, value) => void;
+  isRanked: boolean;
 }
 
-const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue }: CrateAlbumInputProps) => {
+const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue, isRanked }: CrateAlbumInputProps) => {
   useEffect(() => {
+    // if (!initialRank && data.order === 0) {
     setFieldValue(`crateAlbums.${id}.order`, Number(initialRank));
+    setFieldValue(`crateAlbums.${id}.isRanked`, isRanked);
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isRanked]);
+  // }, []);
 
   return (
     <div className={cx('crateAlbumWrapper')}>
