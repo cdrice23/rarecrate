@@ -8,7 +8,7 @@ import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInp
 
 const onSubmit = async (values, actions) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
-
+  console.log(values);
   const newLabels = values.labels.filter(label => label.isNew);
   const existingLabels = values.labels.filter(label => !label.hasOwnProperty('isNew'));
   const newAlbums = values.crateAlbums.filter(album => !album.hasOwnProperty('id'));

@@ -43,6 +43,21 @@ type CrateAlbum {
   tags: [Tag]
 }
 
+input CrateAlbumInput {
+  albumId: Int!
+  order: Int
+  tagIds: [Int]
+}
+
+input CrateInput {
+  crateAlbums: [CrateAlbumInput]!
+  creatorId: Int!
+  description: String!
+  isRanked: Boolean!
+  labelIds: [Int]
+  title: String!
+}
+
 input CrateProfileInput {
   crateId: Int!
   profileId: Int!
@@ -118,6 +133,8 @@ type Label {
 type Mutation {
   acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   addCrateToFavorites(input: CrateProfileInput!): Crate
+  addNewAlbum(discogsMasterId: Int!): Album
+  addNewCrate(input: CrateInput!): Crate
   addNewLabel(name: String!): Label
   addNewTag(name: String!): Tag
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest

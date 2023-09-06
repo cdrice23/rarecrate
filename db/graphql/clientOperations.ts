@@ -360,3 +360,47 @@ export const ADD_NEW_LABEL = gql`
     }
   }
 `;
+
+export const ADD_NEW_ALBUM = gql`
+  mutation AddNewAlbum($discogsMasterId: Int!) {
+    addNewAlbum(discogsMasterId: $discogsMasterId) {
+      id
+      discogsMasterId
+      title
+      artist
+      label
+      releaseYear
+      genres {
+        id
+        name
+      }
+      subgenres {
+        id
+        name
+      }
+      imageUrl
+      tracklist {
+        id
+        title
+        order
+      }
+    }
+  }
+`;
+
+export const ADD_NEW_CRATE = gql`
+  mutation AddNewCrate($input: CrateInput!) {
+    addNewCrate(input: $input) {
+      id
+      creatorId
+      title
+      labels {
+        id
+        isStandard
+      }
+      favoritedBy {
+        id
+      }
+    }
+  }
+`;

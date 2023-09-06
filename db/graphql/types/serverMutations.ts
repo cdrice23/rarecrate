@@ -33,6 +33,27 @@ export const CrateProfileInput = inputObjectType({
   },
 });
 
+export const CrateAlbumInput = inputObjectType({
+  name: 'CrateAlbumInput',
+  definition(t) {
+    t.nonNull.int('albumId');
+    t.list.int('tagIds');
+    t.int('order');
+  },
+});
+
+export const CrateInput = inputObjectType({
+  name: 'CrateInput',
+  definition(t) {
+    t.nonNull.string('title');
+    t.nonNull.string('description');
+    t.nonNull.int('creatorId');
+    t.nonNull.boolean('isRanked');
+    t.list.int('labelIds');
+    t.nonNull.list.field('crateAlbums', { type: CrateAlbumInput });
+  },
+});
+
 // MUTATIONS
 export const FollowMutations = mutationType({
   definition(t) {
@@ -234,6 +255,38 @@ export const CrateMutations = extendType({
         return crate;
       },
     });
+
+    t.field('addNewCrate', {
+      type: NexusCrate,
+      args: {
+        input: nonNull(CrateInput),
+      },
+      resolve: async (_, { input: { title, description, creatorId, isRanked, labelIds, crateAlbums } }, ctx) => {
+        return ctx.prisma.crate.create({
+          data: {
+            title,
+            description,
+            isRanked,
+            creator: {
+              connect: { id: creatorId },
+            },
+            labels: {
+              connect: labelIds.map(labelId => ({ id: labelId })),
+            },
+            albums: {
+              create: crateAlbums.map(({ albumId, tagIds }) => ({
+                album: {
+                  connect: { id: albumId },
+                },
+                tags: {
+                  connect: tagIds.map(tagId => ({ id: tagId })),
+                },
+              })),
+            },
+          },
+        });
+      },
+    });
   },
 });
 
@@ -290,26 +343,103 @@ export const AlbumMutations = extendType({
       },
       resolve: async (_, { discogsMasterId }, ctx) => {
         // Use master to get discogs Response
-        const masterResponse = await axios.get(`https://api.discogs.com/masters${discogsMasterId}`, {
+        const masterResponse = await axios.get(`https://api.discogs.com/masters/${discogsMasterId}`, {
           headers: {
             Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
           },
         });
 
+        const releaseResponse = await axios.get(
+          `https://api.discogs.com/releases/${masterResponse.data.main_release}`,
+          {
+            headers: {
+              Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+            },
+          },
+        );
+
         // OG album structure
-        //   const formattedDiscogsResponse = {
-        //     discogsMasterId: keyReleaseData.release.master_id,
-        //     title: releaseDetailData.title,
-        //     artist: releaseDetailData.artist,
-        //     label: keyReleaseData.label,
-        //     releaseYear: releaseDetailData.year,
-        //     genres: keyReleaseData.release.genre,
-        //     subgenres: keyReleaseData.release.style,
-        //     tracklist: releaseDetailData.tracklist.map((track: any, i: number) => ({
-        //       order: i + 1,
-        //       name: track.title,
-        //     })),
-        //   };
+        const formattedDiscogsResponse = {
+          discogsMasterId,
+          title: masterResponse.data.title,
+          artist: masterResponse.data.artists[0].name,
+          label: releaseResponse.data.labels[0].name ?? '',
+          releaseYear: masterResponse.data.year ?? null,
+          genres: masterResponse.data.genres ?? [],
+          subgenres: masterResponse.data.styles ?? [],
+          imageUrl: masterResponse.data.images[0].uri ?? '',
+          tracklist: masterResponse.data.tracklist
+            ? masterResponse.data.tracklist.map((track: any, i: number) => ({
+                order: i + 1,
+                name: track.title,
+              }))
+            : [],
+        };
+
+        // Create or connect the Genre records
+        const genres = formattedDiscogsResponse.genres;
+        const genrePromises = genres.map(async (genre: string) => {
+          const existingGenre = await ctx.prisma.genre.findFirst({
+            where: { name: genre },
+          });
+
+          if (existingGenre) {
+            return { ...existingGenre };
+          } else {
+            return ctx.prisma.genre.create({
+              data: { name: genre },
+            });
+          }
+        });
+        const createdGenres = await Promise.all(genrePromises);
+
+        // Create or connect the Subgenre records
+        const styles = formattedDiscogsResponse.subgenres;
+        const subgenrePromises = styles.map(async (subgenre: string) => {
+          const existingSubgenre = await ctx.prisma.subgenre.findFirst({
+            where: { name: subgenre },
+          });
+
+          if (existingSubgenre) {
+            return { ...existingSubgenre };
+          } else {
+            const parentGenreName = genres[0];
+            const parentGenre = createdGenres.find(genre => genre.name === parentGenreName);
+
+            return ctx.prisma.subgenre.create({
+              data: {
+                name: subgenre,
+                parentGenre: { connect: { id: parentGenre.id } },
+              },
+            });
+          }
+        });
+        const createdSubgenres = await Promise.all(subgenrePromises);
+
+        // Create the Album record
+        const newAlbum = await ctx.prisma.album.create({
+          data: {
+            discogsMasterId: formattedDiscogsResponse.discogsMasterId,
+            title: formattedDiscogsResponse.title,
+            artist: formattedDiscogsResponse.artist,
+            label: formattedDiscogsResponse.label,
+            releaseYear: parseInt(formattedDiscogsResponse.releaseYear) ?? null,
+            genres: createdGenres.length > 0 ? { connect: createdGenres.map(genre => ({ id: genre.id })) } : [],
+            subgenres:
+              createdSubgenres.length > 0 ? { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) } : [],
+            imageUrl: formattedDiscogsResponse.imageUrl,
+            tracklist:
+              formattedDiscogsResponse.tracklist.length > 0
+                ? {
+                    create: formattedDiscogsResponse.tracklist.map((item: any) => ({
+                      title: item.name,
+                      order: item.order,
+                    })),
+                  }
+                : [],
+          },
+        });
+        return newAlbum;
       },
     });
   },

@@ -27,7 +27,6 @@ export const crateFormSchema = yup.object().shape({
 
         const expectedRanks = Array.from({ length: value.length }, (_, index) => index + 1);
         const missingRanks = expectedRanks.filter(order => !orders.includes(order));
-        console.log(expectedRanks);
         if (missingRanks.length > 0) {
           return this.createError({
             message: `Each value must be assigned a unique number between 1 and ${value.length}`,

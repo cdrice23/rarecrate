@@ -407,9 +407,19 @@ export const Album = objectType({
     });
     t.list.field(PrismaAlbum.genres.name, {
       type: Genre,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.genre.findMany({
+          where: { albums: { some: { id: parent.id } } },
+        });
+      },
     });
     t.list.field(PrismaAlbum.subgenres.name, {
       type: Subgenre,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.subgenre.findMany({
+          where: { albums: { some: { id: parent.id } } },
+        });
+      },
     });
     t.field(PrismaAlbum.imageUrl.name, {
       type: PrismaAlbum.imageUrl.type,
@@ -419,6 +429,11 @@ export const Album = objectType({
     });
     t.list.field(PrismaAlbum.tracklist.name, {
       type: TracklistItem,
+      resolve: (parent, _args, ctx) => {
+        return ctx.prisma.tracklistItem.findMany({
+          where: { albumId: parent.id },
+        });
+      },
     });
     t.field(PrismaAlbum.searchAndSelectCount.name, {
       type: PrismaAlbum.searchAndSelectCount.type,
