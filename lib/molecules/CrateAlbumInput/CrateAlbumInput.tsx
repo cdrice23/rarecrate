@@ -31,6 +31,7 @@ const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue, 
             name={`crateAlbums.${id}.order`}
             placeholder="Rank"
             type="number"
+            min={0}
             value={data.order ?? initialRank}
             onChange={event => {
               setFieldValue(`crateAlbums.${id}.order`, Number(event.currentTarget.value));

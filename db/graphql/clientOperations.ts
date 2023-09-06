@@ -341,3 +341,22 @@ export const SEARCH_PRISMA_ALBUMS = gql`
     }
   }
 `;
+
+export const ADD_NEW_TAG = gql`
+  mutation AddNewTag($name: String!) {
+    addNewTag(name: $name) {
+      id
+      name
+    }
+  }
+`;
+
+export const ADD_NEW_LABEL = gql`
+  mutation AddNewLabel($name: String!) {
+    addNewLabel(name: $name) {
+      id
+      name
+      isStandard
+    }
+  }
+`;

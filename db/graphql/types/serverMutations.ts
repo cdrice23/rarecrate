@@ -1,11 +1,16 @@
-import { nonNull, extendType, inputObjectType, mutationType } from 'nexus';
+import { nonNull, extendType, inputObjectType, mutationType, stringArg, intArg } from 'nexus';
 import {
   Crate as NexusCrate,
   Follow as NexusFollow,
   FollowRequest as NexusFollowRequest,
   FollowAndOrRequest as NexusFollowAndOrRequest,
+  Tag as NexusTag,
+  Label as NexusLabel,
+  Album as NexusAlbum,
+  CrateAlbum as NexusCrateAlbum,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
+import axios from 'axios';
 
 // INPUT OBJECT TYPES
 export const FollowOrRequestInput = inputObjectType({
@@ -227,6 +232,84 @@ export const CrateMutations = extendType({
         });
 
         return crate;
+      },
+    });
+  },
+});
+
+export const TagMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('addNewTag', {
+      type: NexusTag,
+      args: {
+        name: nonNull(stringArg()),
+      },
+      resolve: async (_, { name }, ctx) => {
+        const newTag = await ctx.prisma.tag.create({
+          data: {
+            name,
+          },
+        });
+
+        return newTag;
+      },
+    });
+  },
+});
+
+export const LabelMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('addNewLabel', {
+      type: NexusLabel,
+      args: {
+        name: nonNull(stringArg()),
+      },
+      resolve: async (_, { name }, ctx) => {
+        const newLabel = await ctx.prisma.label.create({
+          data: {
+            name,
+            isStandard: false,
+          },
+        });
+
+        return newLabel;
+      },
+    });
+  },
+});
+
+export const AlbumMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('addNewAlbum', {
+      type: NexusAlbum,
+      args: {
+        discogsMasterId: nonNull(intArg()),
+      },
+      resolve: async (_, { discogsMasterId }, ctx) => {
+        // Use master to get discogs Response
+        const masterResponse = await axios.get(`https://api.discogs.com/masters${discogsMasterId}`, {
+          headers: {
+            Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,
+          },
+        });
+
+        // OG album structure
+        //   const formattedDiscogsResponse = {
+        //     discogsMasterId: keyReleaseData.release.master_id,
+        //     title: releaseDetailData.title,
+        //     artist: releaseDetailData.artist,
+        //     label: keyReleaseData.label,
+        //     releaseYear: releaseDetailData.year,
+        //     genres: keyReleaseData.release.genre,
+        //     subgenres: keyReleaseData.release.style,
+        //     tracklist: releaseDetailData.tracklist.map((track: any, i: number) => ({
+        //       order: i + 1,
+        //       name: track.title,
+        //     })),
+        //   };
       },
     });
   },

@@ -118,6 +118,8 @@ type Label {
 type Mutation {
   acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   addCrateToFavorites(input: CrateProfileInput!): Crate
+  addNewLabel(name: String!): Label
+  addNewTag(name: String!): Tag
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
