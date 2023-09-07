@@ -274,13 +274,14 @@ export const CrateMutations = extendType({
               connect: labelIds.map(labelId => ({ id: labelId })),
             },
             albums: {
-              create: crateAlbums.map(({ albumId, tagIds }) => ({
+              create: crateAlbums.map(({ albumId, tagIds, order }) => ({
                 album: {
                   connect: { id: albumId },
                 },
                 tags: {
                   connect: tagIds.map(tagId => ({ id: tagId })),
                 },
+                rank: order,
               })),
             },
           },

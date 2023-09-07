@@ -24,8 +24,6 @@ const AlbumSearchCombobox = ({
   const [expTitleResults, setExpTitleResults] = useState(0);
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
 
-  console.log(inputItems);
-
   const ulRef = useRef(null);
 
   // If no db results, trigger discogsSearch

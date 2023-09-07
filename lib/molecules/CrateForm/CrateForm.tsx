@@ -13,15 +13,17 @@ import {
   SEARCH_TAGS_BY_ID,
   ADD_NEW_ALBUM,
   SEARCH_PRISMA_ALBUMS_BY_ID,
+  ADD_NEW_CRATE,
 } from '@/db/graphql/clientOperations';
 
-const CrateForm = () => {
+const CrateForm = ({ creatorId }) => {
   const [addNewLabel] = useMutation(ADD_NEW_LABEL);
   const [searchLabelsById] = useLazyQuery(SEARCH_LABELS_BY_ID);
   const [addNewTag] = useMutation(ADD_NEW_TAG);
   const [searchTagsById] = useLazyQuery(SEARCH_TAGS_BY_ID);
   const [addNewAlbum] = useMutation(ADD_NEW_ALBUM);
   const [searchPrismaAlbumsById] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_ID);
+  const [addNewCrate] = useMutation(ADD_NEW_CRATE);
 
   const initialValues = {
     title: '',
@@ -80,9 +82,28 @@ const CrateForm = () => {
       }
     });
     const dbCrateAlbums = await Promise.all(albumPromises);
-    console.log(dbCrateAlbums);
 
-    // prisma logic here
+    // Create the new Crate using the above created or connected albums, labels, and tags
+    const crateInput = {
+      title,
+      description,
+      isRanked,
+      creatorId,
+      labelIds: crateLabels.map(label => label.id),
+      crateAlbums: crateAlbums.map(album => ({
+        albumId: album.id ?? dbCrateAlbums.find(dbAlbum => dbAlbum.discogsMasterId === album.discogsMasterId).id,
+        tagIds: album.tags
+          ? album.tags.map(tag => {
+              const crateTag = crateTags.find(crateTag => crateTag.name === tag.name);
+              return crateTag ? crateTag.id : null;
+            })
+          : [],
+        order: album.order,
+      })),
+    };
+
+    const { data } = await addNewCrate({ variables: { input: crateInput } });
+    console.log(data);
 
     actions.resetForm();
   };

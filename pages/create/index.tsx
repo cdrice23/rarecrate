@@ -70,7 +70,7 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
-          <CrateForm />
+          <CrateForm creatorId={profileIdMain} />
         </>
       ) : null}
     </AuthedLayout>
