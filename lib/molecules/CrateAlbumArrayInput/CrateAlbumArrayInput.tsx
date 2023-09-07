@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
 import { AlbumSearchCombobox } from '../AlbumSearchCombobox/AlbumSearchCombobox';
-import { SEARCH_PRISMA_ALBUMS } from '@/db/graphql/clientOperations';
+import { SEARCH_PRISMA_ALBUMS_BY_NAME } from '@/db/graphql/clientOperations';
 import { useLazyQuery } from '@apollo/client';
 
 interface CrateAlbumArrayInputProps {
@@ -21,15 +21,15 @@ type QueriedAlbum = {
 };
 
 const CrateAlbumArrayInput = ({ value, isRanked }: CrateAlbumArrayInputProps) => {
-  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS);
+  const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_NAME);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
   const [triggerDiscogsSearch, setTriggerDiscogsSearch] = useState<boolean>(false);
 
-  const searchResults = data?.searchPrismaAlbums;
+  const searchResults = data?.searchPrismaAlbumsByName;
 
   // Check if search returns db items, otherwise trigger a discogs search
   useEffect(() => {
-    if (data && data.searchPrismaAlbums.length === 0) {
+    if (data && data.searchPrismaAlbumsByName.length === 0) {
       // Query completed, but no results were returned
       setTriggerDiscogsSearch(true);
     } else {

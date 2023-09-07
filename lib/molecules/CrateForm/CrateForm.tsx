@@ -5,38 +5,86 @@ import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import cx from 'classnames';
 import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
-
-const onSubmit = async (values, actions) => {
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  console.log(values);
-  const newLabels = values.labels.filter(label => label.isNew);
-  const existingLabels = values.labels.filter(label => !label.hasOwnProperty('isNew'));
-  const newAlbums = values.crateAlbums.filter(album => !album.hasOwnProperty('id'));
-  const crateAlbumTags = values.crateAlbums
-    .filter(album => album.tags)
-    .map(album => album.tags)
-    .flat();
-  let newTags = [];
-  let existingTags = [];
-  if (crateAlbumTags) {
-    const uniqueTags = new Set(crateAlbumTags.map(tag => JSON.stringify(tag)));
-    const allTags = Array.from(uniqueTags).map((tag: any) => JSON.parse(tag));
-    newTags = allTags.filter(label => label.isNew);
-    existingTags = allTags.filter(label => !label.hasOwnProperty('isNew'));
-  }
-
-  // prisma logic here
-
-  actions.resetForm();
-};
+import { useMutation, useLazyQuery } from '@apollo/client';
+import {
+  ADD_NEW_LABEL,
+  SEARCH_LABELS_BY_ID,
+  ADD_NEW_TAG,
+  SEARCH_TAGS_BY_ID,
+  ADD_NEW_ALBUM,
+  SEARCH_PRISMA_ALBUMS_BY_ID,
+} from '@/db/graphql/clientOperations';
 
 const CrateForm = () => {
+  const [addNewLabel] = useMutation(ADD_NEW_LABEL);
+  const [searchLabelsById] = useLazyQuery(SEARCH_LABELS_BY_ID);
+  const [addNewTag] = useMutation(ADD_NEW_TAG);
+  const [searchTagsById] = useLazyQuery(SEARCH_TAGS_BY_ID);
+  const [addNewAlbum] = useMutation(ADD_NEW_ALBUM);
+  const [searchPrismaAlbumsById] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_ID);
+
   const initialValues = {
     title: '',
     description: '',
     labels: [],
     isRanked: false,
     crateAlbums: [],
+  };
+
+  const onSubmit = async (values, actions) => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log(values);
+    const { title, labels, isRanked, description, crateAlbums } = values;
+
+    // Create or find the Label records
+    const labelPromises = labels.map(async label => {
+      if (label.hasOwnProperty('id')) {
+        const { data } = await searchLabelsById({ variables: { labelId: label.id } });
+        return { ...data.searchLabelsById };
+      } else {
+        const { data } = await addNewLabel({ variables: { name: label.name } });
+        return { ...data.addNewLabel };
+      }
+    });
+    const crateLabels = await Promise.all(labelPromises);
+
+    // Create or find the Tag records
+    let tags = [];
+    const crateAlbumTags = crateAlbums
+      .filter(album => album.tags)
+      .map(album => album.tags)
+      .flat();
+    if (crateAlbumTags) {
+      const uniqueTags = new Set(crateAlbumTags.map(tag => JSON.stringify(tag)));
+      tags = Array.from(uniqueTags).map((tag: any) => JSON.parse(tag));
+    }
+    const tagPromises = tags.map(async tag => {
+      if (tag.hasOwnProperty('id')) {
+        const { data } = await searchTagsById({ variables: { tagId: tag.id } });
+        return { ...data.searchTagsById };
+      } else {
+        const { data } = await addNewTag({ variables: { name: tag.name } });
+        return { ...data.addNewTag };
+      }
+    });
+    const crateTags = await Promise.all(tagPromises);
+
+    // Create or find the Album records
+    const albumPromises = crateAlbums.map(async album => {
+      if (album.hasOwnProperty('id')) {
+        const { data } = await searchPrismaAlbumsById({ variables: { albumId: album.id } });
+        return { ...data.searchPrismaAlbumsById };
+      } else {
+        const { data } = await addNewAlbum({ variables: { discogsMasterId: album.discogsMasterId } });
+        return { ...data.addNewAlbum };
+      }
+    });
+    const dbCrateAlbums = await Promise.all(albumPromises);
+    console.log(dbCrateAlbums);
+
+    // prisma logic here
+
+    actions.resetForm();
   };
 
   return (

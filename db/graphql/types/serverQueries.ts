@@ -95,7 +95,7 @@ export const FollowRequestQueries = extendType({
 export const LabelQueries = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('searchLabels', {
+    t.nonNull.list.field('searchLabelsByName', {
       type: NexusLabel,
       args: {
         searchTerm: nonNull(stringArg()),
@@ -116,6 +116,20 @@ export const LabelQueries = extendType({
               },
             },
           ],
+        });
+      },
+    });
+
+    t.nonNull.field('searchLabelsById', {
+      type: NexusLabel,
+      args: {
+        labelId: nonNull(intArg()),
+      },
+      resolve: async (_, { labelId }, ctx) => {
+        return await ctx.prisma.label.findUnique({
+          where: {
+            id: labelId,
+          },
         });
       },
     });
@@ -144,7 +158,7 @@ export const LabelQueries = extendType({
 export const TagQueries = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('searchTags', {
+    t.nonNull.list.field('searchTagsByName', {
       type: NexusTag,
       args: {
         searchTerm: nonNull(stringArg()),
@@ -169,6 +183,20 @@ export const TagQueries = extendType({
       },
     });
 
+    t.nonNull.field('searchTagsById', {
+      type: NexusTag,
+      args: {
+        tagId: nonNull(intArg()),
+      },
+      resolve: async (_, { tagId }, ctx) => {
+        return await ctx.prisma.tag.findUnique({
+          where: {
+            id: tagId,
+          },
+        });
+      },
+    });
+
     t.list.field('getTopTags', {
       type: NexusTag,
       args: {
@@ -189,7 +217,7 @@ export const TagQueries = extendType({
 export const AlbumQueries = extendType({
   type: 'Query',
   definition(t) {
-    t.nonNull.list.field('searchPrismaAlbums', {
+    t.nonNull.list.field('searchPrismaAlbumsByName', {
       type: NexusAlbum,
       args: {
         searchTerm: nonNull(stringArg()),
@@ -227,6 +255,20 @@ export const AlbumQueries = extendType({
         });
 
         return uniqueResults;
+      },
+    });
+
+    t.nonNull.field('searchPrismaAlbumsById', {
+      type: NexusAlbum,
+      args: {
+        albumId: nonNull(intArg()),
+      },
+      resolve: async (_, { albumId }, ctx) => {
+        return await ctx.prisma.album.findUnique({
+          where: {
+            id: albumId,
+          },
+        });
       },
     });
   },

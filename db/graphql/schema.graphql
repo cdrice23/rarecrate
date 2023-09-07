@@ -171,9 +171,12 @@ type Query {
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
   getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
-  searchLabels(searchTerm: String!): [Label]!
-  searchPrismaAlbums(searchTerm: String!): [Album]!
-  searchTags(searchTerm: String!): [Tag]!
+  searchLabelsById(labelId: Int!): Label!
+  searchLabelsByName(searchTerm: String!): [Label]!
+  searchPrismaAlbumsById(albumId: Int!): Album!
+  searchPrismaAlbumsByName(searchTerm: String!): [Album]!
+  searchTagsById(tagId: Int!): Tag!
+  searchTagsByName(searchTerm: String!): [Tag]!
 }
 
 type Recommendation {

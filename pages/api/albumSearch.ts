@@ -71,7 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       });
 
       const formattedResult = {
-        discogsMasterId: id,
+        discogsMasterId: id.discogsMasterId,
         title: releaseDetails.data.title,
         artist: releaseDetails.data.artists[0].name,
         imageUrl: releaseDetails.data.images[0].uri,

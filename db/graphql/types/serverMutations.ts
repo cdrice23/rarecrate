@@ -377,44 +377,51 @@ export const AlbumMutations = extendType({
         };
 
         // Create or connect the Genre records
-        const genres = formattedDiscogsResponse.genres;
-        const genrePromises = genres.map(async (genre: string) => {
-          const existingGenre = await ctx.prisma.genre.findFirst({
-            where: { name: genre },
+        const createOrConnectGenres = async (genres, ctx) => {
+          const genrePromises = genres.map(async genre => {
+            const existingGenre = await ctx.prisma.genre.findFirst({
+              where: { name: genre },
+            });
+
+            if (existingGenre) {
+              return { ...existingGenre };
+            } else {
+              return ctx.prisma.genre.create({
+                data: { name: genre },
+              });
+            }
           });
 
-          if (existingGenre) {
-            return { ...existingGenre };
-          } else {
-            return ctx.prisma.genre.create({
-              data: { name: genre },
-            });
-          }
-        });
-        const createdGenres = await Promise.all(genrePromises);
+          return Promise.all(genrePromises);
+        };
+        const genres = formattedDiscogsResponse.genres;
+        const albumGenres = genres.length > 0 ? await createOrConnectGenres(genres, ctx) : [];
 
         // Create or connect the Subgenre records
-        const styles = formattedDiscogsResponse.subgenres;
-        const subgenrePromises = styles.map(async (subgenre: string) => {
-          const existingSubgenre = await ctx.prisma.subgenre.findFirst({
-            where: { name: subgenre },
+        const createOrConnectSubgenres = async (subgenres, parentGenreName, albumGenres, ctx) => {
+          const parentGenre = albumGenres.find(genre => genre.name === parentGenreName);
+          const subgenrePromises = subgenres.map(async subgenre => {
+            const existingSubgenre = await ctx.prisma.subgenre.findFirst({
+              where: { name: subgenre },
+            });
+
+            if (existingSubgenre) {
+              return { ...existingSubgenre };
+            } else {
+              return ctx.prisma.subgenre.create({
+                data: {
+                  name: subgenre,
+                  parentGenre: { connect: { id: parentGenre.id } },
+                },
+              });
+            }
           });
 
-          if (existingSubgenre) {
-            return { ...existingSubgenre };
-          } else {
-            const parentGenreName = genres[0];
-            const parentGenre = createdGenres.find(genre => genre.name === parentGenreName);
-
-            return ctx.prisma.subgenre.create({
-              data: {
-                name: subgenre,
-                parentGenre: { connect: { id: parentGenre.id } },
-              },
-            });
-          }
-        });
-        const createdSubgenres = await Promise.all(subgenrePromises);
+          return Promise.all(subgenrePromises);
+        };
+        const subgenres = formattedDiscogsResponse.subgenres;
+        const albumSubgenres =
+          subgenres.length > 0 ? await createOrConnectSubgenres(subgenres, genres[0], albumGenres, ctx) : [];
 
         // Create the Album record
         const newAlbum = await ctx.prisma.album.create({
@@ -423,20 +430,16 @@ export const AlbumMutations = extendType({
             title: formattedDiscogsResponse.title,
             artist: formattedDiscogsResponse.artist,
             label: formattedDiscogsResponse.label,
-            releaseYear: parseInt(formattedDiscogsResponse.releaseYear) ?? null,
-            genres: createdGenres.length > 0 ? { connect: createdGenres.map(genre => ({ id: genre.id })) } : [],
-            subgenres:
-              createdSubgenres.length > 0 ? { connect: createdSubgenres.map(subgenre => ({ id: subgenre.id })) } : [],
+            releaseYear: parseInt(formattedDiscogsResponse.releaseYear),
+            genres: { connect: albumGenres.map(genre => ({ id: genre.id })) },
+            subgenres: { connect: albumSubgenres.map(subgenre => ({ id: subgenre.id })) },
             imageUrl: formattedDiscogsResponse.imageUrl,
-            tracklist:
-              formattedDiscogsResponse.tracklist.length > 0
-                ? {
-                    create: formattedDiscogsResponse.tracklist.map((item: any) => ({
-                      title: item.name,
-                      order: item.order,
-                    })),
-                  }
-                : [],
+            tracklist: {
+              create: formattedDiscogsResponse.tracklist.map((item: any) => ({
+                title: item.name,
+                order: item.order,
+              })),
+            },
           },
         });
         return newAlbum;

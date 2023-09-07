@@ -292,9 +292,19 @@ export const REMOVE_CRATE_FROM_FAVORITES = gql`
 `;
 
 // Add Crate Operations
-export const SEARCH_LABELS = gql`
-  query SearchLabels($searchTerm: String!) {
-    searchLabels(searchTerm: $searchTerm) {
+export const SEARCH_LABELS_BY_NAME = gql`
+  query searchLabelsByName($searchTerm: String!) {
+    searchLabelsByName(searchTerm: $searchTerm) {
+      id
+      name
+      isStandard
+    }
+  }
+`;
+
+export const SEARCH_LABELS_BY_ID = gql`
+  query searchLabelsById($labelId: Int!) {
+    searchLabelsById(labelId: $labelId) {
       id
       name
       isStandard
@@ -312,9 +322,18 @@ export const GET_TOP_LABELS = gql`
   }
 `;
 
-export const SEARCH_TAGS = gql`
-  query SearchTags($searchTerm: String!) {
-    searchTags(searchTerm: $searchTerm) {
+export const SEARCH_TAGS_BY_NAME = gql`
+  query SearchTagsByName($searchTerm: String!) {
+    searchTagsByName(searchTerm: $searchTerm) {
+      id
+      name
+    }
+  }
+`;
+
+export const SEARCH_TAGS_BY_ID = gql`
+  query searchTagsById($tagId: Int!) {
+    searchTagsById(tagId: $tagId) {
       id
       name
     }
@@ -330,9 +349,21 @@ export const GET_TOP_TAGS = gql`
   }
 `;
 
-export const SEARCH_PRISMA_ALBUMS = gql`
-  query SearchPrismaAlbums($searchTerm: String!) {
-    searchPrismaAlbums(searchTerm: $searchTerm) {
+export const SEARCH_PRISMA_ALBUMS_BY_NAME = gql`
+  query SearchPrismaAlbumsByName($searchTerm: String!) {
+    searchPrismaAlbumsByName(searchTerm: $searchTerm) {
+      id
+      title
+      artist
+      discogsMasterId
+      imageUrl
+    }
+  }
+`;
+
+export const SEARCH_PRISMA_ALBUMS_BY_ID = gql`
+  query SearchPrismaAlbumsById($albumId: Int!) {
+    searchPrismaAlbumsById(albumId: $albumId) {
       id
       title
       artist
