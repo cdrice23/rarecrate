@@ -9,10 +9,11 @@ export const crateFormSchema = yup.object().shape({
     .string()
     .test('maxDescription', 'Your description is too long', val => (val ? val.length < 160 : true)),
   isRanked: yup.boolean(),
+  labels: yup.array().max(5, 'You may not have more than 5 labels on a Crate'),
   crateAlbums: yup
     .array()
     .min(1, 'Please add at least one album')
-    .test('customValidation', 'Validation error', function (value) {
+    .test('rankingValidation', 'Validation error', function (value) {
       const isRanked = this.resolve(yup.ref('isRanked'));
       if (isRanked) {
         // Perform the additional validation rules for isRanked being true
@@ -35,5 +36,17 @@ export const crateFormSchema = yup.object().shape({
         }
       }
       return true;
+    })
+    .test('tagsValidation', 'Validation error', function (value) {
+      if (value) {
+        const tagsExceedLimit = value.some(album => (album.tags ? album.tags.length > 5 : []));
+        if (tagsExceedLimit) {
+          return this.createError({
+            message: 'You may not have more than 5 tags on an Album',
+            path: 'crateAlbums',
+          });
+        }
+        return true;
+      }
     }),
 });

@@ -35,7 +35,6 @@ const CrateForm = ({ creatorId }) => {
 
   const onSubmit = async (values, actions) => {
     await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(values);
     const { title, labels, isRanked, description, crateAlbums } = values;
 
     // Create or find the Label records

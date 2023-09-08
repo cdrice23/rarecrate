@@ -16,7 +16,7 @@ const retryWithBackoff = async (fn, attempts = 0) => {
       throw error;
     }
 
-    console.log(`Attempt ${attempts + 1} failed. Retrying in ${backoffInterval * (attempts + 1)}ms...`);
+    console.log(`Attempt ${attempts + 1} failed. Retrying in ${backoffInterval / 1000}s...`);
     await new Promise(resolve => setTimeout(resolve, backoffInterval * (attempts + 1)));
     return retryWithBackoff(fn, attempts + 1);
   }

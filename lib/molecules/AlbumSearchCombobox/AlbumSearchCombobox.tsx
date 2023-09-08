@@ -28,9 +28,6 @@ const AlbumSearchCombobox = ({
   const ulRef = useRef(null);
   const currentItems = inputItems.slice(0, currentPage * 30);
 
-  console.log(inputItems);
-  console.log(currentItems);
-
   // If no db results, trigger discogsSearch
   useEffect(() => {
     if (triggerDiscogsSearch) {
