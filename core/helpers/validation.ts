@@ -39,7 +39,7 @@ export const crateFormSchema = yup.object().shape({
     })
     .test('tagsValidation', 'Validation error', function (value) {
       if (value) {
-        const tagsExceedLimit = value.some(album => (album.tags ? album.tags.length > 5 : []));
+        const tagsExceedLimit = value.some(album => (album.tags ? album.tags.length > 5 : null));
         if (tagsExceedLimit) {
           return this.createError({
             message: 'You may not have more than 5 tags on an Album',

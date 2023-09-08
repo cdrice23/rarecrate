@@ -129,6 +129,7 @@ const CrateForm = ({ creatorId }) => {
           />
           <ToggleInput name="isRanked" label="Ranked?" />
           <LabelSearchInput value={values.labels} />
+          <ErrorMessage name="labels" component="div" />
           <CrateAlbumArrayInput value={values.crateAlbums} isRanked={values.isRanked} />
           <ErrorMessage name="crateAlbums" component="div" />
           <button disabled={isSubmitting} type="submit">
