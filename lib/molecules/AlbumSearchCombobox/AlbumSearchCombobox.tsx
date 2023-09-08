@@ -23,8 +23,13 @@ const AlbumSearchCombobox = ({
   const [expArtistResults, setExpArtistResults] = useState(0);
   const [expTitleResults, setExpTitleResults] = useState(0);
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const ulRef = useRef(null);
+  const currentItems = inputItems.slice(0, currentPage * 30);
+
+  console.log(inputItems);
+  console.log(currentItems);
 
   // If no db results, trigger discogsSearch
   useEffect(() => {
@@ -38,6 +43,7 @@ const AlbumSearchCombobox = ({
   // Load list items from graphQL query
   useEffect(() => {
     setInputItems(listItems);
+    setCurrentPage(1);
   }, [listItems]);
 
   const { getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
@@ -131,7 +137,8 @@ const AlbumSearchCombobox = ({
             <li>Searching...</li>
           ) : inputItems.length > 0 ? (
             <>
-              {inputItems.map((item, index) => (
+              {/* {inputItems.map((item, index) => ( */}
+              {currentItems.map((item, index) => (
                 <li
                   key={`album${index}`}
                   style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
@@ -155,7 +162,9 @@ const AlbumSearchCombobox = ({
                     artist={item.artist}
                     imageUrl={item.imageUrl}
                     lastIndex={inputItems.length - 1}
+                    lastSlice={currentPage * 30 - 1}
                     handleDiscogsSearch={handleDiscogsSearch}
+                    setCurrentPage={setCurrentPage}
                   />
                 </li>
               ))}

@@ -10,7 +10,9 @@ interface AlbumSearchResultProps {
   title: string;
   imageUrl: string;
   artist: string;
+  lastSlice: number;
   handleDiscogsSearch: () => void;
+  setCurrentPage: (value) => void;
 }
 
 const AlbumSearchResult = ({
@@ -19,7 +21,9 @@ const AlbumSearchResult = ({
   title,
   imageUrl,
   artist,
+  lastSlice,
   handleDiscogsSearch,
+  setCurrentPage,
 }: AlbumSearchResultProps) => {
   const [src, setSrc] = useState<string | StaticImageData>('/grey_square.png');
 
@@ -27,6 +31,9 @@ const AlbumSearchResult = ({
     <motion.div
       className={cx('searchResult')}
       onViewportEnter={async () => {
+        if (index === lastSlice) {
+          setCurrentPage((lastSlice + 1) / 30 + 1);
+        }
         if (index === lastIndex) {
           // console.log(`${title} is the last item!`);
           console.log(`You hit the last item!`);
