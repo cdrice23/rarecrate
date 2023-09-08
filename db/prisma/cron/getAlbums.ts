@@ -4,18 +4,23 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// const user_agents = [
-//   'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
-//   'Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0',
-//   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36 OPR/38.0.2220.41',
-//   'Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00',
-//   'Opera/9.60 (Windows NT 6.0; U; en) Presto/2.1.1',
-//   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59',
-//   'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-//   'Mozilla/5.0 (compatible; YandexAccessibilityBot/3.0; +http://yandex.com/bots)',
-//   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-//   'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'
-// ];
+const maxAttempts = 5;
+const backoffInterval = 60000; // 1 minute
+
+const retryWithBackoff = async (fn, attempts = 0) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (attempts >= maxAttempts) {
+      console.log(`Max attempts reached. Exiting.`);
+      throw error;
+    }
+
+    console.log(`Attempt ${attempts + 1} failed. Retrying in ${backoffInterval * (attempts + 1)}ms...`);
+    await new Promise(resolve => setTimeout(resolve, backoffInterval * (attempts + 1)));
+    return retryWithBackoff(fn, attempts + 1);
+  }
+};
 
 const initCronRun = async () => {
   const currentScript = 'getAlbumsFromRecordLabelString';
@@ -198,7 +203,7 @@ const initCronRun = async () => {
   console.log('CronRun Completed Successfully');
 };
 
-initCronRun()
+retryWithBackoff(initCronRun)
   .catch(e => {
     throw e;
   })
