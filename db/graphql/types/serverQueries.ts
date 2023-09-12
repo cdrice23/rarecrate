@@ -43,32 +43,13 @@ export const ProfileQueries = queryType({
       },
     });
 
-    // t.nonNull.list.field('qsProfiles', {
-    //   type: NexusProfile,
-    //   args: {
-    //     searchTerm: nonNull(stringArg()),
-    //   },
-    //   resolve: async (_, { searchTerm }, ctx) => {
-    //       return await ctx.prisma.profile.findMany({
-    //         where: {
-    //           username: {
-    //             contains: searchTerm
-    //           }
-    //         },
-    //         orderBy: {
-    //           searchAndSelectCount: 'desc',
-    //         },
-    //         take: 9
-    //       });
-    //   },
-    // });
     t.nonNull.list.field('qsProfiles', {
       type: NexusProfile,
       args: {
         searchTerm: nonNull(stringArg()),
       },
       resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 90000; // Set the page size to 90,000 records
+        const pageSize = 99999;
         let pageNumber = 1;
         let allProfiles = [];
 
@@ -82,8 +63,8 @@ export const ProfileQueries = queryType({
             orderBy: {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1), // Calculate the number of records to skip based on the page number and page size
-            take: pageSize, // Retrieve the specified page size
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
           });
 
           if (profiles.length === 0) {
@@ -94,10 +75,8 @@ export const ProfileQueries = queryType({
           pageNumber++;
         }
 
-        const filteredProfiles = allProfiles.filter(profile => profile.username.includes(searchTerm));
-        const sortedProfiles = filteredProfiles.sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount);
-        const top9Profiles = sortedProfiles.slice(0, 9);
-        return top9Profiles;
+        const topProfiles = allProfiles.slice(0, 9);
+        return topProfiles;
       },
     });
   },
@@ -460,8 +439,8 @@ export const AlbumQueries = extendType({
           }
           return false;
         });
-        const top9Profiles = uniqueResults.slice(0, 9);
-        return top9Profiles;
+        const top4Albums = uniqueResults.slice(0, 4);
+        return top4Albums;
       },
     });
   },

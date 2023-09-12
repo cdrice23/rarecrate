@@ -530,33 +530,17 @@ export const RUN_QUICK_SEARCH = gql`
         username
       }
     }
-    qsAlbums(searchTerm: $searchTerm) {
+  }
+`;
+
+export const LOG_SELECTED_SEARCH_RESULT = gql`
+  mutation LogSelectedSearchResult($searchTerm: String!, $prismaModel: String!, $selectedId: Int!) {
+    logSelectedSearchResult(searchTerm: $searchTerm, prismaModel: $prismaModel, selectedId: $selectedId) {
       id
-      title
-      artist
-      imageUrl
-      searchAndSelectCount
-    }
-    qsLabels(searchTerm: $searchTerm) {
-      id
-      name
-      searchAndSelectCount
-      isStandard
-    }
-    qsTags(searchTerm: $searchTerm) {
-      id
-      name
-      searchAndSelectCount
-    }
-    qsGenres(searchTerm: $searchTerm) {
-      id
-      name
-      searchAndSelectCount
-    }
-    qsSubgenres(searchTerm: $searchTerm) {
-      id
-      name
-      searchAndSelectCount
+      searchTerm
+      resultType
+      searchResult
+      selectedId
     }
   }
 `;

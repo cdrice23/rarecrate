@@ -7,6 +7,7 @@ import {
   Tag as NexusTag,
   Label as NexusLabel,
   Album as NexusAlbum,
+  SelectedSearchResult as NexusSelectedSearchResult,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
 import axios from 'axios';
@@ -443,6 +444,113 @@ export const AlbumMutations = extendType({
           },
         });
         return newAlbum;
+      },
+    });
+  },
+});
+
+export const SelectedSearchResultMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.list.field('logSelectedSearchResult', {
+      type: NexusSelectedSearchResult,
+      args: {
+        searchTerm: nonNull(stringArg()),
+        prismaModel: nonNull(stringArg()),
+        selectedId: nonNull(intArg()),
+      },
+      resolve: async (_, { searchTerm, prismaModel, selectedId }, ctx) => {
+        let searchResult;
+
+        switch (prismaModel) {
+          case 'profile':
+            const matchingProfile = await ctx.prisma.profile.findUnique({
+              where: { id: selectedId },
+              select: { username: true, searchAndSelectCount: true },
+            });
+
+            await ctx.prisma.profile.update({
+              where: { id: selectedId },
+              data: { searchAndSelectCount: matchingProfile.searchAndSelectCount + 1 },
+            });
+
+            searchResult = matchingProfile.username;
+            break;
+          case 'crate':
+          case 'album':
+            const matchingTitleResult = await ctx.prisma[prismaModel].findUnique({
+              where: { id: selectedId },
+              select: { title: true, searchAndSelectCount: true },
+            });
+
+            await ctx.prisma[prismaModel].update({
+              where: { id: selectedId },
+              data: { searchAndSelectCount: matchingTitleResult.searchAndSelectCount + 1 },
+            });
+
+            searchResult = matchingTitleResult.title;
+            break;
+          case 'label':
+          case 'tag':
+          case 'genre':
+          case 'subgenre':
+            const matchingNameResult = await ctx.prisma[prismaModel].findUnique({
+              where: { id: selectedId },
+              select: { name: true, searchAndSelectCount: true },
+            });
+
+            await ctx.prisma[prismaModel].update({
+              where: { id: selectedId },
+              data: { searchAndSelectCount: matchingNameResult.searchAndSelectCount + 1 },
+            });
+
+            searchResult = matchingNameResult.name;
+            break;
+          default:
+            throw new Error('Invalid prismaModel');
+        }
+
+        const createdSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
+          data: {
+            searchTerm,
+            resultType: prismaModel,
+            searchResult,
+            selectedId,
+          },
+        });
+
+        // If prismaModel is 'album', create another SelectedSearchResult for title
+        let albumTitleSelectedSearchResult;
+        if (prismaModel === 'album') {
+          const matchingArtistResult = await ctx.prisma.album.findUnique({
+            where: { id: selectedId },
+            select: { artist: true },
+          });
+
+          albumTitleSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
+            data: {
+              searchTerm,
+              resultType: 'album',
+              searchResult: matchingArtistResult.artist,
+              selectedId,
+            },
+          });
+
+          // NOTE: this is an interim solution before the Quick Results searchTerm implementation - i.e. assuming that selecting an album increases the entire artist's searchAndSelect ranking
+          const artistAlbums = await ctx.prisma.album.findMany({
+            where: { artist: matchingArtistResult.artist, NOT: { id: selectedId } },
+            select: { id: true, searchAndSelectCount: true },
+          });
+
+          for (const album of artistAlbums) {
+            await ctx.prisma.album.update({
+              where: { id: album.id },
+              data: { searchAndSelectCount: album.searchAndSelectCount + 1 },
+            });
+          }
+        }
+
+        return [createdSelectedSearchResult, albumTitleSelectedSearchResult];
       },
     });
   },
