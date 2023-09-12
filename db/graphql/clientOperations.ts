@@ -435,3 +435,128 @@ export const ADD_NEW_CRATE = gql`
     }
   }
 `;
+
+// Global Search queries + mutations
+export const QS_PROFILES = gql`
+  query QsProfiles($searchTerm: String!) {
+    qsProfiles(searchTerm: $searchTerm) {
+      id
+      username
+      image
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const QS_CRATES = gql`
+  query QsCrates($searchTerm: String!) {
+    qsCrates(searchTerm: $searchTerm) {
+      id
+      title
+      searchAndSelectCount
+      creator {
+        username
+      }
+    }
+  }
+`;
+
+export const QS_ALBUMS = gql`
+  query QsAlbums($searchTerm: String!) {
+    qsAlbums(searchTerm: $searchTerm) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const QS_LABELS = gql`
+  query QsLabels($searchTerm: String!) {
+    qsLabels(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+      isStandard
+    }
+  }
+`;
+
+export const QS_TAGS = gql`
+  query QsTags($searchTerm: String!) {
+    qsTags(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const QS_GENRES = gql`
+  query QsGenres($searchTerm: String!) {
+    qsGenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const QS_SUBGENRES = gql`
+  query QsSubgenres($searchTerm: String!) {
+    qsSubgenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const RUN_QUICK_SEARCH = gql`
+  query RunQuickSearch($searchTerm: String!) {
+    qsProfiles(searchTerm: $searchTerm) {
+      id
+      username
+      image
+      searchAndSelectCount
+    }
+    qsCrates(searchTerm: $searchTerm) {
+      id
+      title
+      searchAndSelectCount
+      creator {
+        username
+      }
+    }
+    qsAlbums(searchTerm: $searchTerm) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
+    }
+    qsLabels(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+      isStandard
+    }
+    qsTags(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+    qsGenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+    qsSubgenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;

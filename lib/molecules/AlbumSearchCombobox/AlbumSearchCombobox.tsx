@@ -25,6 +25,8 @@ const AlbumSearchCombobox = ({
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
+  console.log(inputItems);
+
   const ulRef = useRef(null);
   const currentItems = inputItems.slice(0, currentPage * 30);
 

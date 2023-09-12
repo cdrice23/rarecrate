@@ -119,6 +119,7 @@ type Genre {
   albums: Album
   id: Int!
   name: String!
+  searchAndSelectCount: Int!
   subgenres: Subgenre
 }
 
@@ -171,6 +172,13 @@ type Query {
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
   getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
+  qsAlbums(searchTerm: String!): [Album]!
+  qsCrates(searchTerm: String!): [Crate]!
+  qsGenres(searchTerm: String!): [Genre]!
+  qsLabels(searchTerm: String!): [Label]!
+  qsProfiles(searchTerm: String!): [Profile]!
+  qsSubgenres(searchTerm: String!): [Subgenre]!
+  qsTags(searchTerm: String!): [Tag]!
   searchLabelsById(labelId: Int!): Label!
   searchLabelsByName(searchTerm: String!): [Label]!
   searchPrismaAlbumsById(albumId: Int!): Album!
@@ -216,6 +224,7 @@ type Subgenre {
   name: String!
   parentGenre: Genre
   parentGenreId: Int!
+  searchAndSelectCount: Int!
 }
 
 type Tag {

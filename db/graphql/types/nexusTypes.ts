@@ -1,4 +1,4 @@
-import { objectType } from 'nexus';
+import { objectType, unionType } from 'nexus';
 import {
   User as PrismaUser,
   Profile as PrismaProfile,
@@ -196,6 +196,9 @@ export const Profile = objectType({
           })
           .recommendations();
       },
+    });
+    t.field(PrismaProfile.searchAndSelectCount.name, {
+      type: PrismaProfile.searchAndSelectCount.type,
     });
   },
 });
@@ -456,6 +459,9 @@ export const Genre = objectType({
     t.field(PrismaGenre.subgenres.name, {
       type: Subgenre,
     });
+    t.field(PrismaGenre.searchAndSelectCount.name, {
+      type: PrismaGenre.searchAndSelectCount.type,
+    });
   },
 });
 
@@ -476,6 +482,9 @@ export const Subgenre = objectType({
     });
     t.field(PrismaSubgenre.parentGenreId.name, {
       type: PrismaSubgenre.parentGenreId.type,
+    });
+    t.field(PrismaSubgenre.searchAndSelectCount.name, {
+      type: PrismaSubgenre.searchAndSelectCount.type,
     });
   },
 });

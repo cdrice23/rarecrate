@@ -7,7 +7,6 @@ import {
   Tag as NexusTag,
   Label as NexusLabel,
   Album as NexusAlbum,
-  CrateAlbum as NexusCrateAlbum,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
 import axios from 'axios';

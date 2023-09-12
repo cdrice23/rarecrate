@@ -107,9 +107,13 @@ const CrateForm = ({ creatorId }) => {
     actions.resetForm();
   };
 
+  const handleReset = actions => {
+    actions.resetForm();
+  };
+
   return (
     <Formik initialValues={initialValues} validationSchema={crateFormSchema} onSubmit={onSubmit}>
-      {({ errors, touched, values, handleChange, isSubmitting }) => (
+      {({ errors, touched, values, handleChange, isSubmitting, resetForm }) => (
         <Form className={cx('crateForm')}>
           <TextInput
             name="title"
@@ -134,6 +138,14 @@ const CrateForm = ({ creatorId }) => {
           <ErrorMessage name="crateAlbums" component="div" />
           <button disabled={isSubmitting} type="submit">
             Submit
+          </button>
+          <button
+            onClick={e => {
+              e.preventDefault();
+              resetForm();
+            }}
+          >
+            Cancel
           </button>
         </Form>
       )}

@@ -119,18 +119,20 @@ model Album {
 }
 
 model Genre {
-  id        Int        @id @default(autoincrement())
-  name      String
-  albums    Album[]
-  subgenres Subgenre[]
+  id                   Int        @id @default(autoincrement())
+  name                 String
+  albums               Album[]
+  subgenres            Subgenre[]
+  searchAndSelectCount Int        @default(0)
 }
 
 model Subgenre {
-  id            Int     @id @default(autoincrement())
-  name          String
-  albums        Album[]
-  parentGenre   Genre   @relation(fields: [parentGenreId], references: [id])
-  parentGenreId Int
+  id                   Int     @id @default(autoincrement())
+  name                 String
+  albums               Album[]
+  parentGenre          Genre   @relation(fields: [parentGenreId], references: [id])
+  parentGenreId        Int
+  searchAndSelectCount Int     @default(0)
 
   @@index([parentGenreId])
 }
