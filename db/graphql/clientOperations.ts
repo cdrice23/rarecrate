@@ -514,6 +514,83 @@ export const QS_SUBGENRES = gql`
   }
 `;
 
+export const FS_PROFILES = gql`
+  query FsProfiles($searchTerm: String!) {
+    fsProfiles(searchTerm: $searchTerm) {
+      id
+      username
+      image
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const FS_CRATES = gql`
+  query FsCrates($searchTerm: String!) {
+    fsCrates(searchTerm: $searchTerm) {
+      id
+      title
+      searchAndSelectCount
+      creator {
+        username
+      }
+    }
+  }
+`;
+
+export const FS_ALBUMS = gql`
+  query FsAlbums($searchTerm: String!) {
+    fsAlbums(searchTerm: $searchTerm) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const FS_LABELS = gql`
+  query FsLabels($searchTerm: String!) {
+    fsLabels(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+      isStandard
+    }
+  }
+`;
+
+export const FS_TAGS = gql`
+  query FsTags($searchTerm: String!) {
+    fsTags(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const FS_GENRES = gql`
+  query FsGenres($searchTerm: String!) {
+    fsGenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const FS_SUBGENRES = gql`
+  query FsSubgenres($searchTerm: String!) {
+    fsSubgenres(searchTerm: $searchTerm) {
+      id
+      name
+      searchAndSelectCount
+    }
+  }
+`;
+
 export const RUN_QUICK_SEARCH = gql`
   query RunQuickSearch($searchTerm: String!) {
     qsProfiles(searchTerm: $searchTerm) {
@@ -541,6 +618,68 @@ export const LOG_SELECTED_SEARCH_RESULT = gql`
       resultType
       searchResult
       selectedId
+    }
+  }
+`;
+
+export const GET_CRATES_FROM_LABEL = gql`
+  query GetCratesFromLabel($labelId: Int!) {
+    getCratesFromLabel(labelId: $labelId) {
+      id
+      title
+      searchAndSelectCount
+      creator {
+        username
+      }
+    }
+  }
+`;
+
+export const GET_CRATES_FROM_ALBUM = gql`
+  query GetCratesFromAlbum($albumId: Int!) {
+    getCratesFromAlbum(albumId: $albumId) {
+      id
+      title
+      searchAndSelectCount
+      creator {
+        username
+      }
+    }
+  }
+`;
+
+export const GET_ALBUMS_FROM_TAG = gql`
+  query GetAlbumsFromTag($tagId: Int!) {
+    getAlbumsFromTag(tagId: $tagId) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const GET_ALBUMS_FROM_GENRE = gql`
+  query GetAlbumsFromGenre($genreId: Int!) {
+    getAlbumsFromGenre(genreId: $genreId) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
+    }
+  }
+`;
+
+export const GET_ALBUMS_FROM_SUBGENRE = gql`
+  query GetAlbumsFromSubgenre($subgenreId: Int!) {
+    getAlbumsFromSubgenre(subgenreId: $subgenreId) {
+      id
+      title
+      artist
+      imageUrl
+      searchAndSelectCount
     }
   }
 `;

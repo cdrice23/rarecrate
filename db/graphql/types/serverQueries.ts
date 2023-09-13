@@ -79,6 +79,42 @@ export const ProfileQueries = queryType({
         return topProfiles;
       },
     });
+
+    t.nonNull.list.field('fsProfiles', {
+      type: NexusProfile,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allProfiles = [];
+
+        while (true) {
+          const profiles = await ctx.prisma.profile.findMany({
+            where: {
+              username: {
+                contains: searchTerm,
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (profiles.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allProfiles = allProfiles.concat(profiles);
+          pageNumber++;
+        }
+
+        return allProfiles;
+      },
+    });
   },
 });
 
@@ -125,6 +161,120 @@ export const CrateQueries = extendType({
           },
           take: 9,
         });
+      },
+    });
+
+    t.nonNull.list.field('fsCrates', {
+      type: NexusCrate,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allCrates = [];
+
+        while (true) {
+          const crates = await ctx.prisma.crate.findMany({
+            where: {
+              title: {
+                contains: searchTerm,
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (crates.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allCrates = allCrates.concat(crates);
+          pageNumber++;
+        }
+
+        return allCrates;
+      },
+    });
+
+    t.nonNull.list.field('getCratesFromLabel', {
+      type: NexusCrate,
+      args: {
+        labelId: nonNull(intArg()),
+      },
+      resolve: async (_, { labelId }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allCrates = [];
+
+        while (true) {
+          const crates = await ctx.prisma.crate.findMany({
+            where: {
+              labels: {
+                some: {
+                  id: labelId,
+                },
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (crates.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allCrates = allCrates.concat(crates);
+          pageNumber++;
+        }
+
+        return allCrates;
+      },
+    });
+
+    t.nonNull.list.field('getCratesFromAlbum', {
+      type: NexusCrate,
+      args: {
+        albumId: nonNull(intArg()),
+      },
+      resolve: async (_, { albumId }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allCrates = [];
+
+        while (true) {
+          const crates = await ctx.prisma.crate.findMany({
+            where: {
+              albums: {
+                some: {
+                  album: {
+                    id: albumId,
+                  },
+                },
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (crates.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allCrates = allCrates.concat(crates);
+          pageNumber++;
+        }
+
+        return allCrates;
       },
     });
   },
@@ -232,6 +382,42 @@ export const LabelQueries = extendType({
         });
       },
     });
+
+    t.nonNull.list.field('fsLabels', {
+      type: NexusLabel,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allLabels = [];
+
+        while (true) {
+          const labels = await ctx.prisma.label.findMany({
+            where: {
+              name: {
+                contains: searchTerm,
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (labels.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allLabels = allLabels.concat(labels);
+          pageNumber++;
+        }
+
+        return allLabels;
+      },
+    });
   },
 });
 
@@ -309,6 +495,42 @@ export const TagQueries = extendType({
           },
           take: 9,
         });
+      },
+    });
+
+    t.nonNull.list.field('fsTags', {
+      type: NexusTag,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allTags = [];
+
+        while (true) {
+          const tags = await ctx.prisma.tag.findMany({
+            where: {
+              name: {
+                contains: searchTerm,
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (tags.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allTags = allTags.concat(tags);
+          pageNumber++;
+        }
+
+        return allTags;
       },
     });
   },
@@ -443,6 +665,189 @@ export const AlbumQueries = extendType({
         return top4Albums;
       },
     });
+
+    t.nonNull.list.field('fsAlbums', {
+      type: NexusAlbum,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              OR: [
+                {
+                  artist: {
+                    contains: searchTerm,
+                  },
+                },
+                {
+                  title: {
+                    contains: searchTerm,
+                  },
+                },
+              ],
+            },
+            orderBy: [
+              {
+                searchAndSelectCount: 'desc',
+              },
+            ],
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        const ids = new Set();
+        const uniqueResults = allAlbums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return allAlbums;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromTag', {
+      type: NexusAlbum,
+      args: {
+        tagId: nonNull(intArg()),
+      },
+      resolve: async (_, { tagId }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              crates: {
+                some: {
+                  tags: {
+                    some: {
+                      id: tagId,
+                    },
+                  },
+                },
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        const ids = new Set();
+        const uniqueAlbums = allAlbums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return uniqueAlbums;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromGenre', {
+      type: NexusAlbum,
+      args: {
+        genreId: nonNull(intArg()),
+      },
+      resolve: async (_, { genreId }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              genres: {
+                some: {
+                  id: genreId,
+                },
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        return allAlbums;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromSubgenre', {
+      type: NexusAlbum,
+      args: {
+        subgenreId: nonNull(intArg()),
+      },
+      resolve: async (_, { subgenreId }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              subgenres: {
+                some: {
+                  id: subgenreId,
+                },
+              },
+            },
+            orderBy: {
+              searchAndSelectCount: 'desc',
+            },
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        return allAlbums;
+      },
+    });
   },
 });
 
@@ -468,6 +873,25 @@ export const GenreQueries = extendType({
         });
       },
     });
+
+    t.nonNull.list.field('fsGenres', {
+      type: NexusGenre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.genre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+        });
+      },
+    });
   },
 });
 
@@ -490,6 +914,25 @@ export const SubgenreQueries = extendType({
             searchAndSelectCount: 'desc',
           },
           take: 9,
+        });
+      },
+    });
+
+    t.nonNull.list.field('fsSubgenres', {
+      type: NexusSubgenre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.subgenre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
         });
       },
     });

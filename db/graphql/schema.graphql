@@ -167,7 +167,19 @@ type Profile {
 }
 
 type Query {
+  fsAlbums(searchTerm: String!): [Album]!
+  fsCrates(searchTerm: String!): [Crate]!
+  fsGenres(searchTerm: String!): [Genre]!
+  fsLabels(searchTerm: String!): [Label]!
+  fsProfiles(searchTerm: String!): [Profile]!
+  fsSubgenres(searchTerm: String!): [Subgenre]!
+  fsTags(searchTerm: String!): [Tag]!
+  getAlbumsFromGenre(genreId: Int!): [Album]!
+  getAlbumsFromSubgenre(subgenreId: Int!): [Album]!
+  getAlbumsFromTag(tagId: Int!): [Album]!
   getCrateDetailWithAlbums(id: Int!): Crate!
+  getCratesFromAlbum(albumId: Int!): [Crate]!
+  getCratesFromLabel(labelId: Int!): [Crate]!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
