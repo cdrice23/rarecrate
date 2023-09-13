@@ -199,8 +199,8 @@ model CronRun {
 }
 
 model SelectedSearchResult {
-  id           Int    @id @default(autoincrement())
-  searchTerm   String
+  id           Int     @id @default(autoincrement())
+  searchTerm   String?
   searchResult String
   resultType   String
   selectedId   Int

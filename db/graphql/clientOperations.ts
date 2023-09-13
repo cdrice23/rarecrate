@@ -611,7 +611,7 @@ export const RUN_QUICK_SEARCH = gql`
 `;
 
 export const LOG_SELECTED_SEARCH_RESULT = gql`
-  mutation LogSelectedSearchResult($searchTerm: String!, $prismaModel: String!, $selectedId: Int!) {
+  mutation LogSelectedSearchResult($searchTerm: String, $prismaModel: String!, $selectedId: Int!) {
     logSelectedSearchResult(searchTerm: $searchTerm, prismaModel: $prismaModel, selectedId: $selectedId) {
       id
       searchTerm
@@ -633,6 +633,16 @@ export const GET_CRATES_FROM_LABEL = gql`
       }
     }
   }
+
+  mutation IncrementSelectedLabel($labelId: Int!) {
+    logSelectedSearchResult(prismaModel: "label", selectedId: $labelId) {
+      id
+      searchTerm
+      resultType
+      searchResult
+      selectedId
+    }
+  }
 `;
 
 export const GET_CRATES_FROM_ALBUM = gql`
@@ -644,6 +654,16 @@ export const GET_CRATES_FROM_ALBUM = gql`
       creator {
         username
       }
+    }
+  }
+
+  mutation IncrementSelectedCrate($crateId: Int!) {
+    logSelectedSearchResult(prismaModel: "crate", selectedId: $crateId) {
+      id
+      searchTerm
+      resultType
+      searchResult
+      selectedId
     }
   }
 `;
@@ -658,6 +678,16 @@ export const GET_ALBUMS_FROM_TAG = gql`
       searchAndSelectCount
     }
   }
+
+  mutation IncrementSelectedAlbum($albumId: Int!) {
+    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
+      id
+      searchTerm
+      resultType
+      searchResult
+      selectedId
+    }
+  }
 `;
 
 export const GET_ALBUMS_FROM_GENRE = gql`
@@ -670,6 +700,16 @@ export const GET_ALBUMS_FROM_GENRE = gql`
       searchAndSelectCount
     }
   }
+
+  mutation IncrementSelectedAlbum($albumId: Int!) {
+    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
+      id
+      searchTerm
+      resultType
+      searchResult
+      selectedId
+    }
+  }
 `;
 
 export const GET_ALBUMS_FROM_SUBGENRE = gql`
@@ -680,6 +720,16 @@ export const GET_ALBUMS_FROM_SUBGENRE = gql`
       artist
       imageUrl
       searchAndSelectCount
+    }
+  }
+
+  mutation IncrementSelectedAlbum($albumId: Int!) {
+    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
+      id
+      searchTerm
+      resultType
+      searchResult
+      selectedId
     }
   }
 `;

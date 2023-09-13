@@ -455,7 +455,7 @@ export const SelectedSearchResultMutations = extendType({
     t.list.field('logSelectedSearchResult', {
       type: NexusSelectedSearchResult,
       args: {
-        searchTerm: nonNull(stringArg()),
+        searchTerm: stringArg(),
         prismaModel: nonNull(stringArg()),
         selectedId: nonNull(intArg()),
       },
@@ -512,7 +512,7 @@ export const SelectedSearchResultMutations = extendType({
 
         const createdSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
           data: {
-            searchTerm,
+            ...(searchTerm && { searchTerm }),
             resultType: prismaModel,
             searchResult,
             selectedId,
@@ -529,7 +529,7 @@ export const SelectedSearchResultMutations = extendType({
 
           albumTitleSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
             data: {
-              searchTerm,
+              ...(searchTerm && { searchTerm }),
               resultType: 'album',
               searchResult: matchingArtistResult.artist,
               selectedId,
