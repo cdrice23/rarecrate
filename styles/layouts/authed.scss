@@ -824,7 +824,7 @@
 
 // Quick/FullSearch Stylings
 .searchPane {
-  width: 600px;
+  width: 100vw;
   background-color: lightgoldenrodyellow;
   display: flex;
   justify-content: center;
@@ -842,6 +842,35 @@
   .searchMenu {
     list-style: none;
     padding: 0px;
+
+    li:hover {
+      background-color: #bde4ff;
+    }
+
+    .searchResult {
+      margin: 4px;
+      display: flex;
+      align-items: center;
+
+      .resultImage {
+        min-height: 55px;
+        min-width: 55px;
+        display: grid;
+        place-items: center;
+      }
+      
+      .resultText {
+        flex-grow: 1;
+      }
+    }
+
+    .showMore {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(44, 129, 221);
+      height: 55px;
+    }
   }
 
 }

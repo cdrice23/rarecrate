@@ -23,7 +23,7 @@ interface ProfileProps {
 
 const ProfilePage = ({ userId, email }: ProfileProps) => {
   const router = useRouter();
-  const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('followers');
+  const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('crates');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user

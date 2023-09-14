@@ -1,12 +1,13 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery, useMutation, gql } from '@apollo/client';
+import { useRouter } from 'next/router';
 import {
   GET_PROFILE_CRATES_AND_FAVORITES,
   ADD_CRATE_TO_FAVORITES,
   REMOVE_CRATE_FROM_FAVORITES,
 } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { Heart } from '@phosphor-icons/react';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
@@ -23,6 +24,17 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
     variables: { username: username },
   });
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const { searchedCrateSelected } = router.query;
+    if (searchedCrateSelected) {
+      setActiveCrate(Number(searchedCrateSelected));
+      setShowCrateDetail(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const crateSummaryData = data?.getProfile;
   console.log(crateSummaryData);

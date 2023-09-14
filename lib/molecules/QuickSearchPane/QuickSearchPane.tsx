@@ -1,37 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Route } from '../../../core/enums/routes';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
 import { RUN_QUICK_SEARCH } from '@/db/graphql/clientOperations';
 import { useLazyQuery } from '@apollo/client';
+import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 
 const QuickSearchPane = () => {
   const [inputItems, setInputItems] = useState([]);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [selectedPage, setSelectedPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const [searchQuery, { loading, data }] = useLazyQuery(RUN_QUICK_SEARCH);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
-  const searchResults = [...profileResults, ...crateResults];
+  const searchResults = [...profileResults, ...crateResults]
+    .sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount)
+    .slice(0, 9);
+  const router = useRouter();
 
   console.log(inputItems);
-  console.log(searchResults);
-
-  const ulRef = useRef(null);
-  const currentItems = inputItems.slice(0, currentPage * 30);
+  // console.log(searchResults);
 
   // Load list items from graphQL query
   useEffect(() => {
     if (data && searchPrompt !== '') {
-      setInputItems(searchResults);
-      setCurrentPage(1);
+      setInputItems([...searchResults, { isShowMoreButton: true }]);
     }
-  }, [data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, debounceTimeout]);
 
   const { getToggleButtonProps, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
     items: inputItems || [],
@@ -44,13 +44,29 @@ const QuickSearchPane = () => {
         <input
           {...getInputProps({
             value: searchPrompt,
-            placeholder: 'Search Albums',
+            placeholder: 'Search Rare Crate',
             onKeyDown: event => {
               if (event.key === 'Enter') {
                 clearTimeout(debounceTimeout);
                 setDebounceTimeout(null);
                 setSelectedItem(inputItems[highlightedIndex]);
-                setSearchPrompt('');
+
+                // Handle routes
+                console.log(inputItems[highlightedIndex]);
+                if (inputItems[highlightedIndex].__typename === 'Profile') {
+                  router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
+                }
+
+                if (inputItems[highlightedIndex].__typename === 'Crate') {
+                  router.push({
+                    pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
+                    query: { searchedCrateSelected: inputItems[highlightedIndex].id },
+                  });
+                }
+
+                if (inputItems[highlightedIndex].isShowMoreButton) {
+                  console.log('You were all wrong! Twas a show more!!');
+                }
               }
             },
             onChange: event => {
@@ -62,19 +78,16 @@ const QuickSearchPane = () => {
                 setSearchPrompt(inputValue);
                 setInputItems([]);
               }
-              // Reset state for discogs searches
-              setSelectedPage(1);
               // Clear previous debounce timeout
               if (debounceTimeout) {
                 clearTimeout(debounceTimeout);
               }
 
               // When typing, run the passed search query
-              if (inputValue !== selectedItem?.title && inputValue !== '') {
+              if (inputValue !== '') {
                 // Debounce to wait 300ms after user stops typing
                 const newDebounceTimeout = setTimeout(() => {
                   searchQuery({ variables: { searchTerm: inputValue } });
-                  console.log('You are done typing');
                 }, 300);
                 setDebounceTimeout(newDebounceTimeout);
               }
@@ -93,41 +106,60 @@ const QuickSearchPane = () => {
         </button>
       </div>
 
-      <ul {...getMenuProps({ ref: ulRef })} className={cx('searchMenu')}>
+      <ul {...getMenuProps()} className={cx('searchMenu')}>
         {loading ? (
           <li>Searching...</li>
         ) : inputItems.length > 0 ? (
           <>
-            {currentItems.map((item, index) => (
-              <li
-                key={`album${index}`}
-                style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-                {...getItemProps({
-                  item,
-                  index,
-                  onMouseDown: () => {
-                    clearTimeout(debounceTimeout);
-                    setDebounceTimeout(null);
-
-                    setSelectedItem(inputItems[index]);
-                    setSearchPrompt('');
-                  },
-                })}
-              >
-                Result
-                {/* <div
-                index={index}
-                title={item.title}
-                artist={item.artist}
-                imageUrl={item.imageUrl}
-                lastIndex={inputItems.length - 1}
-                lastSlice={currentPage * 30 - 1}
-                setCurrentPage={setCurrentPage}
+            {inputItems.map((item, index) =>
+              item.isShowMoreButton ? (
+                <li
+                  key={index}
+                  style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
+                  {...getItemProps({
+                    item,
+                    index,
+                    onMouseDown: () => {
+                      console.log('You were all wrong! Twas a show more!!');
+                    },
+                  })}
                 >
-                  Result!
-                </div> */}
-              </li>
-            ))}
+                  <div className={cx('showMore')}>
+                    <h4>{`See all results for "${searchPrompt}"`}</h4>
+                  </div>
+                </li>
+              ) : (
+                <li
+                  key={index}
+                  style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
+                  {...getItemProps({
+                    item,
+                    index,
+                    onMouseDown: () => {
+                      clearTimeout(debounceTimeout);
+                      setDebounceTimeout(null);
+
+                      setSelectedItem(inputItems[index]);
+
+                      // Handle routes
+                      console.log(inputItems[highlightedIndex]);
+                      if (inputItems[highlightedIndex].__typename === 'Profile') {
+                        router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
+                      }
+
+                      if (inputItems[highlightedIndex].__typename === 'Crate') {
+                        router.push({
+                          pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
+                          query: { searchedCrateSelected: inputItems[highlightedIndex].id },
+                        });
+                      }
+                    },
+                  })}
+                >
+                  <GlobalSearchResult data={item} />
+                </li>
+              ),
+            )}
           </>
         ) : null}
       </ul>
