@@ -3,7 +3,7 @@ import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
 import cx from 'classnames';
 
-const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, searchQuery, loading }) => {
+const DropdownCombobox = ({ enterHandler, updateNewItem, listItems, itemLabel, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
@@ -36,11 +36,11 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
         setIsOpen(false);
       }
       // If we need to "add a new item"(i.e. not an existing item in search), update the text on the item
-      updateNewPill(inputValue);
+      updateNewItem(inputValue);
     },
     onHighlightedIndexChange: ({ highlightedIndex }) => {
       if (highlightedIndex !== -1 && inputItems) {
-        updateNewPill(inputItems[highlightedIndex][itemLabel]);
+        updateNewItem(inputItems[highlightedIndex][itemLabel]);
       }
     },
   });
@@ -77,7 +77,7 @@ const DropdownCombobox = ({ enterHandler, updateNewPill, listItems, itemLabel, s
                   item,
                   index,
                   onClick: () => {
-                    updateNewPill(inputItems[highlightedIndex][itemLabel]);
+                    updateNewItem(inputItems[highlightedIndex][itemLabel]);
                     enterHandler();
                     setInputItems([]);
                   },

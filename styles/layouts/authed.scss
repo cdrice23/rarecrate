@@ -822,3 +822,26 @@
   }
 }
 
+// Quick/FullSearch Stylings
+.searchPane {
+  width: 600px;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .inputSection {
+    display: flex;
+    justify-content: center;
+
+    > input {
+      width: 100%;
+    }
+  }
+  
+  .searchMenu {
+    list-style: none;
+    padding: 0px;
+  }
+
+}

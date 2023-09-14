@@ -5,6 +5,7 @@ import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { QuickSearchPane } from '@/lib/molecules/QuickSearchPane/QuickSearchPane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -69,6 +70,7 @@ const SearchPage = ({ userId, email }: SearchProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
+          <QuickSearchPane />
         </>
       ) : null}
     </AuthedLayout>

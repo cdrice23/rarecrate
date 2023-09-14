@@ -69,7 +69,7 @@ const PillArrayInput = ({
                       setShowAddPill(false);
                       setNewPill('');
                     }}
-                    updateNewPill={setNewPill}
+                    updateNewItem={setNewPill}
                   />
                 </OutsideClickHandler>
               ) : (
