@@ -7,10 +7,12 @@ const GlobalSearchResult = ({ data }) => {
     <div className={cx('searchResult')}>
       <div className={cx('resultImage')}>
         {(data.image || data.imageUrl) && (
-          <Image src={data.imageUrl} height={55} width={55} alt={data.title} className={cx('profileImage')} />
+          <Image src={data.imageUrl} height={40} width={40} alt={data.title} className={cx('profileImage')} />
         )}
         {data.__typename === 'Profile' && !data.image && <UserCircle size={24} />}
         {data.__typename === 'Crate' && <Archive size={24} />}
+        {data.__typename === ('Label' || 'Tag') && <Tag size={24} />}
+        {data.__typename === ('Genre' || 'Subgenre') && <SquaresFour size={24} />}
       </div>
       <div className="resultText">
         {data.artist && <p>{data.artist}</p>}

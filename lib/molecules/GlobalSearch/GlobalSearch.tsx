@@ -15,13 +15,6 @@ const GlobalSearch = () => {
   const [searchQuery, { loading, data }] = useLazyQuery(RUN_QUICK_SEARCH);
   const [searchPrompt, setSearchPrompt] = useState<string>('');
   const [showFullSearchPane, setShowFullSearchPane] = useState<boolean>(false);
-  const [activePane, setActivePane] = useState<
-    'profiles' | 'crates' | 'albums' | 'labelsAndTags' | 'genresAndSubgenres'
-  >('profiles');
-
-  const handlePaneSelect = (pane: 'profiles' | 'crates' | 'albums' | 'labelsAndTags' | 'genresAndSubgenres') => {
-    setActivePane(pane);
-  };
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
@@ -110,7 +103,7 @@ const GlobalSearch = () => {
           <CaretDown />
         </button>
       </div>
-      {showFullSearchPane && <FullSearchPane handlePaneSelect={handlePaneSelect} />}
+      {showFullSearchPane && <FullSearchPane searchPrompt={searchPrompt} />}
       <QuickSearchPane
         style={{ display: showFullSearchPane ? 'none' : 'block' }}
         inputItems={inputItems}
