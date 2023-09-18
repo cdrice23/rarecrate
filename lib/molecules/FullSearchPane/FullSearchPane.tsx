@@ -9,25 +9,35 @@ interface FullSearchPaneProps {
 }
 
 const initialResultsState = {
-  profileResults: [],
-  crateResults: [],
-  albumResults: [],
-  labelResults: [],
-  genreResults: [],
+  profileState: { results: [], currentPage: 1 },
+  crateState: { results: [], currentPage: 1 },
+  albumState: { results: [], currentPage: 1 },
+  labelState: { results: [], currentPage: 1 },
+  genreState: { results: [], currentPage: 1 },
 };
 
 const resultsReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_PROFILE_RESULTS':
-      return { ...state, profileResults: action.payload };
+      return { ...state, profileState: { ...state.profileState, results: action.payload } };
     case 'UPDATE_CRATE_RESULTS':
-      return { ...state, crateResults: action.payload };
+      return { ...state, crateState: { ...state.crateState, results: action.payload } };
     case 'UPDATE_ALBUM_RESULTS':
-      return { ...state, albumResults: action.payload };
+      return { ...state, albumState: { ...state.albumState, results: action.payload } };
     case 'UPDATE_LABEL_RESULTS':
-      return { ...state, labelResults: action.payload };
+      return { ...state, labelState: { ...state.labelState, results: action.payload } };
     case 'UPDATE_GENRE_RESULTS':
-      return { ...state, genreResults: action.payload };
+      return { ...state, genreState: { ...state.genreState, results: action.payload } };
+    case 'UPDATE_PROFILE_CURRENT_PAGE':
+      return { ...state, profileState: { ...state.profileState, currentPage: action.payload } };
+    case 'UPDATE_CRATE_CURRENT_PAGE':
+      return { ...state, crateState: { ...state.crateState, currentPage: action.payload } };
+    case 'UPDATE_ALBUM_CURRENT_PAGE':
+      return { ...state, albumState: { ...state.albumState, currentPage: action.payload } };
+    case 'UPDATE_LABEL_CURRENT_PAGE':
+      return { ...state, labelState: { ...state.labelState, currentPage: action.payload } };
+    case 'UPDATE_GENRE_CURRENT_PAGE':
+      return { ...state, genreState: { ...state.genreState, currentPage: action.payload } };
     default:
       return state;
   }
@@ -54,7 +64,14 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
     'profiles' | 'crates' | 'albums' | 'labelsAndTags' | 'genresAndSubgenres'
   >('profiles');
 
+  const currentProfiles = resultsState.profileState.results.slice(0, resultsState.profileState.currentPage * 30);
+  const currentCrates = resultsState.crateState.results.slice(0, resultsState.crateState.currentPage * 30);
+  const currentAlbums = resultsState.albumState.results.slice(0, resultsState.albumState.currentPage * 30);
+  const currentLabels = resultsState.labelState.results.slice(0, resultsState.labelState.currentPage * 30);
+  const currentGenres = resultsState.genreState.results.slice(0, resultsState.genreState.currentPage * 30);
+
   console.log(resultsState);
+  console.log(currentAlbums);
 
   useEffect(() => {
     getProfileResults();
@@ -123,9 +140,19 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
               return loadingProfiles ? (
                 <li>Loading Profiles...</li>
               ) : (
-                resultsState.profileResults.map((result, index) => (
+                currentProfiles.map((result, index) => (
                   <li key={index}>
-                    <GlobalSearchResult data={result} />
+                    <GlobalSearchResult
+                      data={result}
+                      index={index}
+                      lastSlice={resultsState.profileState.currentPage * 30 - 1}
+                      getMoreItems={() =>
+                        dispatch({
+                          type: 'UPDATE_PROFILE_CURRENT_PAGE',
+                          payload: resultsState.profileState.currentPage + 1,
+                        })
+                      }
+                    />
                   </li>
                 ))
               );
@@ -133,9 +160,19 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
               return loadingCrates ? (
                 <li>Loading Crates...</li>
               ) : (
-                resultsState.crateResults.map((result, index) => (
+                currentCrates.map((result, index) => (
                   <li key={index}>
-                    <GlobalSearchResult data={result} />
+                    <GlobalSearchResult
+                      data={result}
+                      index={index}
+                      lastSlice={resultsState.crateState.currentPage * 30 - 1}
+                      getMoreItems={() => {
+                        dispatch({
+                          type: 'UPDATE_CRATE_CURRENT_PAGE',
+                          payload: resultsState.crateState.currentPage + 1,
+                        });
+                      }}
+                    />
                   </li>
                 ))
               );
@@ -143,9 +180,19 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
               return loadingAlbums ? (
                 <li>Loading Albums...</li>
               ) : (
-                resultsState.albumResults.map((result, index) => (
+                currentAlbums.map((result, index) => (
                   <li key={index}>
-                    <GlobalSearchResult data={result} />
+                    <GlobalSearchResult
+                      data={result}
+                      index={index}
+                      lastSlice={resultsState.albumState.currentPage * 30 - 1}
+                      getMoreItems={() => {
+                        dispatch({
+                          type: 'UPDATE_ALBUM_CURRENT_PAGE',
+                          payload: resultsState.albumState.currentPage + 1,
+                        });
+                      }}
+                    />
                   </li>
                 ))
               );
@@ -153,9 +200,19 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
               return loadingLabels ? (
                 <li>Loading Labels/Tags...</li>
               ) : (
-                resultsState.labelResults.map((result, index) => (
+                currentLabels.map((result, index) => (
                   <li key={index}>
-                    <GlobalSearchResult data={result} />
+                    <GlobalSearchResult
+                      data={result}
+                      index={index}
+                      lastSlice={resultsState.labelState.currentPage * 30 - 1}
+                      getMoreItems={() => {
+                        dispatch({
+                          type: 'UPDATE_LABEL_CURRENT_PAGE',
+                          payload: resultsState.labelState.currentPage + 1,
+                        });
+                      }}
+                    />
                   </li>
                 ))
               );
@@ -163,9 +220,19 @@ const FullSearchPane = ({ searchPrompt }: FullSearchPaneProps) => {
               return loadingGenres ? (
                 <li>Loading Genres/Subgenres...</li>
               ) : (
-                resultsState.genreResults.map((result, index) => (
+                currentGenres.map((result, index) => (
                   <li key={index}>
-                    <GlobalSearchResult data={result} />
+                    <GlobalSearchResult
+                      data={result}
+                      index={index}
+                      lastSlice={resultsState.genreState.currentPage * 30 - 1}
+                      getMoreItems={() => {
+                        dispatch({
+                          type: 'UPDATE_GENRE_CURRENT_PAGE',
+                          payload: resultsState.genreState.currentPage + 1,
+                        });
+                      }}
+                    />
                   </li>
                 ))
               );

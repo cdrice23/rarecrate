@@ -1,10 +1,25 @@
 import Image from 'next/image';
 import cx from 'classnames';
 import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
 
-const GlobalSearchResult = ({ data }) => {
+interface GlobalSearchResultProps {
+  data: any;
+  index: number;
+  lastSlice?: number;
+  getMoreItems?: () => void;
+}
+
+const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSearchResultProps) => {
   return (
-    <div className={cx('searchResult')}>
+    <motion.div
+      className={cx('searchResult')}
+      onViewportEnter={() => {
+        if (index === lastSlice) {
+          getMoreItems();
+        }
+      }}
+    >
       <div className={cx('resultImage')}>
         {(data.image || data.imageUrl) && (
           <Image src={data.imageUrl} height={40} width={40} alt={data.title} className={cx('profileImage')} />
@@ -18,7 +33,7 @@ const GlobalSearchResult = ({ data }) => {
         {data.artist && <p>{data.artist}</p>}
         <h3>{data.username || data.name || data.title || ''}</h3>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

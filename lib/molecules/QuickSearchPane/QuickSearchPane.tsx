@@ -82,7 +82,7 @@ const QuickSearchPane = ({
                   },
                 })}
               >
-                <GlobalSearchResult data={item} />
+                <GlobalSearchResult data={item} index={index} />
               </li>
             ),
           )}
