@@ -861,6 +861,10 @@
       
       .resultText {
         flex-grow: 1;
+
+        .resultType {
+          font-weight: bold;
+        }
       }
     }
 

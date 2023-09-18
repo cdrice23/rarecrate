@@ -26,11 +26,15 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
         )}
         {data.__typename === 'Profile' && !data.image && <UserCircle size={24} />}
         {data.__typename === 'Crate' && <Archive size={24} />}
-        {data.__typename === ('Label' || 'Tag') && <Tag size={24} />}
-        {data.__typename === ('Genre' || 'Subgenre') && <SquaresFour size={24} />}
+        {(data.__typename === 'Label' || data.__typename === 'Tag') && <Tag size={24} />}
+        {(data.__typename === 'Genre' || data.__typename === 'Subgenre') && <SquaresFour size={24} />}
       </div>
       <div className="resultText">
         {data.artist && <p>{data.artist}</p>}
+        {(data.__typename === 'Label' ||
+          data.__typename === 'Tag' ||
+          data.__typename === 'Genre' ||
+          data.__typename === 'Subgenre') && <p className={cx('resultType')}>{`${data.__typename}:`}</p>}
         <h3>{data.username || data.name || data.title || ''}</h3>
       </div>
     </motion.div>
