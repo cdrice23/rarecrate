@@ -2,19 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '../../../core/enums/routes';
 import { useCombobox } from 'downshift';
-import { CaretDown } from '@phosphor-icons/react';
+import { CaretDown, CaretLeft } from '@phosphor-icons/react';
 import cx from 'classnames';
-import { RUN_QUICK_SEARCH } from '@/db/graphql/clientOperations';
-import { useLazyQuery } from '@apollo/client';
+import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
-import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
+import { FullSearchController } from '../FullSearchController/FullSearchController';
+import { useLocalState } from '@/lib/context/state';
 
 const GlobalSearch = () => {
-  const [inputItems, setInputItems] = useState([]);
+  const { globalSearchPrompt, setGlobalSearchPrompt, quickSearchResults, setQuickSearchResults } = useLocalState();
+  const [inputItems, setInputItems] = useState(quickSearchResults || []);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
   const [searchQuery, { loading, data }] = useLazyQuery(RUN_QUICK_SEARCH);
-  const [searchPrompt, setSearchPrompt] = useState<string>('');
+  const [searchPrompt, setSearchPrompt] = useState<string>(globalSearchPrompt);
   const [showFullSearchPane, setShowFullSearchPane] = useState<boolean>(false);
+  const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
@@ -24,15 +27,21 @@ const GlobalSearch = () => {
   const router = useRouter();
 
   // console.log(inputItems);
-  // console.log(searchResults);
+  // console.log(showFullSearchPane);
 
   // Load list items from graphQL query
   useEffect(() => {
     if (data && searchPrompt !== '') {
       setInputItems([...searchResults, { isShowMoreButton: true }]);
+      setQuickSearchResults([...searchResults, { isShowMoreButton: true }]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, debounceTimeout]);
+
+  useEffect(() => {
+    setGlobalSearchPrompt(searchPrompt);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchPrompt]);
 
   const { getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
     items: inputItems || [],
@@ -42,24 +51,35 @@ const GlobalSearch = () => {
   return (
     <div className={cx('searchPane')}>
       <div className={cx('inputSection')}>
+        {showFullSearchPane && (
+          <button className={cx('backButton')}>
+            <CaretLeft />
+          </button>
+        )}
         <input
           {...getInputProps({
             value: searchPrompt,
             placeholder: 'Search Rare Crate',
-            onKeyDown: event => {
-              if (event.key === 'Enter') {
+            onKeyDown: async event => {
+              if (event.key === 'Enter' && !showFullSearchPane) {
                 clearTimeout(debounceTimeout);
                 setDebounceTimeout(null);
 
                 // Handle routes
                 if (inputItems[highlightedIndex].__typename === 'Profile') {
                   router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
+                  await logSelectedSearchResult({
+                    variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
+                  });
                 }
 
                 if (inputItems[highlightedIndex].__typename === 'Crate') {
                   router.push({
                     pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
                     query: { searchedCrateSelected: inputItems[highlightedIndex].id },
+                  });
+                  await logSelectedSearchResult({
+                    variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
                   });
                 }
 
@@ -77,6 +97,7 @@ const GlobalSearch = () => {
                 setDebounceTimeout(null);
                 setSearchPrompt(inputValue);
                 setInputItems([]);
+                setQuickSearchResults([]);
               }
               // Clear previous debounce timeout
               if (debounceTimeout) {
@@ -93,6 +114,7 @@ const GlobalSearch = () => {
               }
 
               setSearchPrompt(inputValue);
+              // setGlobalSearchPrompt(inputValue);
             },
             onFocus: () => {
               setShowFullSearchPane(false);
@@ -103,7 +125,7 @@ const GlobalSearch = () => {
           <CaretDown />
         </button>
       </div>
-      {showFullSearchPane && <FullSearchPane searchPrompt={searchPrompt} />}
+      {showFullSearchPane && <FullSearchController searchPrompt={searchPrompt} />}
       <QuickSearchPane
         style={{ display: showFullSearchPane ? 'none' : 'block' }}
         inputItems={inputItems}

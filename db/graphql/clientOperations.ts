@@ -633,16 +633,6 @@ export const GET_CRATES_FROM_LABEL = gql`
       }
     }
   }
-
-  mutation IncrementSelectedLabel($labelId: Int!) {
-    logSelectedSearchResult(prismaModel: "label", selectedId: $labelId) {
-      id
-      searchTerm
-      resultType
-      searchResult
-      selectedId
-    }
-  }
 `;
 
 export const GET_CRATES_FROM_ALBUM = gql`
@@ -654,16 +644,6 @@ export const GET_CRATES_FROM_ALBUM = gql`
       creator {
         username
       }
-    }
-  }
-
-  mutation IncrementSelectedCrate($crateId: Int!) {
-    logSelectedSearchResult(prismaModel: "crate", selectedId: $crateId) {
-      id
-      searchTerm
-      resultType
-      searchResult
-      selectedId
     }
   }
 `;
@@ -678,16 +658,6 @@ export const GET_ALBUMS_FROM_TAG = gql`
       searchAndSelectCount
     }
   }
-
-  mutation IncrementSelectedAlbum($albumId: Int!) {
-    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
-      id
-      searchTerm
-      resultType
-      searchResult
-      selectedId
-    }
-  }
 `;
 
 export const GET_ALBUMS_FROM_GENRE = gql`
@@ -698,16 +668,6 @@ export const GET_ALBUMS_FROM_GENRE = gql`
       artist
       imageUrl
       searchAndSelectCount
-    }
-  }
-
-  mutation IncrementSelectedAlbum($albumId: Int!) {
-    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
-      id
-      searchTerm
-      resultType
-      searchResult
-      selectedId
     }
   }
 `;
@@ -722,14 +682,40 @@ export const GET_ALBUMS_FROM_SUBGENRE = gql`
       searchAndSelectCount
     }
   }
-
-  mutation IncrementSelectedAlbum($albumId: Int!) {
-    logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
-      id
-      searchTerm
-      resultType
-      searchResult
-      selectedId
-    }
-  }
 `;
+
+// export const INCREMENT_SELECTED_LABEL = gql`
+//   mutation IncrementSelectedLabel($labelId: Int!) {
+//     logSelectedSearchResult(prismaModel: "label", selectedId: $labelId) {
+//       id
+//       searchTerm
+//       resultType
+//       searchResult
+//       selectedId
+//     }
+//   }
+// `;
+
+// export const INCREMENT_SELECTED_CRATE = gql`
+//   mutation IncrementSelectedCrate($crateId: Int!) {
+//     logSelectedSearchResult(prismaModel: "crate", selectedId: $crateId) {
+//       id
+//       searchTerm
+//       resultType
+//       searchResult
+//       selectedId
+//     }
+//   }
+// `;
+
+// export const INCREMENT_SELECTED_ALBUM = gql`
+//   mutation IncrementSelectedAlbum($albumId: Int!) {
+//     logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
+//       id
+//       searchTerm
+//       resultType
+//       searchResult
+//       selectedId
+//     }
+//   }
+// `;

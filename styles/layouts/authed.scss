@@ -834,6 +834,10 @@
     display: flex;
     justify-content: center;
 
+    .backButton {
+      margin: 8px;
+    }
+
     > input {
       width: 100%;
     }

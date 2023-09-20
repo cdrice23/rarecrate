@@ -6,8 +6,6 @@ import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GlobalSearch } from '@/lib/molecules/GlobalSearch/GlobalSearch';
-import { QuickSearchPane } from '@/lib/molecules/QuickSearchPane/QuickSearchPane';
-import { FullSearchPane } from '@/lib/molecules/FullSearchPane/FullSearchPane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';

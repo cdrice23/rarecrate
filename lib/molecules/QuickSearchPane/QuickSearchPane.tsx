@@ -3,6 +3,8 @@ import { Route } from '../../../core/enums/routes';
 import cx from 'classnames';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { GetMenuPropsOptions, GetItemPropsOptions } from 'downshift';
+import { useMutation } from '@apollo/client';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 
 interface QuickSearchPaneProps {
   style: any;
@@ -29,6 +31,7 @@ const QuickSearchPane = ({
   highlightedIndex,
   handleShowFullSearch,
 }: QuickSearchPaneProps) => {
+  const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
   const router = useRouter();
 
   return (
@@ -61,7 +64,7 @@ const QuickSearchPane = ({
                 {...getItemProps({
                   item,
                   index,
-                  onMouseDown: () => {
+                  onMouseDown: async () => {
                     clearTimeout(debounceTimeout);
                     setDebounceTimeout(null);
 
@@ -71,12 +74,18 @@ const QuickSearchPane = ({
                     console.log(inputItems[highlightedIndex]);
                     if (inputItems[highlightedIndex].__typename === 'Profile') {
                       router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
+                      await logSelectedSearchResult({
+                        variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
+                      });
                     }
 
                     if (inputItems[highlightedIndex].__typename === 'Crate') {
                       router.push({
                         pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
                         query: { searchedCrateSelected: inputItems[highlightedIndex].id },
+                      });
+                      await logSelectedSearchResult({
+                        variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
                       });
                     }
                   },
