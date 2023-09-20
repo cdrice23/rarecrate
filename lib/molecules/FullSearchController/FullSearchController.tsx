@@ -16,9 +16,14 @@ import {
 } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
+import { PaneType } from '@/lib/context/state';
 
 interface FullSearchControllerProps {
   searchPrompt: string;
+  activePane: PaneType;
+  prevActivePane: PaneType;
+  setActivePane: (val: PaneType) => void;
+  setPrevActivePane: (val: PaneType) => void;
 }
 
 const initialResultsState = {
@@ -81,19 +86,12 @@ const resultsReducer = (state, action) => {
   }
 };
 
-const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
-  const [activePane, setActivePane] = useState<
-    | 'profiles'
-    | 'crates'
-    | 'albums'
-    | 'labelsAndTags'
-    | 'genresAndSubgenres'
-    | 'cratesFromLabel'
-    | 'albumsFromTag'
-    | 'albumsFromGenre'
-    | 'albumsFromSubgenre'
-    | 'cratesFromAlbum'
-  >('profiles');
+const FullSearchController = ({
+  searchPrompt,
+  activePane,
+  setActivePane,
+  setPrevActivePane,
+}: FullSearchControllerProps) => {
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
   const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES, {
     variables: { searchTerm: searchPrompt },
@@ -212,12 +210,18 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
   return (
     <>
       <div className={cx('listActions')}>
-        <button onClick={() => setActivePane('profiles')}>
+        <button
+          onClick={() => {
+            setActivePane('profiles');
+            setPrevActivePane(null);
+          }}
+        >
           <h5>{`Profiles`}</h5>
         </button>
         <button
           onClick={() => {
             setActivePane('crates');
+            setPrevActivePane(null);
             getCrateResults();
           }}
         >
@@ -226,6 +230,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
         <button
           onClick={() => {
             setActivePane('albums');
+            setPrevActivePane(null);
             getAlbumResults();
           }}
         >
@@ -234,6 +239,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
         <button
           onClick={() => {
             setActivePane('labelsAndTags');
+            setPrevActivePane(null);
             getLabelResults();
             getTagResults();
           }}
@@ -243,6 +249,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
         <button
           onClick={() => {
             setActivePane('genresAndSubgenres');
+            setPrevActivePane(null);
             getGenreResults();
             getSubgenreResults();
           }}
@@ -260,12 +267,12 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                 <FullSearchPane
                   currentItems={currentProfiles}
                   currentPage={resultsState.profileState.currentPage}
-                  getMoreItems={() =>
+                  getMoreItems={() => {
                     dispatch({
                       type: 'UPDATE_PROFILE_CURRENT_PAGE',
                       payload: resultsState.profileState.currentPage + 1,
-                    })
-                  }
+                    });
+                  }}
                 />
               );
             case 'crates':
@@ -275,12 +282,12 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                 <FullSearchPane
                   currentItems={currentCrates}
                   currentPage={resultsState.crateState.currentPage}
-                  getMoreItems={() =>
+                  getMoreItems={() => {
                     dispatch({
                       type: 'UPDATE_CRATE_CURRENT_PAGE',
                       payload: resultsState.crateState.currentPage + 1,
-                    })
-                  }
+                    });
+                  }}
                 />
               );
             case 'albums':
@@ -299,6 +306,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Album') {
                       setActivePane('cratesFromAlbum');
+                      setPrevActivePane('albums');
                       getCratesFromAlbum({ variables: { albumId: searchId } });
                     } else {
                       return;
@@ -322,9 +330,11 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Label') {
                       setActivePane('cratesFromLabel');
+                      setPrevActivePane('labelsAndTags');
                       getCratesFromLabel({ variables: { labelId: searchId } });
                     } else {
                       setActivePane('albumsFromTag');
+                      setPrevActivePane('labelsAndTags');
                       getAlbumsFromTag({ variables: { tagId: searchId } });
                     }
                   }}
@@ -346,9 +356,11 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Genre') {
                       setActivePane('albumsFromGenre');
+                      setPrevActivePane('genresAndSubgenres');
                       getAlbumsFromGenre({ variables: { genreId: searchId } });
                     } else {
                       setActivePane('albumsFromSubgenre');
+                      setPrevActivePane('genresAndSubgenres');
                       getAlbumsFromSubgenre({ variables: { subgenreId: searchId } });
                     }
                   }}
@@ -385,6 +397,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Album') {
                       setActivePane('cratesFromAlbum');
+                      setPrevActivePane('albumsFromTag');
                       getCratesFromAlbum({ variables: { albumId: searchId } });
                     } else {
                       return;
@@ -408,6 +421,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Album') {
                       setActivePane('cratesFromAlbum');
+                      setPrevActivePane('albumsFromGenre');
                       getCratesFromAlbum({ variables: { albumId: searchId } });
                     } else {
                       return;
@@ -431,6 +445,7 @@ const FullSearchController = ({ searchPrompt }: FullSearchControllerProps) => {
                   getNextPane={(type, searchId) => {
                     if (type === 'Album') {
                       setActivePane('cratesFromAlbum');
+                      setPrevActivePane('albumsFromSubgenre');
                       getCratesFromAlbum({ variables: { albumId: searchId } });
                     } else {
                       return;

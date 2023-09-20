@@ -21,6 +21,7 @@ const FullSearchPane = ({ currentItems, currentPage, getMoreItems, getNextPane }
         <li
           key={index}
           onClick={async () => {
+            console.log('hey');
             switch (result.__typename) {
               case 'Profile':
                 router.push(Route.Profile + `/${result.username}`);

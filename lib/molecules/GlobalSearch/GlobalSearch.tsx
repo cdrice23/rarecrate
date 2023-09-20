@@ -9,15 +9,26 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
 import { useLocalState } from '@/lib/context/state';
+import { PaneType } from '@/lib/context/state';
 
 const GlobalSearch = () => {
-  const { globalSearchPrompt, setGlobalSearchPrompt, quickSearchResults, setQuickSearchResults } = useLocalState();
+  const {
+    globalSearchPrompt,
+    setGlobalSearchPrompt,
+    quickSearchResults,
+    setQuickSearchResults,
+    currentActivePane,
+    setCurrentActivePane,
+    prevActivePane,
+    setPrevActivePane,
+  } = useLocalState();
   const [inputItems, setInputItems] = useState(quickSearchResults || []);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
   const [searchQuery, { loading, data }] = useLazyQuery(RUN_QUICK_SEARCH);
   const [searchPrompt, setSearchPrompt] = useState<string>(globalSearchPrompt);
   const [showFullSearchPane, setShowFullSearchPane] = useState<boolean>(false);
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
+  // const [activePane, setActivePane] = useState<PaneType>(currentActivePane);
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
@@ -52,7 +63,29 @@ const GlobalSearch = () => {
     <div className={cx('searchPane')}>
       <div className={cx('inputSection')}>
         {showFullSearchPane && (
-          <button className={cx('backButton')}>
+          <button
+            className={cx('backButton')}
+            onClick={() => {
+              switch (currentActivePane) {
+                case 'profiles':
+                case 'crates':
+                case 'albums':
+                case 'labelsAndTags':
+                case 'genresAndSubgenres':
+                  setShowFullSearchPane(false);
+                case 'cratesFromLabel':
+                case 'albumsFromTag':
+                  setCurrentActivePane('labelsAndTags');
+                case 'albumsFromGenre':
+                case 'albumsFromSubgenre':
+                  setCurrentActivePane('genresAndSubgenres');
+                case 'cratesFromAlbum':
+                  setCurrentActivePane(prevActivePane);
+                default:
+                  break;
+              }
+            }}
+          >
             <CaretLeft />
           </button>
         )}
@@ -125,7 +158,15 @@ const GlobalSearch = () => {
           <CaretDown />
         </button>
       </div>
-      {showFullSearchPane && <FullSearchController searchPrompt={searchPrompt} />}
+      {showFullSearchPane && (
+        <FullSearchController
+          searchPrompt={searchPrompt}
+          activePane={currentActivePane}
+          prevActivePane={prevActivePane}
+          setActivePane={setCurrentActivePane}
+          setPrevActivePane={setPrevActivePane}
+        />
+      )}
       <QuickSearchPane
         style={{ display: showFullSearchPane ? 'none' : 'block' }}
         inputItems={inputItems}
@@ -136,7 +177,10 @@ const GlobalSearch = () => {
         getMenuProps={getMenuProps}
         getItemProps={getItemProps}
         highlightedIndex={highlightedIndex}
-        handleShowFullSearch={() => setShowFullSearchPane(true)}
+        handleShowFullSearch={() => {
+          setCurrentActivePane('profiles');
+          setShowFullSearchPane(true);
+        }}
       />
     </div>
   );
