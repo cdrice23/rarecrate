@@ -1,4 +1,5 @@
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
+import { useRouter } from 'next/router';
 import { Route, PublicRoute } from '../../../core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { useEffect, useState } from 'react';
@@ -9,8 +10,9 @@ type NavBarProps = {
 
 export const NavBar = ({ className }: NavBarProps) => {
   // if (!usernameMain) return null;
-  const { usernameMain } = useLocalState();
+  const { usernameMain, resetState } = useLocalState();
   const [profileUrl, setProfileUrl] = useState<string>(Route.Timeline);
+  const router = useRouter();
 
   useEffect(() => {
     if (usernameMain) {
@@ -19,6 +21,11 @@ export const NavBar = ({ className }: NavBarProps) => {
       setProfileUrl(Route.Timeline);
     }
   }, [usernameMain]);
+
+  const handleLogout = () => {
+    resetState();
+    router.push(PublicRoute.Logout);
+  };
 
   return (
     <div className={className}>
@@ -37,7 +44,7 @@ export const NavBar = ({ className }: NavBarProps) => {
       <LinkButton href={profileUrl}>
         <span>Profile</span>
       </LinkButton>
-      <LinkButton href={PublicRoute.Logout}>
+      <LinkButton onClick={handleLogout}>
         <span>Logout</span>
       </LinkButton>
     </div>

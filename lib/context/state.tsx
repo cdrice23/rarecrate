@@ -30,17 +30,18 @@ export interface StateInt {
   setQuickSearchResults?: (val: any[]) => void;
   setCurrentActivePane?: (val: PaneType) => void;
   setPrevActivePane?: (val: PaneType) => void;
+  resetState: () => void;
 }
 
-const stateContextDefaults: StateInt = {
+export const stateContextDefaults: StateInt = {
   userId: null,
   email: '',
   profileIdMain: null,
   usernameMain: '',
   globalSearchPrompt: '',
-  quickSearchResults: [],
+  quickSearchResults: null,
   currentActivePane: 'profiles',
-  prevActivePane: 'profiles',
+  prevActivePane: null,
   setUserId: () => {},
   setEmail: () => {},
   setProfileIdMain: () => {},
@@ -49,6 +50,7 @@ const stateContextDefaults: StateInt = {
   setQuickSearchResults: () => {},
   setCurrentActivePane: () => {},
   setPrevActivePane: () => {},
+  resetState: () => {},
 };
 
 const LocalStateContext = createContext<StateInt>(stateContextDefaults);
@@ -67,6 +69,17 @@ export function LocalStateProvider({ children }: PropsInt) {
   const [currentActivePane, setCurrentActivePane] = useLocalStorage<PaneType>('currentActivePane', 'profiles');
   const [prevActivePane, setPrevActivePane] = useLocalStorage<PaneType>('prevActivePane', null);
 
+  const resetState = () => {
+    setUserId(stateContextDefaults.userId);
+    setEmail(stateContextDefaults.email);
+    setProfileIdMain(stateContextDefaults.profileIdMain);
+    setUsernameMain(stateContextDefaults.usernameMain);
+    setGlobalSearchPrompt(stateContextDefaults.globalSearchPrompt);
+    setQuickSearchResults(stateContextDefaults.quickSearchResults);
+    setCurrentActivePane(stateContextDefaults.currentActivePane);
+    setPrevActivePane(stateContextDefaults.prevActivePane);
+  };
+
   const sharedState: StateInt = {
     userId,
     email,
@@ -84,6 +97,7 @@ export function LocalStateProvider({ children }: PropsInt) {
     setQuickSearchResults,
     setCurrentActivePane,
     setPrevActivePane,
+    resetState,
   };
 
   return <LocalStateContext.Provider value={sharedState}>{children}</LocalStateContext.Provider>;

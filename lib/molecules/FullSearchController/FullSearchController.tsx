@@ -17,11 +17,15 @@ import {
 import cx from 'classnames';
 import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
 import { PaneType } from '@/lib/context/state';
+import { Pill } from '@/lib/atoms/Pill/Pill';
+import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
 
 interface FullSearchControllerProps {
   searchPrompt: string;
   activePane: PaneType;
   prevActivePane: PaneType;
+  searchPath: { topTier?: { type: string; name: string }; midTier?: { type: string; name: string } };
+  setSearchPath: (value) => void;
   setActivePane: (val: PaneType) => void;
   setPrevActivePane: (val: PaneType) => void;
 }
@@ -89,6 +93,9 @@ const resultsReducer = (state, action) => {
 const FullSearchController = ({
   searchPrompt,
   activePane,
+  prevActivePane,
+  searchPath,
+  setSearchPath,
   setActivePane,
   setPrevActivePane,
 }: FullSearchControllerProps) => {
@@ -149,6 +156,7 @@ const FullSearchController = ({
 
   console.log(resultsState);
   console.log(cratesFromLabelData);
+  console.log(searchPath);
 
   useEffect(() => {
     getProfileResults();
@@ -211,51 +219,112 @@ const FullSearchController = ({
     <>
       <div className={cx('listActions')}>
         <button
+          className={cx({ active: activePane === 'profiles' })}
           onClick={() => {
             setActivePane('profiles');
             setPrevActivePane(null);
+            setSearchPath({});
           }}
         >
           <h5>{`Profiles`}</h5>
         </button>
         <button
+          className={cx({ active: activePane === 'crates' })}
           onClick={() => {
             setActivePane('crates');
             setPrevActivePane(null);
             getCrateResults();
+            setSearchPath({});
           }}
         >
           <h5>{`Crates`}</h5>
         </button>
         <button
+          className={cx({ active: activePane === 'albums' })}
           onClick={() => {
             setActivePane('albums');
             setPrevActivePane(null);
             getAlbumResults();
+            setSearchPath({});
           }}
         >
           <h5>{`Albums`}</h5>
         </button>
         <button
+          className={cx({
+            active:
+              activePane === 'labelsAndTags' ||
+              activePane === 'cratesFromLabel' ||
+              activePane === 'albumsFromTag' ||
+              (activePane === 'cratesFromAlbum' && prevActivePane === 'albumsFromTag'),
+          })}
           onClick={() => {
             setActivePane('labelsAndTags');
             setPrevActivePane(null);
             getLabelResults();
             getTagResults();
+            setSearchPath({});
           }}
         >
           <h5>{`Labels/Tags`}</h5>
         </button>
         <button
+          className={cx({ active: activePane === 'genresAndSubgenres' })}
           onClick={() => {
             setActivePane('genresAndSubgenres');
             setPrevActivePane(null);
             getGenreResults();
             getSubgenreResults();
+            setSearchPath({});
           }}
         >
           <h5>{`Genres/Subgenres`}</h5>
         </button>
+      </div>
+      <div className={cx('pathBar')}>
+        {searchPath.topTier && (
+          <Pill
+            name={searchPath.topTier.name}
+            icon={(() => {
+              switch (searchPath.topTier.type) {
+                case 'label':
+                case 'tag':
+                  return <Tag />;
+                case 'genre':
+                case 'subgenre':
+                  return <SquaresFour />;
+                default:
+                  return null;
+              }
+            })()}
+            removeHandler={() => {
+              switch (searchPath.topTier.type) {
+                case 'label':
+                case 'tag':
+                  setActivePane('labelsAndTags');
+                  setSearchPath({});
+                  break;
+                case 'genre':
+                case 'subgenre':
+                  setActivePane('genresAndSubgenres');
+                  setSearchPath({});
+                  break;
+                default:
+                  return null;
+              }
+            }}
+          />
+        )}
+        {searchPath.midTier && (
+          <Pill
+            name={searchPath.midTier.name}
+            icon={<VinylRecord />}
+            removeHandler={() => {
+              setActivePane(prevActivePane);
+              setSearchPath({ ...searchPath, midTier: null });
+            }}
+          />
+        )}
       </div>
       <ul className={cx('searchMenu')}>
         {(() => {
@@ -267,6 +336,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentProfiles}
                   currentPage={resultsState.profileState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() => {
                     dispatch({
                       type: 'UPDATE_PROFILE_CURRENT_PAGE',
@@ -282,6 +353,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentCrates}
                   currentPage={resultsState.crateState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() => {
                     dispatch({
                       type: 'UPDATE_CRATE_CURRENT_PAGE',
@@ -297,6 +370,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentAlbums}
                   currentPage={resultsState.albumState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_ALBUM_CURRENT_PAGE',
@@ -321,6 +396,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentLabelsAndTags}
                   currentPage={resultsState.labelAndTagState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
@@ -347,6 +424,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentGenresAndSubgenres}
                   currentPage={resultsState.genreAndSubgenreState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_GENRE_AND_SUBGENRE_CURRENT_PAGE',
@@ -373,6 +452,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentCratesFromLabel}
                   currentPage={resultsState.cratesFromLabelState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_CRATES_FROM_LABEL_CURRENT_PAGE',
@@ -388,6 +469,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentAlbumsFromTag}
                   currentPage={resultsState.albumsFromTagState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_ALBUMS_FROM_TAG_CURRENT_PAGE',
@@ -412,6 +495,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentAlbumsFromGenre}
                   currentPage={resultsState.albumsFromGenreState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_ALBUMS_FROM_GENRE_CURRENT_PAGE',
@@ -436,6 +521,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentAlbumsFromSubgenre}
                   currentPage={resultsState.albumsFromSubgenreState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_ALBUMS_FROM_SUBGENRE_CURRENT_PAGE',
@@ -460,6 +547,8 @@ const FullSearchController = ({
                 <FullSearchPane
                   currentItems={currentCratesFromAlbum}
                   currentPage={resultsState.cratesFromAlbumState.currentPage}
+                  searchPath={searchPath}
+                  setSearchPath={setSearchPath}
                   getMoreItems={() =>
                     dispatch({
                       type: 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE',

@@ -11,6 +11,11 @@ import { FullSearchController } from '../FullSearchController/FullSearchControll
 import { useLocalState } from '@/lib/context/state';
 import { PaneType } from '@/lib/context/state';
 
+type SearchPath = {
+  topTier?: { type: string; name: string };
+  midTier?: { type: string; name: string };
+};
+
 const GlobalSearch = () => {
   const {
     globalSearchPrompt,
@@ -28,6 +33,7 @@ const GlobalSearch = () => {
   const [searchPrompt, setSearchPrompt] = useState<string>(globalSearchPrompt);
   const [showFullSearchPane, setShowFullSearchPane] = useState<boolean>(false);
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
+  const [searchPath, setSearchPath] = useState<SearchPath>({});
   // const [activePane, setActivePane] = useState<PaneType>(currentActivePane);
 
   const profileResults = data?.qsProfiles || [];
@@ -73,14 +79,31 @@ const GlobalSearch = () => {
                 case 'labelsAndTags':
                 case 'genresAndSubgenres':
                   setShowFullSearchPane(false);
+                  setSearchPath({});
+                  break;
                 case 'cratesFromLabel':
                 case 'albumsFromTag':
                   setCurrentActivePane('labelsAndTags');
+                  setSearchPath({});
+                  break;
                 case 'albumsFromGenre':
                 case 'albumsFromSubgenre':
                   setCurrentActivePane('genresAndSubgenres');
+                  setSearchPath({});
+                  break;
                 case 'cratesFromAlbum':
                   setCurrentActivePane(prevActivePane);
+                  switch (prevActivePane) {
+                    case 'albumsFromTag':
+                      setPrevActivePane('labelsAndTags');
+                      setSearchPath({ ...searchPath, midTier: null });
+                      break;
+                    case 'albumsFromGenre':
+                    case 'albumsFromSubgenre':
+                      setPrevActivePane('genresAndSubgenres');
+                      setSearchPath({ ...searchPath, midTier: null });
+                      break;
+                  }
                 default:
                   break;
               }
@@ -160,6 +183,8 @@ const GlobalSearch = () => {
       </div>
       {showFullSearchPane && (
         <FullSearchController
+          searchPath={searchPath}
+          setSearchPath={setSearchPath}
           searchPrompt={searchPrompt}
           activePane={currentActivePane}
           prevActivePane={prevActivePane}

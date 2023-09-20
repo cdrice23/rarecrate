@@ -420,7 +420,7 @@
 
   .listActions {
     grid-column: 1 / span 12;
-    margin-top: 16px;
+    margin: 16px;
     display: flex;
     justify-content: space-around;
 
@@ -830,6 +830,11 @@
   justify-content: center;
   flex-direction: column;
 
+  .active {
+    background-color: lightblue;
+    border-radius: 4px;
+  }
+
   .inputSection {
     display: flex;
     justify-content: center;
@@ -840,6 +845,30 @@
 
     > input {
       width: 100%;
+    }
+  }
+
+  .pathBar {
+    display: flex;
+
+    .pill {
+      margin: 8px;
+      background-color: aquamarine;
+      border-radius: 16px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+
+      .pillIcon {
+        margin: 2px;
+        display: grid;
+        place-items: center;
+      }
+    
+      .pillName {
+        margin-right: 4px;
+        display: inline-block;
+      }
     }
   }
   
@@ -882,3 +911,4 @@
   }
 
 }
+

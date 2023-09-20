@@ -3,16 +3,20 @@ import cx from 'classnames';
 
 interface PillProps {
   name: string;
-  removeHandler: () => void;
+  icon?: React.ReactNode;
+  removeHandler?: () => void;
 }
 
-const Pill = ({ name, removeHandler }: PillProps) => {
+const Pill = ({ name, removeHandler, icon }: PillProps) => {
   return (
     <div className={cx('pill')}>
+      {<div className={cx('pillIcon')}>{icon}</div>}
       <p className={cx('pillName')}>{name}</p>
-      <button onClick={removeHandler} type="button">
-        <X />
-      </button>
+      {removeHandler && (
+        <button onClick={removeHandler} type="button">
+          <X />
+        </button>
+      )}
     </div>
   );
 };
