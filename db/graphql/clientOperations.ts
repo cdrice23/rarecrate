@@ -515,8 +515,8 @@ export const QS_SUBGENRES = gql`
 `;
 
 export const FS_PROFILES = gql`
-  query FsProfiles($searchTerm: String!) {
-    fsProfiles(searchTerm: $searchTerm) {
+  query FsProfiles($searchTerm: String!, $currentPage: Int!) {
+    fsProfiles(searchTerm: $searchTerm, currentPage: $currentPage) {
       id
       username
       image
@@ -526,8 +526,8 @@ export const FS_PROFILES = gql`
 `;
 
 export const FS_CRATES = gql`
-  query FsCrates($searchTerm: String!) {
-    fsCrates(searchTerm: $searchTerm) {
+  query FsCrates($searchTerm: String!, $currentPage: Int!) {
+    fsCrates(searchTerm: $searchTerm, currentPage: $currentPage) {
       id
       title
       searchAndSelectCount
@@ -538,9 +538,21 @@ export const FS_CRATES = gql`
   }
 `;
 
+// export const FS_ALBUMS = gql`
+//   query FsAlbums($searchTerm: String!) {
+//     fsAlbums(searchTerm: $searchTerm) {
+//       id
+//       title
+//       artist
+//       imageUrl
+//       searchAndSelectCount
+//     }
+//   }
+// `;
+
 export const FS_ALBUMS = gql`
-  query FsAlbums($searchTerm: String!) {
-    fsAlbums(searchTerm: $searchTerm) {
+  query FsAlbums($searchTerm: String!, $currentPage: Int!) {
+    fsAlbums(searchTerm: $searchTerm, currentPage: $currentPage) {
       id
       title
       artist
@@ -551,8 +563,8 @@ export const FS_ALBUMS = gql`
 `;
 
 export const FS_LABELS = gql`
-  query FsLabels($searchTerm: String!) {
-    fsLabels(searchTerm: $searchTerm) {
+  query FsLabels($searchTerm: String!, $currentPage: Int!) {
+    fsLabels(searchTerm: $searchTerm, currentPage: $currentPage) {
       id
       name
       searchAndSelectCount
@@ -562,8 +574,8 @@ export const FS_LABELS = gql`
 `;
 
 export const FS_TAGS = gql`
-  query FsTags($searchTerm: String!) {
-    fsTags(searchTerm: $searchTerm) {
+  query FsTags($searchTerm: String!, $currentPage: Int!) {
+    fsTags(searchTerm: $searchTerm, currentPage: $currentPage) {
       id
       name
       searchAndSelectCount
@@ -623,8 +635,8 @@ export const LOG_SELECTED_SEARCH_RESULT = gql`
 `;
 
 export const GET_CRATES_FROM_LABEL = gql`
-  query GetCratesFromLabel($labelId: Int!) {
-    getCratesFromLabel(labelId: $labelId) {
+  query GetCratesFromLabel($labelId: Int!, $currentPage: Int!) {
+    getCratesFromLabel(labelId: $labelId, currentPage: $currentPage) {
       id
       title
       searchAndSelectCount
@@ -636,8 +648,8 @@ export const GET_CRATES_FROM_LABEL = gql`
 `;
 
 export const GET_CRATES_FROM_ALBUM = gql`
-  query GetCratesFromAlbum($albumId: Int!) {
-    getCratesFromAlbum(albumId: $albumId) {
+  query GetCratesFromAlbum($albumId: Int!, $currentPage: Int!) {
+    getCratesFromAlbum(albumId: $albumId, currentPage: $currentPage) {
       id
       title
       searchAndSelectCount
@@ -649,8 +661,8 @@ export const GET_CRATES_FROM_ALBUM = gql`
 `;
 
 export const GET_ALBUMS_FROM_TAG = gql`
-  query GetAlbumsFromTag($tagId: Int!) {
-    getAlbumsFromTag(tagId: $tagId) {
+  query GetAlbumsFromTag($tagId: Int!, $currentPage: Int!) {
+    getAlbumsFromTag(tagId: $tagId, currentPage: $currentPage) {
       id
       title
       artist
@@ -661,8 +673,8 @@ export const GET_ALBUMS_FROM_TAG = gql`
 `;
 
 export const GET_ALBUMS_FROM_GENRE = gql`
-  query GetAlbumsFromGenre($genreId: Int!) {
-    getAlbumsFromGenre(genreId: $genreId) {
+  query GetAlbumsFromGenre($genreId: Int!, $currentPage: Int!) {
+    getAlbumsFromGenre(genreId: $genreId, currentPage: $currentPage) {
       id
       title
       artist
@@ -673,8 +685,8 @@ export const GET_ALBUMS_FROM_GENRE = gql`
 `;
 
 export const GET_ALBUMS_FROM_SUBGENRE = gql`
-  query GetAlbumsFromSubgenre($subgenreId: Int!) {
-    getAlbumsFromSubgenre(subgenreId: $subgenreId) {
+  query GetAlbumsFromSubgenre($subgenreId: Int!, $currentPage: Int!) {
+    getAlbumsFromSubgenre(subgenreId: $subgenreId, currentPage: $currentPage) {
       id
       title
       artist

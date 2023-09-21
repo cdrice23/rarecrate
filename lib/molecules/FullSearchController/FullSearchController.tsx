@@ -24,7 +24,10 @@ interface FullSearchControllerProps {
   searchPrompt: string;
   activePane: PaneType;
   prevActivePane: PaneType;
-  searchPath: { topTier?: { type: string; name: string }; midTier?: { type: string; name: string } };
+  searchPath: {
+    topTier?: { type: string; name: string; id: number };
+    midTier?: { type: string; name: string; id: number };
+  };
   setSearchPath: (value) => void;
   setActivePane: (val: PaneType) => void;
   setPrevActivePane: (val: PaneType) => void;
@@ -46,25 +49,77 @@ const initialResultsState = {
 const resultsReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_PROFILE_RESULTS':
-      return { ...state, profileState: { ...state.profileState, results: action.payload } };
+      return {
+        ...state,
+        profileState: { ...state.profileState, results: [...state.profileState.results, ...action.payload] },
+      };
     case 'UPDATE_CRATE_RESULTS':
-      return { ...state, crateState: { ...state.crateState, results: action.payload } };
+      return {
+        ...state,
+        crateState: { ...state.crateState, results: [...state.crateState.results, ...action.payload] },
+      };
     case 'UPDATE_ALBUM_RESULTS':
-      return { ...state, albumState: { ...state.albumState, results: action.payload } };
+      return {
+        ...state,
+        albumState: { ...state.albumState, results: [...state.albumState.results, ...action.payload] },
+      };
     case 'UPDATE_LABEL_AND_TAG_RESULTS':
-      return { ...state, labelAndTagState: { ...state.labelAndTagState, results: action.payload } };
+      const newResults = state.labelAndTagState.results.concat(action.payload);
+      const uniqueIds = new Set();
+      const uniqueResults = newResults.filter(element => {
+        const isDuplicate = uniqueIds.has(element.id);
+        uniqueIds.add(element.id);
+        return !isDuplicate;
+      });
+      return {
+        ...state,
+        labelAndTagState: {
+          ...state.labelAndTagState,
+          results: uniqueResults,
+        },
+      };
     case 'UPDATE_GENRE_AND_SUBGENRE_RESULTS':
       return { ...state, genreAndSubgenreState: { ...state.genreAndSubgenreState, results: action.payload } };
     case 'UPDATE_CRATES_FROM_LABEL_RESULTS':
-      return { ...state, cratesFromLabelState: { ...state.cratesFromLabelState, results: action.payload } };
+      return {
+        ...state,
+        cratesFromLabelState: {
+          ...state.cratesFromLabelState,
+          results: [...state.cratesFromLabelState.results, ...action.payload],
+        },
+      };
     case 'UPDATE_ALBUMS_FROM_TAG_RESULTS':
-      return { ...state, albumsFromTagState: { ...state.albumsFromTagState, results: action.payload } };
+      return {
+        ...state,
+        albumsFromTagState: {
+          ...state.albumsFromTagState,
+          results: [...state.albumsFromTagState.results, ...action.payload],
+        },
+      };
     case 'UPDATE_ALBUMS_FROM_GENRE_RESULTS':
-      return { ...state, albumsFromGenreState: { ...state.albumsFromGenreState, results: action.payload } };
+      return {
+        ...state,
+        albumsFromGenreState: {
+          ...state.albumsFromGenreState,
+          results: [...state.albumsFromGenreState.results, ...action.payload],
+        },
+      };
     case 'UPDATE_ALBUMS_FROM_SUBGENRE_RESULTS':
-      return { ...state, albumsFromSubgenreState: { ...state.albumsFromSubgenreState, results: action.payload } };
+      return {
+        ...state,
+        albumsFromSubgenreState: {
+          ...state.albumsFromSubgenreState,
+          results: [...state.albumsFromSubgenreState.results, ...action.payload],
+        },
+      };
     case 'UPDATE_CRATES_FROM_ALBUM_RESULTS':
-      return { ...state, cratesFromAlbumState: { ...state.cratesFromAlbumState, results: action.payload } };
+      return {
+        ...state,
+        cratesFromAlbumState: {
+          ...state.cratesFromAlbumState,
+          results: [...state.cratesFromAlbumState.results, ...action.payload],
+        },
+      };
     case 'UPDATE_PROFILE_CURRENT_PAGE':
       return { ...state, profileState: { ...state.profileState, currentPage: action.payload } };
     case 'UPDATE_CRATE_CURRENT_PAGE':
@@ -100,21 +155,11 @@ const FullSearchController = ({
   setPrevActivePane,
 }: FullSearchControllerProps) => {
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
-  const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES, {
-    variables: { searchTerm: searchPrompt },
-  });
-  const [getCrateResults, { data: cratesData, loading: loadingCrates }] = useLazyQuery(FS_CRATES, {
-    variables: { searchTerm: searchPrompt },
-  });
-  const [getAlbumResults, { data: albumsData, loading: loadingAlbums }] = useLazyQuery(FS_ALBUMS, {
-    variables: { searchTerm: searchPrompt },
-  });
-  const [getLabelResults, { data: labelsData, loading: loadingLabels }] = useLazyQuery(FS_LABELS, {
-    variables: { searchTerm: searchPrompt },
-  });
-  const [getTagResults, { data: tagsData, loading: loadingTags }] = useLazyQuery(FS_TAGS, {
-    variables: { searchTerm: searchPrompt },
-  });
+  const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES);
+  const [getCrateResults, { data: cratesData, loading: loadingCrates }] = useLazyQuery(FS_CRATES);
+  const [getAlbumResults, { data: albumsData, loading: loadingAlbums }] = useLazyQuery(FS_ALBUMS);
+  const [getLabelResults, { data: labelsData, loading: loadingLabels }] = useLazyQuery(FS_LABELS);
+  const [getTagResults, { data: tagsData, loading: loadingTags }] = useLazyQuery(FS_TAGS);
   const [getGenreResults, { data: genresData, loading: loadingGenres }] = useLazyQuery(FS_GENRES, {
     variables: { searchTerm: searchPrompt },
   });
@@ -132,34 +177,34 @@ const FullSearchController = ({
   const [getAlbumsFromSubgenre, { data: albumsFromSubgenreData, loading: loadingAlbumsFromSubgenre }] =
     useLazyQuery(GET_ALBUMS_FROM_SUBGENRE);
 
-  const currentProfiles = resultsState.profileState.results.slice(0, resultsState.profileState.currentPage * 30);
-  const currentCrates = resultsState.crateState.results.slice(0, resultsState.crateState.currentPage * 30);
-  const currentAlbums = resultsState.albumState.results.slice(0, resultsState.albumState.currentPage * 30);
+  const currentProfiles = resultsState.profileState.results;
+  const currentCrates = resultsState.crateState.results;
+  const currentAlbums = resultsState.albumState.results;
   const currentLabelsAndTags =
-    resultsState.labelAndTagState.results
-      .slice(0, resultsState.labelAndTagState.currentPage * 30)
-      .sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+    resultsState.labelAndTagState.results.sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
   const currentGenresAndSubgenres =
     resultsState.genreAndSubgenreState.results
       .slice(0, resultsState.genreAndSubgenreState.currentPage * 30)
       .sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
-  const currentCratesFromLabel =
-    resultsState.cratesFromLabelState.results.slice(0, resultsState.cratesFromLabelState.currentPage * 30) || [];
-  const currentAlbumsFromTag =
-    resultsState.albumsFromTagState.results.slice(0, resultsState.albumsFromTagState.currentPage * 30) || [];
-  const currentAlbumsFromGenre =
-    resultsState.albumsFromGenreState.results.slice(0, resultsState.albumsFromGenreState.currentPage * 30) || [];
-  const currentAlbumsFromSubgenre =
-    resultsState.albumsFromSubgenreState.results.slice(0, resultsState.albumsFromSubgenreState.currentPage * 30) || [];
-  const currentCratesFromAlbum =
-    resultsState.cratesFromAlbumState.results.slice(0, resultsState.cratesFromAlbumState.currentPage * 30) || [];
+  const currentCratesFromLabel = resultsState.cratesFromLabelState.results;
+  const currentAlbumsFromTag = resultsState.albumsFromTagState.results;
+  const currentAlbumsFromGenre = resultsState.albumsFromGenreState.results;
+  const currentAlbumsFromSubgenre = resultsState.albumsFromSubgenreState.results;
+  const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results;
 
   console.log(resultsState);
-  console.log(cratesFromLabelData);
+  // console.log(cratesFromLabelData);
   console.log(searchPath);
 
   useEffect(() => {
-    getProfileResults();
+    if (resultsState.profileState.results.length === 0) {
+      getProfileResults({
+        variables: {
+          searchTerm: searchPrompt,
+          currentPage: resultsState.profileState.currentPage,
+        },
+      });
+    }
 
     if (profilesData?.fsProfiles) {
       dispatch({ type: 'UPDATE_PROFILE_RESULTS', payload: profilesData.fsProfiles });
@@ -224,6 +269,10 @@ const FullSearchController = ({
             setActivePane('profiles');
             setPrevActivePane(null);
             setSearchPath({});
+            dispatch({
+              type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
+              payload: 1,
+            });
           }}
         >
           <h5>{`Profiles`}</h5>
@@ -233,8 +282,14 @@ const FullSearchController = ({
           onClick={() => {
             setActivePane('crates');
             setPrevActivePane(null);
-            getCrateResults();
+            getCrateResults({
+              variables: { searchTerm: searchPrompt, currentPage: resultsState.crateState.currentPage },
+            });
             setSearchPath({});
+            dispatch({
+              type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
+              payload: 1,
+            });
           }}
         >
           <h5>{`Crates`}</h5>
@@ -244,7 +299,9 @@ const FullSearchController = ({
           onClick={() => {
             setActivePane('albums');
             setPrevActivePane(null);
-            getAlbumResults();
+            getAlbumResults({
+              variables: { searchTerm: searchPrompt, currentPage: resultsState.albumState.currentPage },
+            });
             setSearchPath({});
           }}
         >
@@ -261,8 +318,12 @@ const FullSearchController = ({
           onClick={() => {
             setActivePane('labelsAndTags');
             setPrevActivePane(null);
-            getLabelResults();
-            getTagResults();
+            getLabelResults({
+              variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
+            });
+            getTagResults({
+              variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
+            });
             setSearchPath({});
           }}
         >
@@ -309,6 +370,9 @@ const FullSearchController = ({
                   setActivePane('genresAndSubgenres');
                   setSearchPath({});
                   break;
+                case 'album':
+                  setActivePane('albums');
+                  setSearchPath({});
                 default:
                   return null;
               }
@@ -330,95 +394,139 @@ const FullSearchController = ({
         {(() => {
           switch (activePane) {
             case 'profiles':
-              return loadingProfiles ? (
+              return loadingProfiles && resultsState.profileState.currentPage === 1 ? (
                 <li>Loading Profiles...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentProfiles}
-                  currentPage={resultsState.profileState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() => {
-                    dispatch({
-                      type: 'UPDATE_PROFILE_CURRENT_PAGE',
-                      payload: resultsState.profileState.currentPage + 1,
-                    });
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentProfiles}
+                    currentPage={resultsState.profileState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getProfileResults({
+                        variables: {
+                          searchTerm: searchPrompt,
+                          currentPage: resultsState.profileState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_PROFILE_CURRENT_PAGE',
+                        payload: resultsState.profileState.currentPage + 1,
+                      });
+                    }}
+                  />
+                  {loadingProfiles && resultsState.profileState.currentPage > 1 && <li>Loading more Profiles...</li>}
+                </>
               );
             case 'crates':
-              return loadingCrates ? (
+              return loadingCrates && resultsState.crateState.currentPage === 1 ? (
                 <li>Loading Crates...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentCrates}
-                  currentPage={resultsState.crateState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() => {
-                    dispatch({
-                      type: 'UPDATE_CRATE_CURRENT_PAGE',
-                      payload: resultsState.crateState.currentPage + 1,
-                    });
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentCrates}
+                    currentPage={resultsState.crateState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getCrateResults({
+                        variables: { searchTerm: searchPrompt, currentPage: resultsState.crateState.currentPage + 1 },
+                      });
+                      dispatch({
+                        type: 'UPDATE_CRATE_CURRENT_PAGE',
+                        payload: resultsState.crateState.currentPage + 1,
+                      });
+                    }}
+                  />
+                  {loadingCrates && resultsState.crateState.currentPage > 1 && <li>Loading more Crates...</li>}
+                </>
               );
             case 'albums':
-              return loadingAlbums ? (
+              return loadingAlbums && resultsState.albumState.currentPage === 1 ? (
                 <li>Loading Albums...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentAlbums}
-                  currentPage={resultsState.albumState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_ALBUM_CURRENT_PAGE',
-                      payload: resultsState.albumState.currentPage + 1,
-                    })
-                  }
-                  getNextPane={(type, searchId) => {
-                    if (type === 'Album') {
-                      setActivePane('cratesFromAlbum');
-                      setPrevActivePane('albums');
-                      getCratesFromAlbum({ variables: { albumId: searchId } });
-                    } else {
-                      return;
-                    }
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentAlbums}
+                    currentPage={resultsState.albumState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getAlbumResults({
+                        variables: { searchTerm: searchPrompt, currentPage: resultsState.albumState.currentPage + 1 },
+                      });
+                      dispatch({
+                        type: 'UPDATE_ALBUM_CURRENT_PAGE',
+                        payload: resultsState.albumState.currentPage + 1,
+                      });
+                    }}
+                    getNextPane={(type, searchId) => {
+                      if (type === 'Album') {
+                        setActivePane('cratesFromAlbum');
+                        setPrevActivePane('albums');
+                        getCratesFromAlbum({
+                          variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
+                        });
+                      } else {
+                        return;
+                      }
+                    }}
+                  />
+                  {loadingAlbums && resultsState.albumState.currentPage > 1 && <li>Loading more Albums...</li>}
+                </>
               );
             case 'labelsAndTags':
-              return loadingLabels ? (
+              return (loadingLabels || loadingTags) && resultsState.labelAndTagState.currentPage === 1 ? (
                 <li>Loading Labels/Tags...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentLabelsAndTags}
-                  currentPage={resultsState.labelAndTagState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
-                      payload: resultsState.labelAndTagState.currentPage + 1,
-                    })
-                  }
-                  getNextPane={(type, searchId) => {
-                    if (type === 'Label') {
-                      setActivePane('cratesFromLabel');
-                      setPrevActivePane('labelsAndTags');
-                      getCratesFromLabel({ variables: { labelId: searchId } });
-                    } else {
-                      setActivePane('albumsFromTag');
-                      setPrevActivePane('labelsAndTags');
-                      getAlbumsFromTag({ variables: { tagId: searchId } });
-                    }
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentLabelsAndTags}
+                    currentPage={resultsState.labelAndTagState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getLabelResults({
+                        variables: {
+                          searchTerm: searchPrompt,
+                          currentPage: resultsState.labelAndTagState.currentPage + 1,
+                        },
+                      });
+                      getTagResults({
+                        variables: {
+                          searchTerm: searchPrompt,
+                          currentPage: resultsState.labelAndTagState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
+                        payload: resultsState.labelAndTagState.currentPage + 1,
+                      });
+                    }}
+                    getNextPane={(type, searchId) => {
+                      if (type === 'Label') {
+                        setActivePane('cratesFromLabel');
+                        setPrevActivePane('labelsAndTags');
+                        getCratesFromLabel({
+                          variables: { labelId: searchId, currentPage: resultsState.cratesFromLabelState.currentPage },
+                        });
+                      } else {
+                        setActivePane('albumsFromTag');
+                        setPrevActivePane('labelsAndTags');
+                        getAlbumsFromTag({
+                          variables: { tagId: searchId, currentPage: resultsState.albumsFromTagState.currentPage },
+                        });
+                      }
+                    }}
+                  />
+                  {(loadingLabels || loadingTags) && resultsState.labelAndTagState.currentPage > 1 && (
+                    <li>Loading more Labels/Tags...</li>
+                  )}
+                </>
               );
             case 'genresAndSubgenres':
-              return loadingGenres ? (
+              return loadingGenres || loadingSubgenres ? (
                 <li>Loading Genres/Subgenres...</li>
               ) : (
                 <FullSearchPane
@@ -436,126 +544,194 @@ const FullSearchController = ({
                     if (type === 'Genre') {
                       setActivePane('albumsFromGenre');
                       setPrevActivePane('genresAndSubgenres');
-                      getAlbumsFromGenre({ variables: { genreId: searchId } });
+                      getAlbumsFromGenre({
+                        variables: { genreId: searchId, currentPage: resultsState.albumsFromGenreState.currentPage },
+                      });
                     } else {
                       setActivePane('albumsFromSubgenre');
                       setPrevActivePane('genresAndSubgenres');
-                      getAlbumsFromSubgenre({ variables: { subgenreId: searchId } });
+                      getAlbumsFromSubgenre({
+                        variables: {
+                          subgenreId: searchId,
+                          currentPage: resultsState.albumsFromSubgenreState.currentPage,
+                        },
+                      });
                     }
                   }}
                 />
               );
             case 'cratesFromLabel':
-              return loadingCratesFromLabel ? (
+              return loadingCratesFromLabel && resultsState.cratesFromLabelState.currenPage === 1 ? (
                 <li>Loading Crates from Label...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentCratesFromLabel}
-                  currentPage={resultsState.cratesFromLabelState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_CRATES_FROM_LABEL_CURRENT_PAGE',
-                      payload: resultsState.cratesFromLabelState.currentPage + 1,
-                    })
-                  }
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentCratesFromLabel}
+                    currentPage={resultsState.cratesFromLabelState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getCratesFromLabel({
+                        variables: {
+                          labelId: searchPath.topTier.id,
+                          currentPage: resultsState.cratesFromLabelState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_CRATES_FROM_LABEL_CURRENT_PAGE',
+                        payload: resultsState.cratesFromLabelState.currentPage + 1,
+                      });
+                    }}
+                  />
+                  {loadingCratesFromLabel && resultsState.cratesFromLabelState.currentPage > 1 && (
+                    <li>Loading more Crates...</li>
+                  )}
+                </>
               );
             case 'albumsFromTag':
-              return loadingAlbumsFromTag ? (
+              return loadingAlbumsFromTag && resultsState.albumsFromTagState.currentPage === 1 ? (
                 <li>Loading Albums from Tag...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentAlbumsFromTag}
-                  currentPage={resultsState.albumsFromTagState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_ALBUMS_FROM_TAG_CURRENT_PAGE',
-                      payload: resultsState.albumsFromTagState.currentPage + 1,
-                    })
-                  }
-                  getNextPane={(type, searchId) => {
-                    if (type === 'Album') {
-                      setActivePane('cratesFromAlbum');
-                      setPrevActivePane('albumsFromTag');
-                      getCratesFromAlbum({ variables: { albumId: searchId } });
-                    } else {
-                      return;
-                    }
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentAlbumsFromTag}
+                    currentPage={resultsState.albumsFromTagState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getAlbumsFromTag({
+                        variables: {
+                          tagId: searchPath.topTier.id,
+                          currentPage: resultsState.albumsFromTagState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_ALBUMS_FROM_TAG_CURRENT_PAGE',
+                        payload: resultsState.albumsFromTagState.currentPage + 1,
+                      });
+                    }}
+                    getNextPane={(type, searchId) => {
+                      if (type === 'Album') {
+                        setActivePane('cratesFromAlbum');
+                        setPrevActivePane('albumsFromTag');
+                        getCratesFromAlbum({
+                          variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
+                        });
+                      } else {
+                        return;
+                      }
+                    }}
+                  />
+                  {loadingAlbumsFromTag && resultsState.albumsFromTagState.currentPage > 1 && (
+                    <li>Loading more Albums...</li>
+                  )}
+                </>
               );
             case 'albumsFromGenre':
-              return loadingAlbumsFromGenre ? (
+              return loadingAlbumsFromGenre && resultsState.albumsFromGenreState.currentPage === 1 ? (
                 <li>Loading Albums from Genre...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentAlbumsFromGenre}
-                  currentPage={resultsState.albumsFromGenreState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_ALBUMS_FROM_GENRE_CURRENT_PAGE',
-                      payload: resultsState.albumsFromGenreState.currentPage + 1,
-                    })
-                  }
-                  getNextPane={(type, searchId) => {
-                    if (type === 'Album') {
-                      setActivePane('cratesFromAlbum');
-                      setPrevActivePane('albumsFromGenre');
-                      getCratesFromAlbum({ variables: { albumId: searchId } });
-                    } else {
-                      return;
-                    }
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentAlbumsFromGenre}
+                    currentPage={resultsState.albumsFromGenreState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getAlbumsFromGenre({
+                        variables: {
+                          genreId: searchPath.topTier.id,
+                          currentPage: resultsState.albumsFromGenreState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_ALBUMS_FROM_GENRE_CURRENT_PAGE',
+                        payload: resultsState.albumsFromGenreState.currentPage + 1,
+                      });
+                    }}
+                    getNextPane={(type, searchId) => {
+                      if (type === 'Album') {
+                        setActivePane('cratesFromAlbum');
+                        setPrevActivePane('albumsFromGenre');
+                        getCratesFromAlbum({
+                          variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
+                        });
+                      } else {
+                        return;
+                      }
+                    }}
+                  />
+                  {loadingAlbumsFromGenre && resultsState.albumsFromGenreState.currentPage > 1 && (
+                    <li>Loading more Albums...</li>
+                  )}
+                </>
               );
             case 'albumsFromSubgenre':
-              return loadingAlbumsFromSubgenre ? (
+              return loadingAlbumsFromSubgenre && resultsState.albumsFromSubgenreState.currentPage === 1 ? (
                 <li>Loading Albums from Subgenre...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentAlbumsFromSubgenre}
-                  currentPage={resultsState.albumsFromSubgenreState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_ALBUMS_FROM_SUBGENRE_CURRENT_PAGE',
-                      payload: resultsState.albumsFromSubgenreState.currentPage + 1,
-                    })
-                  }
-                  getNextPane={(type, searchId) => {
-                    if (type === 'Album') {
-                      setActivePane('cratesFromAlbum');
-                      setPrevActivePane('albumsFromSubgenre');
-                      getCratesFromAlbum({ variables: { albumId: searchId } });
-                    } else {
-                      return;
-                    }
-                  }}
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentAlbumsFromSubgenre}
+                    currentPage={resultsState.albumsFromSubgenreState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getAlbumsFromSubgenre({
+                        variables: {
+                          subgenreId: searchPath.topTier.id,
+                          currentPage: resultsState.albumsFromSubgenreState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_ALBUMS_FROM_SUBGENRE_CURRENT_PAGE',
+                        payload: resultsState.albumsFromSubgenreState.currentPage + 1,
+                      });
+                    }}
+                    getNextPane={(type, searchId) => {
+                      if (type === 'Album') {
+                        setActivePane('cratesFromAlbum');
+                        setPrevActivePane('albumsFromSubgenre');
+                        getCratesFromAlbum({
+                          variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
+                        });
+                      } else {
+                        return;
+                      }
+                    }}
+                  />
+                  {loadingAlbumsFromSubgenre && resultsState.albumsFromSubgenreState.currentPage > 1 && (
+                    <li>Loading more Albums...</li>
+                  )}
+                </>
               );
             case 'cratesFromAlbum':
-              return loadingCratesFromAlbum ? (
+              return loadingCratesFromAlbum && resultsState.cratesFromAlbumState.currentPage === 1 ? (
                 <li>Loading Crates from Album...</li>
               ) : (
-                <FullSearchPane
-                  currentItems={currentCratesFromAlbum}
-                  currentPage={resultsState.cratesFromAlbumState.currentPage}
-                  searchPath={searchPath}
-                  setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE',
-                      payload: resultsState.cratesFromAlbumState.currentPage + 1,
-                    })
-                  }
-                />
+                <>
+                  <FullSearchPane
+                    currentItems={currentCratesFromAlbum}
+                    currentPage={resultsState.cratesFromAlbumState.currentPage}
+                    searchPath={searchPath}
+                    setSearchPath={setSearchPath}
+                    getMoreItems={() => {
+                      getCratesFromAlbum({
+                        variables: {
+                          albumId: searchPath.midTier.id,
+                          currentPage: resultsState.cratesFromAlbumState.currentPage + 1,
+                        },
+                      });
+                      dispatch({
+                        type: 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE',
+                        payload: resultsState.cratesFromAlbumState.currentPage + 1,
+                      });
+                    }}
+                  />
+                  {loadingCratesFromAlbum && resultsState.cratesFromAlbumState.currentPage > 1 && (
+                    <li>Loading more Crates...</li>
+                  )}
+                </>
               );
             default:
               return null;

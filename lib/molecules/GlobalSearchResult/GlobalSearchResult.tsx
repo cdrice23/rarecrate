@@ -36,6 +36,7 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
           data.__typename === 'Genre' ||
           data.__typename === 'Subgenre') && <p className={cx('resultType')}>{`${data.__typename}:`}</p>}
         <h3>{data.username || data.name || data.title || ''}</h3>
+        {data.creator && <p>{`by ${data.creator.username}`}</p>}
       </div>
     </motion.div>
   );

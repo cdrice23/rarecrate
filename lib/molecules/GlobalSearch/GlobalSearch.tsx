@@ -12,8 +12,8 @@ import { useLocalState } from '@/lib/context/state';
 import { PaneType } from '@/lib/context/state';
 
 type SearchPath = {
-  topTier?: { type: string; name: string };
-  midTier?: { type: string; name: string };
+  topTier?: { type: string; name: string; id: number };
+  midTier?: { type: string; name: string; id: number };
 };
 
 const GlobalSearch = () => {
@@ -103,6 +103,11 @@ const GlobalSearch = () => {
                       setPrevActivePane('genresAndSubgenres');
                       setSearchPath({ ...searchPath, midTier: null });
                       break;
+                    case 'albums':
+                      setPrevActivePane('albums');
+                      setSearchPath({});
+                    default:
+                      break;
                   }
                 default:
                   break;
@@ -140,6 +145,7 @@ const GlobalSearch = () => {
                 }
 
                 if (inputItems[highlightedIndex].isShowMoreButton) {
+                  setCurrentActivePane('profiles');
                   setShowFullSearchPane(true);
                 }
               }

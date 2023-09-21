@@ -8,9 +8,12 @@ import { useLocalState } from '@/lib/context/state';
 interface FullSearchPaneProps {
   currentItems: any[];
   currentPage: number;
-  searchPath: { topTier?: { type: string; name: string }; midTier?: { type: string; name: string } };
+  searchPath: {
+    topTier?: { type: string; name: string; id: number };
+    midTier?: { type: string; name: string; id: number };
+  };
   setSearchPath: (value) => void;
-  getMoreItems: () => void;
+  getMoreItems: (searchId) => void;
   getNextPane?: (value, searchId) => void;
 }
 
@@ -35,13 +38,14 @@ const FullSearchPane = ({
           onClick={async () => {
             switch (result.__typename) {
               case 'Profile':
+                setSearchPath({});
                 router.push(Route.Profile + `/${result.username}`);
                 await logSelectedSearchResult({
                   variables: { prismaModel: 'profile', selectedId: result.id },
                 });
-                setSearchPath({});
                 break;
               case 'Crate':
+                setSearchPath({});
                 router.push({
                   pathname: Route.Profile + `/${result.creator.username}`,
                   query: { searchedCrateSelected: result.id },
@@ -49,20 +53,24 @@ const FullSearchPane = ({
                 await logSelectedSearchResult({
                   variables: { prismaModel: 'crate', selectedId: result.id },
                 });
-                setSearchPath({});
                 break;
               case 'Album':
                 getNextPane('Album', result.id);
+                await logSelectedSearchResult({
+                  variables: { prismaModel: 'album', selectedId: result.id },
+                });
                 switch (currentActivePane) {
                   case 'albums':
-                    setSearchPath({ topTier: { name: result.title, type: result.__typename.toLowerCase() } });
+                    setSearchPath({
+                      topTier: { name: result.title, type: result.__typename.toLowerCase(), id: result.id },
+                    });
                     break;
                   case 'albumsFromGenre':
                   case 'albumsFromSubgenre':
                   case 'albumsFromTag':
                     setSearchPath({
                       ...searchPath,
-                      midTier: { name: result.title, type: result.__typename.toLowerCase() },
+                      midTier: { name: result.title, type: result.__typename.toLowerCase(), id: result.id },
                     });
                     break;
                   default:
@@ -70,20 +78,32 @@ const FullSearchPane = ({
                 }
                 break;
               case 'Label':
+                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase(), id: result.id } });
                 getNextPane('Label', result.id);
-                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase() } });
+                await logSelectedSearchResult({
+                  variables: { prismaModel: 'label', selectedId: result.id },
+                });
                 break;
               case 'Tag':
+                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase(), id: result.id } });
                 getNextPane('Tag', result.id);
-                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase() } });
+                await logSelectedSearchResult({
+                  variables: { prismaModel: 'tag', selectedId: result.id },
+                });
                 break;
               case 'Genre':
+                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase(), id: result.id } });
                 getNextPane('Genre', result.id);
-                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase() } });
+                await logSelectedSearchResult({
+                  variables: { prismaModel: 'genre', selectedId: result.id },
+                });
                 break;
               case 'Subgenre':
+                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase(), id: result.id } });
                 getNextPane('Subgenre', result.id);
-                setSearchPath({ topTier: { name: result.name, type: result.__typename.toLowerCase() } });
+                await logSelectedSearchResult({
+                  variables: { prismaModel: 'subgenre', selectedId: result.id },
+                });
                 break;
               default:
                 break;
@@ -94,7 +114,7 @@ const FullSearchPane = ({
             data={result}
             index={index}
             lastSlice={currentPage * 30 - 1}
-            getMoreItems={() => getMoreItems()}
+            getMoreItems={() => getMoreItems(result.id)}
           />
         </li>
       ))}

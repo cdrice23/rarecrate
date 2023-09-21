@@ -167,19 +167,19 @@ type Profile {
 }
 
 type Query {
-  fsAlbums(searchTerm: String!): [Album]!
-  fsCrates(searchTerm: String!): [Crate]!
+  fsAlbums(currentPage: Int!, searchTerm: String!): [Album]!
+  fsCrates(currentPage: Int!, searchTerm: String!): [Crate]!
   fsGenres(searchTerm: String!): [Genre]!
-  fsLabels(searchTerm: String!): [Label]!
-  fsProfiles(searchTerm: String!): [Profile]!
+  fsLabels(currentPage: Int!, searchTerm: String!): [Label]!
+  fsProfiles(currentPage: Int!, searchTerm: String!): [Profile]!
   fsSubgenres(searchTerm: String!): [Subgenre]!
-  fsTags(searchTerm: String!): [Tag]!
-  getAlbumsFromGenre(genreId: Int!): [Album]!
-  getAlbumsFromSubgenre(subgenreId: Int!): [Album]!
-  getAlbumsFromTag(tagId: Int!): [Album]!
+  fsTags(currentPage: Int!, searchTerm: String!): [Tag]!
+  getAlbumsFromGenre(currentPage: Int!, genreId: Int!): [Album]!
+  getAlbumsFromSubgenre(currentPage: Int!, subgenreId: Int!): [Album]!
+  getAlbumsFromTag(currentPage: Int!, tagId: Int!): [Album]!
   getCrateDetailWithAlbums(id: Int!): Crate!
-  getCratesFromAlbum(albumId: Int!): [Crate]!
-  getCratesFromLabel(labelId: Int!): [Crate]!
+  getCratesFromAlbum(albumId: Int!, currentPage: Int!): [Crate]!
+  getCratesFromLabel(currentPage: Int!, labelId: Int!): [Crate]!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]

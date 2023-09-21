@@ -84,35 +84,26 @@ export const ProfileQueries = queryType({
       type: NexusProfile,
       args: {
         searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allProfiles = [];
-
-        while (true) {
-          const profiles = await ctx.prisma.profile.findMany({
-            where: {
-              username: {
-                contains: searchTerm,
-              },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const profiles = await ctx.prisma.profile.findMany({
+          where: {
+            username: {
+              contains: searchTerm,
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (profiles.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allProfiles = allProfiles.concat(profiles);
-          pageNumber++;
-        }
-
-        return allProfiles;
+        return profiles;
       },
     });
   },
@@ -168,35 +159,26 @@ export const CrateQueries = extendType({
       type: NexusCrate,
       args: {
         searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allCrates = [];
-
-        while (true) {
-          const crates = await ctx.prisma.crate.findMany({
-            where: {
-              title: {
-                contains: searchTerm,
-              },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const crates = await ctx.prisma.crate.findMany({
+          where: {
+            title: {
+              contains: searchTerm,
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (crates.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allCrates = allCrates.concat(crates);
-          pageNumber++;
-        }
-
-        return allCrates;
+        return crates;
       },
     });
 
@@ -204,37 +186,28 @@ export const CrateQueries = extendType({
       type: NexusCrate,
       args: {
         labelId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { labelId }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allCrates = [];
-
-        while (true) {
-          const crates = await ctx.prisma.crate.findMany({
-            where: {
-              labels: {
-                some: {
-                  id: labelId,
-                },
+      resolve: async (_, { labelId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const crates = await ctx.prisma.crate.findMany({
+          where: {
+            labels: {
+              some: {
+                id: labelId,
               },
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (crates.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allCrates = allCrates.concat(crates);
-          pageNumber++;
-        }
-
-        return allCrates;
+        return crates;
       },
     });
 
@@ -242,39 +215,30 @@ export const CrateQueries = extendType({
       type: NexusCrate,
       args: {
         albumId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { albumId }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allCrates = [];
-
-        while (true) {
-          const crates = await ctx.prisma.crate.findMany({
-            where: {
-              albums: {
-                some: {
-                  album: {
-                    id: albumId,
-                  },
+      resolve: async (_, { albumId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const crates = await ctx.prisma.crate.findMany({
+          where: {
+            albums: {
+              some: {
+                album: {
+                  id: albumId,
                 },
               },
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (crates.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allCrates = allCrates.concat(crates);
-          pageNumber++;
-        }
-
-        return allCrates;
+        return crates;
       },
     });
   },
@@ -387,35 +351,26 @@ export const LabelQueries = extendType({
       type: NexusLabel,
       args: {
         searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allLabels = [];
-
-        while (true) {
-          const labels = await ctx.prisma.label.findMany({
-            where: {
-              name: {
-                contains: searchTerm,
-              },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const labels = await ctx.prisma.label.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (labels.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allLabels = allLabels.concat(labels);
-          pageNumber++;
-        }
-
-        return allLabels;
+        return labels;
       },
     });
   },
@@ -502,35 +457,26 @@ export const TagQueries = extendType({
       type: NexusTag,
       args: {
         searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allTags = [];
-
-        while (true) {
-          const tags = await ctx.prisma.tag.findMany({
-            where: {
-              name: {
-                contains: searchTerm,
-              },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const tags = await ctx.prisma.tag.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (tags.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allTags = allTags.concat(tags);
-          pageNumber++;
-        }
-
-        return allTags;
+        return tags;
       },
     });
   },
@@ -666,51 +612,96 @@ export const AlbumQueries = extendType({
       },
     });
 
+    // t.nonNull.list.field('fsAlbums', {
+    //   type: NexusAlbum,
+    //   args: {
+    //     searchTerm: nonNull(stringArg()),
+    //   },
+    //   resolve: async (_, { searchTerm }, ctx) => {
+    //     const pageSize = 99999;
+    //     let pageNumber = 1;
+    //     let allAlbums = [];
+
+    //     while (true) {
+    //       const albums = await ctx.prisma.album.findMany({
+    //         where: {
+    //           OR: [
+    //             {
+    //               artist: {
+    //                 contains: searchTerm,
+    //               },
+    //             },
+    //             {
+    //               title: {
+    //                 contains: searchTerm,
+    //               },
+    //             },
+    //           ],
+    //         },
+    //         orderBy: [
+    //           {
+    //             searchAndSelectCount: 'desc',
+    //           },
+    //         ],
+    //         skip: pageSize * (pageNumber - 1),
+    //         take: pageSize,
+    //       });
+
+    //       if (albums.length === 0) {
+    //         break; // Break the loop if no more profiles are returned
+    //       }
+
+    //       allAlbums = allAlbums.concat(albums);
+    //       pageNumber++;
+    //     }
+
+    //     const ids = new Set();
+    //     const uniqueResults = allAlbums.filter(album => {
+    //       if (!ids.has(album.id)) {
+    //         ids.add(album.id);
+    //         return true;
+    //       }
+    //       return false;
+    //     });
+
+    //     return uniqueResults;
+    //   },
+    // });
+
     t.nonNull.list.field('fsAlbums', {
       type: NexusAlbum,
       args: {
         searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { searchTerm }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allAlbums = [];
-
-        while (true) {
-          const albums = await ctx.prisma.album.findMany({
-            where: {
-              OR: [
-                {
-                  artist: {
-                    contains: searchTerm,
-                  },
-                },
-                {
-                  title: {
-                    contains: searchTerm,
-                  },
-                },
-              ],
-            },
-            orderBy: [
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            OR: [
               {
-                searchAndSelectCount: 'desc',
+                artist: {
+                  contains: searchTerm,
+                },
+              },
+              {
+                title: {
+                  contains: searchTerm,
+                },
               },
             ],
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
-
-          if (albums.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allAlbums = allAlbums.concat(albums);
-          pageNumber++;
-        }
+          },
+          orderBy: [
+            {
+              searchAndSelectCount: 'desc',
+            },
+          ],
+          skip: skip,
+          take: 30,
+        });
 
         const ids = new Set();
-        const uniqueResults = allAlbums.filter(album => {
+        const uniqueResults = albums.filter(album => {
           if (!ids.has(album.id)) {
             ids.add(album.id);
             return true;
@@ -718,7 +709,7 @@ export const AlbumQueries = extendType({
           return false;
         });
 
-        return allAlbums;
+        return uniqueResults;
       },
     });
 
@@ -726,42 +717,33 @@ export const AlbumQueries = extendType({
       type: NexusAlbum,
       args: {
         tagId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { tagId }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allAlbums = [];
-
-        while (true) {
-          const albums = await ctx.prisma.album.findMany({
-            where: {
-              crates: {
-                some: {
-                  tags: {
-                    some: {
-                      id: tagId,
-                    },
+      resolve: async (_, { tagId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            crates: {
+              some: {
+                tags: {
+                  some: {
+                    id: tagId,
                   },
                 },
               },
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
-
-          if (albums.length === 0) {
-            break; // Break the loop if no more profiles are returned
-          }
-
-          allAlbums = allAlbums.concat(albums);
-          pageNumber++;
-        }
+          ],
+          skip: skip,
+          take: 30,
+        });
 
         const ids = new Set();
-        const uniqueAlbums = allAlbums.filter(album => {
+        const uniqueResults = albums.filter(album => {
           if (!ids.has(album.id)) {
             ids.add(album.id);
             return true;
@@ -769,7 +751,7 @@ export const AlbumQueries = extendType({
           return false;
         });
 
-        return uniqueAlbums;
+        return uniqueResults;
       },
     });
 
@@ -777,37 +759,37 @@ export const AlbumQueries = extendType({
       type: NexusAlbum,
       args: {
         genreId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { genreId }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allAlbums = [];
-
-        while (true) {
-          const albums = await ctx.prisma.album.findMany({
-            where: {
-              genres: {
-                some: {
-                  id: genreId,
-                },
+      resolve: async (_, { genreId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            genres: {
+              some: {
+                id: genreId,
               },
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (albums.length === 0) {
-            break; // Break the loop if no more profiles are returned
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
           }
+          return false;
+        });
 
-          allAlbums = allAlbums.concat(albums);
-          pageNumber++;
-        }
-
-        return allAlbums;
+        return uniqueResults;
       },
     });
 
@@ -815,37 +797,37 @@ export const AlbumQueries = extendType({
       type: NexusAlbum,
       args: {
         subgenreId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
       },
-      resolve: async (_, { subgenreId }, ctx) => {
-        const pageSize = 99999;
-        let pageNumber = 1;
-        let allAlbums = [];
-
-        while (true) {
-          const albums = await ctx.prisma.album.findMany({
-            where: {
-              subgenres: {
-                some: {
-                  id: subgenreId,
-                },
+      resolve: async (_, { subgenreId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            subgenres: {
+              some: {
+                id: subgenreId,
               },
             },
-            orderBy: {
+          },
+          orderBy: [
+            {
               searchAndSelectCount: 'desc',
             },
-            skip: pageSize * (pageNumber - 1),
-            take: pageSize,
-          });
+          ],
+          skip: skip,
+          take: 30,
+        });
 
-          if (albums.length === 0) {
-            break; // Break the loop if no more profiles are returned
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
           }
+          return false;
+        });
 
-          allAlbums = allAlbums.concat(albums);
-          pageNumber++;
-        }
-
-        return allAlbums;
+        return uniqueResults;
       },
     });
   },

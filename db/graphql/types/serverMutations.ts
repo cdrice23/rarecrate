@@ -519,38 +519,40 @@ export const SelectedSearchResultMutations = extendType({
           },
         });
 
+        // NOTE - Artist solution causing too many writes, so freezing this for now
         // If prismaModel is 'album', create another SelectedSearchResult for title
-        let albumTitleSelectedSearchResult;
-        if (prismaModel === 'album') {
-          const matchingArtistResult = await ctx.prisma.album.findUnique({
-            where: { id: selectedId },
-            select: { artist: true },
-          });
+        // let albumTitleSelectedSearchResult;
+        // if (prismaModel === 'album') {
+        //   const matchingArtistResult = await ctx.prisma.album.findUnique({
+        //     where: { id: selectedId },
+        //     select: { artist: true },
+        //   });
 
-          albumTitleSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
-            data: {
-              ...(searchTerm && { searchTerm }),
-              resultType: 'album',
-              searchResult: matchingArtistResult.artist,
-              selectedId,
-            },
-          });
+        //   albumTitleSelectedSearchResult = await ctx.prisma.selectedSearchResult.create({
+        //     data: {
+        //       ...(searchTerm && { searchTerm }),
+        //       resultType: 'album',
+        //       searchResult: matchingArtistResult.artist,
+        //       selectedId,
+        //     },
+        //   });
 
-          // NOTE: this is an interim solution before the Quick Results searchTerm implementation - i.e. assuming that selecting an album increases the entire artist's searchAndSelect ranking
-          const artistAlbums = await ctx.prisma.album.findMany({
-            where: { artist: matchingArtistResult.artist, NOT: { id: selectedId } },
-            select: { id: true, searchAndSelectCount: true },
-          });
+        //   // NOTE: this is an interim solution before the Quick Results searchTerm implementation - i.e. assuming that selecting an album increases the entire artist's searchAndSelect ranking
+        //   const artistAlbums = await ctx.prisma.album.findMany({
+        //     where: { artist: matchingArtistResult.artist, NOT: { id: selectedId } },
+        //     select: { id: true, searchAndSelectCount: true },
+        //   });
 
-          for (const album of artistAlbums) {
-            await ctx.prisma.album.update({
-              where: { id: album.id },
-              data: { searchAndSelectCount: album.searchAndSelectCount + 1 },
-            });
-          }
-        }
+        //   for (const album of artistAlbums) {
+        //     await ctx.prisma.album.update({
+        //       where: { id: album.id },
+        //       data: { searchAndSelectCount: album.searchAndSelectCount + 1 },
+        //     });
+        //   }
+        // }
 
-        return [createdSelectedSearchResult, albumTitleSelectedSearchResult];
+        // return [createdSelectedSearchResult, albumTitleSelectedSearchResult];
+        return [createdSelectedSearchResult];
       },
     });
   },
