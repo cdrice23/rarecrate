@@ -436,6 +436,19 @@
   .paneSectionFull {
     grid-column: 1 / span 12;
 
+    .formInputItem {
+      margin: 4px;
+
+      label {
+        margin-right: 8px;
+      }
+
+      .formInputLongText {
+        width: 300px;
+        height: 108px;
+      }
+    }
+
     .profileBar {
       height: 50px;
       width: calc(100% - 16px);

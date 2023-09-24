@@ -4,6 +4,9 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_PROFILE, CREATE_NEW_FOLLOW_OR_REQUEST, UNFOLLOW_PROFILE } from '@/db/graphql/clientOperations';
 import { DotsThreeVertical } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
+import { useState } from 'react';
+import { ProfileForm } from '../ProfileForm/ProfileForm';
+import { Profile } from 'nexus-prisma';
 
 type ProfilePaneProps = {
   username: string;
@@ -12,6 +15,7 @@ type ProfilePaneProps = {
 };
 
 const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePaneProps) => {
+  const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE, {
     variables: { username },
   });
@@ -137,30 +141,35 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
         <h1>Loading...</h1>
       ) : data ? (
         <>
-          <Pane>
-            <div className={cx('paneSectionFull')}>
-              <h3 className={cx('sectionTitle')}>{`Profile Data:`}</h3>
-              <p>{`Profile ID: ${profileData.id}`}</p>
-              <p>{`image: ${profileData.image}`}</p>
-              <p>{`Username: ${profileData.username}`}</p>
-              <p>{`Profile Type: ${profileData.isPrivate ? 'Private' : 'Public'}`}</p>
-              <p>{`Bio: ${profileData.bio}`}</p>
-              <ul>
-                {profileData.socialLinks.map((link: any) => (
-                  <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
-                ))}
-              </ul>
-              {!isMain && (
-                <button onClick={() => handleFollowClick(isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</button>
-              )}
-              {isMain && (
-                <button>
-                  <p>Edit Profile</p>
-                  <DotsThreeVertical />
-                </button>
-              )}
-            </div>
-          </Pane>
+          {showEditProfile ? (
+            <ProfileForm existingProfileData={profileData} />
+          ) : (
+            <Pane>
+              <div className={cx('paneSectionFull')}>
+                <h3 className={cx('sectionTitle')}>{`Profile Data:`}</h3>
+                <p>{`Profile ID: ${profileData.id}`}</p>
+                <p>{`image: ${profileData.image}`}</p>
+                <p>{`Username: ${profileData.username}`}</p>
+                <p>{`Profile Type: ${profileData.isPrivate ? 'Private' : 'Public'}`}</p>
+                <p>{`Bio: ${profileData.bio}`}</p>
+                <ul>
+                  {profileData.socialLinks.map((link: any) => (
+                    <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
+                  ))}
+                </ul>
+                {!isMain && (
+                  <button onClick={() => handleFollowClick(isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</button>
+                )}
+                {isMain && (
+                  <button onClick={() => setShowEditProfile(true)}>
+                    <p>Edit Profile</p>
+                    <DotsThreeVertical />
+                  </button>
+                )}
+              </div>
+            </Pane>
+          )}
+
           <div className={cx('listActions')}>
             <button onClick={() => handlePaneSelect('followers')}>
               <h3>Followers</h3>
