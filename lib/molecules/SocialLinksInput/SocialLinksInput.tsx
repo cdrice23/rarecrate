@@ -21,22 +21,22 @@ const SocialLinksInput = ({ socialLinks, setFieldValue }) => {
       <label htmlFor="socialLinks">Social Links</label>
       <FieldArray name="socialLinks">
         {({ push, remove }) => (
-          <div>
+          <div className={cx('socialLinkArea')}>
             {socialLinks.map((socialLink, index) => (
-              <div key={index}>
-                <p>{socialLink.platform}</p>
-                <p>{socialLink.username}</p>
+              <div key={index} className={cx('socialLinkGroup')}>
+                <p className={cx('socialLinkPlatform')}>{socialLink.platform}</p>
+                <p className={cx('socialLinkUsername')}>{socialLink.username}</p>
                 <button type="button" onClick={() => remove(index)}>
                   <X />
                 </button>
               </div>
             ))}
             {showAddLink && (
-              <div>
+              <div className={cx('socialLinkAdd')}>
                 <select name="socialLinkPlatform" onChange={handlePlatformChange}>
                   <option value="">Social Platform:</option>
                   {Object.keys(SocialPlatform)
-                    .filter(key => isNaN(Number(key)))
+                    .filter(key => isNaN(Number(key)) && !socialLinks.map(link => link.platform).includes(key))
                     .map(key => (
                       <option key={SocialPlatform[key]} value={key}>
                         {key}
@@ -52,6 +52,9 @@ const SocialLinksInput = ({ socialLinks, setFieldValue }) => {
                   }}
                 >
                   <Check />
+                </button>
+                <button type="button" onClick={() => setShowAddLink(false)}>
+                  <X />
                 </button>
               </div>
             )}

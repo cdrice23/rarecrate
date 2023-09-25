@@ -5,6 +5,7 @@ import { main as albumSeed } from './albumSeed';
 import { main as connectAlbumSeed } from './connectAlbumSeed';
 import { main as getAlbumImageUrls } from './getAlbumImageUrls';
 import { fixTagDuplicates } from '../backfill/fixTagDuplicates';
+import { removeAtHandles } from '../backfill/removeAtHandles';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -17,7 +18,8 @@ async function main() {
   // await connectAlbumSeed();
   // await getAlbumImageUrls();
   // await resetDb();
-  await fixTagDuplicates();
+  // await fixTagDuplicates();
+  await removeAtHandles();
 }
 
 main()

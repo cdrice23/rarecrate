@@ -50,3 +50,57 @@ export const crateFormSchema = yup.object().shape({
       }
     }),
 });
+
+export const profileFormSchema = yup.object().shape({
+  bio: yup.string().max(150, 'Bio must be a maximum of 150 characters'),
+  socialLinks: yup
+    .array()
+    .of(
+      yup.object().shape({
+        platform: yup.string().required(),
+        username: yup.string().required(),
+      }),
+    )
+    .test(
+      'socialLinks',
+      `Invalid social media handle(s). Do not include any @ signs in each handle.`,
+      function (socialLinks) {
+        if (!Array.isArray(socialLinks)) return false;
+
+        for (const socialLink of socialLinks) {
+          const { platform, username } = socialLink;
+
+          if (platform === 'SPOTIFY' && (!username || username.trim() === '')) {
+            return false;
+          }
+
+          if (username.includes('@')) {
+            return false;
+          }
+
+          switch (platform) {
+            case 'TWITTER':
+              if (!(username.length >= 4 && username.length <= 15 && /^[a-zA-Z0-9_]+$/.test(username))) {
+                return false;
+              }
+              break;
+            case 'INSTAGRAM':
+              if (!(username.length >= 1 && username.length <= 30 && /^[a-zA-Z0-9_.]+$/.test(username))) {
+                return false;
+              }
+              break;
+            case 'YOUTUBE':
+            case 'DISCOGS':
+              if (!(username.length >= 3 && username.length <= 36 && /^[a-zA-Z0-9_.-]+$/.test(username))) {
+                return false;
+              }
+              break;
+            default:
+              return false;
+          }
+        }
+
+        return true;
+      },
+    ),
+});

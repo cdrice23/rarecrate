@@ -612,62 +612,6 @@ export const AlbumQueries = extendType({
       },
     });
 
-    // t.nonNull.list.field('fsAlbums', {
-    //   type: NexusAlbum,
-    //   args: {
-    //     searchTerm: nonNull(stringArg()),
-    //   },
-    //   resolve: async (_, { searchTerm }, ctx) => {
-    //     const pageSize = 99999;
-    //     let pageNumber = 1;
-    //     let allAlbums = [];
-
-    //     while (true) {
-    //       const albums = await ctx.prisma.album.findMany({
-    //         where: {
-    //           OR: [
-    //             {
-    //               artist: {
-    //                 contains: searchTerm,
-    //               },
-    //             },
-    //             {
-    //               title: {
-    //                 contains: searchTerm,
-    //               },
-    //             },
-    //           ],
-    //         },
-    //         orderBy: [
-    //           {
-    //             searchAndSelectCount: 'desc',
-    //           },
-    //         ],
-    //         skip: pageSize * (pageNumber - 1),
-    //         take: pageSize,
-    //       });
-
-    //       if (albums.length === 0) {
-    //         break; // Break the loop if no more profiles are returned
-    //       }
-
-    //       allAlbums = allAlbums.concat(albums);
-    //       pageNumber++;
-    //     }
-
-    //     const ids = new Set();
-    //     const uniqueResults = allAlbums.filter(album => {
-    //       if (!ids.has(album.id)) {
-    //         ids.add(album.id);
-    //         return true;
-    //       }
-    //       return false;
-    //     });
-
-    //     return uniqueResults;
-    //   },
-    // });
-
     t.nonNull.list.field('fsAlbums', {
       type: NexusAlbum,
       args: {
