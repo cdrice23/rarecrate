@@ -1,6 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
-import { SocialLinksInput } from '../SocialLinksInput/SocialLinksInput';
+import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { profileFormSchema } from '@/core/helpers/validation';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { GET_PROFILE, UPDATE_PROFILE } from '@/db/graphql/clientOperations';
@@ -78,6 +78,7 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
           });
         },
       });
+
       // await updateProfile({ variables: { input: values } });
       setUsernameMain(values.username);
       actions.setSubmitting(false);
@@ -90,6 +91,7 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
       actions.setSubmitting(false);
     }
   };
+
   return (
     <Formik
       initialValues={existingProfileData ? existingProfileData : initialProfileValues}
@@ -123,10 +125,20 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
               <Field name="bio" as="textarea" className={cx('formInputLongText')} />
               <ErrorMessage name="bio" component="div" />
             </div>
-            <SocialLinksInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
+            <SocialLinksArrayInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
             <ErrorMessage name="socialLinks" component="div" />
-            <button type="submit" disabled={isSubmitting}>
+            <button
+              type="submit"
+              disabled={isSubmitting || !values.socialLinks.every(link => link.platform && link.username)}
+            >
               Submit
+            </button>
+            <button
+              onClick={() => {
+                setShowEditProfile(false);
+              }}
+            >
+              Cancel
             </button>
           </div>
         </Form>

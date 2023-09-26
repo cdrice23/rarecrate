@@ -70,7 +70,7 @@ export const profileFormSchema = yup.object().shape({
         for (const socialLink of socialLinks) {
           const { platform, username } = socialLink;
 
-          if (username.includes('@')) {
+          if (username?.includes('@')) {
             return false;
           }
 
