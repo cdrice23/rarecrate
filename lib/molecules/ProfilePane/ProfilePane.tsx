@@ -1,12 +1,16 @@
 import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_PROFILE, CREATE_NEW_FOLLOW_OR_REQUEST, UNFOLLOW_PROFILE } from '@/db/graphql/clientOperations';
+import {
+  GET_PROFILE,
+  CREATE_NEW_FOLLOW_OR_REQUEST,
+  UNFOLLOW_PROFILE,
+  GET_PENDING_FOLLOW_REQUESTS,
+} from '@/db/graphql/clientOperations';
 import { DotsThreeVertical } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
-import { Profile } from 'nexus-prisma';
 
 type ProfilePaneProps = {
   username: string;
@@ -19,11 +23,17 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
   const { loading, error, data } = useQuery(GET_PROFILE, {
     variables: { username },
   });
-
   const profileData = data?.getProfile;
+  const { data: followRequestData, refetch: refetchFollowRequests } = useQuery(GET_PENDING_FOLLOW_REQUESTS, {
+    variables: { id: profileData?.id },
+  });
+
   const isMain = Boolean(mainProfile === profileData?.id);
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
+  const hasPendingRequest =
+    followRequestData?.getPendingFollowRequests.filter(request => request.sender.id === mainProfile).length > 0;
 
+  console.log(hasPendingRequest);
   console.log(useApolloClient().cache.extract());
 
   const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {
@@ -70,6 +80,8 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
           },
         });
       }
+
+      refetchFollowRequests();
     },
   });
 
@@ -158,7 +170,9 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
                   ))}
                 </ul>
                 {!isMain && (
-                  <button onClick={() => handleFollowClick(isFollowing)}>{isFollowing ? 'Following' : 'Follow'}</button>
+                  <button onClick={() => handleFollowClick(isFollowing)}>
+                    {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
+                  </button>
                 )}
                 {isMain && (
                   <button onClick={() => setShowEditProfile(true)}>
