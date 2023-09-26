@@ -227,6 +227,51 @@ export const FollowMutations = mutationType({
         return { followRequest: updatedFollowRequest, follow };
       },
     });
+
+    t.list.field('autoAcceptFollowRequests', {
+      type: NexusFollowAndOrRequest,
+      args: {
+        receiverId: nonNull(intArg()),
+      },
+      resolve: async (_, { receiverId }, ctx) => {
+        const followRequests = await ctx.prisma.followRequest.findMany({
+          where: {
+            receiverId,
+            requestStatus: 'PENDING',
+          },
+        });
+
+        const result = [];
+
+        for (const followRequest of followRequests) {
+          // Update the followRequest status to 'ACCEPTED'
+          const updatedFollowRequest = await ctx.prisma.followRequest.update({
+            where: { id: followRequest.id },
+            data: { requestStatus: 'ACCEPTED' },
+            include: {
+              sender: true,
+              receiver: true,
+            },
+          });
+
+          // Create a new Follow record for the updatedFollowRequest
+          const newFollow = await ctx.prisma.follow.create({
+            data: {
+              follower: { connect: { id: updatedFollowRequest.senderId } },
+              following: { connect: { id: updatedFollowRequest.receiverId } },
+            },
+          });
+
+          // Add the updatedFollowRequest and newFollow to the result array
+          result.push({
+            follow: newFollow,
+            followRequest: updatedFollowRequest,
+          });
+        }
+
+        return result;
+      },
+    });
   },
 });
 

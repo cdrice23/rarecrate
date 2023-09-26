@@ -713,3 +713,35 @@ export const UPDATE_PROFILE = gql`
     }
   }
 `;
+
+export const AUTO_ACCEPT_FOLLOW_REQUESTS = gql`
+  mutation AutoAcceptFollowRequests($receiverId: Int!) {
+    autoAcceptFollowRequests(receiverId: $receiverId) {
+      followRequest {
+        id
+        sender {
+          id
+        }
+        senderId
+        receiver {
+          id
+          username
+          image
+        }
+        receiverId
+        sentAt
+      }
+      follow {
+        id
+        follower {
+          id
+          username
+          image
+        }
+        following {
+          id
+        }
+      }
+    }
+  }
+`;

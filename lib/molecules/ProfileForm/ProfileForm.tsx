@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { profileFormSchema } from '@/core/helpers/validation';
 import { useLazyQuery, useMutation } from '@apollo/client';
-import { GET_PROFILE, UPDATE_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_PROFILE, UPDATE_PROFILE, AUTO_ACCEPT_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
 import * as yup from 'yup';
 import { useLocalState } from '@/lib/context/state';
 import { useRouter } from 'next/router';
@@ -22,6 +22,7 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
   const { setUsernameMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
   const [updateProfile] = useMutation(UPDATE_PROFILE);
+  const [autoAcceptFollowRequests] = useMutation(AUTO_ACCEPT_FOLLOW_REQUESTS);
 
   const router = useRouter();
 
@@ -75,9 +76,89 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
             if (!exists) {
               cache.evict({ id: cache.identify(link) });
             }
+
+            cache.gc();
           });
         },
       });
+
+      // If profile changed to public, auto-accept all pending follow requests
+      if (!values.isPrivate) {
+        await autoAcceptFollowRequests({
+          variables: { receiverId: values.id },
+          update: (cache, { data }) => {
+            const cacheData = cache.extract();
+            const cachedFollowRequests = [];
+
+            // Iterate over the cache data and push all FollowRequest objects into cachedFollowRequests array
+            for (const key in cacheData) {
+              if (cacheData[key].__typename === 'FollowRequest') {
+                cachedFollowRequests.push(cacheData[key]);
+              }
+            }
+
+            const flattenedFollowRequests = data.autoAcceptFollowRequests.map(obj => obj.followRequest).flat(1);
+
+            // Check if each id of cachedFollowRequests exists in data.autoAcceptFollowRequests.followRequests
+            cachedFollowRequests.forEach(fr => {
+              const exists = flattenedFollowRequests.some(updatedRequest => updatedRequest.id === fr.id);
+
+              // If the id doesn't exist, evict the item from the cache
+              if (exists) {
+                cache.evict({ id: cache.identify(fr) });
+              }
+            });
+
+            cache.gc();
+
+            // Update the cache for the new Follower/Following relationships
+            const flattenedFollows = data.autoAcceptFollowRequests.map(obj => obj.follow).flat(1);
+            flattenedFollows.forEach(follow => {
+              const newFollowerRef = cache.writeFragment({
+                data: follow.follower,
+                fragment: gql`
+                  fragment NewFollower on Profile {
+                    id
+                  }
+                `,
+              });
+
+              const newFollowingRef = cache.writeFragment({
+                data: follow.following,
+                fragment: gql`
+                  fragment NewFollowing on Profile {
+                    id
+                  }
+                `,
+              });
+
+              cache.modify({
+                id: cache.identify({
+                  __typename: 'Profile',
+                  id: follow.follower.id,
+                }),
+                fields: {
+                  following(existingFollowing = []) {
+                    return [...existingFollowing, newFollowingRef];
+                  },
+                },
+              });
+
+              cache.modify({
+                id: cache.identify({
+                  __typename: 'Profile',
+                  id: follow.following.id,
+                }),
+                fields: {
+                  followers(existingFollowers = []) {
+                    return [...existingFollowers, newFollowerRef];
+                  },
+                },
+              });
+            });
+          },
+        });
+      }
 
       // await updateProfile({ variables: { input: values } });
       setUsernameMain(values.username);
@@ -98,51 +179,53 @@ const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
       validationSchema={updatedSchema}
       onSubmit={onSubmit}
     >
-      {({ values, setFieldValue, isSubmitting }) => (
-        <Form className={cx('pane')}>
-          <div className={cx('paneSectionFull')}>
-            <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
-            {/* <div className={cx('formInputItem')}>
+      {({ values, setFieldValue, isSubmitting }) => {
+        return (
+          <Form className={cx('pane')}>
+            <div className={cx('paneSectionFull')}>
+              <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
+              {/* <div className={cx('formInputItem')}>
               <label htmlFor="image">Image URL</label>
               <Field name="image" type="text" />
             </div> */}
-            <div className={cx('formInputItem')}>
-              <label htmlFor="username">Username</label>
-              <Field name="username" type="text" />
-              <ErrorMessage name="username" component="div" />
+              <div className={cx('formInputItem')}>
+                <label htmlFor="username">Username</label>
+                <Field name="username" type="text" />
+                <ErrorMessage name="username" component="div" />
+              </div>
+              <div className={cx('formInputItem')}>
+                <label htmlFor="isPrivate">Private account?</label>
+                <Field name="isPrivate" type="checkbox" />
+                {!values.isPrivate && (
+                  <p>
+                    <em>{`Note: any pending follow requests will be accepted when you switch your profile to public.`}</em>
+                  </p>
+                )}
+              </div>
+              <div className={cx('formInputItem')}>
+                <label htmlFor="bio">Bio</label>
+                <Field name="bio" as="textarea" className={cx('formInputLongText')} />
+                <ErrorMessage name="bio" component="div" />
+              </div>
+              <SocialLinksArrayInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
+              <ErrorMessage name="socialLinks" component="div" />
+              <button
+                type="submit"
+                disabled={isSubmitting || !values.socialLinks.every(link => link.platform && link.username)}
+              >
+                Submit
+              </button>
+              <button
+                onClick={() => {
+                  setShowEditProfile(false);
+                }}
+              >
+                Cancel
+              </button>
             </div>
-            <div className={cx('formInputItem')}>
-              <label htmlFor="isPrivate">Private account?</label>
-              <Field name="isPrivate" type="checkbox" />
-              {!values.isPrivate && (
-                <p>
-                  <em>{`Note: any pending follow requests will be accepted when you switch your profile to public.`}</em>
-                </p>
-              )}
-            </div>
-            <div className={cx('formInputItem')}>
-              <label htmlFor="bio">Bio</label>
-              <Field name="bio" as="textarea" className={cx('formInputLongText')} />
-              <ErrorMessage name="bio" component="div" />
-            </div>
-            <SocialLinksArrayInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
-            <ErrorMessage name="socialLinks" component="div" />
-            <button
-              type="submit"
-              disabled={isSubmitting || !values.socialLinks.every(link => link.platform && link.username)}
-            >
-              Submit
-            </button>
-            <button
-              onClick={() => {
-                setShowEditProfile(false);
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-        </Form>
-      )}
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

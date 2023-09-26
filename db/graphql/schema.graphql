@@ -138,6 +138,7 @@ type Mutation {
   addNewCrate(input: CrateInput!): Crate
   addNewLabel(name: String!): Label
   addNewTag(name: String!): Tag
+  autoAcceptFollowRequests(receiverId: Int!): [FollowAndOrRequest]
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
