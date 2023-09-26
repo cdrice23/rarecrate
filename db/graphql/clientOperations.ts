@@ -538,18 +538,6 @@ export const FS_CRATES = gql`
   }
 `;
 
-// export const FS_ALBUMS = gql`
-//   query FsAlbums($searchTerm: String!) {
-//     fsAlbums(searchTerm: $searchTerm) {
-//       id
-//       title
-//       artist
-//       imageUrl
-//       searchAndSelectCount
-//     }
-//   }
-// `;
-
 export const FS_ALBUMS = gql`
   query FsAlbums($searchTerm: String!, $currentPage: Int!) {
     fsAlbums(searchTerm: $searchTerm, currentPage: $currentPage) {
@@ -696,38 +684,32 @@ export const GET_ALBUMS_FROM_SUBGENRE = gql`
   }
 `;
 
-// export const INCREMENT_SELECTED_LABEL = gql`
-//   mutation IncrementSelectedLabel($labelId: Int!) {
-//     logSelectedSearchResult(prismaModel: "label", selectedId: $labelId) {
-//       id
-//       searchTerm
-//       resultType
-//       searchResult
-//       selectedId
-//     }
-//   }
-// `;
-
-// export const INCREMENT_SELECTED_CRATE = gql`
-//   mutation IncrementSelectedCrate($crateId: Int!) {
-//     logSelectedSearchResult(prismaModel: "crate", selectedId: $crateId) {
-//       id
-//       searchTerm
-//       resultType
-//       searchResult
-//       selectedId
-//     }
-//   }
-// `;
-
-// export const INCREMENT_SELECTED_ALBUM = gql`
-//   mutation IncrementSelectedAlbum($albumId: Int!) {
-//     logSelectedSearchResult(prismaModel: "crate", selectedId: $albumId) {
-//       id
-//       searchTerm
-//       resultType
-//       searchResult
-//       selectedId
-//     }
-//   }
-// `;
+// Mutations for Profile Form
+export const UPDATE_PROFILE = gql`
+  mutation UpdateProfile($input: ProfileInput!) {
+    updateProfile(input: $input) {
+      id
+      username
+      isPrivate
+      bio
+      image
+      socialLinks {
+        id
+        username
+        platform
+      }
+      followers {
+        id
+      }
+      following {
+        id
+      }
+      crates {
+        id
+      }
+      favorites {
+        id
+      }
+    }
+  }
+`;

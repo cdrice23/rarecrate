@@ -143,6 +143,7 @@ type Mutation {
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
+  updateProfile(input: ProfileInput!): Profile
 }
 
 type Profile {
@@ -163,6 +164,15 @@ type Profile {
   updatedAt: DateTime!
   user: User
   userId: Int!
+  username: String!
+}
+
+input ProfileInput {
+  bio: String
+  id: Int!
+  image: String
+  isPrivate: Boolean!
+  socialLinks: [SocialLinkInput]
   username: String!
 }
 
@@ -228,6 +238,11 @@ type SocialLink {
   platform: String!
   profile: Profile
   profileId: Int!
+  username: String!
+}
+
+input SocialLinkInput {
+  platform: String!
   username: String!
 }
 

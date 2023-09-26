@@ -70,10 +70,6 @@ export const profileFormSchema = yup.object().shape({
         for (const socialLink of socialLinks) {
           const { platform, username } = socialLink;
 
-          if (platform === 'SPOTIFY' && (!username || username.trim() === '')) {
-            return false;
-          }
-
           if (username.includes('@')) {
             return false;
           }
@@ -89,6 +85,10 @@ export const profileFormSchema = yup.object().shape({
                 return false;
               }
               break;
+            case 'SPOTIFY':
+              if (!username || username.trim() === '') {
+                return false;
+              }
             case 'YOUTUBE':
             case 'DISCOGS':
               if (!(username.length >= 3 && username.length <= 36 && /^[a-zA-Z0-9_.-]+$/.test(username))) {

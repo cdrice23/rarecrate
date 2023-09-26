@@ -63,7 +63,7 @@ export function LocalStateProvider({ children }: PropsInt) {
   const [userId, setUserId] = useLocalStorage<number | null>('userId', null);
   const [email, setEmail] = useLocalStorage<string>('email', '');
   const [profileIdMain, setProfileIdMain] = useLocalStorage<number | null>('profileId', null);
-  const [usernameMain, setUsernameMain] = useLocalStorage<string>('username', '');
+  const [usernameMain, setUsernameMain] = useLocalStorage<string>('usernameMain', '');
   const [globalSearchPrompt, setGlobalSearchPrompt] = useLocalStorage<string>('globalSearchPrompt', '');
   const [quickSearchResults, setQuickSearchResults] = useLocalStorage<any[]>('quickSearchResults', null);
   const [currentActivePane, setCurrentActivePane] = useLocalStorage<PaneType>('currentActivePane', 'profiles');

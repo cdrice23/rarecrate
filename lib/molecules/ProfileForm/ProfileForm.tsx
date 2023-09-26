@@ -2,9 +2,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
 import { SocialLinksInput } from '../SocialLinksInput/SocialLinksInput';
 import { profileFormSchema } from '@/core/helpers/validation';
-import { useLazyQuery } from '@apollo/client';
-import { GET_PROFILE } from '@/db/graphql/clientOperations';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { GET_PROFILE, UPDATE_PROFILE } from '@/db/graphql/clientOperations';
 import * as yup from 'yup';
+import { useLocalState } from '@/lib/context/state';
+import { useRouter } from 'next/router';
+import { Route } from '@/core/enums/routes';
+import { gql } from '@apollo/client';
 
 const initialProfileValues = {
   image: '',
@@ -14,8 +18,12 @@ const initialProfileValues = {
   socialLinks: {},
 };
 
-const ProfileForm = ({ existingProfileData }) => {
+const ProfileForm = ({ existingProfileData, setShowEditProfile }) => {
+  const { setUsernameMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
+  const [updateProfile] = useMutation(UPDATE_PROFILE);
+
+  const router = useRouter();
 
   const updatedSchema = yup.object().shape({
     ...profileFormSchema.fields,
@@ -35,16 +43,60 @@ const ProfileForm = ({ existingProfileData }) => {
   });
 
   const onSubmit = async (values, actions) => {
-    console.log(values);
-  };
+    actions.setSubmitting(true);
+    try {
+      await updateProfile({
+        variables: {
+          input: {
+            id: values.id,
+            username: values.username,
+            isPrivate: values.isPrivate,
+            bio: values.bio,
+            image: values.image,
+            socialLinks: values.socialLinks.map(link => ({ username: link.username, platform: link.platform })),
+          },
+        },
+        update: (cache, { data }) => {
+          const cacheData = cache.extract();
+          const cachedSocialLinks = [];
 
+          // Iterate over the cache data and push all SocialLink objects into cachedSocialLinks array
+          for (const key in cacheData) {
+            if (cacheData[key].__typename === 'SocialLink') {
+              cachedSocialLinks.push(cacheData[key]);
+            }
+          }
+
+          // Check if each id of cachedSocialLinks exists in data.updateProfile.socialLinks
+          cachedSocialLinks.forEach(link => {
+            const exists = data.updateProfile.socialLinks.some(updatedLink => updatedLink.id === link.id);
+
+            // If the id doesn't exist, evict the item from the cache
+            if (!exists) {
+              cache.evict({ id: cache.identify(link) });
+            }
+          });
+        },
+      });
+      // await updateProfile({ variables: { input: values } });
+      setUsernameMain(values.username);
+      actions.setSubmitting(false);
+      actions.resetForm({ values });
+      setShowEditProfile(false);
+      console.log(values);
+      router.push(Route.Profile + `/${values.username}`);
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      actions.setSubmitting(false);
+    }
+  };
   return (
     <Formik
       initialValues={existingProfileData ? existingProfileData : initialProfileValues}
       validationSchema={updatedSchema}
       onSubmit={onSubmit}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, isSubmitting }) => (
         <Form className={cx('pane')}>
           <div className={cx('paneSectionFull')}>
             <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
@@ -73,7 +125,9 @@ const ProfileForm = ({ existingProfileData }) => {
             </div>
             <SocialLinksInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
             <ErrorMessage name="socialLinks" component="div" />
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
           </div>
         </Form>
       )}

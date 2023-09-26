@@ -142,7 +142,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
       ) : data ? (
         <>
           {showEditProfile ? (
-            <ProfileForm existingProfileData={profileData} />
+            <ProfileForm existingProfileData={profileData} setShowEditProfile={setShowEditProfile} />
           ) : (
             <Pane>
               <div className={cx('paneSectionFull')}>

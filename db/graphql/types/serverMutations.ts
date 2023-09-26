@@ -1,5 +1,6 @@
 import { nonNull, extendType, inputObjectType, mutationType, stringArg, intArg } from 'nexus';
 import {
+  Profile as NexusProfile,
   Crate as NexusCrate,
   Follow as NexusFollow,
   FollowRequest as NexusFollowRequest,
@@ -51,6 +52,26 @@ export const CrateInput = inputObjectType({
     t.nonNull.boolean('isRanked');
     t.list.int('labelIds');
     t.nonNull.list.field('crateAlbums', { type: CrateAlbumInput });
+  },
+});
+
+export const SocialLinkInput = inputObjectType({
+  name: 'SocialLinkInput',
+  definition(t) {
+    t.nonNull.string('platform');
+    t.nonNull.string('username');
+  },
+});
+
+export const ProfileInput = inputObjectType({
+  name: 'ProfileInput',
+  definition(t) {
+    t.nonNull.int('id');
+    t.nonNull.string('username');
+    t.nonNull.boolean('isPrivate');
+    t.string('bio');
+    t.string('image');
+    t.list.field('socialLinks', { type: SocialLinkInput });
   },
 });
 
@@ -553,6 +574,71 @@ export const SelectedSearchResultMutations = extendType({
 
         // return [createdSelectedSearchResult, albumTitleSelectedSearchResult];
         return [createdSelectedSearchResult];
+      },
+    });
+  },
+});
+
+export const ProfileMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('updateProfile', {
+      type: NexusProfile,
+      args: {
+        input: nonNull(ProfileInput),
+      },
+      resolve: async (_, { input }, ctx) => {
+        const { id, socialLinks, ...rest } = input;
+
+        // Get all existing socialLinks for the profile
+        const existingSocialLinks = await ctx.prisma.socialLink.findMany({
+          where: {
+            profileId: id,
+          },
+        });
+
+        // Prepare data for socialLinks
+        const socialLinksData = socialLinks.map(async link => {
+          // Find existing SocialLink
+          const existingSocialLink = existingSocialLinks.find(socialLink => socialLink.platform === link.platform);
+
+          if (existingSocialLink) {
+            // Update existing SocialLink
+            return ctx.prisma.socialLink.update({
+              where: { id: existingSocialLink.id },
+              data: {
+                username: link.username,
+              },
+            });
+          } else {
+            // Create new SocialLink
+            return ctx.prisma.socialLink.create({
+              data: {
+                platform: link.platform,
+                username: link.username,
+                profile: { connect: { id } },
+              },
+            });
+          }
+        });
+
+        // Wait for all socialLinks to be processed
+        await Promise.all(socialLinksData);
+
+        // Find and delete socialLinks that are in the db but not in input.socialLinks
+        const socialLinksToDelete = existingSocialLinks.filter(
+          socialLink => !socialLinks.some(link => link.platform === socialLink.platform),
+        );
+
+        await Promise.all(socialLinksToDelete.map(link => ctx.prisma.socialLink.delete({ where: { id: link.id } })));
+
+        // Update profile
+        return ctx.prisma.profile.update({
+          where: { id },
+          data: {
+            ...rest,
+          },
+        });
       },
     });
   },
