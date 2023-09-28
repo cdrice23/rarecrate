@@ -14,9 +14,17 @@ import {
   ADD_NEW_ALBUM,
   SEARCH_PRISMA_ALBUMS_BY_ID,
   ADD_NEW_CRATE,
+  UPDATE_CRATE,
+  GET_CRATE_DETAIL_WITH_ALBUMS,
 } from '@/db/graphql/clientOperations';
 
-const CrateForm = ({ creatorId }) => {
+interface CrateFormProps {
+  creatorId: number;
+  crateFormData?: any;
+  onCloseModal?: () => void;
+}
+
+const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) => {
   const [addNewLabel] = useMutation(ADD_NEW_LABEL);
   const [searchLabelsById] = useLazyQuery(SEARCH_LABELS_BY_ID);
   const [addNewTag] = useMutation(ADD_NEW_TAG);
@@ -24,6 +32,10 @@ const CrateForm = ({ creatorId }) => {
   const [addNewAlbum] = useMutation(ADD_NEW_ALBUM);
   const [searchPrismaAlbumsById] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_ID);
   const [addNewCrate] = useMutation(ADD_NEW_CRATE);
+  const [updateCrate] = useMutation(UPDATE_CRATE);
+  const [getCrateDetailWithAlbums] = useLazyQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
+    variables: { id: crateFormData?.id },
+  });
 
   const initialValues = {
     title: '',
@@ -34,14 +46,15 @@ const CrateForm = ({ creatorId }) => {
   };
 
   const onSubmit = async (values, actions) => {
+    console.log('values', values);
+    console.log('crate form values', crateFormData);
     await new Promise(resolve => setTimeout(resolve, 1000));
     const { title, labels, isRanked, description, crateAlbums } = values;
 
     // Create or find the Label records
     const labelPromises = labels.map(async label => {
       if (label.hasOwnProperty('id')) {
-        const { data } = await searchLabelsById({ variables: { labelId: label.id } });
-        return { ...data.searchLabelsById };
+        return label;
       } else {
         const { data } = await addNewLabel({ variables: { name: label.name } });
         return { ...data.addNewLabel };
@@ -61,8 +74,7 @@ const CrateForm = ({ creatorId }) => {
     }
     const tagPromises = tags.map(async tag => {
       if (tag.hasOwnProperty('id')) {
-        const { data } = await searchTagsById({ variables: { tagId: tag.id } });
-        return { ...data.searchTagsById };
+        return tag;
       } else {
         const { data } = await addNewTag({ variables: { name: tag.name } });
         return { ...data.addNewTag };
@@ -73,8 +85,7 @@ const CrateForm = ({ creatorId }) => {
     // Create or find the Album records
     const albumPromises = crateAlbums.map(async album => {
       if (album.hasOwnProperty('id')) {
-        const { data } = await searchPrismaAlbumsById({ variables: { albumId: album.id } });
-        return { ...data.searchPrismaAlbumsById };
+        return album;
       } else {
         const { data } = await addNewAlbum({ variables: { discogsMasterId: album.discogsMasterId } });
         return { ...data.addNewAlbum };
@@ -82,8 +93,9 @@ const CrateForm = ({ creatorId }) => {
     });
     const dbCrateAlbums = await Promise.all(albumPromises);
 
-    // Create the new Crate using the above created or connected albums, labels, and tags
+    // Assemble the Crate data using the above created or connected albums, labels, and tags
     const crateInput = {
+      id: crateFormData ? crateFormData.id : null,
       title,
       description,
       isRanked,
@@ -101,54 +113,79 @@ const CrateForm = ({ creatorId }) => {
       })),
     };
 
-    const { data } = await addNewCrate({ variables: { input: crateInput } });
-    console.log(data);
+    console.log('passed crate input data', crateInput);
+    // Handle mutation depending on if we're adding a new crate or updating an existing crate
+    if (crateFormData) {
+      const { data } = await updateCrate({ variables: { input: crateInput } });
+      console.log('updated data', data);
+    } else {
+      const { data } = await addNewCrate({ variables: { input: crateInput } });
+      console.log(data);
+    }
+
+    getCrateDetailWithAlbums();
 
     actions.resetForm();
-  };
-
-  const handleReset = actions => {
-    actions.resetForm();
+    if (onCloseModal) {
+      onCloseModal();
+    }
   };
 
   return (
-    <Formik initialValues={initialValues} validationSchema={crateFormSchema} onSubmit={onSubmit}>
-      {({ errors, touched, values, handleChange, isSubmitting, resetForm }) => (
-        <Form className={cx('crateForm')}>
-          <TextInput
-            name="title"
-            placeholder="Crate Title"
-            maxLength={30}
-            value={values.title}
-            onChange={handleChange}
-            label="Crate Title"
-          />
-          <TextInput
-            name="description"
-            placeholder="Description of your Crate"
-            maxLength={160}
-            value={values.description}
-            onChange={handleChange}
-            label="Description"
-          />
-          <ToggleInput name="isRanked" label="Ranked?" />
-          <LabelSearchInput value={values.labels} />
-          <ErrorMessage name="labels" component="div" />
-          <CrateAlbumArrayInput value={values.crateAlbums} isRanked={values.isRanked} />
-          <ErrorMessage name="crateAlbums" component="div" />
-          <button disabled={isSubmitting} type="submit">
-            Submit
-          </button>
-          <button
-            onClick={e => {
-              e.preventDefault();
-              resetForm();
-            }}
-          >
-            Cancel
-          </button>
-        </Form>
-      )}
+    <Formik
+      initialValues={
+        crateFormData
+          ? {
+              ...crateFormData,
+              albums: null,
+              crateAlbums: crateFormData.albums.map(album => ({ ...album.album, tags: album.tags })),
+            }
+          : initialValues
+      }
+      validationSchema={crateFormSchema}
+      onSubmit={onSubmit}
+    >
+      {({ errors, touched, values, handleChange, isSubmitting, resetForm }) => {
+        return (
+          <Form className={cx('crateForm')}>
+            <TextInput
+              name="title"
+              placeholder="Crate Title"
+              maxLength={30}
+              value={values.title}
+              onChange={handleChange}
+              label="Crate Title"
+            />
+            <TextInput
+              name="description"
+              placeholder="Description of your Crate"
+              maxLength={160}
+              value={values.description}
+              onChange={handleChange}
+              label="Description"
+            />
+            <ToggleInput name="isRanked" label="Ranked?" />
+            <LabelSearchInput value={values.labels} />
+            <ErrorMessage name="labels" component="div" />
+            <CrateAlbumArrayInput value={values.crateAlbums} isRanked={values.isRanked} />
+            <ErrorMessage name="crateAlbums" component="div" />
+            <button disabled={isSubmitting} type="submit">
+              Submit
+            </button>
+            <button
+              onClick={e => {
+                e.preventDefault();
+                resetForm();
+                if (onCloseModal) {
+                  onCloseModal();
+                }
+              }}
+            >
+              Cancel
+            </button>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

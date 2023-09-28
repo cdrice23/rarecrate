@@ -119,8 +119,10 @@ export const GET_CRATE_DETAIL_WITH_ALBUMS = gql`
       albums {
         id
         album {
+          id
           title
           artist
+          discogsMasterId
           label
           releaseYear
           genres {
@@ -431,6 +433,62 @@ export const ADD_NEW_CRATE = gql`
       }
       favoritedBy {
         id
+      }
+    }
+  }
+`;
+
+export const UPDATE_CRATE = gql`
+  mutation UpdateCrate($input: CrateInput!) {
+    updateCrate(input: $input) {
+      id
+      title
+      description
+      creator {
+        id
+        username
+        image
+      }
+      favoritedBy {
+        id
+        username
+        image
+      }
+      labels {
+        id
+        name
+        isStandard
+      }
+      isRanked
+      albums {
+        id
+        album {
+          id
+          title
+          artist
+          discogsMasterId
+          label
+          releaseYear
+          genres {
+            id
+            name
+          }
+          subgenres {
+            id
+            name
+          }
+          imageUrl
+          tracklist {
+            id
+            title
+            order
+          }
+        }
+        rank
+        tags {
+          id
+          name
+        }
       }
     }
   }

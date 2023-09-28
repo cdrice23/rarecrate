@@ -53,6 +53,7 @@ input CrateInput {
   crateAlbums: [CrateAlbumInput]!
   creatorId: Int!
   description: String!
+  id: Int
   isRanked: Boolean!
   labelIds: [Int]
   title: String!
@@ -144,6 +145,7 @@ type Mutation {
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
+  updateCrate(input: CrateInput!): Crate
   updateProfile(input: ProfileInput!): Profile
 }
 

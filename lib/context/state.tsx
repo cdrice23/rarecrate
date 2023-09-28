@@ -62,7 +62,7 @@ interface PropsInt {
 export function LocalStateProvider({ children }: PropsInt) {
   const [userId, setUserId] = useLocalStorage<number | null>('userId', null);
   const [email, setEmail] = useLocalStorage<string>('email', '');
-  const [profileIdMain, setProfileIdMain] = useLocalStorage<number | null>('profileId', null);
+  const [profileIdMain, setProfileIdMain] = useLocalStorage<number | null>('profileIdMain', null);
   const [usernameMain, setUsernameMain] = useLocalStorage<string>('usernameMain', '');
   const [globalSearchPrompt, setGlobalSearchPrompt] = useLocalStorage<string>('globalSearchPrompt', '');
   const [quickSearchResults, setQuickSearchResults] = useLocalStorage<any[]>('quickSearchResults', null);

@@ -46,6 +46,7 @@ export const CrateAlbumInput = inputObjectType({
 export const CrateInput = inputObjectType({
   name: 'CrateInput',
   definition(t) {
+    t.int('id');
     t.nonNull.string('title');
     t.nonNull.string('description');
     t.nonNull.int('creatorId');
@@ -349,6 +350,112 @@ export const CrateMutations = extendType({
                 },
                 rank: order,
               })),
+            },
+          },
+        });
+      },
+    });
+
+    t.field('updateCrate', {
+      type: NexusCrate,
+      args: {
+        input: nonNull(CrateInput),
+      },
+      resolve: async (_, { input: { id, title, description, isRanked, labelIds, crateAlbums } }, ctx) => {
+        // Find existing labels on Crate
+        const existingLabels = await ctx.prisma.crate.findMany({
+          where: { id: id },
+          include: { labels: true },
+        });
+
+        // Map existing labelIds
+        const existingLabelIds = existingLabels[0].labels.map(label => label.id);
+
+        // Identify labels to disconnect
+        const labelsToDisconnect = existingLabelIds.filter(existingLabelId => !labelIds.includes(existingLabelId));
+
+        // Identify new labels to connect
+        const newLabelIds = labelIds.filter(labelId => !existingLabelIds.includes(labelId));
+
+        // Get all existing crateAlbums
+        const existingCrateAlbums = await ctx.prisma.crateAlbum.findMany({
+          where: { crateId: id },
+          include: { album: true, tags: true },
+        });
+
+        // Identify crateAlbums to create
+        const newCrateAlbums = crateAlbums.filter(
+          crateAlbum => !existingCrateAlbums.map(existing => existing.album.id).includes(crateAlbum.albumId),
+        );
+
+        // Identify crateAlbums to disconnect
+        const crateAlbumsToDisconnect = existingCrateAlbums.filter(
+          crateAlbum => !crateAlbums.some(inputCrateAlbum => inputCrateAlbum.albumId === crateAlbum.album.id),
+        );
+
+        // Identify crateAlbums to update
+        const existingCrateAlbumsToUpdate = existingCrateAlbums.filter(existingCrateAlbum =>
+          crateAlbums.some(crateAlbum => crateAlbum.albumId === existingCrateAlbum.album.id),
+        );
+
+        // Create new crateAlbums
+        let newlyCreatedCrateAlbums = [];
+        for (const newCrateAlbum of newCrateAlbums) {
+          const createdCrateAlbum = await ctx.prisma.crateAlbum.create({
+            data: {
+              crate: {
+                connect: { id: id },
+              },
+              album: {
+                connect: { id: newCrateAlbum[0].albumId },
+              },
+              tags: {
+                connect: newCrateAlbum[0].tagIds.map(tagId => ({ id: tagId })),
+              },
+            },
+          });
+          newlyCreatedCrateAlbums.push(createdCrateAlbum);
+        }
+
+        // Disconnect crateAlbums
+        for (const crateAlbumToDisconnect of crateAlbumsToDisconnect) {
+          await ctx.prisma.crateAlbum.delete({
+            where: { id: crateAlbumToDisconnect.id },
+          });
+        }
+
+        // Update crateAlbums
+        for (const existingCrateAlbumToUpdate of existingCrateAlbumsToUpdate) {
+          const existingTags = existingCrateAlbumToUpdate.tags.flatMap(tag => tag.id);
+          const tagsToConnect = crateAlbums
+            .find(album => album.albumId === existingCrateAlbumToUpdate.album.id)
+            .tagIds.filter(tagId => !existingTags.includes(tagId));
+          const tagsToDisconnect = existingTags.filter(
+            tagId =>
+              !crateAlbums.find(album => album.albumId === existingCrateAlbumToUpdate.album.id).tagIds.includes(tagId),
+          );
+
+          await ctx.prisma.crateAlbum.update({
+            where: { id: existingCrateAlbumToUpdate.id },
+            data: {
+              tags: {
+                connect: tagsToConnect.map(tag => ({ id: tag })),
+                disconnect: tagsToDisconnect.map(tag => ({ id: tag })),
+              },
+            },
+          });
+        }
+
+        //update crate
+        return ctx.prisma.crate.update({
+          where: { id },
+          data: {
+            title,
+            description,
+            isRanked,
+            labels: {
+              connect: newLabelIds.map(labelId => ({ id: labelId })),
+              disconnect: labelsToDisconnect.map(labelId => ({ id: labelId })),
             },
           },
         });

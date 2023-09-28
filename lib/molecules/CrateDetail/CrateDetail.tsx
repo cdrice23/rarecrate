@@ -4,6 +4,10 @@ import { GET_CRATE_DETAIL_WITH_ALBUMS } from '@/db/graphql/clientOperations';
 import { useState } from 'react';
 import cx from 'classnames';
 import { CrateAlbumData, CrateAlbum } from '../CrateAlbum/CrateAlbum';
+import { DotsThreeVertical } from '@phosphor-icons/react';
+import { CrateForm } from '../CrateForm/CrateForm';
+import useLocalStorage from '@/core/hooks/useLocalStorage';
+import { useLocalState } from '@/lib/context/state';
 
 type ProfileBadgeData = {
   id: number;
@@ -31,6 +35,7 @@ type CrateDetailData = {
 type CrateDetailFaceProps = {
   data: CrateDetailData;
   handleSwitch: (newFace: 'front' | 'back') => void;
+  handleEdit?: () => void;
 };
 
 type CrateDetailProps = {
@@ -41,9 +46,12 @@ type CrateDetailProps = {
 
 const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');
+  const [showEditCrate, setShowEditCrate] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
     variables: { id: activeCrateId },
   });
+  const { profileIdMain } = useLocalState();
+
   const handleSwitch = (newFace: 'front' | 'back') => {
     setDetailFace(newFace);
   };
@@ -66,16 +74,34 @@ const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
         detailFace === 'front' ? (
           <Modal
             content={<CrateDetailFront data={crateData} handleSwitch={handleSwitch} />}
-            title="Modal Title"
+            title={`${crateData.title} - Front`}
             show={show}
             onClose={onClose}
           />
         ) : (
           <Modal
-            content={<CrateDetailBack data={crateData} handleSwitch={handleSwitch} />}
-            title="Modal Title"
+            content={
+              showEditCrate ? (
+                <CrateForm
+                  creatorId={profileIdMain}
+                  crateFormData={crateData}
+                  onCloseModal={() => setShowEditCrate(false)}
+                />
+              ) : (
+                <CrateDetailBack
+                  data={crateData}
+                  handleSwitch={handleSwitch}
+                  handleEdit={() => setShowEditCrate(true)}
+                />
+              )
+            }
+            title={showEditCrate ? 'Edit Crate' : `${crateData.title} - Back`}
             show={show}
-            onClose={onClose}
+            onClose={() => {
+              setShowEditCrate(false);
+              onClose();
+              setDetailFace('front');
+            }}
           />
         )
       ) : null}
@@ -104,7 +130,8 @@ const CrateDetailFront = ({ data, handleSwitch }: CrateDetailFaceProps) => {
   );
 };
 
-const CrateDetailBack = ({ data, handleSwitch }: CrateDetailFaceProps) => {
+const CrateDetailBack = ({ data, handleSwitch, handleEdit }: CrateDetailFaceProps) => {
+  console.log(data);
   return (
     <>
       <div>
@@ -119,7 +146,13 @@ const CrateDetailBack = ({ data, handleSwitch }: CrateDetailFaceProps) => {
           ))}
         </ul>
       </div>
-      <button onClick={() => handleSwitch('front')}>Switch to Front</button>
+      <div className={cx('crateDetailBackButtons')}>
+        <button onClick={() => handleSwitch('front')}>Switch to Front</button>
+        <button className={cx('editButton')} onClick={handleEdit}>
+          {`Edit Crate`}
+          <DotsThreeVertical />
+        </button>
+      </div>
     </>
   );
 };
