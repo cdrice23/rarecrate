@@ -41,12 +41,12 @@ const initCronRun = async () => {
 
   console.log('New CronRun started');
   // Step 2: Grab the AllMusic endpoint at the most recent new release date
-  let dayOfWeek = startAt.getDay();
-  let daysFromFriday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  let lastNewMusicFriday = new Date(startAt.getTime() - daysFromFriday * 24 * 60 * 60 * 1000);
-  let year = lastNewMusicFriday.getFullYear();
-  let month = String(lastNewMusicFriday.getMonth() + 1).padStart(2, '0');
-  let date = String(lastNewMusicFriday.getDate()).padStart(2, '0');
+  // let dayOfWeek = startAt.getDay();
+  // let daysFromFriday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  // let lastNewMusicFriday = new Date(startAt.getTime() - daysFromFriday * 24 * 60 * 60 * 1000);
+  let year = startAt.getFullYear();
+  let month = String(startAt.getMonth() + 1).padStart(2, '0');
+  let date = String(startAt.getDate()).padStart(2, '0');
   const currentReleaseDate = `${year}${month}${date}`;
   console.log(`Now evaluating: ${currentReleaseDate}`);
 
@@ -214,6 +214,11 @@ const initCronRun = async () => {
   }
 
   // Log issue albums
+  console.log(
+    `Total albums with issues: ${albumsWithIssues.length}. Release to created albums conversion: ${
+      (uniqueNewReleaseData.length - albumsWithIssues.length) / uniqueNewReleaseData.length
+    }`,
+  );
   console.log('Albums with Issues', albumsWithIssues);
 
   // Step 5: Update the CronRun with endTime and lastProcessedLabel

@@ -407,11 +407,12 @@ export const CrateMutations = extendType({
                 connect: { id: id },
               },
               album: {
-                connect: { id: newCrateAlbum[0].albumId },
+                connect: { id: newCrateAlbum.albumId },
               },
               tags: {
-                connect: newCrateAlbum[0].tagIds.map(tagId => ({ id: tagId })),
+                connect: newCrateAlbum.tagIds.map(tagId => ({ id: tagId })),
               },
+              rank: newCrateAlbum.order,
             },
           });
           newlyCreatedCrateAlbums.push(createdCrateAlbum);
@@ -435,6 +436,8 @@ export const CrateMutations = extendType({
               !crateAlbums.find(album => album.albumId === existingCrateAlbumToUpdate.album.id).tagIds.includes(tagId),
           );
 
+          console.log(existingCrateAlbumToUpdate);
+
           await ctx.prisma.crateAlbum.update({
             where: { id: existingCrateAlbumToUpdate.id },
             data: {
@@ -442,6 +445,7 @@ export const CrateMutations = extendType({
                 connect: tagsToConnect.map(tag => ({ id: tag })),
                 disconnect: tagsToDisconnect.map(tag => ({ id: tag })),
               },
+              rank: crateAlbums.find(album => album.albumId === existingCrateAlbumToUpdate.album.id).order,
             },
           });
         }

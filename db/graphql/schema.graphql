@@ -77,7 +77,7 @@ type CronRun {
   cronJob: CronJob
   cronJobId: Int!
   id: Int!
-  lastProcessedLabel: String
+  lastProcessedItem: String
 }
 
 """

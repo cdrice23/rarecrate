@@ -110,6 +110,7 @@ const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
 };
 
 const CrateDetailFront = ({ data, handleSwitch }: CrateDetailFaceProps) => {
+  const rankedAlbums = [...data.albums].sort((a, b) => a.rank - b.rank);
   return (
     <>
       <div>
@@ -122,7 +123,7 @@ const CrateDetailFront = ({ data, handleSwitch }: CrateDetailFaceProps) => {
       </div>
       <button onClick={() => handleSwitch('back')}>Switch to Back</button>
       <div className={cx('crateAlbumGrid')}>
-        {data.albums.map(crateAlbum => (
+        {rankedAlbums.map(crateAlbum => (
           <CrateAlbum key={crateAlbum.id} data={crateAlbum} />
         ))}
       </div>

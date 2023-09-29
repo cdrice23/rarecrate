@@ -1,4 +1,5 @@
 name: Nightly getAlbums run
+# NOTE: Currently disabled in Github Web UI
 
 on:
   schedule:

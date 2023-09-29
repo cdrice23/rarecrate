@@ -25,8 +25,6 @@ const AlbumSearchCombobox = ({
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(inputItems);
-
   const ulRef = useRef(null);
   const currentItems = inputItems.slice(0, currentPage * 30);
 
@@ -85,6 +83,7 @@ const AlbumSearchCombobox = ({
                   setIsOpen(false);
                   setSelectedItem(inputItems[highlightedIndex]);
                   enterHandler(inputItems[highlightedIndex]);
+                  console.log(inputItems[highlightedIndex]);
                   // setInputItems([]);
                   updateSearchPrompt('');
                 }
@@ -150,6 +149,7 @@ const AlbumSearchCombobox = ({
                       setIsOpen(false);
                       setSelectedItem(inputItems[index]);
                       enterHandler(inputItems[index]);
+                      console.log(inputItems[index]);
                       // setInputItems([]);
                       updateSearchPrompt('');
                     },

@@ -138,7 +138,9 @@ const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) =
           ? {
               ...crateFormData,
               albums: null,
-              crateAlbums: crateFormData.albums.map(album => ({ ...album.album, tags: album.tags })),
+              crateAlbums: [...crateFormData.albums]
+                .sort((a, b) => a.rank - b.rank)
+                .map(album => ({ ...album.album, tags: album.tags, order: album.rank })),
             }
           : initialValues
       }
@@ -146,6 +148,7 @@ const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) =
       onSubmit={onSubmit}
     >
       {({ errors, touched, values, handleChange, isSubmitting, resetForm }) => {
+        console.log(values);
         return (
           <Form className={cx('crateForm')}>
             <TextInput
