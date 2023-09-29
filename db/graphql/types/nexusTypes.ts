@@ -631,8 +631,8 @@ export const CronRun = objectType({
     t.nonNull.field('completedAt', {
       type: 'DateTime',
     });
-    t.field(PrismaCronRun.lastProcessedLabel.name, {
-      type: PrismaCronRun.lastProcessedLabel.type,
+    t.field(PrismaCronRun.lastProcessedItem.name, {
+      type: PrismaCronRun.lastProcessedItem.type,
     });
     t.field(PrismaCronRun.cronJob.name, {
       type: CronJob,

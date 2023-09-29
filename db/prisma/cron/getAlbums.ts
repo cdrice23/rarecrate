@@ -40,7 +40,7 @@ const initCronRun = async () => {
   });
 
   // Get the last Label that was used in the last cron job run
-  let lastProcessedLabel = lastRun ? lastRun.runs[0]?.lastProcessedLabel : 'Vandelay Industries';
+  let lastProcessedLabel = lastRun ? lastRun.runs[0]?.lastProcessedItem : 'Vandelay Industries';
 
   // Step 2 & 3: Create a new CronRun record and set targetEndTime
   const startAt = new Date();
@@ -197,7 +197,7 @@ const initCronRun = async () => {
   console.log('Exceeded the target end time. Exiting the script...');
   await prisma.cronRun.update({
     where: { id: newCronRun.id },
-    data: { completedAt: new Date(), lastProcessedLabel },
+    data: { completedAt: new Date(), lastProcessedItem: lastProcessedLabel },
   });
 
   console.log('CronRun Completed Successfully');

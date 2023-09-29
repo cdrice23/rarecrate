@@ -188,12 +188,12 @@ model CronJob {
 }
 
 model CronRun {
-  id                 Int       @id @default(autoincrement())
-  createdAt          DateTime  @default(now())
-  completedAt        DateTime?
-  lastProcessedLabel String?
-  cronJob            CronJob   @relation(fields: [cronJobId], references: [id])
-  cronJobId          Int
+  id                Int       @id @default(autoincrement())
+  createdAt         DateTime  @default(now())
+  completedAt       DateTime?
+  lastProcessedItem String?
+  cronJob           CronJob   @relation(fields: [cronJobId], references: [id])
+  cronJobId         Int
 
   @@index([cronJobId])
 }

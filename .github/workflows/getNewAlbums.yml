@@ -1,9 +1,9 @@
-name: Nightly getAlbums run
+name: Weekly getNewAlbums run
 
 on:
   schedule:
-    # Runs nightly @ 1 AM CST for ~4.5 hours
-    # - cron: '0 7 * * *'
+    # Runs weekly on Fridays @ 1 AM CST for ~5 hours or until complete
+    - cron: '0 7 * * 5'
 
 jobs:
   run_script:
@@ -33,5 +33,5 @@ jobs:
           echo "DISCOGS_API_KEY=${{ secrets.DISCOGS_API_KEY }}" >> $GITHUB_ENV
           echo "DISCOGS_API_SECRET=${{ secrets.DISCOGS_API_SECRET }}" >> $GITHUB_ENV
 
-      - name: Run getAlbums.ts script
-        run: yarn cron:run:getAlbums
+      - name: Run getNewAlbums.ts script
+        run: yarn cron:run:getNewAlbums
