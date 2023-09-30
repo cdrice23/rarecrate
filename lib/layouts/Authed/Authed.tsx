@@ -1,6 +1,5 @@
 import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useUser } from '@auth0/nextjs-auth0/client';
 import NavBar from './NavBar';
 import cx from 'classnames';
 import { Route } from '@/core/enums/routes';
@@ -11,7 +10,6 @@ interface AuthedLayoutProps {
 }
 
 const AuthedLayout = ({ children }: AuthedLayoutProps) => {
-  const { user, error, isLoading } = useUser();
   const { profileIdMain } = useLocalState();
   const router = useRouter();
 
@@ -25,7 +23,7 @@ const AuthedLayout = ({ children }: AuthedLayoutProps) => {
   return (
     <>
       <div className={cx('container')}>{children}</div>
-      {profileIdMain && <NavBar className={cx('navBar')} />}
+      <NavBar className={cx('navBar')} disableNav={!Boolean(profileIdMain)} />
     </>
   );
 };

@@ -2,15 +2,12 @@ import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
-import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 
 import authed from '../../core/helpers/authed';
-import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations';
-import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
-import { PublicRoute } from '@/core/enums/routes';
+
+import { ProfileForm } from '@/lib/molecules/ProfileForm/ProfileForm';
 
 interface NewProfileProps {
   userId?: number;
@@ -20,6 +17,7 @@ interface NewProfileProps {
 }
 
 const NewProfilePage = ({ userId, email }: NewProfileProps) => {
+  console.log(userId);
   return (
     <AuthedLayout>
       <Pane>
@@ -33,9 +31,7 @@ const NewProfilePage = ({ userId, email }: NewProfileProps) => {
         <p>{`userId (auth): ${userId}`}</p>
         <p>{`email (auth): ${email}`}</p>
       </Pane>
-      <Pane>
-        <LinkButton href={PublicRoute.Logout}>Logout</LinkButton>
-      </Pane>
+      <ProfileForm userId={userId} />
     </AuthedLayout>
   );
 };

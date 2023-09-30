@@ -9,9 +9,6 @@ const SocialLinksArrayInput = ({ socialLinks, setFieldValue }) => {
   const [values, setValues] = useState(socialLinks.map(link => ({ platform: link.platform, username: link.username })));
   const [isEditing, setIsEditing] = useState(socialLinks.map(link => false));
 
-  console.log(values);
-  console.log(isEditing);
-
   const handleEdit = index => {
     setIsEditing(isEditingState => isEditingState.map((isEditing, i) => (i === index ? true : isEditing)));
   };

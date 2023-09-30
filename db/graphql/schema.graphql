@@ -141,6 +141,7 @@ type Mutation {
   addNewTag(name: String!): Tag
   autoAcceptFollowRequests(receiverId: Int!): [FollowAndOrRequest]
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  createNewProfile(input: ProfileInput!): Profile
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
@@ -172,10 +173,11 @@ type Profile {
 
 input ProfileInput {
   bio: String
-  id: Int!
+  id: Int
   image: String
   isPrivate: Boolean!
   socialLinks: [SocialLinkInput]
+  userId: Int
   username: String!
 }
 

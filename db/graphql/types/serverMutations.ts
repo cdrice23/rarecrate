@@ -67,7 +67,8 @@ export const SocialLinkInput = inputObjectType({
 export const ProfileInput = inputObjectType({
   name: 'ProfileInput',
   definition(t) {
-    t.nonNull.int('id');
+    t.int('id');
+    t.int('userId');
     t.nonNull.string('username');
     t.nonNull.boolean('isPrivate');
     t.string('bio');
@@ -738,6 +739,32 @@ export const SelectedSearchResultMutations = extendType({
 export const ProfileMutations = extendType({
   type: 'Mutation',
   definition(t) {
+    t.field('createNewProfile', {
+      type: NexusProfile,
+      args: {
+        input: nonNull(ProfileInput),
+      },
+      resolve: async (_, { input: { userId, username, isPrivate, bio, image, socialLinks } }, ctx) => {
+        return ctx.prisma.profile.create({
+          data: {
+            user: {
+              connect: { id: userId },
+            },
+            username,
+            isPrivate,
+            bio,
+            image,
+            socialLinks: {
+              create: socialLinks.map(socialLink => ({
+                platform: socialLink.platform,
+                username: socialLink.username,
+              })),
+            },
+          },
+        });
+      },
+    });
+
     t.field('updateProfile', {
       type: NexusProfile,
       args: {

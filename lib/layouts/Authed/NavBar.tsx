@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 
 type NavBarProps = {
   className: string;
+  disableNav: boolean;
 };
 
-export const NavBar = ({ className }: NavBarProps) => {
+export const NavBar = ({ className, disableNav }: NavBarProps) => {
   // if (!usernameMain) return null;
   const { usernameMain, resetState } = useLocalState();
   const [profileUrl, setProfileUrl] = useState<string>(Route.Timeline);
@@ -29,19 +30,19 @@ export const NavBar = ({ className }: NavBarProps) => {
 
   return (
     <div className={className}>
-      <LinkButton href={Route.Timeline}>
+      <LinkButton href={Route.Timeline} disabled={disableNav}>
         <span>Timeline</span>
       </LinkButton>
-      <LinkButton href={Route.Dig}>
+      <LinkButton href={Route.Dig} disabled={disableNav}>
         <span>Crate Digging</span>
       </LinkButton>
-      <LinkButton href={Route.AddCrate}>
+      <LinkButton href={Route.AddCrate} disabled={disableNav}>
         <span>Add Crate</span>
       </LinkButton>
-      <LinkButton href={Route.Search}>
+      <LinkButton href={Route.Search} disabled={disableNav}>
         <span>Search</span>
       </LinkButton>
-      <LinkButton href={profileUrl}>
+      <LinkButton href={profileUrl} disabled={disableNav}>
         <span>Profile</span>
       </LinkButton>
       <LinkButton onClick={handleLogout}>

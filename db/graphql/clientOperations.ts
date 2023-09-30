@@ -743,6 +743,23 @@ export const GET_ALBUMS_FROM_SUBGENRE = gql`
 `;
 
 // Mutations for Profile Form
+export const CREATE_NEW_PROFILE = gql`
+  mutation CreateNewProfile($input: ProfileInput!) {
+    createNewProfile(input: $input) {
+      id
+      username
+      isPrivate
+      bio
+      image
+      socialLinks {
+        id
+        username
+        platform
+      }
+    }
+  }
+`;
+
 export const UPDATE_PROFILE = gql`
   mutation UpdateProfile($input: ProfileInput!) {
     updateProfile(input: $input) {
