@@ -17,16 +17,13 @@ const afterCallback = async (req, res, session, state) => {
     },
   });
 
-  if (session.user.email_verified) {
-    if (prismaUser.profiles.length > 0) {
-      res.setHeader('Location', Route.Timeline);
-    } else {
-      res.setHeader('Location', Route.NewProfile);
-    }
+  if (prismaUser.profiles.length > 0) {
+    res.setHeader('Location', Route.Timeline);
+
     return session;
   } else {
     // res.redirect(Route.VerifyEmail);
-    res.setHeader('Location', Route.VerifyEmail);
+    res.setHeader('Location', Route.NewProfile);
     return session;
   }
 };

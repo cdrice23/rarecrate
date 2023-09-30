@@ -22,22 +22,20 @@ interface NewProfileProps {
 const NewProfilePage = ({ userId, email }: NewProfileProps) => {
   return (
     <AuthedLayout>
-      <>
-        <Pane>
-          <h1>{`Create New Profile`}</h1>
-        </Pane>
-        <Pane>
-          <h3>Note: This is the first page a verified user sees to setup a new Profile.</h3>
-        </Pane>
-        <Pane>
-          <h3>{`Local State:`}</h3>
-          <p>{`userId (auth): ${userId}`}</p>
-          <p>{`email (auth): ${email}`}</p>
-        </Pane>
-        <Pane>
-          <LinkButton href={PublicRoute.Logout}>Logout</LinkButton>
-        </Pane>
-      </>
+      <Pane>
+        <h1>{`Create New Profile`}</h1>
+      </Pane>
+      <Pane>
+        <h3>Note: This is the first page a verified user sees to setup a new Profile.</h3>
+      </Pane>
+      <Pane>
+        <h3>{`Local State:`}</h3>
+        <p>{`userId (auth): ${userId}`}</p>
+        <p>{`email (auth): ${email}`}</p>
+      </Pane>
+      <Pane>
+        <LinkButton href={PublicRoute.Logout}>Logout</LinkButton>
+      </Pane>
     </AuthedLayout>
   );
 };

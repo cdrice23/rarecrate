@@ -16,19 +16,16 @@ const AuthedLayout = ({ children }: AuthedLayoutProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoading && !error && user && !user.email_verified && router.pathname !== Route.VerifyEmail) {
-      router.push(Route.VerifyEmail);
-    }
-    if (!isLoading && !error && user && user.email_verified && !profileIdMain && router.pathname !== Route.NewProfile) {
+    if (!profileIdMain && router.pathname !== Route.NewProfile) {
       router.push(Route.NewProfile);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, router]);
+  }, [router]);
 
   return (
     <>
       <div className={cx('container')}>{children}</div>
-      {user?.email_verified && profileIdMain && <NavBar className={cx('navBar')} />}
+      {profileIdMain && <NavBar className={cx('navBar')} />}
     </>
   );
 };

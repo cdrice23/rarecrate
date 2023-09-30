@@ -10,6 +10,5 @@ export enum Route {
   Dig = '/dig',
   Profile = '/profile',
   AddCrate = '/create',
-  VerifyEmail = '/verify-email',
   NewProfile = '/new-profile',
 }

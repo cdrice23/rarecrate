@@ -37,7 +37,7 @@ const AddCratePage = ({ userId, email }: AddCrateProps) => {
 
     const userProfiles = data?.getUsernameById;
 
-    if (!loading && !error && userProfiles) {
+    if (!loading && !error && userProfiles.length > 0) {
       if (!profileIdMain) {
         setProfileIdMain(userProfiles[0].id);
       }
