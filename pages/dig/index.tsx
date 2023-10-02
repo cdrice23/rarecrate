@@ -15,9 +15,10 @@ interface CrateDiggingProps {
   email?: string;
   profileId?: number;
   username?: string;
+  prismaUserProfiles?: any;
 }
 
-const CrateDiggingPage = ({ userId, email }: CrateDiggingProps) => {
+const CrateDiggingPage = ({ userId, email, prismaUserProfiles }: CrateDiggingProps) => {
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
@@ -49,7 +50,7 @@ const CrateDiggingPage = ({ userId, email }: CrateDiggingProps) => {
   }, [userId, email, loading, error, data]);
 
   return (
-    <AuthedLayout>
+    <AuthedLayout userProfiles={prismaUserProfiles}>
       {error ? (
         <>
           <h1>Error</h1>
@@ -84,6 +85,7 @@ export const getServerSideProps = authed(async context => {
   return {
     props: {
       userId: prismaUser.id,
+      prismaUserProfiles: prismaUser.profiles.map(profile => profile.id),
       email: auth0User.email,
     },
   };

@@ -19,9 +19,10 @@ interface ProfileProps {
   email?: string;
   profileId?: number;
   username?: string;
+  prismaUserProfiles?: any;
 }
 
-const ProfilePage = ({ userId, email }: ProfileProps) => {
+const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const router = useRouter();
   const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('crates');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
@@ -61,7 +62,7 @@ const ProfilePage = ({ userId, email }: ProfileProps) => {
   }, [userId, email, loading, error, data]);
 
   return (
-    <AuthedLayout>
+    <AuthedLayout userProfiles={prismaUserProfiles}>
       {error ? (
         <>
           <h1>Error</h1>
@@ -110,6 +111,7 @@ export const getServerSideProps = authed(async context => {
   return {
     props: {
       userId: prismaUser.id,
+      prismaUserProfiles: prismaUser.profiles.map(profile => profile.id),
       email: auth0User.email,
     },
   };

@@ -13,8 +13,9 @@ import {
 import * as yup from 'yup';
 import { useLocalState } from '@/lib/context/state';
 import { useRouter } from 'next/router';
-import { Route } from '@/core/enums/routes';
+import { PublicRoute, Route } from '@/core/enums/routes';
 import { gql } from '@apollo/client';
+import { Modal } from '@/lib/atoms/Modal/Modal';
 
 const initialProfileValues = {
   image: '',
@@ -22,6 +23,7 @@ const initialProfileValues = {
   isPrivate: false,
   bio: '',
   socialLinks: [],
+  acceptTermsAndConditions: false,
 };
 
 interface ProfileFormProps {
@@ -31,7 +33,7 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: ProfileFormProps) => {
-  const [checkboxClicked, setCheckboxClicked] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   const { setUsernameMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
   const [updateProfile] = useMutation(UPDATE_PROFILE);
@@ -39,10 +41,6 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
   const [createNewProfile] = useMutation(CREATE_NEW_PROFILE);
 
   const currentUser = userId;
-
-  const handleCheckboxClicked = () => {
-    setCheckboxClicked(true);
-  };
 
   const router = useRouter();
 
@@ -256,6 +254,28 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
               </div>
               <SocialLinksArrayInput socialLinks={values.socialLinks} setFieldValue={setFieldValue} />
               <ErrorMessage name="socialLinks" component="div" />
+              {!existingProfileData && (
+                <div className={cx('formInputItem')}>
+                  <div>
+                    <Field name="acceptTermsAndConditions" type="checkbox" />
+                    <label htmlFor="acceptTermsAndConditions">{`I accept the terms and conditions.`}</label>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowTerms(true);
+                    }}
+                  >{`Show Terms & Conditions`}</button>
+                  <Modal
+                    content={<div>Some t&c bullshit</div>}
+                    title={`Terms & Conditions`}
+                    show={showTerms}
+                    onClose={() => {
+                      setShowTerms(false);
+                    }}
+                  />
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={isSubmitting || !values.socialLinks.every(link => link.platform && link.username)}
@@ -264,7 +284,11 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
               </button>
               <button
                 onClick={() => {
-                  setShowEditProfile(false);
+                  if (existingProfileData) {
+                    setShowEditProfile(false);
+                  } else {
+                    router.push(PublicRoute.Logout);
+                  }
                 }}
               >
                 Cancel

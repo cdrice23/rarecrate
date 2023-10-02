@@ -8,7 +8,8 @@ export type Context = {
   prisma: PrismaClient;
   auth0User?: Claims;
   accessToken?: string;
-  prismaUser?: PrismaUser;
+  // prismaUser?: PrismaUser;
+  prismaUser?: any;
 };
 
 export async function createContext(req: NextApiRequest, res: NextApiResponse): Promise<Context> {
@@ -23,6 +24,9 @@ export async function createContext(req: NextApiRequest, res: NextApiResponse): 
   const prismaUser = await prisma.user.findUnique({
     where: {
       email: auth0User?.email,
+    },
+    include: {
+      profiles: true,
     },
   });
 

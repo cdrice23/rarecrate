@@ -18,7 +18,7 @@ const Modal = ({ title, content, footer, show, onClose }: IModal) => {
         <div className="modal">
           <div className="modal-header">
             <h2>{title}</h2>
-            <button onClick={onClose} className="close">
+            <button onClick={onClose} className="close" type="button">
               <X />
             </button>
           </div>

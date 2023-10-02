@@ -103,4 +103,9 @@ export const profileFormSchema = yup.object().shape({
         return true;
       },
     ),
+  acceptTermsAndConditions: yup
+    .boolean()
+    .test('acceptTermsAndConditions', 'Please accept terms and conditions to continue.', function (value) {
+      return value === true;
+    }),
 });

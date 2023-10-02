@@ -3,18 +3,17 @@ import { useRouter } from 'next/router';
 import NavBar from './NavBar';
 import cx from 'classnames';
 import { Route } from '@/core/enums/routes';
-import { useLocalState } from '@/lib/context/state';
 
 interface AuthedLayoutProps {
   children: ReactNode;
+  userProfiles: any[];
 }
 
-const AuthedLayout = ({ children }: AuthedLayoutProps) => {
-  const { profileIdMain } = useLocalState();
+const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!profileIdMain && router.pathname !== Route.NewProfile) {
+    if (userProfiles.length === 0 && router.pathname !== Route.NewProfile) {
       router.push(Route.NewProfile);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,7 +22,7 @@ const AuthedLayout = ({ children }: AuthedLayoutProps) => {
   return (
     <>
       <div className={cx('container')}>{children}</div>
-      <NavBar className={cx('navBar')} disableNav={!Boolean(profileIdMain)} />
+      <NavBar className={cx('navBar')} disableNav={Boolean(userProfiles.length === 0)} />
     </>
   );
 };

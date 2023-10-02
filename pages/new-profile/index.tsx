@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { Modal } from '@/lib/atoms/Modal/Modal';
 
 import authed from '../../core/helpers/authed';
 
@@ -14,12 +15,12 @@ interface NewProfileProps {
   email?: string;
   profileId?: number;
   username?: string;
+  prismaUserProfiles?: any;
 }
 
-const NewProfilePage = ({ userId, email }: NewProfileProps) => {
-  console.log(userId);
+const NewProfilePage = ({ userId, email, prismaUserProfiles }: NewProfileProps) => {
   return (
-    <AuthedLayout>
+    <AuthedLayout userProfiles={prismaUserProfiles}>
       <Pane>
         <h1>{`Create New Profile`}</h1>
       </Pane>
@@ -45,6 +46,7 @@ export const getServerSideProps = authed(async context => {
   return {
     props: {
       userId: prismaUser.id,
+      prismaUserProfiles: prismaUser.profiles.map(profile => profile.id),
       email: auth0User.email,
     },
   };
