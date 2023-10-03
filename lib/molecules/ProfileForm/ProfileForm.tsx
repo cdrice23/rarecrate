@@ -9,6 +9,7 @@ import {
   UPDATE_PROFILE,
   AUTO_ACCEPT_FOLLOW_REQUESTS,
   CREATE_NEW_PROFILE,
+  ACCEPT_USER_AGREEMENT,
 } from '@/db/graphql/clientOperations';
 import * as yup from 'yup';
 import { useLocalState } from '@/lib/context/state';
@@ -16,6 +17,7 @@ import { useRouter } from 'next/router';
 import { PublicRoute, Route } from '@/core/enums/routes';
 import { gql } from '@apollo/client';
 import { Modal } from '@/lib/atoms/Modal/Modal';
+import { UserAgreement } from '../UserAgreement/UserAgreement';
 
 const initialProfileValues = {
   image: '',
@@ -23,7 +25,7 @@ const initialProfileValues = {
   isPrivate: false,
   bio: '',
   socialLinks: [],
-  acceptTermsAndConditions: false,
+  acceptUserAgreement: false,
 };
 
 interface ProfileFormProps {
@@ -39,6 +41,7 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
   const [updateProfile] = useMutation(UPDATE_PROFILE);
   const [autoAcceptFollowRequests] = useMutation(AUTO_ACCEPT_FOLLOW_REQUESTS);
   const [createNewProfile] = useMutation(CREATE_NEW_PROFILE);
+  const [acceptUserAgreement] = useMutation(ACCEPT_USER_AGREEMENT);
 
   const currentUser = userId;
 
@@ -64,7 +67,9 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const { id, userId, username, isPrivate, bio, image, socialLinks } = values;
+    const { id, username, isPrivate, bio, image, socialLinks } = values;
+
+    // console.log(userId);
 
     if (id) {
       // Update existing Profile
@@ -207,6 +212,10 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
             },
           },
         });
+
+        await acceptUserAgreement({
+          variables: { userId: currentUser },
+        });
       } catch (error) {
         console.error('Error creating profile:', error);
         actions.setSubmitting(false);
@@ -225,6 +234,7 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
       onSubmit={onSubmit}
     >
       {({ values, setFieldValue, isSubmitting, initialValues }) => {
+        console.log(values.acceptUserAgreement);
         return (
           <Form className={cx('pane')}>
             <div className={cx('paneSectionFull')}>
@@ -241,7 +251,7 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
               <div className={cx('formInputItem')}>
                 <label htmlFor="isPrivate">Private account?</label>
                 <Field name="isPrivate" type="checkbox" />
-                {!values.isPrivate && initialValues.isPrivate && values.id && (
+                {!values.isPrivate && initialValues.isPrivate && existingProfileData && (
                   <p>
                     <em>{`Note: any pending follow requests will be accepted when you switch your profile to public.`}</em>
                   </p>
@@ -257,9 +267,10 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
               {!existingProfileData && (
                 <div className={cx('formInputItem')}>
                   <div>
-                    <Field name="acceptTermsAndConditions" type="checkbox" />
-                    <label htmlFor="acceptTermsAndConditions">{`I accept the terms and conditions.`}</label>
+                    <Field name="acceptUserAgreement" type="checkbox" />
+                    <label htmlFor="acceptUserAgreement">{`I accept the terms of the user agreement.`}</label>
                   </div>
+                  <ErrorMessage name="acceptUserAgreement" component="div" />
                   <button
                     type="button"
                     onClick={() => {
@@ -267,7 +278,7 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
                     }}
                   >{`Show Terms & Conditions`}</button>
                   <Modal
-                    content={<div>Some t&c bullshit</div>}
+                    content={<UserAgreement />}
                     title={`Terms & Conditions`}
                     show={showTerms}
                     onClose={() => {

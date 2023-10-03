@@ -134,6 +134,7 @@ type Label {
 
 type Mutation {
   acceptFollowRequest(input: FollowOrRequestInput!): FollowAndOrRequest
+  acceptUserAgreement(userId: Int!): User
   addCrateToFavorites(input: CrateProfileInput!): Crate
   addNewAlbum(discogsMasterId: Int!): Album
   addNewCrate(input: CrateInput!): Crate
@@ -276,6 +277,7 @@ type TracklistItem {
 }
 
 type User {
+  acceptedUserAgreement: Boolean!
   createdAt: DateTime!
   email: String
   emailVerified: Boolean

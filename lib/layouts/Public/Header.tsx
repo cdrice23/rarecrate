@@ -16,7 +16,7 @@ const Header = ({ isAuth, children }: IHeader) => {
   const isActive: (pathname: string) => boolean = pathname => router.pathname === pathname;
   const { user } = useUser();
 
-  const homeUrl = user ? Route.Timeline : PublicRoute.Home;
+  const homeUrl = user ? Route.Notifications : PublicRoute.Home;
 
   const left = (
     <div className="header-left">
@@ -30,8 +30,8 @@ const Header = ({ isAuth, children }: IHeader) => {
     <div className="header-right">
       {user ? (
         <>
-          <Link href={Route.Timeline} passHref>
-            <span className="header-link">Timeline</span>
+          <Link href={Route.Notifications} passHref>
+            <span className="header-link">Notifications</span>
           </Link>
           <Link href={PublicRoute.Logout} passHref>
             <span className="header-link">{`Exit`}</span>

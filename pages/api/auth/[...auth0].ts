@@ -18,7 +18,7 @@ const afterCallback = async (req, res, session, state) => {
   });
 
   if (prismaUser.profiles.length > 0) {
-    res.setHeader('Location', Route.Timeline);
+    res.setHeader('Location', Route.Dig);
 
     return session;
   } else {
@@ -33,7 +33,6 @@ export default handleAuth({
     try {
       // Pass custom parameters to login
       await handleLogin(req, res, {
-        // returnTo: Route.Timeline,
         returnTo: '/api/auth/callback',
       });
     } catch (error) {

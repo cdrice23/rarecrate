@@ -35,6 +35,9 @@ export const User = objectType({
     t.field(PrismaUser.role.name, {
       type: PrismaUser.role.type,
     });
+    t.field(PrismaUser.acceptedUserAgreement.name, {
+      type: PrismaUser.acceptedUserAgreement.type,
+    });
     t.nonNull.field('createdAt', {
       type: 'DateTime',
     });

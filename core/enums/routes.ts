@@ -5,7 +5,7 @@ export enum PublicRoute {
 }
 
 export enum Route {
-  Timeline = '/timeline',
+  Notifications = '/notifications',
   Search = '/search',
   Dig = '/dig',
   Profile = '/profile',

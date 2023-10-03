@@ -1,5 +1,6 @@
 import { nonNull, extendType, inputObjectType, mutationType, stringArg, intArg } from 'nexus';
 import {
+  User as NexusUser,
   Profile as NexusProfile,
   Crate as NexusCrate,
   Follow as NexusFollow,
@@ -820,6 +821,28 @@ export const ProfileMutations = extendType({
           where: { id },
           data: {
             ...rest,
+          },
+        });
+      },
+    });
+  },
+});
+
+export const UserMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('acceptUserAgreement', {
+      type: NexusUser,
+      args: {
+        userId: nonNull(intArg()),
+      },
+      resolve: async (_, { userId }, ctx) => {
+        return ctx.prisma.user.update({
+          where: {
+            id: userId,
+          },
+          data: {
+            acceptedUserAgreement: true,
           },
         });
       },

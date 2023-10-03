@@ -12,14 +12,14 @@ type NavBarProps = {
 export const NavBar = ({ className, disableNav }: NavBarProps) => {
   // if (!usernameMain) return null;
   const { usernameMain, resetState } = useLocalState();
-  const [profileUrl, setProfileUrl] = useState<string>(Route.Timeline);
+  const [profileUrl, setProfileUrl] = useState<string>(Route.Dig);
   const router = useRouter();
 
   useEffect(() => {
     if (usernameMain) {
       setProfileUrl(Route.Profile + `/${usernameMain}`);
     } else {
-      setProfileUrl(Route.Timeline);
+      setProfileUrl(Route.Dig);
     }
   }, [usernameMain]);
 
@@ -30,8 +30,8 @@ export const NavBar = ({ className, disableNav }: NavBarProps) => {
 
   return (
     <div className={className}>
-      <LinkButton href={Route.Timeline} disabled={disableNav}>
-        <span>Timeline</span>
+      <LinkButton href={Route.Notifications} disabled={disableNav}>
+        <span>Notifications</span>
       </LinkButton>
       <LinkButton href={Route.Dig} disabled={disableNav}>
         <span>Crate Digging</span>

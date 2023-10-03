@@ -820,3 +820,12 @@ export const AUTO_ACCEPT_FOLLOW_REQUESTS = gql`
     }
   }
 `;
+
+export const ACCEPT_USER_AGREEMENT = gql`
+  mutation AcceptUserAgreement($userId: Int!) {
+    acceptUserAgreement(userId: $userId) {
+      id
+      acceptedUserAgreement
+    }
+  }
+`;
