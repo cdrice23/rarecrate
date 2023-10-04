@@ -82,7 +82,12 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
               <p>{`Main Profile Username: ${usernameMain}`}</p>
             </div>
           </Pane>
-          <ProfilePane username={currentProfile} handlePaneSelect={handlePaneSelect} mainProfile={profileIdMain} />
+          <ProfilePane
+            username={currentProfile}
+            handlePaneSelect={handlePaneSelect}
+            mainProfile={profileIdMain}
+            currentUser={userId}
+          />
           {activePane === 'followers' ? (
             <div className={cx('paneSectionFull')}>
               <FolloweringPane username={currentProfile} listType="followers" />

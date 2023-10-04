@@ -148,7 +148,28 @@ type Mutation {
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
   updateCrate(input: CrateInput!): Crate
+  updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings
   updateProfile(input: ProfileInput!): Profile
+}
+
+type NotificationSettings {
+  id: Int!
+  showFollowingNewCrates: Boolean!
+  showFollowingNewFavorites: Boolean!
+  showFollowingNewFollows: Boolean!
+  showOwnNewFavorites: Boolean!
+  showOwnNewFollowers: Boolean!
+  user: User
+  userId: Int!
+}
+
+input NotificationSettingsInput {
+  showFollowingNewCrates: Boolean!
+  showFollowingNewFavorites: Boolean!
+  showFollowingNewFollows: Boolean!
+  showOwnNewFavorites: Boolean!
+  showOwnNewFollowers: Boolean!
+  userId: Int!
 }
 
 type Profile {
@@ -196,6 +217,7 @@ type Query {
   getCrateDetailWithAlbums(id: Int!): Crate!
   getCratesFromAlbum(albumId: Int!, currentPage: Int!): [Crate]!
   getCratesFromLabel(currentPage: Int!, labelId: Int!): [Crate]!
+  getNotificationSettingsByUser(userId: Int!): NotificationSettings!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]

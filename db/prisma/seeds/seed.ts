@@ -7,6 +7,7 @@ import { main as getAlbumImageUrls } from './getAlbumImageUrls';
 import { fixTagDuplicates } from '../backfill/fixTagDuplicates';
 import { removeAtHandles } from '../backfill/removeAtHandles';
 import { deleteCrateAlbums } from '../backfill/deleteCrateAlbums';
+import { addNotificationSettings } from '../backfill/addNotificationSettings';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -21,7 +22,8 @@ async function main() {
   // await resetDb();
   // await fixTagDuplicates();
   // await removeAtHandles();
-  await deleteCrateAlbums();
+  // await deleteCrateAlbums();
+  await addNotificationSettings();
 }
 
 main()

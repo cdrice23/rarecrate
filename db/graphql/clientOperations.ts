@@ -829,3 +829,29 @@ export const ACCEPT_USER_AGREEMENT = gql`
     }
   }
 `;
+
+export const GET_NOTIFICATION_SETTINGS_BY_USER = gql`
+  query GetNotificationSettingsByUser($userId: Int!) {
+    getNotificationSettingsByUser(userId: $userId) {
+      id
+      showOwnNewFollowers
+      showOwnNewFavorites
+      showFollowingNewFollows
+      showFollowingNewCrates
+      showFollowingNewFavorites
+    }
+  }
+`;
+
+export const UPDATE_NOTIFICATION_SETTINGS = gql`
+  mutation UpdateNotificationSettings($input: NotificationSettingsInput!) {
+    updateNotificationSettings(input: $input) {
+      id
+      showOwnNewFollowers
+      showOwnNewFavorites
+      showFollowingNewFollows
+      showFollowingNewCrates
+      showFollowingNewFavorites
+    }
+  }
+`;

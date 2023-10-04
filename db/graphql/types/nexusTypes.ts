@@ -17,6 +17,7 @@ import {
   CronRun as PrismaCronRun,
   SelectedSearchResult as PrismaSelectedSearchResult,
   Recommendation as PrismaRecommendation,
+  NotificationSettings as PrismaNotificationSettings,
 } from 'nexus-prisma';
 import { RequestStatusEnum } from './nexusEnums';
 
@@ -696,5 +697,35 @@ export const FollowAndOrRequest = objectType({
   definition(t) {
     t.field('follow', { type: Follow });
     t.field('followRequest', { type: FollowRequest });
+  },
+});
+
+export const NotificationSettings = objectType({
+  name: PrismaNotificationSettings.$name,
+  definition(t) {
+    t.field(PrismaNotificationSettings.id.name, {
+      type: PrismaNotificationSettings.id.type,
+    });
+    t.field(PrismaNotificationSettings.user.name, {
+      type: User,
+    });
+    t.field(PrismaNotificationSettings.userId.name, {
+      type: PrismaNotificationSettings.userId.type,
+    });
+    t.field(PrismaNotificationSettings.showOwnNewFollowers.name, {
+      type: PrismaNotificationSettings.showOwnNewFollowers.type,
+    });
+    t.field(PrismaNotificationSettings.showOwnNewFavorites.name, {
+      type: PrismaNotificationSettings.showOwnNewFavorites.type,
+    });
+    t.field(PrismaNotificationSettings.showFollowingNewFollows.name, {
+      type: PrismaNotificationSettings.showFollowingNewFollows.type,
+    });
+    t.field(PrismaNotificationSettings.showFollowingNewCrates.name, {
+      type: PrismaNotificationSettings.showFollowingNewCrates.type,
+    });
+    t.field(PrismaNotificationSettings.showFollowingNewFavorites.name, {
+      type: PrismaNotificationSettings.showFollowingNewFavorites.type,
+    });
   },
 });

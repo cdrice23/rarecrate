@@ -17,10 +17,11 @@ import { UserSettings } from '../UserSettings/UserSettings';
 type ProfilePaneProps = {
   username: string;
   mainProfile: number;
+  currentUser: number;
   handlePaneSelect: (pane: 'followers' | 'following' | 'crates' | 'favorites') => void;
 };
 
-const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePaneProps) => {
+const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser }: ProfilePaneProps) => {
   const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE, {
@@ -194,7 +195,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
           )}
 
           <Modal
-            content={<UserSettings />}
+            content={<UserSettings userId={currentUser} />}
             title={`Settings`}
             show={showSettings}
             onClose={() => {

@@ -8,6 +8,7 @@ import {
   Album as NexusAlbum,
   Genre as NexusGenre,
   Subgenre as NexusSubgenre,
+  NotificationSettings as NexusNotificationSettings,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -858,6 +859,25 @@ export const SubgenreQueries = extendType({
           },
           orderBy: {
             searchAndSelectCount: 'desc',
+          },
+        });
+      },
+    });
+  },
+});
+
+export const NotificationSettingsQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.field('getNotificationSettingsByUser', {
+      type: NexusNotificationSettings,
+      args: {
+        userId: nonNull(intArg()),
+      },
+      resolve: async (_, { userId }, ctx) => {
+        return await ctx.prisma.notificationSettings.findUnique({
+          where: {
+            userId,
           },
         });
       },

@@ -436,6 +436,24 @@
   .paneSectionFull {
     grid-column: 1 / span 12;
 
+    .notificationSettings {
+
+      display: flex;
+      padding: 0px 25%;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .formInputItem {
+        margin: 4px;
+
+        
+        label {
+          margin-right: 8px;
+        }
+  
+      }
+    }
+
     .formInputItem {
       margin: 4px;
       

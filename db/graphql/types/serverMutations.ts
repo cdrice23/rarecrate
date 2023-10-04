@@ -10,6 +10,7 @@ import {
   Label as NexusLabel,
   Album as NexusAlbum,
   SelectedSearchResult as NexusSelectedSearchResult,
+  NotificationSettings as NexusNotificationSettings,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
 import axios from 'axios';
@@ -75,6 +76,18 @@ export const ProfileInput = inputObjectType({
     t.string('bio');
     t.string('image');
     t.list.field('socialLinks', { type: SocialLinkInput });
+  },
+});
+
+export const NotificationSettingsInput = inputObjectType({
+  name: 'NotificationSettingsInput',
+  definition(t) {
+    t.nonNull.int('userId');
+    t.nonNull.boolean('showOwnNewFollowers');
+    t.nonNull.boolean('showOwnNewFavorites');
+    t.nonNull.boolean('showFollowingNewFollows');
+    t.nonNull.boolean('showFollowingNewCrates');
+    t.nonNull.boolean('showFollowingNewFavorites');
   },
 });
 
@@ -843,6 +856,40 @@ export const UserMutations = extendType({
           },
           data: {
             acceptedUserAgreement: true,
+          },
+        });
+      },
+    });
+  },
+});
+
+export const NotificationSettingsMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('updateNotificationSettings', {
+      type: NexusNotificationSettings,
+      args: {
+        input: nonNull(NotificationSettingsInput),
+      },
+      resolve: async (_, { input }, ctx) => {
+        const {
+          userId,
+          showOwnNewFollowers,
+          showOwnNewFavorites,
+          showFollowingNewFollows,
+          showFollowingNewFavorites,
+          showFollowingNewCrates,
+        } = input;
+
+        // Update profile
+        return ctx.prisma.notificationSettings.update({
+          where: { userId },
+          data: {
+            showOwnNewFollowers,
+            showOwnNewFavorites,
+            showFollowingNewFollows,
+            showFollowingNewFavorites,
+            showFollowingNewCrates,
           },
         });
       },
