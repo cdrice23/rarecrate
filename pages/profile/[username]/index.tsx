@@ -28,8 +28,8 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
     // real variable to get authed user
-    // variables: { userId },
-    variables: { userId: 1286 },
+    variables: { userId },
+    // variables: { userId: 1286 },
   });
 
   const handlePaneSelect = (pane: 'followers' | 'following' | 'crates' | 'favorites') => {
@@ -87,6 +87,7 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
             handlePaneSelect={handlePaneSelect}
             mainProfile={profileIdMain}
             currentUser={userId}
+            userProfiles={prismaUserProfiles}
           />
           {activePane === 'followers' ? (
             <div className={cx('paneSectionFull')}>
@@ -116,7 +117,7 @@ export const getServerSideProps = authed(async context => {
   return {
     props: {
       userId: prismaUser.id,
-      prismaUserProfiles: prismaUser.profiles.map(profile => profile.id),
+      prismaUserProfiles: prismaUser.profiles.map(profile => ({ id: profile.id, username: profile.username })),
       email: auth0User.email,
     },
   };

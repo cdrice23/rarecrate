@@ -996,3 +996,35 @@
     margin-left: 4px;
   }
 }
+
+.dropdownMenu {
+  padding-inline-start: unset;
+  top: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  
+  .menuItem {
+    margin: 4px;
+    width: 400px;
+    padding: 4px;
+    display: flex;
+    background-color: aliceblue;
+
+    .username {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:hover {
+      background-color: #bde4ff;
+    }
+  }
+}
+
+.currentProfileButton {
+  margin: 16px auto 0px;
+}

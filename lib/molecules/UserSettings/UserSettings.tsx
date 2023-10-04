@@ -4,8 +4,9 @@ import { toast } from 'react-toastify';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
+import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
 
-const UserSettings = ({ userId }) => {
+const UserSettings = ({ userId, userProfiles }) => {
   const { loading, error, data } = useQuery(GET_NOTIFICATION_SETTINGS_BY_USER, {
     variables: { userId },
   });
@@ -105,6 +106,7 @@ const UserSettings = ({ userId }) => {
           </Formik>
         </Pane>
       ) : null}
+      <UserProfileDropdown userProfiles={userProfiles} />
     </>
   );
 };
