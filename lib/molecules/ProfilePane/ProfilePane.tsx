@@ -7,10 +7,12 @@ import {
   UNFOLLOW_PROFILE,
   GET_PENDING_FOLLOW_REQUESTS,
 } from '@/db/graphql/clientOperations';
-import { DotsThreeVertical } from '@phosphor-icons/react';
+import { DotsThreeVertical, Gear } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
+import { Modal } from '@/lib/atoms/Modal/Modal';
+import { UserSettings } from '../UserSettings/UserSettings';
 
 type ProfilePaneProps = {
   username: string;
@@ -20,6 +22,7 @@ type ProfilePaneProps = {
 
 const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePaneProps) => {
   const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE, {
     variables: { username },
   });
@@ -175,15 +178,29 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile }: ProfilePanePro
                   </button>
                 )}
                 {isMain && (
-                  <button onClick={() => setShowEditProfile(true)}>
-                    <p>Edit Profile</p>
-                    <DotsThreeVertical />
-                  </button>
+                  <div>
+                    <button onClick={() => setShowEditProfile(true)}>
+                      <p>Edit Profile</p>
+                      <DotsThreeVertical />
+                    </button>
+                    <button onClick={() => setShowSettings(true)}>
+                      <p>Settings</p>
+                      <Gear />
+                    </button>
+                  </div>
                 )}
               </div>
             </Pane>
           )}
 
+          <Modal
+            content={<UserSettings />}
+            title={`Settings`}
+            show={showSettings}
+            onClose={() => {
+              setShowSettings(false);
+            }}
+          />
           <div className={cx('listActions')}>
             <button onClick={() => handlePaneSelect('followers')}>
               <h3>Followers</h3>

@@ -14,14 +14,28 @@ datasource db {
 }
 
 model User {
-  id                    Int       @id @default(autoincrement())
-  email                 String?   @unique
+  id                    Int                   @id @default(autoincrement())
+  email                 String?               @unique
   emailVerified         Boolean?
-  role                  String    @default("USER")
-  acceptedUserAgreement Boolean   @default(false)
-  createdAt             DateTime  @default(now())
-  updatedAt             DateTime  @updatedAt
+  role                  String                @default("USER")
+  acceptedUserAgreement Boolean               @default(false)
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
   profiles              Profile[]
+  notificationSettings  NotificationSettings?
+}
+
+model NotificationSettings {
+  id                        Int     @id @default(autoincrement())
+  user                      User    @relation(fields: [userId], references: [id])
+  userId                    Int     @unique
+  showOwnNewFollowers       Boolean @default(true)
+  showOwnNewFavorites       Boolean @default(true)
+  showFollowingNewFollows   Boolean @default(true)
+  showFollowingNewCrates    Boolean @default(true)
+  showFollowingNewFavorites Boolean @default(true)
+
+  @@index([userId])
 }
 
 model Profile {

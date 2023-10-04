@@ -27,8 +27,17 @@ export async function createContext(req: NextApiRequest, res: NextApiResponse): 
     },
     include: {
       profiles: true,
+      notificationSettings: true,
     },
   });
+
+  // if (prismaUser.notificationSettings === null) {
+  //   await prisma.notificationSettings.create({
+  //     data: {
+  //       user: {connect: {id: prismaUser.id}}
+  //     }
+  //   })
+  // }
 
   return {
     prisma,

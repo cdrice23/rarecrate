@@ -14,8 +14,11 @@ const afterCallback = async (req, res, session, state) => {
     },
     include: {
       profiles: true,
+      // notificationSettings: true
     },
   });
+
+  // console.log(`Notification Settings`, prismaUser?.notificationSettings)
 
   if (prismaUser.profiles.length > 0) {
     res.setHeader('Location', Route.Dig);

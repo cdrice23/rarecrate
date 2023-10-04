@@ -32,14 +32,30 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     } else {
       // Create a new user
-      await prisma.user.create({
+      const newUser = await prisma.user.create({
         data: {
           email,
           emailVerified: user.email_verified,
+          // notificationSettings: {
+          //   create: {
+
+          //   }
+          // }
+        },
+        include: {
+          notificationSettings: true,
         },
       });
 
-      return res.status(200).json({
+      if (newUser.notificationSettings === null) {
+        await prisma.notificationSettings.create({
+          data: {
+            user: { connect: { id: newUser.id } },
+          },
+        });
+      }
+
+      return await res.status(200).json({
         message: `User with email: ${email} has been created successfully!`,
       });
     }
