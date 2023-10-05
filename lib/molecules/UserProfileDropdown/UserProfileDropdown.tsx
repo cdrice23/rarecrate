@@ -9,7 +9,7 @@ import { Route } from '@/core/enums/routes';
 
 const UserProfileDropdown = ({ userProfiles }) => {
   const [selectedItem, setSelectedItem] = useState(null);
-  const { usernameMain, setUsernameMain } = useLocalState();
+  const { usernameMain, setUsernameMain, setProfileIdMain } = useLocalState();
 
   const router = useRouter();
 
@@ -19,7 +19,9 @@ const UserProfileDropdown = ({ userProfiles }) => {
     if (b.username === usernameMain) return 1;
     return 0;
   });
-  sortedUserProfiles.push({ isAddProfile: true });
+  if (userProfiles.length < 5) {
+    sortedUserProfiles.push({ isAddProfile: true });
+  }
 
   const { isOpen, getToggleButtonProps, getMenuProps, getItemProps, highlightedIndex } = useSelect({
     items: sortedUserProfiles,
@@ -27,11 +29,13 @@ const UserProfileDropdown = ({ userProfiles }) => {
     selectedItem,
     onSelectedItemChange: ({ selectedItem: newSelectedItem }) => {
       if (newSelectedItem.isAddProfile) {
-        // router.push(Route.NewProfile)
-        console.log('Handle new profile creation');
+        router.push(Route.NewProfile);
+        // console.log('Handle new profile creation');
       } else {
         setSelectedItem(newSelectedItem);
         setUsernameMain(newSelectedItem.username);
+        setProfileIdMain(newSelectedItem.id);
+        router.push(Route.Profile + `/${newSelectedItem.username}`);
       }
     },
   });
@@ -57,7 +61,7 @@ const UserProfileDropdown = ({ userProfiles }) => {
                     className={cx('menuItem')}
                     style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
                   >
-                    Add New Profile
+                    {`Add New Profile`}
                   </div>
                 </li>
               );

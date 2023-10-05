@@ -36,7 +36,7 @@ interface ProfileFormProps {
 
 const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: ProfileFormProps) => {
   const [showTerms, setShowTerms] = useState(false);
-  const { setUsernameMain } = useLocalState();
+  const { setUsernameMain, setProfileIdMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
   const [updateProfile] = useMutation(UPDATE_PROFILE);
   const [autoAcceptFollowRequests] = useMutation(AUTO_ACCEPT_FOLLOW_REQUESTS);
@@ -200,7 +200,7 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
     } else {
       // Create new Profile
       try {
-        await createNewProfile({
+        const newProfile = await createNewProfile({
           variables: {
             input: {
               userId: currentUser,
@@ -216,15 +216,24 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
         await acceptUserAgreement({
           variables: { userId: currentUser },
         });
+
+        setUsernameMain(newProfile?.data.username);
+        setProfileIdMain(newProfile?.data.id);
       } catch (error) {
         console.error('Error creating profile:', error);
         actions.setSubmitting(false);
       }
     }
 
-    actions.setSubmitting(false);
-    // Go to the new/updated Profile
-    router.push(Route.Profile + `/${values.username}`);
+    const redirectToProfile = async () => {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Go to the new/updated Profile
+      actions.setSubmitting(false);
+      router.push(Route.Profile + `/${values.username}`);
+    };
+
+    // Call the new function
+    redirectToProfile();
   };
 
   return (
@@ -234,7 +243,6 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
       onSubmit={onSubmit}
     >
       {({ values, setFieldValue, isSubmitting, initialValues }) => {
-        console.log(values.acceptUserAgreement);
         return (
           <Form className={cx('pane')}>
             <div className={cx('paneSectionFull')}>

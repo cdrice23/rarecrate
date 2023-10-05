@@ -15,10 +15,11 @@ import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 type CrateSummaryPaneProps = {
   username: string;
   mainProfile: number;
+  userProfiles: [{ id: number; username: string }];
   listType: 'crates' | 'favorites';
 };
 
-const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneProps) => {
+const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: CrateSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
@@ -39,6 +40,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
   const crateSummaryData = data?.getProfile;
   console.log(crateSummaryData);
   const isMain = Boolean(crateSummaryData?.id === mainProfile);
+  const isUserProfile = userProfiles.some(profile => profile.id === crateSummaryData?.id);
 
   const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
     update: (cache, { data: { addCrateToFavorites } }) => {
@@ -145,7 +147,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile }: CrateSummaryPaneP
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
-                  {!isMain && (
+                  {!isMain && !isUserProfile && (
                     <BinaryIconButton
                       icon={<Heart />}
                       checkStatus={Boolean(

@@ -98,9 +98,19 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
               <FolloweringPane username={currentProfile} listType="following" />
             </div>
           ) : activePane === 'crates' ? (
-            <CrateSummaryPane username={currentProfile} listType="crates" mainProfile={profileIdMain} />
+            <CrateSummaryPane
+              username={currentProfile}
+              listType="crates"
+              mainProfile={profileIdMain}
+              userProfiles={prismaUserProfiles}
+            />
           ) : (
-            <CrateSummaryPane username={currentProfile} listType="favorites" mainProfile={profileIdMain} />
+            <CrateSummaryPane
+              username={currentProfile}
+              listType="favorites"
+              mainProfile={profileIdMain}
+              userProfiles={prismaUserProfiles}
+            />
           )}
         </>
       ) : null}

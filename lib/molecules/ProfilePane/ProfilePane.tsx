@@ -33,7 +33,10 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
     variables: { id: profileData?.id },
   });
 
+  console.log('User profiles', userProfiles);
+
   const isMain = Boolean(mainProfile === profileData?.id);
+  const isUserProfile = userProfiles.some(profile => profile.username === profileData?.username);
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
   const hasPendingRequest =
     followRequestData?.getPendingFollowRequests.filter(request => request.sender.id === mainProfile).length > 0;
@@ -174,23 +177,25 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
                     <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
                   ))}
                 </ul>
-                {!isMain && (
+                {!isMain && !isUserProfile && (
                   <button onClick={() => handleFollowClick(isFollowing)}>
                     {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
                   </button>
                 )}
-                {isMain && (
-                  <div>
+                <div>
+                  {isMain && (
                     <button onClick={() => setShowEditProfile(true)}>
                       <p>Edit Profile</p>
                       <DotsThreeVertical />
                     </button>
+                  )}
+                  {isUserProfile && (
                     <button onClick={() => setShowSettings(true)}>
                       <p>Settings</p>
                       <Gear />
                     </button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </Pane>
           )}
