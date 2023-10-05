@@ -33,15 +33,12 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
     variables: { id: profileData?.id },
   });
 
-  console.log('User profiles', userProfiles);
-
   const isMain = Boolean(mainProfile === profileData?.id);
   const isUserProfile = userProfiles.some(profile => profile.username === profileData?.username);
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
   const hasPendingRequest =
     followRequestData?.getPendingFollowRequests.filter(request => request.sender.id === mainProfile).length > 0;
 
-  console.log(hasPendingRequest);
   console.log(useApolloClient().cache.extract());
 
   const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {

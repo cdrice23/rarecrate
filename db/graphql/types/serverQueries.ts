@@ -107,6 +107,26 @@ export const ProfileQueries = queryType({
         return profiles;
       },
     });
+
+    t.nonNull.field('getLastLoginProfile', {
+      type: NexusProfile,
+      args: {
+        userId: nonNull(intArg()),
+      },
+      resolve: async (_, { userId }, ctx) => {
+        const user = await ctx.prisma.user.findUnique({
+          where: { id: userId },
+        });
+
+        return await ctx.prisma.profile.findUnique({
+          where: { id: user.lastLoginProfile },
+          select: {
+            id: true,
+            username: true,
+          },
+        });
+      },
+    });
   },
 });
 

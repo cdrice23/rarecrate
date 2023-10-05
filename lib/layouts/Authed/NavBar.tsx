@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { Route, PublicRoute } from '../../../core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
 
 type NavBarProps = {
   className: string;
@@ -10,8 +12,9 @@ type NavBarProps = {
 };
 
 export const NavBar = ({ className, disableNav }: NavBarProps) => {
+  const [updateLastLoginProfile] = useMutation(UPDATE_LAST_LOGIN_PROFILE);
   // if (!usernameMain) return null;
-  const { usernameMain, resetState } = useLocalState();
+  const { userId, profileIdMain, usernameMain, resetState } = useLocalState();
   const [profileUrl, setProfileUrl] = useState<string>(Route.Dig);
   const router = useRouter();
 
@@ -23,8 +26,9 @@ export const NavBar = ({ className, disableNav }: NavBarProps) => {
     }
   }, [usernameMain]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     resetState();
+    await updateLastLoginProfile({ variables: { userId, profileId: profileIdMain } });
     router.push(PublicRoute.Logout);
   };
 

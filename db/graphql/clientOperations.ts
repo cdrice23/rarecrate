@@ -789,6 +789,24 @@ export const UPDATE_PROFILE = gql`
   }
 `;
 
+export const UPDATE_LAST_LOGIN_PROFILE = gql`
+  mutation UpdateLastLoginProfile($userId: Int!, $profileId: Int!) {
+    updateLastLoginProfile(userId: $userId, profileId: $profileId) {
+      id
+      lastLoginProfile
+    }
+  }
+`;
+
+export const GET_LAST_LOGIN_PROFILE = gql`
+  query GetLastLoginProfile($userId: Int!) {
+    getLastLoginProfile(userId: $userId) {
+      id
+      username
+    }
+  }
+`;
+
 export const AUTO_ACCEPT_FOLLOW_REQUESTS = gql`
   mutation AutoAcceptFollowRequests($receiverId: Int!) {
     autoAcceptFollowRequests(receiverId: $receiverId) {

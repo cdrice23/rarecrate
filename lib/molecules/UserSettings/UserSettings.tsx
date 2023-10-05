@@ -61,7 +61,6 @@ const UserSettings = ({ userId, userProfiles }) => {
             onSubmit={onSubmit}
           >
             {({ values, isSubmitting, initialValues }) => {
-              console.log(values);
               return (
                 <Form className={cx('pane')}>
                   <div className={cx('paneSectionFull')}>

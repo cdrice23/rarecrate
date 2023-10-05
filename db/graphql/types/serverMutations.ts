@@ -860,6 +860,24 @@ export const UserMutations = extendType({
         });
       },
     });
+
+    t.field('updateLastLoginProfile', {
+      type: NexusUser,
+      args: {
+        userId: nonNull(intArg()),
+        profileId: nonNull(intArg()),
+      },
+      resolve: async (_, { userId, profileId }, ctx) => {
+        return ctx.prisma.user.update({
+          where: {
+            id: userId,
+          },
+          data: {
+            lastLoginProfile: profileId,
+          },
+        });
+      },
+    });
   },
 });
 

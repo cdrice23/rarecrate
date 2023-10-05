@@ -148,6 +148,7 @@ type Mutation {
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
   updateCrate(input: CrateInput!): Crate
+  updateLastLoginProfile(profileId: Int!, userId: Int!): User
   updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings
   updateProfile(input: ProfileInput!): Profile
 }
@@ -217,6 +218,7 @@ type Query {
   getCrateDetailWithAlbums(id: Int!): Crate!
   getCratesFromAlbum(albumId: Int!, currentPage: Int!): [Crate]!
   getCratesFromLabel(currentPage: Int!, labelId: Int!): [Crate]!
+  getLastLoginProfile(userId: Int!): Profile!
   getNotificationSettingsByUser(userId: Int!): NotificationSettings!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
@@ -304,6 +306,7 @@ type User {
   email: String
   emailVerified: Boolean
   id: Int!
+  lastLoginProfile: Int
   profiles: Profile
   role: String!
   updatedAt: DateTime!

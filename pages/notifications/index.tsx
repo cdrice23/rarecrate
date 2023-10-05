@@ -9,9 +9,9 @@ import { FollowRequestPane } from '@/lib/molecules/FollowRequestPane/FollowReque
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations';
+import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
 
-interface TimelineProps {
+interface NotificationsProps {
   userId?: number;
   email?: string;
   profileId?: number;
@@ -19,12 +19,18 @@ interface TimelineProps {
   prismaUserProfiles?: any;
 }
 
-const TimelinePage = ({ userId, email, prismaUserProfiles }: TimelineProps) => {
+const NotificationsPage = ({ userId, email, prismaUserProfiles }: NotificationsProps) => {
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
-  const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
+  // const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
+  //   // real variable to get authed user
+  //   // variables: { userId },
+  //   variables: { userId: 1286 },
+  // });
+
+  const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
     // real variable to get authed user
-    // variables: { userId },
-    variables: { userId: 1286 },
+    variables: { userId },
+    // variables: { userId: 1286 },
   });
 
   useEffect(() => {
@@ -36,15 +42,16 @@ const TimelinePage = ({ userId, email, prismaUserProfiles }: TimelineProps) => {
       setEmail(email);
     }
 
-    const userProfiles = data?.getUsernameById;
+    // const userProfiles = data?.getUsernameById;
+    const lastLoginProfile = data?.getLastLoginProfile;
 
-    if (!loading && !error && userProfiles.length > 0) {
+    if (!loading && !error && lastLoginProfile) {
       if (!profileIdMain) {
-        setProfileIdMain(userProfiles[0].id);
+        setProfileIdMain(lastLoginProfile.id);
       }
 
       if (!usernameMain) {
-        setUsernameMain(userProfiles[0].username);
+        setUsernameMain(lastLoginProfile.username);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,10 +69,7 @@ const TimelinePage = ({ userId, email, prismaUserProfiles }: TimelineProps) => {
       ) : profileIdMain && usernameMain ? (
         <>
           <Pane>
-            <h1>{`Timeline`}</h1>
-          </Pane>
-          <Pane>
-            <h3>Note: This will be the first page upon login.</h3>
+            <h1>{`Notifications`}</h1>
           </Pane>
           <Pane>
             <h3>{`Local State:`}</h3>
@@ -81,7 +85,7 @@ const TimelinePage = ({ userId, email, prismaUserProfiles }: TimelineProps) => {
   );
 };
 
-export default TimelinePage;
+export default NotificationsPage;
 
 export const getServerSideProps = authed(async context => {
   const ctx = await createContext(context.req as NextApiRequest, context.res as NextApiResponse);

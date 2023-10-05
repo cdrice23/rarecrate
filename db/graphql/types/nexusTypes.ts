@@ -55,6 +55,9 @@ export const User = objectType({
           .profiles();
       },
     });
+    t.field(PrismaUser.lastLoginProfile.name, {
+      type: PrismaUser.lastLoginProfile.type,
+    });
   },
 });
 
