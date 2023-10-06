@@ -1,6 +1,8 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import cx from 'classnames';
 import { useLocalState } from '@/lib/context/state';
+import { UserMutations } from '@/db/graphql/types/serverMutations';
+import { DELETE_PROFILE } from '@/db/graphql/clientOperations';
 
 interface DeleteProfileProps {
   usernameToDelete: string;

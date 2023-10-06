@@ -8,6 +8,7 @@ import { fixTagDuplicates } from '../backfill/fixTagDuplicates';
 import { removeAtHandles } from '../backfill/removeAtHandles';
 import { deleteCrateAlbums } from '../backfill/deleteCrateAlbums';
 import { addNotificationSettings } from '../backfill/addNotificationSettings';
+import { generateProfileDeleteTest } from '../backfill/generateProfileDeleteTest';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -23,7 +24,8 @@ async function main() {
   // await fixTagDuplicates();
   // await removeAtHandles();
   // await deleteCrateAlbums();
-  await addNotificationSettings();
+  // await addNotificationSettings();
+  await generateProfileDeleteTest();
 }
 
 main()

@@ -873,3 +873,11 @@ export const UPDATE_NOTIFICATION_SETTINGS = gql`
     }
   }
 `;
+
+export const DELETE_PROFILE = gql`
+  mutation DeletedProfile($profileId: Int!) {
+    deleteProfile(profileId: $profileId) {
+      id
+    }
+  }
+`;

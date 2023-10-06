@@ -845,15 +845,21 @@ export const ProfileMutations = extendType({
         profileId: nonNull(intArg()),
       },
       resolve: async (_, { profileId }, ctx) => {
-        // Delete the profile and all related records
-        const deletedProfile = await ctx.prisma.profile.delete({
+        // Fetch the profile and its associated crates
+        const profileToDelete = await ctx.prisma.profile.findUnique({
           where: { id: profileId },
           include: {
             followers: true,
             following: true,
             crates: {
               include: {
-                albums: true,
+                albums: {
+                  include: {
+                    tags: true,
+                  },
+                },
+                labels: true,
+                favoritedBy: true,
               },
             },
             socialLinks: true,
@@ -861,6 +867,81 @@ export const ProfileMutations = extendType({
             followRequestsReceived: true,
             recommendations: true,
           },
+        });
+
+        // Loop through the crates and delete them + all CrateAlbums associated to them
+        for (const crate of profileToDelete.crates) {
+          // Disconnect labels from the crate
+          for (const label of crate.labels) {
+            await ctx.prisma.label.update({
+              where: {
+                id: label.id,
+              },
+              data: {
+                crates: {
+                  disconnect: { id: crate.id },
+                },
+              },
+            });
+          }
+
+          // Disconnect crate to be deleted that is favoritedBy other profiles
+          for (const profile of crate.favoritedBy) {
+            await ctx.prisma.profile.update({
+              where: { id: profile.id },
+              data: {
+                favorites: {
+                  disconnect: { id: crate.id },
+                },
+              },
+            });
+          }
+          // Delete the crateAlbums
+          for (const album of crate.albums) {
+            // First disconnect any tags on the album
+            for (const tag of album.tags) {
+              await ctx.prisma.tag.update({
+                where: { id: tag.id },
+                data: {
+                  disconnect: {
+                    crateAlbum: { id: album.id },
+                  },
+                },
+              });
+            }
+
+            await ctx.prisma.crateAlbum.delete({ where: { id: album.id } });
+          }
+          // Delete crate
+          await ctx.prisma.crate.delete({ where: { id: crate.id } });
+        }
+
+        // Loop through the followers and following and delete them
+        for (const follow of [...profileToDelete.followers, ...profileToDelete.following]) {
+          await ctx.prisma.follow.delete({ where: { id: follow.id } });
+        }
+
+        // Loop through the social links and delete them
+        for (const socialLink of profileToDelete.socialLinks) {
+          await ctx.prisma.socialLink.delete({ where: { id: socialLink.id } });
+        }
+
+        // Loop through the follow requests sent and received and delete them
+        for (const followRequest of [
+          ...profileToDelete.followRequestsSent,
+          ...profileToDelete.followRequestsReceived,
+        ]) {
+          await ctx.prisma.followRequest.delete({ where: { id: followRequest.id } });
+        }
+
+        // Loop through the recommendations and delete them
+        for (const recommendation of profileToDelete.recommendations) {
+          await ctx.prisma.recommendation.delete({ where: { id: recommendation.id } });
+        }
+
+        // Delete the profile and all related records
+        const deletedProfile = await ctx.prisma.profile.delete({
+          where: { id: profileId },
         });
 
         return deletedProfile;
