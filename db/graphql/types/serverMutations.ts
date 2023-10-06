@@ -838,6 +838,34 @@ export const ProfileMutations = extendType({
         });
       },
     });
+
+    t.field('deleteProfile', {
+      type: NexusProfile,
+      args: {
+        profileId: nonNull(intArg()),
+      },
+      resolve: async (_, { profileId }, ctx) => {
+        // Delete the profile and all related records
+        const deletedProfile = await ctx.prisma.profile.delete({
+          where: { id: profileId },
+          include: {
+            followers: true,
+            following: true,
+            crates: {
+              include: {
+                albums: true,
+              },
+            },
+            socialLinks: true,
+            followRequestsSent: true,
+            followRequestsReceived: true,
+            recommendations: true,
+          },
+        });
+
+        return deletedProfile;
+      },
+    });
   },
 });
 

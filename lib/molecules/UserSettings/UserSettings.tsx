@@ -5,6 +5,8 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
 import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
+import { Message } from '@/lib/atoms/Message/Message';
+import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
 
 const UserSettings = ({ userId, userProfiles }) => {
   const { loading, error, data } = useQuery(GET_NOTIFICATION_SETTINGS_BY_USER, {

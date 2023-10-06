@@ -6,9 +6,14 @@ import cx from 'classnames';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
+import { Message } from '@/lib/atoms/Message/Message';
+import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
 
 const UserProfileDropdown = ({ userProfiles }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [showDeleteProfileMessage, setShowDeleteProfileMessage] = useState(false);
+  const [profileToDelete, setProfileToDelete] = useState(null);
   const { usernameMain, setUsernameMain, setProfileIdMain } = useLocalState();
 
   const router = useRouter();
@@ -23,7 +28,7 @@ const UserProfileDropdown = ({ userProfiles }) => {
     sortedUserProfiles.push({ isAddProfile: true });
   }
 
-  const { isOpen, getToggleButtonProps, getMenuProps, getItemProps, highlightedIndex } = useSelect({
+  const { getToggleButtonProps, getMenuProps, getItemProps, highlightedIndex } = useSelect({
     items: sortedUserProfiles,
     itemToString: () => userProfiles.map(userProfile => userProfile.username),
     selectedItem,
@@ -35,19 +40,21 @@ const UserProfileDropdown = ({ userProfiles }) => {
         setSelectedItem(newSelectedItem);
         setUsernameMain(newSelectedItem.username);
         setProfileIdMain(newSelectedItem.id);
-        router.push(Route.Profile + `/${newSelectedItem.username}`);
+        router.replace(Route.Profile + `/${newSelectedItem.username}`);
       }
     },
   });
 
   const handleDeleteProfile = profile => {
     console.log(`You are trying to delete: ${profile.username}`);
+    setProfileToDelete(profile);
+    setShowDeleteProfileMessage(true);
   };
 
   return (
     <Pane>
       <div className={'currentProfileButton'}>
-        <button {...getToggleButtonProps()} type="button">
+        <button {...getToggleButtonProps()} type="button" onClick={() => setIsOpen(true)}>
           {<p>{`Current Profile: ${usernameMain}`}</p>}
         </button>
       </div>
@@ -84,8 +91,10 @@ const UserProfileDropdown = ({ userProfiles }) => {
                     </div>
                     <button
                       onClick={event => {
+                        event.preventDefault();
                         event.stopPropagation();
-                        handleDeleteProfile(userProfiles[index]);
+                        handleDeleteProfile(sortedUserProfiles[index]);
+                        setIsOpen(false);
                       }}
                     >
                       <MinusCircle />
@@ -95,6 +104,24 @@ const UserProfileDropdown = ({ userProfiles }) => {
               );
             }
           })}
+        <Message
+          title={'Confirm delete profile'}
+          show={showDeleteProfileMessage}
+          content={
+            <DeleteProfile
+              usernameToDelete={profileToDelete?.username || ''}
+              onClose={() => {
+                setShowDeleteProfileMessage(false);
+                setProfileToDelete(null);
+              }}
+              userProfiles={userProfiles}
+            />
+          }
+          onClose={() => {
+            setShowDeleteProfileMessage(false);
+            setProfileToDelete(null);
+          }}
+        />
       </ul>
     </Pane>
   );

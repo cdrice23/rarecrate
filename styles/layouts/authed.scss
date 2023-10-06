@@ -540,7 +540,7 @@
 
   .modal {
     border-radius: 4px;
-    border: 1px solid var(--surface);
+    // border: 1px solid var(--surface);
     background: var(--surface);
     color: var(--on-surface);
     display: block;
@@ -581,6 +581,76 @@
     }
 
     .modal-footer {
+      padding: $space-large;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      button {
+        margin-left: $space-small;
+      }
+    }
+
+  }
+}
+
+// Message stylings
+.messageWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: rgba(var(--bar-rgb), 0.1);
+  display: none;
+  z-index: 150;
+
+  &.show {
+    display: block;
+  }
+
+  .message {
+    border-radius: 4px;
+    border: 1px solid var(--surface);
+    background: var(--surface);
+    color: var(--on-surface);
+    display: block;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    // overflow-y: auto;
+
+
+    .message-header {
+      color: var(--on-background-alt);
+      padding: $space-large;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .close {
+        color: var(--on-background);
+        vertical-align: middle;
+        cursor: pointer;
+        transition: color $transition-fast;
+
+        &:hover {
+          color: var(--on-background-alt);
+        }
+      }
+    }
+
+    .message-body {
+      padding: $space-large;
+    }
+
+    .message-footer {
       padding: $space-large;
       border-top: 1px solid var(--border);
       display: flex;
@@ -1031,4 +1101,34 @@
 
 .currentProfileButton {
   margin: 16px auto 0px;
+}
+
+// DeleteProfile stylings
+.deleteProfileMessage {
+  
+  .deleteMessageDetails {
+    margin: 8px 0;
+
+    .detailsList {
+      text-align: left;
+
+      li {
+        margin: 2px 0px;
+      }
+    }
+  }
+
+  .deleteMessageNote {
+    margin: 4px 0;
+    color: salmon;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .deleteMessageButtons {
+    button {
+      margin: 0 4px;
+      padding: 2px;
+    }
+  }
 }

@@ -143,6 +143,7 @@ type Mutation {
   autoAcceptFollowRequests(receiverId: Int!): [FollowAndOrRequest]
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   createNewProfile(input: ProfileInput!): Profile
+  deleteProfile(profileId: Int!): Profile
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
