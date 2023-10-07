@@ -228,8 +228,8 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
     const redirectToProfile = async () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       // Go to the new/updated Profile
-      actions.setSubmitting(false);
       router.push(Route.Profile + `/${values.username}`);
+      actions.setSubmitting(false);
     };
 
     // Call the new function

@@ -118,13 +118,26 @@ export const ProfileQueries = queryType({
           where: { id: userId },
         });
 
-        return await ctx.prisma.profile.findUnique({
+        const lastLoginProfile = await ctx.prisma.profile.findUnique({
           where: { id: user.lastLoginProfile },
           select: {
             id: true,
             username: true,
           },
         });
+
+        if (lastLoginProfile) {
+          return lastLoginProfile;
+        } else {
+          const userProfiles = await ctx.prisma.profile.findMany({
+            where: { userId },
+            select: {
+              id: true,
+              username: true,
+            },
+          });
+          return userProfiles[0];
+        }
       },
     });
   },

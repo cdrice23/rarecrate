@@ -902,3 +902,11 @@ export const DELETE_PROFILE = gql`
     }
   }
 `;
+
+export const DELETE_USER = gql`
+  mutation DeleteUser($userId: Int!) {
+    deleteUser(userId: $userId) {
+      id
+    }
+  }
+`;

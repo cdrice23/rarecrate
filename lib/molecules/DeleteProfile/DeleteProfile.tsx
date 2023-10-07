@@ -10,7 +10,7 @@ import { gql } from '@apollo/client';
 interface DeleteProfileProps {
   profileToDelete: number;
   usernameToDelete: string;
-  userProfiles: [{ id: number; username: string }];
+  userProfiles: Array<{ id: number; username: string } | { isAddProfile: boolean }>;
   onClose: () => void;
   setIsDeleting: (value) => void;
   handleUpdateProfileList: (deletedProfile: number) => void;
@@ -26,7 +26,7 @@ const DeleteProfile = ({
 }: DeleteProfileProps) => {
   const [deleteSelectedProfile] = useMutation(DELETE_PROFILE, {
     variables: { profileId: profileToDelete },
-    update(cache, { data }) {
+    update(cache) {
       const deletedProfileData = cache.readFragment({
         id: `Profile:${profileToDelete}`,
         fragment: gql`
@@ -51,14 +51,47 @@ const DeleteProfile = ({
       cache.gc();
     },
   });
-  const { profileIdMain, usernameMain } = useLocalState();
+  const { profileIdMain, usernameMain, setProfileIdMain, setUsernameMain } = useLocalState();
 
   const router = useRouter();
 
   const handleDelete = async () => {
     if (profileToDelete === profileIdMain) {
-      // Check if userProfiles > 1, if so, switch to next profile and push to page, otherwise, push to createNewProfile screen
       console.log(`You are deleting the mainProfile, ${usernameToDelete}`);
+
+      if (userProfiles.length > 2) {
+        // Delete profile and switch to next account in userProfiles list
+        setIsDeleting(true);
+        onClose();
+        if ('username' in userProfiles[1]) {
+          setUsernameMain(userProfiles[1].username);
+          setProfileIdMain(userProfiles[1].id);
+          router.push(Route.Profile + `/${userProfiles[1].username}`);
+        }
+        try {
+          await deleteSelectedProfile();
+        } catch (error) {
+          console.error('Error deleting profile:', error);
+        } finally {
+          handleUpdateProfileList(profileToDelete);
+          setIsDeleting(false);
+        }
+      } else {
+        // Delete profile and push to createNewProfile page
+        setIsDeleting(true);
+        onClose();
+        setUsernameMain('');
+        setProfileIdMain(null);
+        router.push(Route.NewProfile);
+
+        try {
+          await deleteSelectedProfile();
+        } catch (error) {
+          console.error('Error deleting profile:', error);
+        } finally {
+          setIsDeleting(false);
+        }
+      }
     } else {
       // Delete profile, don't push to new page
       console.log(`You are deleting a profile (${usernameToDelete}) that isn't the main one (${profileIdMain})`);

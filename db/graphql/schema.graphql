@@ -144,6 +144,7 @@ type Mutation {
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   createNewProfile(input: ProfileInput!): Profile
   deleteProfile(profileId: Int!): Profile
+  deleteUser(userId: Int!): User
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate

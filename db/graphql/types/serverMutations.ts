@@ -1038,6 +1038,20 @@ export const UserMutations = extendType({
         });
       },
     });
+
+    t.field('deleteUser', {
+      type: NexusUser,
+      args: {
+        userId: nonNull(intArg()),
+      },
+      resolve: async (_, { userId }, ctx) => {
+        return ctx.prisma.user.delete({
+          where: {
+            id: userId,
+          },
+        });
+      },
+    });
   },
 });
 

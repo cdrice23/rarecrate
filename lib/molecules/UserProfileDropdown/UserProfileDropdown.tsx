@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import { Message } from '@/lib/atoms/Message/Message';
 import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
+import { boolean } from 'yup';
 
 const UserProfileDropdown = ({ userProfiles }) => {
   const [dropdownProfiles, setDropdownProfiles] = useState(userProfiles);
@@ -21,7 +22,7 @@ const UserProfileDropdown = ({ userProfiles }) => {
   const router = useRouter();
 
   const originalUserProfiles = [...dropdownProfiles];
-  const sortedUserProfiles = [...dropdownProfiles].sort((a, b) => {
+  const sortedUserProfiles = [...originalUserProfiles].sort((a, b) => {
     if (a.username === usernameMain) return -1;
     if (b.username === usernameMain) return 1;
     return 0;
@@ -123,7 +124,7 @@ const UserProfileDropdown = ({ userProfiles }) => {
                 setShowDeleteProfileMessage(false);
                 setProfileToDelete(null);
               }}
-              userProfiles={dropdownProfiles}
+              userProfiles={sortedUserProfiles}
               setIsDeleting={setIsDeleting}
               handleUpdateProfileList={handleUpdateProfileList}
             />

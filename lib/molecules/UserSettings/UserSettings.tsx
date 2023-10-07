@@ -7,8 +7,11 @@ import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from 
 import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
 import { Message } from '@/lib/atoms/Message/Message';
 import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
+import { useState } from 'react';
+import { DeleteAccount } from '../DeleteAccount/DeleteAccount';
 
 const UserSettings = ({ userId, userProfiles }) => {
+  const [showDeleteAccount, setShowDeleteAccount] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_NOTIFICATION_SETTINGS_BY_USER, {
     variables: { userId },
   });
@@ -108,6 +111,23 @@ const UserSettings = ({ userId, userProfiles }) => {
         </Pane>
       ) : null}
       <UserProfileDropdown userProfiles={userProfiles} />
+      <Pane>
+        <div className={cx('noNoWrapper')}>
+          <button type="button" onClick={() => setShowDeleteAccount(true)} className={cx('noNoButton')}>
+            {`Permanently delete Account`}
+          </button>
+        </div>
+      </Pane>
+      {showDeleteAccount && (
+        <Message
+          title={'Confirm delete account'}
+          show={showDeleteAccount}
+          content={<DeleteAccount userProfiles={userProfiles} onClose={() => setShowDeleteAccount(false)} />}
+          onClose={() => {
+            setShowDeleteAccount(false);
+          }}
+        />
+      )}
     </>
   );
 };

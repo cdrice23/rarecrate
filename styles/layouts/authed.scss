@@ -1132,3 +1132,20 @@
     }
   }
 }
+
+.noNoWrapper {
+  margin-top: 16px;
+
+  .noNoButton {
+    padding: 4px;
+    color: white;
+    border-color: salmon;
+    background-color: lightcoral;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+
+}
