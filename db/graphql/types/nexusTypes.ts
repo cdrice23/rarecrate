@@ -96,7 +96,12 @@ export const Profile = objectType({
     });
     t.list.field('followers', {
       type: Profile,
-      resolve: (parent, _args, ctx) => {
+      resolve: async (parent: any, _args, ctx) => {
+        const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
+
+        if (!profile) {
+          return parent.followers;
+        }
         return ctx.prisma.follow
           .findMany({
             where: { followingId: parent.id },
@@ -116,7 +121,12 @@ export const Profile = objectType({
     });
     t.list.field('following', {
       type: Profile,
-      resolve: (parent, _args, ctx) => {
+      resolve: async (parent: any, _args, ctx) => {
+        const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
+
+        if (!profile) {
+          return parent.following;
+        }
         return ctx.prisma.follow
           .findMany({
             where: { followerId: parent.id },
@@ -136,7 +146,12 @@ export const Profile = objectType({
     });
     t.list.field('crates', {
       type: Crate,
-      resolve: (parent, _args, ctx) => {
+      resolve: async (parent: any, _args, ctx) => {
+        const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
+
+        if (!profile) {
+          return parent.crates;
+        }
         return ctx.prisma.profile
           .findUnique({
             where: { id: parent.id },
@@ -146,7 +161,12 @@ export const Profile = objectType({
     });
     t.list.field('favorites', {
       type: Crate,
-      resolve: (parent, _args, ctx) => {
+      resolve: async (parent: any, _args, ctx) => {
+        const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
+
+        if (!profile) {
+          return parent.favorites;
+        }
         return ctx.prisma.profile
           .findUnique({
             where: { id: parent.id },

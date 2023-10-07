@@ -878,6 +878,27 @@ export const DELETE_PROFILE = gql`
   mutation DeletedProfile($profileId: Int!) {
     deleteProfile(profileId: $profileId) {
       id
+      followers {
+        id
+      }
+      following {
+        id
+      }
+      crates {
+        id
+        labels {
+          id
+        }
+        albums {
+          id
+          tags {
+            id
+          }
+        }
+      }
+      favorites {
+        id
+      }
     }
   }
 `;

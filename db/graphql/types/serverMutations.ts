@@ -862,6 +862,7 @@ export const ProfileMutations = extendType({
                 favoritedBy: true,
               },
             },
+            favorites: true,
             socialLinks: true,
             followRequestsSent: true,
             followRequestsReceived: true,
@@ -869,8 +870,49 @@ export const ProfileMutations = extendType({
           },
         });
 
+        const deletedProfileRecord = JSON.parse(
+          JSON.stringify({
+            id: profileToDelete.id,
+            favorites: [...profileToDelete.favorites],
+            crates: JSON.parse(JSON.stringify([...profileToDelete.crates])),
+            followers: [...profileToDelete.followers],
+            following: [...profileToDelete.following],
+          }),
+        );
+
+        // let deletedProfileRecord = {
+        //   id: profileToDelete.id,
+        //   userId: profileToDelete.userId,
+        //   username: profileToDelete.username,
+        //   isPrivate: profileToDelete.isPrivate,
+        //   bio: profileToDelete.bio,
+        //   image: profileToDelete.image,
+        //   createdAt: profileToDelete.createdAt,
+        //   updatedAt: profileToDelete.updatedAt,
+        //   searchAndSelectCount: profileToDelete.searchAndSelectCount,
+        //   user: profileToDelete.user,
+        //   followers: [],
+        //   following: [],
+        //   crates: [],
+        //   favorites: [],
+        //   socialLinks: [],
+        //   followRequestsSent: [],
+        //   followRequestsReceived: [],
+        //   recommendations: [],
+        // };
+
         // Loop through the crates and delete them + all CrateAlbums associated to them
         for (const crate of profileToDelete.crates) {
+          // // Push the crate data to the deletedProfileRecord
+          // deletedProfileRecord.crates.push({
+          //   id: crate.id,
+          //   labels: crate.labels.map(label => ({ id: label.id })),
+          //   albums: crate.albums.map(album => ({
+          //     id: album.id,
+          //     tags: album.tags.map(tag => ({ id: tag.id })),
+          //   })),
+          // });
+
           // Disconnect labels from the crate
           for (const label of crate.labels) {
             await ctx.prisma.label.update({
@@ -918,6 +960,12 @@ export const ProfileMutations = extendType({
 
         // Loop through the followers and following and delete them
         for (const follow of [...profileToDelete.followers, ...profileToDelete.following]) {
+          //   // Push the follow data to the deletedProfileRecord
+          //   if (profileToDelete.followers.includes(follow)) {
+          //     deletedProfileRecord.followers.push({ id: follow.id });
+          //   } else {
+          //     deletedProfileRecord.following.push({ id: follow.id });
+          //   }
           await ctx.prisma.follow.delete({ where: { id: follow.id } });
         }
 
@@ -939,12 +987,15 @@ export const ProfileMutations = extendType({
           await ctx.prisma.recommendation.delete({ where: { id: recommendation.id } });
         }
 
+        // // Push the favorites data to the deletedProfileRecord
+        // deletedProfileRecord.favorites = profileToDelete.favorites.map(favorite => ({ id: favorite.id }));
+
         // Delete the profile and all related records
         const deletedProfile = await ctx.prisma.profile.delete({
           where: { id: profileId },
         });
 
-        return deletedProfile;
+        return deletedProfileRecord;
       },
     });
   },

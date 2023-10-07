@@ -10,7 +10,9 @@ import { Message } from '@/lib/atoms/Message/Message';
 import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
 
 const UserProfileDropdown = ({ userProfiles }) => {
+  const [dropdownProfiles, setDropdownProfiles] = useState(userProfiles);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showDeleteProfileMessage, setShowDeleteProfileMessage] = useState(false);
   const [profileToDelete, setProfileToDelete] = useState(null);
@@ -18,25 +20,26 @@ const UserProfileDropdown = ({ userProfiles }) => {
 
   const router = useRouter();
 
-  const originalUserProfiles = [...userProfiles];
-  const sortedUserProfiles = [...originalUserProfiles].sort((a, b) => {
+  const originalUserProfiles = [...dropdownProfiles];
+  const sortedUserProfiles = [...dropdownProfiles].sort((a, b) => {
     if (a.username === usernameMain) return -1;
     if (b.username === usernameMain) return 1;
     return 0;
   });
-  if (userProfiles.length < 5) {
+  if (dropdownProfiles.length < 5) {
     sortedUserProfiles.push({ isAddProfile: true });
   }
 
   const { getToggleButtonProps, getMenuProps, getItemProps, highlightedIndex } = useSelect({
     items: sortedUserProfiles,
-    itemToString: () => userProfiles.map(userProfile => userProfile.username),
+    itemToString: () => dropdownProfiles.map(userProfile => userProfile.username),
     selectedItem,
     onSelectedItemChange: ({ selectedItem: newSelectedItem }) => {
       if (newSelectedItem.isAddProfile) {
         router.push(Route.NewProfile);
         // console.log('Handle new profile creation');
       } else {
+        setIsOpen(false);
         setSelectedItem(newSelectedItem);
         setUsernameMain(newSelectedItem.username);
         setProfileIdMain(newSelectedItem.id);
@@ -51,10 +54,15 @@ const UserProfileDropdown = ({ userProfiles }) => {
     setShowDeleteProfileMessage(true);
   };
 
+  const handleUpdateProfileList = deletedProfile => {
+    const updatedProfileList = dropdownProfiles.filter(profile => profile.id !== deletedProfile);
+    setDropdownProfiles(updatedProfileList);
+  };
+
   return (
     <Pane>
       <div className={'currentProfileButton'}>
-        <button {...getToggleButtonProps()} type="button" onClick={() => setIsOpen(true)}>
+        <button {...getToggleButtonProps()} type="button" onClick={() => setIsOpen(!isOpen)} disabled={isDeleting}>
           {<p>{`Current Profile: ${usernameMain}`}</p>}
         </button>
       </div>
@@ -109,12 +117,15 @@ const UserProfileDropdown = ({ userProfiles }) => {
           show={showDeleteProfileMessage}
           content={
             <DeleteProfile
+              profileToDelete={profileToDelete?.id || ''}
               usernameToDelete={profileToDelete?.username || ''}
               onClose={() => {
                 setShowDeleteProfileMessage(false);
                 setProfileToDelete(null);
               }}
-              userProfiles={userProfiles}
+              userProfiles={dropdownProfiles}
+              setIsDeleting={setIsDeleting}
+              handleUpdateProfileList={handleUpdateProfileList}
             />
           }
           onClose={() => {

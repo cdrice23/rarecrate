@@ -38,7 +38,6 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
   }, []);
 
   const crateSummaryData = data?.getProfile;
-  console.log(crateSummaryData);
   const isMain = Boolean(crateSummaryData?.id === mainProfile);
   const isUserProfile = userProfiles.some(profile => profile.id === crateSummaryData?.id);
 
@@ -125,6 +124,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
               onClose={() => {
                 setShowCrateDetail(false);
               }}
+              currentProfile={username}
             />
             <Pane>
               <h3>Crates:</h3>
@@ -168,6 +168,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
               onClose={() => {
                 setShowCrateDetail(false);
               }}
+              currentProfile={username}
             />
             <Pane>
               <h3>Favorites:</h3>
@@ -192,14 +193,16 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
                       <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
                     ))}
                   </ul>
-                  <BinaryIconButton
-                    icon={<Heart />}
-                    checkStatus={Boolean(
-                      crateSummaryData?.favorites[index].favoritedBy.filter(p => p.id === Number(mainProfile)).length >
-                        0,
-                    )}
-                    handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
-                  />
+                  {!userProfiles.some(userProfile => crate.creator.id === userProfile.id) && (
+                    <BinaryIconButton
+                      icon={<Heart />}
+                      checkStatus={Boolean(
+                        crateSummaryData?.favorites[index].favoritedBy.filter(p => p.id === Number(mainProfile))
+                          .length > 0,
+                      )}
+                      handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
+                    />
+                  )}
                 </div>
               ))}
             </Pane>

@@ -6,7 +6,6 @@ import cx from 'classnames';
 import { CrateAlbumData, CrateAlbum } from '../CrateAlbum/CrateAlbum';
 import { DotsThreeVertical } from '@phosphor-icons/react';
 import { CrateForm } from '../CrateForm/CrateForm';
-import useLocalStorage from '@/core/hooks/useLocalStorage';
 import { useLocalState } from '@/lib/context/state';
 
 type ProfileBadgeData = {
@@ -34,6 +33,7 @@ type CrateDetailData = {
 
 type CrateDetailFaceProps = {
   data: CrateDetailData;
+  editable?: boolean;
   handleSwitch: (newFace: 'front' | 'back') => void;
   handleEdit?: () => void;
 };
@@ -41,10 +41,11 @@ type CrateDetailFaceProps = {
 type CrateDetailProps = {
   activeCrateId?: number;
   show?: boolean;
+  currentProfile: string;
   onClose: () => void;
 };
 
-const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
+const CrateDetail = ({ currentProfile, activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');
   const [showEditCrate, setShowEditCrate] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
@@ -57,9 +58,6 @@ const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
   };
 
   const crateData = data?.getCrateDetailWithAlbums;
-  const defaultModal = <div>{`I'm a modal! The current active crate id is: ${activeCrateId}`}</div>;
-
-  // console.log(crateData?.albums);
 
   return (
     <>
@@ -92,6 +90,7 @@ const CrateDetail = ({ activeCrateId, show, onClose }: CrateDetailProps) => {
                   data={crateData}
                   handleSwitch={handleSwitch}
                   handleEdit={() => setShowEditCrate(true)}
+                  editable={currentProfile === crateData.creator.username}
                 />
               )
             }
@@ -131,8 +130,7 @@ const CrateDetailFront = ({ data, handleSwitch }: CrateDetailFaceProps) => {
   );
 };
 
-const CrateDetailBack = ({ data, handleSwitch, handleEdit }: CrateDetailFaceProps) => {
-  console.log(data);
+const CrateDetailBack = ({ data, handleSwitch, handleEdit, editable }: CrateDetailFaceProps) => {
   return (
     <>
       <div>
@@ -149,10 +147,12 @@ const CrateDetailBack = ({ data, handleSwitch, handleEdit }: CrateDetailFaceProp
       </div>
       <div className={cx('crateDetailBackButtons')}>
         <button onClick={() => handleSwitch('front')}>Switch to Front</button>
-        <button className={cx('editButton')} onClick={handleEdit}>
-          {`Edit Crate`}
-          <DotsThreeVertical />
-        </button>
+        {editable && (
+          <button className={cx('editButton')} onClick={handleEdit}>
+            {`Edit Crate`}
+            <DotsThreeVertical />
+          </button>
+        )}
       </div>
     </>
   );
