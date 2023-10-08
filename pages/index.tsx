@@ -12,6 +12,7 @@ const Landing = (props: any) => {
     setProfileIdMain(null);
     setUsernameMain('');
   });
+
   return (
     <PublicLayout>
       <h1>This is the Landing Page</h1>

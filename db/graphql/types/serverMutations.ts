@@ -1045,6 +1045,14 @@ export const UserMutations = extendType({
         userId: nonNull(intArg()),
       },
       resolve: async (_, { userId }, ctx) => {
+        // First, find and delete all NotificationSettings associated with the user
+        await ctx.prisma.notificationSettings.deleteMany({
+          where: {
+            userId: userId,
+          },
+        });
+
+        // Then, delete the user
         return ctx.prisma.user.delete({
           where: {
             id: userId,
