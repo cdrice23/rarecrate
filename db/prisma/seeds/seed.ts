@@ -10,6 +10,8 @@ import { deleteCrateAlbums } from '../backfill/deleteCrateAlbums';
 import { addNotificationSettings } from '../backfill/addNotificationSettings';
 import { generateProfileDeleteTest } from '../backfill/generateProfileDeleteTest';
 import { randomizeCrateAndFollowDates } from '../backfill/randomizeCrateAndFollowDates';
+import { generateNotifications } from '../backfill/generateNotifications';
+import { fixNotificationDates } from '../backfill/fixNotificationDates';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -27,7 +29,9 @@ async function main() {
   // await deleteCrateAlbums();
   // await addNotificationSettings();
   // await generateProfileDeleteTest();
-  await randomizeCrateAndFollowDates();
+  // await randomizeCrateAndFollowDates();
+  // await generateNotifications();
+  await fixNotificationDates();
 }
 
 main()
