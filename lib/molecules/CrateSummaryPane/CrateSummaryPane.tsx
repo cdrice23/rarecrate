@@ -5,6 +5,7 @@ import {
   GET_PROFILE_CRATES_AND_FAVORITES,
   ADD_CRATE_TO_FAVORITES,
   REMOVE_CRATE_FROM_FAVORITES,
+  CREATE_NOTIFICATION,
 } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
@@ -22,6 +23,7 @@ type CrateSummaryPaneProps = {
 const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: CrateSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
+  const [createNotification] = useMutation(CREATE_NOTIFICATION);
   const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
     variables: { username: username },
   });
@@ -94,9 +96,9 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
     },
   });
 
-  const handleFavoriteToggle = (checkStatus, crateId, mainProfile) => {
+  const handleFavoriteToggle = async (checkStatus, crateId, mainProfile) => {
     const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
-    mutationFunction({
+    const response = await mutationFunction({
       variables: {
         input: {
           crateId: crateId,
@@ -104,6 +106,18 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
         },
       },
     });
+
+    if (mutationFunction === addCrateToFavorites) {
+      const creatorId = response.data.addCrateToFavorites.creator.id;
+      createNotification({
+        variables: {
+          receiver: creatorId,
+          type: 'newFavorite',
+          actionOwner: mainProfile,
+          notificationRef: crateId,
+        },
+      });
+    }
   };
 
   return (
@@ -153,7 +167,9 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
                       checkStatus={Boolean(
                         crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
                       )}
-                      handler={checkStatus => handleFavoriteToggle(checkStatus, crate.id, mainProfile)}
+                      handler={checkStatus => {
+                        handleFavoriteToggle(checkStatus, crate.id, mainProfile);
+                      }}
                     />
                   )}
                 </div>

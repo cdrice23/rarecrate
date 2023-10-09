@@ -18,6 +18,7 @@ import {
   SelectedSearchResult as PrismaSelectedSearchResult,
   Recommendation as PrismaRecommendation,
   NotificationSettings as PrismaNotificationSettings,
+  Notification as PrismaNotification,
 } from 'nexus-prisma';
 import { RequestStatusEnum } from './nexusEnums';
 
@@ -749,6 +750,30 @@ export const NotificationSettings = objectType({
     });
     t.field(PrismaNotificationSettings.showFollowingNewFavorites.name, {
       type: PrismaNotificationSettings.showFollowingNewFavorites.type,
+    });
+  },
+});
+
+export const Notification = objectType({
+  name: PrismaNotification.$name,
+  definition(t) {
+    t.field(PrismaNotification.id.name, {
+      type: PrismaNotification.id.type,
+    });
+    t.nonNull.field('createdAt', {
+      type: 'DateTime',
+    });
+    t.field(PrismaNotification.receiver.name, {
+      type: PrismaNotification.receiver.type,
+    });
+    t.field(PrismaNotification.type.name, {
+      type: PrismaNotification.type.type,
+    });
+    t.field(PrismaNotification.actionOwner.name, {
+      type: PrismaNotification.actionOwner.type,
+    });
+    t.field(PrismaNotification.notificationRef.name, {
+      type: PrismaNotification.notificationRef.type,
     });
   },
 });

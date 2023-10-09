@@ -266,6 +266,9 @@ export const ADD_CRATE_TO_FAVORITES = gql`
     addCrateToFavorites(input: $input) {
       id
       title
+      creator {
+        id
+      }
       labels {
         id
         isStandard
@@ -907,6 +910,18 @@ export const DELETE_USER = gql`
   mutation DeleteUser($userId: Int!) {
     deleteUser(userId: $userId) {
       id
+    }
+  }
+`;
+
+export const CREATE_NOTIFICATION = gql`
+  mutation CreateNotification($receiver: Int!, $type: String!, $actionOwner: Int!, $notificationRef: Int!) {
+    createNotification(receiver: $receiver, type: $type, actionOwner: $actionOwner, notificationRef: $notificationRef) {
+      id
+      receiver
+      type
+      actionOwner
+      notificationRef
     }
   }
 `;

@@ -235,3 +235,12 @@ model Recommendation {
   @@index([profileId])
   @@index([crateId])
 }
+
+model Notification {
+  id              Int      @id @default(autoincrement())
+  createdAt       DateTime @default(now())
+  receiver        Int
+  type            String
+  actionOwner     Int
+  notificationRef Int
+}

@@ -11,6 +11,7 @@ import {
   Album as NexusAlbum,
   SelectedSearchResult as NexusSelectedSearchResult,
   NotificationSettings as NexusNotificationSettings,
+  Notification as NexusNotification,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
 import axios from 'axios';
@@ -309,6 +310,9 @@ export const CrateMutations = extendType({
             favoritedBy: {
               connect: { id: profileId },
             },
+          },
+          include: {
+            creator: true,
           },
         });
 
@@ -1090,6 +1094,31 @@ export const NotificationSettingsMutations = extendType({
             showFollowingNewFollows,
             showFollowingNewFavorites,
             showFollowingNewCrates,
+          },
+        });
+      },
+    });
+  },
+});
+
+export const NotificationMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('createNotification', {
+      type: NexusNotification,
+      args: {
+        receiver: nonNull(intArg()),
+        type: nonNull(stringArg()),
+        actionOwner: nonNull(intArg()),
+        notificationRef: nonNull(intArg()),
+      },
+      resolve: async (_, { receiver, type, actionOwner, notificationRef }, ctx) => {
+        return await ctx.prisma.notification.create({
+          data: {
+            receiver,
+            type,
+            actionOwner,
+            notificationRef,
           },
         });
       },

@@ -143,6 +143,7 @@ type Mutation {
   autoAcceptFollowRequests(receiverId: Int!): [FollowAndOrRequest]
   createNewFollowOrRequest(input: FollowOrRequestInput!): FollowAndOrRequest
   createNewProfile(input: ProfileInput!): Profile
+  createNotification(actionOwner: Int!, notificationRef: Int!, receiver: Int!, type: String!): Notification
   deleteProfile(profileId: Int!): Profile
   deleteUser(userId: Int!): User
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
@@ -153,6 +154,15 @@ type Mutation {
   updateLastLoginProfile(profileId: Int!, userId: Int!): User
   updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings
   updateProfile(input: ProfileInput!): Profile
+}
+
+type Notification {
+  actionOwner: Int!
+  createdAt: DateTime!
+  id: Int!
+  notificationRef: Int!
+  receiver: Int!
+  type: String!
 }
 
 type NotificationSettings {
