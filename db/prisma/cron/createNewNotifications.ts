@@ -2,7 +2,26 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function createNewNotifications(): Promise<void> {
+const maxAttempts = 5;
+const backoffInterval = 60000; // 1 minute
+
+const retryWithBackoff = async (fn, attempts = 0) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (attempts >= maxAttempts) {
+      console.log(`Max attempts reached. Exiting.`);
+      throw error;
+    }
+
+    console.log(`Attempt ${attempts + 1} failed. Retrying in ${backoffInterval / 1000}s...`);
+    await new Promise(resolve => setTimeout(resolve, backoffInterval * (attempts + 1)));
+    return retryWithBackoff(fn, attempts + 1);
+  }
+};
+
+const initCronRun = async () => {
+  console.log('Starting cron job: Create new notifications');
   // Create current timestamp reference for CronRun
   const jobStart = new Date();
 
@@ -28,8 +47,10 @@ export async function createNewNotifications(): Promise<void> {
     lastRunCompleted = new Date(jobStart.getTime() - 1 * 60 * 60 * 1000);
   } else {
     // If there are runs, set lastRunCompleted to be the completedAt time of the last run
-    lastRunCompleted = lastRun.runs[0].completedAt;
+    lastRunCompleted = lastRun.runs.completedAt;
   }
+
+  console.log(`Last run completed at: ${lastRun.runs.length === 0 ? lastRunCompleted : lastRun.runs.completedAt}`);
 
   // get prisma records for Crate and Follow created at or after the timestamp
   const newCrates = await prisma.crate.findMany({
@@ -116,7 +137,7 @@ export async function createNewNotifications(): Promise<void> {
   const totalNotificationsCreated = newCrates.length + newFollows.length;
   console.log(`Total notifications created: ${totalNotificationsCreated}`);
 
-  if ((lastRun[0].lastProcessedItem === null || lastRun[0].lastProcessedItem > 0) && totalNotificationsCreated > 0) {
+  if ((lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '0') && totalNotificationsCreated > 0) {
     await prisma.cronRun.create({
       data: {
         createdAt: jobStart,
@@ -130,4 +151,12 @@ export async function createNewNotifications(): Promise<void> {
       },
     });
   }
-}
+};
+
+retryWithBackoff(initCronRun)
+  .catch(e => {
+    throw e;
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

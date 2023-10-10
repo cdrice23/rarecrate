@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export async function generateProfileDeleteTest(): Promise<void> {
   const profileToEventuallyDelete = await prisma.profile.create({
     data: {
-      userId: 1314,
+      userId: 1320,
       username: 'christhefated',
       bio: `About to be RATIO'd, son.`,
       isPrivate: true,

@@ -31,7 +31,7 @@ async function main() {
   // await generateProfileDeleteTest();
   // await randomizeCrateAndFollowDates();
   // await generateNotifications();
-  await fixNotificationDates();
+  // await fixNotificationDates();
 }
 
 main()
