@@ -921,7 +921,12 @@ export const CREATE_NOTIFICATION = gql`
       receiver
       type
       actionOwner
-      notificationRef
+      connectedCrate {
+        id
+      }
+      connectedFollow {
+        id
+      }
     }
   }
 `;
@@ -932,7 +937,34 @@ export const GET_NOTIFICATIONS_BY_PROFILE = gql`
       id
       type
       actionOwner
-      notificationRef
+      connectedCrate {
+        id
+        title
+        description
+        creator {
+          id
+          username
+          image
+        }
+        labels {
+          id
+          name
+          isStandard
+        }
+      }
+      connectedFollow {
+        id
+        follower {
+          id
+          username
+          image
+        }
+        following {
+          id
+          username
+          image
+        }
+      }
       createdAt
     }
   }

@@ -77,17 +77,19 @@ model Crate {
   albums               CrateAlbum[]
   searchAndSelectCount Int              @default(0)
   recommendedIn        Recommendation[]
+  inNotifications      Notification[]   @relation("CrateNotifications")
 
   @@index([creatorId])
 }
 
 model Follow {
-  id          Int      @id @default(autoincrement())
-  follower    Profile  @relation("Follows", fields: [followerId], references: [id])
-  followerId  Int
-  following   Profile  @relation("Following", fields: [followingId], references: [id])
-  followingId Int
-  createdAt   DateTime @default(now())
+  id              Int            @id @default(autoincrement())
+  follower        Profile        @relation("Follows", fields: [followerId], references: [id])
+  followerId      Int
+  following       Profile        @relation("Following", fields: [followingId], references: [id])
+  followingId     Int
+  createdAt       DateTime       @default(now())
+  inNotifications Notification[] @relation("FollowNotifications")
 
   @@index([followerId])
   @@index([followingId])
@@ -242,5 +244,11 @@ model Notification {
   receiver        Int
   type            String
   actionOwner     Int
-  notificationRef Int
+  connectedCrate  Crate?   @relation("CrateNotifications", fields: [crateId], references: [id])
+  crateId         Int?
+  connectedFollow Follow?  @relation("FollowNotifications", fields: [followId], references: [id])
+  followId        Int?
+
+  @@index([crateId])
+  @@index([followId])
 }

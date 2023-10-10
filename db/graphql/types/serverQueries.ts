@@ -947,9 +947,47 @@ export const NotificationQueries = extendType({
               createdAt: 'desc',
             },
           ],
+          include: {
+            connectedCrate: true,
+            connectedFollow: true,
+          },
         });
 
         // Filter the notifications based on the notificationSettings
+        notifications = await Promise.all(
+          notifications.map(async notification => {
+            // Check to return notifications of profile's new followers
+            if (notificationSettings.showOwnNewFollowers && notification.type === 'newFollow') {
+              const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
+              return follow && follow.followingId === profileId ? notification : null;
+            }
+
+            // Check to return notifications of profile's crates being favorited
+            if (notificationSettings.showOwnNewFavorites && notification.type === 'newFavorite') {
+              const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
+              return crate && crate.creatorId === profileId ? notification : null;
+            }
+
+            // Check to return notifications of profile's followed profiles when they follow new profiles
+            if (notificationSettings.showFollowingNewFollows && notification.type === 'newFollow') {
+              const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
+              return follow && follow.followingId !== profileId ? notification : null;
+            }
+
+            // Check to return notifications of profile's followed profiles when they create a new crate
+            if (notificationSettings.showFollowingNewCrates && notification.type === 'newCrate') {
+              return notification;
+            }
+
+            // Check to return notifications of profile's followed profiles when the favorite a new crate
+            if (notificationSettings.showFollowingNewFavorites && notification.type === 'newFavorite') {
+              const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
+              return crate && crate.creatorId !== profileId ? notification : null;
+            }
+
+            return null;
+          }),
+        );
 
         // Remove undefined values after the filter
         notifications = notifications.filter(notification => notification !== null);

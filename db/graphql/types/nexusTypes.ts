@@ -772,8 +772,37 @@ export const Notification = objectType({
     t.field(PrismaNotification.actionOwner.name, {
       type: PrismaNotification.actionOwner.type,
     });
-    t.field(PrismaNotification.notificationRef.name, {
-      type: PrismaNotification.notificationRef.type,
+    t.field(PrismaNotification.connectedCrate.name, {
+      type: Crate,
+      resolve: async (parent: any, _, ctx) => {
+        if (parent.crateId) {
+          return ctx.prisma.crate.findUnique({
+            where: {
+              id: parent.crateId,
+            },
+          });
+        }
+        return null;
+      },
+    });
+    t.field(PrismaNotification.crateId.name, {
+      type: PrismaNotification.crateId.type,
+    });
+    t.field(PrismaNotification.connectedFollow.name, {
+      type: Follow,
+      resolve: async (parent: any, _, ctx) => {
+        if (parent.followId) {
+          return ctx.prisma.follow.findUnique({
+            where: {
+              id: parent.followId,
+            },
+          });
+        }
+        return null;
+      },
+    });
+    t.field(PrismaNotification.followId.name, {
+      type: PrismaNotification.followId.type,
     });
   },
 });

@@ -158,9 +158,12 @@ type Mutation {
 
 type Notification {
   actionOwner: Int!
+  connectedCrate: Crate
+  connectedFollow: Follow
+  crateId: Int
   createdAt: DateTime!
+  followId: Int
   id: Int!
-  notificationRef: Int!
   receiver: Int!
   type: String!
 }

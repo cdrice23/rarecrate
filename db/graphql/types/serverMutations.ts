@@ -1113,14 +1113,33 @@ export const NotificationMutations = extendType({
         notificationRef: nonNull(intArg()),
       },
       resolve: async (_, { receiver, type, actionOwner, notificationRef }, ctx) => {
-        return await ctx.prisma.notification.create({
-          data: {
-            receiver,
-            type,
-            actionOwner,
-            notificationRef,
-          },
-        });
+        if (type === 'newCrate' || type === 'newFavorite') {
+          return await ctx.prisma.notification.create({
+            data: {
+              receiver,
+              type,
+              actionOwner,
+              connectedCrate: {
+                connect: {
+                  id: notificationRef,
+                },
+              },
+            },
+          });
+        } else if (type === 'newFollow') {
+          return await ctx.prisma.notification.create({
+            data: {
+              receiver,
+              type,
+              actionOwner,
+              connectedFollow: {
+                connect: {
+                  id: notificationRef,
+                },
+              },
+            },
+          });
+        }
       },
     });
   },
