@@ -925,3 +925,15 @@ export const CREATE_NOTIFICATION = gql`
     }
   }
 `;
+
+export const GET_NOTIFICATIONS_BY_PROFILE = gql`
+  query GetNotificationsByProfile($profileId: Int!, $userId: Int!, $currentPage: Int!) {
+    getNotificationsByProfile(profileId: $profileId, userId: $userId, currentPage: $currentPage) {
+      id
+      type
+      actionOwner
+      notificationRef
+      createdAt
+    }
+  }
+`;

@@ -9,6 +9,7 @@ import {
   Genre as NexusGenre,
   Subgenre as NexusSubgenre,
   NotificationSettings as NexusNotificationSettings,
+  Notification as NexusNotification,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -917,6 +918,62 @@ export const NotificationSettingsQueries = extendType({
             userId,
           },
         });
+      },
+    });
+  },
+});
+
+export const NotificationQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('getNotificationsByProfile', {
+      type: NexusNotification,
+      args: {
+        profileId: nonNull(intArg()),
+        userId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { profileId, userId, currentPage }, ctx) => {
+        const notificationSettings = await ctx.prisma.notificationSettings.findUnique({
+          where: {
+            userId,
+          },
+        });
+
+        let notifications = await ctx.prisma.notification.findMany({
+          where: { receiver: profileId },
+          orderBy: [
+            {
+              createdAt: 'desc',
+            },
+          ],
+        });
+
+        // Filter the notifications based on the notificationSettings
+
+        // Remove undefined values after the filter
+        notifications = notifications.filter(notification => notification !== null);
+
+        // Paginate and grab notifications
+        const pageSize = 30;
+        const numPages = Math.ceil(notifications.length / pageSize);
+
+        // If the requested page number is greater than the number of pages, adjust it
+        if (currentPage > numPages) {
+          return [];
+        }
+
+        // If notifications < pageSize, just return notifications
+        if (notifications.length <= pageSize) {
+          return notifications;
+        } else if (currentPage < numPages) {
+          // Othewrwise, return paginated records
+          const startIndex = (currentPage - 1) * pageSize;
+          const endIndex = startIndex + pageSize;
+          const notificationsForPage = notifications.slice(startIndex, endIndex);
+
+          return notificationsForPage;
+        }
       },
     });
   },

@@ -137,6 +137,40 @@ const initCronRun = async () => {
   const totalNotificationsCreated = newCrates.length + newFollows.length;
   console.log(`Total notifications created: ${totalNotificationsCreated}`);
 
+  // Delete any old notifications for profiles that have > 99999 notifications
+  const allReceivers = await prisma.notification.groupBy({
+    by: ['receiver'],
+    _count: {
+      receiver: true,
+    },
+  });
+
+  const receiversWithManyNotifications = allReceivers.filter(receiver => receiver._count.receiver > 99999);
+
+  for (const receiver of receiversWithManyNotifications) {
+    // Get the receiver's notifications sorted by createdAt in ascending order
+    const notificationsOverLimit = await prisma.notification.findMany({
+      where: {
+        receiver: receiver.receiver,
+      },
+      orderBy: {
+        createdAt: 'asc',
+      },
+    });
+
+    // Calculate the number of notifications to delete
+    const notificationsToDelete = notificationsOverLimit.length - 99999;
+
+    // Delete the first X notifications over 99999
+    for (let i = 0; i < notificationsToDelete; i++) {
+      await prisma.notification.delete({
+        where: {
+          id: notificationsOverLimit[i].id,
+        },
+      });
+    }
+  }
+
   if ((lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '0') && totalNotificationsCreated > 0) {
     await prisma.cronRun.create({
       data: {

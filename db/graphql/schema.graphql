@@ -232,6 +232,7 @@ type Query {
   getCratesFromLabel(currentPage: Int!, labelId: Int!): [Crate]!
   getLastLoginProfile(userId: Int!): Profile!
   getNotificationSettingsByUser(userId: Int!): NotificationSettings!
+  getNotificationsByProfile(currentPage: Int!, profileId: Int!, userId: Int!): [Notification]!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
