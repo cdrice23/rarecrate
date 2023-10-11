@@ -953,25 +953,33 @@ export const NotificationQueries = extendType({
           },
         });
 
+        console.log('Notifications after initial find many', notifications.length);
+
         // Filter the notifications based on the notificationSettings
         notifications = await Promise.all(
           notifications.map(async notification => {
             // Check to return notifications of profile's new followers
             if (notificationSettings.showOwnNewFollowers && notification.type === 'newFollow') {
               const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
-              return follow && follow.followingId === profileId ? notification : null;
+              if (follow && follow.followingId === profileId) {
+                return notification;
+              }
             }
 
             // Check to return notifications of profile's crates being favorited
             if (notificationSettings.showOwnNewFavorites && notification.type === 'newFavorite') {
               const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
-              return crate && crate.creatorId === profileId ? notification : null;
+              if (crate && crate.creatorId === profileId) {
+                return notification;
+              }
             }
 
             // Check to return notifications of profile's followed profiles when they follow new profiles
             if (notificationSettings.showFollowingNewFollows && notification.type === 'newFollow') {
               const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
-              return follow && follow.followingId !== profileId ? notification : null;
+              if (follow && follow.followingId !== profileId) {
+                return notification;
+              }
             }
 
             // Check to return notifications of profile's followed profiles when they create a new crate
@@ -982,15 +990,17 @@ export const NotificationQueries = extendType({
             // Check to return notifications of profile's followed profiles when the favorite a new crate
             if (notificationSettings.showFollowingNewFavorites && notification.type === 'newFavorite') {
               const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
-              return crate && crate.creatorId !== profileId ? notification : null;
+              if (crate && crate.creatorId !== profileId) {
+                return notification;
+              }
             }
-
-            return null;
           }),
         );
 
+        console.log('Notifications before null filter', notifications.length);
         // Remove undefined values after the filter
         notifications = notifications.filter(notification => notification !== null);
+        console.log('Notifications after null filter', notifications.length);
 
         // Paginate and grab notifications
         const pageSize = 30;

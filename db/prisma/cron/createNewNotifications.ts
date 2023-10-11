@@ -47,10 +47,10 @@ const initCronRun = async () => {
     lastRunCompleted = new Date(jobStart.getTime() - 1 * 60 * 60 * 1000);
   } else {
     // If there are runs, set lastRunCompleted to be the completedAt time of the last run
-    lastRunCompleted = lastRun.runs.completedAt;
+    lastRunCompleted = lastRun.runs[0].completedAt;
   }
 
-  console.log(`Last run completed at: ${lastRun.runs.length === 0 ? lastRunCompleted : lastRun.runs.completedAt}`);
+  console.log(`Last run completed at: ${lastRun.runs.length === 0 ? lastRunCompleted : lastRun.runs[0].completedAt}`);
 
   // get prisma records for Crate and Follow created at or after the timestamp
   const newCrates = await prisma.crate.findMany({
@@ -68,6 +68,9 @@ const initCronRun = async () => {
       },
     },
   });
+
+  console.log(`New Crates: ${newCrates.length}`);
+  console.log(`New Follows: ${newFollows.length}`);
 
   // Create notifications
   // Create an array of objects capturing the followers of each profile

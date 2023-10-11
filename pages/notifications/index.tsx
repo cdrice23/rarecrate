@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { FollowRequestPane } from '@/lib/molecules/FollowRequestPane/FollowRequestPane';
+import { NotificationsPane } from '@/lib/molecules/NotificationsPane/NotificationsPane';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
@@ -79,6 +80,7 @@ const NotificationsPage = ({ userId, email, prismaUserProfiles }: NotificationsP
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
           <FollowRequestPane mainProfile={profileIdMain} />
+          <NotificationsPane mainProfile={profileIdMain} currentUser={userId} />
         </>
       ) : null}
     </AuthedLayout>
