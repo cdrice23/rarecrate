@@ -936,7 +936,11 @@ export const GET_NOTIFICATIONS_BY_PROFILE = gql`
     getNotificationsByProfile(profileId: $profileId, userId: $userId, currentPage: $currentPage) {
       id
       type
-      actionOwner
+      actionOwner {
+        id
+        username
+        image
+      }
       connectedCrate {
         id
         title
@@ -961,8 +965,21 @@ export const GET_NOTIFICATIONS_BY_PROFILE = gql`
         }
         following {
           id
-          username
           image
+          username
+          bio
+          followers {
+            id
+          }
+          following {
+            id
+          }
+          crates {
+            id
+          }
+          favorites {
+            id
+          }
         }
       }
       createdAt

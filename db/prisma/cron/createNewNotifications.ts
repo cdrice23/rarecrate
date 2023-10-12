@@ -109,6 +109,7 @@ const initCronRun = async () => {
   // Create an array of notifications for all followed profiles where they favorite a crate and create a notification for each of their followers
   const allFollowedFavorites = await prisma.notification.findMany({
     where: {
+      type: 'newFavorite',
       actionOwner: {
         in: allFollowerData.map(data => data.profileId),
       },

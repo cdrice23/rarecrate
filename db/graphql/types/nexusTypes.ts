@@ -354,6 +354,7 @@ export const Follow = objectType({
             id: true,
             image: true,
             username: true,
+            bio: true,
           },
         });
       },
@@ -770,7 +771,14 @@ export const Notification = objectType({
       type: PrismaNotification.type.type,
     });
     t.field(PrismaNotification.actionOwner.name, {
-      type: PrismaNotification.actionOwner.type,
+      type: Profile,
+      resolve: async (parent: any, _, ctx) => {
+        return ctx.prisma.profile.findUnique({
+          where: {
+            id: parent.actionOwner,
+          },
+        });
+      },
     });
     t.field(PrismaNotification.connectedCrate.name, {
       type: Crate,
@@ -795,6 +803,10 @@ export const Notification = objectType({
           return ctx.prisma.follow.findUnique({
             where: {
               id: parent.followId,
+            },
+            include: {
+              follower: true,
+              following: true,
             },
           });
         }

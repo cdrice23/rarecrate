@@ -12,7 +12,7 @@ interface NotificationsPaneProps {
 }
 
 const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps) => {
-  const [currentPage, setCurrentPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(1);
   const [notifications, setNotifications] = useState([]);
   const {
     error: initialError,
@@ -20,9 +20,10 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
     data: initialData,
   } = useQuery(GET_NOTIFICATIONS_BY_PROFILE, {
     variables: {
-      currentPage: 2,
+      currentPage: 1,
       profileId: mainProfile,
-      userId: currentUser,
+      // userId: currentUser,
+      userId: 1210,
     },
   });
   const [getMoreNotifications, { loading: loadingMore, data: additionalData }] =
@@ -30,7 +31,7 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
 
   useEffect(() => {
     setNotifications(initialData?.getNotificationsByProfile);
-    setCurrentPage(2);
+    setCurrentPage(1);
   }, [initialData]);
 
   console.log(notifications);

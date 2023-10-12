@@ -28,8 +28,8 @@ const CrateDiggingPage = ({ userId, email, prismaUserProfiles }: CrateDiggingPro
 
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
     // real variable to get authed user
-    variables: { userId },
-    // variables: { userId: 1286 },
+    // variables: { userId },
+    variables: { userId: 1210 },
   });
 
   useEffect(() => {

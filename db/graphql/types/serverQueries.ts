@@ -953,8 +953,6 @@ export const NotificationQueries = extendType({
           },
         });
 
-        console.log('Notifications after initial find many', notifications.length);
-
         // Filter the notifications based on the notificationSettings
         notifications = await Promise.all(
           notifications.map(async notification => {
@@ -997,10 +995,8 @@ export const NotificationQueries = extendType({
           }),
         );
 
-        console.log('Notifications before null filter', notifications.length);
         // Remove undefined values after the filter
         notifications = notifications.filter(notification => notification !== null);
-        console.log('Notifications after null filter', notifications.length);
 
         // Paginate and grab notifications
         const pageSize = 30;

@@ -5,11 +5,12 @@ interface PillProps {
   name: string;
   icon?: React.ReactNode;
   removeHandler?: () => void;
+  style?: string;
 }
 
-const Pill = ({ name, removeHandler, icon }: PillProps) => {
+const Pill = ({ name, removeHandler, icon, style }: PillProps) => {
   return (
-    <div className={cx('pill')}>
+    <div className={cx('pill', style)}>
       {<div className={cx('pillIcon')}>{icon}</div>}
       <p className={cx('pillName')}>{name}</p>
       {removeHandler && (
