@@ -1,26 +1,79 @@
 import cx from 'classnames';
 import { Pill } from '@/lib/atoms/Pill/Pill';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { Route } from '@/core/enums/routes';
 
 interface NotificationProps {
+  index: number;
   notificationData: any;
   mainProfile: number;
+  lastIndex: number;
+  currentPage: number;
+  getMoreNotifications: () => void;
+  setCurrentPage: (value: (prevPage: number) => number) => void;
 }
 
-const Notification = ({ notificationData, mainProfile }: NotificationProps) => {
+const Notification = ({
+  index,
+  notificationData,
+  mainProfile,
+  lastIndex,
+  currentPage,
+  getMoreNotifications,
+  setCurrentPage,
+}: NotificationProps) => {
   const { type, createdAt } = notificationData;
+  // console.log(`${notificationData.id} is index ${index} and last index is ${lastIndex}`);
+
+  const router = useRouter();
+
+  const actionOwnerPath = Route.Profile + `/${notificationData.actionOwner.username}`;
+  const handleActionOwnerNav = () => {
+    router.push({
+      pathname: actionOwnerPath,
+    });
+  };
+
+  const handleConnectedCrateNav = () => {
+    router.push({
+      pathname: Route.Profile + `/${notificationData.connectedCrate.creator.username}`,
+      query: {
+        selectedCrate: notificationData.connectedCrate.id,
+      },
+    });
+  };
+
+  const handleConnectedProfile = () => {
+    router.push({
+      pathname: Route.Profile + `/${notificationData.connectedFollow.following.username}`,
+    });
+  };
 
   switch (type) {
     case 'newCrate':
       return (
-        <div className={cx('notificationBar')}>
+        <motion.div
+          className={cx('notificationBar')}
+          onViewportEnter={async () => {
+            if (index === lastIndex) {
+              console.log(`You hit the last item!`);
+              setCurrentPage(prevPage => prevPage + 1);
+              await getMoreNotifications();
+            }
+          }}
+        >
           <div className={cx('notificationBanner')}>
-            <p className={cx('image')}>{notificationData.connectedCrate.creator.image ?? 'P'}</p>
+            <div className={cx('image')} onClick={handleActionOwnerNav}>
+              <p>{notificationData.actionOwner.image ?? 'P'}</p>
+            </div>
             <p className={cx('bannerText')}>
-              {`${notificationData.connectedCrate.creator.username} created a new Crate:`}
+              <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
+              {` created a new Crate:`}
             </p>
             <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
           </div>
-          <div className={cx('notificationCrateSummary')}>
+          <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
             <h3>{notificationData.connectedCrate.title}</h3>
             <p>{notificationData.connectedCrate.description}</p>
             <div className={cx('crateLabels')}>
@@ -29,30 +82,56 @@ const Notification = ({ notificationData, mainProfile }: NotificationProps) => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       );
     case 'newFollow':
       if (notificationData.connectedFollow.following.id === mainProfile) {
         return (
-          <div className={cx('notificationBar')}>
+          <motion.div
+            className={cx('notificationBar')}
+            onViewportEnter={async () => {
+              if (index === lastIndex) {
+                console.log(`You hit the last item!`);
+                setCurrentPage(prevPage => prevPage + 1);
+                await getMoreNotifications();
+              }
+            }}
+          >
             <div className={cx('notificationBanner')}>
-              <p className={cx('image')}>{notificationData.actionOwner.image ?? 'P'}</p>
-              <p className={cx('bannerText')}>{`${notificationData.actionOwner.username} started following you.`}</p>
+              <div className={cx('image')} onClick={handleActionOwnerNav}>
+                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+              </div>
+              <p className={cx('bannerText')}>
+                <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
+                {` started following you.`}
+              </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-          </div>
+          </motion.div>
         );
       } else {
         return (
-          <div className={cx('notificationBar')}>
+          <motion.div
+            className={cx('notificationBar')}
+            onViewportEnter={async () => {
+              if (index === lastIndex) {
+                console.log(`You hit the last item!`);
+                setCurrentPage(prevPage => prevPage + 1);
+                await getMoreNotifications();
+              }
+            }}
+          >
             <div className={cx('notificationBanner')}>
-              <p className={cx('image')}>{notificationData.actionOwner.image ?? 'P'}</p>
-              <p
-                className={cx('bannerText')}
-              >{`${notificationData.actionOwner.username} started following a new Profile:`}</p>
+              <div className={cx('image')} onClick={handleActionOwnerNav}>
+                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+              </div>
+              <p className={cx('bannerText')}>
+                <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
+                {` started following a new Profile:`}
+              </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationProfileSummary')}>
+            <div className={cx('notificationProfileSummary')} onClick={handleConnectedProfile}>
               <div className={cx('profileBanner')}>
                 <p className={cx('image')}>{notificationData.connectedFollow.following.image ?? 'P'}</p>
                 <div className={cx('profileHeader')}>
@@ -67,19 +146,33 @@ const Notification = ({ notificationData, mainProfile }: NotificationProps) => {
                 <p>{`${notificationData.connectedFollow.following.favorites.length} Favorites`}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       }
     case 'newFavorite':
       if (notificationData.connectedCrate.creator.id === mainProfile) {
         return (
-          <div className={cx('notificationBar')}>
+          <motion.div
+            className={cx('notificationBar')}
+            onViewportEnter={async () => {
+              if (index === lastIndex) {
+                console.log(`You hit the last item!`);
+                setCurrentPage(prevPage => prevPage + 1);
+                await getMoreNotifications();
+              }
+            }}
+          >
             <div className={cx('notificationBanner')}>
-              <p className={cx('image')}>{notificationData.actionOwner.image ?? 'P'}</p>
-              <p className={cx('bannerText')}>{`${notificationData.actionOwner.username} favorited your Crate:`}</p>
+              <div className={cx('image')} onClick={handleActionOwnerNav}>
+                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+              </div>
+              <p className={cx('bannerText')}>
+                <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
+                {` favorited your Crate:`}
+              </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationCrateSummary')}>
+            <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
               <h3>{notificationData.connectedCrate.title}</h3>
               <p>{notificationData.connectedCrate.description}</p>
               <div className={cx('crateLabels')}>
@@ -88,17 +181,31 @@ const Notification = ({ notificationData, mainProfile }: NotificationProps) => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       } else {
         return (
-          <div className={cx('notificationBar')}>
+          <motion.div
+            className={cx('notificationBar')}
+            onViewportEnter={async () => {
+              if (index === lastIndex) {
+                console.log(`You hit the last item!`);
+                setCurrentPage(prevPage => prevPage + 1);
+                await getMoreNotifications();
+              }
+            }}
+          >
             <div className={cx('notificationBanner')}>
-              <p className={cx('image')}>{notificationData.actionOwner.image ?? 'P'}</p>
-              <p className={cx('bannerText')}>{`${notificationData.actionOwner.username} favorited a new Crate:`}</p>
+              <div className={cx('image')} onClick={handleActionOwnerNav}>
+                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+              </div>
+              <p className={cx('bannerText')}>
+                <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
+                {` favorited a new Crate:`}
+              </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationCrateSummary')}>
+            <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
               <h3>{notificationData.connectedCrate.title}</h3>
               <p>{notificationData.connectedCrate.description}</p>
               <div className={cx('crateLabels')}>
@@ -107,7 +214,7 @@ const Notification = ({ notificationData, mainProfile }: NotificationProps) => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       }
     default:

@@ -1010,7 +1010,7 @@ export const NotificationQueries = extendType({
         // If notifications < pageSize, just return notifications
         if (notifications.length <= pageSize) {
           return notifications;
-        } else if (currentPage < numPages) {
+        } else if (currentPage <= numPages) {
           // Othewrwise, return paginated records
           const startIndex = (currentPage - 1) * pageSize;
           const endIndex = startIndex + pageSize;

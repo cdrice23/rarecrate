@@ -24,20 +24,22 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const [createNotification] = useMutation(CREATE_NOTIFICATION);
-  const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
-    variables: { username: username },
-  });
 
   const router = useRouter();
 
+  const { loading, error, data } = useQuery(GET_PROFILE_CRATES_AND_FAVORITES, {
+    variables: { username: username },
+    skip: Boolean(!activeCrate && router.query.selectedCrate),
+  });
+
   useEffect(() => {
-    const { searchedCrateSelected } = router.query;
-    if (searchedCrateSelected) {
-      setActiveCrate(Number(searchedCrateSelected));
+    const { selectedCrate } = router.query;
+    if (selectedCrate) {
+      setActiveCrate(Number(selectedCrate));
       setShowCrateDetail(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router.query.selectedCrate]);
 
   const crateSummaryData = data?.getProfile;
   const isMain = Boolean(crateSummaryData?.id === mainProfile);

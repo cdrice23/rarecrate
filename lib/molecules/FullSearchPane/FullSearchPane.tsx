@@ -48,7 +48,7 @@ const FullSearchPane = ({
                 setSearchPath({});
                 router.push({
                   pathname: Route.Profile + `/${result.creator.username}`,
-                  query: { searchedCrateSelected: result.id },
+                  query: { selectedCrate: result.id },
                 });
                 await logSelectedSearchResult({
                   variables: { prismaModel: 'crate', selectedId: result.id },

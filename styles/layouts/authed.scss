@@ -1148,113 +1148,25 @@
   }
 }
 
-.notificationBar {
-  background-color: #bde4ff;
-  position: relative;
-  padding: 8px;
-  border-radius: 8px;
-  margin: 8px;
+.notificationsPane {
+  margin: 8px 0;
 
-  .notificationBanner {
-    display: flex;
-    align-items: center;
-    padding: 4px 0;
-
-    .image {
-      margin-left: 8px;
-      height: 36px;
-      width: 36px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-color: grey;
-      border-radius: 50px;
-    }
-
-    .bannerText {
-      margin-left: 16px;
-      flex-grow: 1;
-      text-align: left;
-    }
-
-    .timestamp {
-      margin-right: 8px;
-    }
-  }
-
-  .notificationCrateSummary {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 8px auto;
-    background-color: lightgray;
+  .notificationBar {
+    background-color: #bde4ff;
+    position: relative;
     padding: 8px;
     border-radius: 8px;
-
-    h3, p {
-      margin: 4px 0;
-    }
-
-    p {
-      padding: 0 8px;
-    }
-
-    .crateLabels {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      width: 500px;
-      flex-wrap: wrap;
-      padding: 0 8px;
-
-      .pill {
-        &.standardLabel {
-          background-color: royalblue;
-          color: white;
-        }
-
-        &.uniqueLabel {
-          background-color: goldenrod;
-          color: white;
-        }
-
-        margin: 4px;
-        background-color: aquamarine;
-        border-radius: 16px;
-        padding: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    margin: 8px;
   
-      .pillName {
-        font-size: 1rem;
-        margin: 0 auto;
-        display: inline-block;
-      }
-
-      
-      }
-    }
-  }
-
-  .notificationProfileSummary {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 8px auto;
-    background-color: lightgray;
-    padding: 8px;
-    border-radius: 8px;
-
-    .profileBanner {
+    .notificationBanner {
       display: flex;
       align-items: center;
-      padding: 8px;
-
+      padding: 4px 0;
+  
       .image {
+        margin-left: 8px;
         height: 36px;
-        min-width: 36px;
+        width: 36px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1262,24 +1174,131 @@
         background-color: grey;
         border-radius: 50px;
       }
+  
+      .bannerText {
+        margin-left: 16px;
+        flex-grow: 1;
+        text-align: left;
 
-      .profileHeader {
-        flex: 1 1 100%;
-
-        h3, p {
-          margin: 4px 0;
+        a {
+          color:royalblue;
+          font-weight: 400;
         }
+      }
+  
+      .timestamp {
+        margin-right: 8px;
+      }
+    }
+  
+    .notificationCrateSummary {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      margin: 8px auto;
+      background-color: lightgray;
+      padding: 8px;
+      border-radius: 8px;
+
+      &:hover {
+        color: white;
+        background-color: grey;
+      }
+  
+      h3, p {
+        margin: 4px 0;
+      }
+  
+      p {
+        padding: 0 8px;
+      }
+  
+      .crateLabels {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 500px;
+        flex-wrap: wrap;
+        padding: 0 8px;
+  
+        .pill {
+          &.standardLabel {
+            background-color: royalblue;
+            color: white;
+          }
+  
+          &.uniqueLabel {
+            background-color: goldenrod;
+            color: white;
+          }
+  
+          margin: 4px;
+          background-color: aquamarine;
+          border-radius: 16px;
+          padding: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
     
-        p {
-          padding: 0 8px;
+        .pillName {
+          font-size: 1rem;
+          margin: 0 auto;
+          display: inline-block;
+        }
+  
+        
         }
       }
     }
-
-    .profileDetails {
+  
+    .notificationProfileSummary {
       display: flex;
-      justify-content: space-evenly;
-      margin: 4px 0;
+      flex-direction: column;
+      width: 500px;
+      margin: 8px auto;
+      background-color: lightgray;
+      padding: 8px;
+      border-radius: 8px;
+
+      &:hover {
+        color: white;
+        background-color: grey;
+      }
+  
+      .profileBanner {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+  
+        .image {
+          height: 36px;
+          min-width: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          background-color: grey;
+          border-radius: 50px;
+        }
+  
+        .profileHeader {
+          flex: 1 1 100%;
+  
+          h3, p {
+            margin: 4px 0;
+          }
+      
+          p {
+            padding: 0 8px;
+          }
+        }
+      }
+  
+      .profileDetails {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 4px 0;
+      }
     }
   }
 }

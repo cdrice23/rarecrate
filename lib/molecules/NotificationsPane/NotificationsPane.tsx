@@ -26,15 +26,40 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
       userId: 1210,
     },
   });
-  const [getMoreNotifications, { loading: loadingMore, data: additionalData }] =
-    useLazyQuery(GET_NOTIFICATIONS_BY_PROFILE);
+
+  const [getMoreNotifications, { loading: loadingMore, data: additionalData }] = useLazyQuery(
+    GET_NOTIFICATIONS_BY_PROFILE,
+    {
+      variables: {
+        currentPage: currentPage,
+        profileId: mainProfile,
+        // userId: currentUser,
+        userId: 1210,
+      },
+    },
+  );
 
   useEffect(() => {
     setNotifications(initialData?.getNotificationsByProfile);
-    setCurrentPage(1);
   }, [initialData]);
 
-  console.log(notifications);
+  useEffect(() => {
+    if (additionalData?.getNotificationsByProfile) {
+      if (additionalData?.getNotificationsByProfile) {
+        const newNotifications = additionalData.getNotificationsByProfile.filter(
+          newNotification => !notifications.includes(newNotification),
+        );
+
+        if (newNotifications.length > 0) {
+          setNotifications(prevNotifications => [...prevNotifications, ...newNotifications]);
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [additionalData]);
+
+  console.log('notification', notifications);
+  console.log(currentPage);
 
   return (
     <>
@@ -49,8 +74,22 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
         <Pane>
           <div className={cx('notificationsPane')}>
             {notifications?.map((notification, index) => (
-              <Notification key={index} notificationData={notification} mainProfile={mainProfile} />
+              <Notification
+                key={index}
+                index={index}
+                notificationData={notification}
+                mainProfile={mainProfile}
+                currentPage={currentPage}
+                lastIndex={notifications.length - 1}
+                getMoreNotifications={getMoreNotifications}
+                setCurrentPage={setCurrentPage}
+              />
             ))}
+            {loadingMore && (
+              <div className={cx('notificationBar')}>
+                <h5>{`Loading more notifications...`}</h5>
+              </div>
+            )}
           </div>
         </Pane>
       ) : null}
