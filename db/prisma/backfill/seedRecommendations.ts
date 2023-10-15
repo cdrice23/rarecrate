@@ -8,7 +8,17 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
       include: {
         followers: true,
         following: true,
-        crates: true,
+        crates: {
+          include: {
+            albums: {
+              include: {
+                album: true,
+                tags: true,
+              },
+            },
+            labels: true,
+          },
+        },
         favorites: true,
       },
     }),
@@ -121,7 +131,7 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
                 crateAlbum =>
                   crateAlbum.tags &&
                   crateAlbum.tags.length > 0 &&
-                  crateAlbum.tags.some(tag => profileData.tagsNotUsed.includes(tag.id)),
+                  crateAlbum.tags.some(tag => profileData.tagsNotUsed.map(tag => tag.id).includes(tag.id)),
               ),
           )
         : profileData.unfavoritedCrates;
@@ -132,7 +142,7 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
             crateId =>
               crateId.labels &&
               crateId.labels.length > 0 &&
-              crateId.labels.some(label => profileData.labelsNotUsed.includes(label.id)),
+              crateId.labels.some(label => profileData.labelsNotUsed.map(label => label.id).includes(label.id)),
           )
         : profileData.unfavoritedCrates;
 
@@ -142,7 +152,9 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
             crateId =>
               crateId.albums &&
               crateId.albums.length > 0 &&
-              crateId.albums.some(crateAlbum => profileData.crateAlbumsByArtistsNotUsed.includes(crateAlbum.id)),
+              crateId.albums.some(crateAlbum =>
+                profileData.crateAlbumsByArtistsNotUsed.map(crateAlbum => crateAlbum.id).includes(crateAlbum.id),
+              ),
           )
         : profileData.unfavoritedCrates;
 
@@ -163,7 +175,7 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
                 crateAlbum =>
                   crateAlbum.tags &&
                   crateAlbum.tags.length > 0 &&
-                  crateAlbum.tags.some(tag => !profileData.tagsNotUsed.includes(tag.id)),
+                  crateAlbum.tags.some(tag => !profileData.tagsNotUsed.map(tag => tag.id).includes(tag.id)),
               ),
           )
         : profileData.unfavoritedCrates;
@@ -174,7 +186,7 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
             crateId =>
               crateId.labels &&
               crateId.labels.length > 0 &&
-              crateId.labels.some(label => !profileData.labelsNotUsed.includes(label.id)),
+              crateId.labels.some(label => !profileData.labelsNotUsed.map(label => label.id).includes(label.id)),
           )
         : profileData.unfavoritedCrates;
 
@@ -184,7 +196,10 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
             crateId =>
               crateId.albums &&
               crateId.albums.length > 0 &&
-              crateId.albums.some(crateAlbum => !profileData.crateAlbumsByArtistsNotUsed.includes(crateAlbum.id)),
+              crateId.albums.some(
+                crateAlbum =>
+                  !profileData.crateAlbumsByArtistsNotUsed.map(crateAlbum => crateAlbum.id).includes(crateAlbum.id),
+              ),
           )
         : profileData.unfavoritedCrates;
 
