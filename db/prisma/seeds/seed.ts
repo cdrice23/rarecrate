@@ -12,10 +12,12 @@ import { generateProfileDeleteTest } from '../backfill/generateProfileDeleteTest
 import { randomizeCrateAndFollowDates } from '../backfill/randomizeCrateAndFollowDates';
 import { generateNotifications } from '../backfill/generateNotifications';
 import { deleteAllNotifications } from '../backfill/deleteAllNotifications';
+import { seedRecommendations } from '../backfill/seedRecommendations';
+import { deleteAllRecommendations } from '../backfill/deleteRecommendations';
 
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../prismaClient';
+// import { PrismaClient } from '@prisma/client';
+// const prisma = new PrismaClient();
 
 async function main() {
   // await bigUserSeed();
@@ -30,8 +32,10 @@ async function main() {
   // await addNotificationSettings();
   // await generateProfileDeleteTest();
   // await randomizeCrateAndFollowDates();
-  await generateNotifications();
+  // await generateNotifications();
   // await deleteAllNotifications();
+  await seedRecommendations(prisma);
+  // await deleteAllRecommendations(prisma)
 }
 
 main()
