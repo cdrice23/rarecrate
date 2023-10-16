@@ -176,8 +176,8 @@ const initCronRun = async () => {
   });
 
   // Generate all recommended Crates by Profile
-  console.log('Creating allRecommendedCratesByProfile');
-  const allRecommendedCratesByProfile = allProfileData.map(profileData => {
+  console.log('Creating allNewRecommendedCratesByProfile');
+  const allNewRecommendedCratesByProfile = allProfileData.map(profileData => {
     const profile = allProfiles.find(profile => profile.id === profileData.profileId);
 
     const randomUnfollowedProfileCrates =
@@ -283,13 +283,13 @@ const initCronRun = async () => {
   });
 
   // Generate recommendations based on recommended Crates for each Profile
-  console.log('Creating prisma recommendations based on allRecommendedCratesByProfile');
+  console.log('Creating prisma recommendations based on allNewRecommendedCratesByProfile');
 
   let progressCounter = 1;
   let createdRecommendations = 0;
-  const totalProfiles = allRecommendedCratesByProfile.length;
+  const totalProfiles = allNewRecommendedCratesByProfile.length;
 
-  for (const profileData of allRecommendedCratesByProfile) {
+  for (const profileData of allNewRecommendedCratesByProfile) {
     console.log(`Now creating recommendations for profile ${progressCounter} out of ${totalProfiles}`);
     const createRecommendation = async crateId => {
       const existingRecommendation = await prisma.recommendation.findMany({
@@ -364,7 +364,6 @@ const initCronRun = async () => {
     },
   });
 
-  // Update allProfileData here
   allProfileData = allProfileData.map(profileData => {
     const profile = allProfiles.find(profile => profile.id === profileData.profileId);
     const unfavoritedCrates =
@@ -396,7 +395,165 @@ const initCronRun = async () => {
     };
   });
 
-  // FUTURE WORK - DELETE NOTIFICATIONS OUT OF POLICY HERE
+  // Create a new array allRecommendedCratesByProfile
+  console.log('Creating allRecommendedCratesByProfile');
+  const allRecommendedCratesByProfile = allProfileData.map(profileData => {
+    const profile = allProfiles.find(profile => profile.id === profileData.profileId);
+
+    const randomUnfollowedProfileCrates =
+      profile.following && profile.following.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId => !profile.following.some(following => following.id === crateId.creator.id),
+          )
+        : profileData.unfavoritedCrates;
+
+    const randomUnusedTagCrates =
+      profileData.tagsNotUsed && profileData.tagsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.albums &&
+              crateId.albums.length > 0 &&
+              crateId.albums.some(
+                crateAlbum =>
+                  crateAlbum.tags &&
+                  crateAlbum.tags.length > 0 &&
+                  crateAlbum.tags.some(tag => profileData.tagsNotUsed.map(tag => tag.id).includes(tag.id)),
+              ),
+          )
+        : profileData.unfavoritedCrates;
+
+    const randomUnusedLabelCrates =
+      profileData.labelsNotUsed && profileData.labelsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.labels &&
+              crateId.labels.length > 0 &&
+              crateId.labels.some(label => profileData.labelsNotUsed.map(label => label.id).includes(label.id)),
+          )
+        : profileData.unfavoritedCrates;
+
+    const randomUnusedArtistCrates =
+      profileData.crateAlbumsByArtistsNotUsed && profileData.crateAlbumsByArtistsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.albums &&
+              crateId.albums.length > 0 &&
+              crateId.albums.some(crateAlbum =>
+                profileData.crateAlbumsByArtistsNotUsed.map(crateAlbum => crateAlbum.id).includes(crateAlbum.id),
+              ),
+          )
+        : profileData.unfavoritedCrates;
+
+    const curatedFollowedProfileCrates =
+      profile.following && profile.following.length > 0
+        ? profileData.unfavoritedCrates.filter(crateId =>
+            profile.following.some(following => following.id === crateId.creator.id),
+          )
+        : profileData.unfavoritedCrates;
+
+    const curatedUsedTagCrates =
+      profileData.tagsNotUsed && profileData.tagsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.albums &&
+              crateId.albums.length > 0 &&
+              crateId.albums.some(
+                crateAlbum =>
+                  crateAlbum.tags &&
+                  crateAlbum.tags.length > 0 &&
+                  crateAlbum.tags.some(tag => !profileData.tagsNotUsed.map(tag => tag.id).includes(tag.id)),
+              ),
+          )
+        : profileData.unfavoritedCrates;
+
+    const curatedUsedLabelCrates =
+      profileData.labelsNotUsed && profileData.labelsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.labels &&
+              crateId.labels.length > 0 &&
+              crateId.labels.some(label => !profileData.labelsNotUsed.map(label => label.id).includes(label.id)),
+          )
+        : profileData.unfavoritedCrates;
+
+    const curatedUsedArtistCrates =
+      profileData.crateAlbumsByArtistsNotUsed && profileData.crateAlbumsByArtistsNotUsed.length > 0
+        ? profileData.unfavoritedCrates.filter(
+            crateId =>
+              crateId.albums &&
+              crateId.albums.length > 0 &&
+              crateId.albums.some(
+                crateAlbum =>
+                  !profileData.crateAlbumsByArtistsNotUsed.map(crateAlbum => crateAlbum.id).includes(crateAlbum.id),
+              ),
+          )
+        : profileData.unfavoritedCrates;
+
+    const allRecommendedCrates = [
+      ...randomUnfollowedProfileCrates,
+      ...randomUnusedTagCrates,
+      ...randomUnusedLabelCrates,
+      ...randomUnusedArtistCrates,
+      ...curatedFollowedProfileCrates,
+      ...curatedUsedTagCrates,
+      ...curatedUsedLabelCrates,
+      ...curatedUsedArtistCrates,
+    ];
+
+    const uniqueRecommendedCrates = [...new Set(allRecommendedCrates)];
+
+    return {
+      profileId: profileData.profileId,
+      recommendedCrates: [...uniqueRecommendedCrates],
+    };
+  });
+
+  // Generate an array allExistingRecommendationsByProfile
+  const allExistingRecommendationsByProfile = await Promise.all(
+    allProfileData.map(async profileData => {
+      const profile = allProfiles.find(profile => profile.id === profileData.profileId);
+      const profileRecommendations = await prisma.recommendation.findMany({
+        where: {
+          profile: {
+            id: profile.id,
+          },
+        },
+      });
+
+      return {
+        profileId: profileData.profileId,
+        profileRecommendations: [...profileRecommendations],
+      };
+    }),
+  );
+
+  // For each profile in allExistingRecommendationsByProfile, check if the crateIds exist in allCrateRecommendationsByProfile
+  let deletedRecommendations = 0;
+
+  for (const profile of allExistingRecommendationsByProfile) {
+    const recommendedCrates = allRecommendedCratesByProfile.find(
+      crateDataProfile => crateDataProfile.profileId === profile.profileId,
+    ).recommendedCrates;
+
+    for (const recommendation of profile.profileRecommendations) {
+      const isRecommendedCrate =
+        recommendedCrates.length > 0 && recommendedCrates.some(crate => crate.id === recommendation.crateId);
+
+      if (!isRecommendedCrate) {
+        const deletedRecommendation = await prisma.recommendation.delete({
+          where: {
+            id: recommendation.id,
+          },
+        });
+
+        if (deletedRecommendation) {
+          deletedRecommendations++;
+        }
+      }
+    }
+  }
+
+  console.log(`Total deleted recommendations: ${deletedRecommendations}`);
 
   // Update cronRun
   if ((lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '0') && createdRecommendations > 0) {
@@ -404,7 +561,7 @@ const initCronRun = async () => {
       data: {
         createdAt: jobStart,
         completedAt: new Date(),
-        lastProcessedItem: createdRecommendations.toString(),
+        lastProcessedItem: `created recommendations: ${createdRecommendations}, deleted recommendations: ${deletedRecommendations}`,
         cronJob: {
           connect: {
             id: 4,
