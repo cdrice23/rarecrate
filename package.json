@@ -22,7 +22,8 @@
     "cron:test": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/createNewNotifications.ts",
     "cron:run:getAlbums": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/getAlbums.ts",
     "cron:run:getNewAlbums": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/getNewAlbums.ts",
-    "cron:run:createNewNotifications": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/createNewNotifications.ts"
+    "cron:run:createNewNotifications": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/createNewNotifications.ts",
+    "cron:run:updateRecommendations": "dotenv -e .env.development -- ts-node --compiler-options \"{\\\"module\\\":\\\"CommonJS\\\"}\" db/prisma/cron/updateRecommendations.ts"
   },
   "prisma": {
     "schema": "db/prisma/schema.prisma",

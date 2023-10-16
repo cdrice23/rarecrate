@@ -291,15 +291,15 @@ const initCronRun = async () => {
 
   for (const profileData of allNewRecommendedCratesByProfile) {
     console.log(`Now creating recommendations for profile ${progressCounter} out of ${totalProfiles}`);
-    const createRecommendation = async crateId => {
+    const createRecommendation = async crate => {
       const existingRecommendation = await prisma.recommendation.findMany({
         where: {
           profileId: profileData.profileId,
-          crateId: crateId.id,
+          crateId: crate.id,
         },
       });
 
-      if (existingRecommendation.length > 0) {
+      if (existingRecommendation.length === 0) {
         await prisma.recommendation.create({
           data: {
             profile: {
@@ -309,7 +309,7 @@ const initCronRun = async () => {
             },
             crate: {
               connect: {
-                id: crateId.id,
+                id: crate.id,
               },
             },
           },
@@ -332,15 +332,15 @@ const initCronRun = async () => {
 
     const uniqueCrateRecommendations = [...new Set(allCrateRecommendations)];
 
-    for (const crateId of uniqueCrateRecommendations) {
-      await createRecommendation(crateId);
+    for (const crate of uniqueCrateRecommendations) {
+      await createRecommendation(crate);
     }
 
     progressCounter++;
   }
 
   // Log created notification length
-  console.log(`Total notifications created: ${createdRecommendations}`);
+  console.log(`Total recommendations created: ${createdRecommendations}`);
 
   // Delete any recommendations that fall outside of policy
   // Update allProfileData to update unfavoritedCrates and crateAlbumsByArtistsNotUsed
@@ -556,7 +556,10 @@ const initCronRun = async () => {
   console.log(`Total deleted recommendations: ${deletedRecommendations}`);
 
   // Update cronRun
-  if ((lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '0') && createdRecommendations > 0) {
+  if (
+    (lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '') &&
+    (createdRecommendations > 0 || deletedRecommendations > 0)
+  ) {
     await prisma.cronRun.create({
       data: {
         createdAt: jobStart,

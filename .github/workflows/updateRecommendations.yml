@@ -1,0 +1,37 @@
+name: Hourly update Recommendations
+
+on:
+  schedule:
+    # Runs hourly
+    - cron: '0 * * * *'
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Set up environment variables
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL_DEV }}" >> $GITHUB_ENV
+          echo "DISCOGS_API_KEY=${{ secrets.DISCOGS_API_KEY }}" >> $GITHUB_ENV
+          echo "DISCOGS_API_SECRET=${{ secrets.DISCOGS_API_SECRET }}" >> $GITHUB_ENV
+
+      - name: Run updateRecommendations.ts script
+        run: yarn cron:run:updateRecommendations
