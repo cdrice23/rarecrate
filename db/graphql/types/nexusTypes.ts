@@ -714,6 +714,22 @@ export const Recommendation = objectType({
     t.field(PrismaRecommendation.seen.name, {
       type: PrismaRecommendation.seen.type,
     });
+    t.field(PrismaRecommendation.recommendationType.name, {
+      type: PrismaRecommendation.recommendationType.type,
+    });
+  },
+});
+
+export const RecommendationResults = objectType({
+  name: 'RecommendationResults',
+  definition(t) {
+    t.list.field('recommendations', {
+      type: Recommendation,
+    });
+    t.list.field('usedPages', {
+      type: 'Int',
+    });
+    t.int('totalRecommendations');
   },
 });
 

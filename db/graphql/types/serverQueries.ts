@@ -1,4 +1,4 @@
-import { queryType, nonNull, intArg, stringArg, nullable, extendType, booleanArg } from 'nexus';
+import { queryType, nonNull, intArg, stringArg, nullable, extendType, booleanArg, list } from 'nexus';
 import {
   Profile as NexusProfile,
   Crate as NexusCrate,
@@ -10,6 +10,7 @@ import {
   Subgenre as NexusSubgenre,
   NotificationSettings as NexusNotificationSettings,
   Notification as NexusNotification,
+  Recommendation as NexusRecommendation,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -1022,3 +1023,20 @@ export const NotificationQueries = extendType({
     });
   },
 });
+
+// export const RecommendationQueries = extendType({
+//   type: 'Query',
+//   definition(t) {
+//     t.nonNull.list.field('getRecommendations', {
+//       type: NexusRecommendation,
+//       args: {
+//         profileId: nonNull(intArg()),
+//         usedPages: list(intArg()),
+//         totalRecommendations: intArg(),
+//       },
+//       resolve: async (_, { profileId, usedPages, totalRecommendations }, ctx) => {
+
+//       },
+//     });
+//   },
+// });

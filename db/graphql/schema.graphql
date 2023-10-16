@@ -262,7 +262,14 @@ type Recommendation {
   id: Int!
   profile: Profile
   profileId: Int!
+  recommendationType: String
   seen: Boolean!
+}
+
+type RecommendationResults {
+  recommendations: [Recommendation]
+  totalRecommendations: Int
+  usedPages: [Int]
 }
 
 enum RequestStatus {

@@ -291,7 +291,25 @@ const initCronRun = async () => {
 
   for (const profileData of allNewRecommendedCratesByProfile) {
     console.log(`Now creating recommendations for profile ${progressCounter} out of ${totalProfiles}`);
-    const createRecommendation = async crate => {
+    const countOccurrences = (arr, val) => arr.reduce((a, v) => (v.id === val.id ? a + 1 : a), 0);
+    const determineRecommendationType = (crate, profileData) => {
+      const randomCount =
+        countOccurrences(profileData.randomUnfollowedProfileCrates, crate) +
+        countOccurrences(profileData.randomUnusedTagCrates, crate) +
+        countOccurrences(profileData.randomUnusedLabelCrates, crate) +
+        countOccurrences(profileData.randomUnusedArtistCrates, crate);
+
+      const curatedCount =
+        countOccurrences(profileData.curatedFollowedProfileCrates, crate) +
+        countOccurrences(profileData.curatedUsedTagCrates, crate) +
+        countOccurrences(profileData.curatedUsedLabelCrates, crate) +
+        countOccurrences(profileData.curatedUsedArtistCrates, crate);
+
+      const recommendationType = curatedCount > 1 ? 'curated' : 'random';
+      return recommendationType;
+    };
+
+    const createRecommendation = async (crate, recommendationType) => {
       const existingRecommendation = await prisma.recommendation.findMany({
         where: {
           profileId: profileData.profileId,
@@ -312,6 +330,7 @@ const initCronRun = async () => {
                 id: crate.id,
               },
             },
+            recommendationType: recommendationType,
           },
         });
 
@@ -333,7 +352,8 @@ const initCronRun = async () => {
     const uniqueCrateRecommendations = [...new Set(allCrateRecommendations)];
 
     for (const crate of uniqueCrateRecommendations) {
-      await createRecommendation(crate);
+      const recommendationType = determineRecommendationType(crate, profileData);
+      await createRecommendation(crate, recommendationType);
     }
 
     progressCounter++;
@@ -342,7 +362,7 @@ const initCronRun = async () => {
   // Log created notification length
   console.log(`Total recommendations created: ${createdRecommendations}`);
 
-  // Delete any recommendations that fall outside of policy
+  // Prepare data for later operations: 1) Updating existing recommendationTypes by policy and 2) Deleting recommendations out of policy
   // Update allProfileData to update unfavoritedCrates and crateAlbumsByArtistsNotUsed
   const allCrates = await prisma.crate.findMany({
     include: {
@@ -504,6 +524,14 @@ const initCronRun = async () => {
 
     return {
       profileId: profileData.profileId,
+      randomUnfollowedProfileCrates: [...new Set(randomUnfollowedProfileCrates)],
+      randomUnusedTagCrates: [...new Set(randomUnusedTagCrates)],
+      randomUnusedLabelCrates: [...new Set(randomUnusedLabelCrates)],
+      randomUnusedArtistCrates: [...new Set(randomUnusedArtistCrates)],
+      curatedFollowedProfileCrates: [...new Set(curatedFollowedProfileCrates)],
+      curatedUsedTagCrates: [...new Set(curatedUsedTagCrates)],
+      curatedUsedLabelCrates: [...new Set(curatedUsedLabelCrates)],
+      curatedUsedArtistCrates: [...new Set(curatedUsedArtistCrates)],
       recommendedCrates: [...uniqueRecommendedCrates],
     };
   });
@@ -526,6 +554,69 @@ const initCronRun = async () => {
       };
     }),
   );
+
+  // Check existing recommendations if the existing recommendationType still applies, if not, update
+  let updatedRecommendations = 0;
+
+  for (const profile of allExistingRecommendationsByProfile) {
+    const countOccurrences = (arr, val) => arr.reduce((a, v) => (v.id === val.id ? a + 1 : a), 0);
+    const determineRecommendationType = (crate, profileData) => {
+      const randomCount =
+        countOccurrences(profileData.randomUnfollowedProfileCrates, crate) +
+        countOccurrences(profileData.randomUnusedTagCrates, crate) +
+        countOccurrences(profileData.randomUnusedLabelCrates, crate) +
+        countOccurrences(profileData.randomUnusedArtistCrates, crate);
+
+      const curatedCount =
+        countOccurrences(profileData.curatedFollowedProfileCrates, crate) +
+        countOccurrences(profileData.curatedUsedTagCrates, crate) +
+        countOccurrences(profileData.curatedUsedLabelCrates, crate) +
+        countOccurrences(profileData.curatedUsedArtistCrates, crate);
+
+      const recommendationType = curatedCount > 1 ? 'curated' : 'random';
+      return recommendationType;
+    };
+
+    const updateRecommendationWithType = async (crateId, recommendationType) => {
+      await prisma.recommendation.updateMany({
+        where: {
+          profile: {
+            id: profile.profileId,
+          },
+          crate: {
+            id: crateId.id,
+          },
+        },
+        data: {
+          recommendationType: recommendationType,
+        },
+      });
+    };
+
+    for (const recommendation of profile.profileRecommendations) {
+      const recommendedCrate = allCrates.find(crate => crate.id === recommendation.crateId);
+      const profileData = allRecommendedCratesByProfile.find(
+        profileData => profileData.profileId === recommendation.profileId,
+      );
+      const currentRecommendationType = recommendation.recommendationType;
+      const newRecommendationType = determineRecommendationType(recommendedCrate, profileData);
+
+      if (currentRecommendationType !== newRecommendationType) {
+        await prisma.recommendation.update({
+          where: {
+            id: recommendation.id,
+          },
+          data: {
+            recommendationType: newRecommendationType,
+          },
+        });
+
+        updatedRecommendations++;
+      }
+    }
+  }
+
+  console.log(`Total updated recommendations: ${updatedRecommendations}`);
 
   // For each profile in allExistingRecommendationsByProfile, check if the crateIds exist in allCrateRecommendationsByProfile
   let deletedRecommendations = 0;
@@ -558,13 +649,13 @@ const initCronRun = async () => {
   // Update cronRun
   if (
     (lastRun.lastProcessedItem === null || lastRun.lastProcessedItem !== '') &&
-    (createdRecommendations > 0 || deletedRecommendations > 0)
+    (createdRecommendations > 0 || deletedRecommendations > 0 || updatedRecommendations > 0)
   ) {
     await prisma.cronRun.create({
       data: {
         createdAt: jobStart,
         completedAt: new Date(),
-        lastProcessedItem: `created recommendations: ${createdRecommendations}, deleted recommendations: ${deletedRecommendations}`,
+        lastProcessedItem: `created recommendations: ${createdRecommendations}, deleted recommendations: ${deletedRecommendations}, updated recommendations: ${updatedRecommendations}`,
         cronJob: {
           connect: {
             id: 4,

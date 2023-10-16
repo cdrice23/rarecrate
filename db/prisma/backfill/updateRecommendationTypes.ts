@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
+export async function updateRecommendationTypes(prisma: PrismaClient): Promise<void> {
   // Fetch all data required for generating allProfileData
   console.log('Preparing data to create allProfileData');
   const [allProfiles, allCrates, allTags, allLabels, allCrateAlbums] = await Promise.all([
@@ -217,44 +217,42 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
   });
 
   // Generate recommendations based on recommended Crates for each Profile
-  console.log('Creating prisma recommendations based on allRecommendedCratesByProfile');
+  console.log('Updating prisma recommendations based on allRecommendedCratesByProfile');
 
   let progressCounter = 1;
   const totalProfiles = allRecommendedCratesByProfile.length;
 
   for (const profileData of allRecommendedCratesByProfile) {
-    console.log(`Now creating recommendations for profile ${progressCounter} out of ${totalProfiles}`);
+    console.log(`Now updating recommendations for profile ${progressCounter} out of ${totalProfiles}`);
     const countOccurrences = (arr, val) => arr.reduce((a, v) => (v.id === val.id ? a + 1 : a), 0);
-    const determineRecommendationType = (crate, profileData) => {
+    const determineRecommendationType = (crateId, profileData) => {
       const randomCount =
-        countOccurrences(profileData.randomUnfollowedProfileCrates, crate) +
-        countOccurrences(profileData.randomUnusedTagCrates, crate) +
-        countOccurrences(profileData.randomUnusedLabelCrates, crate) +
-        countOccurrences(profileData.randomUnusedArtistCrates, crate);
+        countOccurrences(profileData.randomUnfollowedProfileCrates, crateId) +
+        countOccurrences(profileData.randomUnusedTagCrates, crateId) +
+        countOccurrences(profileData.randomUnusedLabelCrates, crateId) +
+        countOccurrences(profileData.randomUnusedArtistCrates, crateId);
 
       const curatedCount =
-        countOccurrences(profileData.curatedFollowedProfileCrates, crate) +
-        countOccurrences(profileData.curatedUsedTagCrates, crate) +
-        countOccurrences(profileData.curatedUsedLabelCrates, crate) +
-        countOccurrences(profileData.curatedUsedArtistCrates, crate);
+        countOccurrences(profileData.curatedFollowedProfileCrates, crateId) +
+        countOccurrences(profileData.curatedUsedTagCrates, crateId) +
+        countOccurrences(profileData.curatedUsedLabelCrates, crateId) +
+        countOccurrences(profileData.curatedUsedArtistCrates, crateId);
 
       const recommendationType = curatedCount > 1 ? 'curated' : 'random';
       return recommendationType;
     };
 
-    const createRecommendation = async (crate, recommendationType) => {
-      await prisma.recommendation.create({
-        data: {
+    const updateRecommendationWithType = async (crateId, recommendationType) => {
+      await prisma.recommendation.updateMany({
+        where: {
           profile: {
-            connect: {
-              id: profileData.profileId,
-            },
+            id: profileData.profileId,
           },
           crate: {
-            connect: {
-              id: crate.id,
-            },
+            id: crateId.id,
           },
+        },
+        data: {
           recommendationType: recommendationType,
         },
       });
@@ -273,9 +271,9 @@ export async function seedRecommendations(prisma: PrismaClient): Promise<void> {
 
     const uniqueCrateRecommendations = [...new Set(allCrateRecommendations)];
 
-    for (const crate of uniqueCrateRecommendations) {
-      const recommendationType = determineRecommendationType(crate, profileData);
-      await createRecommendation(crate, recommendationType);
+    for (const crateId of uniqueCrateRecommendations) {
+      const recommendationType = determineRecommendationType(crateId, profileData);
+      await updateRecommendationWithType(crateId, recommendationType);
     }
 
     progressCounter++;

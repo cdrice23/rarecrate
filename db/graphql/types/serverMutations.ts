@@ -149,8 +149,6 @@ export const FollowMutations = mutationType({
           },
         });
 
-        console.log(followToDelete);
-
         if (!followToDelete) {
           throw new Error('Follow record not found');
         }
@@ -454,8 +452,6 @@ export const CrateMutations = extendType({
             tagId =>
               !crateAlbums.find(album => album.albumId === existingCrateAlbumToUpdate.album.id).tagIds.includes(tagId),
           );
-
-          console.log(existingCrateAlbumToUpdate);
 
           await ctx.prisma.crateAlbum.update({
             where: { id: existingCrateAlbumToUpdate.id },

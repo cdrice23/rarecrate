@@ -14,6 +14,7 @@ import { generateNotifications } from '../backfill/generateNotifications';
 import { deleteAllNotifications } from '../backfill/deleteAllNotifications';
 import { seedRecommendations } from '../backfill/seedRecommendations';
 import { deleteAllRecommendations } from '../backfill/deleteRecommendations';
+import { updateRecommendationTypes } from '../backfill/updateRecommendationTypes';
 
 import { prisma } from '../../prismaClient';
 // import { PrismaClient } from '@prisma/client';
@@ -34,8 +35,9 @@ async function main() {
   // await randomizeCrateAndFollowDates();
   // await generateNotifications();
   // await deleteAllNotifications();
-  await seedRecommendations(prisma);
+  // await seedRecommendations(prisma);
   // await deleteAllRecommendations(prisma)
+  // await updateRecommendationTypes(prisma)
 }
 
 main()
