@@ -11,6 +11,7 @@ import {
   NotificationSettings as NexusNotificationSettings,
   Notification as NexusNotification,
   Recommendation as NexusRecommendation,
+  RecommendationResults as NexusRecommendationResults,
 } from './nexusTypes';
 
 // GET QUERIES
@@ -1024,19 +1025,57 @@ export const NotificationQueries = extendType({
   },
 });
 
-// export const RecommendationQueries = extendType({
-//   type: 'Query',
-//   definition(t) {
-//     t.nonNull.list.field('getRecommendations', {
-//       type: NexusRecommendation,
-//       args: {
-//         profileId: nonNull(intArg()),
-//         usedPages: list(intArg()),
-//         totalRecommendations: intArg(),
-//       },
-//       resolve: async (_, { profileId, usedPages, totalRecommendations }, ctx) => {
+export const RecommendationQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.field('getRecommendations', {
+      type: NexusRecommendationResults,
+      args: {
+        profileId: nonNull(intArg()),
+        usedPages: list(intArg()),
+        totalRecommendations: intArg(),
+      },
+      resolve: async (_, { profileId, usedPages, totalRecommendations }, ctx) => {
+        const pageSize = 24;
+        let totalRecommendationsCount;
 
-//       },
-//     });
-//   },
-// });
+        if (!totalRecommendations) {
+          totalRecommendationsCount = await ctx.prisma.recommendation.count({
+            where: { profileId },
+          });
+        } else {
+          totalRecommendationsCount = totalRecommendations;
+        }
+
+        if ((usedPages || []).length * pageSize >= totalRecommendationsCount) {
+          return { recommendations: [], usedPages, totalRecommendations: totalRecommendationsCount };
+        }
+
+        const totalPages = Math.ceil(totalRecommendationsCount / pageSize);
+        let randomNumber;
+        if (!usedPages) {
+          randomNumber = Math.floor(Math.random() * totalPages) + 1;
+        } else {
+          do {
+            randomNumber = Math.floor(Math.random() * totalPages) + 1;
+          } while (usedPages.includes(randomNumber));
+        }
+
+        const recommendations = await ctx.prisma.recommendation.findMany({
+          where: { profileId },
+          include: {
+            crate: true,
+          },
+          take: pageSize,
+          skip: (randomNumber - 1) * pageSize,
+        });
+
+        return {
+          recommendations: recommendations || [],
+          usedPages: usedPages ? [...usedPages, randomNumber] : [randomNumber],
+          totalRecommendations: totalRecommendationsCount,
+        };
+      },
+    });
+  },
+});

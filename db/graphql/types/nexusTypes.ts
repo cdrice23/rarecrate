@@ -729,7 +729,9 @@ export const RecommendationResults = objectType({
     t.list.field('usedPages', {
       type: 'Int',
     });
-    t.int('totalRecommendations');
+    t.field('totalRecommendations', {
+      type: 'Int',
+    });
   },
 });
 

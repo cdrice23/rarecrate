@@ -238,6 +238,7 @@ type Query {
   getNotificationsByProfile(currentPage: Int!, profileId: Int!, userId: Int!): [Notification]!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
+  getRecommendations(profileId: Int!, totalRecommendations: Int, usedPages: [Int]): RecommendationResults!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
   getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
