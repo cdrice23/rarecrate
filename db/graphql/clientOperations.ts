@@ -998,6 +998,7 @@ export const GET_RECOMMENDATIONS = gql`
       recommendations {
         id
         recommendationType
+        seen
         profileId
         crate {
           id
@@ -1014,6 +1015,18 @@ export const GET_RECOMMENDATIONS = gql`
       }
       usedPages
       totalRecommendations
+      resetRecommendations
+    }
+  }
+`;
+
+export const MARK_RECOMMENDATION_SEEN = gql`
+  mutation MarkRecommendationSeen($recommendationId: Int!) {
+    markRecommendationSeen(recommendationId: $recommendationId) {
+      id
+      profileId
+      crateId
+      seen
     }
   }
 `;

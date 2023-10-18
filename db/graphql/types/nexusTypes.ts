@@ -732,6 +732,9 @@ export const RecommendationResults = objectType({
     t.field('totalRecommendations', {
       type: 'Int',
     });
+    t.field('resetRecommendations', {
+      type: 'Boolean',
+    });
   },
 });
 

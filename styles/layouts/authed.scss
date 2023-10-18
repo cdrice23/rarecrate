@@ -1320,6 +1320,14 @@
     place-self: center;
     display: flex;
     justify-content: center;
+    position: relative;
+
+    .seenIcon {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      color: royalblue;
+    }
     
     &.curatedRecommendation {
       background-color: lightblue;

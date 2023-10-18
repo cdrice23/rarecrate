@@ -12,6 +12,7 @@ import {
   SelectedSearchResult as NexusSelectedSearchResult,
   NotificationSettings as NexusNotificationSettings,
   Notification as NexusNotification,
+  Recommendation as NexusRecommendation,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
 import axios from 'axios';
@@ -1136,6 +1137,28 @@ export const NotificationMutations = extendType({
             },
           });
         }
+      },
+    });
+  },
+});
+
+export const RecommendationMutations = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('markRecommendationSeen', {
+      type: NexusRecommendation,
+      args: {
+        recommendationId: nonNull(intArg()),
+      },
+      resolve: async (_, { recommendationId }, ctx) => {
+        return await ctx.prisma.recommendation.update({
+          where: {
+            id: recommendationId,
+          },
+          data: {
+            seen: true,
+          },
+        });
       },
     });
   },

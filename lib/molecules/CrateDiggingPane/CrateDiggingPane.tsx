@@ -6,11 +6,12 @@ import {
   ADD_CRATE_TO_FAVORITES,
   REMOVE_CRATE_FROM_FAVORITES,
   CREATE_NOTIFICATION,
+  MARK_RECOMMENDATION_SEEN,
 } from '@/db/graphql/clientOperations';
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
-import { HandHeart, Lightbulb, Heart } from '@phosphor-icons/react';
+import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
 import { motion } from 'framer-motion';
 
@@ -27,7 +28,7 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
   const [lastIndex, setLastIndex] = useState<number>(null);
   const { usernameMain } = useLocalState();
 
-  console.log(currentRecommendations);
+  console.log('currentRecommendations', currentRecommendations);
 
   const [createNotification] = useMutation(CREATE_NOTIFICATION);
   const {
@@ -41,6 +42,8 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
   const [getMoreRecommendations, { loading: loadingAdditional, data: additionalData }] =
     useLazyQuery(GET_RECOMMENDATIONS);
 
+  const [markRecommendationSeen] = useMutation(MARK_RECOMMENDATION_SEEN);
+
   const handleGetMoreRecommendations = async () => {
     const getNewRecommendatations = await getMoreRecommendations({
       variables: {
@@ -51,22 +54,32 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
     });
 
     const newRecommendations = getNewRecommendatations?.data.getRecommendations.recommendations;
+    const resetRecommendations = getNewRecommendatations?.data.getRecommendations.resetRecommendations;
 
-    let shuffledRecommendations = [...newRecommendations];
-    if (newRecommendations) {
-      for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledRecommendations[i], shuffledRecommendations[j]] = [
-          shuffledRecommendations[j],
-          shuffledRecommendations[i],
-        ];
+    if (newRecommendations.length > 0) {
+      let shuffledRecommendations = [...newRecommendations];
+      if (newRecommendations) {
+        for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledRecommendations[i], shuffledRecommendations[j]] = [
+            shuffledRecommendations[j],
+            shuffledRecommendations[i],
+          ];
+        }
       }
-    }
 
-    if (shuffledRecommendations.length > 0) {
-      setLastIndex([...currentRecommendations, ...shuffledRecommendations].length - 1);
-      setCurrentRecommendations(prevRecommendations => [...prevRecommendations, ...shuffledRecommendations]);
-      setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
+      if (shuffledRecommendations.length > 0) {
+        if (resetRecommendations) {
+          // FIX THIS...
+          // setCurrentRecommendations(shuffledRecommendations);
+          // setLastIndex(shuffledRecommendations.length - 1);
+          // setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
+        } else {
+          setCurrentRecommendations(prevRecommendations => [...prevRecommendations, ...shuffledRecommendations]);
+          setLastIndex([...currentRecommendations, ...shuffledRecommendations].length - 1);
+          setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
+        }
+      }
     }
   };
 
@@ -194,7 +207,7 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
           <Pane crateDiggingPane={true}>
             {currentRecommendations.map((recommendation, index) => (
               <motion.div
-                key={index}
+                key={recommendation.id}
                 onViewportEnter={async () => {
                   if (index === lastIndex) {
                     console.log(`You hit the last item!`);
@@ -208,9 +221,15 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
                 onClick={() => {
                   setActiveCrate(recommendation.crate);
                   setShowCrateDetail(true);
+                  markRecommendationSeen({
+                    variables: {
+                      recommendationId: recommendation.id,
+                    },
+                  });
                 }}
               >
                 <div>
+                  {!recommendation.seen && <DotOutline size={24} className={cx('seenIcon')} />}
                   {recommendation.recommendationType === 'curated' ? <HandHeart size={24} /> : <Lightbulb size={24} />}
                   <p>{recommendation.recommendationType === 'curated' ? 'Our Pick For You' : 'Discover New Crate'}</p>
                 </div>

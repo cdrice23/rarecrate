@@ -15,6 +15,7 @@ import { deleteAllNotifications } from '../backfill/deleteAllNotifications';
 import { seedRecommendations } from '../backfill/seedRecommendations';
 import { deleteAllRecommendations } from '../backfill/deleteRecommendations';
 import { updateRecommendationTypes } from '../backfill/updateRecommendationTypes';
+import { testSeenReset } from '../backfill/testSeenReset';
 
 import { prisma } from '../../prismaClient';
 // import { PrismaClient } from '@prisma/client';
@@ -38,6 +39,7 @@ async function main() {
   // await seedRecommendations(prisma);
   // await deleteAllRecommendations(prisma)
   // await updateRecommendationTypes(prisma)
+  await testSeenReset(prisma);
 }
 
 main()

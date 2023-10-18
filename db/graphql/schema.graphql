@@ -147,6 +147,7 @@ type Mutation {
   deleteProfile(profileId: Int!): Profile
   deleteUser(userId: Int!): User
   logSelectedSearchResult(prismaModel: String!, searchTerm: String, selectedId: Int!): [SelectedSearchResult]
+  markRecommendationSeen(recommendationId: Int!): Recommendation
   rejectFollowRequest(input: FollowOrRequestInput!): FollowRequest
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
@@ -269,6 +270,7 @@ type Recommendation {
 
 type RecommendationResults {
   recommendations: [Recommendation]
+  resetRecommendations: Boolean
   totalRecommendations: Int
   usedPages: [Int]
 }
