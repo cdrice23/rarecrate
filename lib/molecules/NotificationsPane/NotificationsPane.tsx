@@ -2,7 +2,7 @@ import { useLazyQuery, useQuery } from '@apollo/client';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_NOTIFICATIONS_BY_PROFILE } from '@/db/graphql/clientOperations';
-import { DotsThree, Check, X } from '@phosphor-icons/react';
+
 import { useState, useEffect } from 'react';
 import { Notification } from '../Notification/Notification';
 
@@ -45,14 +45,12 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
 
   useEffect(() => {
     if (additionalData?.getNotificationsByProfile) {
-      if (additionalData?.getNotificationsByProfile) {
-        const newNotifications = additionalData.getNotificationsByProfile.filter(
-          newNotification => !notifications.includes(newNotification),
-        );
+      const newNotifications = additionalData.getNotificationsByProfile.filter(
+        newNotification => !notifications.includes(newNotification),
+      );
 
-        if (newNotifications.length > 0) {
-          setNotifications(prevNotifications => [...prevNotifications, ...newNotifications]);
-        }
+      if (newNotifications.length > 0) {
+        setNotifications(prevNotifications => [...prevNotifications, ...newNotifications]);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

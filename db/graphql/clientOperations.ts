@@ -66,6 +66,9 @@ export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
       crates {
         id
         title
+        creator {
+          id
+        }
         labels {
           id
           isStandard
@@ -920,7 +923,9 @@ export const CREATE_NOTIFICATION = gql`
       id
       receiver
       type
-      actionOwner
+      actionOwner {
+        id
+      }
       connectedCrate {
         id
       }

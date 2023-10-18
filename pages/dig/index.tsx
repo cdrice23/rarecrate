@@ -9,6 +9,7 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
 import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
+import { CrateDiggingPane } from '@/lib/molecules/CrateDiggingPane/CrateDiggingPane';
 
 interface CrateDiggingProps {
   userId?: number;
@@ -80,6 +81,7 @@ const CrateDiggingPage = ({ userId, email, prismaUserProfiles }: CrateDiggingPro
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
+          <CrateDiggingPane mainProfile={profileIdMain} />
         </>
       ) : null}
     </AuthedLayout>

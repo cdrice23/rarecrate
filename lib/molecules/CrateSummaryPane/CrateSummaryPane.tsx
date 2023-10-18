@@ -98,25 +98,25 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
     },
   });
 
-  const handleFavoriteToggle = async (checkStatus, crateId, mainProfile) => {
+  const handleFavoriteToggle = async (checkStatus, crate, mainProfile) => {
     const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
     const response = await mutationFunction({
       variables: {
         input: {
-          crateId: crateId,
+          crateId: crate.id,
           profileId: mainProfile,
         },
       },
     });
 
     if (mutationFunction === addCrateToFavorites) {
-      const creatorId = response.data.addCrateToFavorites.creator.id;
+      // const creatorId = response.data.addCrateToFavorites.creator.id;
       createNotification({
         variables: {
-          receiver: creatorId,
+          receiver: crate.creator.id,
           type: 'newFavorite',
           actionOwner: mainProfile,
-          notificationRef: crateId,
+          notificationRef: crate.id,
         },
       });
     }
@@ -170,7 +170,7 @@ const CrateSummaryPane = ({ username, listType, mainProfile, userProfiles }: Cra
                         crateSummaryData.crates[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
                       )}
                       handler={checkStatus => {
-                        handleFavoriteToggle(checkStatus, crate.id, mainProfile);
+                        handleFavoriteToggle(checkStatus, crate, mainProfile);
                       }}
                     />
                   )}
