@@ -5,6 +5,8 @@ import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { fetchDiscogsResults } from '../../../core/helpers/discogs';
+import { useMutation } from '@apollo/client';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 
 const AlbumSearchCombobox = ({
   value,
@@ -24,6 +26,8 @@ const AlbumSearchCombobox = ({
   const [expTitleResults, setExpTitleResults] = useState(0);
   const [loadingDiscogs, setLoadingDiscogs] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
 
   const ulRef = useRef(null);
   const currentItems = inputItems.slice(0, currentPage * 30);
@@ -76,7 +80,7 @@ const AlbumSearchCombobox = ({
             {...getInputProps({
               value,
               placeholder: 'Search Albums',
-              onKeyDown: event => {
+              onKeyDown: async event => {
                 if (event.key === 'Enter') {
                   clearTimeout(debounceTimeout);
                   setDebounceTimeout(null);
@@ -84,7 +88,15 @@ const AlbumSearchCombobox = ({
                   setSelectedItem(inputItems[highlightedIndex]);
                   enterHandler(inputItems[highlightedIndex]);
                   console.log(inputItems[highlightedIndex]);
-                  // setInputItems([]);
+                  if (inputItems[highlightedIndex].id) {
+                    logSelectedSearchResult({
+                      variables: {
+                        searchTerm: value,
+                        prismaModel: 'album',
+                        selectedId: inputItems[highlightedIndex].id,
+                      },
+                    });
+                  }
                   updateSearchPrompt('');
                 }
               },
@@ -149,8 +161,15 @@ const AlbumSearchCombobox = ({
                       setIsOpen(false);
                       setSelectedItem(inputItems[index]);
                       enterHandler(inputItems[index]);
-                      console.log(inputItems[index]);
-                      // setInputItems([]);
+                      if (inputItems[highlightedIndex].id) {
+                        logSelectedSearchResult({
+                          variables: {
+                            searchTerm: value,
+                            prismaModel: 'album',
+                            selectedId: inputItems[highlightedIndex].id,
+                          },
+                        });
+                      }
                       updateSearchPrompt('');
                     },
                   })}

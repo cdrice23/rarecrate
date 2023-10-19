@@ -62,7 +62,7 @@ const PillArrayInput = ({
                       else {
                         push({
                           isNew: true,
-                          [itemLabel]: newPill,
+                          [itemLabel]: newPill.toLowerCase(),
                         });
                       }
                       // Do cleanup
