@@ -1033,35 +1033,24 @@ export const RecommendationQueries = extendType({
       args: {
         profileId: nonNull(intArg()),
         usedPages: list(intArg()),
-        totalRecommendations: intArg(),
+        currentRecsInArray: intArg(),
       },
-      resolve: async (_, { profileId, usedPages, totalRecommendations }, ctx) => {
+      resolve: async (_, { profileId, usedPages, currentRecsInArray }, ctx) => {
         const pageSize = 24;
-        let totalUnseenRecommendationsCount;
 
-        const totalSeenRecommendationsCount = await ctx.prisma.recommendation.count({
+        const totalUnseenRecommendationsCount = await ctx.prisma.recommendation.count({
           where: {
             profileId,
-            seen: true,
+            seen: false,
           },
         });
-
-        const totalRecommendationsCount = await ctx.prisma.recommendation.count({
-          where: { profileId },
-        });
-
-        if (!totalRecommendations) {
-          totalUnseenRecommendationsCount = totalRecommendationsCount - totalSeenRecommendationsCount;
-        } else {
-          totalUnseenRecommendationsCount = totalRecommendations;
-        }
 
         const totalPages = Math.ceil(totalUnseenRecommendationsCount / pageSize);
         let randomNumber;
 
-        // TRYING NEW LOGIC HERE:
-        const insufficientUnseen = totalUnseenRecommendationsCount - pageSize <= pageSize;
-        const insufficientAdditionalRecs = (usedPages || []).length * pageSize >= totalUnseenRecommendationsCount;
+        // Check if enough unseen recs in db, if not, serve accordingly
+        const insufficientUnseen = totalUnseenRecommendationsCount < pageSize;
+        const insufficientAdditionalRecs = currentRecsInArray >= totalUnseenRecommendationsCount;
         if (insufficientUnseen) {
           await ctx.prisma.recommendation.updateMany({
             where: {
@@ -1082,30 +1071,27 @@ export const RecommendationQueries = extendType({
             skip: (randomNumber - 1) * pageSize,
           });
 
+          const recommendationsShuffled = [...recommendations];
+          for (let i = recommendationsShuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [recommendationsShuffled[i], recommendationsShuffled[j]] = [
+              recommendationsShuffled[j],
+              recommendationsShuffled[i],
+            ];
+          }
+
           return {
-            recommendations: recommendations,
+            recommendations: recommendationsShuffled,
             usedPages: [randomNumber],
-            totalRecommendations: totalUnseenRecommendationsCount,
             resetRecommendations: true,
           };
         } else {
           if (insufficientAdditionalRecs) {
             // Reset the recommendations in broswer without rerolling db recs to unseen
-            randomNumber = Math.floor(Math.random() * totalPages) + 1;
-            const recommendations = await ctx.prisma.recommendation.findMany({
-              where: { profileId, seen: false },
-              include: {
-                crate: true,
-              },
-              take: pageSize,
-              skip: (randomNumber - 1) * pageSize,
-            });
-
             return {
-              recommendations: recommendations,
-              usedPages: [randomNumber],
-              totalRecommendations: totalUnseenRecommendationsCount,
-              resetRecommendations: true,
+              recommendations: [],
+              usedPages: usedPages,
+              resetRecommendations: false,
             };
           } else {
             // Serve additional recs
@@ -1126,10 +1112,18 @@ export const RecommendationQueries = extendType({
               skip: (randomNumber - 1) * pageSize,
             });
 
+            const recommendationsShuffled = [...recommendations];
+            for (let i = recommendationsShuffled.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [recommendationsShuffled[i], recommendationsShuffled[j]] = [
+                recommendationsShuffled[j],
+                recommendationsShuffled[i],
+              ];
+            }
+
             return {
-              recommendations: recommendations || [],
+              recommendations: recommendationsShuffled || [],
               usedPages: usedPages ? [...usedPages, randomNumber] : [randomNumber],
-              totalRecommendations: totalUnseenRecommendationsCount,
               resetRecommendations: false,
             };
           }

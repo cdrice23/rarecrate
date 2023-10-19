@@ -993,8 +993,8 @@ export const GET_NOTIFICATIONS_BY_PROFILE = gql`
 `;
 
 export const GET_RECOMMENDATIONS = gql`
-  query GetRecommendations($profileId: Int!, $usedPages: [Int], $totalRecommendations: Int) {
-    getRecommendations(profileId: $profileId, usedPages: $usedPages, totalRecommendations: $totalRecommendations) {
+  query GetRecommendations($profileId: Int!, $usedPages: [Int], $currentRecsInArray: Int) {
+    getRecommendations(profileId: $profileId, usedPages: $usedPages, currentRecsInArray: $currentRecsInArray) {
       recommendations {
         id
         recommendationType
@@ -1014,7 +1014,6 @@ export const GET_RECOMMENDATIONS = gql`
         }
       }
       usedPages
-      totalRecommendations
       resetRecommendations
     }
   }

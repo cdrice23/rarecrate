@@ -729,7 +729,7 @@ export const RecommendationResults = objectType({
     t.list.field('usedPages', {
       type: 'Int',
     });
-    t.field('totalRecommendations', {
+    t.field('currentRecsInArray', {
       type: 'Int',
     });
     t.field('resetRecommendations', {

@@ -24,9 +24,10 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<any>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const [usedPages, setUsedPages] = useState<number[]>(null);
-  const [totalRecommendations, setTotalRecommendations] = useState<number>(null);
   const [lastIndex, setLastIndex] = useState<number>(null);
+  const [seenRecommendations, setSeenRecommendations] = useState([]);
   const { usernameMain } = useLocalState();
+  console.log(seenRecommendations);
 
   console.log('currentRecommendations', currentRecommendations);
 
@@ -49,38 +50,37 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
       variables: {
         profileId: mainProfile,
         usedPages,
-        totalRecommendations,
+        currentRecsInArray: currentRecommendations.length,
       },
     });
 
     const newRecommendations = getNewRecommendatations?.data.getRecommendations.recommendations;
     const resetRecommendations = getNewRecommendatations?.data.getRecommendations.resetRecommendations;
 
+    let finalRecommendations = [...currentRecommendations];
+
     if (newRecommendations.length > 0) {
       let shuffledRecommendations = [...newRecommendations];
-      if (newRecommendations) {
-        for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffledRecommendations[i], shuffledRecommendations[j]] = [
-            shuffledRecommendations[j],
-            shuffledRecommendations[i],
-          ];
-        }
-      }
+      // if (shuffledRecommendations) {
+      //   for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
+      //     const j = Math.floor(Math.random() * (i + 1));
+      //     [shuffledRecommendations[i], shuffledRecommendations[j]] = [
+      //       shuffledRecommendations[j],
+      //       shuffledRecommendations[i],
+      //     ];
+      //   }
+      // }
 
-      if (shuffledRecommendations.length > 0) {
-        if (resetRecommendations) {
-          // FIX THIS...
-          // setCurrentRecommendations(shuffledRecommendations);
-          // setLastIndex(shuffledRecommendations.length - 1);
-          // setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
-        } else {
-          setCurrentRecommendations(prevRecommendations => [...prevRecommendations, ...shuffledRecommendations]);
-          setLastIndex([...currentRecommendations, ...shuffledRecommendations].length - 1);
-          setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
-        }
-      }
+      finalRecommendations = [...finalRecommendations, ...shuffledRecommendations];
     }
+
+    if (resetRecommendations) {
+      finalRecommendations = [...newRecommendations];
+    }
+
+    setCurrentRecommendations(finalRecommendations);
+    setLastIndex(finalRecommendations.length - 1);
+    setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
   };
 
   const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
@@ -136,7 +136,7 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
     },
   });
 
-  // console.log(useApolloClient().cache.extract());
+  console.log(useApolloClient().cache.extract());
 
   const handleFavoriteToggle = async (checkStatus, crate, mainProfile) => {
     const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
@@ -168,20 +168,30 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
     // Randomly shuffle the initial recommendations
     if (initialRecommendations) {
       let shuffledRecommendations = [...initialRecommendations];
-      for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledRecommendations[i], shuffledRecommendations[j]] = [
-          shuffledRecommendations[j],
-          shuffledRecommendations[i],
-        ];
-      }
+      // for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
+      //   const j = Math.floor(Math.random() * (i + 1));
+      //   [shuffledRecommendations[i], shuffledRecommendations[j]] = [
+      //     shuffledRecommendations[j],
+      //     shuffledRecommendations[i],
+      //   ];
+      // }
 
       setCurrentRecommendations(shuffledRecommendations);
       setUsedPages(initialData?.getRecommendations.usedPages);
-      setTotalRecommendations(initialData?.getRecommendations.totalRecommendations);
       setLastIndex(shuffledRecommendations.length - 1);
     }
   }, [initialData]);
+
+  useEffect(() => {
+    if (seenRecommendations.length > 0) {
+      markRecommendationSeen({
+        variables: {
+          recommendationId: seenRecommendations[seenRecommendations.length - 1],
+        },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seenRecommendations]);
 
   return (
     <Pane>
@@ -221,15 +231,14 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
                 onClick={() => {
                   setActiveCrate(recommendation.crate);
                   setShowCrateDetail(true);
-                  markRecommendationSeen({
-                    variables: {
-                      recommendationId: recommendation.id,
-                    },
-                  });
+                  setSeenRecommendations(prevSeenRecommendations => [...prevSeenRecommendations, recommendation.id]);
                 }}
               >
                 <div>
-                  {!recommendation.seen && <DotOutline size={24} className={cx('seenIcon')} />}
+                  {/* {!recommendation.seen && <DotOutline size={24} className={cx('seenIcon')} />} */}
+                  {!seenRecommendations.includes(recommendation.id) && (
+                    <DotOutline size={24} className={cx('seenIcon')} />
+                  )}
                   {recommendation.recommendationType === 'curated' ? <HandHeart size={24} /> : <Lightbulb size={24} />}
                   <p>{recommendation.recommendationType === 'curated' ? 'Our Pick For You' : 'Discover New Crate'}</p>
                 </div>

@@ -1,11 +1,13 @@
 import { PrismaClient } from '@prisma/client';
 
-export async function testSeenReset(prisma: PrismaClient): Promise<void> {
+const prisma = new PrismaClient();
+
+export async function testSeenReset(): Promise<void> {
   const recordsToUpdate = await prisma.recommendation.findMany({
     where: {
       profileId: 647,
     },
-    skip: 72,
+    skip: 25,
     select: {
       id: true,
     },

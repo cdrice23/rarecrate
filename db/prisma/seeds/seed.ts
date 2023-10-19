@@ -39,7 +39,7 @@ async function main() {
   // await seedRecommendations(prisma);
   // await deleteAllRecommendations(prisma)
   // await updateRecommendationTypes(prisma)
-  await testSeenReset(prisma);
+  await testSeenReset();
 }
 
 main()
