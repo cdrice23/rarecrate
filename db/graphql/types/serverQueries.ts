@@ -188,6 +188,9 @@ export const CrateQueries = extendType({
               contains: searchTerm,
             },
           },
+          include: {
+            creator: true,
+          },
           orderBy: {
             searchAndSelectCount: 'desc',
           },

@@ -26,22 +26,31 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const router = useRouter();
   const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('crates');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
-  // const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
-  //   // real variable to get authed user
-  //   variables: { userId },
-  //   // variables: { userId: 1286 },
-  // });
+
+  const currentProfile = Array.isArray(router.query.username) ? router.query.username[0] : router.query.username;
+
+  // profile data of the user
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
     // real variable to get authed user
     variables: { userId },
     // variables: { userId: 1286 },
   });
 
+  // profile data of the current profile
+  const { data: currentProfileData } = useQuery(GET_PROFILE, {
+    variables: {
+      username: currentProfile,
+    },
+  });
+
   const handlePaneSelect = (pane: 'followers' | 'following' | 'crates' | 'favorites') => {
     setActivePane(pane);
   };
 
-  const currentProfile = Array.isArray(router.query.username) ? router.query.username[0] : router.query.username;
+  const isFollowing =
+    currentProfileData?.getProfile.followers.filter(follower => follower.id === profileIdMain).length > 0;
+  const isPrivate = currentProfileData?.getProfile.isPrivate;
+  const hidePrivateProfile = isPrivate && !isFollowing;
 
   useEffect(() => {
     if (userId) {
@@ -95,29 +104,35 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
             currentUser={userId}
             userProfiles={prismaUserProfiles}
           />
-          {activePane === 'followers' ? (
-            <div className={cx('paneSectionFull')}>
-              <FolloweringPane username={currentProfile} listType="followers" />
-            </div>
-          ) : activePane === 'following' ? (
-            <div className={cx('paneSectionFull')}>
-              <FolloweringPane username={currentProfile} listType="following" />
-            </div>
-          ) : activePane === 'crates' ? (
-            <CrateSummaryPane
-              username={currentProfile}
-              listType="crates"
-              mainProfile={profileIdMain}
-              userProfiles={prismaUserProfiles}
-            />
-          ) : (
-            <CrateSummaryPane
-              username={currentProfile}
-              listType="favorites"
-              mainProfile={profileIdMain}
-              userProfiles={prismaUserProfiles}
-            />
-          )}
+          {activePane === 'followers'
+            ? !hidePrivateProfile && (
+                <div className={cx('paneSectionFull')}>
+                  <FolloweringPane username={currentProfile} listType="followers" />
+                </div>
+              )
+            : activePane === 'following'
+            ? !hidePrivateProfile && (
+                <div className={cx('paneSectionFull')}>
+                  <FolloweringPane username={currentProfile} listType="following" />
+                </div>
+              )
+            : activePane === 'crates'
+            ? !hidePrivateProfile && (
+                <CrateSummaryPane
+                  username={currentProfile}
+                  listType="crates"
+                  mainProfile={profileIdMain}
+                  userProfiles={prismaUserProfiles}
+                />
+              )
+            : !hidePrivateProfile && (
+                <CrateSummaryPane
+                  username={currentProfile}
+                  listType="favorites"
+                  mainProfile={profileIdMain}
+                  userProfiles={prismaUserProfiles}
+                />
+              )}
         </>
       ) : null}
     </AuthedLayout>

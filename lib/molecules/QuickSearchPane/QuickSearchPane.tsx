@@ -5,6 +5,7 @@ import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { GetMenuPropsOptions, GetItemPropsOptions } from 'downshift';
 import { useMutation } from '@apollo/client';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { useLocalState } from '@/lib/context/state';
 
 interface QuickSearchPaneProps {
   style: any;
@@ -32,7 +33,10 @@ const QuickSearchPane = ({
   handleShowFullSearch,
 }: QuickSearchPaneProps) => {
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
+  const { profileIdMain } = useLocalState();
   const router = useRouter();
+
+  console.log(inputItems);
 
   return (
     <ul {...getMenuProps()} className={cx('searchMenu')} style={style}>
@@ -40,61 +44,71 @@ const QuickSearchPane = ({
         <li>Searching...</li>
       ) : inputItems.length > 0 ? (
         <>
-          {inputItems.map((item, index) =>
-            item.isShowMoreButton ? (
-              <li
-                key={index}
-                style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-                {...getItemProps({
-                  item,
-                  index,
-                  onMouseDown: () => {
-                    handleShowFullSearch();
-                  },
-                })}
-              >
-                <div className={cx('showMore')}>
-                  <h4>{`See all results for "${searchPrompt}"`}</h4>
-                </div>
-              </li>
-            ) : (
-              <li
-                key={index}
-                style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-                {...getItemProps({
-                  item,
-                  index,
-                  onMouseDown: async () => {
-                    clearTimeout(debounceTimeout);
-                    setDebounceTimeout(null);
+          {inputItems
+            // Fix this filter
+            .filter(
+              item =>
+                !(
+                  item.__typename === 'Crate' &&
+                  item.creator.isPrivate &&
+                  item.creator.followers.some(follower => follower.id === profileIdMain)
+                ),
+            )
+            .map((item, index) =>
+              item.isShowMoreButton ? (
+                <li
+                  key={index}
+                  style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
+                  {...getItemProps({
+                    item,
+                    index,
+                    onMouseDown: () => {
+                      handleShowFullSearch();
+                    },
+                  })}
+                >
+                  <div className={cx('showMore')}>
+                    <h4>{`See all results for "${searchPrompt}"`}</h4>
+                  </div>
+                </li>
+              ) : (
+                <li
+                  key={index}
+                  style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
+                  {...getItemProps({
+                    item,
+                    index,
+                    onMouseDown: async () => {
+                      clearTimeout(debounceTimeout);
+                      setDebounceTimeout(null);
 
-                    // setSelectedItem(inputItems[index]);
+                      // setSelectedItem(inputItems[index]);
 
-                    // Handle routes
-                    console.log(inputItems[highlightedIndex]);
-                    if (inputItems[highlightedIndex].__typename === 'Profile') {
-                      router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
-                      await logSelectedSearchResult({
-                        variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
-                      });
-                    }
+                      // Handle routes
+                      console.log(inputItems[highlightedIndex]);
+                      if (inputItems[highlightedIndex].__typename === 'Profile') {
+                        router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
+                        await logSelectedSearchResult({
+                          variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
+                        });
+                      }
 
-                    if (inputItems[highlightedIndex].__typename === 'Crate') {
-                      router.push({
-                        pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
-                        query: { searchedCrateSelected: inputItems[highlightedIndex].id },
-                      });
-                      await logSelectedSearchResult({
-                        variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
-                      });
-                    }
-                  },
-                })}
-              >
-                <GlobalSearchResult data={item} index={index} />
-              </li>
-            ),
-          )}
+                      if (inputItems[highlightedIndex].__typename === 'Crate') {
+                        router.push({
+                          pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
+                          query: { searchedCrateSelected: inputItems[highlightedIndex].id },
+                        });
+                        await logSelectedSearchResult({
+                          variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
+                        });
+                      }
+                    },
+                  })}
+                >
+                  <GlobalSearchResult data={item} index={index} />
+                </li>
+              ),
+            )}
         </>
       ) : null}
     </ul>

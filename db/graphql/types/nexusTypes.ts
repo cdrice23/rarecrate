@@ -255,6 +255,7 @@ export const Crate = objectType({
               id: true,
               username: true,
               image: true,
+              isPrivate: true,
             },
           });
       },

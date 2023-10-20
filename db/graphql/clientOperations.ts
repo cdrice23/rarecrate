@@ -669,6 +669,10 @@ export const RUN_QUICK_SEARCH = gql`
       searchAndSelectCount
       creator {
         username
+        isPrivate
+        followers {
+          id
+        }
       }
     }
   }

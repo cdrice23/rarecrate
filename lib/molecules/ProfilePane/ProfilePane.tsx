@@ -38,6 +38,10 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
   const isFollowing = profileData?.followers.filter(follower => follower.id === mainProfile).length > 0;
   const hasPendingRequest =
     followRequestData?.getPendingFollowRequests.filter(request => request.sender.id === mainProfile).length > 0;
+  const isPrivate = profileData?.isPrivate;
+  const hidePrivateProfile = isPrivate && !isFollowing;
+
+  console.log(hidePrivateProfile);
 
   console.log(useApolloClient().cache.extract());
 
@@ -206,19 +210,19 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             }}
           />
           <div className={cx('listActions')}>
-            <button onClick={() => handlePaneSelect('followers')}>
+            <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>
               <h3>Followers</h3>
               <h4>{profileData.followers.length}</h4>
             </button>
-            <button onClick={() => handlePaneSelect('following')}>
+            <button onClick={() => handlePaneSelect('following')} disabled={hidePrivateProfile}>
               <h3>Following</h3>
               <h4>{profileData.following.length}</h4>
             </button>
-            <button onClick={() => handlePaneSelect('crates')}>
+            <button onClick={() => handlePaneSelect('crates')} disabled={hidePrivateProfile}>
               <h3>Crates</h3>
               <h4>{profileData.crates.length}</h4>
             </button>
-            <button onClick={() => handlePaneSelect('favorites')}>
+            <button onClick={() => handlePaneSelect('favorites')} disabled={hidePrivateProfile}>
               <h3>Favorites</h3>
               <h4>{profileData.favorites.length}</h4>
             </button>
