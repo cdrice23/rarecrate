@@ -41,8 +41,6 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
   const isPrivate = profileData?.isPrivate;
   const hidePrivateProfile = isPrivate && !isFollowing;
 
-  console.log(hidePrivateProfile);
-
   console.log(useApolloClient().cache.extract());
 
   const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {

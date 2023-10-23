@@ -41,7 +41,7 @@ async function main() {
   // await deleteAllRecommendations(prisma)
   // await updateRecommendationTypes(prisma)
   // await testSeenReset();
-  await updateLabelsAndTagsToLower();
+  // await updateLabelsAndTagsToLower();
 }
 
 main()

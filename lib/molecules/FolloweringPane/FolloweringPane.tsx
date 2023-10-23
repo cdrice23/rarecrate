@@ -15,7 +15,7 @@ const FolloweringPane = ({ username, listType }: FolloweringPaneProps) => {
     variables: { username: username },
   });
 
-  console.log(data);
+  console.log('profileFollowerings', data);
   const followeringData = data?.getProfile;
 
   return (

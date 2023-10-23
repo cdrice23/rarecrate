@@ -47,8 +47,8 @@ model Profile {
   isPrivate              Boolean          @default(false)
   bio                    String?          @db.Text
   image                  String?
-  followers              Follow[]         @relation("Follows")
-  following              Follow[]         @relation("Following")
+  followers              Follow[]         @relation("FollowedBy")
+  following              Follow[]         @relation("Follows")
   crates                 Crate[]          @relation("CreatedByProfile")
   favorites              Crate[]          @relation("FavoritedByProfile")
   socialLinks            SocialLink[]
@@ -86,7 +86,7 @@ model Follow {
   id              Int            @id @default(autoincrement())
   follower        Profile        @relation("Follows", fields: [followerId], references: [id])
   followerId      Int
-  following       Profile        @relation("Following", fields: [followingId], references: [id])
+  following       Profile        @relation("FollowedBy", fields: [followingId], references: [id])
   followingId     Int
   createdAt       DateTime       @default(now())
   inNotifications Notification[] @relation("FollowNotifications")

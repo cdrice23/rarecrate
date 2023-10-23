@@ -100,24 +100,21 @@ export const Profile = objectType({
       resolve: async (parent: any, _args, ctx) => {
         const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
 
+        console.log(parent.id);
         if (!profile) {
           return parent.followers;
         }
-        return ctx.prisma.follow
+        const allProfileFollowers = await ctx.prisma.follow
           .findMany({
             where: { followingId: parent.id },
             select: {
               id: true,
-              follower: {
-                select: {
-                  id: true,
-                  username: true,
-                  image: true,
-                },
-              },
+              follower: true,
             },
           })
           .then(follows => follows.map(follow => follow.follower));
+
+        return allProfileFollowers;
       },
     });
     t.list.field('following', {
