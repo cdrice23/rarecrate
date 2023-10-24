@@ -6,7 +6,7 @@ export async function deleteAllNotifications(): Promise<void> {
   await prisma.notification.deleteMany({
     where: {
       id: {
-        gt: 84764,
+        gt: 133776,
       },
     },
   });

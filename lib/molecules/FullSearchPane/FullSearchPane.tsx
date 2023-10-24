@@ -113,7 +113,8 @@ const FullSearchPane = ({
           <GlobalSearchResult
             data={result}
             index={index}
-            lastSlice={currentPage * 30 - 1}
+            // lastSlice={currentPage * 30 - 1}
+            lastSlice={currentItems.length - 1}
             getMoreItems={() => getMoreItems(result.id)}
           />
         </li>

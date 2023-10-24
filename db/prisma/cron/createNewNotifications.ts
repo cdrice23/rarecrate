@@ -69,6 +69,8 @@ const initCronRun = async () => {
     },
   });
 
+  const allFollows = await prisma.follow.findMany();
+
   console.log(`New Crates: ${newCrates.length}`);
   console.log(`New Follows: ${newFollows.length}`);
 
@@ -76,7 +78,7 @@ const initCronRun = async () => {
   // Create an array of objects capturing the followers of each profile
   let allFollowerData = [];
 
-  for (let follow of newFollows) {
+  for (let follow of allFollows) {
     let existingProfile = allFollowerData.find(profile => profile.profileId === follow.followingId);
     if (existingProfile) {
       existingProfile.followers.push(follow.followerId);
@@ -113,9 +115,13 @@ const initCronRun = async () => {
       actionOwner: {
         in: allFollowerData.map(data => data.profileId),
       },
+      createdAt: {
+        gte: lastRunCompleted,
+      },
     },
   });
 
+  let createdFavoriteNotifications = 0;
   for (let followerData of allFollowerData) {
     const notifications = allFollowedFavorites.filter(favorite => favorite.actionOwner === followerData.profileId);
 
@@ -133,6 +139,8 @@ const initCronRun = async () => {
             },
           },
         });
+
+        createdFavoriteNotifications++;
       }
     }
   }
@@ -180,7 +188,7 @@ const initCronRun = async () => {
   }
 
   // Log created notification length
-  const totalNotificationsCreated = newCrates.length + newFollows.length;
+  const totalNotificationsCreated = newCrates.length + newFollows.length + createdFavoriteNotifications;
   console.log(`Total notifications created: ${totalNotificationsCreated}`);
 
   // Delete any old notifications for profiles that have > 99999 notifications

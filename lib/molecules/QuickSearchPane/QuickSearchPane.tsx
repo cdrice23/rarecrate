@@ -36,8 +36,6 @@ const QuickSearchPane = ({
   const { profileIdMain } = useLocalState();
   const router = useRouter();
 
-  console.log(inputItems);
-
   return (
     <ul {...getMenuProps()} className={cx('searchMenu')} style={style}>
       {loading ? (
@@ -51,7 +49,7 @@ const QuickSearchPane = ({
                 !(
                   item.__typename === 'Crate' &&
                   item.creator.isPrivate &&
-                  item.creator.followers.some(follower => follower.id === profileIdMain)
+                  item.creator.followers.some(follower => follower.id !== profileIdMain)
                 ),
             )
             .map((item, index) =>

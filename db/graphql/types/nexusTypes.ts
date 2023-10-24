@@ -99,8 +99,6 @@ export const Profile = objectType({
       type: Profile,
       resolve: async (parent: any, _args, ctx) => {
         const profile = await ctx.prisma.profile.findUnique({ where: { id: parent.id } });
-
-        console.log(parent.id);
         if (!profile) {
           return parent.followers;
         }

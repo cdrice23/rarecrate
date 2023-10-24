@@ -16,6 +16,7 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
       className={cx('searchResult')}
       onViewportEnter={() => {
         if (index === lastSlice) {
+          console.log('you hit the last item!');
           getMoreItems();
         }
       }}

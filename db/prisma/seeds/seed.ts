@@ -17,6 +17,7 @@ import { deleteAllRecommendations } from '../backfill/deleteRecommendations';
 import { updateRecommendationTypes } from '../backfill/updateRecommendationTypes';
 import { testSeenReset } from '../backfill/testSeenReset';
 import { updateLabelsAndTagsToLower } from '../backfill/updateLabelsAndTagsToLower';
+import { deleteDupeNotifs } from '../backfill/deleteDupeNotifs';
 
 import { prisma } from '../../prismaClient';
 // import { PrismaClient } from '@prisma/client';
@@ -42,6 +43,8 @@ async function main() {
   // await updateRecommendationTypes(prisma)
   // await testSeenReset();
   // await updateLabelsAndTagsToLower();
+  // await deleteDupeNotifs()
+  await deleteAllNotifications();
 }
 
 main()

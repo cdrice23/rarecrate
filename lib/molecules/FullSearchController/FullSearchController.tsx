@@ -154,6 +154,7 @@ const FullSearchController = ({
   setActivePane,
   setPrevActivePane,
 }: FullSearchControllerProps) => {
+  const [loadingLabelAndTagData, setLoadingLabelAndTagData] = useState<boolean>(false);
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
   const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES);
   const [getCrateResults, { data: cratesData, loading: loadingCrates }] = useLazyQuery(FS_CRATES);
@@ -193,8 +194,34 @@ const FullSearchController = ({
   const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results;
 
   console.log(resultsState);
-  // console.log(cratesFromLabelData);
-  console.log(searchPath);
+
+  const getLabelAndTagResults = async newPage => {
+    console.log(`Current page is ${newPage}`);
+    let labelPromise = new Promise<any[]>(resolve => {
+      getLabelResults({
+        variables: {
+          searchTerm: searchPrompt,
+          currentPage: newPage,
+        },
+        onCompleted: data => resolve(data.fsLabels),
+      });
+    });
+    let tagPromise = new Promise<any[]>(resolve => {
+      getTagResults({
+        variables: {
+          searchTerm: searchPrompt,
+          currentPage: newPage,
+        },
+        onCompleted: data => resolve(data.fsTags),
+      });
+    });
+
+    let [labels, tags] = await Promise.all([labelPromise, tagPromise]);
+    const labelsAndTagsData = [...labels, ...tags];
+    console.log('labelsAndTagsData', labelsAndTagsData);
+    dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
+    setLoadingLabelAndTagData(false);
+  };
 
   useEffect(() => {
     if (resultsState.profileState.results.length === 0) {
@@ -206,42 +233,42 @@ const FullSearchController = ({
       });
     }
 
-    if (profilesData?.fsProfiles) {
+    if (profilesData?.fsProfiles && activePane === 'profiles') {
       dispatch({ type: 'UPDATE_PROFILE_RESULTS', payload: profilesData.fsProfiles });
     }
-    if (cratesData?.fsCrates) {
+    if (cratesData?.fsCrates && activePane === 'crates') {
       dispatch({ type: 'UPDATE_CRATE_RESULTS', payload: cratesData.fsCrates });
     }
-    if (albumsData?.fsAlbums) {
+    if (albumsData?.fsAlbums && activePane === 'albums') {
       dispatch({ type: 'UPDATE_ALBUM_RESULTS', payload: albumsData.fsAlbums });
     }
-    if (labelsData?.fsLabels || tagsData?.fsTags) {
-      let labels = labelsData?.fsLabels || [];
-      let tags = tagsData?.fsTags || [];
+    // if ((labelsData?.fsLabels || tagsData?.fsTags) && activePane === 'labelsAndTags') {
+    //   let labels = labelsData?.fsLabels || [];
+    //   let tags = tagsData?.fsTags || [];
 
-      const labelsAndTagsData = [...labels, ...tags];
-      dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
-    }
-    if (genresData?.fsGenres || subgenresData?.fsSubgenres) {
+    //   const labelsAndTagsData = [...labels, ...tags];
+    //   dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
+    // }
+    if ((genresData?.fsGenres || subgenresData?.fsSubgenres) && activePane === 'genresAndSubgenres') {
       let genres = genresData?.fsGenres || [];
       let subgenres = subgenresData?.fsSubgenres || [];
 
       const genresAndSubgenresData = [...genres, ...subgenres];
       dispatch({ type: 'UPDATE_GENRE_AND_SUBGENRE_RESULTS', payload: genresAndSubgenresData });
     }
-    if (cratesFromLabelData?.getCratesFromLabel) {
+    if (cratesFromLabelData?.getCratesFromLabel && activePane === 'cratesFromLabel') {
       dispatch({ type: 'UPDATE_CRATES_FROM_LABEL_RESULTS', payload: cratesFromLabelData.getCratesFromLabel });
     }
-    if (albumsFromTagData?.getAlbumsFromTag) {
+    if (albumsFromTagData?.getAlbumsFromTag && activePane === 'albumsFromTag') {
       dispatch({ type: 'UPDATE_ALBUMS_FROM_TAG_RESULTS', payload: albumsFromTagData.getAlbumsFromTag });
     }
-    if (albumsFromGenreData?.getAlbumsFromGenre) {
+    if (albumsFromGenreData?.getAlbumsFromGenre && activePane === 'albumsFromGenre') {
       dispatch({ type: 'UPDATE_ALBUMS_FROM_GENRE_RESULTS', payload: albumsFromGenreData.getAlbumsFromGenre });
     }
-    if (albumsFromSubgenreData?.getAlbumsFromSubgenre) {
+    if (albumsFromSubgenreData?.getAlbumsFromSubgenre && activePane === 'albumsFromSubgenre') {
       dispatch({ type: 'UPDATE_ALBUMS_FROM_SUBGENRE_RESULTS', payload: albumsFromSubgenreData.getAlbumsFromSubgenre });
     }
-    if (cratesFromAlbumData?.getCratesFromAlbum) {
+    if (cratesFromAlbumData?.getCratesFromAlbum && activePane === 'cratesFromAlbum') {
       dispatch({ type: 'UPDATE_CRATES_FROM_ALBUM_RESULTS', payload: cratesFromAlbumData.getCratesFromAlbum });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -318,12 +345,16 @@ const FullSearchController = ({
           onClick={() => {
             setActivePane('labelsAndTags');
             setPrevActivePane(null);
-            getLabelResults({
-              variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
-            });
-            getTagResults({
-              variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
-            });
+            setLoadingLabelAndTagData(true);
+            getLabelAndTagResults(
+              resultsState.labelAndTagState.currentPage === 1 ? 1 : resultsState.labelAndTagState.currentPage + 1,
+            );
+            // getLabelResults({
+            //   variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
+            // });
+            // getTagResults({
+            //   variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
+            // });
             setSearchPath({});
           }}
         >
@@ -487,18 +518,20 @@ const FullSearchController = ({
                     searchPath={searchPath}
                     setSearchPath={setSearchPath}
                     getMoreItems={() => {
-                      getLabelResults({
-                        variables: {
-                          searchTerm: searchPrompt,
-                          currentPage: resultsState.labelAndTagState.currentPage + 1,
-                        },
-                      });
-                      getTagResults({
-                        variables: {
-                          searchTerm: searchPrompt,
-                          currentPage: resultsState.labelAndTagState.currentPage + 1,
-                        },
-                      });
+                      setLoadingLabelAndTagData(true);
+                      getLabelAndTagResults(resultsState.labelAndTagState.currentPage + 1);
+                      // getLabelResults({
+                      //   variables: {
+                      //     searchTerm: searchPrompt,
+                      //     currentPage: resultsState.labelAndTagState.currentPage + 1,
+                      //   },
+                      // });
+                      // getTagResults({
+                      //   variables: {
+                      //     searchTerm: searchPrompt,
+                      //     currentPage: resultsState.labelAndTagState.currentPage + 1,
+                      //   },
+                      // });
                       dispatch({
                         type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
                         payload: resultsState.labelAndTagState.currentPage + 1,
