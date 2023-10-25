@@ -98,11 +98,6 @@ export const ProfileQueries = queryType({
               contains: searchTerm,
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
@@ -213,11 +208,6 @@ export const CrateQueries = extendType({
               contains: searchTerm,
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
@@ -242,11 +232,6 @@ export const CrateQueries = extendType({
               },
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
@@ -273,11 +258,7 @@ export const CrateQueries = extendType({
               },
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
+
           skip: skip,
           take: 30,
         });
@@ -669,11 +650,6 @@ export const AlbumQueries = extendType({
               },
             ],
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
@@ -711,11 +687,7 @@ export const AlbumQueries = extendType({
               },
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
+
           skip: skip,
           take: 30,
         });
@@ -749,11 +721,7 @@ export const AlbumQueries = extendType({
               },
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
+
           skip: skip,
           take: 30,
         });
@@ -787,11 +755,7 @@ export const AlbumQueries = extendType({
               },
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
+
           skip: skip,
           take: 30,
         });
@@ -846,9 +810,6 @@ export const GenreQueries = extendType({
               contains: searchTerm,
             },
           },
-          orderBy: {
-            searchAndSelectCount: 'desc',
-          },
         });
       },
     });
@@ -889,9 +850,6 @@ export const SubgenreQueries = extendType({
             name: {
               contains: searchTerm,
             },
-          },
-          orderBy: {
-            searchAndSelectCount: 'desc',
           },
         });
       },

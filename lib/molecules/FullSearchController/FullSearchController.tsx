@@ -190,12 +190,9 @@ const FullSearchController = ({
   const currentProfiles = resultsState.profileState.results;
   const currentCrates = resultsState.crateState.results;
   const currentAlbums = resultsState.albumState.results;
-  const currentLabelsAndTags =
-    resultsState.labelAndTagState.results.sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+  const currentLabelsAndTags = resultsState.labelAndTagState.results || [];
   const currentGenresAndSubgenres =
-    resultsState.genreAndSubgenreState.results
-      .slice(0, resultsState.genreAndSubgenreState.currentPage * 30)
-      .sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+    resultsState.genreAndSubgenreState.results.slice(0, resultsState.genreAndSubgenreState.currentPage * 30) || [];
   const currentCratesFromLabel = resultsState.cratesFromLabelState.results;
   const currentAlbumsFromTag = resultsState.albumsFromTagState.results;
   const currentAlbumsFromGenre = resultsState.albumsFromGenreState.results;
@@ -203,12 +200,8 @@ const FullSearchController = ({
   const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results;
 
   console.log(resultsState);
-  console.log(activePane);
-  console.log('prev Pane', prevActivePane);
-  console.log(currentAlbumsFromGenre);
 
   const getLabelAndTagResults = async newPage => {
-    console.log(`Current page is ${newPage}`);
     let labelPromise = new Promise<any[]>(resolve => {
       getLabelResults({
         variables: {
@@ -230,8 +223,8 @@ const FullSearchController = ({
 
     let [labels, tags] = await Promise.all([labelPromise, tagPromise]);
     const labelsAndTagsData = [...labels, ...tags];
-    console.log('labelsAndTagsData', labelsAndTagsData);
-    dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
+    const sortedPayload = labelsAndTagsData?.sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+    dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: sortedPayload });
     if (labelsAndTagsData.length !== 0) {
       dispatch({
         type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
@@ -241,7 +234,6 @@ const FullSearchController = ({
   };
 
   const getGenreAndSubgenreResults = async newPage => {
-    console.log(`Current page is ${newPage}`);
     let genrePromise = new Promise<any[]>(resolve => {
       getGenreResults({
         variables: {
@@ -263,8 +255,8 @@ const FullSearchController = ({
 
     let [genres, subgenres] = await Promise.all([genrePromise, subgenrePromise]);
     const genresAndSubgenresData = [...genres, ...subgenres];
-    console.log('genresAndSubgenresData', genresAndSubgenresData);
-    dispatch({ type: 'UPDATE_GENRE_AND_SUBGENRE_RESULTS', payload: genresAndSubgenresData });
+    const sortedPayload = genresAndSubgenresData?.sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+    dispatch({ type: 'UPDATE_GENRE_AND_SUBGENRE_RESULTS', payload: sortedPayload });
     if (genresAndSubgenresData.length !== 0) {
       dispatch({
         type: 'UPDATE_GENRE_AND_SUBGENRE_CURRENT_PAGE',
@@ -284,28 +276,82 @@ const FullSearchController = ({
     }
 
     if (profilesData?.fsProfiles && activePane === 'profiles') {
-      dispatch({ type: 'UPDATE_PROFILE_RESULTS', payload: profilesData.fsProfiles });
+      let sortedPayload =
+        [...profilesData?.fsProfiles].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+      dispatch({ type: 'UPDATE_PROFILE_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_PROFILE_CURRENT_PAGE',
+        payload: resultsState.profileState.currentPage + 1,
+      });
     }
     if (cratesData?.fsCrates && activePane === 'crates') {
-      dispatch({ type: 'UPDATE_CRATE_RESULTS', payload: cratesData.fsCrates });
+      let sortedPayload =
+        [...cratesData?.fsCrates].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+      dispatch({ type: 'UPDATE_CRATE_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_CRATE_CURRENT_PAGE',
+        payload: resultsState.crateState.currentPage + 1,
+      });
     }
     if (albumsData?.fsAlbums && activePane === 'albums') {
-      dispatch({ type: 'UPDATE_ALBUM_RESULTS', payload: albumsData.fsAlbums });
+      let sortedPayload =
+        [...albumsData?.fsAlbums].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+      dispatch({ type: 'UPDATE_ALBUM_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_ALBUM_CURRENT_PAGE',
+        payload: resultsState.albumState.currentPage + 1,
+      });
     }
+    // update below
     if (cratesFromLabelData?.getCratesFromLabel && activePane === 'cratesFromLabel') {
-      dispatch({ type: 'UPDATE_CRATES_FROM_LABEL_RESULTS', payload: cratesFromLabelData.getCratesFromLabel });
+      let sortedPayload =
+        [...cratesFromLabelData?.getCratesFromLabel].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) ||
+        [];
+      dispatch({ type: 'UPDATE_CRATES_FROM_LABEL_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_CRATES_FROM_LABEL_CURRENT_PAGE',
+        payload: resultsState.cratesFromLabelState.currentPage + 1,
+      });
     }
     if (albumsFromTagData?.getAlbumsFromTag && activePane === 'albumsFromTag') {
-      dispatch({ type: 'UPDATE_ALBUMS_FROM_TAG_RESULTS', payload: albumsFromTagData.getAlbumsFromTag });
+      let sortedPayload =
+        [...albumsFromTagData?.getAlbumsFromTag].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) || [];
+      dispatch({ type: 'UPDATE_ALBUMS_FROM_TAG_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_ALBUMS_FROM_TAG_CURRENT_PAGE',
+        payload: resultsState.albumsFromTagState.currentPage + 1,
+      });
     }
     if (albumsFromGenreData?.getAlbumsFromGenre && activePane === 'albumsFromGenre') {
-      dispatch({ type: 'UPDATE_ALBUMS_FROM_GENRE_RESULTS', payload: albumsFromGenreData.getAlbumsFromGenre });
+      let sortedPayload =
+        [...albumsFromGenreData?.getAlbumsFromGenre].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) ||
+        [];
+      dispatch({ type: 'UPDATE_ALBUMS_FROM_GENRE_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_ALBUMS_FROM_GENRE_CURRENT_PAGE',
+        payload: resultsState.albumsFromGenreState.currentPage + 1,
+      });
     }
     if (albumsFromSubgenreData?.getAlbumsFromSubgenre && activePane === 'albumsFromSubgenre') {
-      dispatch({ type: 'UPDATE_ALBUMS_FROM_SUBGENRE_RESULTS', payload: albumsFromSubgenreData.getAlbumsFromSubgenre });
+      let sortedPayload =
+        [...albumsFromSubgenreData?.getAlbumsFromSubgenre].sort(
+          (a, b) => b.searchAndSelectCount - a.searchAndSelectCount,
+        ) || [];
+      dispatch({ type: 'UPDATE_ALBUMS_FROM_SUBGENRE_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_ALBUMS_FROM_SUBGENRE_CURRENT_PAGE',
+        payload: resultsState.albumsFromSubgenreState.currentPage + 1,
+      });
     }
     if (cratesFromAlbumData?.getCratesFromAlbum && activePane === 'cratesFromAlbum') {
-      dispatch({ type: 'UPDATE_CRATES_FROM_ALBUM_RESULTS', payload: cratesFromAlbumData.getCratesFromAlbum });
+      let sortedPayload =
+        [...cratesFromAlbumData?.getCratesFromAlbum].sort((a, b) => b.searchAndSelectCount - a.searchAndSelectCount) ||
+        [];
+      dispatch({ type: 'UPDATE_CRATES_FROM_ALBUM_RESULTS', payload: sortedPayload });
+      dispatch({
+        type: 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE',
+        payload: resultsState.cratesFromAlbumState.currentPage + 1,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -465,12 +511,8 @@ const FullSearchController = ({
                       getProfileResults({
                         variables: {
                           searchTerm: searchPrompt,
-                          currentPage: resultsState.profileState.currentPage + 1,
+                          currentPage: resultsState.profileState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_PROFILE_CURRENT_PAGE',
-                        payload: resultsState.profileState.currentPage + 1,
                       });
                     }}
                   />
@@ -489,11 +531,7 @@ const FullSearchController = ({
                     setSearchPath={setSearchPath}
                     getMoreItems={() => {
                       getCrateResults({
-                        variables: { searchTerm: searchPrompt, currentPage: resultsState.crateState.currentPage + 1 },
-                      });
-                      dispatch({
-                        type: 'UPDATE_CRATE_CURRENT_PAGE',
-                        payload: resultsState.crateState.currentPage + 1,
+                        variables: { searchTerm: searchPrompt, currentPage: resultsState.crateState.currentPage },
                       });
                     }}
                   />
@@ -512,11 +550,7 @@ const FullSearchController = ({
                     setSearchPath={setSearchPath}
                     getMoreItems={() => {
                       getAlbumResults({
-                        variables: { searchTerm: searchPrompt, currentPage: resultsState.albumState.currentPage + 1 },
-                      });
-                      dispatch({
-                        type: 'UPDATE_ALBUM_CURRENT_PAGE',
-                        payload: resultsState.albumState.currentPage + 1,
+                        variables: { searchTerm: searchPrompt, currentPage: resultsState.albumState.currentPage },
                       });
                     }}
                     getNextPane={(type, searchId) => {
@@ -616,12 +650,8 @@ const FullSearchController = ({
                       getCratesFromLabel({
                         variables: {
                           labelId: searchPath.topTier.id,
-                          currentPage: resultsState.cratesFromLabelState.currentPage + 1,
+                          currentPage: resultsState.cratesFromLabelState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_CRATES_FROM_LABEL_CURRENT_PAGE',
-                        payload: resultsState.cratesFromLabelState.currentPage + 1,
                       });
                     }}
                   />
@@ -644,12 +674,8 @@ const FullSearchController = ({
                       getAlbumsFromTag({
                         variables: {
                           tagId: searchPath.topTier.id,
-                          currentPage: resultsState.albumsFromTagState.currentPage + 1,
+                          currentPage: resultsState.albumsFromTagState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_ALBUMS_FROM_TAG_CURRENT_PAGE',
-                        payload: resultsState.albumsFromTagState.currentPage + 1,
                       });
                     }}
                     getNextPane={(type, searchId) => {
@@ -684,12 +710,8 @@ const FullSearchController = ({
                       getAlbumsFromGenre({
                         variables: {
                           genreId: searchPath.topTier.id,
-                          currentPage: resultsState.albumsFromGenreState.currentPage + 1,
+                          currentPage: resultsState.albumsFromGenreState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_ALBUMS_FROM_GENRE_CURRENT_PAGE',
-                        payload: resultsState.albumsFromGenreState.currentPage + 1,
                       });
                     }}
                     getNextPane={(type, searchId) => {
@@ -724,12 +746,8 @@ const FullSearchController = ({
                       getAlbumsFromSubgenre({
                         variables: {
                           subgenreId: searchPath.topTier.id,
-                          currentPage: resultsState.albumsFromSubgenreState.currentPage + 1,
+                          currentPage: resultsState.albumsFromSubgenreState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_ALBUMS_FROM_SUBGENRE_CURRENT_PAGE',
-                        payload: resultsState.albumsFromSubgenreState.currentPage + 1,
                       });
                     }}
                     getNextPane={(type, searchId) => {
@@ -764,12 +782,8 @@ const FullSearchController = ({
                       getCratesFromAlbum({
                         variables: {
                           albumId: !prevActivePane ? searchPath.topTier.id : searchPath.midTier.id,
-                          currentPage: resultsState.cratesFromAlbumState.currentPage + 1,
+                          currentPage: resultsState.cratesFromAlbumState.currentPage,
                         },
-                      });
-                      dispatch({
-                        type: 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE',
-                        payload: resultsState.cratesFromAlbumState.currentPage + 1,
                       });
                     }}
                   />
