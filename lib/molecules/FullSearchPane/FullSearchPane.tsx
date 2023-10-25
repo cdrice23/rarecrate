@@ -13,7 +13,7 @@ interface FullSearchPaneProps {
     midTier?: { type: string; name: string; id: number };
   };
   setSearchPath: (value) => void;
-  getMoreItems: (searchId) => void;
+  getMoreItems?: (searchId) => void;
   getNextPane?: (value, searchId) => void;
 }
 

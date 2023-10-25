@@ -140,6 +140,16 @@ const resultsReducer = (state, action) => {
       return { ...state, albumsFromSubgenreState: { ...state.albumsFromSubgenreState, currentPage: action.payload } };
     case 'UPDATE_CRATES_FROM_ALBUM_CURRENT_PAGE':
       return { ...state, cratesFromAlbumState: { ...state.cratesFromAlbumState, currentPage: action.payload } };
+    case 'RESET_CRATES_FROM_LABEL_RESULTS':
+      return { ...state, cratesFromLabelState: { results: [], currentPage: 1 } };
+    case 'RESET_ALBUMS_FROM_TAG_RESULTS':
+      return { ...state, albumsFromTagState: { results: [], currentPage: 1 } };
+    case 'RESET_ALBUMS_FROM_GENRE_RESULTS':
+      return { ...state, albumsFromGenreState: { results: [], currentPage: 1 } };
+    case 'RESET_ALBUMS_FROM_SUBGENRE_RESULTS':
+      return { ...state, albumsFromSubgenreState: { results: [], currentPage: 1 } };
+    case 'RESET_CRATES_FROM_ALBUM_RESULTS':
+      return { ...state, cratesFromAlbumState: { results: [], currentPage: 1 } };
     default:
       return state;
   }
@@ -154,7 +164,6 @@ const FullSearchController = ({
   setActivePane,
   setPrevActivePane,
 }: FullSearchControllerProps) => {
-  const [loadingLabelAndTagData, setLoadingLabelAndTagData] = useState<boolean>(false);
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
   const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES);
   const [getCrateResults, { data: cratesData, loading: loadingCrates }] = useLazyQuery(FS_CRATES);
@@ -194,6 +203,9 @@ const FullSearchController = ({
   const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results;
 
   console.log(resultsState);
+  console.log(activePane);
+  console.log('prev Pane', prevActivePane);
+  console.log(currentAlbumsFromGenre);
 
   const getLabelAndTagResults = async newPage => {
     console.log(`Current page is ${newPage}`);
@@ -220,7 +232,45 @@ const FullSearchController = ({
     const labelsAndTagsData = [...labels, ...tags];
     console.log('labelsAndTagsData', labelsAndTagsData);
     dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
-    setLoadingLabelAndTagData(false);
+    if (labelsAndTagsData.length !== 0) {
+      dispatch({
+        type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
+        payload: resultsState.labelAndTagState.currentPage + 1,
+      });
+    }
+  };
+
+  const getGenreAndSubgenreResults = async newPage => {
+    console.log(`Current page is ${newPage}`);
+    let genrePromise = new Promise<any[]>(resolve => {
+      getGenreResults({
+        variables: {
+          searchTerm: searchPrompt,
+          currentPage: newPage,
+        },
+        onCompleted: data => resolve(data.fsGenres),
+      });
+    });
+    let subgenrePromise = new Promise<any[]>(resolve => {
+      getSubgenreResults({
+        variables: {
+          searchTerm: searchPrompt,
+          currentPage: newPage,
+        },
+        onCompleted: data => resolve(data.fsSubgenres),
+      });
+    });
+
+    let [genres, subgenres] = await Promise.all([genrePromise, subgenrePromise]);
+    const genresAndSubgenresData = [...genres, ...subgenres];
+    console.log('genresAndSubgenresData', genresAndSubgenresData);
+    dispatch({ type: 'UPDATE_GENRE_AND_SUBGENRE_RESULTS', payload: genresAndSubgenresData });
+    if (genresAndSubgenresData.length !== 0) {
+      dispatch({
+        type: 'UPDATE_GENRE_AND_SUBGENRE_CURRENT_PAGE',
+        payload: resultsState.labelAndTagState.currentPage + 1,
+      });
+    }
   };
 
   useEffect(() => {
@@ -242,20 +292,6 @@ const FullSearchController = ({
     if (albumsData?.fsAlbums && activePane === 'albums') {
       dispatch({ type: 'UPDATE_ALBUM_RESULTS', payload: albumsData.fsAlbums });
     }
-    // if ((labelsData?.fsLabels || tagsData?.fsTags) && activePane === 'labelsAndTags') {
-    //   let labels = labelsData?.fsLabels || [];
-    //   let tags = tagsData?.fsTags || [];
-
-    //   const labelsAndTagsData = [...labels, ...tags];
-    //   dispatch({ type: 'UPDATE_LABEL_AND_TAG_RESULTS', payload: labelsAndTagsData });
-    // }
-    if ((genresData?.fsGenres || subgenresData?.fsSubgenres) && activePane === 'genresAndSubgenres') {
-      let genres = genresData?.fsGenres || [];
-      let subgenres = subgenresData?.fsSubgenres || [];
-
-      const genresAndSubgenresData = [...genres, ...subgenres];
-      dispatch({ type: 'UPDATE_GENRE_AND_SUBGENRE_RESULTS', payload: genresAndSubgenresData });
-    }
     if (cratesFromLabelData?.getCratesFromLabel && activePane === 'cratesFromLabel') {
       dispatch({ type: 'UPDATE_CRATES_FROM_LABEL_RESULTS', payload: cratesFromLabelData.getCratesFromLabel });
     }
@@ -273,6 +309,7 @@ const FullSearchController = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    activePane,
     profilesData,
     cratesData,
     albumsData,
@@ -342,19 +379,10 @@ const FullSearchController = ({
               activePane === 'albumsFromTag' ||
               (activePane === 'cratesFromAlbum' && prevActivePane === 'albumsFromTag'),
           })}
-          onClick={() => {
+          onClick={async () => {
             setActivePane('labelsAndTags');
             setPrevActivePane(null);
-            setLoadingLabelAndTagData(true);
-            getLabelAndTagResults(
-              resultsState.labelAndTagState.currentPage === 1 ? 1 : resultsState.labelAndTagState.currentPage + 1,
-            );
-            // getLabelResults({
-            //   variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
-            // });
-            // getTagResults({
-            //   variables: { searchTerm: searchPrompt, currentPage: resultsState.labelAndTagState.currentPage },
-            // });
+            await getLabelAndTagResults(resultsState.labelAndTagState.currentPage);
             setSearchPath({});
           }}
         >
@@ -362,11 +390,10 @@ const FullSearchController = ({
         </button>
         <button
           className={cx({ active: activePane === 'genresAndSubgenres' })}
-          onClick={() => {
+          onClick={async () => {
             setActivePane('genresAndSubgenres');
             setPrevActivePane(null);
-            getGenreResults();
-            getSubgenreResults();
+            await getGenreAndSubgenreResults(resultsState.genreAndSubgenreState.currentPage);
             setSearchPath({});
           }}
         >
@@ -496,6 +523,7 @@ const FullSearchController = ({
                       if (type === 'Album') {
                         setActivePane('cratesFromAlbum');
                         setPrevActivePane('albums');
+                        dispatch({ type: 'RESET_CRATES_FROM_ALBUM_RESULTS' });
                         getCratesFromAlbum({
                           variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
                         });
@@ -517,36 +545,21 @@ const FullSearchController = ({
                     currentPage={resultsState.labelAndTagState.currentPage}
                     searchPath={searchPath}
                     setSearchPath={setSearchPath}
-                    getMoreItems={() => {
-                      setLoadingLabelAndTagData(true);
-                      getLabelAndTagResults(resultsState.labelAndTagState.currentPage + 1);
-                      // getLabelResults({
-                      //   variables: {
-                      //     searchTerm: searchPrompt,
-                      //     currentPage: resultsState.labelAndTagState.currentPage + 1,
-                      //   },
-                      // });
-                      // getTagResults({
-                      //   variables: {
-                      //     searchTerm: searchPrompt,
-                      //     currentPage: resultsState.labelAndTagState.currentPage + 1,
-                      //   },
-                      // });
-                      dispatch({
-                        type: 'UPDATE_LABEL_AND_TAG_CURRENT_PAGE',
-                        payload: resultsState.labelAndTagState.currentPage + 1,
-                      });
+                    getMoreItems={async () => {
+                      await getLabelAndTagResults(resultsState.labelAndTagState.currentPage);
                     }}
                     getNextPane={(type, searchId) => {
                       if (type === 'Label') {
                         setActivePane('cratesFromLabel');
                         setPrevActivePane('labelsAndTags');
+                        dispatch({ type: 'RESET_CRATES_FROM_LABEL_RESULTS' });
                         getCratesFromLabel({
                           variables: { labelId: searchId, currentPage: resultsState.cratesFromLabelState.currentPage },
                         });
                       } else {
                         setActivePane('albumsFromTag');
                         setPrevActivePane('labelsAndTags');
+                        dispatch({ type: 'RESET_ALBUMS_FROM_TAG_RESULTS' });
                         getAlbumsFromTag({
                           variables: { tagId: searchId, currentPage: resultsState.albumsFromTagState.currentPage },
                         });
@@ -567,22 +580,18 @@ const FullSearchController = ({
                   currentPage={resultsState.genreAndSubgenreState.currentPage}
                   searchPath={searchPath}
                   setSearchPath={setSearchPath}
-                  getMoreItems={() =>
-                    dispatch({
-                      type: 'UPDATE_GENRE_AND_SUBGENRE_CURRENT_PAGE',
-                      payload: resultsState.genreAndSubgenreState.currentPage + 1,
-                    })
-                  }
                   getNextPane={(type, searchId) => {
                     if (type === 'Genre') {
                       setActivePane('albumsFromGenre');
                       setPrevActivePane('genresAndSubgenres');
+                      dispatch({ type: 'RESET_ALBUMS_FROM_GENRE_RESULTS' });
                       getAlbumsFromGenre({
                         variables: { genreId: searchId, currentPage: resultsState.albumsFromGenreState.currentPage },
                       });
                     } else {
                       setActivePane('albumsFromSubgenre');
                       setPrevActivePane('genresAndSubgenres');
+                      dispatch({ type: 'RESET_ALBUMS_FROM_SUBGENRE_RESULTS' });
                       getAlbumsFromSubgenre({
                         variables: {
                           subgenreId: searchId,
@@ -647,6 +656,7 @@ const FullSearchController = ({
                       if (type === 'Album') {
                         setActivePane('cratesFromAlbum');
                         setPrevActivePane('albumsFromTag');
+                        dispatch({ type: 'RESET_CRATES_FROM_ALBUM_RESULTS' });
                         getCratesFromAlbum({
                           variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
                         });
@@ -686,6 +696,7 @@ const FullSearchController = ({
                       if (type === 'Album') {
                         setActivePane('cratesFromAlbum');
                         setPrevActivePane('albumsFromGenre');
+                        dispatch({ type: 'RESET_CRATES_FROM_ALBUM_RESULTS' });
                         getCratesFromAlbum({
                           variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
                         });
@@ -725,6 +736,7 @@ const FullSearchController = ({
                       if (type === 'Album') {
                         setActivePane('cratesFromAlbum');
                         setPrevActivePane('albumsFromSubgenre');
+                        dispatch({ type: 'RESET_CRATES_FROM_ALBUM_RESULTS' });
                         getCratesFromAlbum({
                           variables: { albumId: searchId, currentPage: resultsState.cratesFromAlbumState.currentPage },
                         });
@@ -751,7 +763,7 @@ const FullSearchController = ({
                     getMoreItems={() => {
                       getCratesFromAlbum({
                         variables: {
-                          albumId: searchPath.midTier.id,
+                          albumId: !prevActivePane ? searchPath.topTier.id : searchPath.midTier.id,
                           currentPage: resultsState.cratesFromAlbumState.currentPage + 1,
                         },
                       });

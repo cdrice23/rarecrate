@@ -405,11 +405,6 @@ export const LabelQueries = extendType({
               contains: searchTerm,
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
@@ -511,11 +506,6 @@ export const TagQueries = extendType({
               contains: searchTerm,
             },
           },
-          orderBy: [
-            {
-              searchAndSelectCount: 'desc',
-            },
-          ],
           skip: skip,
           take: 30,
         });
