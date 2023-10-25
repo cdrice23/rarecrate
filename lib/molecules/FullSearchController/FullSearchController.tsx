@@ -19,6 +19,7 @@ import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
 import { PaneType } from '@/lib/context/state';
 import { Pill } from '@/lib/atoms/Pill/Pill';
 import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
+import { useLocalState } from '@/lib/context/state';
 
 interface FullSearchControllerProps {
   searchPrompt: string;
@@ -164,6 +165,7 @@ const FullSearchController = ({
   setActivePane,
   setPrevActivePane,
 }: FullSearchControllerProps) => {
+  const { profileIdMain } = useLocalState();
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
   const [getProfileResults, { data: profilesData, loading: loadingProfiles }] = useLazyQuery(FS_PROFILES);
   const [getCrateResults, { data: cratesData, loading: loadingCrates }] = useLazyQuery(FS_CRATES);
@@ -188,16 +190,37 @@ const FullSearchController = ({
     useLazyQuery(GET_ALBUMS_FROM_SUBGENRE);
 
   const currentProfiles = resultsState.profileState.results;
-  const currentCrates = resultsState.crateState.results;
+  const currentCrates = resultsState.crateState.results.filter(
+    item =>
+      !(
+        item.__typename === 'Crate' &&
+        item.creator.isPrivate &&
+        item.creator.followers.some(follower => follower.id !== profileIdMain)
+      ),
+  );
   const currentAlbums = resultsState.albumState.results;
   const currentLabelsAndTags = resultsState.labelAndTagState.results || [];
   const currentGenresAndSubgenres =
     resultsState.genreAndSubgenreState.results.slice(0, resultsState.genreAndSubgenreState.currentPage * 30) || [];
-  const currentCratesFromLabel = resultsState.cratesFromLabelState.results;
+  const currentCratesFromLabel = resultsState.cratesFromLabelState.results.filter(
+    item =>
+      !(
+        item.__typename === 'Crate' &&
+        item.creator.isPrivate &&
+        item.creator.followers.some(follower => follower.id !== profileIdMain)
+      ),
+  );
   const currentAlbumsFromTag = resultsState.albumsFromTagState.results;
   const currentAlbumsFromGenre = resultsState.albumsFromGenreState.results;
   const currentAlbumsFromSubgenre = resultsState.albumsFromSubgenreState.results;
-  const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results;
+  const currentCratesFromAlbum = resultsState.cratesFromAlbumState.results.filter(
+    item =>
+      !(
+        item.__typename === 'Crate' &&
+        item.creator.isPrivate &&
+        item.creator.followers.some(follower => follower.id !== profileIdMain)
+      ),
+  );
 
   console.log(resultsState);
 

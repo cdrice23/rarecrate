@@ -208,6 +208,9 @@ export const CrateQueries = extendType({
               contains: searchTerm,
             },
           },
+          include: {
+            creator: true,
+          },
           skip: skip,
           take: 30,
         });
@@ -231,6 +234,9 @@ export const CrateQueries = extendType({
                 id: labelId,
               },
             },
+          },
+          include: {
+            creator: true,
           },
           skip: skip,
           take: 30,
@@ -258,7 +264,9 @@ export const CrateQueries = extendType({
               },
             },
           },
-
+          include: {
+            creator: true,
+          },
           skip: skip,
           take: 30,
         });

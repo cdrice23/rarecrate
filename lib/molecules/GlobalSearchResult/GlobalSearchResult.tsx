@@ -15,7 +15,7 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
     <motion.div
       className={cx('searchResult')}
       onViewportEnter={() => {
-        if (index === lastSlice) {
+        if (index === lastSlice && getMoreItems) {
           console.log('you hit the last item!');
           getMoreItems();
         }

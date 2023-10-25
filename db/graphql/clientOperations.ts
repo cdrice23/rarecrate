@@ -597,6 +597,10 @@ export const FS_CRATES = gql`
       searchAndSelectCount
       creator {
         username
+        isPrivate
+        followers {
+          id
+        }
       }
     }
   }
@@ -698,6 +702,10 @@ export const GET_CRATES_FROM_LABEL = gql`
       searchAndSelectCount
       creator {
         username
+        isPrivate
+        followers {
+          id
+        }
       }
     }
   }
@@ -711,6 +719,10 @@ export const GET_CRATES_FROM_ALBUM = gql`
       searchAndSelectCount
       creator {
         username
+        isPrivate
+        followers {
+          id
+        }
       }
     }
   }
