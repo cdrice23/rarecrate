@@ -19,7 +19,6 @@ interface FullSearchPaneProps {
 
 const FullSearchPane = ({
   currentItems,
-  currentPage,
   searchPath,
   getMoreItems,
   getNextPane,

@@ -42,8 +42,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
   const isPrivate = profileData?.isPrivate;
   const hidePrivateProfile = isPrivate && !isFollowing;
 
-  console.log(useApolloClient().cache.extract());
-  console.log(userProfiles);
+  // console.log(useApolloClient().cache.extract());
 
   const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {
     update: (cache, { data }) => {
@@ -211,17 +210,8 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
                     {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
                   </button>
                 )}
-                {/* <button>
-                  <p>{`Social Media`}</p>
-                  <LinkSimpleHorizontal />
-                </button> */}
                 <SocialLinkButton socialLinks={profileData.socialLinks} />
               </div>
-              {/* <ul>
-                  {profileData.socialLinks.map((link: any) => (
-                    <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
-                  ))}
-                </ul> */}
             </Pane>
           )}
           <Modal

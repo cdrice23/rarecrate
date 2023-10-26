@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
-import { useQuery } from '@apollo/client';
+import { useQuery, useLazyQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
@@ -13,7 +13,12 @@ import { ProfilePane } from '@/lib/molecules/ProfilePane/ProfilePane';
 
 import authed from '../../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE, GET_PROFILE } from '@/db/graphql/clientOperations';
+import {
+  GET_LAST_LOGIN_PROFILE,
+  GET_PROFILE,
+  GET_PROFILE_FOLLOWERS,
+  GET_PROFILE_FOLLOWING,
+} from '@/db/graphql/clientOperations';
 
 interface ProfileProps {
   userId?: number;
@@ -23,12 +28,46 @@ interface ProfileProps {
   prismaUserProfiles?: any;
 }
 
+const initialResultsState = {
+  followerState: { results: [], currentPage: 1 },
+  followingState: { results: [], currentPage: 1 },
+};
+
+const resultsReducer = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_FOLLOWER_RESULTS':
+      return {
+        ...state,
+        followerState: { ...state.followerState, results: [...state.followerState.results, ...action.payload] },
+      };
+    case 'UPDATE_FOLLOWING_RESULTS':
+      return {
+        ...state,
+        followingState: { ...state.followingState, results: [...state.followingState.results, ...action.payload] },
+      };
+    case 'UPDATE_FOLLOWER_CURRENT_PAGE':
+      return { ...state, followerState: { ...state.followerState, currentPage: action.payload } };
+    case 'UPDATE_FOLLOWING_CURRENT_PAGE':
+      return { ...state, followingState: { ...state.followingState, currentPage: action.payload } };
+    case 'RESET_FOLLOWER_RESULTS':
+      return { ...state, followerState: { results: [], currentPage: 1 } };
+    case 'RESET_FOLLOWING_RESULTS':
+      return { ...state, followingState: { results: [], currentPage: 1 } };
+    default:
+      return state;
+  }
+};
+
 const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
-  const router = useRouter();
+  const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
   const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('crates');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
 
+  const router = useRouter();
+
   const currentProfile = Array.isArray(router.query.username) ? router.query.username[0] : router.query.username;
+  const currentFollowers = resultsState.followerState.results;
+  const currentFollowing = resultsState.followingState.results;
 
   // profile data of the user
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
@@ -43,8 +82,51 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
       username: currentProfile,
     },
   });
+  const [getFollowers, { loading: loadingFollowers, error: errorFollowers, data: followersData }] =
+    useLazyQuery(GET_PROFILE_FOLLOWERS);
+  const [
+    getFollowedProfiles,
+    { loading: loadingFollowedProfiles, error: errorFollowedProfiles, data: followedProfilesData },
+  ] = useLazyQuery(GET_PROFILE_FOLLOWING);
 
   const handlePaneSelect = (pane: 'followers' | 'following' | 'crates' | 'favorites') => {
+    switch (pane) {
+      case 'followers':
+        if (currentFollowers.length === 0) {
+          getFollowers({
+            variables: {
+              username: currentProfile,
+              currentPage: resultsState.followerState.currentPage,
+            },
+          });
+        }
+        dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        break;
+      case 'following':
+        if (currentFollowing.length === 0) {
+          getFollowedProfiles({
+            variables: {
+              username: currentProfile,
+              currentPage: resultsState.followingState.currentPage,
+            },
+          });
+        }
+        dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
+        break;
+      case 'crates':
+        // Do something for crates
+        dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
+        dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        break;
+      case 'favorites':
+        // Do something for favorites
+        dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
+        dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        break;
+      default:
+        // Do something for other cases
+        break;
+    }
     setActivePane(pane);
   };
 
@@ -77,6 +159,28 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, email, loading, error, data]);
 
+  useEffect(() => {
+    if (followersData?.getProfileFollowers && activePane === 'followers') {
+      dispatch({ type: 'UPDATE_FOLLOWER_RESULTS', payload: followersData.getProfileFollowers });
+      dispatch({
+        type: 'UPDATE_FOLLOWER_CURRENT_PAGE',
+        payload: resultsState.followerState.currentPage + 1,
+      });
+    }
+
+    if (followedProfilesData?.getProfileFollowing && activePane === 'following') {
+      dispatch({ type: 'UPDATE_FOLLOWING_RESULTS', payload: followedProfilesData.getProfileFollowing });
+      dispatch({
+        type: 'UPDATE_FOLLOWING_CURRENT_PAGE',
+        payload: resultsState.followingState.currentPage + 1,
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activePane, followersData, followedProfilesData]);
+
+  console.log(resultsState);
+
   return (
     <AuthedLayout userProfiles={prismaUserProfiles}>
       {error ? (
@@ -108,13 +212,33 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
           {activePane === 'followers'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FollowerPane username={currentProfile} />
+                  <FollowerPane
+                    currentItems={currentFollowers}
+                    getMoreItems={() => {
+                      getFollowers({
+                        variables: {
+                          username: currentProfile,
+                          currentPage: resultsState.followerState.currentPage,
+                        },
+                      });
+                    }}
+                  />
                 </div>
               )
             : activePane === 'following'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FollowingPane username={currentProfile} />
+                  <FollowingPane
+                    currentItems={currentFollowing}
+                    getMoreItems={() => {
+                      getFollowedProfiles({
+                        variables: {
+                          username: currentProfile,
+                          currentPage: resultsState.followingState.currentPage,
+                        },
+                      });
+                    }}
+                  />
                 </div>
               )
             : activePane === 'crates'
