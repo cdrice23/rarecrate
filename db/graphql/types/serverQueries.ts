@@ -2,6 +2,7 @@ import { queryType, nonNull, intArg, stringArg, nullable, extendType, booleanArg
 import {
   Profile as NexusProfile,
   Crate as NexusCrate,
+  Follow as NexusFollow,
   FollowRequest as NexusFollowRequest,
   Label as NexusLabel,
   Tag as NexusTag,
@@ -1087,6 +1088,61 @@ export const RecommendationQueries = extendType({
             };
           }
         }
+      },
+    });
+  },
+});
+
+export const FollowQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('getProfileFollowers', {
+      type: NexusFollow,
+      args: {
+        username: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { username, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const followers = await ctx.prisma.follow.findMany({
+          where: {
+            following: {
+              username: username,
+            },
+          },
+          include: {
+            follower: true,
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        return followers;
+      },
+    });
+
+    t.nonNull.list.field('getProfileFollowing', {
+      type: NexusFollow,
+      args: {
+        username: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { username, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const following = await ctx.prisma.follow.findMany({
+          where: {
+            follower: {
+              username: username,
+            },
+          },
+          include: {
+            following: true,
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        return following;
       },
     });
   },

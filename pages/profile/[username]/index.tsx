@@ -6,7 +6,8 @@ import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { FolloweringPane } from '@/lib/molecules/FolloweringPane/FolloweringPane';
+import { FollowerPane } from '@/lib/molecules/FollowerPane/FollowerPane';
+import { FollowingPane } from '@/lib/molecules/FollowingPane/FollowingPane';
 import { CrateSummaryPane } from '@/lib/molecules/CrateSummaryPane/CrateSummaryPane';
 import { ProfilePane } from '@/lib/molecules/ProfilePane/ProfilePane';
 
@@ -107,13 +108,13 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
           {activePane === 'followers'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FolloweringPane username={currentProfile} listType="followers" />
+                  <FollowerPane username={currentProfile} />
                 </div>
               )
             : activePane === 'following'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FolloweringPane username={currentProfile} listType="following" />
+                  <FollowingPane username={currentProfile} />
                 </div>
               )
             : activePane === 'crates'

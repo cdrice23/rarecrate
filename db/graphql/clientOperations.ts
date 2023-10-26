@@ -1045,3 +1045,29 @@ export const MARK_RECOMMENDATION_SEEN = gql`
     }
   }
 `;
+
+export const GET_PROFILE_FOLLOWERS = gql`
+  query GetProfileFollowers($username: String!, $currentPage: Int!) {
+    getProfileFollowers(username: $username, currentPage: $currentPage) {
+      id
+      follower {
+        id
+        image
+        username
+      }
+    }
+  }
+`;
+
+export const GET_PROFILE_FOLLOWING = gql`
+  query GetProfileFollowing($username: String!, $currentPage: Int!) {
+    getProfileFollowing(username: $username, currentPage: $currentPage) {
+      id
+      following {
+        id
+        image
+        username
+      }
+    }
+  }
+`;

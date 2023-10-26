@@ -63,11 +63,7 @@ const SocialLinkButton = ({ socialLinks }: SocialLinkButtonProps) => {
         <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
           <ul className={cx('socialLinkMenu')}>
             {socialLinks.map((link, index) => (
-              <li
-                key={index}
-                className={cx('menuItem')}
-                // onClick={() => console.log(`Navigate to ${link.platform} to user ${link.username}`)}
-              >
+              <li key={index} className={cx('menuItem')}>
                 <a href={getPlatformUrl(link.platform, link.username)} target="_blank">
                   <div className={cx('platform')}>
                     {getPlatformLogo(link.platform)}
