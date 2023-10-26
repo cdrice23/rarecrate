@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserSettings } from '../UserSettings/UserSettings';
+import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 
 type ProfilePaneProps = {
   username: string;
@@ -210,10 +211,11 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
                     {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
                   </button>
                 )}
-                <button>
+                {/* <button>
                   <p>{`Social Media`}</p>
                   <LinkSimpleHorizontal />
-                </button>
+                </button> */}
+                <SocialLinkButton socialLinks={profileData.socialLinks} />
               </div>
               {/* <ul>
                   {profileData.socialLinks.map((link: any) => (
