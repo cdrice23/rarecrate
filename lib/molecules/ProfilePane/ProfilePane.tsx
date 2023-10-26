@@ -7,7 +7,7 @@ import {
   UNFOLLOW_PROFILE,
   GET_PENDING_FOLLOW_REQUESTS,
 } from '@/db/graphql/clientOperations';
-import { DotsThreeVertical, Gear } from '@phosphor-icons/react';
+import { DotsThreeVertical, Gear, LinkSimpleHorizontal } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
@@ -42,6 +42,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
   const hidePrivateProfile = isPrivate && !isFollowing;
 
   console.log(useApolloClient().cache.extract());
+  console.log(userProfiles);
 
   const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {
     update: (cache, { data }) => {
@@ -164,41 +165,63 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             <ProfileForm existingProfileData={profileData} setShowEditProfile={setShowEditProfile} />
           ) : (
             <Pane>
-              <div className={cx('paneSectionFull')}>
-                <h3 className={cx('sectionTitle')}>{`Profile Data:`}</h3>
-                <p>{`Profile ID: ${profileData.id}`}</p>
-                <p>{`image: ${profileData.image}`}</p>
-                <p>{`Username: ${profileData.username}`}</p>
-                <p>{`Profile Type: ${profileData.isPrivate ? 'Private' : 'Public'}`}</p>
-                <p>{`Bio: ${profileData.bio}`}</p>
-                <ul>
-                  {profileData.socialLinks.map((link: any) => (
-                    <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
-                  ))}
-                </ul>
+              <div className={cx('headerTop')}>
+                <div className={cx('profilePic')}>
+                  <p>{profileData.image ?? 'P'}</p>
+                </div>
+                <div className={cx('paneSelectors')}>
+                  <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>
+                    <p>{`Followers`}</p>
+                    <h4>{profileData.followers.length}</h4>
+                  </button>
+                  <button onClick={() => handlePaneSelect('following')} disabled={hidePrivateProfile}>
+                    <p>{`Following`}</p>
+                    <h4>{profileData.following.length}</h4>
+                  </button>
+                  <button onClick={() => handlePaneSelect('crates')} disabled={hidePrivateProfile}>
+                    <p>{`Crates`}</p>
+                    <h4>{profileData.crates.length}</h4>
+                  </button>
+                  <button onClick={() => handlePaneSelect('favorites')} disabled={hidePrivateProfile}>
+                    <p>{`Favorites`}</p>
+                    <h4>{profileData.favorites.length}</h4>
+                  </button>
+                </div>
+              </div>
+              <div className={cx('profileInfoMain')}>
+                <h1 className={cx('username')}>{profileData.username}</h1>
+                <p className={cx('bio')}>{profileData.bio}</p>
+              </div>
+              <div className={cx('profileButtons')}>
+                {isMain && (
+                  <button onClick={() => setShowEditProfile(true)}>
+                    <p>{`Edit Profile`}</p>
+                    <DotsThreeVertical />
+                  </button>
+                )}
+                {isUserProfile && (
+                  <button onClick={() => setShowSettings(true)}>
+                    <p>{`Settings`}</p>
+                    <Gear />
+                  </button>
+                )}
                 {!isMain && !isUserProfile && (
                   <button onClick={() => handleFollowClick(isFollowing)}>
                     {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
                   </button>
                 )}
-                <div>
-                  {isMain && (
-                    <button onClick={() => setShowEditProfile(true)}>
-                      <p>Edit Profile</p>
-                      <DotsThreeVertical />
-                    </button>
-                  )}
-                  {isUserProfile && (
-                    <button onClick={() => setShowSettings(true)}>
-                      <p>Settings</p>
-                      <Gear />
-                    </button>
-                  )}
-                </div>
+                <button>
+                  <p>{`Social Media`}</p>
+                  <LinkSimpleHorizontal />
+                </button>
               </div>
+              {/* <ul>
+                  {profileData.socialLinks.map((link: any) => (
+                    <li key={link.id}>{`${link.platform}: ${link.username}`}</li>
+                  ))}
+                </ul> */}
             </Pane>
           )}
-
           <Modal
             content={<UserSettings userId={currentUser} userProfiles={userProfiles} />}
             title={`Settings`}
@@ -207,24 +230,6 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
               setShowSettings(false);
             }}
           />
-          <div className={cx('listActions')}>
-            <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>
-              <h3>Followers</h3>
-              <h4>{profileData.followers.length}</h4>
-            </button>
-            <button onClick={() => handlePaneSelect('following')} disabled={hidePrivateProfile}>
-              <h3>Following</h3>
-              <h4>{profileData.following.length}</h4>
-            </button>
-            <button onClick={() => handlePaneSelect('crates')} disabled={hidePrivateProfile}>
-              <h3>Crates</h3>
-              <h4>{profileData.crates.length}</h4>
-            </button>
-            <button onClick={() => handlePaneSelect('favorites')} disabled={hidePrivateProfile}>
-              <h3>Favorites</h3>
-              <h4>{profileData.favorites.length}</h4>
-            </button>
-          </div>
         </>
       ) : null}
     </>
