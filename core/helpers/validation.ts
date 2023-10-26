@@ -76,22 +76,22 @@ export const profileFormSchema = yup.object().shape({
 
           switch (platform) {
             case 'TWITTER':
-              if (!(username.length >= 4 && username.length <= 15 && /^[a-zA-Z0-9_]+$/.test(username))) {
+              if (username && !(username.length >= 4 && username.length <= 15 && /^[a-zA-Z0-9_]+$/.test(username))) {
                 return false;
               }
               break;
             case 'INSTAGRAM':
-              if (!(username.length >= 1 && username.length <= 30 && /^[a-zA-Z0-9_.]+$/.test(username))) {
+              if (username && !(username.length >= 1 && username.length <= 30 && /^[a-zA-Z0-9_.]+$/.test(username))) {
                 return false;
               }
               break;
             case 'SPOTIFY':
-              if (!username || username.trim() === '') {
+              if ((username && !username) || username.trim() === '') {
                 return false;
               }
             case 'YOUTUBE':
             case 'DISCOGS':
-              if (!(username.length >= 3 && username.length <= 36 && /^[a-zA-Z0-9_.-]+$/.test(username))) {
+              if (username && !(username.length >= 3 && username.length <= 36 && /^[a-zA-Z0-9_.-]+$/.test(username))) {
                 return false;
               }
               break;
