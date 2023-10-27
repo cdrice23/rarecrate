@@ -3,6 +3,7 @@ import { X } from '@phosphor-icons/react';
 import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { formatArtistName } from '@/core/helpers/cosmetic';
 
 interface CrateAlbumInputProps {
   id: number;
@@ -44,7 +45,7 @@ const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue, 
       </div>
       <div className={cx('description')}>
         <h3>{data.title}</h3>
-        <p>{data.artist}</p>
+        <p>{formatArtistName(data.artist)}</p>
       </div>
       <TagSearchInput name={`crateAlbums.${id}.tags`} value={data.tags ?? []} />
       <button type="button" onClick={removeHandler} className={cx('closeButton')}>

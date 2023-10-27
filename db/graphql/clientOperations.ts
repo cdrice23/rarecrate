@@ -146,6 +146,7 @@ export const GET_CRATE_DETAIL_WITH_ALBUMS = gql`
         id
         album {
           id
+          discogsMasterId
           title
           artist
           discogsMasterId

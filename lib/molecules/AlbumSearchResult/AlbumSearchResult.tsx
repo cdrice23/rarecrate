@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { easeInOut, easeOut, motion } from 'framer-motion';
-// import greySquareImage from '../../../public/grey_square.png';
+import { formatArtistName } from '@/core/helpers/cosmetic';
 import cx from 'classnames';
 
 interface AlbumSearchResultProps {
@@ -58,7 +58,7 @@ const AlbumSearchResult = ({
       </motion.div>
       <div className={cx('description')}>
         <h3>{title}</h3>
-        <p>{artist}</p>
+        <p>{formatArtistName(artist)}</p>
       </div>
     </motion.div>
   );

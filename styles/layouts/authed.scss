@@ -902,6 +902,7 @@
       margin: 8px;
       flex-grow: 1;
       min-width: 200px;
+      
     }
 
     .closeButton {
@@ -944,6 +945,14 @@
 
     .description {
       margin-left: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      p {
+        margin: 4px 0;
+      }
     }
   }
 }
@@ -1456,8 +1465,6 @@
   z-index: 100;
 
   .menuItem {
-    
-    
     a {
       display: flex;
       flex-direction: column;
@@ -1481,8 +1488,57 @@
         margin-left: 4px;
         font-size: 0.7em;
       }
+    } 
+  }
+}
+
+//ExternalLinkDropdownButton stylings
+.externalLinkButton {
+  position: relative;
+  padding: 0;
+  margin: 4px 0 0 auto;
+  border: 1px solid gray;
+  width: 50px;
+  border-radius: 4px;
+}
+
+.externalLinkMenu {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  color: white;
+  background-color: gray;
+  list-style-type: none;
+  padding: 0;
+  flex-direction: column;
+  z-index: 100;
+
+  .menuItem {
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: unset;
+      width: 100%;
+      margin: 8px;
     }
 
-    
+    &:hover {
+      color: gray;
+      background-color: #bde4ff;
+    }
+
+    .platform {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+
+      p {
+        margin-left: 4px;
+        font-size: 0.7em;
+      }
+    } 
   }
 }

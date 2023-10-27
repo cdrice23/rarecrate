@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import cx from 'classnames';
+import { formatArtistName } from '@/core/helpers/cosmetic';
+import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
 
 type Genre = {
   id: number;
@@ -22,6 +24,7 @@ type AlbumData = {
   releaseYear: number;
   title: string;
   tracklist: TracklistItem[];
+  discogsMasterId: number;
 };
 
 type TagData = {
@@ -65,8 +68,13 @@ const CrateAlbumBack = ({ data }: CrateAlbumProps) => {
   return (
     <>
       <div className={cx('back')}>
+        <ExternalLinkDropdownButton
+          albumArtist={formatArtistName(data.album.artist)}
+          albumTitle={data.album.title}
+          discogsMasterId={data.album.discogsMasterId}
+        />
         <p>Artist: {data.album.artist}</p>
-        <p>Title: {data.album.title}</p>
+        <p>Title: {formatArtistName(data.album.title)}</p>
         <p>Label: {data.album.label}</p>
         <p>Release Year: {data.album.releaseYear}</p>
         <p>{`Genres: ${data.album.genres.map(genre => genre.name).join(', ')}`}</p>

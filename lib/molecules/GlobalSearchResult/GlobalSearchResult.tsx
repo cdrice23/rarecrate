@@ -2,6 +2,7 @@ import Image from 'next/image';
 import cx from 'classnames';
 import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import { formatArtistName } from '@/core/helpers/cosmetic';
 
 interface GlobalSearchResultProps {
   data: any;
@@ -31,7 +32,7 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
         {(data.__typename === 'Genre' || data.__typename === 'Subgenre') && <SquaresFour size={24} />}
       </div>
       <div className="resultText">
-        {data.artist && <p>{data.artist}</p>}
+        {data.artist && <p>{formatArtistName(data.artist)}</p>}
         {(data.__typename === 'Label' ||
           data.__typename === 'Tag' ||
           data.__typename === 'Genre' ||
