@@ -239,6 +239,8 @@ type Query {
   getNotificationsByProfile(currentPage: Int!, profileId: Int!, userId: Int!): [Notification]!
   getPendingFollowRequests(id: Int!): [FollowRequest]!
   getProfile(id: Int, username: String): Profile!
+  getProfileCrates(currentPage: Int!, username: String!): [Crate]!
+  getProfileFavorites(currentPage: Int!, username: String!): [Crate]!
   getProfileFollowers(currentPage: Int!, username: String!): [Follow]!
   getProfileFollowing(currentPage: Int!, username: String!): [Follow]!
   getRecommendations(currentRecsInArray: Int, profileId: Int!, usedPages: [Int]): RecommendationResults!

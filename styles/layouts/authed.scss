@@ -578,6 +578,23 @@
 
     .modal-body {
       padding: $space-large;
+
+      .crateDetailInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .crateDetailButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          margin: 4px;
+        }
+      }
     }
 
     .modal-footer {

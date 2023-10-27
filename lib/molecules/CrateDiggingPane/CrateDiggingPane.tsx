@@ -17,9 +17,10 @@ import { motion } from 'framer-motion';
 
 type CrateDiggingPaneProps = {
   mainProfile: number;
+  userProfiles: [{ id: number; username: string }];
 };
 
-const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
+const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) => {
   const [currentRecommendations, setCurrentRecommendations] = useState([]);
   const [activeCrate, setActiveCrate] = useState<any>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
@@ -205,6 +206,7 @@ const CrateDiggingPane = ({ mainProfile }: CrateDiggingPaneProps) => {
       ) : currentRecommendations?.length > 0 ? (
         <>
           <CrateDetail
+            userProfiles={userProfiles}
             activeCrateId={activeCrate?.id}
             show={showCrateDetail}
             onClose={() => {

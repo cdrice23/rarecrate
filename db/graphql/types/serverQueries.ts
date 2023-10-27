@@ -275,6 +275,58 @@ export const CrateQueries = extendType({
         return crates;
       },
     });
+
+    t.nonNull.list.field('getProfileCrates', {
+      type: NexusCrate,
+      args: {
+        username: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { username, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const crates = await ctx.prisma.crate.findMany({
+          where: {
+            creator: {
+              username: username,
+            },
+          },
+          include: {
+            creator: true,
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        return crates;
+      },
+    });
+
+    t.nonNull.list.field('getProfileFavorites', {
+      type: NexusCrate,
+      args: {
+        username: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { username, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const favorites = await ctx.prisma.crate.findMany({
+          where: {
+            favoritedBy: {
+              some: {
+                username: username,
+              },
+            },
+          },
+          include: {
+            creator: true,
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        return favorites;
+      },
+    });
   },
 });
 

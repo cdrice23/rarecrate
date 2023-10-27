@@ -9,6 +9,7 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { FollowerPane } from '@/lib/molecules/FollowerPane/FollowerPane';
 import { FollowingPane } from '@/lib/molecules/FollowingPane/FollowingPane';
 import { CrateSummaryPane } from '@/lib/molecules/CrateSummaryPane/CrateSummaryPane';
+import { FavoriteSummaryPane } from '@/lib/molecules/FavoriteSummaryPane/FavoriteSummaryPane';
 import { ProfilePane } from '@/lib/molecules/ProfilePane/ProfilePane';
 
 import authed from '../../../core/helpers/authed';
@@ -18,6 +19,8 @@ import {
   GET_PROFILE,
   GET_PROFILE_FOLLOWERS,
   GET_PROFILE_FOLLOWING,
+  GET_PROFILE_CRATES,
+  GET_PROFILE_FAVORITES,
 } from '@/db/graphql/clientOperations';
 
 interface ProfileProps {
@@ -31,6 +34,8 @@ interface ProfileProps {
 const initialResultsState = {
   followerState: { results: [], currentPage: 1 },
   followingState: { results: [], currentPage: 1 },
+  crateState: { results: [], currentPage: 1 },
+  favoriteState: { results: [], currentPage: 1 },
 };
 
 const resultsReducer = (state, action) => {
@@ -45,14 +50,32 @@ const resultsReducer = (state, action) => {
         ...state,
         followingState: { ...state.followingState, results: [...state.followingState.results, ...action.payload] },
       };
+    case 'UPDATE_CRATE_RESULTS':
+      return {
+        ...state,
+        crateState: { ...state.crateState, results: [...state.crateState.results, ...action.payload] },
+      };
+    case 'UPDATE_FAVORITE_RESULTS':
+      return {
+        ...state,
+        favoriteState: { ...state.favoriteState, results: [...state.favoriteState.results, ...action.payload] },
+      };
     case 'UPDATE_FOLLOWER_CURRENT_PAGE':
       return { ...state, followerState: { ...state.followerState, currentPage: action.payload } };
     case 'UPDATE_FOLLOWING_CURRENT_PAGE':
       return { ...state, followingState: { ...state.followingState, currentPage: action.payload } };
+    case 'UPDATE_CRATE_CURRENT_PAGE':
+      return { ...state, crateState: { ...state.crateState, currentPage: action.payload } };
+    case 'UPDATE_FAVORITE_CURRENT_PAGE':
+      return { ...state, favoriteState: { ...state.favoriteState, currentPage: action.payload } };
     case 'RESET_FOLLOWER_RESULTS':
       return { ...state, followerState: { results: [], currentPage: 1 } };
     case 'RESET_FOLLOWING_RESULTS':
       return { ...state, followingState: { results: [], currentPage: 1 } };
+    case 'RESET_CRATE_RESULTS':
+      return { ...state, crateState: { results: [], currentPage: 1 } };
+    case 'RESET_FAVORITE_RESULTS':
+      return { ...state, favoriteState: { results: [], currentPage: 1 } };
     default:
       return state;
   }
@@ -68,6 +91,10 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const currentProfile = Array.isArray(router.query.username) ? router.query.username[0] : router.query.username;
   const currentFollowers = resultsState.followerState.results;
   const currentFollowing = resultsState.followingState.results;
+  const currentCrates = resultsState.crateState.results;
+  const currentFavorites = resultsState.favoriteState.results;
+
+  console.log(currentProfile);
 
   // profile data of the user
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
@@ -82,12 +109,10 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
       username: currentProfile,
     },
   });
-  const [getFollowers, { loading: loadingFollowers, error: errorFollowers, data: followersData }] =
-    useLazyQuery(GET_PROFILE_FOLLOWERS);
-  const [
-    getFollowedProfiles,
-    { loading: loadingFollowedProfiles, error: errorFollowedProfiles, data: followedProfilesData },
-  ] = useLazyQuery(GET_PROFILE_FOLLOWING);
+  const [getFollowers, { data: followersData }] = useLazyQuery(GET_PROFILE_FOLLOWERS);
+  const [getFollowedProfiles, { data: followedProfilesData }] = useLazyQuery(GET_PROFILE_FOLLOWING);
+  const [getCrates, { data: cratesData }] = useLazyQuery(GET_PROFILE_CRATES);
+  const [getFavorites, { data: favoritesData }] = useLazyQuery(GET_PROFILE_FAVORITES);
 
   const handlePaneSelect = (pane: 'followers' | 'following' | 'crates' | 'favorites') => {
     switch (pane) {
@@ -101,6 +126,8 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
           });
         }
         dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        dispatch({ type: 'RESET_CRATE_RESULTS' });
+        dispatch({ type: 'RESET_FAVORITE_RESULTS' });
         break;
       case 'following':
         if (currentFollowing.length === 0) {
@@ -112,19 +139,36 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
           });
         }
         dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
+        dispatch({ type: 'RESET_CRATE_RESULTS' });
+        dispatch({ type: 'RESET_FAVORITE_RESULTS' });
         break;
       case 'crates':
-        // Do something for crates
+        if (currentCrates.length === 0) {
+          getCrates({
+            variables: {
+              username: currentProfile,
+              currentPage: resultsState.crateState.currentPage,
+            },
+          });
+        }
         dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
         dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        dispatch({ type: 'RESET_FAVORITE_RESULTS' });
         break;
       case 'favorites':
-        // Do something for favorites
+        if (currentFavorites.length === 0) {
+          getFavorites({
+            variables: {
+              username: currentProfile,
+              currentPage: resultsState.favoriteState.currentPage,
+            },
+          });
+        }
         dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
         dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+        dispatch({ type: 'RESET_CRATE_RESULTS' });
         break;
       default:
-        // Do something for other cases
         break;
     }
     setActivePane(pane);
@@ -160,6 +204,15 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   }, [userId, email, loading, error, data]);
 
   useEffect(() => {
+    if (currentCrates.length === 0) {
+      getCrates({
+        variables: {
+          username: currentProfile,
+          currentPage: resultsState.crateState.currentPage,
+        },
+      });
+    }
+
     if (followersData?.getProfileFollowers && activePane === 'followers') {
       dispatch({ type: 'UPDATE_FOLLOWER_RESULTS', payload: followersData.getProfileFollowers });
       dispatch({
@@ -176,8 +229,39 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
       });
     }
 
+    if (cratesData?.getProfileCrates && activePane === 'crates') {
+      dispatch({ type: 'UPDATE_CRATE_RESULTS', payload: cratesData.getProfileCrates });
+      dispatch({
+        type: 'UPDATE_CRATE_CURRENT_PAGE',
+        payload: resultsState.crateState.currentPage + 1,
+      });
+    }
+
+    if (favoritesData?.getProfileFavorites && activePane === 'favorites') {
+      dispatch({ type: 'UPDATE_FAVORITE_RESULTS', payload: favoritesData.getProfileFavorites });
+      dispatch({
+        type: 'UPDATE_FAVORITE_CURRENT_PAGE',
+        payload: resultsState.favoriteState.currentPage + 1,
+      });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activePane, followersData, followedProfilesData]);
+  }, [activePane, followersData, followedProfilesData, cratesData, favoritesData]);
+
+  useEffect(() => {
+    dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
+    dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
+    dispatch({ type: 'RESET_CRATE_RESULTS' });
+    dispatch({ type: 'RESET_FAVORITE_RESULTS' });
+
+    getCrates({
+      variables: {
+        username: currentProfile,
+        currentPage: 1,
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentProfile]);
 
   console.log(resultsState);
 
@@ -244,18 +328,34 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
             : activePane === 'crates'
             ? !hidePrivateProfile && (
                 <CrateSummaryPane
+                  currentItems={currentCrates}
                   username={currentProfile}
-                  listType="crates"
                   mainProfile={profileIdMain}
                   userProfiles={prismaUserProfiles}
+                  getMoreItems={() => {
+                    getCrates({
+                      variables: {
+                        username: currentProfile,
+                        currentPage: resultsState.crateState.currentPage,
+                      },
+                    });
+                  }}
                 />
               )
             : !hidePrivateProfile && (
-                <CrateSummaryPane
+                <FavoriteSummaryPane
+                  currentItems={currentFavorites}
                   username={currentProfile}
-                  listType="favorites"
                   mainProfile={profileIdMain}
                   userProfiles={prismaUserProfiles}
+                  getMoreItems={() => {
+                    getFavorites({
+                      variables: {
+                        username: currentProfile,
+                        currentPage: resultsState.favoriteState.currentPage,
+                      },
+                    });
+                  }}
                 />
               )}
         </>

@@ -38,25 +38,6 @@ export const GET_PROFILE = gql`
   }
 `;
 
-// Summary view of Followers/Following from Profile Page
-export const GET_PROFILE_FOLLOWERINGS = gql`
-  query GetProfileFollowerings($id: Int, $username: String) {
-    getProfile(id: $id, username: $username) {
-      id
-      followers {
-        id
-        image
-        username
-      }
-      following {
-        id
-        image
-        username
-      }
-    }
-  }
-`;
-
 // Summary view of Crate/Favorites from Profile Page
 export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
   query GetCratesAndFavorites($id: Int, $username: String) {
@@ -68,6 +49,7 @@ export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
         title
         creator {
           id
+          username
         }
         labels {
           id
@@ -92,6 +74,47 @@ export const GET_PROFILE_CRATES_AND_FAVORITES = gql`
         favoritedBy {
           id
         }
+      }
+    }
+  }
+`;
+
+export const GET_PROFILE_CRATES = gql`
+  query GetProfileCrates($username: String!, $currentPage: Int!) {
+    getProfileCrates(username: $username, currentPage: $currentPage) {
+      id
+      title
+      creator {
+        id
+        username
+      }
+      labels {
+        id
+        isStandard
+      }
+      favoritedBy {
+        id
+      }
+    }
+  }
+`;
+
+export const GET_PROFILE_FAVORITES = gql`
+  query GetProfileFavorites($username: String!, $currentPage: Int!) {
+    getProfileFavorites(username: $username, currentPage: $currentPage) {
+      id
+      title
+      labels {
+        id
+        isStandard
+      }
+      creator {
+        id
+        image
+        username
+      }
+      favoritedBy {
+        id
       }
     }
   }

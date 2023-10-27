@@ -13,7 +13,7 @@ import { Heart } from '@phosphor-icons/react';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { motion } from 'framer-motion';
 
-type CrateSummaryPaneProps = {
+type FavoriteSummaryPaneProps = {
   currentItems: any[];
   username: string;
   mainProfile: number;
@@ -21,13 +21,13 @@ type CrateSummaryPaneProps = {
   getMoreItems: () => void;
 };
 
-const CrateSummaryPane = ({
+const FavoriteSummaryPane = ({
   currentItems,
   username,
   mainProfile,
   userProfiles,
   getMoreItems,
-}: CrateSummaryPaneProps) => {
+}: FavoriteSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const [createNotification] = useMutation(CREATE_NOTIFICATION);
@@ -172,4 +172,4 @@ const CrateSummaryPane = ({
   );
 };
 
-export { CrateSummaryPane };
+export { FavoriteSummaryPane };

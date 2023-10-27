@@ -81,7 +81,7 @@ const CrateDiggingPage = ({ userId, email, prismaUserProfiles }: CrateDiggingPro
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
-          <CrateDiggingPane mainProfile={profileIdMain} />
+          <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />
         </>
       ) : null}
     </AuthedLayout>

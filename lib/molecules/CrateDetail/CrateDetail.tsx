@@ -37,12 +37,14 @@ type CrateDetailFaceProps = {
   data: CrateDetailData;
   editable?: boolean;
   profileId?: number;
+  userProfiles?: [{ id: number; username: string }];
   handleSwitch: (newFace: 'front' | 'back') => void;
   handleEdit?: () => void;
   favoriteIconHandler?: (checkStatus: boolean, crate: any, mainProfile: number) => void;
 };
 
 type CrateDetailProps = {
+  userProfiles: [{ id: number; username: string }];
   activeCrateId?: number;
   show?: boolean;
   currentProfile: string;
@@ -50,7 +52,7 @@ type CrateDetailProps = {
   onClose: () => void;
 };
 
-const CrateDetail = ({ currentProfile, activeCrateId, show, favoriteIconHandler, onClose }: CrateDetailProps) => {
+const CrateDetail = ({ userProfiles, activeCrateId, show, favoriteIconHandler, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');
   const [showEditCrate, setShowEditCrate] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
@@ -80,6 +82,7 @@ const CrateDetail = ({ currentProfile, activeCrateId, show, favoriteIconHandler,
               <CrateDetailFront
                 data={crateData}
                 profileId={profileIdMain}
+                userProfiles={userProfiles}
                 handleSwitch={handleSwitch}
                 favoriteIconHandler={favoriteIconHandler}
               />
@@ -102,7 +105,7 @@ const CrateDetail = ({ currentProfile, activeCrateId, show, favoriteIconHandler,
                   data={crateData}
                   handleSwitch={handleSwitch}
                   handleEdit={() => setShowEditCrate(true)}
-                  editable={currentProfile === crateData.creator.username}
+                  editable={profileIdMain === crateData.creator.id}
                 />
               )
             }
@@ -120,11 +123,17 @@ const CrateDetail = ({ currentProfile, activeCrateId, show, favoriteIconHandler,
   );
 };
 
-const CrateDetailFront = ({ data, profileId, favoriteIconHandler, handleSwitch }: CrateDetailFaceProps) => {
+const CrateDetailFront = ({
+  data,
+  profileId,
+  userProfiles,
+  favoriteIconHandler,
+  handleSwitch,
+}: CrateDetailFaceProps) => {
   const rankedAlbums = [...data.albums].sort((a, b) => a.rank - b.rank);
   return (
     <>
-      <div>
+      <div className={cx('crateDetailInfo')}>
         <h4>{data.title}</h4>
         <p>{`Labels: ${data.labels.filter(label => label.isStandard === true).length} standard, ${
           data.labels.filter(label => label.isStandard === false).length
@@ -132,14 +141,18 @@ const CrateDetailFront = ({ data, profileId, favoriteIconHandler, handleSwitch }
         <p>{`Image: ${data.creator.image}`}</p>
         <p>{`Favorites: ${data.favoritedBy.length}`}</p>
       </div>
-      <button onClick={() => handleSwitch('back')}>Switch to Back</button>
-      <BinaryIconButton
-        icon={<Heart />}
-        checkStatus={Boolean(data.favoritedBy.filter(p => p.id === profileId).length > 0)}
-        handler={checkStatus => {
-          favoriteIconHandler(checkStatus, data, profileId);
-        }}
-      />
+      <div className={cx('crateDetailButtons')}>
+        <button onClick={() => handleSwitch('back')}>Switch to Back</button>
+        {data.creator.id !== profileId && !userProfiles.some(profile => profile.id === data.creator.id) && (
+          <BinaryIconButton
+            icon={<Heart />}
+            checkStatus={Boolean(data.favoritedBy.filter(p => p.id === profileId).length > 0)}
+            handler={checkStatus => {
+              favoriteIconHandler(checkStatus, data, profileId);
+            }}
+          />
+        )}
+      </div>
       <div className={cx('crateAlbumGrid')}>
         {rankedAlbums.map(crateAlbum => (
           <CrateAlbum key={crateAlbum.id} data={crateAlbum} />
@@ -152,7 +165,7 @@ const CrateDetailFront = ({ data, profileId, favoriteIconHandler, handleSwitch }
 const CrateDetailBack = ({ data, handleSwitch, handleEdit, editable }: CrateDetailFaceProps) => {
   return (
     <>
-      <div>
+      <div className={cx('crateDetailInfo')}>
         <h4>{data.title}</h4>
         <p>{`Image: ${data.creator.image}`}</p>
         <p>{`Creator: ${data.creator.username}`}</p>
