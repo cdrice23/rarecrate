@@ -35,8 +35,12 @@ const AlbumSearchCombobox = ({
   // If no db results, trigger discogsSearch
   useEffect(() => {
     if (triggerDiscogsSearch) {
-      // console.log('trigger the search!');
-      handleDiscogsSearch();
+      // Delay handleDiscogsSearch by 1s to avoid rate-limit on discogs
+      const timer = setTimeout(() => {
+        handleDiscogsSearch();
+      }, 1000);
+
+      return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [triggerDiscogsSearch]);

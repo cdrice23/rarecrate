@@ -493,13 +493,23 @@ export const TagMutations = extendType({
         name: nonNull(stringArg()),
       },
       resolve: async (_, { name }, ctx) => {
-        const newTag = await ctx.prisma.tag.create({
-          data: {
-            name,
+        const existingTag = await ctx.prisma.tag.findUnique({
+          where: {
+            name: name,
           },
         });
 
-        return newTag;
+        if (existingTag) {
+          return existingTag;
+        } else {
+          const newTag = await ctx.prisma.tag.create({
+            data: {
+              name,
+            },
+          });
+
+          return newTag;
+        }
       },
     });
   },
@@ -514,14 +524,24 @@ export const LabelMutations = extendType({
         name: nonNull(stringArg()),
       },
       resolve: async (_, { name }, ctx) => {
-        const newLabel = await ctx.prisma.label.create({
-          data: {
-            name,
-            isStandard: false,
+        const existingLabel = await ctx.prisma.label.findUnique({
+          where: {
+            name: name,
           },
         });
 
-        return newLabel;
+        if (existingLabel) {
+          return existingLabel;
+        } else {
+          const newLabel = await ctx.prisma.label.create({
+            data: {
+              name,
+              isStandard: false,
+            },
+          });
+
+          return newLabel;
+        }
       },
     });
   },
@@ -536,7 +556,23 @@ export const AlbumMutations = extendType({
         discogsMasterId: nonNull(intArg()),
       },
       resolve: async (_, { discogsMasterId }, ctx) => {
-        // Use master to get discogs Response
+        const existingAlbum = await ctx.prisma.album.findUnique({
+          where: {
+            discogsMasterId: discogsMasterId,
+          },
+          include: {
+            genres: true,
+            subgenres: true,
+            tracklist: true,
+          },
+        });
+
+        // If the album exists, return it
+        if (existingAlbum) {
+          return existingAlbum;
+        }
+
+        // Otherwise, use master to get discogs Response & build album data
         const masterResponse = await axios.get(`https://api.discogs.com/masters/${discogsMasterId}`, {
           headers: {
             Authorization: `Discogs key=${process.env.DISCOGS_API_KEY}, secret=${process.env.DISCOGS_API_SECRET}`,

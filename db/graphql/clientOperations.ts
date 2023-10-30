@@ -455,6 +455,10 @@ export const ADD_NEW_CRATE = gql`
   mutation AddNewCrate($input: CrateInput!) {
     addNewCrate(input: $input) {
       id
+      creator {
+        id
+        username
+      }
       creatorId
       title
       labels {

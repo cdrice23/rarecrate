@@ -8,15 +8,14 @@ import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInp
 import { useMutation, useLazyQuery } from '@apollo/client';
 import {
   ADD_NEW_LABEL,
-  SEARCH_LABELS_BY_ID,
   ADD_NEW_TAG,
-  SEARCH_TAGS_BY_ID,
   ADD_NEW_ALBUM,
-  SEARCH_PRISMA_ALBUMS_BY_ID,
   ADD_NEW_CRATE,
   UPDATE_CRATE,
   GET_CRATE_DETAIL_WITH_ALBUMS,
 } from '@/db/graphql/clientOperations';
+import { useRouter } from 'next/router';
+import { Route } from '@/core/enums/routes';
 
 interface CrateFormProps {
   creatorId: number;
@@ -26,16 +25,15 @@ interface CrateFormProps {
 
 const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) => {
   const [addNewLabel] = useMutation(ADD_NEW_LABEL);
-  const [searchLabelsById] = useLazyQuery(SEARCH_LABELS_BY_ID);
   const [addNewTag] = useMutation(ADD_NEW_TAG);
-  const [searchTagsById] = useLazyQuery(SEARCH_TAGS_BY_ID);
   const [addNewAlbum] = useMutation(ADD_NEW_ALBUM);
-  const [searchPrismaAlbumsById] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_ID);
   const [addNewCrate] = useMutation(ADD_NEW_CRATE);
   const [updateCrate] = useMutation(UPDATE_CRATE);
   const [getCrateDetailWithAlbums] = useLazyQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
     variables: { id: crateFormData?.id },
   });
+
+  const router = useRouter();
 
   const initialValues = {
     title: '',
@@ -119,8 +117,13 @@ const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) =
       const { data } = await updateCrate({ variables: { input: crateInput } });
       console.log('updated data', data);
     } else {
+      // Create new crate and navigate to that created crate
       const { data } = await addNewCrate({ variables: { input: crateInput } });
       console.log(data);
+      router.push({
+        pathname: Route.Profile + `/${data.addNewCrate.creator.username}`,
+        query: { selectedCrate: data.addNewCrate.id },
+      });
     }
 
     getCrateDetailWithAlbums();
