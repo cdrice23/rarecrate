@@ -14,6 +14,7 @@ import { ProfileForm } from '../ProfileForm/ProfileForm';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
+import Image from 'next/image';
 
 type ProfilePaneProps = {
   username: string;
@@ -167,7 +168,16 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             <Pane>
               <div className={cx('headerTop')}>
                 <div className={cx('profilePic')}>
-                  <p>{profileData.image ?? <UserIcon size={32} />}</p>
+                  {profileData.image ? (
+                    <Image
+                      src={profileData.image}
+                      alt={`profile image for ${profileData.username}`}
+                      height={100}
+                      width={100}
+                    />
+                  ) : (
+                    <UserIcon size={32} />
+                  )}
                 </div>
                 <div className={cx('paneSelectors')}>
                   <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>

@@ -1378,21 +1378,19 @@
 .headerTop {
   display: flex;
   background-color: #bde4ff;
+  justify-content: space-between;
   padding: 16px 0; 
 
   .profilePic {
-    p {
-      margin-left: 25%;
-      height: 100px;
-      width: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      background-color: grey;
-      border-radius: 50px;
-    }
-    flex-grow: 1;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: grey;
+    border-radius: 50px;
+    
+
   }
 
   .paneSelectors {
