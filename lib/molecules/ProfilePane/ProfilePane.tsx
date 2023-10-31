@@ -7,7 +7,7 @@ import {
   UNFOLLOW_PROFILE,
   GET_PENDING_FOLLOW_REQUESTS,
 } from '@/db/graphql/clientOperations';
-import { DotsThreeVertical, Gear, LinkSimpleHorizontal } from '@phosphor-icons/react';
+import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
 import { useApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
@@ -167,7 +167,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             <Pane>
               <div className={cx('headerTop')}>
                 <div className={cx('profilePic')}>
-                  <p>{profileData.image ?? 'P'}</p>
+                  <p>{profileData.image ?? <UserIcon size={32} />}</p>
                 </div>
                 <div className={cx('paneSelectors')}>
                   <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
 import cx from 'classnames';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { Modal } from '@/lib/atoms/Modal/Modal';
+import { useLocalState } from '@/lib/context/state';
 
 import authed from '../../core/helpers/authed';
 
@@ -19,6 +19,19 @@ interface NewProfileProps {
 }
 
 const NewProfilePage = ({ userId, email, prismaUserProfiles }: NewProfileProps) => {
+  const { setUserId, setEmail } = useLocalState();
+
+  useEffect(() => {
+    if (userId) {
+      setUserId(userId);
+    }
+
+    if (email) {
+      setEmail(email);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, email]);
+
   return (
     <AuthedLayout userProfiles={prismaUserProfiles}>
       <Pane>

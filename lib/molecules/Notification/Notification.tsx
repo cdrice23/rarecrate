@@ -3,6 +3,7 @@ import { Pill } from '@/lib/atoms/Pill/Pill';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
+import { User as UserIcon } from '@phosphor-icons/react';
 
 interface NotificationProps {
   index: number;
@@ -65,7 +66,7 @@ const Notification = ({
         >
           <div className={cx('notificationBanner')}>
             <div className={cx('image')} onClick={handleActionOwnerNav}>
-              <p>{notificationData.actionOwner.image ?? 'P'}</p>
+              <p>{notificationData.actionOwner.image ?? <UserIcon />}</p>
             </div>
             <p className={cx('bannerText')}>
               <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>

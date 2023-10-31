@@ -94,6 +94,8 @@ export const getServerSideProps = authed(async context => {
   const ctx = await createContext(context.req as NextApiRequest, context.res as NextApiResponse);
   const { prismaUser, auth0User } = ctx;
 
+  console.log(auth0User);
+
   return {
     props: {
       userId: prismaUser.id,

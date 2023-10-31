@@ -917,39 +917,8 @@ export const ProfileMutations = extendType({
           }),
         );
 
-        // let deletedProfileRecord = {
-        //   id: profileToDelete.id,
-        //   userId: profileToDelete.userId,
-        //   username: profileToDelete.username,
-        //   isPrivate: profileToDelete.isPrivate,
-        //   bio: profileToDelete.bio,
-        //   image: profileToDelete.image,
-        //   createdAt: profileToDelete.createdAt,
-        //   updatedAt: profileToDelete.updatedAt,
-        //   searchAndSelectCount: profileToDelete.searchAndSelectCount,
-        //   user: profileToDelete.user,
-        //   followers: [],
-        //   following: [],
-        //   crates: [],
-        //   favorites: [],
-        //   socialLinks: [],
-        //   followRequestsSent: [],
-        //   followRequestsReceived: [],
-        //   recommendations: [],
-        // };
-
         // Loop through the crates and delete them + all CrateAlbums associated to them
         for (const crate of profileToDelete.crates) {
-          // // Push the crate data to the deletedProfileRecord
-          // deletedProfileRecord.crates.push({
-          //   id: crate.id,
-          //   labels: crate.labels.map(label => ({ id: label.id })),
-          //   albums: crate.albums.map(album => ({
-          //     id: album.id,
-          //     tags: album.tags.map(tag => ({ id: tag.id })),
-          //   })),
-          // });
-
           // Disconnect labels from the crate
           for (const label of crate.labels) {
             await ctx.prisma.label.update({
@@ -982,8 +951,10 @@ export const ProfileMutations = extendType({
               await ctx.prisma.tag.update({
                 where: { id: tag.id },
                 data: {
-                  disconnect: {
-                    crateAlbum: { id: album.id },
+                  crateAlbum: {
+                    disconnect: {
+                      id: album.id,
+                    },
                   },
                 },
               });
@@ -991,18 +962,20 @@ export const ProfileMutations = extendType({
 
             await ctx.prisma.crateAlbum.delete({ where: { id: album.id } });
           }
+
+          // Delete the recommendations where the crate is the connected crate
+          await ctx.prisma.recommendation.deleteMany({
+            where: {
+              crateId: crate.id,
+            },
+          });
+
           // Delete crate
           await ctx.prisma.crate.delete({ where: { id: crate.id } });
         }
 
         // Loop through the followers and following and delete them
         for (const follow of [...profileToDelete.followers, ...profileToDelete.following]) {
-          //   // Push the follow data to the deletedProfileRecord
-          //   if (profileToDelete.followers.includes(follow)) {
-          //     deletedProfileRecord.followers.push({ id: follow.id });
-          //   } else {
-          //     deletedProfileRecord.following.push({ id: follow.id });
-          //   }
           await ctx.prisma.follow.delete({ where: { id: follow.id } });
         }
 
@@ -1019,16 +992,49 @@ export const ProfileMutations = extendType({
           await ctx.prisma.followRequest.delete({ where: { id: followRequest.id } });
         }
 
+        // Remove the profileToDelete from any crates where it appears as favoritedBy
+        const cratesToUpdate = await ctx.prisma.crate.findMany({
+          where: {
+            favoritedBy: {
+              some: {
+                id: profileId,
+              },
+            },
+          },
+        });
+
+        for (const crate of cratesToUpdate) {
+          await ctx.prisma.crate.update({
+            where: { id: crate.id },
+            data: {
+              favoritedBy: {
+                disconnect: { id: profileId },
+              },
+            },
+          });
+        }
+
+        // Delete all notifications where the actionOwner is the deletedProfile
+        await ctx.prisma.notification.deleteMany({
+          where: {
+            actionOwner: profileId,
+          },
+        });
+
+        // Delete all notifications where the receiver is the deletedProfile
+        await ctx.prisma.notification.deleteMany({
+          where: {
+            receiver: profileId,
+          },
+        });
+
         // Loop through the recommendations and delete them
         for (const recommendation of profileToDelete.recommendations) {
           await ctx.prisma.recommendation.delete({ where: { id: recommendation.id } });
         }
 
-        // // Push the favorites data to the deletedProfileRecord
-        // deletedProfileRecord.favorites = profileToDelete.favorites.map(favorite => ({ id: favorite.id }));
-
         // Delete the profile and all related records
-        const deletedProfile = await ctx.prisma.profile.delete({
+        await ctx.prisma.profile.delete({
           where: { id: profileId },
         });
 
@@ -1062,7 +1068,7 @@ export const UserMutations = extendType({
       type: NexusUser,
       args: {
         userId: nonNull(intArg()),
-        profileId: nonNull(intArg()),
+        profileId: intArg(),
       },
       resolve: async (_, { userId, profileId }, ctx) => {
         return ctx.prisma.user.update({

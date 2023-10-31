@@ -840,7 +840,7 @@ export const UPDATE_PROFILE = gql`
 `;
 
 export const UPDATE_LAST_LOGIN_PROFILE = gql`
-  mutation UpdateLastLoginProfile($userId: Int!, $profileId: Int!) {
+  mutation UpdateLastLoginProfile($userId: Int!, $profileId: Int) {
     updateLastLoginProfile(userId: $userId, profileId: $profileId) {
       id
       lastLoginProfile

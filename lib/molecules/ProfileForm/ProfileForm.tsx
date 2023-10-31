@@ -19,22 +19,14 @@ import { gql } from '@apollo/client';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 
-const initialProfileValues = {
-  image: '',
-  username: '',
-  isPrivate: false,
-  bio: '',
-  socialLinks: [],
-  acceptUserAgreement: false,
-};
-
 interface ProfileFormProps {
   existingProfileData?: any;
   userId?: number;
   setShowEditProfile?: (value: boolean) => void;
+  defaultPic?: string;
 }
 
-const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: ProfileFormProps) => {
+const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfile }: ProfileFormProps) => {
   const [showTerms, setShowTerms] = useState(false);
   const { setUsernameMain, setProfileIdMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
@@ -46,6 +38,15 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
   const currentUser = userId;
 
   const router = useRouter();
+
+  const initialProfileValues = {
+    image: defaultPic ?? '',
+    username: '',
+    isPrivate: false,
+    bio: '',
+    socialLinks: [],
+    acceptUserAgreement: false,
+  };
 
   const updatedSchema = yup.object().shape({
     ...profileFormSchema.fields,
@@ -243,14 +244,15 @@ const ProfileForm = ({ existingProfileData, userId, setShowEditProfile }: Profil
       onSubmit={onSubmit}
     >
       {({ values, setFieldValue, isSubmitting, initialValues }) => {
+        console.log(values);
         return (
           <Form className={cx('pane')}>
             <div className={cx('paneSectionFull')}>
               <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
-              {/* <div className={cx('formInputItem')}>
-              <label htmlFor="image">Image URL</label>
-              <Field name="image" type="text" />
-            </div> */}
+              <div className={cx('formInputItem')}>
+                <label htmlFor="image">Image URL</label>
+                <Field name="image" type="text" />
+              </div>
               <div className={cx('formInputItem')}>
                 <label htmlFor="username">Username</label>
                 <Field name="username" type="text" />

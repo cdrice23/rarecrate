@@ -152,7 +152,7 @@ type Mutation {
   removeCrateFromFavorites(input: CrateProfileInput!): Crate
   unfollowProfile(input: FollowOrRequestInput!): Follow
   updateCrate(input: CrateInput!): Crate
-  updateLastLoginProfile(profileId: Int!, userId: Int!): User
+  updateLastLoginProfile(profileId: Int, userId: Int!): User
   updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings
   updateProfile(input: ProfileInput!): Profile
 }

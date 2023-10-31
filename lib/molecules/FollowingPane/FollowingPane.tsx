@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import cx from 'classnames';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { Route } from '@/core/enums/routes';
 import { motion } from 'framer-motion';
+import { User as UserIcon } from '@phosphor-icons/react';
 
 type FollowingPaneProps = {
   currentItems: any[];
@@ -24,7 +24,7 @@ const FollowingPane = ({ currentItems, getMoreItems }: FollowingPaneProps) => {
           }}
         >
           <LinkButton href={Route.Profile + `/${profile.following.username}`} className={cx('profileBar')}>
-            <p className={cx('image')}>{profile.following.image ?? 'P'}</p>
+            <p className={cx('image')}>{profile.following.image ?? <UserIcon />}</p>
             <p className={cx('username')}>{profile.following.username}</p>
           </LinkButton>
         </motion.div>

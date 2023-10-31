@@ -254,12 +254,6 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
     dispatch({ type: 'RESET_CRATE_RESULTS' });
     dispatch({ type: 'RESET_FAVORITE_RESULTS' });
 
-    getCrates({
-      variables: {
-        username: currentProfile,
-        currentPage: 1,
-      },
-    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProfile]);
 
