@@ -972,9 +972,11 @@ export const NotificationQueries = extendType({
           notifications.map(async notification => {
             // Check to return notifications of profile's new followers
             if (notificationSettings.showOwnNewFollowers && notification.type === 'newFollow') {
-              const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
-              if (follow && follow.followingId === profileId) {
-                return notification;
+              if (notification.connectedFollow) {
+                const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.connectedFollow.id } });
+                if (follow && follow.followingId === profileId) {
+                  return notification;
+                }
               }
             }
 
@@ -988,9 +990,11 @@ export const NotificationQueries = extendType({
 
             // Check to return notifications of profile's followed profiles when they follow new profiles
             if (notificationSettings.showFollowingNewFollows && notification.type === 'newFollow') {
-              const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.followId } });
-              if (follow && follow.followingId !== profileId) {
-                return notification;
+              if (notification.connectedFollow) {
+                const follow = await ctx.prisma.follow.findUnique({ where: { id: notification.connectedFollow.id } });
+                if (follow && follow.followingId !== profileId) {
+                  return notification;
+                }
               }
             }
 

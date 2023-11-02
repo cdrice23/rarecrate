@@ -14,6 +14,7 @@ interface NotificationsPaneProps {
 const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [notifications, setNotifications] = useState([]);
+
   const {
     error: initialError,
     loading: initialLoading,
@@ -56,8 +57,7 @@ const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [additionalData]);
 
-  console.log('notification', notifications);
-  console.log(currentPage);
+  console.log('notifications', notifications);
 
   return (
     <>

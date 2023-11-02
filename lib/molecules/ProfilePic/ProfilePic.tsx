@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import useSignedUrls from '@/core/hooks/useSignedUrl';
 import Image from 'next/image';
 
@@ -7,7 +8,8 @@ interface ProfilePicProps {
 }
 
 const ProfilePic = ({ username, size }: ProfilePicProps) => {
-  const currentProfilePic = useSignedUrls([username])[0];
+  const keys = useMemo(() => [username], [username]);
+  const currentProfilePic = useSignedUrls(keys)[0];
 
   return currentProfilePic ? (
     <Image src={currentProfilePic} alt={`profile image for ${username}`} height={size} width={size} />

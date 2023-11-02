@@ -518,6 +518,63 @@
       height: 200px;
       max-height: 200px;
       place-self: center;
+      padding-top: 8px;
+
+      .crateSummaryIcons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          border-radius: 50px;
+          margin-right: 16px;
+        }
+
+        .favoriteItems {
+          display: flex;
+          align-items: center;
+
+          button {
+            margin-right: 4px;
+          }
+        }
+      }
+
+      .crateLabels {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 16px;
+  
+        .pill {
+          &.standardLabel {
+            background-color: royalblue;
+            color: white;
+          }
+  
+          &.uniqueLabel {
+            background-color: goldenrod;
+            color: white;
+          }
+  
+          margin: 4px;
+          background-color: aquamarine;
+          border-radius: 16px;
+          padding: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+    
+        .pillName {
+          font-size: 1rem;
+          margin: 0 auto;
+          display: inline-block;
+        }
+  
+        
+        }
+      }
     }
   }
 
@@ -1029,6 +1086,10 @@
         min-width: 55px;
         display: grid;
         place-items: center;
+
+        img {
+          border-radius: 50px;
+        }
       }
       
       .resultText {
@@ -1203,6 +1264,10 @@
         color: white;
         background-color: grey;
         border-radius: 50px;
+
+        img {
+          border-radius: 50px;
+        }
       }
   
       .bannerText {
@@ -1309,6 +1374,10 @@
           color: white;
           background-color: grey;
           border-radius: 50px;
+
+          img {
+            border-radius: 50px;
+          }
         }
   
         .profileHeader {

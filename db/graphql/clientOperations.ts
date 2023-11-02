@@ -87,10 +87,12 @@ export const GET_PROFILE_CRATES = gql`
       creator {
         id
         username
+        image
       }
       labels {
         id
         isStandard
+        name
       }
       favoritedBy {
         id
@@ -107,6 +109,7 @@ export const GET_PROFILE_FAVORITES = gql`
       labels {
         id
         isStandard
+        name
       }
       creator {
         id

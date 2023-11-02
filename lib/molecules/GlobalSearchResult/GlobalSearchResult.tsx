@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { formatArtistName } from '@/core/helpers/cosmetic';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 interface GlobalSearchResultProps {
   data: any;
@@ -23,7 +24,8 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
       }}
     >
       <div className={cx('resultImage')}>
-        {(data.image || data.imageUrl) && (
+        {data.image && <ProfilePic username={data.username} size={40} />}
+        {data.imageUrl && (
           <Image src={data.imageUrl} height={40} width={40} alt={data.title} className={cx('profileImage')} />
         )}
         {data.__typename === 'Profile' && !data.image && <UserCircle size={24} />}

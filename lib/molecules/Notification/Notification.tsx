@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import { User as UserIcon } from '@phosphor-icons/react';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 interface NotificationProps {
   index: number;
@@ -66,7 +67,11 @@ const Notification = ({
         >
           <div className={cx('notificationBanner')}>
             <div className={cx('image')} onClick={handleActionOwnerNav}>
-              <p>{notificationData.actionOwner.image ?? <UserIcon />}</p>
+              {notificationData.actionOwner.image ? (
+                <ProfilePic username={notificationData.actionOwner.username} size={36} />
+              ) : (
+                <UserIcon size={32} />
+              )}
             </div>
             <p className={cx('bannerText')}>
               <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
@@ -100,7 +105,11 @@ const Notification = ({
           >
             <div className={cx('notificationBanner')}>
               <div className={cx('image')} onClick={handleActionOwnerNav}>
-                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+                {notificationData.actionOwner.image ? (
+                  <ProfilePic username={notificationData.actionOwner.username} size={36} />
+                ) : (
+                  <UserIcon size={32} />
+                )}
               </div>
               <p className={cx('bannerText')}>
                 <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
@@ -124,7 +133,11 @@ const Notification = ({
           >
             <div className={cx('notificationBanner')}>
               <div className={cx('image')} onClick={handleActionOwnerNav}>
-                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+                {notificationData.actionOwner.image ? (
+                  <ProfilePic username={notificationData.actionOwner.username} size={36} />
+                ) : (
+                  <UserIcon size={32} />
+                )}
               </div>
               <p className={cx('bannerText')}>
                 <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
@@ -134,7 +147,13 @@ const Notification = ({
             </div>
             <div className={cx('notificationProfileSummary')} onClick={handleConnectedProfile}>
               <div className={cx('profileBanner')}>
-                <p className={cx('image')}>{notificationData.connectedFollow.following.image ?? 'P'}</p>
+                <div className={cx('image')}>
+                  {notificationData.connectedFollow.following.image ? (
+                    <ProfilePic username={notificationData.connectedFollow.following.username} size={36} />
+                  ) : (
+                    <UserIcon size={32} />
+                  )}
+                </div>
                 <div className={cx('profileHeader')}>
                   <h3>{notificationData.connectedFollow.following.username}</h3>
                   <p>{notificationData.connectedFollow.following.bio}</p>
@@ -165,7 +184,11 @@ const Notification = ({
           >
             <div className={cx('notificationBanner')}>
               <div className={cx('image')} onClick={handleActionOwnerNav}>
-                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+                {notificationData.actionOwner.image ? (
+                  <ProfilePic username={notificationData.actionOwner.username} size={36} />
+                ) : (
+                  <UserIcon size={32} />
+                )}
               </div>
               <p className={cx('bannerText')}>
                 <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>
@@ -198,7 +221,11 @@ const Notification = ({
           >
             <div className={cx('notificationBanner')}>
               <div className={cx('image')} onClick={handleActionOwnerNav}>
-                <p>{notificationData.actionOwner.image ?? 'P'}</p>
+                {notificationData.actionOwner.image ? (
+                  <ProfilePic username={notificationData.actionOwner.username} size={36} />
+                ) : (
+                  <UserIcon size={32} />
+                )}
               </div>
               <p className={cx('bannerText')}>
                 <a href={actionOwnerPath}>{notificationData.actionOwner.username}</a>

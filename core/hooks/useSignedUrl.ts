@@ -14,6 +14,7 @@ const useSignedUrls = keys => {
   };
 
   useEffect(() => {
+    console.log('fetching urls');
     const fetchUrls = async () => {
       for (let key of keys) {
         const url = await fetchUrl(key);

@@ -12,6 +12,8 @@ import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { Heart } from '@phosphor-icons/react';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { motion } from 'framer-motion';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
+import { Pill } from '@/lib/atoms/Pill/Pill';
 
 type CrateSummaryPaneProps = {
   currentItems: any[];
@@ -119,7 +121,7 @@ const CrateSummaryPane = ({
     }
   };
 
-  console.log(userProfiles);
+  console.log(currentItems);
 
   return (
     <>
@@ -148,23 +150,29 @@ const CrateSummaryPane = ({
               setShowCrateDetail(true);
             }}
           >
-            <p>{crate.title}</p>
-            <p>{`Image: ${crate.creator.image}`}</p>
-            <p>{`Favorited By: ${crate.favoritedBy.length} people`}</p>
-            <ul>
-              {crate.labels.map(label => (
-                <li key={label.id}>{label.isStandard ? 'Blue' : 'Yellow'}</li>
+            <h2>{crate.title}</h2>
+            <div className={'crateSummaryIcons'}>
+              <ProfilePic username={crate.creator.username} size={36} />
+              <div className={cx('favoriteItems')}>
+                {crate.creator.id !== mainProfile && !userProfiles.some(profile => profile.id === crate.creator.id) ? (
+                  <BinaryIconButton
+                    icon={<Heart />}
+                    checkStatus={Boolean(currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0)}
+                    handler={checkStatus => {
+                      handleFavoriteToggle(checkStatus, crate, mainProfile);
+                    }}
+                  />
+                ) : (
+                  <Heart weight="fill" />
+                )}
+                <h3>{crate.favoritedBy.length}</h3>
+              </div>
+            </div>
+            <div className={cx('crateLabels')}>
+              {crate.labels.map((label, index) => (
+                <Pill key={index} name={label.name} style={label.isStandard ? 'standardLabel' : 'uniqueLabel'} />
               ))}
-            </ul>
-            {crate.creator.id !== mainProfile && !userProfiles.some(profile => profile.id === crate.creator.id) && (
-              <BinaryIconButton
-                icon={<Heart />}
-                checkStatus={Boolean(currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0)}
-                handler={checkStatus => {
-                  handleFavoriteToggle(checkStatus, crate, mainProfile);
-                }}
-              />
-            )}
+            </div>
           </motion.div>
         ))}
       </Pane>
