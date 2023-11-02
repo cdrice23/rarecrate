@@ -4,6 +4,9 @@ import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { Route } from '@/core/enums/routes';
 import { motion } from 'framer-motion';
 import { User as UserIcon } from '@phosphor-icons/react';
+import useSignedUrl from '@/core/hooks/useSignedUrl';
+import Image from 'next/image';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 type FollowerPaneProps = {
   currentItems: any[];
@@ -24,7 +27,13 @@ const FollowerPane = ({ currentItems, getMoreItems }: FollowerPaneProps) => {
           }}
         >
           <LinkButton href={Route.Profile + `/${profile.follower.username}`} className={cx('profileBar')}>
-            <p className={cx('image')}>{profile.follower.image ?? <UserIcon />}</p>
+            {/* <div className={cx('image')}>
+              {profile.follower.image ? (
+                <ProfilePic username={profile.follower.username} size={36} />
+              ) : (
+                <UserIcon size={32} />
+              )}
+            </div> */}
             <p className={cx('username')}>{profile.follower.username}</p>
           </LinkButton>
         </motion.div>

@@ -57,10 +57,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const getCommand = new GetObjectCommand(paramsForGet);
 
+      const getSignedUrlWithRetry = withRetry(getSignedUrl);
+
       try {
-        const url = await getSignedUrl(s3Client, getCommand, { expiresIn: 60 });
+        const url = await getSignedUrlWithRetry(s3Client, getCommand, { expiresIn: 60 });
         res.status(200).json({ url });
       } catch (error) {
+        console.error('Error generating signed URL:', error);
         res.status(500).json({ error: 'Failed to generate signed URL' });
       }
       break;
@@ -75,3 +78,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
+
+const withRetry =
+  (fn, retries = 3, delay = 500) =>
+  async (...args) => {
+    try {
+      return await fn(...args);
+    } catch (error) {
+      if (retries <= 0) {
+        throw error;
+      }
+      await new Promise(resolve => setTimeout(resolve, delay));
+      return withRetry(fn, retries - 1, delay * 2)(...args);
+    }
+  };

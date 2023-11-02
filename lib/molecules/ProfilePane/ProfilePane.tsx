@@ -15,7 +15,7 @@ import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 import Image from 'next/image';
-import useSignedUrl from '@/core/hooks/useSignedUrl';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 type ProfilePaneProps = {
   username: string;
@@ -35,8 +35,6 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
   const { data: followRequestData, refetch: refetchFollowRequests } = useQuery(GET_PENDING_FOLLOW_REQUESTS, {
     variables: { id: profileData?.id },
   });
-
-  const currentProfilePic = useSignedUrl(profileData?.username);
 
   const isMain = Boolean(mainProfile === profileData?.id);
   const isUserProfile = userProfiles.some(profile => profile.username === profileData?.username);
@@ -171,16 +169,7 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             <Pane>
               <div className={cx('headerTop')}>
                 <div className={cx('profilePic')}>
-                  {currentProfilePic ? (
-                    <Image
-                      src={currentProfilePic}
-                      alt={`profile image for ${profileData.username}`}
-                      height={100}
-                      width={100}
-                    />
-                  ) : (
-                    <UserIcon size={32} />
-                  )}
+                  {/* {profileData ? <ProfilePic username={profileData.username} size={100} /> : <UserIcon size={32} />} */}
                 </div>
                 <div className={cx('paneSelectors')}>
                   <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>
