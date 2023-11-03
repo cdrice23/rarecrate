@@ -155,6 +155,7 @@ type Mutation {
   updateLastLoginProfile(profileId: Int, userId: Int!): User
   updateNotificationSettings(input: NotificationSettingsInput!): NotificationSettings
   updateProfile(input: ProfileInput!): Profile
+  updateProfilePicUrl(profileId: Int!, url: String): Profile
 }
 
 type Notification {

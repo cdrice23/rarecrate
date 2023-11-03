@@ -1041,6 +1041,24 @@ export const ProfileMutations = extendType({
         return deletedProfileRecord;
       },
     });
+
+    t.field('updateProfilePicUrl', {
+      type: NexusProfile,
+      args: {
+        profileId: nonNull(intArg()),
+        url: stringArg(),
+      },
+      resolve: async (_, { profileId, url }, ctx) => {
+        return ctx.prisma.profile.update({
+          where: {
+            id: profileId,
+          },
+          data: {
+            image: url,
+          },
+        });
+      },
+    });
   },
 });
 

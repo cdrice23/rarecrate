@@ -1102,3 +1102,12 @@ export const GET_PROFILE_FOLLOWING = gql`
     }
   }
 `;
+
+export const UPDATE_PROFILE_PIC_URL = gql`
+  mutation UpdateProfilePicUrl($profileId: Int!, $url: String) {
+    updateProfilePicUrl(profileId: $profileId, url: $url) {
+      id
+      image
+    }
+  }
+`;

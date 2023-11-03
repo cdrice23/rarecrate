@@ -18,6 +18,8 @@ import { PublicRoute, Route } from '@/core/enums/routes';
 import { gql } from '@apollo/client';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
+import { User as UserIcon } from '@phosphor-icons/react';
 
 interface ProfileFormProps {
   existingProfileData?: any;
@@ -40,7 +42,6 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
   const router = useRouter();
 
   const initialProfileValues = {
-    image: defaultPic ?? '',
     username: '',
     isPrivate: false,
     bio: '',
@@ -82,7 +83,6 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
               username,
               isPrivate,
               bio,
-              image,
               socialLinks,
             },
           },
@@ -208,7 +208,6 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
               username,
               isPrivate,
               bio,
-              image,
               socialLinks,
             },
           },
@@ -249,23 +248,30 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
           <Form className={cx('pane')}>
             <div className={cx('paneSectionFull')}>
               <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
-              <div className={cx('formInputItem')}>
-                <label htmlFor="image">Image URL</label>
-                <Field name="image" type="text" />
-              </div>
-              <div className={cx('formInputItem')}>
-                <label htmlFor="username">Username</label>
-                <Field name="username" type="text" />
-                <ErrorMessage name="username" component="div" />
-              </div>
-              <div className={cx('formInputItem')}>
-                <label htmlFor="isPrivate">Private account?</label>
-                <Field name="isPrivate" type="checkbox" />
-                {!values.isPrivate && initialValues.isPrivate && existingProfileData && (
-                  <p>
-                    <em>{`Note: any pending follow requests will be accepted when you switch your profile to public.`}</em>
-                  </p>
-                )}
+              <div className={cx('formInputHead')}>
+                <div className={cx('image')}>
+                  {values.image && values.username ? (
+                    <ProfilePic username={values.username} size={75} />
+                  ) : (
+                    <UserIcon size={32} />
+                  )}
+                </div>
+                <div className={cx('formInputHeadItems')}>
+                  <div className={cx('formInputItem')}>
+                    <label htmlFor="username">Username</label>
+                    <Field name="username" type="text" />
+                    <ErrorMessage name="username" component="div" />
+                  </div>
+                  <div className={cx('formInputItem')}>
+                    <label htmlFor="isPrivate">Private account?</label>
+                    <Field name="isPrivate" type="checkbox" />
+                    {!values.isPrivate && initialValues.isPrivate && existingProfileData && (
+                      <p>
+                        <em>{`Note: any pending follow requests will be accepted when you switch your profile to public.`}</em>
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
               <div className={cx('formInputItem')}>
                 <label htmlFor="bio">Bio</label>
