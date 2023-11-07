@@ -1111,3 +1111,12 @@ export const UPDATE_PROFILE_PIC_URL = gql`
     }
   }
 `;
+
+export const GET_PROFILE_IMAGE = gql`
+  query GetProfile($id: Int, $username: String) {
+    getProfile(id: $id, username: $username) {
+      id
+      image
+    }
+  }
+`;

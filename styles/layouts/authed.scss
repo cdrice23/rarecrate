@@ -507,6 +507,19 @@
 
       .image {
         margin-right: 8px;
+        display: flex;
+        flex-direction: column;
+
+        .editPic {
+          margin-top: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          span {
+            margin-right: 4px;
+          }
+        }
 
         img {
           border-radius: 50px;

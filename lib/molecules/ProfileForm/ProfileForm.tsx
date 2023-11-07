@@ -19,7 +19,8 @@ import { gql } from '@apollo/client';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-import { User as UserIcon } from '@phosphor-icons/react';
+import { User as UserIcon, Camera } from '@phosphor-icons/react';
+import { EditProfilePic } from '../EditProfilePic/EditProfilePic';
 
 interface ProfileFormProps {
   existingProfileData?: any;
@@ -29,7 +30,8 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfile }: ProfileFormProps) => {
-  const [showTerms, setShowTerms] = useState(false);
+  const [showTerms, setShowTerms] = useState<boolean>(false);
+  const [showEditPic, setShowEditPic] = useState<boolean>(false);
   const { setUsernameMain, setProfileIdMain } = useLocalState();
   const [getProfile] = useLazyQuery(GET_PROFILE);
   const [updateProfile] = useMutation(UPDATE_PROFILE);
@@ -255,6 +257,16 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                   ) : (
                     <UserIcon size={32} />
                   )}
+                  <button
+                    className={cx('editPic')}
+                    type="button"
+                    onClick={() => {
+                      setShowEditPic(true);
+                    }}
+                  >
+                    <span>{`Edit `}</span>
+                    <Camera />
+                  </button>
                 </div>
                 <div className={cx('formInputHeadItems')}>
                   <div className={cx('formInputItem')}>
@@ -273,6 +285,14 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                   </div>
                 </div>
               </div>
+              <Modal
+                content={<EditProfilePic profileData={{ username: values.username, id: values.id }} />}
+                title={`Edit Profile Pic`}
+                show={showEditPic}
+                onClose={() => {
+                  setShowEditPic(false);
+                }}
+              />
               <div className={cx('formInputItem')}>
                 <label htmlFor="bio">Bio</label>
                 <Field name="bio" as="textarea" className={cx('formInputLongText')} />
