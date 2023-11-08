@@ -1,108 +1,150 @@
-import React, { useEffect, useState } from 'react';
-import { FilePond, registerPlugin } from 'react-filepond';
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import 'filepond/dist/filepond.min.css';
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-import { ProfilePic } from '../ProfilePic/ProfilePic';
-import cx from 'classnames';
+import React, { useEffect, useState, useRef } from 'react';
+import Croppie from 'croppie';
+import 'croppie/croppie.css';
 import axios from 'axios';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations';
-import useSignedUrls from '@/core/hooks/useSignedUrl';
-
-registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+import useSignedUrl from '@/core/hooks/useSignedUrl';
+import cx from 'classnames';
+import { ArrowCounterClockwise } from '@phosphor-icons/react';
+import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 const EditProfilePic = ({ profileData }) => {
-  const [profilePic, setProfilePic] = useState([]);
-  // const [existingProfilePic, setExistingProfilePic] = useState<boolean>(false);
-  const signedUrl = useSignedUrls(profileData.username);
-
-  console.log(signedUrl);
-
-  const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
-  const { loading, error, data } = useQuery(GET_PROFILE_IMAGE, {
-    variables: { id: profileData.id },
-  });
-
-  const handleUpload = async () => {
-    const file = profilePic[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await axios.post('http://localhost:3000/api/s3/image', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const { url } = response.data;
-      await updateProfilePicUrl({ variables: { id: profileData.id, url } });
-    } catch (error) {
-      console.error('Failed to upload file', error);
-    }
-  };
-
-  const handleRemove = async () => {
-    try {
-      await axios.delete('http://localhost:3000/api/s3/image', {
-        data: {
-          key: profileData.url.split('/').pop(),
-        },
-      });
-
-      await updateProfilePicUrl({ variables: { id: profileData.id, url: null } });
-    } catch (error) {
-      console.error('Failed to remove file', error);
-    }
-  };
-
-  // useEffect(() => {
-  //   if (data && data.getProfile) {
-  //     setExistingProfilePic(true);
-  //   } else {
-  //     setExistingProfilePic(false);
-  //   }
-  // }, [data]);
-
-  // useEffect(() => {
-  //   if (signedUrl && signedUrl !== null) {
-  //     axios
-  //       .get(signedUrl, { responseType: 'blob' })
-  //       .then(response => {
-  //         const blob = new Blob([response.data], { type: 'image/jpeg' });
-  //         const file = new File([blob], profileData.username);
-  //         setProfilePic([file]);
-  //       })
-  //       .catch(error => {
-  //         console.error('Failed to fetch file', error);
-  //       });
-  //   } else {
-  //     setProfilePic([]);
-  //   }
-  // }, [signedUrl, profileData.username]);
+  const [showEditTool, setShowEditTool] = useState<boolean>(false);
 
   return (
     <div>
-      {/* {existingProfilePic && (
-        <div>
-          <ProfilePic username={profileData.username} size={100} />
-        </div>
-      )} */}
-      <FilePond
-        files={profilePic}
-        onupdatefiles={setProfilePic}
-        allowMultiple={false}
-        server="http://localhost:3000/api/s3/image"
-        name="profilePic"
-      />
-      <button onClick={handleUpload}>Upload</button>
-      <button onClick={handleRemove}>Remove Current Pic</button>
+      {showEditTool ? (
+        <EditTool onCancel={setShowEditTool} />
+      ) : (
+        <ProfilePicPreview username={profileData.username} onEdit={setShowEditTool} />
+      )}
     </div>
   );
 };
 
 export { EditProfilePic };
+
+const ProfilePicPreview = ({ username, onEdit }) => {
+  const handleDeleteExistingProfilePic = async () => {
+    console.log('You are deleting the profile pic!');
+    // try {
+    //   await axios.delete('http://localhost:3000/api/s3/image', {
+    //     data: {
+    //       key: ,
+    //     },
+    //   });
+
+    //   await updateProfilePicUrl({ variables: { id: profileData.id, url: null } });
+    // } catch (error) {
+    //   console.error('Failed to remove file', error);
+    // }
+  };
+
+  const handleChangeProfilePic = async () => {
+    console.log('You want to upload a new photo');
+    onEdit(true);
+  };
+
+  return (
+    <>
+      <div>
+        <ProfilePic username={username} size={100} />
+        <div>
+          <button type="button" onClick={handleChangeProfilePic}>
+            Change Profile Photo
+          </button>
+          <button type="button" onClick={handleDeleteExistingProfilePic}>
+            Delete existing photo
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const EditTool = ({ onCancel }) => {
+  const [cropper, setCropper] = useState(null);
+  const [previousImage, setPreviousImage] = useState(null);
+  // console.log(cropper);
+  // console.log(previousImage);
+
+  let fileInputRef = useRef<HTMLInputElement>(null);
+  console.log(fileInputRef);
+
+  const defaultImageUrl =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+
+  const handleCancel = () => {
+    onCancel(false);
+  };
+
+  const handleImageUpload = event => {
+    // console.log(event.target.value);
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        if (cropper) {
+          cropper.bind({
+            url: reader.result,
+          });
+          setPreviousImage(event.target.value);
+        }
+      };
+
+      reader.readAsDataURL(file);
+      fileInputRef.current = event.target;
+    } else if (fileInputRef.current.value === '') {
+      // If no file is selected, bind the previous image to the cropper
+      // console.log(previousImage);
+      cropper.bind({
+        url: defaultImageUrl,
+        // url: fileInputRef.current.value,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (!cropper) {
+      const newCropper = new Croppie(document.getElementById('cropper'), {
+        viewport: { width: 320, height: 320, type: 'circle' },
+        boundary: { width: 320, height: 320 },
+        showZoomer: true,
+        enableExif: true,
+      });
+
+      if (!previousImage) {
+        // Set default image initially
+        newCropper.bind({
+          url: defaultImageUrl,
+        });
+      }
+
+      setCropper(newCropper);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleBlur = () => {
+    if (fileInputRef.current && fileInputRef.current.files.length === 0 && previousImage) {
+      // If no file is selected, bind the previous image to the cropper
+      cropper.bind({
+        url: previousImage,
+      });
+    }
+  };
+
+  return (
+    <>
+      <div>
+        <input type="file" id="imageUpload" onChange={handleImageUpload} onBlur={handleBlur} />
+        <div id="cropper" className={cx('imagePreview')} />
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
+      </div>
+    </>
+  );
+};

@@ -8,8 +8,8 @@ interface ProfilePicProps {
 }
 
 const ProfilePic = ({ username, size }: ProfilePicProps) => {
-  const keys = useMemo(() => [username], [username]);
-  const currentProfilePic = useSignedUrls(keys)[0];
+  const key = useMemo(() => [username], [username]);
+  const currentProfilePic = useSignedUrls(key);
 
   return currentProfilePic ? (
     <Image src={currentProfilePic} alt={`profile image for ${username}`} height={size} width={size} />
