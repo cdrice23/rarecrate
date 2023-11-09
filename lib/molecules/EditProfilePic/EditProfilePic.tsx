@@ -4,9 +4,8 @@ import 'croppie/croppie.css';
 import axios from 'axios';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations';
-import useSignedUrl from '@/core/hooks/useSignedUrl';
 import cx from 'classnames';
-import { ArrowCounterClockwise } from '@phosphor-icons/react';
+import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 const EditProfilePic = ({ profileData }) => {
@@ -17,7 +16,7 @@ const EditProfilePic = ({ profileData }) => {
       {showEditTool ? (
         <EditTool onCancel={setShowEditTool} />
       ) : (
-        <ProfilePicPreview username={profileData.username} onEdit={setShowEditTool} />
+        <ProfilePicPreview username={profileData.username} onEdit={setShowEditTool} profileId={profileData.id} />
       )}
     </div>
   );
@@ -25,20 +24,22 @@ const EditProfilePic = ({ profileData }) => {
 
 export { EditProfilePic };
 
-const ProfilePicPreview = ({ username, onEdit }) => {
-  const handleDeleteExistingProfilePic = async () => {
-    console.log('You are deleting the profile pic!');
-    // try {
-    //   await axios.delete('http://localhost:3000/api/s3/image', {
-    //     data: {
-    //       key: ,
-    //     },
-    //   });
+const ProfilePicPreview = ({ profileId, username, onEdit }) => {
+  const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
+  const { error, loading, data } = useQuery(GET_PROFILE_IMAGE, {
+    variables: {
+      id: profileId,
+    },
+  });
 
-    //   await updateProfilePicUrl({ variables: { id: profileData.id, url: null } });
-    // } catch (error) {
-    //   console.error('Failed to remove file', error);
-    // }
+  const handleDeleteExistingProfilePic = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/api/s3/image?key=${username}.jpg`);
+
+      await updateProfilePicUrl({ variables: { id: profileId, url: null } });
+    } catch (error) {
+      console.error('Failed to remove file', error);
+    }
   };
 
   const handleChangeProfilePic = async () => {
@@ -48,14 +49,27 @@ const ProfilePicPreview = ({ username, onEdit }) => {
 
   return (
     <>
-      <div>
-        <ProfilePic username={username} size={100} />
-        <div>
+      <div className={cx('profilePicPreview')}>
+        {data?.getProfile.image ? (
+          <ProfilePic username={username} size={100} />
+        ) : (
+          <div className={cx('profilePicIcon')}>
+            <UserIcon size={36} />
+          </div>
+        )}
+        <div className={cx('editButtons')}>
           <button type="button" onClick={handleChangeProfilePic}>
-            Change Profile Photo
+            <PencilLine />
+            <span>{`Change profile pic`}</span>
           </button>
-          <button type="button" onClick={handleDeleteExistingProfilePic}>
-            Delete existing photo
+          <button
+            type="button"
+            onClick={handleDeleteExistingProfilePic}
+            className={cx('deleteProfilePic')}
+            disabled={data?.getProfile.image === null}
+          >
+            <Trash />
+            <span>{`Delete existing pic`}</span>
           </button>
         </div>
       </div>
@@ -65,12 +79,10 @@ const ProfilePicPreview = ({ username, onEdit }) => {
 
 const EditTool = ({ onCancel }) => {
   const [cropper, setCropper] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
   const [previousImage, setPreviousImage] = useState(null);
-  // console.log(cropper);
-  // console.log(previousImage);
 
   let fileInputRef = useRef<HTMLInputElement>(null);
-  console.log(fileInputRef);
 
   const defaultImageUrl =
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
@@ -79,8 +91,7 @@ const EditTool = ({ onCancel }) => {
     onCancel(false);
   };
 
-  const handleImageUpload = event => {
-    // console.log(event.target.value);
+  const handleImageChange = event => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -88,21 +99,41 @@ const EditTool = ({ onCancel }) => {
       reader.onloadend = () => {
         if (cropper) {
           cropper.bind({
-            url: reader.result,
+            url: reader.result as string,
           });
           setPreviousImage(event.target.value);
         }
+        setUploadedImage(reader.result as string);
       };
 
       reader.readAsDataURL(file);
       fileInputRef.current = event.target;
     } else if (fileInputRef.current.value === '') {
-      // If no file is selected, bind the previous image to the cropper
-      // console.log(previousImage);
       cropper.bind({
         url: defaultImageUrl,
-        // url: fileInputRef.current.value,
       });
+    }
+  };
+
+  const handleImageUpload = async () => {
+    if (uploadedImage) {
+      const base64StringParts = uploadedImage.split(',');
+      const byteString = atob(base64StringParts[1]);
+      const arrayBuffer = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(arrayBuffer);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ia], { type: 'image/jpeg' });
+      const formData = new FormData();
+      formData.append('file', blob, 'profilePic.jpg');
+
+      try {
+        await axios.post('http://localhost:3000/api/s3/image', formData);
+        // Update Prisma here
+      } catch (error) {
+        console.error('Failed to upload file', error);
+      }
     }
   };
 
@@ -116,7 +147,6 @@ const EditTool = ({ onCancel }) => {
       });
 
       if (!previousImage) {
-        // Set default image initially
         newCropper.bind({
           url: defaultImageUrl,
         });
@@ -127,22 +157,16 @@ const EditTool = ({ onCancel }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleBlur = () => {
-    if (fileInputRef.current && fileInputRef.current.files.length === 0 && previousImage) {
-      // If no file is selected, bind the previous image to the cropper
-      cropper.bind({
-        url: previousImage,
-      });
-    }
-  };
-
   return (
     <>
       <div>
-        <input type="file" id="imageUpload" onChange={handleImageUpload} onBlur={handleBlur} />
+        <input type="file" id="imageUpload" onChange={handleImageChange} />
         <div id="cropper" className={cx('imagePreview')} />
         <button type="button" onClick={handleCancel}>
           Cancel
+        </button>
+        <button type="button" onClick={handleImageUpload}>
+          Done
         </button>
       </div>
     </>

@@ -169,7 +169,11 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
             <Pane>
               <div className={cx('headerTop')}>
                 <div className={cx('profilePic')}>
-                  {profileData ? <ProfilePic username={profileData.username} size={100} /> : <UserIcon size={32} />}
+                  {profileData.image ? (
+                    <ProfilePic username={profileData.username} size={100} />
+                  ) : (
+                    <UserIcon size={32} />
+                  )}
                 </div>
                 <div className={cx('paneSelectors')}>
                   <button onClick={() => handlePaneSelect('followers')} disabled={hidePrivateProfile}>

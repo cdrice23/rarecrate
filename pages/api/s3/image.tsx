@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -39,20 +39,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
       break;
     case 'GET':
-      let { key } = req.query;
+      let { key: keyToGet } = req.query;
 
-      if (Array.isArray(key)) {
-        key = key[0];
+      if (Array.isArray(keyToGet)) {
+        keyToGet = keyToGet[0];
       }
 
-      if (!key) {
+      if (!keyToGet) {
         res.status(400).json({ error: 'Missing image key' });
         return;
       }
 
       const paramsForGet = {
         Bucket: process.env.BUCKET_NAME,
-        Key: key,
+        Key: keyToGet,
       };
 
       const getCommand = new GetObjectCommand(paramsForGet);
@@ -68,7 +68,30 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
       break;
     case 'DELETE':
-      // Add your DELETE method logic here
+      let { key: keyToDelete } = req.query;
+
+      if (Array.isArray(keyToDelete)) {
+        keyToDelete = keyToDelete[0];
+      }
+
+      if (!keyToDelete) {
+        res.status(400).json({ error: 'Missing image key' });
+        return;
+      }
+
+      const paramsForDelete = {
+        Bucket: process.env.BUCKET_NAME,
+        Key: keyToDelete,
+      };
+
+      const deleteCommand = new DeleteObjectCommand(paramsForDelete);
+
+      try {
+        await s3Client.send(deleteCommand);
+        res.status(200).json({ message: `Image with key ${keyToDelete} deleted successfully` });
+      } catch (error) {
+        res.status(500).json({ error: 'Failed to delete file' });
+      }
       break;
     default:
       // Method Not Allowed

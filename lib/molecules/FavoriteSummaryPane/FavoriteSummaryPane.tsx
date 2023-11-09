@@ -9,7 +9,7 @@ import {
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
-import { Heart } from '@phosphor-icons/react';
+import { Heart, User as UserIcon } from '@phosphor-icons/react';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { motion } from 'framer-motion';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
@@ -152,7 +152,13 @@ const FavoriteSummaryPane = ({
           >
             <h2>{crate.title}</h2>
             <div className={'crateSummaryIcons'}>
-              <ProfilePic username={crate.creator.username} size={36} />
+              {crate.creator.image ? (
+                <ProfilePic username={crate.creator.username} size={36} />
+              ) : (
+                <div className={cx('profilePicIcon')}>
+                  <UserIcon size={16} />
+                </div>
+              )}
               <div className={cx('favoriteItems')}>
                 {crate.creator.id !== mainProfile && !userProfiles.some(profile => profile.id === crate.creator.id) ? (
                   <BinaryIconButton

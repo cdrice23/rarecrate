@@ -251,12 +251,14 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
             <div className={cx('paneSectionFull')}>
               <h3 className={cx('sectionTitle')}>{`Edit Profile:`}</h3>
               <div className={cx('formInputHead')}>
-                <div className={cx('image')}>
-                  {values.image && values.username ? (
-                    <ProfilePic username={values.username} size={75} />
-                  ) : (
-                    <UserIcon size={32} />
-                  )}
+                <div className={cx('imageContainer')}>
+                  <div className={cx('image')}>
+                    {values.image && values.username ? (
+                      <ProfilePic username={values.username} size={75} />
+                    ) : (
+                      <UserIcon size={32} />
+                    )}
+                  </div>
                   <button
                     className={cx('editPic')}
                     type="button"
@@ -268,6 +270,7 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                     <Camera />
                   </button>
                 </div>
+
                 <div className={cx('formInputHeadItems')}>
                   <div className={cx('formInputItem')}>
                     <label htmlFor="username">Username</label>
