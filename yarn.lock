@@ -744,10 +744,10 @@
     "@smithy/util-middleware" "^2.0.5"
     tslib "^2.5.0"
 
-"@aws-sdk/s3-request-presigner@^3.440.0":
-  version "3.440.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.440.0.tgz#0b286b6df3b21cb5e77a9162e2c24c4e32f2495f"
-  integrity sha512-DajqR67+YaOXbYE5dOtlNDAXMtF6NCX13dBs5J2o0UyqfMKtuc0DG8xqQBLiti/hUkFQc6eUkh5sbJYMVfJwZw==
+"@aws-sdk/s3-request-presigner@^3.445.0":
+  version "3.445.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.445.0.tgz#6c23dfb22ecd6c934c64ee5bc296684eb5514680"
+  integrity sha512-UZrtfYdwkNfPkdCYdLYSshTBHkK1W1f3qf011f5P99sxC5nahBnBiLRMeTeKAxveIkAHKqYKlMVa/+gD65d5yA==
   dependencies:
     "@aws-sdk/signature-v4-multi-region" "3.437.0"
     "@aws-sdk/types" "3.433.0"
@@ -5027,7 +5027,7 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node14/-/node14-1.0.3.tgz#e4386316284f00b98435bf40f72f75a09dabf6c1"
   integrity sha512-ysT8mhdixWK6Hw3i1V2AeRqZ5WfXg1G43mqoYlM2nc6388Fq5jcXyr5mRsqViLx/GJYdoL0bfXD8nmF+Zn/Iow==
 
-"@tsconfig/node16@^1.0.2":
+"@tsconfig/node16@^1.0.2", "@tsconfig/node16@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
@@ -11554,6 +11554,14 @@ nerf-dart@^1.0.0:
   resolved "https://registry.yarnpkg.com/nerf-dart/-/nerf-dart-1.0.0.tgz#e6dab7febf5ad816ea81cf5c629c5a0ebde72c1a"
   integrity sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==
 
+next-connect@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/next-connect/-/next-connect-1.0.0.tgz#49361a92b2d22db1cce73f94dfe793cd4b9e0106"
+  integrity sha512-FeLURm9MdvzY1SDUGE74tk66mukSqL6MAzxajW7Gqh6DZKBZLrXmXnGWtHJZXkfvoi+V/DUe9Hhtfkl4+nTlYA==
+  dependencies:
+    "@tsconfig/node16" "^1.0.3"
+    regexparam "^2.0.1"
+
 next@13.4.7:
   version "13.4.7"
   resolved "https://registry.yarnpkg.com/next/-/next-13.4.7.tgz#2ab20e6fada2e25cb81bd17f68956705ffd9824e"
@@ -13271,6 +13279,11 @@ regexp.prototype.flags@^1.4.3, regexp.prototype.flags@^1.5.0:
     call-bind "^1.0.2"
     define-properties "^1.2.0"
     functions-have-names "^1.2.3"
+
+regexparam@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/regexparam/-/regexparam-2.0.1.tgz#c912f5dae371e3798100b3c9ce22b7414d0889fa"
+  integrity sha512-zRgSaYemnNYxUv+/5SeoHI0eJIgTL/A2pUtXUPLHQxUldagouJ9p+K6IbIZ/JiQuCEv2E2B1O11SjVQy3aMCkw==
 
 regexpu-core@^5.3.1:
   version "5.3.2"

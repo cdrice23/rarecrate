@@ -1,6 +1,6 @@
-import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { S3Client, GetObjectCommand, DeleteObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import type { NextApiRequest, NextApiResponse } from 'next';
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
@@ -10,97 +10,16 @@ const s3Client = new S3Client({
   },
 });
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  switch (req.method) {
-    case 'POST':
-      const { file } = req.body;
+const generatePresignedUrl = async (key, contentType) => {
+  const command = new PutObjectCommand({
+    Bucket: process.env.BUCKET_NAME,
+    Key: key,
+    ContentType: contentType,
+  });
 
-      if (!file || !file.data) {
-        res.status(400).json({ error: 'Missing file data' });
-        return;
-      }
-
-      const paramsForPost = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: file.name,
-        Body: Buffer.from(file.data, 'base64'),
-        ContentType: 'image/jpeg',
-      };
-
-      const putCommand = new PutObjectCommand(paramsForPost);
-
-      try {
-        await s3Client.send(putCommand);
-        res
-          .status(200)
-          .json({ url: `https://${process.env.BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${file.name}` });
-      } catch (error) {
-        res.status(500).json({ error: 'Failed to upload file' });
-      }
-      break;
-    case 'GET':
-      let { key: keyToGet } = req.query;
-
-      if (Array.isArray(keyToGet)) {
-        keyToGet = keyToGet[0];
-      }
-
-      if (!keyToGet) {
-        res.status(400).json({ error: 'Missing image key' });
-        return;
-      }
-
-      const paramsForGet = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: keyToGet,
-      };
-
-      const getCommand = new GetObjectCommand(paramsForGet);
-
-      const getSignedUrlWithRetry = withRetry(getSignedUrl);
-
-      try {
-        const url = await getSignedUrlWithRetry(s3Client, getCommand, { expiresIn: 60 });
-        res.status(200).json({ url });
-      } catch (error) {
-        console.error('Error generating signed URL:', error);
-        res.status(500).json({ error: 'Failed to generate signed URL' });
-      }
-      break;
-    case 'DELETE':
-      let { key: keyToDelete } = req.query;
-
-      if (Array.isArray(keyToDelete)) {
-        keyToDelete = keyToDelete[0];
-      }
-
-      if (!keyToDelete) {
-        res.status(400).json({ error: 'Missing image key' });
-        return;
-      }
-
-      const paramsForDelete = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: keyToDelete,
-      };
-
-      const deleteCommand = new DeleteObjectCommand(paramsForDelete);
-
-      try {
-        await s3Client.send(deleteCommand);
-        res.status(200).json({ message: `Image with key ${keyToDelete} deleted successfully` });
-      } catch (error) {
-        res.status(500).json({ error: 'Failed to delete file' });
-      }
-      break;
-    default:
-      // Method Not Allowed
-      res.status(405).end();
-      break;
-  }
+  const presignedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+  return presignedUrl;
 };
-
-export default handler;
 
 const withRetry =
   (fn, retries = 3, delay = 500) =>
@@ -115,3 +34,56 @@ const withRetry =
       return withRetry(fn, retries - 1, delay * 2)(...args);
     }
   };
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method === 'GET') {
+    // Handle GET request
+    const key = req.query.key as string;
+    const params = {
+      Bucket: process.env.BUCKET_NAME,
+      Key: key,
+    };
+
+    const getCommand = new GetObjectCommand(params);
+
+    const getSignedUrlWithRetry = withRetry(getSignedUrl);
+
+    try {
+      const url = await getSignedUrlWithRetry(s3Client, getCommand, { expiresIn: 3600 });
+      res.status(200).json({ url });
+    } catch (error) {
+      console.error('Error generating signed URL:', error);
+      res.status(500).json({ error: 'Failed to generate signed URL' });
+    }
+  } else if (req.method === 'POST') {
+    try {
+      const key = `${req.body.username}.jpg`;
+      const contentType = 'image/jpeg';
+      const presignedUrl = await generatePresignedUrl(key, contentType);
+      res.status(200).json({ url: presignedUrl });
+    } catch (error) {
+      console.error('Failed to generate pre-signed URL', error);
+      res.status(500).json({ error: 'Failed to generate pre-signed URL', message: error.message });
+    }
+  } else if (req.method === 'DELETE') {
+    // Handle DELETE request
+    const key = req.query.key.toString();
+    const params = {
+      Bucket: process.env.BUCKET_NAME,
+      Key: key,
+    };
+
+    try {
+      await s3Client.send(new DeleteObjectCommand(params));
+      res.status(200).json({ message: 'File deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to delete file from S3', message: error.message });
+    }
+  } else {
+    // Handle any other HTTP method
+    res.setHeader('Allow', ['GET', 'POST', 'DELETE']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+};
+
+export default handler;

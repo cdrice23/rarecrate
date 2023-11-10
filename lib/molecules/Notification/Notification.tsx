@@ -70,7 +70,7 @@ const Notification = ({
               {notificationData.actionOwner.image ? (
                 <ProfilePic username={notificationData.actionOwner.username} size={36} />
               ) : (
-                <UserIcon size={32} />
+                <UserIcon size={16} />
               )}
             </div>
             <p className={cx('bannerText')}>
@@ -108,7 +108,7 @@ const Notification = ({
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
-                  <UserIcon size={32} />
+                  <UserIcon size={16} />
                 )}
               </div>
               <p className={cx('bannerText')}>
@@ -136,7 +136,7 @@ const Notification = ({
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
-                  <UserIcon size={32} />
+                  <UserIcon size={16} />
                 )}
               </div>
               <p className={cx('bannerText')}>
@@ -151,7 +151,7 @@ const Notification = ({
                   {notificationData.connectedFollow.following.image ? (
                     <ProfilePic username={notificationData.connectedFollow.following.username} size={36} />
                   ) : (
-                    <UserIcon size={32} />
+                    <UserIcon size={16} />
                   )}
                 </div>
                 <div className={cx('profileHeader')}>
@@ -187,7 +187,7 @@ const Notification = ({
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
-                  <UserIcon size={32} />
+                  <UserIcon size={16} />
                 )}
               </div>
               <p className={cx('bannerText')}>
@@ -224,7 +224,7 @@ const Notification = ({
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
-                  <UserIcon size={32} />
+                  <UserIcon size={16} />
                 )}
               </div>
               <p className={cx('bannerText')}>

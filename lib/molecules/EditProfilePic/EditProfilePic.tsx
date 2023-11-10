@@ -10,13 +10,28 @@ import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 const EditProfilePic = ({ profileData }) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);
+  const { error, loading, data } = useQuery(GET_PROFILE_IMAGE, {
+    variables: {
+      id: profileData.id,
+    },
+  });
 
   return (
     <div>
       {showEditTool ? (
-        <EditTool onCancel={setShowEditTool} />
+        <EditTool
+          username={profileData.username}
+          onCancel={setShowEditTool}
+          profileId={profileData.id}
+          hasCurrentPic={Boolean(data?.getProfile.image)}
+        />
       ) : (
-        <ProfilePicPreview username={profileData.username} onEdit={setShowEditTool} profileId={profileData.id} />
+        <ProfilePicPreview
+          username={profileData.username}
+          onEdit={setShowEditTool}
+          profileId={profileData.id}
+          currentPic={data?.getProfile.image}
+        />
       )}
     </div>
   );
@@ -24,19 +39,14 @@ const EditProfilePic = ({ profileData }) => {
 
 export { EditProfilePic };
 
-const ProfilePicPreview = ({ profileId, username, onEdit }) => {
+const ProfilePicPreview = ({ profileId, username, onEdit, currentPic }) => {
   const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
-  const { error, loading, data } = useQuery(GET_PROFILE_IMAGE, {
-    variables: {
-      id: profileId,
-    },
-  });
 
   const handleDeleteExistingProfilePic = async () => {
     try {
       await axios.delete(`http://localhost:3000/api/s3/image?key=${username}.jpg`);
 
-      await updateProfilePicUrl({ variables: { id: profileId, url: null } });
+      await updateProfilePicUrl({ variables: { profileId, url: null } });
     } catch (error) {
       console.error('Failed to remove file', error);
     }
@@ -50,7 +60,7 @@ const ProfilePicPreview = ({ profileId, username, onEdit }) => {
   return (
     <>
       <div className={cx('profilePicPreview')}>
-        {data?.getProfile.image ? (
+        {currentPic !== null ? (
           <ProfilePic username={username} size={100} />
         ) : (
           <div className={cx('profilePicIcon')}>
@@ -66,7 +76,7 @@ const ProfilePicPreview = ({ profileId, username, onEdit }) => {
             type="button"
             onClick={handleDeleteExistingProfilePic}
             className={cx('deleteProfilePic')}
-            disabled={data?.getProfile.image === null}
+            disabled={currentPic === null}
           >
             <Trash />
             <span>{`Delete existing pic`}</span>
@@ -77,10 +87,12 @@ const ProfilePicPreview = ({ profileId, username, onEdit }) => {
   );
 };
 
-const EditTool = ({ onCancel }) => {
+const EditTool = ({ profileId, username, onCancel, hasCurrentPic }) => {
   const [cropper, setCropper] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [previousImage, setPreviousImage] = useState(null);
+
+  const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
 
   let fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -116,21 +128,50 @@ const EditTool = ({ onCancel }) => {
   };
 
   const handleImageUpload = async () => {
-    if (uploadedImage) {
-      const base64StringParts = uploadedImage.split(',');
-      const byteString = atob(base64StringParts[1]);
-      const arrayBuffer = new ArrayBuffer(byteString.length);
-      const ia = new Uint8Array(arrayBuffer);
-      for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-      }
-      const blob = new Blob([ia], { type: 'image/jpeg' });
+    if (cropper) {
+      let quality = 1.0;
+      let response: Blob | null = null;
+
+      do {
+        response = await new Promise<Blob>((resolve, reject) =>
+          cropper.result('blob', { type: 'image/jpeg', quality: quality }).then(resolve).catch(reject),
+        );
+
+        quality -= 0.01;
+      } while (response.size > 1024 * 1024); // 1 MB
+
       const formData = new FormData();
-      formData.append('file', blob, 'profilePic.jpg');
+      if (typeof username === 'string') {
+        formData.append('file', new File([response], `${username}.jpg`, { type: 'image/jpeg' }));
+      } else {
+        console.error('Invalid username', username);
+        return;
+      }
 
       try {
-        await axios.post('http://localhost:3000/api/s3/image', formData);
+        // Delete existing photo if already exists
+        if (hasCurrentPic) {
+          try {
+            await axios.delete(`http://localhost:3000/api/s3/image?key=${username}.jpg`);
+
+            await updateProfilePicUrl({ variables: { profileId, url: null } });
+          } catch (error) {
+            console.error('Failed to remove file', error);
+          }
+        }
+
+        // Upload new photo
+        const { data } = await axios.post('http://localhost:3000/api/s3/image', {
+          username: typeof username === 'string' ? username : '',
+        });
+
+        await axios.put(data.url, response, {
+          headers: {
+            'Content-Type': 'image/jpeg',
+          },
+        });
         // Update Prisma here
+        await updateProfilePicUrl({ variables: { id: profileId, url: data.url } });
       } catch (error) {
         console.error('Failed to upload file', error);
       }

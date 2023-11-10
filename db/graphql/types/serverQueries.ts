@@ -982,9 +982,11 @@ export const NotificationQueries = extendType({
 
             // Check to return notifications of profile's crates being favorited
             if (notificationSettings.showOwnNewFavorites && notification.type === 'newFavorite') {
-              const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
-              if (crate && crate.creatorId === profileId) {
-                return notification;
+              if (notification.connectedCrate) {
+                const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.connectedCrate.id } });
+                if (crate && crate.creatorId === profileId) {
+                  return notification;
+                }
               }
             }
 
@@ -1005,9 +1007,11 @@ export const NotificationQueries = extendType({
 
             // Check to return notifications of profile's followed profiles when the favorite a new crate
             if (notificationSettings.showFollowingNewFavorites && notification.type === 'newFavorite') {
-              const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.crateId } });
-              if (crate && crate.creatorId !== profileId) {
-                return notification;
+              if (notification.connectedCrate) {
+                const crate = await ctx.prisma.crate.findUnique({ where: { id: notification.connectedCrate.id } });
+                if (crate && crate.creatorId !== profileId) {
+                  return notification;
+                }
               }
             }
           }),
