@@ -289,7 +289,14 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                 </div>
               </div>
               <Modal
-                content={<EditProfilePic profileData={{ username: values.username, id: values.id }} />}
+                content={
+                  <EditProfilePic
+                    profileData={{ username: values.username, id: values.id }}
+                    onClose={() => {
+                      setShowEditPic(false);
+                    }}
+                  />
+                }
                 title={`Edit Profile Pic`}
                 show={showEditPic}
                 onClose={() => {

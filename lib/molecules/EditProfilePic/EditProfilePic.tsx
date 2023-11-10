@@ -8,7 +8,28 @@ import cx from 'classnames';
 import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 
-const EditProfilePic = ({ profileData }) => {
+interface EditProfilePicProps {
+  profileData: { username: string; id: number };
+  onClose: () => void;
+}
+
+interface ProfilePicPreviewProps {
+  profileId: number;
+  username: string;
+  currentPic: string;
+  onEdit: (value) => void;
+  onClose: () => void;
+}
+
+interface EditToolProps {
+  profileId: number;
+  username: string;
+  onCancel: (value) => void;
+  onClose: () => void;
+  hasCurrentPic: boolean;
+}
+
+const EditProfilePic = ({ profileData, onClose }: EditProfilePicProps) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);
   const { error, loading, data } = useQuery(GET_PROFILE_IMAGE, {
     variables: {
@@ -24,6 +45,7 @@ const EditProfilePic = ({ profileData }) => {
           onCancel={setShowEditTool}
           profileId={profileData.id}
           hasCurrentPic={Boolean(data?.getProfile.image)}
+          onClose={onClose}
         />
       ) : (
         <ProfilePicPreview
@@ -31,6 +53,7 @@ const EditProfilePic = ({ profileData }) => {
           onEdit={setShowEditTool}
           profileId={profileData.id}
           currentPic={data?.getProfile.image}
+          onClose={onClose}
         />
       )}
     </div>
@@ -39,16 +62,21 @@ const EditProfilePic = ({ profileData }) => {
 
 export { EditProfilePic };
 
-const ProfilePicPreview = ({ profileId, username, onEdit, currentPic }) => {
+const ProfilePicPreview = ({ profileId, username, currentPic, onEdit, onClose }: ProfilePicPreviewProps) => {
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
 
   const handleDeleteExistingProfilePic = async () => {
+    setIsDeleting(true);
     try {
       await axios.delete(`http://localhost:3000/api/s3/image?key=${username}.jpg`);
 
       await updateProfilePicUrl({ variables: { profileId, url: null } });
+      setIsDeleting(false);
     } catch (error) {
       console.error('Failed to remove file', error);
+      setIsDeleting(false);
+      onClose();
     }
   };
 
@@ -76,7 +104,7 @@ const ProfilePicPreview = ({ profileId, username, onEdit, currentPic }) => {
             type="button"
             onClick={handleDeleteExistingProfilePic}
             className={cx('deleteProfilePic')}
-            disabled={currentPic === null}
+            disabled={currentPic === null || isDeleting}
           >
             <Trash />
             <span>{`Delete existing pic`}</span>
@@ -87,10 +115,11 @@ const ProfilePicPreview = ({ profileId, username, onEdit, currentPic }) => {
   );
 };
 
-const EditTool = ({ profileId, username, onCancel, hasCurrentPic }) => {
+const EditTool = ({ profileId, username, hasCurrentPic, onCancel, onClose }: EditToolProps) => {
   const [cropper, setCropper] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [previousImage, setPreviousImage] = useState(null);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
   const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
 
@@ -124,10 +153,12 @@ const EditTool = ({ profileId, username, onCancel, hasCurrentPic }) => {
       cropper.bind({
         url: defaultImageUrl,
       });
+      setUploadedImage(null);
     }
   };
 
   const handleImageUpload = async () => {
+    setIsUploading(true);
     if (cropper) {
       let quality = 1.0;
       let response: Blob | null = null;
@@ -170,10 +201,13 @@ const EditTool = ({ profileId, username, onCancel, hasCurrentPic }) => {
             'Content-Type': 'image/jpeg',
           },
         });
-        // Update Prisma here
-        await updateProfilePicUrl({ variables: { id: profileId, url: data.url } });
+        // Update Prisma
+        await updateProfilePicUrl({ variables: { profileId, url: data.url.substring(0, data.url.indexOf('?')) } });
+        setIsUploading(false);
+        onClose();
       } catch (error) {
         console.error('Failed to upload file', error);
+        setIsUploading(false);
       }
     }
   };
@@ -206,7 +240,7 @@ const EditTool = ({ profileId, username, onCancel, hasCurrentPic }) => {
         <button type="button" onClick={handleCancel}>
           Cancel
         </button>
-        <button type="button" onClick={handleImageUpload}>
+        <button type="button" onClick={handleImageUpload} disabled={uploadedImage === null || isUploading}>
           Done
         </button>
       </div>
