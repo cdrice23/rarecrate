@@ -53,7 +53,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({ url });
     } catch (error) {
       console.error('Error generating signed URL:', error);
-      res.status(500).json({ error: 'Failed to generate signed URL' });
+      if (error.name === 'NoSuchKey') {
+        res.status(404).json({ error: 'Image not found' });
+      } else {
+        res.status(500).json({ error: 'Failed to generate signed URL' });
+      }
     }
   } else if (req.method === 'POST') {
     try {

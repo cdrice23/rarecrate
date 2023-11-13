@@ -26,10 +26,17 @@ interface ProfileFormProps {
   existingProfileData?: any;
   userId?: number;
   setShowEditProfile?: (value: boolean) => void;
-  defaultPic?: string;
+  imageRefreshKey: number;
+  setImageRefreshKey: (value: number) => void;
 }
 
-const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfile }: ProfileFormProps) => {
+const ProfileForm = ({
+  existingProfileData,
+  userId,
+  setShowEditProfile,
+  imageRefreshKey,
+  setImageRefreshKey,
+}: ProfileFormProps) => {
   const [showTerms, setShowTerms] = useState<boolean>(false);
   const [showEditPic, setShowEditPic] = useState<boolean>(false);
   const { setUsernameMain, setProfileIdMain } = useLocalState();
@@ -71,9 +78,12 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
   const onSubmit = async (values, actions) => {
     actions.setSubmitting(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    const { id, username, isPrivate, bio, image, socialLinks } = values;
+    const { id, username, isPrivate, bio, socialLinks } = values;
 
-    // console.log(userId);
+    const socialLinksInput = socialLinks.map(link => ({
+      username: link.username,
+      platform: link.platform,
+    }));
 
     if (id) {
       // Update existing Profile
@@ -85,7 +95,7 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
               username,
               isPrivate,
               bio,
-              socialLinks,
+              socialLinks: socialLinksInput,
             },
           },
           update: (cache, { data }) => {
@@ -195,7 +205,6 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
         setUsernameMain(values.username);
         actions.resetForm({ values });
         setShowEditProfile(false);
-        console.log(values);
       } catch (error) {
         console.error('Error updating profile:', error);
         actions.setSubmitting(false);
@@ -210,7 +219,7 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
               username,
               isPrivate,
               bio,
-              socialLinks,
+              socialLinks: socialLinksInput,
             },
           },
         });
@@ -245,7 +254,6 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
       onSubmit={onSubmit}
     >
       {({ values, setFieldValue, isSubmitting, initialValues }) => {
-        console.log(values);
         return (
           <Form className={cx('pane')}>
             <div className={cx('paneSectionFull')}>
@@ -254,7 +262,7 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                 <div className={cx('imageContainer')}>
                   <div className={cx('image')}>
                     {values.image && values.username ? (
-                      <ProfilePic username={values.username} size={75} />
+                      <ProfilePic key={Number(imageRefreshKey)} username={values.username} size={75} />
                     ) : (
                       <UserIcon size={32} />
                     )}
@@ -295,6 +303,8 @@ const ProfileForm = ({ existingProfileData, userId, defaultPic, setShowEditProfi
                     onClose={() => {
                       setShowEditPic(false);
                     }}
+                    imageRefreshKey={imageRefreshKey}
+                    setImageRefreshKey={setImageRefreshKey}
                   />
                 }
                 title={`Edit Profile Pic`}

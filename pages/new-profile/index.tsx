@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
@@ -19,6 +19,7 @@ interface NewProfileProps {
 }
 
 const NewProfilePage = ({ userId, email, prismaUserProfiles }: NewProfileProps) => {
+  const [imageRefreshKey, setImageRefreshKey] = useState(Date.now());
   const { setUserId, setEmail } = useLocalState();
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const NewProfilePage = ({ userId, email, prismaUserProfiles }: NewProfileProps) 
         <p>{`userId (auth): ${userId}`}</p>
         <p>{`email (auth): ${email}`}</p>
       </Pane>
-      <ProfileForm userId={userId} />
+      <ProfileForm userId={userId} imageRefreshKey={imageRefreshKey} setImageRefreshKey={setImageRefreshKey} />
     </AuthedLayout>
   );
 };

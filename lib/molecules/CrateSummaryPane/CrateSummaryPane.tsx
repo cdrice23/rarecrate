@@ -21,6 +21,7 @@ type CrateSummaryPaneProps = {
   mainProfile: number;
   userProfiles: [{ id: number; username: string }];
   getMoreItems: () => void;
+  imageRefreshKey: number;
 };
 
 const CrateSummaryPane = ({
@@ -29,6 +30,7 @@ const CrateSummaryPane = ({
   mainProfile,
   userProfiles,
   getMoreItems,
+  imageRefreshKey,
 }: CrateSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
@@ -153,7 +155,7 @@ const CrateSummaryPane = ({
             <h2>{crate.title}</h2>
             <div className={'crateSummaryIcons'}>
               {crate.creator.image ? (
-                <ProfilePic username={crate.creator.username} size={36} />
+                <ProfilePic key={imageRefreshKey} username={crate.creator.username} size={36} />
               ) : (
                 <div className={cx('profilePicIcon')}>
                   <UserIcon size={16} />

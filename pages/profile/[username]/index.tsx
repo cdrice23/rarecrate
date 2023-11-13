@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState, useReducer, useRef } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { createContext } from '@/db/graphql/context';
@@ -83,6 +83,7 @@ const resultsReducer = (state, action) => {
 
 const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const [resultsState, dispatch] = useReducer(resultsReducer, initialResultsState);
+  const [imageRefreshKey, setImageRefreshKey] = useState(Date.now());
   const [activePane, setActivePane] = useState<'followers' | 'following' | 'crates' | 'favorites'>('crates');
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
 
@@ -94,7 +95,7 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   const currentCrates = resultsState.crateState.results;
   const currentFavorites = resultsState.favoriteState.results;
 
-  console.log(currentProfile);
+  const prevProfile = useRef(currentProfile);
 
   // profile data of the user
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
@@ -249,15 +250,12 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
   }, [activePane, followersData, followedProfilesData, cratesData, favoritesData]);
 
   useEffect(() => {
-    dispatch({ type: 'RESET_FOLLOWER_RESULTS' });
-    dispatch({ type: 'RESET_FOLLOWING_RESULTS' });
-    dispatch({ type: 'RESET_CRATE_RESULTS' });
-    dispatch({ type: 'RESET_FAVORITE_RESULTS' });
-
+    if (prevProfile.current !== currentProfile) {
+      router.reload();
+    }
+    prevProfile.current = currentProfile;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProfile]);
-
-  console.log(resultsState);
 
   return (
     <AuthedLayout userProfiles={prismaUserProfiles}>
@@ -286,6 +284,8 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
             mainProfile={profileIdMain}
             currentUser={userId}
             userProfiles={prismaUserProfiles}
+            imageRefreshKey={imageRefreshKey}
+            setImageRefreshKey={setImageRefreshKey}
           />
           {activePane === 'followers'
             ? !hidePrivateProfile && (
@@ -334,6 +334,7 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
                       },
                     });
                   }}
+                  imageRefreshKey={imageRefreshKey}
                 />
               )
             : !hidePrivateProfile && (

@@ -65,7 +65,6 @@ const CrateDetail = ({ userProfiles, activeCrateId, show, favoriteIconHandler, o
   };
 
   const crateData = data?.getCrateDetailWithAlbums;
-  console.log(crateData);
 
   return (
     <>

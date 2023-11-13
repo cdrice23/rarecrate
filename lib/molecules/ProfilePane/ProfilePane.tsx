@@ -23,9 +23,19 @@ type ProfilePaneProps = {
   currentUser: number;
   userProfiles: [{ id: number; username: string }];
   handlePaneSelect: (pane: 'followers' | 'following' | 'crates' | 'favorites') => void;
+  imageRefreshKey: number;
+  setImageRefreshKey: (value: number) => void;
 };
 
-const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, userProfiles }: ProfilePaneProps) => {
+const ProfilePane = ({
+  username,
+  handlePaneSelect,
+  mainProfile,
+  currentUser,
+  userProfiles,
+  imageRefreshKey,
+  setImageRefreshKey,
+}: ProfilePaneProps) => {
   const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_PROFILE, {
@@ -164,13 +174,19 @@ const ProfilePane = ({ username, handlePaneSelect, mainProfile, currentUser, use
       ) : data ? (
         <>
           {showEditProfile ? (
-            <ProfileForm existingProfileData={profileData} setShowEditProfile={setShowEditProfile} />
+            <ProfileForm
+              key={imageRefreshKey}
+              existingProfileData={profileData}
+              setShowEditProfile={setShowEditProfile}
+              imageRefreshKey={imageRefreshKey}
+              setImageRefreshKey={setImageRefreshKey}
+            />
           ) : (
             <Pane>
               <div className={cx('headerTop')}>
                 <div className={cx('profilePic')}>
                   {profileData.image ? (
-                    <ProfilePic username={profileData.username} size={100} />
+                    <ProfilePic key={Number(imageRefreshKey)} username={profileData.username} size={100} />
                   ) : (
                     <UserIcon size={32} />
                   )}

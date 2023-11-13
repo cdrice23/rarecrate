@@ -7,10 +7,13 @@ import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOp
 import cx from 'classnames';
 import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
+import { useRouter } from 'next/router';
 
 interface EditProfilePicProps {
   profileData: { username: string; id: number };
   onClose: () => void;
+  imageRefreshKey: number;
+  setImageRefreshKey: (value: number) => void;
 }
 
 interface ProfilePicPreviewProps {
@@ -19,6 +22,9 @@ interface ProfilePicPreviewProps {
   currentPic: string;
   onEdit: (value) => void;
   onClose: () => void;
+  imageRefreshKey: number;
+  setImageRefreshKey: (value: number) => void;
+  setShowEditTool: (value: boolean) => void;
 }
 
 interface EditToolProps {
@@ -27,9 +33,12 @@ interface EditToolProps {
   onCancel: (value) => void;
   onClose: () => void;
   hasCurrentPic: boolean;
+  imageRefreshKey: number;
+  setImageRefreshKey: (value: number) => void;
+  setShowEditTool: (value: boolean) => void;
 }
 
-const EditProfilePic = ({ profileData, onClose }: EditProfilePicProps) => {
+const EditProfilePic = ({ profileData, onClose, imageRefreshKey, setImageRefreshKey }: EditProfilePicProps) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);
   const { error, loading, data } = useQuery(GET_PROFILE_IMAGE, {
     variables: {
@@ -46,6 +55,9 @@ const EditProfilePic = ({ profileData, onClose }: EditProfilePicProps) => {
           profileId={profileData.id}
           hasCurrentPic={Boolean(data?.getProfile.image)}
           onClose={onClose}
+          setShowEditTool={setShowEditTool}
+          imageRefreshKey={imageRefreshKey}
+          setImageRefreshKey={setImageRefreshKey}
         />
       ) : (
         <ProfilePicPreview
@@ -54,6 +66,9 @@ const EditProfilePic = ({ profileData, onClose }: EditProfilePicProps) => {
           profileId={profileData.id}
           currentPic={data?.getProfile.image}
           onClose={onClose}
+          setShowEditTool={setShowEditTool}
+          imageRefreshKey={imageRefreshKey}
+          setImageRefreshKey={setImageRefreshKey}
         />
       )}
     </div>
@@ -62,9 +77,20 @@ const EditProfilePic = ({ profileData, onClose }: EditProfilePicProps) => {
 
 export { EditProfilePic };
 
-const ProfilePicPreview = ({ profileId, username, currentPic, onEdit, onClose }: ProfilePicPreviewProps) => {
+const ProfilePicPreview = ({
+  profileId,
+  username,
+  currentPic,
+  onEdit,
+  onClose,
+  imageRefreshKey,
+  setImageRefreshKey,
+  setShowEditTool,
+}: ProfilePicPreviewProps) => {
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
+
+  const router = useRouter();
 
   const handleDeleteExistingProfilePic = async () => {
     setIsDeleting(true);
@@ -72,7 +98,11 @@ const ProfilePicPreview = ({ profileId, username, currentPic, onEdit, onClose }:
       await axios.delete(`http://localhost:3000/api/s3/image?key=${username}.jpg`);
 
       await updateProfilePicUrl({ variables: { profileId, url: null } });
-      setIsDeleting(false);
+      router.reload();
+      // setImageRefreshKey(Date.now());
+      // setIsDeleting(false);
+      // setShowEditTool(false);
+      // onClose();
     } catch (error) {
       console.error('Failed to remove file', error);
       setIsDeleting(false);
@@ -89,7 +119,7 @@ const ProfilePicPreview = ({ profileId, username, currentPic, onEdit, onClose }:
     <>
       <div className={cx('profilePicPreview')}>
         {currentPic !== null ? (
-          <ProfilePic username={username} size={100} />
+          <ProfilePic key={Number(imageRefreshKey)} username={username} size={100} />
         ) : (
           <div className={cx('profilePicIcon')}>
             <UserIcon size={36} />
@@ -115,11 +145,22 @@ const ProfilePicPreview = ({ profileId, username, currentPic, onEdit, onClose }:
   );
 };
 
-const EditTool = ({ profileId, username, hasCurrentPic, onCancel, onClose }: EditToolProps) => {
+const EditTool = ({
+  profileId,
+  username,
+  hasCurrentPic,
+  onCancel,
+  onClose,
+  imageRefreshKey,
+  setImageRefreshKey,
+  setShowEditTool,
+}: EditToolProps) => {
   const [cropper, setCropper] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [previousImage, setPreviousImage] = useState(null);
   const [isUploading, setIsUploading] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const [updateProfilePicUrl] = useMutation(UPDATE_PROFILE_PIC_URL);
 
@@ -203,10 +244,14 @@ const EditTool = ({ profileId, username, hasCurrentPic, onCancel, onClose }: Edi
         });
         // Update Prisma
         await updateProfilePicUrl({ variables: { profileId, url: data.url.substring(0, data.url.indexOf('?')) } });
-        setIsUploading(false);
-        onClose();
+        router.reload();
+        // setImageRefreshKey(Date.now());
+        // setIsUploading(false);
+        // setShowEditTool(false);
+        // onClose();
       } catch (error) {
         console.error('Failed to upload file', error);
+        setImageRefreshKey(Date.now());
         setIsUploading(false);
       }
     }
