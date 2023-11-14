@@ -1,19 +1,13 @@
 import cx from 'classnames';
-import { useApolloClient } from '@apollo/client';
-import { useQuery, useMutation, useLazyQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
-import {
-  GET_RECOMMENDATIONS,
-  ADD_CRATE_TO_FAVORITES,
-  REMOVE_CRATE_FROM_FAVORITES,
-  CREATE_NOTIFICATION,
-  MARK_RECOMMENDATION_SEEN,
-} from '@/db/graphql/clientOperations';
+import { GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
+import { useMutations, handleGetMoreRecommendations, handleFavoriteToggle } from './CrateDiggingPane.helpers';
 
 type CrateDiggingPaneProps = {
   mainProfile: number;
@@ -28,11 +22,7 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
   const [lastIndex, setLastIndex] = useState<number>(null);
   const [seenRecommendations, setSeenRecommendations] = useState([]);
   const { usernameMain } = useLocalState();
-  console.log(seenRecommendations);
 
-  console.log('currentRecommendations', currentRecommendations);
-
-  const [createNotification] = useMutation(CREATE_NOTIFICATION);
   const {
     error: initialError,
     loading: initialLoading,
@@ -41,127 +31,7 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
     variables: { profileId: mainProfile },
   });
 
-  const [getMoreRecommendations, { loading: loadingAdditional, data: additionalData }] =
-    useLazyQuery(GET_RECOMMENDATIONS);
-
-  const [markRecommendationSeen] = useMutation(MARK_RECOMMENDATION_SEEN);
-
-  const handleGetMoreRecommendations = async () => {
-    const getNewRecommendatations = await getMoreRecommendations({
-      variables: {
-        profileId: mainProfile,
-        usedPages,
-        currentRecsInArray: currentRecommendations.length,
-      },
-    });
-
-    const newRecommendations = getNewRecommendatations?.data.getRecommendations.recommendations;
-    const resetRecommendations = getNewRecommendatations?.data.getRecommendations.resetRecommendations;
-
-    let finalRecommendations = [...currentRecommendations];
-
-    if (newRecommendations.length > 0) {
-      let shuffledRecommendations = [...newRecommendations];
-      // if (shuffledRecommendations) {
-      //   for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
-      //     const j = Math.floor(Math.random() * (i + 1));
-      //     [shuffledRecommendations[i], shuffledRecommendations[j]] = [
-      //       shuffledRecommendations[j],
-      //       shuffledRecommendations[i],
-      //     ];
-      //   }
-      // }
-
-      finalRecommendations = [...finalRecommendations, ...shuffledRecommendations];
-    }
-
-    if (resetRecommendations) {
-      finalRecommendations = [...newRecommendations];
-    }
-
-    setCurrentRecommendations(finalRecommendations);
-    setLastIndex(finalRecommendations.length - 1);
-    setUsedPages(getNewRecommendatations?.data.getRecommendations.usedPages);
-  };
-
-  const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
-    update: (cache, { data: { addCrateToFavorites } }) => {
-      cache.modify({
-        id: cache.identify(addCrateToFavorites),
-        fields: {
-          favoritedBy(existingFavoritedBy = []) {
-            return addCrateToFavorites.favoritedBy;
-          },
-        },
-      });
-
-      cache.modify({
-        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
-        fields: {
-          favorites(existingFavorites = []) {
-            const newFragment = cache.writeFragment({
-              data: addCrateToFavorites,
-              fragment: gql`
-                fragment NewFavorite on Crate {
-                  id
-                }
-              `,
-            });
-
-            return [...existingFavorites, newFragment];
-          },
-        },
-      });
-    },
-  });
-
-  const [removeCrateFromFavorites] = useMutation(REMOVE_CRATE_FROM_FAVORITES, {
-    update: (cache, { data: { removeCrateFromFavorites } }) => {
-      cache.modify({
-        id: cache.identify(removeCrateFromFavorites),
-        fields: {
-          favoritedBy(existingFavoritedBy = []) {
-            return existingFavoritedBy.filter(profile => profile.id !== mainProfile);
-          },
-        },
-      });
-
-      cache.modify({
-        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
-        fields: {
-          favorites(existingFavorites = [], { readField }) {
-            return existingFavorites.filter(crate => readField('id', crate) !== removeCrateFromFavorites.id);
-          },
-        },
-      });
-    },
-  });
-
-  console.log(useApolloClient().cache.extract());
-
-  const handleFavoriteToggle = async (checkStatus, crate, mainProfile) => {
-    const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
-    const response = await mutationFunction({
-      variables: {
-        input: {
-          crateId: crate.id,
-          profileId: mainProfile,
-        },
-      },
-    });
-
-    if (mutationFunction === addCrateToFavorites) {
-      // const creatorId = response.data.addCrateToFavorites.creator.id;
-      createNotification({
-        variables: {
-          receiver: crate.creator.id,
-          type: 'newFavorite',
-          actionOwner: mainProfile,
-          notificationRef: crate.id,
-        },
-      });
-    }
-  };
+  const { markRecommendationSeen, getMoreRecommendations, loadingAdditional } = useMutations(mainProfile);
 
   useEffect(() => {
     const initialRecommendations = initialData?.getRecommendations.recommendations;
@@ -169,13 +39,6 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
     // Randomly shuffle the initial recommendations
     if (initialRecommendations) {
       let shuffledRecommendations = [...initialRecommendations];
-      // for (let i = shuffledRecommendations.length - 1; i > 0; i--) {
-      //   const j = Math.floor(Math.random() * (i + 1));
-      //   [shuffledRecommendations[i], shuffledRecommendations[j]] = [
-      //     shuffledRecommendations[j],
-      //     shuffledRecommendations[i],
-      //   ];
-      // }
 
       setCurrentRecommendations(shuffledRecommendations);
       setUsedPages(initialData?.getRecommendations.usedPages);
@@ -214,7 +77,7 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
               setActiveCrate(null);
             }}
             currentProfile={usernameMain}
-            favoriteIconHandler={handleFavoriteToggle}
+            favoriteIconHandler={() => handleFavoriteToggle}
           />
           <Pane crateDiggingPane={true}>
             {currentRecommendations.map((recommendation, index) => (
@@ -223,7 +86,15 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
                 onViewportEnter={async () => {
                   if (index === lastIndex) {
                     console.log(`You hit the last item!`);
-                    handleGetMoreRecommendations();
+                    handleGetMoreRecommendations(
+                      mainProfile,
+                      usedPages,
+                      currentRecommendations,
+                      setCurrentRecommendations,
+                      setLastIndex,
+                      setUsedPages,
+                      getMoreRecommendations,
+                    );
                   }
                 }}
                 className={cx('recommendation', {
@@ -237,7 +108,6 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
                 }}
               >
                 <div>
-                  {/* {!recommendation.seen && <DotOutline size={24} className={cx('seenIcon')} />} */}
                   {!seenRecommendations.includes(recommendation.id) && (
                     <DotOutline size={24} className={cx('seenIcon')} />
                   )}

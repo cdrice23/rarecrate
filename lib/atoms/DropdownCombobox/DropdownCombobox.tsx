@@ -8,8 +8,6 @@ const DropdownCombobox = ({ enterHandler, updateNewItem, listItems, itemLabel, s
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
 
-  // console.log(inputItems);
-
   useEffect(() => {
     setInputItems(listItems);
   }, [listItems]);

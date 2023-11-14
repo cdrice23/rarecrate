@@ -1,19 +1,17 @@
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Heart, User as UserIcon } from '@phosphor-icons/react';
+import { Route } from '@/core/enums/routes';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Pill } from '@/lib/atoms/Pill/Pill';
-import {
-  ADD_CRATE_TO_FAVORITES,
-  REMOVE_CRATE_FROM_FAVORITES,
-  CREATE_NOTIFICATION,
-} from '@/db/graphql/clientOperations';
+import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
+import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateSummaryPane.helpers';
 
 type CrateSummaryPaneProps = {
   currentItems: any[];
@@ -36,106 +34,35 @@ const CrateSummaryPane = ({
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
   const [createNotification] = useMutation(CREATE_NOTIFICATION);
 
+  const addCrateToFavorites = useAddCrateToFavorites(mainProfile);
+  const removeCrateFromFavorites = useRemoveCrateFromFavorites(mainProfile);
+
   const router = useRouter();
 
   useEffect(() => {
     const { selectedCrate } = router.query;
-    if (selectedCrate) {
+    if (selectedCrate && !showCrateDetail) {
       setActiveCrate(Number(selectedCrate));
       setShowCrateDetail(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.selectedCrate]);
 
-  const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {
-    update: (cache, { data: { addCrateToFavorites } }) => {
-      cache.modify({
-        id: cache.identify(addCrateToFavorites),
-        fields: {
-          favoritedBy(existingFavoritedBy = []) {
-            return addCrateToFavorites.favoritedBy;
-          },
-        },
-      });
-
-      cache.modify({
-        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
-        fields: {
-          favorites(existingFavorites = []) {
-            const newFragment = cache.writeFragment({
-              data: addCrateToFavorites,
-              fragment: gql`
-                fragment NewFavorite on Crate {
-                  id
-                }
-              `,
-            });
-
-            return [...existingFavorites, newFragment];
-          },
-        },
-      });
-    },
-  });
-
-  const [removeCrateFromFavorites] = useMutation(REMOVE_CRATE_FROM_FAVORITES, {
-    update: (cache, { data: { removeCrateFromFavorites } }) => {
-      cache.modify({
-        id: cache.identify(removeCrateFromFavorites),
-        fields: {
-          favoritedBy(existingFavoritedBy = []) {
-            return existingFavoritedBy.filter(profile => profile.id !== mainProfile);
-          },
-        },
-      });
-
-      cache.modify({
-        id: cache.identify({ __typename: 'Profile', id: mainProfile }),
-        fields: {
-          favorites(existingFavorites = [], { readField }) {
-            return existingFavorites.filter(crate => readField('id', crate) !== removeCrateFromFavorites.id);
-          },
-        },
-      });
-    },
-  });
-
-  const handleFavoriteToggle = async (checkStatus, crate, mainProfile) => {
-    const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
-    await mutationFunction({
-      variables: {
-        input: {
-          crateId: crate.id,
-          profileId: mainProfile,
-        },
-      },
-    });
-
-    if (mutationFunction === addCrateToFavorites) {
-      createNotification({
-        variables: {
-          receiver: crate.creator.id,
-          type: 'newFavorite',
-          actionOwner: mainProfile,
-          notificationRef: crate.id,
-        },
-      });
-    }
-  };
-
-  console.log(currentItems);
-
   return (
     <>
-      <CrateDetail
-        userProfiles={userProfiles}
-        activeCrateId={activeCrate}
-        show={showCrateDetail}
-        onClose={() => {
-          setShowCrateDetail(false);
-        }}
-        currentProfile={username}
-      />
+      {activeCrate && (
+        <CrateDetail
+          userProfiles={userProfiles}
+          activeCrateId={activeCrate}
+          show={showCrateDetail}
+          onClose={() => {
+            setShowCrateDetail(false);
+            router.push(Route.Profile + `/${username}`);
+          }}
+          currentProfile={username}
+        />
+      )}
+
       <Pane crateSummaryPane={true}>
         {currentItems.map((crate, index) => (
           <motion.div
@@ -167,7 +94,14 @@ const CrateSummaryPane = ({
                     icon={<Heart />}
                     checkStatus={Boolean(currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0)}
                     handler={checkStatus => {
-                      handleFavoriteToggle(checkStatus, crate, mainProfile);
+                      handleFavoriteToggle(
+                        checkStatus,
+                        crate,
+                        mainProfile,
+                        createNotification,
+                        addCrateToFavorites,
+                        removeCrateFromFavorites,
+                      );
                     }}
                   />
                 ) : (

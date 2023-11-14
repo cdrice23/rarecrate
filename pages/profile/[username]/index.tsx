@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { useRouter } from 'next/router';
 import { useQuery, useLazyQuery } from '@apollo/client';
 import authed from '@/core/helpers/authed';
+import { Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { Pane } from '@/lib/atoms/Pane/Pane';
@@ -171,6 +172,7 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
       default:
         break;
     }
+
     setActivePane(pane);
   };
 

@@ -35,7 +35,6 @@ const AlbumSearchResult = ({
           setCurrentPage((lastSlice + 1) / 30 + 1);
         }
         if (index === lastIndex) {
-          // console.log(`${title} is the last item!`);
           console.log(`You hit the last item!`);
           await handleDiscogsSearch();
         }
