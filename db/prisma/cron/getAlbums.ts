@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
-import { recordLabelSearchArray } from '../../../core/constants/seedHelpers/recordLabels';
+import { recordLabelSearchArray } from '@/core/constants/seedHelpers/recordLabels';
 
 const prisma = new PrismaClient();
 

@@ -1,7 +1,7 @@
-import { prisma } from '../../db/prismaClient';
 import { GetServerSideProps } from 'next';
 import { getSession, Claims } from '@auth0/nextjs-auth0';
-import { PublicRoute } from '../enums/routes';
+import { PublicRoute } from '@/core/enums/routes';
+import { prisma } from '@/db/prismaClient';
 
 export interface AuthedSSR {
   user: Claims;

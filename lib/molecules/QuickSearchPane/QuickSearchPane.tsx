@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { GetMenuPropsOptions, GetItemPropsOptions } from 'downshift';
 import { useMutation } from '@apollo/client';
-import { Route } from '../../../core/enums/routes';
+import { Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';

@@ -1,8 +1,8 @@
-import { userSeedArray as users } from '../../../core/constants/seedHelpers/user';
-import { profileSeedArray as profiles } from '../../../core/constants/seedHelpers/profile';
-import { followSeedArray as follows } from '../../../core/constants/seedHelpers/follow';
-import { followRequestSeedArray as followRequests } from '../../../core/constants/seedHelpers/followRequest';
-import { socialLinkSeedArray as socialLinks } from '../../../core/constants/seedHelpers/socialLink';
+import { userSeedArray as users } from '@/core/constants/seedHelpers/user';
+import { profileSeedArray as profiles } from '@/core/constants/seedHelpers/profile';
+import { followSeedArray as follows } from '@/core/constants/seedHelpers/follow';
+import { followRequestSeedArray as followRequests } from '@/core/constants/seedHelpers/followRequest';
+import { socialLinkSeedArray as socialLinks } from '@/core/constants/seedHelpers/socialLink';
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();

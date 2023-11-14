@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode } from 'react';
-import useLocalStorage from '../../core/hooks/useLocalStorage';
+import useLocalStorage from '@/core/hooks/useLocalStorage';
 
 export type PaneType =
   | 'profiles'

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown, CaretLeft } from '@phosphor-icons/react';
-import { Route } from '../../../core/enums/routes';
+import { Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';

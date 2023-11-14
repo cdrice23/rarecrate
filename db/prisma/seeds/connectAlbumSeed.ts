@@ -1,6 +1,6 @@
-import { crateSeedArray as crates } from '../../../core/constants/seedHelpers/crate';
-import { crateAlbumSeedArray as crateAlbums } from '../../../core/constants/seedHelpers/crateAlbum';
-import { tagSeedArray as tags } from '../../../core/constants/seedHelpers/tag';
+import { crateSeedArray as crates } from '@/core/constants/seedHelpers/crate';
+import { crateAlbumSeedArray as crateAlbums } from '@/core/constants/seedHelpers/crateAlbum';
+import { tagSeedArray as tags } from '@/core/constants/seedHelpers/tag';
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();

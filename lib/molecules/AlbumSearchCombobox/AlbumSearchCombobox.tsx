@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
-import { fetchDiscogsResults } from '../../../core/helpers/discogs';
+import { fetchDiscogsResults } from '@/core/helpers/discogs';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { useQuery } from '@apollo/client';
-import authed from '../../core/helpers/authed';
+import authed from '@/core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { Pane } from '@/lib/atoms/Pane/Pane';

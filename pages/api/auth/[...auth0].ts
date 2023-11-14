@@ -1,6 +1,6 @@
 import { handleAuth, handleLogin, handleLogout, handleCallback } from '@auth0/nextjs-auth0';
-import { Route, PublicRoute } from '../../../core/enums/routes';
-import { prisma } from '../../../db/prismaClient';
+import { Route, PublicRoute } from '@/core/enums/routes';
+import { prisma } from '@/db/prismaClient';
 
 interface Error {
   status?: number;

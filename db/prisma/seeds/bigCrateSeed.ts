@@ -1,6 +1,6 @@
-import { profileSeedArray as profiles } from '../../../core/constants/seedHelpers/profile';
-import { crateSeedArray as crates } from '../../../core/constants/seedHelpers/crate';
-import { labelSeedArray as labels } from '../../../core/constants/seedHelpers/label';
+import { profileSeedArray as profiles } from '@/core/constants/seedHelpers/profile';
+import { crateSeedArray as crates } from '@/core/constants/seedHelpers/crate';
+import { labelSeedArray as labels } from '@/core/constants/seedHelpers/label';
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();

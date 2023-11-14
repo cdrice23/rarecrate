@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
-import { albumSeedArray as albums } from '../../../core/constants/seedHelpers/albums';
+import { albumSeedArray as albums } from '@/core/constants/seedHelpers/albums';
 
 const prisma = new PrismaClient();
 

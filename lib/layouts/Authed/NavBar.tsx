@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
+import { Route, PublicRoute } from '@/core/enums/routes';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { useLocalState } from '@/lib/context/state';
 import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
-import { Route, PublicRoute } from '../../../core/enums/routes';
 
 type NavBarProps = {
   className: string;

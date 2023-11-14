@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { useMutation } from '@apollo/client';
-import authed from '../../core/helpers/authed';
+import authed from '@/core/helpers/authed';
 import { PublicRoute, Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Pane } from '@/lib/atoms/Pane/Pane';

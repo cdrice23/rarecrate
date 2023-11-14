@@ -3,7 +3,7 @@ import { useEffect, useState, useReducer, useRef } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { useRouter } from 'next/router';
 import { useQuery, useLazyQuery } from '@apollo/client';
-import authed from '../../../core/helpers/authed';
+import authed from '@/core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
 import { AuthedLayout } from '@/lib/layouts/Authed';
 import { Pane } from '@/lib/atoms/Pane/Pane';

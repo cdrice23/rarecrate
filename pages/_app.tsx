@@ -4,9 +4,8 @@ import { ApolloProvider } from '@apollo/client';
 import { ToastContainer, Bounce } from 'react-toastify';
 import '@/styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.min.css';
-
-import { client } from '../db/apollo';
 import { LocalStateProvider } from '@/lib/context/state';
+import { client } from '@/db/apollo';
 
 export default function App({ Component, pageProps }: any) {
   return (
