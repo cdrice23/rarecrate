@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import OutsideClickHandler from 'react-outside-click-handler';
 import cx from 'classnames';
+import OutsideClickHandler from 'react-outside-click-handler';
+import { ReactNode } from 'react';
 import { X } from '@phosphor-icons/react';
 
 interface IModal {

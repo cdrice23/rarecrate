@@ -1,6 +1,10 @@
-import { Pane } from '@/lib/atoms/Pane/Pane';
-import { useQuery, useMutation, useLazyQuery, gql } from '@apollo/client';
+import cx from 'classnames';
 import { useApolloClient } from '@apollo/client';
+import { useQuery, useMutation, useLazyQuery, gql } from '@apollo/client';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
+import { useLocalState } from '@/lib/context/state';
 import {
   GET_RECOMMENDATIONS,
   ADD_CRATE_TO_FAVORITES,
@@ -8,12 +12,8 @@ import {
   CREATE_NOTIFICATION,
   MARK_RECOMMENDATION_SEEN,
 } from '@/db/graphql/clientOperations';
-import cx from 'classnames';
-import { useState, useEffect } from 'react';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
-import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
-import { useLocalState } from '@/lib/context/state';
-import { motion } from 'framer-motion';
 
 type CrateDiggingPaneProps = {
   mainProfile: number;

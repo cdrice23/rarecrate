@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Route } from '../../../core/enums/routes';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown, CaretLeft } from '@phosphor-icons/react';
-import cx from 'classnames';
+import { Route } from '../../../core/enums/routes';
+import { useLocalState } from '@/lib/context/state';
 import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
-import { useLazyQuery, useMutation } from '@apollo/client';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
-import { useLocalState } from '@/lib/context/state';
-import { PaneType } from '@/lib/context/state';
 
 type SearchPath = {
   topTier?: { type: string; name: string; id: number };

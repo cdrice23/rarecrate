@@ -1,20 +1,18 @@
-import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
+import { useState } from 'react';
+import { useQuery, useMutation, gql, useApolloClient } from '@apollo/client';
+import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { Modal } from '@/lib/atoms/Modal/Modal';
 import {
   GET_PROFILE,
   CREATE_NEW_FOLLOW_OR_REQUEST,
   UNFOLLOW_PROFILE,
   GET_PENDING_FOLLOW_REQUESTS,
 } from '@/db/graphql/clientOperations';
-import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
-import { useApolloClient } from '@apollo/client';
-import { useState } from 'react';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
-import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
-import Image from 'next/image';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 type ProfilePaneProps = {

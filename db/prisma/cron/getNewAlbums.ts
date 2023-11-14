@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { PrismaClient } from '@prisma/client';
 import * as cheerio from 'cheerio';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 

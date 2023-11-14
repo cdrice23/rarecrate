@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { calculateSimilarity } from '../../core/helpers/discogs';
 
 dotenv.config();

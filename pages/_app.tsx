@@ -1,5 +1,4 @@
 import Head from 'next/head';
-
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { ApolloProvider } from '@apollo/client';
 import { ToastContainer, Bounce } from 'react-toastify';

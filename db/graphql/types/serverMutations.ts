@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { nonNull, extendType, inputObjectType, mutationType, stringArg, intArg } from 'nexus';
 import {
   User as NexusUser,
@@ -15,7 +16,6 @@ import {
   Recommendation as NexusRecommendation,
 } from './nexusTypes';
 import { RequestStatusEnum } from './nexusEnums';
-import axios from 'axios';
 
 // INPUT OBJECT TYPES
 export const FollowOrRequestInput = inputObjectType({

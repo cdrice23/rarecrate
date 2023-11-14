@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
-import useSignedUrl from '@/core/hooks/useSignedUrl';
 import Image from 'next/image';
 import { User as UserIcon } from '@phosphor-icons/react';
+import useSignedUrl from '@/core/hooks/useSignedUrl';
 
 interface ProfilePicProps {
   username: string;
@@ -10,8 +9,6 @@ interface ProfilePicProps {
 }
 
 const ProfilePic = ({ username, size, imageVersion }: ProfilePicProps) => {
-  // const key = useMemo(() => [username, imageVersion], [username, imageVersion]);
-  // const currentProfilePic = useSignedUrl(key);
   const currentProfilePic = useSignedUrl(username);
 
   return currentProfilePic ? (

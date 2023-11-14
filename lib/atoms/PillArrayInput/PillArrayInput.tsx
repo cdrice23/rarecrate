@@ -1,8 +1,8 @@
-import { ErrorMessage, FieldArray, Field } from 'formik';
+import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useState } from 'react';
+import { FieldArray } from 'formik';
 import { Plus } from '@phosphor-icons/react';
-import cx from 'classnames';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
 

@@ -1,11 +1,11 @@
-import { Pane } from '@/lib/atoms/Pane/Pane';
 import cx from 'classnames';
-import { useLocalState } from '@/lib/context/state';
+import { gql } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { DELETE_PROFILE, GET_PROFILE } from '@/db/graphql/clientOperations';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
-import { gql } from '@apollo/client';
+import { Pane } from '@/lib/atoms/Pane/Pane';
+import { useLocalState } from '@/lib/context/state';
+import { DELETE_PROFILE } from '@/db/graphql/clientOperations';
 
 interface DeleteProfileProps {
   profileToDelete: number;

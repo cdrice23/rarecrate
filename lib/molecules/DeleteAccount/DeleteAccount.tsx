@@ -1,7 +1,7 @@
-import { Pane } from '@/lib/atoms/Pane/Pane';
 import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 
 interface DeleteAccountProps {
   userProfiles: Array<{ id: number; username: string } | { isAddProfile: boolean }>;

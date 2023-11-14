@@ -1,13 +1,12 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
 import cx from 'classnames';
+import { useState } from 'react';
+import { Formik, Field, Form } from 'formik';
 import { toast } from 'react-toastify';
-import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useQuery, useMutation } from '@apollo/client';
+import { Message } from '@/lib/atoms/Message/Message';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
 import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
-import { Message } from '@/lib/atoms/Message/Message';
-import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
-import { useState } from 'react';
 import { DeleteAccount } from '../DeleteAccount/DeleteAccount';
 
 const UserSettings = ({ userId, userProfiles }) => {

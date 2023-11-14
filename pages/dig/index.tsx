@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { AuthedLayout } from '@/lib/layouts/Authed';
-import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
-import cx from 'classnames';
+import { AuthedLayout } from '@/lib/layouts/Authed';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { createContext } from '@/db/graphql/context';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';

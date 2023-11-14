@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Image from 'next/image';
 import cx from 'classnames';
+import Image from 'next/image';
+import { useState } from 'react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
 

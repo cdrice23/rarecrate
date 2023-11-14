@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import cx from 'classnames';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import cx from 'classnames';
 
 import { Route, PublicRoute } from '../../../core/enums/routes';
 

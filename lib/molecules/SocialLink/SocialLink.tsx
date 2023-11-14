@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import cx from 'classnames';
+import { Field } from 'formik';
 import { PencilSimple, X, Check } from '@phosphor-icons/react';
 import { SocialPlatform } from '@/core/enums/database';
-import { Field } from 'formik';
 
 const SocialLink = ({
   data,

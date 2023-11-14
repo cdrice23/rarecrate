@@ -1,19 +1,19 @@
-import { Pane } from '@/lib/atoms/Pane/Pane';
+import cx from 'classnames';
+import { useState, useEffect } from 'react';
 import { useMutation, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import { Heart, User as UserIcon } from '@phosphor-icons/react';
+import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
+import { Pane } from '@/lib/atoms/Pane/Pane';
+import { Pill } from '@/lib/atoms/Pill/Pill';
 import {
   ADD_CRATE_TO_FAVORITES,
   REMOVE_CRATE_FROM_FAVORITES,
   CREATE_NOTIFICATION,
 } from '@/db/graphql/clientOperations';
-import cx from 'classnames';
-import { useState, useEffect } from 'react';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
-import { Heart, User as UserIcon } from '@phosphor-icons/react';
-import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
-import { motion } from 'framer-motion';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-import { Pill } from '@/lib/atoms/Pill/Pill';
 
 type FavoriteSummaryPaneProps = {
   currentItems: any[];

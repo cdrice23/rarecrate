@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import cx from 'classnames';
-import { SocialPlatform } from '@/core/enums/database';
+import OutsideClickHandler from 'react-outside-click-handler';
+import { useState } from 'react';
 import {
   LinkSimpleHorizontal,
   TwitterLogo,
@@ -9,8 +9,7 @@ import {
   YoutubeLogo,
   VinylRecord,
 } from '@phosphor-icons/react';
-import OutsideClickHandler from 'react-outside-click-handler';
-import Link from 'next/link';
+import { SocialPlatform } from '@/core/enums/database';
 
 interface SocialLinkButtonProps {
   socialLinks: [{ platform: SocialPlatform; username: string }];

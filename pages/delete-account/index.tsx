@@ -1,14 +1,14 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { DELETE_PROFILE, DELETE_USER } from '@/db/graphql/clientOperations';
 import { useMutation } from '@apollo/client';
-import axios from 'axios';
 import authed from '../../core/helpers/authed';
-import { createContext } from '@/db/graphql/context';
 import { PublicRoute, Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { createContext } from '@/db/graphql/context';
+import { DELETE_PROFILE, DELETE_USER } from '@/db/graphql/clientOperations';
 
 interface DeleteAccountPageProps {
   userId?: number;

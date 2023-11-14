@@ -1,5 +1,4 @@
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import cx from 'classnames';
 
 const UserAgreement = () => {
   return (

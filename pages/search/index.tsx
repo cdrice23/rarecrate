@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { AuthedLayout } from '@/lib/layouts/Authed';
-import { createContext } from '@/db/graphql/context';
 import { useQuery } from '@apollo/client';
-import cx from 'classnames';
-import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GlobalSearch } from '@/lib/molecules/GlobalSearch/GlobalSearch';
-
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
+import { AuthedLayout } from '@/lib/layouts/Authed';
+import { Pane } from '@/lib/atoms/Pane/Pane';
+import { GlobalSearch } from '@/lib/molecules/GlobalSearch/GlobalSearch';
+import { createContext } from '@/db/graphql/context';
 import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
 
 interface SearchProps {

@@ -1,9 +1,9 @@
-import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
+import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Route } from '../../../core/enums/routes';
-import { useMutation } from '@apollo/client';
-import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { useLocalState } from '@/lib/context/state';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 
 interface FullSearchPaneProps {
   currentItems: any[];

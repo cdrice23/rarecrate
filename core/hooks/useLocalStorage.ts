@@ -1,6 +1,5 @@
 // Allows read/write data to local storage so state persists
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
-
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 import useEventListener from './useEventListener';
 

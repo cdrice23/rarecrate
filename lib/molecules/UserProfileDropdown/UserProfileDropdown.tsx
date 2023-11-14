@@ -1,14 +1,13 @@
-import { useSelect } from 'downshift';
-import { DotOutline, MinusCircle } from '@phosphor-icons/react';
-import { Pane } from '@/lib/atoms/Pane/Pane';
-import { useLocalState } from '@/lib/context/state';
 import cx from 'classnames';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useSelect } from 'downshift';
+import { DotOutline, MinusCircle } from '@phosphor-icons/react';
 import { Route } from '@/core/enums/routes';
+import { useLocalState } from '@/lib/context/state';
+import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Message } from '@/lib/atoms/Message/Message';
 import { DeleteProfile } from '../DeleteProfile/DeleteProfile';
-import { boolean } from 'yup';
 
 const UserProfileDropdown = ({ userProfiles }) => {
   const [dropdownProfiles, setDropdownProfiles] = useState(userProfiles);

@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import fs from 'fs';
 import axios from 'axios';
+import fs from 'fs';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 

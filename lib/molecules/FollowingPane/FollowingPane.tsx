@@ -1,9 +1,9 @@
-import { Pane } from '@/lib/atoms/Pane/Pane';
 import cx from 'classnames';
-import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
-import { Route } from '@/core/enums/routes';
 import { motion } from 'framer-motion';
 import { User as UserIcon } from '@phosphor-icons/react';
+import { Route } from '@/core/enums/routes';
+import { Pane } from '@/lib/atoms/Pane/Pane';
+import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 type FollowingPaneProps = {

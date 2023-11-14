@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { PrismaClient, User as PrismaUser } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { Claims, getSession } from '@auth0/nextjs-auth0';
 
 import { prisma } from '../prismaClient';
@@ -8,7 +8,6 @@ export type Context = {
   prisma: PrismaClient;
   auth0User?: Claims;
   accessToken?: string;
-  // prismaUser?: PrismaUser;
   prismaUser?: any;
 };
 
@@ -30,14 +29,6 @@ export async function createContext(req: NextApiRequest, res: NextApiResponse): 
       notificationSettings: true,
     },
   });
-
-  // if (prismaUser.notificationSettings === null) {
-  //   await prisma.notificationSettings.create({
-  //     data: {
-  //       user: {connect: {id: prismaUser.id}}
-  //     }
-  //   })
-  // }
 
   return {
     prisma,

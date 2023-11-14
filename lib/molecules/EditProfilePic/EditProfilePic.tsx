@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
+import cx from 'classnames';
+import { useEffect, useState, useRef } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useRouter } from 'next/router';
 import Croppie from 'croppie';
 import 'croppie/croppie.css';
-import axios from 'axios';
-import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations';
-import cx from 'classnames';
 import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
+import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-import { useRouter } from 'next/router';
 
 interface EditProfilePicProps {
   profileData: { username: string; id: number };

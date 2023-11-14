@@ -1,5 +1,5 @@
-import { useLazyQuery, useQuery } from '@apollo/client';
 import cx from 'classnames';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_NOTIFICATIONS_BY_PROFILE } from '@/db/graphql/clientOperations';
 

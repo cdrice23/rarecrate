@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import cx from 'classnames';
-import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 

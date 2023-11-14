@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import cx from 'classnames';
+import { useState, useEffect } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
-import cx from 'classnames';
 
 const DropdownCombobox = ({ enterHandler, updateNewItem, listItems, itemLabel, searchQuery, loading }) => {
   const [inputItems, setInputItems] = useState([]);

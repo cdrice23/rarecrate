@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import cx from 'classnames';
+import { useState } from 'react';
 import { Headphones, VinylRecord, SpotifyLogo, AppleLogo } from '@phosphor-icons/react';
 import {
   getSpotifyAlbumUrlFromSearch,

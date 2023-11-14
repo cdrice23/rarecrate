@@ -1,5 +1,5 @@
-import { X } from '@phosphor-icons/react';
 import cx from 'classnames';
+import { X } from '@phosphor-icons/react';
 
 interface PillProps {
   name: string;

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import cx from 'classnames';
 
 interface LinkProps {
   href?: string | null;

@@ -1,4 +1,4 @@
-import { objectType, unionType } from 'nexus';
+import { objectType } from 'nexus';
 import {
   User as PrismaUser,
   Profile as PrismaProfile,

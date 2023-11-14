@@ -1,8 +1,7 @@
-import { SocialPlatform } from '@/core/enums/database';
-import { Field, FieldArray } from 'formik';
 import cx from 'classnames';
-import { X, Check, Plus, PencilSimple } from '@phosphor-icons/react';
 import { useState } from 'react';
+import { FieldArray } from 'formik';
+import { Plus } from '@phosphor-icons/react';
 import { SocialLink } from '../SocialLink/SocialLink';
 
 const SocialLinksArrayInput = ({ socialLinks, setFieldValue }) => {

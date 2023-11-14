@@ -1,5 +1,9 @@
-import { useState, useEffect, useReducer } from 'react';
+import cx from 'classnames';
+import { useEffect, useReducer } from 'react';
 import { useLazyQuery } from '@apollo/client';
+import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
+import { PaneType, useLocalState } from '@/lib/context/state';
+import { Pill } from '@/lib/atoms/Pill/Pill';
 import {
   FS_PROFILES,
   FS_CRATES,
@@ -14,12 +18,7 @@ import {
   GET_ALBUMS_FROM_GENRE,
   GET_ALBUMS_FROM_SUBGENRE,
 } from '@/db/graphql/clientOperations';
-import cx from 'classnames';
 import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
-import { PaneType } from '@/lib/context/state';
-import { Pill } from '@/lib/atoms/Pill/Pill';
-import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
-import { useLocalState } from '@/lib/context/state';
 
 interface FullSearchControllerProps {
   searchPrompt: string;

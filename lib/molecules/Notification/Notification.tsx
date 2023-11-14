@@ -1,9 +1,9 @@
 import cx from 'classnames';
-import { Pill } from '@/lib/atoms/Pill/Pill';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { Route } from '@/core/enums/routes';
 import { User as UserIcon } from '@phosphor-icons/react';
+import { Route } from '@/core/enums/routes';
+import { Pill } from '@/lib/atoms/Pill/Pill';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 
 interface NotificationProps {

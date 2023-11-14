@@ -1,8 +1,8 @@
+import cx from 'classnames';
 import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import NavBar from './NavBar';
-import cx from 'classnames';
 import { Route } from '@/core/enums/routes';
+import NavBar from './NavBar';
 
 interface AuthedLayoutProps {
   children: ReactNode;

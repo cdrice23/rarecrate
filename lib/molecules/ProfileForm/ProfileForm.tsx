@@ -1,9 +1,15 @@
-import { useState } from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import cx from 'classnames';
-import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
-import { profileFormSchema } from '@/core/helpers/validation';
+import { useState } from 'react';
 import { useLazyQuery, useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { gql } from '@apollo/client';
+import { User as UserIcon, Camera } from '@phosphor-icons/react';
+import { profileFormSchema } from '@/core/helpers/validation';
+import { PublicRoute, Route } from '@/core/enums/routes';
+import { useLocalState } from '@/lib/context/state';
+import { Modal } from '@/lib/atoms/Modal/Modal';
 import {
   GET_PROFILE,
   UPDATE_PROFILE,
@@ -11,15 +17,9 @@ import {
   CREATE_NEW_PROFILE,
   ACCEPT_USER_AGREEMENT,
 } from '@/db/graphql/clientOperations';
-import * as yup from 'yup';
-import { useLocalState } from '@/lib/context/state';
-import { useRouter } from 'next/router';
-import { PublicRoute, Route } from '@/core/enums/routes';
-import { gql } from '@apollo/client';
-import { Modal } from '@/lib/atoms/Modal/Modal';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-import { User as UserIcon, Camera } from '@phosphor-icons/react';
+import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { EditProfilePic } from '../EditProfilePic/EditProfilePic';
 
 interface ProfileFormProps {

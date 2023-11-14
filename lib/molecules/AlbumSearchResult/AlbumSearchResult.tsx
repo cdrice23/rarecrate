@@ -1,8 +1,8 @@
+import cx from 'classnames';
 import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { easeInOut, easeOut, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { formatArtistName } from '@/core/helpers/cosmetic';
-import cx from 'classnames';
 
 interface AlbumSearchResultProps {
   index: number;

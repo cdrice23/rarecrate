@@ -1,5 +1,5 @@
-import { getSession } from '@auth0/nextjs-auth0';
 import axios from 'axios';
+import { getSession } from '@auth0/nextjs-auth0';
 
 const getManagementApiToken = async () => {
   const tokenEndpoint = `https://${process.env.AUTH0_DOMAIN}/oauth/token`;

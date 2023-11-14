@@ -1,9 +1,9 @@
 import cx from 'classnames';
-import { X } from '@phosphor-icons/react';
-import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { X } from '@phosphor-icons/react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
+import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 
 interface CrateAlbumInputProps {
   id: number;

@@ -1,11 +1,11 @@
-import { Form, Formik, ErrorMessage } from 'formik';
-import { TextInput } from '@/lib/atoms/TextInput/TextInput';
-import { crateFormSchema } from '@/core/helpers/validation';
-import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import cx from 'classnames';
-import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
-import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
+import { useRouter } from 'next/router';
+import { Form, Formik, ErrorMessage } from 'formik';
 import { useMutation, useLazyQuery } from '@apollo/client';
+import { crateFormSchema } from '@/core/helpers/validation';
+import { Route } from '@/core/enums/routes';
+import { TextInput } from '@/lib/atoms/TextInput/TextInput';
+import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import {
   ADD_NEW_LABEL,
   ADD_NEW_TAG,
@@ -14,8 +14,8 @@ import {
   UPDATE_CRATE,
   GET_CRATE_DETAIL_WITH_ALBUMS,
 } from '@/db/graphql/clientOperations';
-import { useRouter } from 'next/router';
-import { Route } from '@/core/enums/routes';
+import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
+import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
 
 interface CrateFormProps {
   creatorId: number;

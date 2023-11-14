@@ -1,13 +1,13 @@
-import { useQuery, useMutation, gql } from '@apollo/client';
 import cx from 'classnames';
+import { useQuery, useMutation, gql } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
+import { Check, X } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import {
   GET_PENDING_FOLLOW_REQUESTS,
   ACCEPT_FOLLOW_REQUEST,
   REJECT_FOLLOW_REQUEST,
 } from '@/db/graphql/clientOperations';
-import { DotsThree, Check, X } from '@phosphor-icons/react';
-import { useApolloClient } from '@apollo/client';
 
 type FollowRequestPaneProps = {
   mainProfile: number;
