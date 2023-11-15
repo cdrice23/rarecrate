@@ -39,13 +39,7 @@ const ExternalLinkDropdownButton = ({ albumArtist, albumTitle, discogsMasterId }
         <ul className={cx('externalLinkMenu')}>
           <li className={cx('menuItem')}>
             <a href={getPlatformUrl('SPOTIFY')} target="_blank" onClick={event => event.stopPropagation()}>
-              <div
-                className={cx('platform')}
-                // onClick={event => {
-                //   event.stopPropagation();
-                //   console.log('Opening album on spotify');
-                // }}
-              >
+              <div className={cx('platform')}>
                 <SpotifyLogo />
                 <p>Listen on Spotify</p>
               </div>
@@ -53,13 +47,7 @@ const ExternalLinkDropdownButton = ({ albumArtist, albumTitle, discogsMasterId }
           </li>
           <li className={cx('menuItem')}>
             <a href={getPlatformUrl('APPLE')} target="_blank" onClick={event => event.stopPropagation()}>
-              <div
-                className={cx('platform')}
-                // onClick={event => {
-                //   event.stopPropagation();
-                //   console.log('Opening album on apple music');
-                // }}
-              >
+              <div className={cx('platform')}>
                 <AppleLogo />
                 <p>Listen on Apple Music</p>
               </div>
@@ -67,13 +55,7 @@ const ExternalLinkDropdownButton = ({ albumArtist, albumTitle, discogsMasterId }
           </li>
           <li className={cx('menuItem')}>
             <a href={getPlatformUrl('DISCOGS')} target="_blank" onClick={event => event.stopPropagation()}>
-              <div
-                className={cx('platform')}
-                // onClick={event => {
-                //   event.stopPropagation();
-                //   console.log('Opening album on discogs');
-                // }}
-              >
+              <div className={cx('platform')}>
                 <VinylRecord />
                 <p>Find/Buy on Discogs</p>
               </div>

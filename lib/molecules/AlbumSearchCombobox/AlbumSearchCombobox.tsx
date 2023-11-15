@@ -4,9 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
-import { fetchDiscogsResults } from '@/core/helpers/discogs';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
+import { handleDiscogsSearch, onKeyDown, onChange, onMouseDown } from './AlbumSearchCombobox.helpers';
 
 const AlbumSearchCombobox = ({
   value,
@@ -37,7 +37,18 @@ const AlbumSearchCombobox = ({
     if (triggerDiscogsSearch) {
       // Delay handleDiscogsSearch by 1s to avoid rate-limit on discogs
       const timer = setTimeout(() => {
-        handleDiscogsSearch();
+        handleDiscogsSearch(
+          value,
+          selectedPage,
+          expArtistResults,
+          expTitleResults,
+          inputItems,
+          setInputItems,
+          setExpArtistResults,
+          setExpTitleResults,
+          setSelectedPage,
+          setLoadingDiscogs,
+        );
       }, 1000);
 
       return () => clearTimeout(timer);
@@ -56,20 +67,6 @@ const AlbumSearchCombobox = ({
     itemToString: (item: any) => (item ? item.title : ''),
   });
 
-  const handleDiscogsSearch = async () => {
-    setLoadingDiscogs(true);
-    const newResults = await fetchDiscogsResults(value, selectedPage, 15, expArtistResults, expTitleResults);
-    setExpArtistResults(Number(newResults.expArtistResults));
-    setExpTitleResults(Number(newResults.expTitleResults));
-    setSelectedPage(selectedPage + 1);
-    const updatedResults = [...inputItems, ...newResults.formattedResults];
-    const uniqueUpdatedResults = updatedResults.filter(
-      (v, i, a) => a.findIndex(t => t.discogsMasterId === v.discogsMasterId) === i,
-    );
-    setInputItems(uniqueUpdatedResults);
-    setLoadingDiscogs(false);
-  };
-
   return (
     <div className={cx('searchInput')}>
       <div className={cx('inputSection')}>
@@ -85,53 +82,34 @@ const AlbumSearchCombobox = ({
               value,
               placeholder: 'Search Albums',
               onKeyDown: async event => {
-                if (event.key === 'Enter') {
-                  clearTimeout(debounceTimeout);
-                  setDebounceTimeout(null);
-                  setIsOpen(false);
-                  setSelectedItem(inputItems[highlightedIndex]);
-                  enterHandler(inputItems[highlightedIndex]);
-                  console.log(inputItems[highlightedIndex]);
-                  if (inputItems[highlightedIndex].id) {
-                    logSelectedSearchResult({
-                      variables: {
-                        searchTerm: value,
-                        prismaModel: 'album',
-                        selectedId: inputItems[highlightedIndex].id,
-                      },
-                    });
-                  }
-                  updateSearchPrompt('');
-                }
+                onKeyDown(
+                  event,
+                  value,
+                  inputItems,
+                  highlightedIndex,
+                  setIsOpen,
+                  setSelectedItem,
+                  enterHandler,
+                  updateSearchPrompt,
+                  debounceTimeout,
+                  setDebounceTimeout,
+                  logSelectedSearchResult,
+                );
               },
-              onChange: event => {
-                const inputValue = event.currentTarget.value;
-                // Reset state for discogs searches
-                setLoadingDiscogs(false);
-                setSelectedPage(1);
-                setExpArtistResults(0);
-                setExpTitleResults(0);
-                // Clear previous debounce timeout
-                if (debounceTimeout) {
-                  clearTimeout(debounceTimeout);
-                }
-
-                // When typing, run the passed search query
-                if (inputValue !== selectedItem?.title) {
-                  setIsOpen(true);
-                  // Debounce to wait 300ms after user stops typing
-                  const newDebounceTimeout = setTimeout(() => {
-                    searchQuery({ variables: { searchTerm: inputValue } });
-                    console.log('You are done typing');
-                  }, 300);
-                  setDebounceTimeout(newDebounceTimeout);
-                }
-
-                updateSearchPrompt(inputValue);
-
-                if (inputValue === '') {
-                  setIsOpen(false);
-                }
+              onChange: async event => {
+                onChange(
+                  event,
+                  setIsOpen,
+                  setLoadingDiscogs,
+                  selectedItem,
+                  debounceTimeout,
+                  setDebounceTimeout,
+                  searchQuery,
+                  updateSearchPrompt,
+                  setSelectedPage,
+                  setExpArtistResults,
+                  setExpTitleResults,
+                );
               },
               onFocus: () => {
                 if (value !== '') {
@@ -160,21 +138,19 @@ const AlbumSearchCombobox = ({
                     item,
                     index,
                     onMouseDown: () => {
-                      clearTimeout(debounceTimeout);
-                      setDebounceTimeout(null);
-                      setIsOpen(false);
-                      setSelectedItem(inputItems[index]);
-                      enterHandler(inputItems[index]);
-                      if (inputItems[highlightedIndex].id) {
-                        logSelectedSearchResult({
-                          variables: {
-                            searchTerm: value,
-                            prismaModel: 'album',
-                            selectedId: inputItems[highlightedIndex].id,
-                          },
-                        });
-                      }
-                      updateSearchPrompt('');
+                      onMouseDown(
+                        setIsOpen,
+                        setSelectedItem,
+                        logSelectedSearchResult,
+                        debounceTimeout,
+                        setDebounceTimeout,
+                        inputItems,
+                        index,
+                        highlightedIndex,
+                        value,
+                        enterHandler,
+                        updateSearchPrompt,
+                      );
                     },
                   })}
                 >
@@ -185,7 +161,20 @@ const AlbumSearchCombobox = ({
                     imageUrl={item.imageUrl}
                     lastIndex={inputItems.length - 1}
                     lastSlice={currentPage * 30 - 1}
-                    handleDiscogsSearch={handleDiscogsSearch}
+                    handleDiscogsSearch={() =>
+                      handleDiscogsSearch(
+                        value,
+                        selectedPage,
+                        expArtistResults,
+                        expTitleResults,
+                        inputItems,
+                        setInputItems,
+                        setExpArtistResults,
+                        setExpTitleResults,
+                        setSelectedPage,
+                        setLoadingDiscogs,
+                      )
+                    }
                     setCurrentPage={setCurrentPage}
                   />
                 </li>

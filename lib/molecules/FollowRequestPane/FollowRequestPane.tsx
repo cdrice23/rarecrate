@@ -8,6 +8,12 @@ import {
   ACCEPT_FOLLOW_REQUEST,
   REJECT_FOLLOW_REQUEST,
 } from '@/db/graphql/clientOperations';
+import {
+  useRejectFollowRequest,
+  useAcceptFollowRequest,
+  handleAccept,
+  handleReject,
+} from './FollowRequestPane.helpers';
 
 type FollowRequestPaneProps = {
   mainProfile: number;
@@ -20,89 +26,95 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
 
   const followRequestData = data?.getPendingFollowRequests;
 
-  const [rejectFollowRequest] = useMutation(REJECT_FOLLOW_REQUEST, {
-    update(cache, { data: { rejectFollowRequest } }) {
-      cache.evict({ id: cache.identify(rejectFollowRequest) });
-    },
-  });
+  const rejectFollowRequest = useRejectFollowRequest();
+  const acceptFollowRequest = useAcceptFollowRequest();
 
-  const [acceptFollowRequest] = useMutation(ACCEPT_FOLLOW_REQUEST, {
-    update(cache, { data: { acceptFollowRequest } }) {
-      cache.evict({
-        id: cache.identify({
-          __typename: 'FollowRequest',
-          id: acceptFollowRequest.followRequest.id,
-        }),
-      });
-      cache.gc();
+  const handleAcceptEvent = handleAccept(mainProfile, acceptFollowRequest);
+  const handleRejectEvent = handleReject(mainProfile, rejectFollowRequest);
 
-      const newFollowerRef = cache.writeFragment({
-        data: acceptFollowRequest.follow.follower,
-        fragment: gql`
-          fragment NewFollower on Profile {
-            id
-          }
-        `,
-      });
+  // const [rejectFollowRequest] = useMutation(REJECT_FOLLOW_REQUEST, {
+  //   update(cache, { data: { rejectFollowRequest } }) {
+  //     cache.evict({ id: cache.identify(rejectFollowRequest) });
+  //   },
+  // });
 
-      const newFollowingRef = cache.writeFragment({
-        data: acceptFollowRequest.follow.following,
-        fragment: gql`
-          fragment NewFollowing on Profile {
-            id
-          }
-        `,
-      });
+  // const [acceptFollowRequest] = useMutation(ACCEPT_FOLLOW_REQUEST, {
+  //   update(cache, { data: { acceptFollowRequest } }) {
+  //     cache.evict({
+  //       id: cache.identify({
+  //         __typename: 'FollowRequest',
+  //         id: acceptFollowRequest.followRequest.id,
+  //       }),
+  //     });
+  //     cache.gc();
 
-      cache.modify({
-        id: cache.identify({
-          __typename: 'Profile',
-          id: acceptFollowRequest.follow.follower.id,
-        }),
-        fields: {
-          following(existingFollowing = []) {
-            return [...existingFollowing, newFollowingRef];
-          },
-        },
-      });
+  //     const newFollowerRef = cache.writeFragment({
+  //       data: acceptFollowRequest.follow.follower,
+  //       fragment: gql`
+  //         fragment NewFollower on Profile {
+  //           id
+  //         }
+  //       `,
+  //     });
 
-      cache.modify({
-        id: cache.identify({
-          __typename: 'Profile',
-          id: acceptFollowRequest.follow.following.id,
-        }),
-        fields: {
-          followers(existingFollowers = []) {
-            return [...existingFollowers, newFollowerRef];
-          },
-        },
-      });
-    },
-  });
+  //     const newFollowingRef = cache.writeFragment({
+  //       data: acceptFollowRequest.follow.following,
+  //       fragment: gql`
+  //         fragment NewFollowing on Profile {
+  //           id
+  //         }
+  //       `,
+  //     });
 
-  const handleAccept = event => {
-    acceptFollowRequest({
-      variables: {
-        input: {
-          follower: Number(event.currentTarget.id),
-          following: mainProfile,
-        },
-      },
-    });
-  };
+  //     cache.modify({
+  //       id: cache.identify({
+  //         __typename: 'Profile',
+  //         id: acceptFollowRequest.follow.follower.id,
+  //       }),
+  //       fields: {
+  //         following(existingFollowing = []) {
+  //           return [...existingFollowing, newFollowingRef];
+  //         },
+  //       },
+  //     });
 
-  const handleReject = event => {
-    rejectFollowRequest({
-      variables: {
-        input: {
-          follower: Number(event.currentTarget.id),
-          following: mainProfile,
-        },
-      },
-    });
-  };
+  //     cache.modify({
+  //       id: cache.identify({
+  //         __typename: 'Profile',
+  //         id: acceptFollowRequest.follow.following.id,
+  //       }),
+  //       fields: {
+  //         followers(existingFollowers = []) {
+  //           return [...existingFollowers, newFollowerRef];
+  //         },
+  //       },
+  //     });
+  //   },
+  // });
 
-  console.log(useApolloClient().cache.extract());
+  // const handleAccept = event => {
+  //   acceptFollowRequest({
+  //     variables: {
+  //       input: {
+  //         follower: Number(event.currentTarget.id),
+  //         following: mainProfile,
+  //       },
+  //     },
+  //   });
+  // };
+
+  // const handleReject = event => {
+  //   rejectFollowRequest({
+  //     variables: {
+  //       input: {
+  //         follower: Number(event.currentTarget.id),
+  //         following: mainProfile,
+  //       },
+  //     },
+  //   });
+  // };
+
+  // console.log(useApolloClient().cache.extract());
 
   return (
     <>
@@ -121,10 +133,10 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
                 <p className={cx('image')}>{profile.sender.image ?? 'P'}</p>
                 <p className={cx('username')}>{profile.sender.username}</p>
                 <div className={cx('buttons')}>
-                  <button id={profile.sender.id} onClick={event => handleAccept(event)}>
+                  <button id={profile.sender.id} onClick={handleAcceptEvent}>
                     <Check />
                   </button>
-                  <button id={profile.sender.id} onClick={event => handleReject(event)}>
+                  <button id={profile.sender.id} onClick={handleRejectEvent}>
                     <X />
                   </button>
                 </div>
