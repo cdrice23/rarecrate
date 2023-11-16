@@ -14,6 +14,7 @@ import { ProfileForm } from '../ProfileForm/ProfileForm';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
+import { useFollowMutations, handleFollowClick } from './ProfilePane.helpers';
 
 type ProfilePaneProps = {
   username: string;
@@ -54,111 +55,11 @@ const ProfilePane = ({
 
   // console.log(useApolloClient().cache.extract());
 
-  const [createNewFollowOrRequest] = useMutation(CREATE_NEW_FOLLOW_OR_REQUEST, {
-    update: (cache, { data }) => {
-      const newFollow = data?.createNewFollowOrRequest?.follow;
-
-      if (newFollow) {
-        const newFollowerRef = cache.writeFragment({
-          data: newFollow.follower,
-          fragment: gql`
-            fragment NewFollower on Profile {
-              id
-            }
-          `,
-        });
-
-        const newFollowingRef = cache.writeFragment({
-          data: newFollow.following,
-          fragment: gql`
-            fragment NewFollowing on Profile {
-              id
-            }
-          `,
-        });
-
-        cache.modify({
-          id: cache.identify(profileData),
-          fields: {
-            followers(existingFollowers = []) {
-              return [...existingFollowers, newFollowerRef];
-            },
-          },
-        });
-
-        cache.modify({
-          id: cache.identify({
-            __typename: 'Profile',
-            id: mainProfile,
-          }),
-          fields: {
-            following(existingFollowing = []) {
-              return [...existingFollowing, newFollowingRef];
-            },
-          },
-        });
-      }
-
-      refetchFollowRequests();
-    },
-  });
-
-  const [unfollowProfile] = useMutation(UNFOLLOW_PROFILE, {
-    update: (cache, { data }) => {
-      const unfollowedProfile = data?.unfollowProfile;
-
-      if (unfollowedProfile) {
-        cache.modify({
-          id: cache.identify(profileData),
-          fields: {
-            followers(existingFollowers = [], { readField }) {
-              return existingFollowers.filter(
-                followerRef => unfollowedProfile.followerId !== readField('id', followerRef),
-              );
-            },
-          },
-        });
-
-        cache.modify({
-          id: cache.identify({
-            __typename: 'Profile',
-            id: mainProfile,
-          }),
-          fields: {
-            following(existingFollowing = [], { readField }) {
-              return existingFollowing.filter(
-                followingRef => unfollowedProfile.followingId !== readField('id', followingRef),
-              );
-            },
-          },
-        });
-      }
-    },
-  });
-
-  const handleFollowClick = isFollowing => {
-    if (isFollowing) {
-      unfollowProfile({
-        variables: {
-          input: {
-            follower: mainProfile,
-            following: profileData?.id,
-            followingIsPrivate: profileData?.isPrivate,
-          },
-        },
-      });
-    } else {
-      createNewFollowOrRequest({
-        variables: {
-          input: {
-            follower: mainProfile,
-            following: profileData?.id,
-            followingIsPrivate: profileData?.isPrivate,
-          },
-        },
-      });
-    }
-  };
+  const { createNewFollowOrRequest, unfollowProfile } = useFollowMutations(
+    mainProfile,
+    profileData,
+    refetchFollowRequests,
+  );
 
   return (
     <>
@@ -226,7 +127,17 @@ const ProfilePane = ({
                   </button>
                 )}
                 {!isMain && !isUserProfile && (
-                  <button onClick={() => handleFollowClick(isFollowing)}>
+                  <button
+                    onClick={async isFollowing =>
+                      handleFollowClick(
+                        isFollowing,
+                        mainProfile,
+                        profileData,
+                        unfollowProfile,
+                        createNewFollowOrRequest,
+                      )
+                    }
+                  >
                     {isFollowing ? 'Following' : hasPendingRequest ? 'Requested' : 'Follow'}
                   </button>
                 )}

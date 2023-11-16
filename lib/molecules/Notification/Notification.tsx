@@ -5,6 +5,13 @@ import { User as UserIcon } from '@phosphor-icons/react';
 import { Route } from '@/core/enums/routes';
 import { Pill } from '@/lib/atoms/Pill/Pill';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
+import {
+  handleActionOwnerNav,
+  handleConnectedCrateNav,
+  handleConnectedProfile,
+  calculateTime,
+  displayTime,
+} from './Notification.helpers';
 
 interface NotificationProps {
   index: number;
@@ -21,36 +28,14 @@ const Notification = ({
   notificationData,
   mainProfile,
   lastIndex,
-  currentPage,
   getMoreNotifications,
   setCurrentPage,
 }: NotificationProps) => {
   const { type, createdAt } = notificationData;
-  // console.log(`${notificationData.id} is index ${index} and last index is ${lastIndex}`);
 
   const router = useRouter();
 
   const actionOwnerPath = Route.Profile + `/${notificationData.actionOwner.username}`;
-  const handleActionOwnerNav = () => {
-    router.push({
-      pathname: actionOwnerPath,
-    });
-  };
-
-  const handleConnectedCrateNav = () => {
-    router.push({
-      pathname: Route.Profile + `/${notificationData.connectedCrate.creator.username}`,
-      query: {
-        selectedCrate: notificationData.connectedCrate.id,
-      },
-    });
-  };
-
-  const handleConnectedProfile = () => {
-    router.push({
-      pathname: Route.Profile + `/${notificationData.connectedFollow.following.username}`,
-    });
-  };
 
   switch (type) {
     case 'newCrate':
@@ -66,7 +51,10 @@ const Notification = ({
           }}
         >
           <div className={cx('notificationBanner')}>
-            <div className={cx('image')} onClick={handleActionOwnerNav}>
+            <div
+              className={cx('image')}
+              onClick={() => handleActionOwnerNav(router, notificationData.actionOwner.username)}
+            >
               {notificationData.actionOwner.image ? (
                 <ProfilePic username={notificationData.actionOwner.username} size={36} />
               ) : (
@@ -79,7 +67,16 @@ const Notification = ({
             </p>
             <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
           </div>
-          <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
+          <div
+            className={cx('notificationCrateSummary')}
+            onClick={() =>
+              handleConnectedCrateNav(
+                router,
+                notificationData.connectedCrate.creator.username,
+                notificationData.connectedCrate.id,
+              )
+            }
+          >
             <h3>{notificationData.connectedCrate.title}</h3>
             <p>{notificationData.connectedCrate.description}</p>
             <div className={cx('crateLabels')}>
@@ -104,7 +101,10 @@ const Notification = ({
             }}
           >
             <div className={cx('notificationBanner')}>
-              <div className={cx('image')} onClick={handleActionOwnerNav}>
+              <div
+                className={cx('image')}
+                onClick={() => handleActionOwnerNav(router, notificationData.actionOwner.username)}
+              >
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
@@ -132,7 +132,10 @@ const Notification = ({
             }}
           >
             <div className={cx('notificationBanner')}>
-              <div className={cx('image')} onClick={handleActionOwnerNav}>
+              <div
+                className={cx('image')}
+                onClick={() => handleActionOwnerNav(router, notificationData.actionOwner.username)}
+              >
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
@@ -145,7 +148,10 @@ const Notification = ({
               </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationProfileSummary')} onClick={handleConnectedProfile}>
+            <div
+              className={cx('notificationProfileSummary')}
+              onClick={() => handleConnectedProfile(router, notificationData.connectedFollow.following.username)}
+            >
               <div className={cx('profileBanner')}>
                 <div className={cx('image')}>
                   {notificationData.connectedFollow.following.image ? (
@@ -183,7 +189,10 @@ const Notification = ({
             }}
           >
             <div className={cx('notificationBanner')}>
-              <div className={cx('image')} onClick={handleActionOwnerNav}>
+              <div
+                className={cx('image')}
+                onClick={() => handleActionOwnerNav(router, notificationData.actionOwner.username)}
+              >
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
@@ -196,7 +205,16 @@ const Notification = ({
               </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
+            <div
+              className={cx('notificationCrateSummary')}
+              onClick={() =>
+                handleConnectedCrateNav(
+                  router,
+                  notificationData.connectedCrate.creator.username,
+                  notificationData.connectedCrate.id,
+                )
+              }
+            >
               <h3>{notificationData.connectedCrate.title}</h3>
               <p>{notificationData.connectedCrate.description}</p>
               <div className={cx('crateLabels')}>
@@ -220,7 +238,10 @@ const Notification = ({
             }}
           >
             <div className={cx('notificationBanner')}>
-              <div className={cx('image')} onClick={handleActionOwnerNav}>
+              <div
+                className={cx('image')}
+                onClick={() => handleActionOwnerNav(router, notificationData.actionOwner.username)}
+              >
                 {notificationData.actionOwner.image ? (
                   <ProfilePic username={notificationData.actionOwner.username} size={36} />
                 ) : (
@@ -233,7 +254,16 @@ const Notification = ({
               </p>
               <p className={cx('timestamp')}>{displayTime(calculateTime(new Date(createdAt).toLocaleString()))}</p>
             </div>
-            <div className={cx('notificationCrateSummary')} onClick={handleConnectedCrateNav}>
+            <div
+              className={cx('notificationCrateSummary')}
+              onClick={() =>
+                handleConnectedCrateNav(
+                  router,
+                  notificationData.connectedCrate.creator.username,
+                  notificationData.connectedCrate.id,
+                )
+              }
+            >
               <h3>{notificationData.connectedCrate.title}</h3>
               <p>{notificationData.connectedCrate.description}</p>
               <div className={cx('crateLabels')}>
@@ -251,38 +281,3 @@ const Notification = ({
 };
 
 export { Notification };
-
-function calculateTime(createdDate: string) {
-  const currentDate = new Date();
-  const createdDateTime = new Date(createdDate);
-  const diffTime = Math.abs(currentDate.valueOf() - createdDateTime.valueOf());
-
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
-
-  return { diffDays, diffHours, diffMinutes };
-}
-
-function displayTime({
-  diffDays,
-  diffHours,
-  diffMinutes,
-}: {
-  diffDays: number;
-  diffHours: number;
-  diffMinutes: number;
-}) {
-  if (diffDays >= 7) {
-    const weeks = Math.ceil(diffDays / 7);
-    return `${weeks}w`;
-  } else if (diffDays > 0) {
-    return `${diffDays}d`;
-  } else if (diffHours > 0) {
-    return `${diffHours}h`;
-  } else if (diffMinutes > 0) {
-    return `${diffMinutes} minutes ago`;
-  } else {
-    return 'just now';
-  }
-}

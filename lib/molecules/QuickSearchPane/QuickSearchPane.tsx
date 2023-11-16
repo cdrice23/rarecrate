@@ -2,10 +2,10 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { GetMenuPropsOptions, GetItemPropsOptions } from 'downshift';
 import { useMutation } from '@apollo/client';
-import { Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
+import { handleOnMouseDown } from './QuickSearchPane.helpers';
 
 interface QuickSearchPaneProps {
   style: any;
@@ -43,7 +43,6 @@ const QuickSearchPane = ({
       ) : inputItems.length > 0 ? (
         <>
           {inputItems
-            // Fix this filter
             .filter(
               item =>
                 !(
@@ -77,29 +76,7 @@ const QuickSearchPane = ({
                     item,
                     index,
                     onMouseDown: async () => {
-                      clearTimeout(debounceTimeout);
-                      setDebounceTimeout(null);
-
-                      // setSelectedItem(inputItems[index]);
-
-                      // Handle routes
-                      console.log(inputItems[highlightedIndex]);
-                      if (inputItems[highlightedIndex].__typename === 'Profile') {
-                        router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
-                        await logSelectedSearchResult({
-                          variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
-                        });
-                      }
-
-                      if (inputItems[highlightedIndex].__typename === 'Crate') {
-                        router.push({
-                          pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
-                          query: { searchedCrateSelected: inputItems[highlightedIndex].id },
-                        });
-                        await logSelectedSearchResult({
-                          variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
-                        });
-                      }
+                      handleOnMouseDown(item, debounceTimeout, setDebounceTimeout, router, logSelectedSearchResult);
                     },
                   })}
                 >

@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown, CaretLeft } from '@phosphor-icons/react';
-import { Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
+import { handleOnClick, handleOnChange, handleOnKeyDown } from './GlobalSearch.helpers';
 
 type SearchPath = {
   topTier?: { type: string; name: string; id: number };
@@ -33,7 +33,10 @@ const GlobalSearch = () => {
   const [showFullSearchPane, setShowFullSearchPane] = useState<boolean>(false);
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
   const [searchPath, setSearchPath] = useState<SearchPath>({});
-  // const [activePane, setActivePane] = useState<PaneType>(currentActivePane);
+
+  const { getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
+    items: inputItems || [],
+  });
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
@@ -42,10 +45,6 @@ const GlobalSearch = () => {
     .slice(0, 9);
   const router = useRouter();
 
-  // console.log(inputItems);
-  // console.log(showFullSearchPane);
-
-  // Load list items from graphQL query
   useEffect(() => {
     if (data && searchPrompt !== '') {
       setInputItems([...searchResults, { isShowMoreButton: true }]);
@@ -59,11 +58,6 @@ const GlobalSearch = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchPrompt]);
 
-  const { getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
-    items: inputItems || [],
-    // itemToString: (item: any) => (item ? item.title : ''),
-  });
-
   return (
     <div className={cx('searchPane')}>
       <div className={cx('inputSection')}>
@@ -71,46 +65,15 @@ const GlobalSearch = () => {
           <button
             className={cx('backButton')}
             onClick={() => {
-              switch (currentActivePane) {
-                case 'profiles':
-                case 'crates':
-                case 'albums':
-                case 'labelsAndTags':
-                case 'genresAndSubgenres':
-                  setShowFullSearchPane(false);
-                  setSearchPath({});
-                  break;
-                case 'cratesFromLabel':
-                case 'albumsFromTag':
-                  setCurrentActivePane('labelsAndTags');
-                  setSearchPath({});
-                  break;
-                case 'albumsFromGenre':
-                case 'albumsFromSubgenre':
-                  setCurrentActivePane('genresAndSubgenres');
-                  setSearchPath({});
-                  break;
-                case 'cratesFromAlbum':
-                  setCurrentActivePane(prevActivePane);
-                  switch (prevActivePane) {
-                    case 'albumsFromTag':
-                      setPrevActivePane('labelsAndTags');
-                      setSearchPath({ ...searchPath, midTier: null });
-                      break;
-                    case 'albumsFromGenre':
-                    case 'albumsFromSubgenre':
-                      setPrevActivePane('genresAndSubgenres');
-                      setSearchPath({ ...searchPath, midTier: null });
-                      break;
-                    case 'albums':
-                      setPrevActivePane('albums');
-                      setSearchPath({});
-                    default:
-                      break;
-                  }
-                default:
-                  break;
-              }
+              handleOnClick(
+                currentActivePane,
+                prevActivePane,
+                setShowFullSearchPane,
+                setSearchPath,
+                setPrevActivePane,
+                searchPath,
+                setCurrentActivePane,
+              );
             }}
           >
             <CaretLeft />
@@ -121,61 +84,30 @@ const GlobalSearch = () => {
             value: searchPrompt,
             placeholder: 'Search Rare Crate',
             onKeyDown: async event => {
-              if (event.key === 'Enter' && !showFullSearchPane) {
-                clearTimeout(debounceTimeout);
-                setDebounceTimeout(null);
-
-                // Handle routes
-                if (inputItems[highlightedIndex].__typename === 'Profile') {
-                  router.push(Route.Profile + `/${inputItems[highlightedIndex].username}`);
-                  await logSelectedSearchResult({
-                    variables: { prismaModel: 'profile', selectedId: inputItems[highlightedIndex].id },
-                  });
-                }
-
-                if (inputItems[highlightedIndex].__typename === 'Crate') {
-                  router.push({
-                    pathname: Route.Profile + `/${inputItems[highlightedIndex].creator.username}`,
-                    query: { searchedCrateSelected: inputItems[highlightedIndex].id },
-                  });
-                  await logSelectedSearchResult({
-                    variables: { prismaModel: 'crate', selectedId: inputItems[highlightedIndex].id },
-                  });
-                }
-
-                if (inputItems[highlightedIndex].isShowMoreButton) {
-                  setCurrentActivePane('profiles');
-                  setShowFullSearchPane(true);
-                }
-              }
+              handleOnKeyDown(
+                event,
+                showFullSearchPane,
+                setShowFullSearchPane,
+                setCurrentActivePane,
+                logSelectedSearchResult,
+                router,
+                inputItems,
+                highlightedIndex,
+                debounceTimeout,
+                setDebounceTimeout,
+              );
             },
             onChange: event => {
-              setShowFullSearchPane(false);
-              const inputValue = event.currentTarget.value;
-
-              if (inputValue === '') {
-                clearTimeout(debounceTimeout);
-                setDebounceTimeout(null);
-                setSearchPrompt(inputValue);
-                setInputItems([]);
-                setQuickSearchResults([]);
-              }
-              // Clear previous debounce timeout
-              if (debounceTimeout) {
-                clearTimeout(debounceTimeout);
-              }
-
-              // When typing, run the passed search query
-              if (inputValue !== '') {
-                // Debounce to wait 300ms after user stops typing
-                const newDebounceTimeout = setTimeout(() => {
-                  searchQuery({ variables: { searchTerm: inputValue } });
-                }, 300);
-                setDebounceTimeout(newDebounceTimeout);
-              }
-
-              setSearchPrompt(inputValue);
-              // setGlobalSearchPrompt(inputValue);
+              handleOnChange(
+                event,
+                setShowFullSearchPane,
+                setSearchPrompt,
+                setInputItems,
+                setQuickSearchResults,
+                searchQuery,
+                debounceTimeout,
+                setDebounceTimeout,
+              );
             },
             onFocus: () => {
               setShowFullSearchPane(false);

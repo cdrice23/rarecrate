@@ -10,6 +10,7 @@ import {
   VinylRecord,
 } from '@phosphor-icons/react';
 import { SocialPlatform } from '@/core/enums/database';
+import { getPlatformLogo, getPlatformUrl } from './SocialLinkButton.helpers';
 
 interface SocialLinkButtonProps {
   socialLinks: [{ platform: SocialPlatform; username: string }];
@@ -17,40 +18,6 @@ interface SocialLinkButtonProps {
 
 const SocialLinkButton = ({ socialLinks }: SocialLinkButtonProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const getPlatformLogo = platform => {
-    switch (platform) {
-      case 'TWITTER':
-        return <TwitterLogo />;
-      case 'INSTAGRAM':
-        return <InstagramLogo />;
-      case 'SPOTIFY':
-        return <SpotifyLogo />;
-      case 'YOUTUBE':
-        return <YoutubeLogo />;
-      case 'DISCOGS':
-        return <VinylRecord />;
-      default:
-        return null;
-    }
-  };
-
-  const getPlatformUrl = (platform, username) => {
-    switch (platform) {
-      case 'TWITTER':
-        return `https://twitter.com/${username}`;
-      case 'INSTAGRAM':
-        return `https://www.instagram.com/${username}`;
-      case 'SPOTIFY':
-        return `https://open.spotify.com/user/${username}`;
-      case 'YOUTUBE':
-        return `https://www.youtube.com/user/${username}`;
-      case 'DISCOGS':
-        return `https://www.discogs.com/user/${username}`;
-      default:
-        return '';
-    }
-  };
 
   return (
     <div className={cx('socialLinkButton')}>

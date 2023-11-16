@@ -1,13 +1,13 @@
 import cx from 'classnames';
 import { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
-import { toast } from 'react-toastify';
 import { useQuery, useMutation } from '@apollo/client';
 import { Message } from '@/lib/atoms/Message/Message';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
 import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
 import { DeleteAccount } from '../DeleteAccount/DeleteAccount';
+import { onSubmit } from './UserSettings.helpers';
 
 const UserSettings = ({ userId, userProfiles }) => {
   const [showDeleteAccount, setShowDeleteAccount] = useState<boolean>(false);
@@ -17,36 +17,6 @@ const UserSettings = ({ userId, userProfiles }) => {
   const [updateNotificationSettings] = useMutation(UPDATE_NOTIFICATION_SETTINGS);
 
   const notificationSettings = data?.getNotificationSettingsByUser;
-
-  const onSubmit = async (values, actions) => {
-    actions.setSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    const {
-      showOwnNewFollowers,
-      showOwnNewFavorites,
-      showFollowingNewFollows,
-      showFollowingNewCrates,
-      showFollowingNewFavorites,
-    } = values;
-
-    updateNotificationSettings({
-      variables: {
-        input: {
-          userId,
-          showOwnNewFollowers,
-          showOwnNewFavorites,
-          showFollowingNewFollows,
-          showFollowingNewCrates,
-          showFollowingNewFavorites,
-        },
-      },
-      onCompleted: () => {
-        toast.success('Notification Settings updated!');
-        actions.resetForm({ values });
-        actions.setSubmitting(false);
-      },
-    });
-  };
 
   return (
     <>
@@ -61,8 +31,7 @@ const UserSettings = ({ userId, userProfiles }) => {
         <Pane>
           <Formik
             initialValues={notificationSettings}
-            // validationSchema={updatedSchema}
-            onSubmit={onSubmit}
+            onSubmit={(values, actions) => onSubmit(values, actions, userId, updateNotificationSettings)}
           >
             {({ values, isSubmitting, initialValues }) => {
               return (
