@@ -1,13 +1,9 @@
 import cx from 'classnames';
-import { useQuery, useMutation, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useApolloClient } from '@apollo/client';
 import { Check, X } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import {
-  GET_PENDING_FOLLOW_REQUESTS,
-  ACCEPT_FOLLOW_REQUEST,
-  REJECT_FOLLOW_REQUEST,
-} from '@/db/graphql/clientOperations';
+import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
 import {
   useRejectFollowRequest,
   useAcceptFollowRequest,
@@ -31,88 +27,6 @@ const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
 
   const handleAcceptEvent = handleAccept(mainProfile, acceptFollowRequest);
   const handleRejectEvent = handleReject(mainProfile, rejectFollowRequest);
-
-  // const [rejectFollowRequest] = useMutation(REJECT_FOLLOW_REQUEST, {
-  //   update(cache, { data: { rejectFollowRequest } }) {
-  //     cache.evict({ id: cache.identify(rejectFollowRequest) });
-  //   },
-  // });
-
-  // const [acceptFollowRequest] = useMutation(ACCEPT_FOLLOW_REQUEST, {
-  //   update(cache, { data: { acceptFollowRequest } }) {
-  //     cache.evict({
-  //       id: cache.identify({
-  //         __typename: 'FollowRequest',
-  //         id: acceptFollowRequest.followRequest.id,
-  //       }),
-  //     });
-  //     cache.gc();
-
-  //     const newFollowerRef = cache.writeFragment({
-  //       data: acceptFollowRequest.follow.follower,
-  //       fragment: gql`
-  //         fragment NewFollower on Profile {
-  //           id
-  //         }
-  //       `,
-  //     });
-
-  //     const newFollowingRef = cache.writeFragment({
-  //       data: acceptFollowRequest.follow.following,
-  //       fragment: gql`
-  //         fragment NewFollowing on Profile {
-  //           id
-  //         }
-  //       `,
-  //     });
-
-  //     cache.modify({
-  //       id: cache.identify({
-  //         __typename: 'Profile',
-  //         id: acceptFollowRequest.follow.follower.id,
-  //       }),
-  //       fields: {
-  //         following(existingFollowing = []) {
-  //           return [...existingFollowing, newFollowingRef];
-  //         },
-  //       },
-  //     });
-
-  //     cache.modify({
-  //       id: cache.identify({
-  //         __typename: 'Profile',
-  //         id: acceptFollowRequest.follow.following.id,
-  //       }),
-  //       fields: {
-  //         followers(existingFollowers = []) {
-  //           return [...existingFollowers, newFollowerRef];
-  //         },
-  //       },
-  //     });
-  //   },
-  // });
-
-  // const handleAccept = event => {
-  //   acceptFollowRequest({
-  //     variables: {
-  //       input: {
-  //         follower: Number(event.currentTarget.id),
-  //         following: mainProfile,
-  //       },
-  //     },
-  //   });
-  // };
-
-  // const handleReject = event => {
-  //   rejectFollowRequest({
-  //     variables: {
-  //       input: {
-  //         follower: Number(event.currentTarget.id),
-  //         following: mainProfile,
-  //       },
-  //     },
-  //   });
-  // };
 
   // console.log(useApolloClient().cache.extract());
 

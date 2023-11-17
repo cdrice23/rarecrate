@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useApolloClient } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Heart, User as UserIcon } from '@phosphor-icons/react';
@@ -38,6 +38,8 @@ const CrateSummaryPane = ({
   const removeCrateFromFavorites = useRemoveCrateFromFavorites(mainProfile);
 
   const router = useRouter();
+
+  console.log(useApolloClient().cache.extract());
 
   useEffect(() => {
     const { selectedCrate } = router.query;

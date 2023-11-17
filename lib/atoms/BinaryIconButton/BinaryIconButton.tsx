@@ -1,4 +1,4 @@
-import { useState, cloneElement, ReactElement } from 'react';
+import { useState, cloneElement, ReactElement, MouseEvent } from 'react';
 
 interface BinaryIconButtonProps {
   icon: ReactElement;
