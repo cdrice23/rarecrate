@@ -1,13 +1,14 @@
 import cx from 'classnames';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { DotsThreeVertical, Heart } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
-import { GET_CRATE_DETAIL_WITH_ALBUMS } from '@/db/graphql/clientOperations';
+import { GET_CRATE_DETAIL_WITH_ALBUMS, CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { CrateAlbumData, CrateAlbum } from '../CrateAlbum/CrateAlbum';
 import { CrateForm } from '../CrateForm/CrateForm';
+import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateDetail.helpers';
 
 type ProfileBadgeData = {
   id: number;
@@ -39,7 +40,6 @@ type CrateDetailFaceProps = {
   userProfiles?: [{ id: number; username: string }];
   handleSwitch: (newFace: 'front' | 'back') => void;
   handleEdit?: () => void;
-  favoriteIconHandler?: (checkStatus: boolean, crate: any, mainProfile: number) => void;
 };
 
 type CrateDetailProps = {
@@ -47,11 +47,10 @@ type CrateDetailProps = {
   activeCrateId?: number;
   show?: boolean;
   currentProfile: string;
-  favoriteIconHandler?: (checkStatus: boolean, crate: any, mainProfile: number) => void;
   onClose: () => void;
 };
 
-const CrateDetail = ({ userProfiles, activeCrateId, show, favoriteIconHandler, onClose }: CrateDetailProps) => {
+const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');
   const [showEditCrate, setShowEditCrate] = useState<boolean>(false);
   const { loading, error, data } = useQuery(GET_CRATE_DETAIL_WITH_ALBUMS, {
@@ -83,7 +82,6 @@ const CrateDetail = ({ userProfiles, activeCrateId, show, favoriteIconHandler, o
                 profileId={profileIdMain}
                 userProfiles={userProfiles}
                 handleSwitch={handleSwitch}
-                favoriteIconHandler={favoriteIconHandler}
               />
             }
             title={`${crateData.title} - Front`}
@@ -122,14 +120,24 @@ const CrateDetail = ({ userProfiles, activeCrateId, show, favoriteIconHandler, o
   );
 };
 
-const CrateDetailFront = ({
-  data,
-  profileId,
-  userProfiles,
-  favoriteIconHandler,
-  handleSwitch,
-}: CrateDetailFaceProps) => {
+const CrateDetailFront = ({ data, profileId, userProfiles, handleSwitch }: CrateDetailFaceProps) => {
   const rankedAlbums = [...data.albums].sort((a, b) => a.rank - b.rank);
+  const [createNotification] = useMutation(CREATE_NOTIFICATION);
+  const addCrateToFavorites = useAddCrateToFavorites(profileId);
+  const removeCrateFromFavorites = useRemoveCrateFromFavorites(profileId);
+
+  const favoriteIconHandler = async () => {
+    const checkStatus = Boolean(data.favoritedBy.filter(p => p.id === profileId).length > 0);
+    await handleFavoriteToggle(
+      checkStatus,
+      data,
+      profileId,
+      createNotification,
+      addCrateToFavorites,
+      removeCrateFromFavorites,
+    );
+  };
+
   return (
     <>
       <div className={cx('crateDetailInfo')}>
@@ -146,9 +154,7 @@ const CrateDetailFront = ({
           <BinaryIconButton
             icon={<Heart />}
             checkStatus={Boolean(data.favoritedBy.filter(p => p.id === profileId).length > 0)}
-            handler={checkStatus => {
-              favoriteIconHandler(checkStatus, data, profileId);
-            }}
+            handler={favoriteIconHandler}
           />
         )}
       </div>

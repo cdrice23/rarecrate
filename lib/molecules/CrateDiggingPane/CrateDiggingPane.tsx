@@ -77,7 +77,6 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
               setActiveCrate(null);
             }}
             currentProfile={usernameMain}
-            favoriteIconHandler={() => handleFavoriteToggle}
           />
           <Pane crateDiggingPane={true}>
             {currentRecommendations.map((recommendation, index) => (

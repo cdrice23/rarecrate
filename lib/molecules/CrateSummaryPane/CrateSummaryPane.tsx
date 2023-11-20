@@ -40,6 +40,7 @@ const CrateSummaryPane = ({
   const router = useRouter();
 
   console.log(useApolloClient().cache.extract());
+  console.log(currentItems.filter(crate => crate.id === activeCrate));
 
   useEffect(() => {
     const { selectedCrate } = router.query;
@@ -95,8 +96,11 @@ const CrateSummaryPane = ({
                   <BinaryIconButton
                     icon={<Heart />}
                     checkStatus={Boolean(currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0)}
-                    handler={checkStatus => {
-                      handleFavoriteToggle(
+                    handler={async () => {
+                      const checkStatus = Boolean(
+                        currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                      );
+                      await handleFavoriteToggle(
                         checkStatus,
                         crate,
                         mainProfile,
