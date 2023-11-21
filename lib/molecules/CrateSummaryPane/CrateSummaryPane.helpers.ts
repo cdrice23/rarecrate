@@ -69,6 +69,7 @@ export const handleFavoriteToggle = async (
   createNotification,
   addCrateToFavorites,
   removeCrateFromFavorites,
+  dispatch,
 ) => {
   const mutationFunction = checkStatus ? removeCrateFromFavorites : addCrateToFavorites;
   await mutationFunction({
@@ -79,6 +80,11 @@ export const handleFavoriteToggle = async (
       },
     },
   });
+
+  // Update reducerState in parent
+  const status = checkStatus ? 'FALSE' : 'TRUE';
+  const actionType = `TOGGLE_CRATE_${crate.id}_${status}`;
+  dispatch({ type: actionType, payload: mainProfile });
 
   if (mutationFunction === addCrateToFavorites) {
     createNotification({

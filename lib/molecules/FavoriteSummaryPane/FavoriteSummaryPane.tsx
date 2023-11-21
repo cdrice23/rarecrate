@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch } from 'react';
 import { useMutation, gql } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -22,6 +22,7 @@ type FavoriteSummaryPaneProps = {
   mainProfile: number;
   userProfiles: [{ id: number; username: string }];
   getMoreItems: () => void;
+  dispatch: Dispatch<{ type: any; payload: any }>;
 };
 
 const FavoriteSummaryPane = ({
@@ -30,6 +31,7 @@ const FavoriteSummaryPane = ({
   mainProfile,
   userProfiles,
   getMoreItems,
+  dispatch,
 }: FavoriteSummaryPaneProps) => {
   const [activeCrate, setActiveCrate] = useState<number>(null);
   const [showCrateDetail, setShowCrateDetail] = useState<boolean>(false);
@@ -61,59 +63,64 @@ const FavoriteSummaryPane = ({
         currentProfile={username}
       />
       <Pane crateSummaryPane={true}>
-        {currentItems.map((crate, index) => (
-          <motion.div
-            key={index}
-            className={cx('crateSummary')}
-            onViewportEnter={() => {
-              if (index === currentItems.length - 1) {
-                console.log('you hit the last item!');
-                getMoreItems();
-              }
-            }}
-            onClick={() => {
-              setActiveCrate(crate.id);
-              setShowCrateDetail(true);
-            }}
-          >
-            <h2>{crate.title}</h2>
-            <div className={'crateSummaryIcons'}>
-              {crate.creator.image ? (
-                <ProfilePic username={crate.creator.username} size={36} />
-              ) : (
-                <div className={cx('profilePicIcon')}>
-                  <UserIcon size={16} />
-                </div>
-              )}
-              <div className={cx('favoriteItems')}>
-                {crate.creator.id !== mainProfile && !userProfiles.some(profile => profile.id === crate.creator.id) ? (
-                  <BinaryIconButton
-                    icon={<Heart />}
-                    checkStatus={Boolean(currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0)}
-                    handler={checkStatus => {
-                      handleFavoriteToggle(
-                        checkStatus,
-                        crate,
-                        mainProfile,
-                        createNotification,
-                        addCrateToFavorites,
-                        removeCrateFromFavorites,
-                      );
-                    }}
-                  />
+        {currentItems.length > 0 &&
+          currentItems.map((crate, index) => (
+            <motion.div
+              key={index}
+              className={cx('crateSummary')}
+              onViewportEnter={() => {
+                if (index === currentItems.length - 1) {
+                  console.log('you hit the last item!');
+                  getMoreItems();
+                }
+              }}
+              onClick={() => {
+                setActiveCrate(crate.id);
+                setShowCrateDetail(true);
+              }}
+            >
+              <h2>{crate.title}</h2>
+              <div className={'crateSummaryIcons'}>
+                {crate.creator.image ? (
+                  <ProfilePic username={crate.creator.username} size={36} />
                 ) : (
-                  <Heart weight="fill" />
+                  <div className={cx('profilePicIcon')}>
+                    <UserIcon size={16} />
+                  </div>
                 )}
-                <h3>{crate.favoritedBy.length}</h3>
+                <div className={cx('favoriteItems')}>
+                  {crate.creator.id !== mainProfile &&
+                  !userProfiles.some(profile => profile.id === crate.creator.id) ? (
+                    <BinaryIconButton
+                      icon={<Heart />}
+                      checkStatus={Boolean(
+                        currentItems[index].favoritedBy.filter(p => p.id === mainProfile).length > 0,
+                      )}
+                      handler={checkStatus => {
+                        handleFavoriteToggle(
+                          checkStatus,
+                          crate,
+                          mainProfile,
+                          createNotification,
+                          addCrateToFavorites,
+                          removeCrateFromFavorites,
+                          dispatch,
+                        );
+                      }}
+                    />
+                  ) : (
+                    <Heart weight="fill" />
+                  )}
+                  <h3>{crate.favoritedBy.length}</h3>
+                </div>
               </div>
-            </div>
-            <div className={cx('crateLabels')}>
-              {crate.labels.map((label, index) => (
-                <Pill key={index} name={label.name} style={label.isStandard ? 'standardLabel' : 'uniqueLabel'} />
-              ))}
-            </div>
-          </motion.div>
-        ))}
+              <div className={cx('crateLabels')}>
+                {crate.labels.map((label, index) => (
+                  <Pill key={index} name={label.name} style={label.isStandard ? 'standardLabel' : 'uniqueLabel'} />
+                ))}
+              </div>
+            </motion.div>
+          ))}
       </Pane>
     </>
   );

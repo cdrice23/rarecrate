@@ -46,12 +46,41 @@ const resultsReducer = (state, action) => {
     if (action.type.includes('RESULTS')) {
       return {
         ...state,
-        [key]: { ...state[key], results: [...state[key].results, ...action.payload] },
+        [key]: {
+          ...state[key],
+          results: Array.isArray(action.payload) ? [...state[key].results, ...action.payload] : [...state[key].results],
+        },
       };
     } else if (action.type.includes('CURRENT_PAGE')) {
       return { ...state, [key]: { ...state[key], currentPage: action.payload } };
     } else if (action.type.includes('RESET')) {
       return { ...state, [key]: { results: [], currentPage: 1 } };
+    } else if (action.type.includes('TOGGLE')) {
+      console.log(action.type);
+      const objectKey = action.type.includes('CRATE') ? 'crate' : 'favorite';
+      const id = action.type.match(/\d+/)[0];
+      const status = action.type.includes('TRUE') ? 'TRUE' : 'FALSE';
+      const results = state[objectKey].results.map(item => {
+        if (item.id === Number(id)) {
+          if (status === 'TRUE') {
+            return {
+              ...item,
+              favoritedBy: [...item.favoritedBy, { __typename: 'Profile', id: action.payload }],
+            };
+          } else {
+            return {
+              ...item,
+              favoritedBy: item.favoritedBy.filter(profile => profile.id !== action.payload),
+            };
+          }
+        }
+        return item;
+      });
+      console.log(objectKey);
+      return {
+        ...state,
+        [objectKey]: { ...state[objectKey], results },
+      };
     }
   }
 
@@ -269,37 +298,42 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
           {activePane === 'followers'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FollowerPane
-                    currentItems={currentFollowers}
-                    getMoreItems={() => {
-                      getFollowers({
-                        variables: {
-                          username: currentProfile,
-                          currentPage: resultsState.follower.currentPage,
-                        },
-                      });
-                    }}
-                  />
+                  {currentFollowers.length > 0 && (
+                    <FollowerPane
+                      currentItems={currentFollowers}
+                      getMoreItems={() => {
+                        getFollowers({
+                          variables: {
+                            username: currentProfile,
+                            currentPage: resultsState.follower.currentPage,
+                          },
+                        });
+                      }}
+                    />
+                  )}
                 </div>
               )
             : activePane === 'following'
             ? !hidePrivateProfile && (
                 <div className={cx('paneSectionFull')}>
-                  <FollowingPane
-                    currentItems={currentFollowing}
-                    getMoreItems={() => {
-                      getFollowedProfiles({
-                        variables: {
-                          username: currentProfile,
-                          currentPage: resultsState.following.currentPage,
-                        },
-                      });
-                    }}
-                  />
+                  {currentFollowing.length > 0 && (
+                    <FollowingPane
+                      currentItems={currentFollowing}
+                      getMoreItems={() => {
+                        getFollowedProfiles({
+                          variables: {
+                            username: currentProfile,
+                            currentPage: resultsState.following.currentPage,
+                          },
+                        });
+                      }}
+                    />
+                  )}
                 </div>
               )
             : activePane === 'crates'
-            ? !hidePrivateProfile && (
+            ? !hidePrivateProfile &&
+              currentCrates.length > 0 && (
                 <CrateSummaryPane
                   currentItems={currentCrates}
                   username={currentProfile}
@@ -314,9 +348,11 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
                     });
                   }}
                   imageRefreshKey={imageRefreshKey}
+                  dispatch={dispatch}
                 />
               )
-            : !hidePrivateProfile && (
+            : !hidePrivateProfile &&
+              currentFavorites.length > 0 && (
                 <FavoriteSummaryPane
                   currentItems={currentFavorites}
                   username={currentProfile}
@@ -330,6 +366,7 @@ const ProfilePage = ({ userId, email, prismaUserProfiles }: ProfileProps) => {
                       },
                     });
                   }}
+                  dispatch={dispatch}
                 />
               )}
         </>
