@@ -3,45 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
-
-type Genre = {
-  id: number;
-  name: string;
-};
-
-type TracklistItem = {
-  id: number;
-  order: number;
-  title: string;
-};
-
-type AlbumData = {
-  artist: string;
-  genres: Genre[];
-  subgenres: Genre[];
-  imageUrl: string;
-  label: string;
-  releaseYear: number;
-  title: string;
-  tracklist: TracklistItem[];
-  discogsMasterId: number;
-};
-
-type TagData = {
-  id: number;
-  name: string;
-};
-
-export type CrateAlbumData = {
-  id: number;
-  album: AlbumData;
-  rank: number;
-  tags: TagData[];
-};
-
-type CrateAlbumProps = {
-  data: CrateAlbumData;
-};
+import { CrateAlbumProps } from '@/types/molecules/CrateAlbum.types';
 
 export const CrateAlbum = ({ data }: CrateAlbumProps) => {
   const [albumFace, setAlbumFace] = useState<'front' | 'back'>('front');

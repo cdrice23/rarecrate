@@ -1,8 +1,9 @@
 import { useLazyQuery } from '@apollo/client';
 import { PillArrayInput } from '@/lib/atoms/PillArrayInput/PillArrayInput';
 import { SEARCH_TAGS_BY_NAME } from '@/db/graphql/clientOperations';
+import { TagSearchInputProps } from '@/types/molecules/TagSearchInput.types';
 
-const TagSearchInput = ({ value, name }) => {
+const TagSearchInput = ({ value, name }: TagSearchInputProps) => {
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_TAGS_BY_NAME);
 
   return (

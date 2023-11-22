@@ -5,11 +5,7 @@ import { Route } from '@/core/enums/routes';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-
-type FollowerPaneProps = {
-  currentItems: any[];
-  getMoreItems: () => void;
-};
+import { FollowerPaneProps } from '@/types/molecules/FollowerPane.types';
 
 const FollowerPane = ({ currentItems, getMoreItems }: FollowerPaneProps) => {
   return (

@@ -4,18 +4,7 @@ import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnClick } from './FullSearchPane.helpers';
-
-interface FullSearchPaneProps {
-  currentItems: any[];
-  currentPage: number;
-  searchPath: {
-    topTier?: { type: string; name: string; id: number };
-    midTier?: { type: string; name: string; id: number };
-  };
-  setSearchPath: (value) => void;
-  getMoreItems?: () => void;
-  getNextPane?: (value, searchId) => void;
-}
+import { FullSearchPaneProps } from '@/types/molecules/FullSearchPane.types';
 
 const FullSearchPane = ({
   currentItems,

@@ -1,30 +1,16 @@
 import cx from 'classnames';
 import { useState } from 'react';
-import { useQuery, useMutation, gql, useApolloClient } from '@apollo/client';
+import { useQuery, useApolloClient } from '@apollo/client';
 import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Modal } from '@/lib/atoms/Modal/Modal';
-import {
-  GET_PROFILE,
-  CREATE_NEW_FOLLOW_OR_REQUEST,
-  UNFOLLOW_PROFILE,
-  GET_PENDING_FOLLOW_REQUESTS,
-} from '@/db/graphql/clientOperations';
+import { GET_PROFILE, GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useFollowMutations, handleFollowClick } from './ProfilePane.helpers';
-
-type ProfilePaneProps = {
-  username: string;
-  mainProfile: number;
-  currentUser: number;
-  userProfiles: [{ id: number; username: string }];
-  handlePaneSelect: (pane: 'followers' | 'following' | 'crates' | 'favorites') => void;
-  imageRefreshKey: number;
-  setImageRefreshKey: (value: number) => void;
-};
+import { ProfilePaneProps } from '@/types/molecules/ProfilePane.types';
 
 const ProfilePane = ({
   username,

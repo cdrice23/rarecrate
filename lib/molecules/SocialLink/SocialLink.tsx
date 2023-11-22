@@ -2,6 +2,7 @@ import cx from 'classnames';
 import { Field } from 'formik';
 import { PencilSimple, X, Check } from '@phosphor-icons/react';
 import { SocialPlatform } from '@/core/enums/database';
+import { SocialLinkProps } from '@/types/molecules/SocialLink.types';
 
 const SocialLink = ({
   data,
@@ -14,7 +15,7 @@ const SocialLink = ({
   onUpdateValue,
   setValues,
   setIsEditing,
-}) => {
+}: SocialLinkProps) => {
   return (
     <>
       {!isEditing ? (

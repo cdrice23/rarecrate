@@ -15,15 +15,7 @@ import {
   useRemoveCrateFromFavorites,
   handleFavoriteToggle,
 } from './FavoriteSummaryPane.helpers';
-
-type FavoriteSummaryPaneProps = {
-  currentItems: any[];
-  username: string;
-  mainProfile: number;
-  userProfiles: [{ id: number; username: string }];
-  getMoreItems: () => void;
-  dispatch: Dispatch<{ type: any; payload: any }>;
-};
+import { FavoriteSummaryPaneProps } from '@/types/molecules/FavoriteSummaryPane.types';
 
 const FavoriteSummaryPane = ({
   currentItems,

@@ -9,11 +9,7 @@ import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clien
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
 import { handleOnClick, handleOnChange, handleOnKeyDown } from './GlobalSearch.helpers';
-
-type SearchPath = {
-  topTier?: { type: string; name: string; id: number };
-  midTier?: { type: string; name: string; id: number };
-};
+import { SearchPath } from '@/types/molecules/GlobalSearch.types';
 
 const GlobalSearch = () => {
   const {

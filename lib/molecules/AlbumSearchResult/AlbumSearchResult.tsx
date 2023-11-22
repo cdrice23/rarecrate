@@ -3,17 +3,7 @@ import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import { formatArtistName } from '@/core/helpers/cosmetic';
-
-interface AlbumSearchResultProps {
-  index: number;
-  lastIndex: number;
-  title: string;
-  imageUrl: string;
-  artist: string;
-  lastSlice: number;
-  handleDiscogsSearch: () => void;
-  setCurrentPage: (value) => void;
-}
+import { AlbumSearchResultProps } from '@/types/molecules/AlbumSearchResult.types';
 
 const AlbumSearchResult = ({
   index,

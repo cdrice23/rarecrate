@@ -1,24 +1,11 @@
 import cx from 'classnames';
 import { useRouter } from 'next/router';
-import { GetMenuPropsOptions, GetItemPropsOptions } from 'downshift';
 import { useMutation } from '@apollo/client';
 import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnMouseDown } from './QuickSearchPane.helpers';
-
-interface QuickSearchPaneProps {
-  style: any;
-  inputItems: any[];
-  loading: boolean;
-  searchPrompt: string;
-  debounceTimeout: any;
-  setDebounceTimeout: (value) => void;
-  getMenuProps: (options?: GetMenuPropsOptions) => any;
-  getItemProps: <Item>(options: GetItemPropsOptions<Item>) => any;
-  highlightedIndex: number | null;
-  handleShowFullSearch: () => void;
-}
+import { QuickSearchPaneProps } from '@/types/molecules/QuickSearchPane.types';
 
 const QuickSearchPane = ({
   style,

@@ -5,20 +5,7 @@ import { useLazyQuery } from '@apollo/client';
 import { SEARCH_PRISMA_ALBUMS_BY_NAME } from '@/db/graphql/clientOperations';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
 import { AlbumSearchCombobox } from '../AlbumSearchCombobox/AlbumSearchCombobox';
-
-interface CrateAlbumArrayInputProps {
-  value: any[];
-  isRanked: boolean;
-}
-
-type QueriedAlbum = {
-  id?: number;
-  title: string;
-  artist: string;
-  imageUrl: string;
-  discogsMasterId: string;
-  isNew?: boolean;
-};
+import { CrateAlbumArrayInputProps, QueriedAlbum } from '@/types/molecules/CrateAlbumArrayInput.types';
 
 const CrateAlbumArrayInput = ({ value, isRanked }: CrateAlbumArrayInputProps) => {
   const [searchQuery, { loading, data }] = useLazyQuery(SEARCH_PRISMA_ALBUMS_BY_NAME);

@@ -15,30 +15,7 @@ import {
   handleImageUpload,
   handleChangeProfilePic,
 } from './EditProfilePic.helpers';
-
-interface EditProfilePicProps {
-  profileData: { username: string; id: number };
-  onClose: () => void;
-  imageRefreshKey: number;
-  setImageRefreshKey: (value: number) => void;
-}
-
-interface ProfilePicPreviewProps {
-  profileId: number;
-  username: string;
-  currentPic: string;
-  onEdit: (value) => void;
-  onClose: () => void;
-  imageRefreshKey: number;
-}
-
-interface EditToolProps {
-  profileId: number;
-  username: string;
-  onCancel: (value) => void;
-  hasCurrentPic: boolean;
-  setImageRefreshKey: (value: number) => void;
-}
+import { EditProfilePicProps, ProfilePicPreviewProps, EditToolProps } from '@/types/molecules/EditProfilePic.types';
 
 const EditProfilePic = ({ profileData, onClose, imageRefreshKey, setImageRefreshKey }: EditProfilePicProps) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);

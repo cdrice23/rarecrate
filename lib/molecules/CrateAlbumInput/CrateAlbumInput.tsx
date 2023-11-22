@@ -4,15 +4,7 @@ import { useEffect } from 'react';
 import { X } from '@phosphor-icons/react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
-
-interface CrateAlbumInputProps {
-  id: number;
-  data: any;
-  removeHandler: () => void;
-  initialRank?: number;
-  setFieldValue: (name, value) => void;
-  isRanked: boolean;
-}
+import { CrateAlbumInputProps } from '@/types/molecules/CrateAlbumInput.types';
 
 const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue, isRanked }: CrateAlbumInputProps) => {
   useEffect(() => {

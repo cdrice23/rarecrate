@@ -4,11 +4,7 @@ import { useLazyQuery, useQuery } from '@apollo/client';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GET_NOTIFICATIONS_BY_PROFILE } from '@/db/graphql/clientOperations';
 import { Notification } from '../Notification/Notification';
-
-interface NotificationsPaneProps {
-  mainProfile: number;
-  currentUser: number;
-}
+import { NotificationsPaneProps } from '@/types/molecules/NotificationsPane.types';
 
 const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps) => {
   const [currentPage, setCurrentPage] = useState(1);

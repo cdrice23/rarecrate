@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { useEffect, useReducer } from 'react';
 import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
-import { PaneType, useLocalState } from '@/lib/context/state';
+import { useLocalState } from '@/lib/context/state';
 import { Pill } from '@/lib/atoms/Pill/Pill';
 import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
 import {
@@ -11,19 +11,7 @@ import {
   getLabelAndTagResults,
   getGenreAndSubgenreResults,
 } from './FullSearchController.helpers';
-
-interface FullSearchControllerProps {
-  searchPrompt: string;
-  activePane: PaneType;
-  prevActivePane: PaneType;
-  searchPath: {
-    topTier?: { type: string; name: string; id: number };
-    midTier?: { type: string; name: string; id: number };
-  };
-  setSearchPath: (value) => void;
-  setActivePane: (val: PaneType) => void;
-  setPrevActivePane: (val: PaneType) => void;
-}
+import { FullSearchControllerProps } from '@/types/molecules/FullSearchController.types';
 
 const FullSearchController = ({
   searchPrompt,

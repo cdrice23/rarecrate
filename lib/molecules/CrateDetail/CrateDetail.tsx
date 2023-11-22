@@ -6,49 +6,10 @@ import { useLocalState } from '@/lib/context/state';
 import { GET_CRATE_DETAIL_WITH_ALBUMS, CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { Modal } from '@/lib/atoms/Modal/Modal';
-import { CrateAlbumData, CrateAlbum } from '../CrateAlbum/CrateAlbum';
+import { CrateAlbum } from '../CrateAlbum/CrateAlbum';
 import { CrateForm } from '../CrateForm/CrateForm';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateDetail.helpers';
-
-type ProfileBadgeData = {
-  id: number;
-  username: string;
-  image: string;
-};
-
-type LabelData = {
-  id: number;
-  name: string;
-  isStandard: boolean;
-};
-
-type CrateDetailData = {
-  id: string;
-  title: string;
-  description: string;
-  creator: ProfileBadgeData;
-  favoritedBy: ProfileBadgeData[];
-  isRanked: boolean;
-  labels: LabelData[];
-  albums: CrateAlbumData[];
-};
-
-type CrateDetailFaceProps = {
-  data: CrateDetailData;
-  editable?: boolean;
-  profileId?: number;
-  userProfiles?: [{ id: number; username: string }];
-  handleSwitch: (newFace: 'front' | 'back') => void;
-  handleEdit?: () => void;
-};
-
-type CrateDetailProps = {
-  userProfiles: [{ id: number; username: string }];
-  activeCrateId?: number;
-  show?: boolean;
-  currentProfile: string;
-  onClose: () => void;
-};
+import { CrateDetailFaceProps, CrateDetailProps } from '@/types/molecules/CrateDetail.types';
 
 const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');

@@ -1,35 +1,19 @@
-import * as yup from 'yup';
 import cx from 'classnames';
 import { useState } from 'react';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { gql } from '@apollo/client';
 import { User as UserIcon, Camera } from '@phosphor-icons/react';
-import { profileFormSchema } from '@/core/helpers/validation';
-import { PublicRoute, Route } from '@/core/enums/routes';
+import { PublicRoute } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Modal } from '@/lib/atoms/Modal/Modal';
-import {
-  GET_PROFILE,
-  UPDATE_PROFILE,
-  AUTO_ACCEPT_FOLLOW_REQUESTS,
-  CREATE_NEW_PROFILE,
-  ACCEPT_USER_AGREEMENT,
-} from '@/db/graphql/clientOperations';
+import { GET_PROFILE } from '@/db/graphql/clientOperations';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { EditProfilePic } from '../EditProfilePic/EditProfilePic';
 import { initialProfileValues, updatedSchema, useMutations, onSubmit } from './ProfileForm.helpers';
-
-interface ProfileFormProps {
-  existingProfileData?: any;
-  userId?: number;
-  setShowEditProfile?: (value: boolean) => void;
-  imageRefreshKey: number;
-  setImageRefreshKey: (value: number) => void;
-}
+import { ProfileFormProps } from '@/types/molecules/ProfileForm.types';
 
 const ProfileForm = ({
   existingProfileData,

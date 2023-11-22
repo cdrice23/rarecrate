@@ -6,12 +6,7 @@ import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
 import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
 import { useCrateFormHandlers, initialValues } from './CrateForm.helpers';
-
-interface CrateFormProps {
-  creatorId: number;
-  crateFormData?: any;
-  onCloseModal?: () => void;
-}
+import { CrateFormProps } from '@/types/molecules/CrateForm.types';
 
 const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) => {
   const { onSubmit, getCrateDetailWithAlbums } = useCrateFormHandlers(creatorId, crateFormData, onCloseModal);

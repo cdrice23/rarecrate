@@ -8,11 +8,7 @@ import { GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { useMutations, handleGetMoreRecommendations, handleFavoriteToggle } from './CrateDiggingPane.helpers';
-
-type CrateDiggingPaneProps = {
-  mainProfile: number;
-  userProfiles: [{ id: number; username: string }];
-};
+import { CrateDiggingPaneProps } from '@/types/molecules/CrateDiggingPane.types';
 
 const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) => {
   const [currentRecommendations, setCurrentRecommendations] = useState([]);

@@ -1,20 +1,9 @@
 import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useState } from 'react';
-import {
-  LinkSimpleHorizontal,
-  TwitterLogo,
-  InstagramLogo,
-  SpotifyLogo,
-  YoutubeLogo,
-  VinylRecord,
-} from '@phosphor-icons/react';
-import { SocialPlatform } from '@/core/enums/database';
+import { LinkSimpleHorizontal } from '@phosphor-icons/react';
 import { getPlatformLogo, getPlatformUrl } from './SocialLinkButton.helpers';
-
-interface SocialLinkButtonProps {
-  socialLinks: [{ platform: SocialPlatform; username: string }];
-}
+import { SocialLinkButtonProps } from '@/types/molecules/SocialLinkButton.types';
 
 const SocialLinkButton = ({ socialLinks }: SocialLinkButtonProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

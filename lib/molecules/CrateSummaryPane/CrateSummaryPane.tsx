@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { useState, useEffect, Dispatch } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation, useApolloClient } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -12,16 +12,7 @@ import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateSummaryPane.helpers';
-
-type CrateSummaryPaneProps = {
-  currentItems: any[];
-  username: string;
-  mainProfile: number;
-  userProfiles: [{ id: number; username: string }];
-  getMoreItems: () => void;
-  imageRefreshKey: number;
-  dispatch: Dispatch<{ type: any; payload: any }>;
-};
+import { CrateSummaryPaneProps } from '@/types/molecules/CrateSummaryPane.types';
 
 const CrateSummaryPane = ({
   currentItems,
