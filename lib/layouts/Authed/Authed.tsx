@@ -1,13 +1,9 @@
 import cx from 'classnames';
-import { ReactNode, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import NavBar from './NavBar';
-
-interface AuthedLayoutProps {
-  children: ReactNode;
-  userProfiles: any[];
-}
+import { AuthedLayoutProps } from '@/types/layouts/Authed.types';
 
 const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   const router = useRouter();

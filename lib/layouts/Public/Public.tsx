@@ -1,9 +1,5 @@
 import cx from 'classnames';
-import { ReactNode } from 'react';
-
-interface PublicLayoutProps {
-  children: ReactNode;
-}
+import { PublicLayoutProps } from '@/types/layouts/Public.types';
 
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (

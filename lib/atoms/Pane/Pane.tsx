@@ -1,11 +1,5 @@
 import cx from 'classnames';
-import { ReactNode } from 'react';
-
-type PaneProps = {
-  children: ReactNode;
-  crateSummaryPane?: boolean;
-  crateDiggingPane?: boolean;
-};
+import { PaneProps } from '@/types/atoms/Pane.types';
 
 const Pane = ({ children, crateSummaryPane, crateDiggingPane }: PaneProps) => {
   return (

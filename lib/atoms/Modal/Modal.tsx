@@ -1,17 +1,9 @@
 import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { ReactNode } from 'react';
 import { X } from '@phosphor-icons/react';
+import { ModalProps } from '@/types/atoms/Modal.types';
 
-interface IModal {
-  title: string;
-  content: ReactNode;
-  footer?: ReactNode;
-  show?: boolean;
-  onClose(): void;
-}
-
-const Modal = ({ title, content, footer, show, onClose }: IModal) => {
+const Modal = ({ title, content, footer, show, onClose }: ModalProps) => {
   return (
     <div className={cx('modalWrapper', { show: !!show })}>
       <OutsideClickHandler onOutsideClick={onClose}>

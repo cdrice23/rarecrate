@@ -1,17 +1,9 @@
 import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { ReactNode } from 'react';
 import { X } from '@phosphor-icons/react';
+import { MessageProps } from '@/types/atoms/Message.types';
 
-interface IMessage {
-  title: string;
-  content: ReactNode;
-  footer?: ReactNode;
-  show?: boolean;
-  onClose(): void;
-}
-
-const Message = ({ title, content, footer, show, onClose }: IMessage) => {
+const Message = ({ title, content, footer, show, onClose }: MessageProps) => {
   return (
     <div className={cx('messageWrapper', { show: !!show })}>
       <OutsideClickHandler onOutsideClick={onClose}>

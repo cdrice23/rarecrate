@@ -1,16 +1,11 @@
 import cx from 'classnames';
 import Link from 'next/link';
-import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Route, PublicRoute } from '@/core/enums/routes';
+import { HeaderProps } from '@/types/layouts/Public.types';
 
-interface IHeader {
-  isAuth?: boolean;
-  children?: ReactNode;
-}
-
-const Header = ({ isAuth, children }: IHeader) => {
+const Header = ({ isAuth, children }: HeaderProps) => {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = pathname => router.pathname === pathname;
   const { user } = useUser();

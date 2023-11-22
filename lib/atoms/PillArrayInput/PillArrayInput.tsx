@@ -5,17 +5,7 @@ import { FieldArray } from 'formik';
 import { Plus } from '@phosphor-icons/react';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
-
-interface PillArrayInputProps {
-  name: string;
-  value: any[];
-  label: string;
-  itemLabel: string;
-  listItems: any[];
-  loading: boolean;
-  type: string;
-  searchQuery: () => void;
-}
+import { PillArrayInputProps } from '@/types/atoms/PillArrayInput.types';
 
 const PillArrayInput = ({
   name,

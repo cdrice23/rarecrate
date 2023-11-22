@@ -1,12 +1,6 @@
 import cx from 'classnames';
 import { X } from '@phosphor-icons/react';
-
-interface PillProps {
-  name: string;
-  icon?: React.ReactNode;
-  removeHandler?: () => void;
-  style?: string;
-}
+import { PillProps } from '@/types/atoms/Pill.types';
 
 const Pill = ({ name, removeHandler, icon, style }: PillProps) => {
   return (

@@ -1,10 +1,5 @@
-import { useState, cloneElement, ReactElement, MouseEvent } from 'react';
-
-interface BinaryIconButtonProps {
-  icon: ReactElement;
-  checkStatus: boolean;
-  handler?: (...args) => void;
-}
+import { useState, cloneElement } from 'react';
+import { BinaryIconButtonProps } from '@/types/atoms/BinaryIconButton.types';
 
 const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps) => {
   const [checked, setChecked] = useState<boolean>(checkStatus);

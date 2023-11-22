@@ -1,9 +1,5 @@
 import { ErrorMessage, Field } from 'formik';
-
-interface ToggleInputProps {
-  name: string;
-  label: string;
-}
+import { ToggleInputProps } from '@/types/atoms/ToggleInput.types';
 
 const ToggleInput = ({ name, label }: ToggleInputProps) => {
   return (

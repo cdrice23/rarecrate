@@ -2,8 +2,16 @@ import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
+import { DropdownComboboxProps } from '@/types/atoms/DropdownCombobox.types';
 
-const DropdownCombobox = ({ enterHandler, updateNewItem, listItems, itemLabel, searchQuery, loading }) => {
+const DropdownCombobox = ({
+  enterHandler,
+  updateNewItem,
+  listItems,
+  itemLabel,
+  searchQuery,
+  loading,
+}: DropdownComboboxProps) => {
   const [inputItems, setInputItems] = useState([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout>(null);
