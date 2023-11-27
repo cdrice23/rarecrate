@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { Field } from 'formik';
 import { PencilSimple, X, Check } from '@phosphor-icons/react';
 import { SocialPlatform } from '@/core/enums/database';
-import { SocialLinkProps } from '@/types/molecules/SocialLink.types';
+import { SocialLinkProps } from '@/lib/molecules/SocialLink/SocialLink.types';
 
 const SocialLink = ({
   data,

@@ -7,7 +7,7 @@ import { CaretDown } from '@phosphor-icons/react';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { handleDiscogsSearch, onKeyDown, onChange, onMouseDown } from './AlbumSearchCombobox.helpers';
-import { AlbumSearchComboboxProps } from '@/types/molecules/AlbumSearchCombobox.types';
+import { AlbumSearchComboboxProps } from '@/lib/molecules/AlbumSearchCombobox/AlbumSearchCombobox.types';
 
 const AlbumSearchCombobox = ({
   value,

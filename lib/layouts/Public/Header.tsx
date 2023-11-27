@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Route, PublicRoute } from '@/core/enums/routes';
-import { HeaderProps } from '@/types/layouts/Public.types';
+import { HeaderProps } from '@/lib/layouts/Public/Public.types';
 
 const Header = ({ isAuth, children }: HeaderProps) => {
   const router = useRouter();

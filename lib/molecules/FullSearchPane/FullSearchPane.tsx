@@ -4,7 +4,7 @@ import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnClick } from './FullSearchPane.helpers';
-import { FullSearchPaneProps } from '@/types/molecules/FullSearchPane.types';
+import { FullSearchPaneProps } from '@/lib/molecules/FullSearchPane/FullSearchPane.types';
 
 const FullSearchPane = ({
   currentItems,

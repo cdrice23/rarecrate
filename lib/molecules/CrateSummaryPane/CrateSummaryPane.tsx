@@ -12,7 +12,7 @@ import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateSummaryPane.helpers';
-import { CrateSummaryPaneProps } from '@/types/molecules/CrateSummaryPane.types';
+import { CrateSummaryPaneProps } from '@/lib/molecules/CrateSummaryPane/CrateSummaryPane.types';
 
 const CrateSummaryPane = ({
   currentItems,

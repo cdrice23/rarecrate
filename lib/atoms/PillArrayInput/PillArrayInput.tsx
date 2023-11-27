@@ -5,7 +5,7 @@ import { FieldArray } from 'formik';
 import { Plus } from '@phosphor-icons/react';
 import { Pill } from '../Pill/Pill';
 import { DropdownCombobox } from '../DropdownCombobox/DropdownCombobox';
-import { PillArrayInputProps } from '@/types/atoms/PillArrayInput.types';
+import { PillArrayInputProps } from '@/lib/atoms/PillArrayInput/PillArrayInput.types';
 
 const PillArrayInput = ({
   name,

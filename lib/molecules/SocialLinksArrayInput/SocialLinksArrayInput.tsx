@@ -4,7 +4,7 @@ import { FieldArray } from 'formik';
 import { Plus } from '@phosphor-icons/react';
 import { SocialLink } from '../SocialLink/SocialLink';
 import { handleEdit, handleUpdateValues } from './SocialLinksArrayInput.helpers';
-import { SocialLinksArrayInputProps } from '@/types/molecules/SocialLinksArrayInput.types';
+import { SocialLinksArrayInputProps } from '@/lib/molecules/SocialLinksArrayInput/SocialLinksArrayInput.types';
 
 const SocialLinksArrayInput = ({ socialLinks, setFieldValue }: SocialLinksArrayInputProps) => {
   const [values, setValues] = useState(socialLinks.map(link => ({ platform: link.platform, username: link.username })));

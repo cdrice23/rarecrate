@@ -1,5 +1,5 @@
 import { ErrorMessage, Field } from 'formik';
-import { TextInputProps } from '@/types/atoms/TextInput.types';
+import { TextInputProps } from '@/lib/atoms/TextInput/TextInput.types';
 
 const TextInput = ({ name, placeholder, maxLength, value, onChange, label }: TextInputProps) => {
   return (

@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
-import { DropdownComboboxProps } from '@/types/atoms/DropdownCombobox.types';
+import { DropdownComboboxProps } from '@/lib/atoms/DropdownCombobox/DropdownCombobox.types';
 
 const DropdownCombobox = ({
   enterHandler,

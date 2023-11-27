@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { PublicLayoutProps } from '@/types/layouts/Public.types';
+import { PublicLayoutProps } from '@/lib/layouts/Public/Public.types';
 
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (

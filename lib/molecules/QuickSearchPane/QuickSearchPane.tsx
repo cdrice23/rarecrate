@@ -5,7 +5,7 @@ import { useLocalState } from '@/lib/context/state';
 import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnMouseDown } from './QuickSearchPane.helpers';
-import { QuickSearchPaneProps } from '@/types/molecules/QuickSearchPane.types';
+import { QuickSearchPaneProps } from '@/lib/molecules/QuickSearchPane/QuickSearchPane.types';
 
 const QuickSearchPane = ({
   style,

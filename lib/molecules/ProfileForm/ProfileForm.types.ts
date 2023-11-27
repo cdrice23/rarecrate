@@ -3,5 +3,5 @@ export interface ProfileFormProps {
   userId?: number;
   setShowEditProfile?: (value: boolean) => void;
   imageRefreshKey: number;
-  setImageRefreshKey: (value: number) => void;
+  setImageRefreshKey?: (value: number) => void;
 }

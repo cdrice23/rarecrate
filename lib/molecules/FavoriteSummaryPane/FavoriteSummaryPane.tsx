@@ -15,7 +15,7 @@ import {
   useRemoveCrateFromFavorites,
   handleFavoriteToggle,
 } from './FavoriteSummaryPane.helpers';
-import { FavoriteSummaryPaneProps } from '@/types/molecules/FavoriteSummaryPane.types';
+import { FavoriteSummaryPaneProps } from '@/lib/molecules/FavoriteSummaryPane/FavoriteSummaryPane.types';
 
 const FavoriteSummaryPane = ({
   currentItems,

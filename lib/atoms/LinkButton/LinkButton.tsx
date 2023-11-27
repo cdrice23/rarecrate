@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LinkButtonProps } from '@/types/atoms/LinkButton.types';
+import { LinkButtonProps } from '@/lib/atoms/LinkButton/LinkButton.types';
 
 const LinkButton = ({ href = '#', children, className, disabled, onClick }: LinkButtonProps) => {
   return (

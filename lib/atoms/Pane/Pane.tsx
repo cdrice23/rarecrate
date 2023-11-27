@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { PaneProps } from '@/types/atoms/Pane.types';
+import { PaneProps } from '@/lib/atoms/Pane/Pane.types';
 
 const Pane = ({ children, crateSummaryPane, crateDiggingPane }: PaneProps) => {
   return (

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { useLocalState } from '@/lib/context/state';
 import { handleDelete, useDeleteSelectedProfile } from './DeleteProfile.helpers';
-import { DeleteProfileProps } from '@/types/molecules/DeleteProfile.types';
+import { DeleteProfileProps } from '@/lib/molecules/DeleteProfile/DeleteProfile.types';
 
 const DeleteProfile = ({
   profileToDelete,

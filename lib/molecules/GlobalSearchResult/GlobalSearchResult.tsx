@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Archive, Tag, SquaresFour, UserCircle } from '@phosphor-icons/react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
-import { GlobalSearchResultProps } from '@/types/molecules/GlobalSearchResult.types';
+import { GlobalSearchResultProps } from '@/lib/molecules/GlobalSearchResult/GlobalSearchResult.types';
 
 const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSearchResultProps) => {
   return (

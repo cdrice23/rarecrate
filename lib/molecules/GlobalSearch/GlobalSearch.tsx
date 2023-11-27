@@ -9,7 +9,7 @@ import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clien
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
 import { handleOnClick, handleOnChange, handleOnKeyDown } from './GlobalSearch.helpers';
-import { SearchPath } from '@/types/molecules/GlobalSearch.types';
+import { SearchPath } from '@/lib/molecules/GlobalSearch/GlobalSearch.types';
 
 const GlobalSearch = () => {
   const {

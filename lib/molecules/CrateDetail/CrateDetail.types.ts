@@ -1,4 +1,4 @@
-import { CrateAlbumData } from './CrateAlbum.types';
+import { CrateAlbumData } from '../CrateAlbum/CrateAlbum.types';
 
 export type ProfileBadgeData = {
   id: number;

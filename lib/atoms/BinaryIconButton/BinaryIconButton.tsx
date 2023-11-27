@@ -1,5 +1,5 @@
 import { useState, cloneElement } from 'react';
-import { BinaryIconButtonProps } from '@/types/atoms/BinaryIconButton.types';
+import { BinaryIconButtonProps } from '@/lib/atoms/BinaryIconButton/BinaryIconButton.types';
 
 const BinaryIconButton = ({ icon, checkStatus, handler }: BinaryIconButtonProps) => {
   const [checked, setChecked] = useState<boolean>(checkStatus);

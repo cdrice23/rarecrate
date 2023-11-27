@@ -11,7 +11,7 @@ import {
   getLabelAndTagResults,
   getGenreAndSubgenreResults,
 } from './FullSearchController.helpers';
-import { FullSearchControllerProps } from '@/types/molecules/FullSearchController.types';
+import { FullSearchControllerProps } from '@/lib/molecules/FullSearchController/FullSearchController.types';
 
 const FullSearchController = ({
   searchPrompt,

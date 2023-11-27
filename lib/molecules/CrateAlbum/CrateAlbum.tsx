@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
 import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
-import { CrateAlbumProps } from '@/types/molecules/CrateAlbum.types';
+import { CrateAlbumProps } from '@/lib/molecules/CrateAlbum/CrateAlbum.types';
 
 export const CrateAlbum = ({ data }: CrateAlbumProps) => {
   const [albumFace, setAlbumFace] = useState<'front' | 'back'>('front');

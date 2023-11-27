@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import NavBar from './NavBar';
-import { AuthedLayoutProps } from '@/types/layouts/Authed.types';
+import { AuthedLayoutProps } from '@/lib/layouts/Authed/Authed.types';
 
 const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   const router = useRouter();

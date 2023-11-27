@@ -13,7 +13,7 @@ import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { EditProfilePic } from '../EditProfilePic/EditProfilePic';
 import { initialProfileValues, updatedSchema, useMutations, onSubmit } from './ProfileForm.helpers';
-import { ProfileFormProps } from '@/types/molecules/ProfileForm.types';
+import { ProfileFormProps } from '@/lib/molecules/ProfileForm/ProfileForm.types';
 
 const ProfileForm = ({
   existingProfileData,

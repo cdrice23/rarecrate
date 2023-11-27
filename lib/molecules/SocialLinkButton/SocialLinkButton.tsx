@@ -3,7 +3,7 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { useState } from 'react';
 import { LinkSimpleHorizontal } from '@phosphor-icons/react';
 import { getPlatformLogo, getPlatformUrl } from './SocialLinkButton.helpers';
-import { SocialLinkButtonProps } from '@/types/molecules/SocialLinkButton.types';
+import { SocialLinkButtonProps } from '@/lib/molecules/SocialLinkButton/SocialLinkButton.types';
 
 const SocialLinkButton = ({ socialLinks }: SocialLinkButtonProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

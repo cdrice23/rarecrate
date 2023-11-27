@@ -6,7 +6,7 @@ import {
   getAppleMusicUrlFromSearch,
   getDiscogsMasterUrl,
 } from '@/core/helpers/externalLink';
-import { ExternalLinkDropdownButtonProps } from '@/types/molecules/ExternalLinkDropdownButton.types';
+import { ExternalLinkDropdownButtonProps } from '@/lib/molecules/ExternalLinkDropdownButton/ExternalLinkDropdownButton.types';
 
 const ExternalLinkDropdownButton = ({ albumArtist, albumTitle, discogsMasterId }: ExternalLinkDropdownButtonProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

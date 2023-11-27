@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { User as UserIcon } from '@phosphor-icons/react';
 import useSignedUrl from '@/core/hooks/useSignedUrl';
-import { ProfilePicProps } from '@/types/molecules/ProfilePic.types';
+import { ProfilePicProps } from '@/lib/molecules/ProfilePic/ProfilePic.types';
 
 const ProfilePic = ({ username, size }: ProfilePicProps) => {
   const currentProfilePic = useSignedUrl(username);

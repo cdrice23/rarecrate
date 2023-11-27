@@ -9,7 +9,7 @@ import { Modal } from '@/lib/atoms/Modal/Modal';
 import { CrateAlbum } from '../CrateAlbum/CrateAlbum';
 import { CrateForm } from '../CrateForm/CrateForm';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateDetail.helpers';
-import { CrateDetailFaceProps, CrateDetailProps } from '@/types/molecules/CrateDetail.types';
+import { CrateDetailFaceProps, CrateDetailProps } from '@/lib/molecules/CrateDetail/CrateDetail.types';
 
 const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');

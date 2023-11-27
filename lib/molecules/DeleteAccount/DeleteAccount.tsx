@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { DeleteAccountProps } from '@/types/molecules/DeleteAccount.types';
+import { DeleteAccountProps } from '@/lib/molecules/DeleteAccount/DeleteAccount.types';
 
 const DeleteAccount = ({ onClose, userProfiles }: DeleteAccountProps) => {
   const router = useRouter();

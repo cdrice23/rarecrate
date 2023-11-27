@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import { formatArtistName } from '@/core/helpers/cosmetic';
-import { AlbumSearchResultProps } from '@/types/molecules/AlbumSearchResult.types';
+import { AlbumSearchResultProps } from '@/lib/molecules/AlbumSearchResult/AlbumSearchResult.types';
 
 const AlbumSearchResult = ({
   index,

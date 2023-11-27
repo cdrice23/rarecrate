@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { X } from '@phosphor-icons/react';
-import { MessageProps } from '@/types/atoms/Message.types';
+import { MessageProps } from '@/lib/atoms/Message/Message.types';
 
 const Message = ({ title, content, footer, show, onClose }: MessageProps) => {
   return (

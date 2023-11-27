@@ -10,7 +10,7 @@ import {
   handleAccept,
   handleReject,
 } from './FollowRequestPane.helpers';
-import { FollowRequestPaneProps } from '@/types/molecules/FollowRequestPane.types';
+import { FollowRequestPaneProps } from '@/lib/molecules/FollowRequestPane/FollowRequestPane.types';
 
 const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
   const { loading, error, data } = useQuery(GET_PENDING_FOLLOW_REQUESTS, {

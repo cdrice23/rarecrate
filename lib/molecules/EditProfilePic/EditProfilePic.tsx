@@ -15,7 +15,11 @@ import {
   handleImageUpload,
   handleChangeProfilePic,
 } from './EditProfilePic.helpers';
-import { EditProfilePicProps, ProfilePicPreviewProps, EditToolProps } from '@/types/molecules/EditProfilePic.types';
+import {
+  EditProfilePicProps,
+  ProfilePicPreviewProps,
+  EditToolProps,
+} from '@/lib/molecules/EditProfilePic/EditProfilePic.types';
 
 const EditProfilePic = ({ profileData, onClose, imageRefreshKey, setImageRefreshKey }: EditProfilePicProps) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);

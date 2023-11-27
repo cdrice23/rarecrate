@@ -12,7 +12,7 @@ import {
   calculateTime,
   displayTime,
 } from './Notification.helpers';
-import { NotificationProps } from '@/types/molecules/Notification.types';
+import { NotificationProps } from '@/lib/molecules/Notification/Notification.types';
 
 const Notification = ({
   index,

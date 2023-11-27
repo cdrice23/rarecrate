@@ -10,7 +10,7 @@ import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useFollowMutations, handleFollowClick } from './ProfilePane.helpers';
-import { ProfilePaneProps } from '@/types/molecules/ProfilePane.types';
+import { ProfilePaneProps } from '@/lib/molecules/ProfilePane/ProfilePane.types';
 
 const ProfilePane = ({
   username,

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { X } from '@phosphor-icons/react';
-import { ModalProps } from '@/types/atoms/Modal.types';
+import { ModalProps } from '@/lib/atoms/Modal/Modal.types';
 
 const Modal = ({ title, content, footer, show, onClose }: ModalProps) => {
   return (
