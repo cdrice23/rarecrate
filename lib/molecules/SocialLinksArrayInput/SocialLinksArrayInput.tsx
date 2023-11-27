@@ -32,7 +32,9 @@ const SocialLinksArrayInput = ({ socialLinks, setFieldValue }: SocialLinksArrayI
                   );
                 }}
                 hasUsername={values.map(i => i.platform)}
-                onUpdateValue={handleUpdateValues}
+                onUpdateValue={(index, field, value) =>
+                  handleUpdateValues(index, field, value, setValues, setFieldValue)
+                }
                 setValues={setValues}
                 setIsEditing={setIsEditing}
               />

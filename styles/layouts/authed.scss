@@ -1151,6 +1151,10 @@
         img {
           border-radius: 50px;
         }
+
+        .albumImage {
+          border-radius: unset;
+        }
       }
       
       .resultText {

@@ -86,9 +86,6 @@ export const profileFormSchema = yup.object().shape({
               }
               break;
             case 'SPOTIFY':
-              if ((username && !username) || username.trim() === '') {
-                return false;
-              }
             case 'YOUTUBE':
             case 'DISCOGS':
               if (username && !(username.length >= 3 && username.length <= 36 && /^[a-zA-Z0-9_.-]+$/.test(username))) {

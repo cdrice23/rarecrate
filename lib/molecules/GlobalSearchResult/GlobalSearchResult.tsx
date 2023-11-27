@@ -7,6 +7,7 @@ import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { GlobalSearchResultProps } from '@/lib/molecules/GlobalSearchResult/GlobalSearchResult.types';
 
 const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSearchResultProps) => {
+  console.log(data);
   return (
     <motion.div
       className={cx('searchResult')}
@@ -20,7 +21,7 @@ const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSear
       <div className={cx('resultImage')}>
         {data.image && <ProfilePic username={data.username} size={40} />}
         {data.imageUrl && (
-          <Image src={data.imageUrl} height={40} width={40} alt={data.title} className={cx('profileImage')} />
+          <Image src={data.imageUrl} height={40} width={40} alt={data.title} className={cx('albumImage')} />
         )}
         {data.__typename === 'Profile' && !data.image && <UserCircle size={24} />}
         {data.__typename === 'Crate' && <Archive size={24} />}
