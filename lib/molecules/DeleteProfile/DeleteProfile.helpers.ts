@@ -1,6 +1,6 @@
 import { gql, useMutation } from '@apollo/client';
 import { useLocalState } from '@/lib/context/state';
-import { DELETE_PROFILE } from '@/db/graphql/clientOperations';
+import { DELETE_PROFILE } from '@/db/graphql/clientOperations/profile';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 

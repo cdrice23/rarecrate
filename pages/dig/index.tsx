@@ -7,7 +7,8 @@ import { createContext } from '@/db/graphql/context';
 
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
-import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations/profile';
+import { GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 import { CrateDiggingPane } from '@/lib/molecules/CrateDiggingPane/CrateDiggingPane';
 
 interface CrateDiggingProps {

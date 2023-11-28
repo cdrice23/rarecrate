@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
-import { GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations';
+import { GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations/recommendation';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { useMutations, handleGetMoreRecommendations, handleFavoriteToggle } from './CrateDiggingPane.helpers';

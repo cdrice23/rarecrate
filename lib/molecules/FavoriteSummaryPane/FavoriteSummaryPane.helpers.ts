@@ -1,5 +1,5 @@
 import { useMutation, gql } from '@apollo/client';
-import { ADD_CRATE_TO_FAVORITES, REMOVE_CRATE_FROM_FAVORITES } from '@/db/graphql/clientOperations';
+import { ADD_CRATE_TO_FAVORITES, REMOVE_CRATE_FROM_FAVORITES } from '@/db/graphql/clientOperations/crate';
 
 export const useAddCrateToFavorites = mainProfile => {
   const [addCrateToFavorites] = useMutation(ADD_CRATE_TO_FAVORITES, {

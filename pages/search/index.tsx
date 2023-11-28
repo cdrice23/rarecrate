@@ -7,7 +7,8 @@ import { AuthedLayout } from '@/lib/layouts/Authed';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { GlobalSearch } from '@/lib/molecules/GlobalSearch/GlobalSearch';
 import { createContext } from '@/db/graphql/context';
-import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations/profile';
+import { GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 
 interface SearchProps {
   userId?: number;

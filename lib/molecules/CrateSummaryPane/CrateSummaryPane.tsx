@@ -8,7 +8,7 @@ import { Route } from '@/core/enums/routes';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Pill } from '@/lib/atoms/Pill/Pill';
-import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations';
+import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations/notification';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateSummaryPane.helpers';

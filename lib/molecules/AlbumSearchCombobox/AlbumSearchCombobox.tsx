@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown } from '@phosphor-icons/react';
-import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations/search';
 import { AlbumSearchResult } from '../AlbumSearchResult/AlbumSearchResult';
 import { handleDiscogsSearch, onKeyDown, onChange, onMouseDown } from './AlbumSearchCombobox.helpers';
 import { AlbumSearchComboboxProps } from '@/lib/molecules/AlbumSearchCombobox/AlbumSearchCombobox.types';

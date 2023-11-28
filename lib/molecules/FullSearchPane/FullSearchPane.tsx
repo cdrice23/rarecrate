@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useLocalState } from '@/lib/context/state';
-import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations/search';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnClick } from './FullSearchPane.helpers';
 import { FullSearchPaneProps } from '@/lib/molecules/FullSearchPane/FullSearchPane.types';

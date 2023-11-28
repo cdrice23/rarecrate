@@ -1,12 +1,11 @@
 import * as yup from 'yup';
 import { useMutation, useLazyQuery, gql } from '@apollo/client';
 import {
-  GET_PROFILE,
   UPDATE_PROFILE,
   AUTO_ACCEPT_FOLLOW_REQUESTS,
   CREATE_NEW_PROFILE,
   ACCEPT_USER_AGREEMENT,
-} from '@/db/graphql/clientOperations';
+} from '@/db/graphql/clientOperations/profile';
 import { profileFormSchema } from '@/core/helpers/validation';
 import { Route } from '@/core/enums/routes';
 

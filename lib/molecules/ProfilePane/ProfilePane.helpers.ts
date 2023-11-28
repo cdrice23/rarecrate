@@ -1,5 +1,5 @@
 import { useMutation, gql } from '@apollo/client';
-import { CREATE_NEW_FOLLOW_OR_REQUEST, UNFOLLOW_PROFILE } from '@/db/graphql/clientOperations';
+import { CREATE_NEW_FOLLOW_OR_REQUEST, UNFOLLOW_PROFILE } from '@/db/graphql/clientOperations/follow';
 
 export const handleFollowClick = async (
   isFollowing,

@@ -1,11 +1,7 @@
 import { useMutation, useLazyQuery, gql } from '@apollo/client';
-import {
-  ADD_CRATE_TO_FAVORITES,
-  REMOVE_CRATE_FROM_FAVORITES,
-  MARK_RECOMMENDATION_SEEN,
-  GET_RECOMMENDATIONS,
-  CREATE_NOTIFICATION,
-} from '@/db/graphql/clientOperations';
+import { ADD_CRATE_TO_FAVORITES, REMOVE_CRATE_FROM_FAVORITES } from '@/db/graphql/clientOperations/crate';
+import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations/notification';
+import { MARK_RECOMMENDATION_SEEN, GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations/recommendation';
 
 export const useMutations = mainProfile => {
   const [createNotification] = useMutation(CREATE_NOTIFICATION);

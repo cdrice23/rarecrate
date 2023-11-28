@@ -12,7 +12,7 @@ import {
   GET_CRATES_FROM_ALBUM,
   GET_ALBUMS_FROM_GENRE,
   GET_ALBUMS_FROM_SUBGENRE,
-} from '@/db/graphql/clientOperations';
+} from '@/db/graphql/clientOperations/search';
 
 export const initialResultsState = {
   profileState: { results: [], currentPage: 1 },

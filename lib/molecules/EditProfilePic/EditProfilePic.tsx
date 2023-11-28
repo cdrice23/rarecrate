@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import Croppie from 'croppie';
 import 'croppie/croppie.css';
 import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
-import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations';
+import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations/profile';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import {
   defaultImageUrl,

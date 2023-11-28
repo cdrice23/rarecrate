@@ -7,7 +7,7 @@ import { User as UserIcon, Camera } from '@phosphor-icons/react';
 import { PublicRoute } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Modal } from '@/lib/atoms/Modal/Modal';
-import { GET_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_PROFILE } from '@/db/graphql/clientOperations/profile';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';

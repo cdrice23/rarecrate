@@ -7,7 +7,7 @@ import {
   ADD_NEW_CRATE,
   UPDATE_CRATE,
   GET_CRATE_DETAIL_WITH_ALBUMS,
-} from '@/db/graphql/clientOperations';
+} from '@/db/graphql/clientOperations/crate';
 import { Route } from '@/core/enums/routes';
 
 export const useCrateFormHandlers = (creatorId, crateFormData, onCloseModal) => {

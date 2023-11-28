@@ -15,13 +15,14 @@ import { FavoriteSummaryPane } from '@/lib/molecules/FavoriteSummaryPane/Favorit
 import { ProfilePane } from '@/lib/molecules/ProfilePane/ProfilePane';
 import { createContext } from '@/db/graphql/context';
 import {
-  GET_LAST_LOGIN_PROFILE,
+  GET_USERNAME_BY_ID,
   GET_PROFILE,
   GET_PROFILE_FOLLOWERS,
   GET_PROFILE_FOLLOWING,
   GET_PROFILE_CRATES,
   GET_PROFILE_FAVORITES,
-} from '@/db/graphql/clientOperations';
+} from '@/db/graphql/clientOperations/profile';
+import { GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 
 interface ProfileProps {
   userId?: number;

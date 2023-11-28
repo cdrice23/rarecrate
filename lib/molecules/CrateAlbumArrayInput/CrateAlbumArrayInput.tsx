@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { FieldArray } from 'formik';
 import { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { SEARCH_PRISMA_ALBUMS_BY_NAME } from '@/db/graphql/clientOperations';
+import { SEARCH_PRISMA_ALBUMS_BY_NAME } from '@/db/graphql/clientOperations/search';
 import { CrateAlbumInput } from '../CrateAlbumInput/CrateAlbumInput';
 import { AlbumSearchCombobox } from '../AlbumSearchCombobox/AlbumSearchCombobox';
 import {

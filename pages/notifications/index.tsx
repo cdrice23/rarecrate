@@ -8,7 +8,8 @@ import { Pane } from '@/lib/atoms/Pane/Pane';
 import { FollowRequestPane } from '@/lib/molecules/FollowRequestPane/FollowRequestPane';
 import { NotificationsPane } from '@/lib/molecules/NotificationsPane/NotificationsPane';
 import { createContext } from '@/db/graphql/context';
-import { GET_USERNAME_BY_ID, GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations';
+import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations/profile';
+import { GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 
 interface NotificationsProps {
   userId?: number;

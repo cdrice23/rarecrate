@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useApolloClient } from '@apollo/client';
 import { Check, X } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations';
+import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations/follow';
 import {
   useRejectFollowRequest,
   useAcceptFollowRequest,

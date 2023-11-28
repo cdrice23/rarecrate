@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { useMutation } from '@apollo/client';
 import { useLocalState } from '@/lib/context/state';
-import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations/search';
 import { GlobalSearchResult } from '../GlobalSearchResult/GlobalSearchResult';
 import { handleOnMouseDown } from './QuickSearchPane.helpers';
 import { QuickSearchPaneProps } from '@/lib/molecules/QuickSearchPane/QuickSearchPane.types';

@@ -1,6 +1,4 @@
 import { toast } from 'react-toastify';
-import { useMutation } from '@apollo/client';
-import { UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
 
 export const onSubmit = async (values, actions, userId, updateNotificationSettings) => {
   actions.setSubmitting(true);

@@ -4,7 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import { useQuery, useMutation } from '@apollo/client';
 import { Message } from '@/lib/atoms/Message/Message';
 import { Pane } from '@/lib/atoms/Pane/Pane';
-import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations';
+import { GET_NOTIFICATION_SETTINGS_BY_USER, UPDATE_NOTIFICATION_SETTINGS } from '@/db/graphql/clientOperations/user';
 import { UserProfileDropdown } from '../UserProfileDropdown/UserProfileDropdown';
 import { DeleteAccount } from '../DeleteAccount/DeleteAccount';
 import { onSubmit } from './UserSettings.helpers';

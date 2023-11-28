@@ -8,7 +8,8 @@ import { PublicRoute, Route } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { createContext } from '@/db/graphql/context';
-import { DELETE_PROFILE, DELETE_USER } from '@/db/graphql/clientOperations';
+import { DELETE_PROFILE } from '@/db/graphql/clientOperations/profile';
+import { DELETE_USER } from '@/db/graphql/clientOperations/user';
 
 interface DeleteAccountPageProps {
   userId?: number;

@@ -1,5 +1,5 @@
 import { useMutation, gql } from '@apollo/client';
-import { ACCEPT_FOLLOW_REQUEST, REJECT_FOLLOW_REQUEST } from '@/db/graphql/clientOperations';
+import { ACCEPT_FOLLOW_REQUEST, REJECT_FOLLOW_REQUEST } from '@/db/graphql/clientOperations/follow';
 
 export const useRejectFollowRequest = () => {
   const [rejectFollowRequest] = useMutation(REJECT_FOLLOW_REQUEST, {

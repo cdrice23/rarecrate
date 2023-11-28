@@ -5,7 +5,7 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { useCombobox } from 'downshift';
 import { CaretDown, CaretLeft } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
-import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations';
+import { RUN_QUICK_SEARCH, LOG_SELECTED_SEARCH_RESULT } from '@/db/graphql/clientOperations/search';
 import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
 import { handleOnClick, handleOnChange, handleOnKeyDown } from './GlobalSearch.helpers';
