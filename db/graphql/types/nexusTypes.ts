@@ -1,4 +1,4 @@
-import { objectType } from 'nexus';
+import { objectType, inputObjectType } from 'nexus';
 import {
   User as PrismaUser,
   Profile as PrismaProfile,
@@ -833,5 +833,80 @@ export const Notification = objectType({
     t.field(PrismaNotification.followId.name, {
       type: PrismaNotification.followId.type,
     });
+  },
+});
+
+export const FollowOrRequestInput = inputObjectType({
+  name: 'FollowOrRequestInput',
+  definition(t) {
+    t.nonNull.int('follower');
+    t.nonNull.int('following');
+    t.nullable.boolean('followingIsPrivate');
+    t.nullable.field('requestStatus', {
+      type: RequestStatusEnum,
+    });
+  },
+});
+
+export const CrateProfileInput = inputObjectType({
+  name: 'CrateProfileInput',
+  definition(t) {
+    t.nonNull.int('crateId');
+    t.nonNull.int('profileId');
+  },
+});
+
+export const CrateAlbumInput = inputObjectType({
+  name: 'CrateAlbumInput',
+  definition(t) {
+    t.nonNull.int('albumId');
+    t.list.int('tagIds');
+    t.int('order');
+  },
+});
+
+export const CrateInput = inputObjectType({
+  name: 'CrateInput',
+  definition(t) {
+    t.int('id');
+    t.nonNull.string('title');
+    t.nonNull.string('description');
+    t.nonNull.int('creatorId');
+    t.nonNull.boolean('isRanked');
+    t.list.int('labelIds');
+    t.nonNull.list.field('crateAlbums', { type: CrateAlbumInput });
+  },
+});
+
+export const SocialLinkInput = inputObjectType({
+  name: 'SocialLinkInput',
+  definition(t) {
+    t.nonNull.string('platform');
+    t.nonNull.string('username');
+  },
+});
+
+export const ProfileInput = inputObjectType({
+  name: 'ProfileInput',
+  definition(t) {
+    t.int('id');
+    t.int('userId');
+    t.nonNull.string('username');
+    t.nonNull.boolean('isPrivate');
+    t.string('bio');
+    t.string('image');
+    t.list.field('socialLinks', { type: SocialLinkInput });
+  },
+});
+
+export const NotificationSettingsInput = inputObjectType({
+  name: 'NotificationSettingsInput',
+  definition(t) {
+    t.nonNull.int('userId');
+    t.nonNull.boolean('showOwnNewFollowers');
+    t.nonNull.boolean('showOwnNewFavorites');
+    t.nonNull.boolean('showFollowingNewFollows');
+    t.nonNull.boolean('showFollowingNewCrates');
+    t.nonNull.boolean('showFollowingNewFavorites');
   },
 });

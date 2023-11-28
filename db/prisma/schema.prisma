@@ -181,7 +181,7 @@ model CrateAlbum {
 
 model Label {
   id                   Int     @id @default(autoincrement())
-  name                 String
+  name                 String  @unique
   isStandard           Boolean
   crates               Crate[]
   searchAndSelectCount Int     @default(0)
@@ -191,7 +191,7 @@ model Label {
 
 model Tag {
   id                   Int          @id @default(autoincrement())
-  name                 String
+  name                 String       @unique
   crateAlbum           CrateAlbum[]
   searchAndSelectCount Int          @default(0)
 
