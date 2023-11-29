@@ -2,9 +2,9 @@ import cx from 'classnames';
 import { useState } from 'react';
 import { FieldArray } from 'formik';
 import { Plus } from '@phosphor-icons/react';
+import { SocialLinksArrayInputProps } from '@/lib/molecules/SocialLinksArrayInput/SocialLinksArrayInput.types';
 import { SocialLink } from '../SocialLink/SocialLink';
 import { handleEdit, handleUpdateValues } from './SocialLinksArrayInput.helpers';
-import { SocialLinksArrayInputProps } from '@/lib/molecules/SocialLinksArrayInput/SocialLinksArrayInput.types';
 
 const SocialLinksArrayInput = ({ socialLinks, setFieldValue }: SocialLinksArrayInputProps) => {
   const [values, setValues] = useState(socialLinks.map(link => ({ platform: link.platform, username: link.username })));

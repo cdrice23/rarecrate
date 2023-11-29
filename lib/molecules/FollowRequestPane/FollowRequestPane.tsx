@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useApolloClient } from '@apollo/client';
 import { Check, X } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { FollowRequestPaneProps } from '@/lib/molecules/FollowRequestPane/FollowRequestPane.types';
 import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations/follow';
 import {
   useRejectFollowRequest,
@@ -10,7 +11,6 @@ import {
   handleAccept,
   handleReject,
 } from './FollowRequestPane.helpers';
-import { FollowRequestPaneProps } from '@/lib/molecules/FollowRequestPane/FollowRequestPane.types';
 
 const FollowRequestPane = ({ mainProfile }: FollowRequestPaneProps) => {
   const { loading, error, data } = useQuery(GET_PENDING_FOLLOW_REQUESTS, {

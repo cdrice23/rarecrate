@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { X } from '@phosphor-icons/react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
-import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 import { CrateAlbumInputProps } from '@/lib/molecules/CrateAlbumInput/CrateAlbumInput.types';
+import { TagSearchInput } from '../TagSearchInput/TagSearchInput';
 
 const CrateAlbumInput = ({ data, id, removeHandler, initialRank, setFieldValue, isRanked }: CrateAlbumInputProps) => {
   useEffect(() => {

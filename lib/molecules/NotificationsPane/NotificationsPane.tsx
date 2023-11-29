@@ -2,9 +2,9 @@ import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { NotificationsPaneProps } from '@/lib/molecules/NotificationsPane/NotificationsPane.types';
 import { GET_NOTIFICATIONS_BY_PROFILE } from '@/db/graphql/clientOperations/notification';
 import { Notification } from '../Notification/Notification';
-import { NotificationsPaneProps } from '@/lib/molecules/NotificationsPane/NotificationsPane.types';
 
 const NotificationsPane = ({ mainProfile, currentUser }: NotificationsPaneProps) => {
   const [currentPage, setCurrentPage] = useState(1);

@@ -6,9 +6,9 @@ import { HandHeart, Lightbulb, DotOutline } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
 import { GET_RECOMMENDATIONS } from '@/db/graphql/clientOperations/recommendation';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { CrateDiggingPaneProps } from '@/lib/molecules/CrateDiggingPane/CrateDiggingPane.types';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { useMutations, handleGetMoreRecommendations, handleFavoriteToggle } from './CrateDiggingPane.helpers';
-import { CrateDiggingPaneProps } from '@/lib/molecules/CrateDiggingPane/CrateDiggingPane.types';
 
 const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) => {
   const [currentRecommendations, setCurrentRecommendations] = useState([]);

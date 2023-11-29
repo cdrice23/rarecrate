@@ -1,9 +1,9 @@
 import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { Pane } from '@/lib/atoms/Pane/Pane';
+import { DeleteProfileProps } from '@/lib/molecules/DeleteProfile/DeleteProfile.types';
 import { useLocalState } from '@/lib/context/state';
 import { handleDelete, useDeleteSelectedProfile } from './DeleteProfile.helpers';
-import { DeleteProfileProps } from '@/lib/molecules/DeleteProfile/DeleteProfile.types';
 
 const DeleteProfile = ({
   profileToDelete,

@@ -222,16 +222,9 @@ input ProfileInput {
 }
 
 type Query {
-  fsAlbums(currentPage: Int!, searchTerm: String!): [Album]!
   fsCrates(currentPage: Int!, searchTerm: String!): [Crate]!
-  fsGenres(searchTerm: String!): [Genre]!
   fsLabels(currentPage: Int!, searchTerm: String!): [Label]!
   fsProfiles(currentPage: Int!, searchTerm: String!): [Profile]!
-  fsSubgenres(searchTerm: String!): [Subgenre]!
-  fsTags(currentPage: Int!, searchTerm: String!): [Tag]!
-  getAlbumsFromGenre(currentPage: Int!, genreId: Int!): [Album]!
-  getAlbumsFromSubgenre(currentPage: Int!, subgenreId: Int!): [Album]!
-  getAlbumsFromTag(currentPage: Int!, tagId: Int!): [Album]!
   getCrateDetailWithAlbums(id: Int!): Crate!
   getCratesFromAlbum(albumId: Int!, currentPage: Int!): [Crate]!
   getCratesFromLabel(currentPage: Int!, labelId: Int!): [Crate]!
@@ -246,21 +239,12 @@ type Query {
   getProfileFollowing(currentPage: Int!, username: String!): [Follow]!
   getRecommendations(currentRecsInArray: Int, profileId: Int!, usedPages: [Int]): RecommendationResults!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
-  getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
-  qsAlbums(searchTerm: String!): [Album]!
   qsCrates(searchTerm: String!): [Crate]!
-  qsGenres(searchTerm: String!): [Genre]!
   qsLabels(searchTerm: String!): [Label]!
   qsProfiles(searchTerm: String!): [Profile]!
-  qsSubgenres(searchTerm: String!): [Subgenre]!
-  qsTags(searchTerm: String!): [Tag]!
   searchLabelsById(labelId: Int!): Label!
   searchLabelsByName(searchTerm: String!): [Label]!
-  searchPrismaAlbumsById(albumId: Int!): Album!
-  searchPrismaAlbumsByName(searchTerm: String!): [Album]!
-  searchTagsById(tagId: Int!): Tag!
-  searchTagsByName(searchTerm: String!): [Tag]!
 }
 
 type Recommendation {

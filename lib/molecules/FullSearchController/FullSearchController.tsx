@@ -3,6 +3,7 @@ import { useEffect, useReducer } from 'react';
 import { Tag, VinylRecord, SquaresFour } from '@phosphor-icons/react';
 import { useLocalState } from '@/lib/context/state';
 import { Pill } from '@/lib/atoms/Pill/Pill';
+import { FullSearchControllerProps } from '@/lib/molecules/FullSearchController/FullSearchController.types';
 import { FullSearchPane } from '../FullSearchPane/FullSearchPane';
 import {
   initialResultsState,
@@ -11,7 +12,6 @@ import {
   getLabelAndTagResults,
   getGenreAndSubgenreResults,
 } from './FullSearchController.helpers';
-import { FullSearchControllerProps } from '@/lib/molecules/FullSearchController/FullSearchController.types';
 
 const FullSearchController = ({
   searchPrompt,

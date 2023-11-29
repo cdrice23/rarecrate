@@ -2,8 +2,8 @@ import cx from 'classnames';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
-import NavBar from './NavBar';
 import { AuthedLayoutProps } from '@/lib/layouts/Authed/Authed.types';
+import NavBar from './NavBar';
 
 const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   const router = useRouter();

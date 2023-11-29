@@ -5,6 +5,11 @@ import { useRouter } from 'next/router';
 import Croppie from 'croppie';
 import 'croppie/croppie.css';
 import { User as UserIcon, PencilLine, Trash } from '@phosphor-icons/react';
+import {
+  EditProfilePicProps,
+  ProfilePicPreviewProps,
+  EditToolProps,
+} from '@/lib/molecules/EditProfilePic/EditProfilePic.types';
 import { UPDATE_PROFILE_PIC_URL, GET_PROFILE_IMAGE } from '@/db/graphql/clientOperations/profile';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import {
@@ -15,11 +20,6 @@ import {
   handleImageUpload,
   handleChangeProfilePic,
 } from './EditProfilePic.helpers';
-import {
-  EditProfilePicProps,
-  ProfilePicPreviewProps,
-  EditToolProps,
-} from '@/lib/molecules/EditProfilePic/EditProfilePic.types';
 
 const EditProfilePic = ({ profileData, onClose, imageRefreshKey, setImageRefreshKey }: EditProfilePicProps) => {
   const [showEditTool, setShowEditTool] = useState<boolean>(false);

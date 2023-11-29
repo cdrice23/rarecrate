@@ -7,13 +7,13 @@ import { User as UserIcon, Camera } from '@phosphor-icons/react';
 import { PublicRoute } from '@/core/enums/routes';
 import { useLocalState } from '@/lib/context/state';
 import { Modal } from '@/lib/atoms/Modal/Modal';
+import { ProfileFormProps } from '@/lib/molecules/ProfileForm/ProfileForm.types';
 import { GET_PROFILE } from '@/db/graphql/clientOperations/profile';
 import { UserAgreement } from '../UserAgreement/UserAgreement';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { SocialLinksArrayInput } from '../SocialLinksArrayInput/SocialLinksArrayInput';
 import { EditProfilePic } from '../EditProfilePic/EditProfilePic';
 import { initialProfileValues, updatedSchema, useMutations, onSubmit } from './ProfileForm.helpers';
-import { ProfileFormProps } from '@/lib/molecules/ProfileForm/ProfileForm.types';
 
 const ProfileForm = ({
   existingProfileData,

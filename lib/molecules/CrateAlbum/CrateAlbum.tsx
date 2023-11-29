@@ -2,8 +2,8 @@ import cx from 'classnames';
 import Image from 'next/image';
 import { useState } from 'react';
 import { formatArtistName } from '@/core/helpers/cosmetic';
-import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
 import { CrateAlbumProps } from '@/lib/molecules/CrateAlbum/CrateAlbum.types';
+import { ExternalLinkDropdownButton } from '../ExternalLinkDropdownButton/ExternalLinkDropdownButton';
 
 export const CrateAlbum = ({ data }: CrateAlbumProps) => {
   const [albumFace, setAlbumFace] = useState<'front' | 'back'>('front');

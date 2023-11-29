@@ -4,6 +4,7 @@ import { useQuery, useApolloClient } from '@apollo/client';
 import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Modal } from '@/lib/atoms/Modal/Modal';
+import { ProfilePaneProps } from '@/lib/molecules/ProfilePane/ProfilePane.types';
 import { GET_PROFILE } from '@/db/graphql/clientOperations/profile';
 import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations/follow';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
@@ -11,7 +12,6 @@ import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { useFollowMutations, handleFollowClick } from './ProfilePane.helpers';
-import { ProfilePaneProps } from '@/lib/molecules/ProfilePane/ProfilePane.types';
 
 const ProfilePane = ({
   username,

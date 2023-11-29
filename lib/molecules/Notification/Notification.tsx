@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { User as UserIcon } from '@phosphor-icons/react';
 import { Route } from '@/core/enums/routes';
 import { Pill } from '@/lib/atoms/Pill/Pill';
+import { NotificationProps } from '@/lib/molecules/Notification/Notification.types';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
 import {
   handleActionOwnerNav,
@@ -12,7 +13,6 @@ import {
   calculateTime,
   displayTime,
 } from './Notification.helpers';
-import { NotificationProps } from '@/lib/molecules/Notification/Notification.types';
 
 const Notification = ({
   index,

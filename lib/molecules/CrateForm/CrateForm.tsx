@@ -3,10 +3,10 @@ import { Form, Formik, ErrorMessage } from 'formik';
 import { crateFormSchema } from '@/core/helpers/validation';
 import { TextInput } from '@/lib/atoms/TextInput/TextInput';
 import { ToggleInput } from '@/lib/atoms/ToggleInput/ToggleInput';
+import { CrateFormProps } from '@/lib/molecules/CrateForm/CrateForm.types';
 import { LabelSearchInput } from '../LabelSearchInput/LabelSearchInput';
 import { CrateAlbumArrayInput } from '../CrateAlbumArrayInput/CrateAlbumArrayInput';
 import { useCrateFormHandlers, initialValues } from './CrateForm.helpers';
-import { CrateFormProps } from '@/lib/molecules/CrateForm/CrateForm.types';
 
 const CrateForm = ({ creatorId, crateFormData, onCloseModal }: CrateFormProps) => {
   const { onSubmit, getCrateDetailWithAlbums } = useCrateFormHandlers(creatorId, crateFormData, onCloseModal);

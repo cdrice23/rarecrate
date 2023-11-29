@@ -2,15 +2,15 @@ import cx from 'classnames';
 import { useQuery, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { DotsThreeVertical, Heart } from '@phosphor-icons/react';
+import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
+import { Modal } from '@/lib/atoms/Modal/Modal';
 import { useLocalState } from '@/lib/context/state';
 import { GET_CRATE_DETAIL_WITH_ALBUMS } from '@/db/graphql/clientOperations/crate';
 import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations/notification';
-import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
-import { Modal } from '@/lib/atoms/Modal/Modal';
+import { CrateDetailFaceProps, CrateDetailProps } from '@/lib/molecules/CrateDetail/CrateDetail.types';
 import { CrateAlbum } from '../CrateAlbum/CrateAlbum';
 import { CrateForm } from '../CrateForm/CrateForm';
 import { useAddCrateToFavorites, useRemoveCrateFromFavorites, handleFavoriteToggle } from './CrateDetail.helpers';
-import { CrateDetailFaceProps, CrateDetailProps } from '@/lib/molecules/CrateDetail/CrateDetail.types';
 
 const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetailProps) => {
   const [detailFace, setDetailFace] = useState<'front' | 'back'>('front');

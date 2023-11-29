@@ -7,7 +7,6 @@ import { ProfilePic } from '../ProfilePic/ProfilePic';
 import { GlobalSearchResultProps } from '@/lib/molecules/GlobalSearchResult/GlobalSearchResult.types';
 
 const GlobalSearchResult = ({ data, index, lastSlice, getMoreItems }: GlobalSearchResultProps) => {
-  console.log(data);
   return (
     <motion.div
       className={cx('searchResult')}

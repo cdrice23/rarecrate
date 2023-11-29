@@ -7,6 +7,7 @@ import { Heart, User as UserIcon } from '@phosphor-icons/react';
 import BinaryIconButton from '@/lib/atoms/BinaryIconButton/BinaryIconButton';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Pill } from '@/lib/atoms/Pill/Pill';
+import { FavoriteSummaryPaneProps } from '@/lib/molecules/FavoriteSummaryPane/FavoriteSummaryPane.types';
 import { CREATE_NOTIFICATION } from '@/db/graphql/clientOperations/notification';
 import { CrateDetail } from '../CrateDetail/CrateDetail';
 import { ProfilePic } from '../ProfilePic/ProfilePic';
@@ -15,7 +16,6 @@ import {
   useRemoveCrateFromFavorites,
   handleFavoriteToggle,
 } from './FavoriteSummaryPane.helpers';
-import { FavoriteSummaryPaneProps } from '@/lib/molecules/FavoriteSummaryPane/FavoriteSummaryPane.types';
 
 const FavoriteSummaryPane = ({
   currentItems,

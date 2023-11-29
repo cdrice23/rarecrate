@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/client';
 import { Route, PublicRoute } from '@/core/enums/routes';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { useLocalState } from '@/lib/context/state';
-import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 import { NavBarProps } from '@/lib/layouts/Authed/Authed.types';
+import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 
 export const NavBar = ({ className, disableNav }: NavBarProps) => {
   const [updateLastLoginProfile] = useMutation(UPDATE_LAST_LOGIN_PROFILE);
