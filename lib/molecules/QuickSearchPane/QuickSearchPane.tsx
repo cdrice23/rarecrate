@@ -63,7 +63,13 @@ const QuickSearchPane = ({
                     item,
                     index,
                     onMouseDown: async () => {
-                      handleOnMouseDown(item, debounceTimeout, setDebounceTimeout, router, logSelectedSearchResult);
+                      await handleOnMouseDown(
+                        item,
+                        debounceTimeout,
+                        setDebounceTimeout,
+                        router,
+                        logSelectedSearchResult,
+                      );
                     },
                   })}
                 >
