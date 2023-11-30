@@ -212,6 +212,467 @@ export const CrateAlbumInput = inputObjectType({
   },
 });
 
+export const TagQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('searchTagsByName', {
+      type: Tag,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.tag.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: [
+            {
+              _relevance: {
+                fields: ['name'],
+                search: searchTerm,
+                sort: 'desc',
+              },
+            },
+          ],
+        });
+      },
+    });
+
+    t.nonNull.field('searchTagsById', {
+      type: Tag,
+      args: {
+        tagId: nonNull(intArg()),
+      },
+      resolve: async (_, { tagId }, ctx) => {
+        return await ctx.prisma.tag.findUnique({
+          where: {
+            id: tagId,
+          },
+        });
+      },
+    });
+
+    t.list.field('getTopTags', {
+      type: Tag,
+      args: {
+        quantity: intArg(),
+      },
+      resolve: async (_, { quantity = 20 }, ctx) => {
+        return await ctx.prisma.label.findMany({
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: quantity,
+        });
+      },
+    });
+
+    t.nonNull.list.field('qsTags', {
+      type: Tag,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.tag.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: 9,
+        });
+      },
+    });
+
+    t.nonNull.list.field('fsTags', {
+      type: Tag,
+      args: {
+        searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const tags = await ctx.prisma.tag.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        return tags;
+      },
+    });
+  },
+});
+
+export const AlbumQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('searchPrismaAlbumsByName', {
+      type: Album,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              OR: [
+                {
+                  artist: {
+                    contains: searchTerm,
+                  },
+                },
+                {
+                  title: {
+                    contains: searchTerm,
+                  },
+                },
+              ],
+            },
+            orderBy: [
+              {
+                searchAndSelectCount: 'desc',
+              },
+            ],
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        const ids = new Set();
+        const uniqueResults = allAlbums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+        // const top9Profiles = uniqueResults.slice(0, 9);
+        // return top9Profiles;
+        return uniqueResults;
+      },
+    });
+
+    t.nonNull.field('searchPrismaAlbumsById', {
+      type: Album,
+      args: {
+        albumId: nonNull(intArg()),
+      },
+      resolve: async (_, { albumId }, ctx) => {
+        return await ctx.prisma.album.findUnique({
+          where: {
+            id: albumId,
+          },
+        });
+      },
+    });
+
+    t.nonNull.list.field('qsAlbums', {
+      type: Album,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        const pageSize = 99999;
+        let pageNumber = 1;
+        let allAlbums = [];
+
+        while (true) {
+          const albums = await ctx.prisma.album.findMany({
+            where: {
+              OR: [
+                {
+                  artist: {
+                    contains: searchTerm,
+                  },
+                },
+                {
+                  title: {
+                    contains: searchTerm,
+                  },
+                },
+              ],
+            },
+            orderBy: [
+              {
+                searchAndSelectCount: 'desc',
+              },
+            ],
+            skip: pageSize * (pageNumber - 1),
+            take: pageSize,
+          });
+
+          if (albums.length === 0) {
+            break; // Break the loop if no more profiles are returned
+          }
+
+          allAlbums = allAlbums.concat(albums);
+          pageNumber++;
+        }
+
+        const ids = new Set();
+        const uniqueResults = allAlbums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+        const top4Albums = uniqueResults.slice(0, 4);
+        return top4Albums;
+      },
+    });
+
+    t.nonNull.list.field('fsAlbums', {
+      type: Album,
+      args: {
+        searchTerm: nonNull(stringArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { searchTerm, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            OR: [
+              {
+                artist: {
+                  contains: searchTerm,
+                },
+              },
+              {
+                title: {
+                  contains: searchTerm,
+                },
+              },
+            ],
+          },
+          skip: skip,
+          take: 30,
+        });
+
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return uniqueResults;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromTag', {
+      type: Album,
+      args: {
+        tagId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { tagId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            crates: {
+              some: {
+                tags: {
+                  some: {
+                    id: tagId,
+                  },
+                },
+              },
+            },
+          },
+
+          skip: skip,
+          take: 30,
+        });
+
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return uniqueResults;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromGenre', {
+      type: Album,
+      args: {
+        genreId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { genreId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            genres: {
+              some: {
+                id: genreId,
+              },
+            },
+          },
+
+          skip: skip,
+          take: 30,
+        });
+
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return uniqueResults;
+      },
+    });
+
+    t.nonNull.list.field('getAlbumsFromSubgenre', {
+      type: Album,
+      args: {
+        subgenreId: nonNull(intArg()),
+        currentPage: nonNull(intArg()),
+      },
+      resolve: async (_, { subgenreId, currentPage }, ctx) => {
+        const skip = (currentPage - 1) * 30;
+        const albums = await ctx.prisma.album.findMany({
+          where: {
+            subgenres: {
+              some: {
+                id: subgenreId,
+              },
+            },
+          },
+
+          skip: skip,
+          take: 30,
+        });
+
+        const ids = new Set();
+        const uniqueResults = albums.filter(album => {
+          if (!ids.has(album.id)) {
+            ids.add(album.id);
+            return true;
+          }
+          return false;
+        });
+
+        return uniqueResults;
+      },
+    });
+  },
+});
+
+export const GenreQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('qsGenres', {
+      type: Genre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.genre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: 9,
+        });
+      },
+    });
+
+    t.nonNull.list.field('fsGenres', {
+      type: Genre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.genre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+        });
+      },
+    });
+  },
+});
+
+export const SubgenreQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.nonNull.list.field('qsSubgenres', {
+      type: Subgenre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.subgenre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+          orderBy: {
+            searchAndSelectCount: 'desc',
+          },
+          take: 9,
+        });
+      },
+    });
+
+    t.nonNull.list.field('fsSubgenres', {
+      type: Subgenre,
+      args: {
+        searchTerm: nonNull(stringArg()),
+      },
+      resolve: async (_, { searchTerm }, ctx) => {
+        return await ctx.prisma.subgenre.findMany({
+          where: {
+            name: {
+              contains: searchTerm,
+            },
+          },
+        });
+      },
+    });
+  },
+});
+
 export const TagMutations = extendType({
   type: 'Mutation',
   definition(t) {

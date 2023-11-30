@@ -5,7 +5,7 @@ $space-smaller: 6px;
 $space-small: 8px;
 $space-medium: 16px;
 $space-large: 24px;
-$space-larger: 32px;
+$space-larger: 36px;
 $space-largest: 48px;
 
 // SHADOWS
@@ -22,7 +22,9 @@ $bar-collapsed: 60px;
 $bar-expanded: 250px;
 $bar-mobile-height: 80px;
 
-$border-radius: 4px;
+$border-radius-rounded: 4px;
+$border-radius-pill: 16px;
+$border-radius-circle: 50px;
 
 // BREAKPOINTS
 $bp-phone: 600px;

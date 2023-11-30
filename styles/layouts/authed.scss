@@ -1,393 +1,3 @@
-.l-authed {
-  .authed-content {
-    padding-left: $bar-collapsed;
-    padding-bottom: 0;
-    height: 100vh;
-    max-width: 100vw;
-    background: var(--surface);
-    transition: padding $transition-fast;
-    overflow: hidden;
-
-    @media screen and (min-width: $bp-large) {
-      padding-left: $bar-expanded;
-    }
-
-    &.expanded {
-      @media screen and (min-width: $bp-phone) {
-        padding-left: $bar-expanded !important;
-      }
-
-      @media screen and (max-width: $bp-phone) {
-        padding-left: 0 !important;
-      }
-    }
-
-    &.collapsed {
-      @media screen and (min-width: $bp-phone) {
-        padding-left: $bar-collapsed !important;
-      }
-
-      @media screen and (max-width: $bp-phone) {
-        padding-left: 0 !important;
-      }
-    }
-
-    .authed-modules-bar {
-      box-shadow: inset -5px 0 10px #{lightnessAdjust(0.98, --bar)};
-      background: var(--bar);
-      border-right: 1px solid #{lightnessAdjust(0.98, --bar)};
-      height: 100%;
-      left: 0;
-      padding: 0;
-      position: absolute;
-      top: 0;
-      transition: all $transition-fastest;
-      z-index: 100;
-    
-      width: $bar-collapsed;
-    
-      hr {
-        border: 0;
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--background);
-        margin: 0 $space-medium;
-        padding: 0;
-      }
-    
-      .section {
-        padding: 15px 0;
-
-        .section-item {
-          transition: all $transition-medium;
-          color: var(--on-bar);
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          font-size: 2rem;
-          height: 60px;
-          padding: 15px 0;
-          text-align: center;
-
-          .icon {
-            background: var(--bar);
-            border-left: 2px solid transparent;
-            padding-right: 3px;
-            color: inherit;
-            display: block;
-            text-align: center;
-            line-height: 30px !important;
-            height: 30px !important;
-            width: $bar-collapsed !important;
-            z-index: 1;
-          }
-
-          .name {
-            line-height: 30px;
-            height: 30px;
-            margin-bottom: 0;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            font-weight: 500;
-            position: absolute;
-            right: auto;
-            left: $bar-collapsed;
-            text-align: left;
-            display: none;
-            transition: all $transition-medium;
-
-            @media screen and (min-width: $bp-large) {
-              display: inline-block;
-            }
-          }
-
-          &.future {
-            opacity: 0.3;
-        
-            &:hover {
-              color: var(--on-background);
-              cursor: not-allowed;
-            }
-          }
-        
-          &:hover {
-            background:#{lightnessAdjust(1.05, --bar)};
-            color:#{lightnessAdjust(1.2, --on-bar)};
-            border-left-color: rgba(var(--primary-rgb), 0.3);
-            cursor: pointer;
-        
-            .icon {
-              background: inherit;
-            }
-          }
-        
-          &.status {
-            background:#{lightnessAdjust(0.85, --bar)};
-            border-bottom: 1px solid#{lightnessAdjust(0.8, --bar)};
-            color:#{lightnessAdjust(1.1, --on-bar)};
-        
-            &:hover {
-              background:#{lightnessAdjust(0.85, --bar)};
-              color: #{lightnessAdjust(1.3, --on-bar)};
-        
-              .icon {
-                background: inherit;
-              }
-            }
-          }
-        
-          &.active {
-            color: var(--primary) !important;
-        
-            .icon {
-              border-left-color: var(--primary);
-              color: #{lightnessAdjust(1.1, --primary)} !important;
-            }
-        
-            p.name {
-              font-weight: bold;
-            }
-          }
-        }
-      }
-    
-      div .toggle-collapse {
-        display: none;
-    
-        @media screen and (min-width: $bp-large) {
-          display: block;
-        }
-      }
-    
-      div .toggle-expand {
-        display: block;
-    
-        @media screen and (min-width: $bp-large) {
-          display: none;
-        }
-      }
-    
-      @media screen and (max-width: $bp-phone) {
-        left: -$bar-collapsed;
-      }
-    
-      @media screen and (min-width: $bp-large) {
-        width: $bar-expanded;
-      }
-    
-      &.expanded {
-        width: $bar-expanded;
-    
-        @media screen and (max-width: $bp-phone) {
-          left: 0px;
-          width: $bar-expanded;
-        }
-
-        .section .section-item .name,
-        div.toggle-collapse {
-          display: block;
-        }
-    
-        .section .section-item .name {
-          transition: all $transition-fast;
-          right: auto;
-          left: 60px;
-        }
-    
-        div.toggle-expand {
-          display: none;
-        }
-      }
-    
-      &.collapsed {
-        width: $bar-collapsed !important;
-    
-        @media screen and (max-width: $bp-phone) {
-          left: -$bar-expanded;
-          width: $bar-expanded;
-        }
-    
-        div.toggle-expand {
-          display: block;
-        }
-        
-        div.toggle-collapse {
-          display: none;
-        }
-    
-        .section .section-item .name {
-          display: none;
-        }
-      }
-    }
-
-    .section-bottom {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      width: inherit;
-    }
-
-    .modules-bar-toggle {
-      display: block;
-      position: absolute;
-      bottom: 0;
-      right: -60px;
-      transition: all $transition-fastest;
-    
-      .toggle-expand,
-      .toggle-collapse {
-        display: block;
-        margin-bottom: $space-large;
-        cursor: pointer;
-        text-align: center;
-        border-radius: 15px;
-        box-shadow: $shadow-default;
-        background: var(--bar);
-        color: #{lightnessAdjust(1.5, --on-bar)};
-        padding: $space-smaller $space-small;
-      }
-    
-      &:hover {
-        padding-left: $space-large;
-        right: calc(-60px - ($space-large - $space-medium));
-    
-        .toggle-expand i,
-        .toggle-collapse i {
-          background: #{lightnessAdjust(0.8, --bar)};
-          color: #{lightnessAdjust(1.8, --on-bar)};
-        }
-      }
-    }
-
-    .authed-content-module {
-      display: block;
-      height: 100vh;
-      overflow-y: auto;
-      overflow-x: auto;
-      padding-bottom: 60px;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      .content-module-header {
-        background: var(--background);
-        display: block;
-        padding: $space-large $space-large 0;
-
-        .module-header-title {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-          padding-bottom: $space-medium;
-          border-bottom: 1px solid var(--background-border);
-        
-          .module-name {
-            color: var(--on-background-alt);
-            font-weight: 300;
-            flex: 1;
-        
-            a {
-              font-size: 1.4rem;
-              vertical-align: middle;
-              margin-right: $space-small;
-              cursor: pointer;
-              transition: color $transition-fast;
-        
-              i {
-                font-size: inherit;
-              }
-        
-              &:hover {
-                color: #{lightnessAdjust(0.7, --on-background-alt)};
-              }
-            }
-          }
-        
-          .module-actions {
-            flex: 1;
-            text-align: right;
-        
-            button {
-              margin-left: auto;
-            }
-          }
-        }
-
-        .module-header-page-actions {
-          border-bottom: 1px solid var(--background-border);
-          border-top: 1px solid var(--background-border-light);
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
-          width: 100%;
-          padding: $space-medium 0;
-        
-          button {
-            margin-bottom: 0;
-            margin-right: $space-medium;
-          }
-        }
-
-        .module-header-tabs {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          border-top: 1px solid var(--background-border-light);
-          padding: $space-medium 0 0;
-        
-          .module-tab {
-            border-bottom: 2px solid transparent;
-            display: inline-block;
-            padding-top: 2px;
-            margin-right: $space-medium;
-            padding-bottom: $space-medium;
-            text-transform: uppercase;
-            font-weight: 400;
-            font-size: 1.3rem;
-            line-height: 1;
-            color: var(--on-background);
-        
-            &:last-child {
-              padding-right: 0;
-            }
-        
-            &:hover {
-              cursor: pointer;
-            }
-        
-            &.active {
-              border-bottom-color: var(--primary);
-              color: var(--on-background-alt);
-              font-weight: 500;
-            }
-        
-            &.disabled {
-              opacity: 0.3;
-        
-              &:hover {
-                cursor: default;
-              }
-            }
-          }
-        }
-      }
-
-      .content-module-body {
-        display: block;
-        padding: 0;
-      
-        &.padded {
-          padding: $space-large;
-        }
-      }
-    }
-  }
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -404,10 +14,10 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding: 16px;
+  padding: $space-medium;
 
   a > button {
-    padding: 8px;
+    padding: $space-small;
   }
 }
 
@@ -416,16 +26,15 @@
   grid-template-columns: repeat(12, 1fr);
   grid-auto-flow: row;
   justify-content: center;
-  // grid-gap: 10px;
 
   .listActions {
     grid-column: 1 / span 12;
-    margin: 16px;
+    margin: $space-medium;
     display: flex;
     justify-content: space-around;
 
     button {
-      padding: 4px;
+      padding: $space-smallest;
     }
   }
   
@@ -444,23 +53,23 @@
       align-items: flex-start;
 
       .formInputItem {
-        margin: 4px;
+        margin: $space-smallest;
 
         
         label {
-          margin-right: 8px;
+          margin-right: $space-small;
         }
   
       }
     }
 
     .formInputItem {
-      margin: 4px;
+      margin: $space-smallest;
       
       
 
       label {
-        margin-right: 8px;
+        margin-right: $space-small;
       }
 
       .formInputLongText {
@@ -470,30 +79,30 @@
     }
 
     .profileBar {
-      height: 50px;
-      width: calc(100% - 16px);
+      height: $space-largest;
+      width: calc(100% - $space-medium);
       display: flex;
       align-items: center;
-      margin: 8px;   
+      margin: $space-small;   
 
       .image {
-        margin-left: 16px;
-        height: 36px;
-        width: 36px;
+        margin-left: $space-medium;
+        height: $space-larger;
+        width: $space-larger;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
         background-color: grey;
-        border-radius: 50px;
+        border-radius: $border-radius-circle;
 
         img {
-          border-radius: 50px;
+          border-radius: $border-radius-circle;
         }
       }
 
       .username {
-        margin-left: 16px;
+        margin-left: $space-medium;
         flex-grow: 1;
         text-align: left;
       }
@@ -503,14 +112,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: $space-medium;
 
       .imageContainer {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-right: 8px;
+        margin-right: $space-small;
 
         .image {
           height: 75px;
@@ -520,21 +129,21 @@
           align-items: center;
           color: white;
           background-color: grey;
-          border-radius: 50px;
+          border-radius: $border-radius-circle;
           }
   
           .editPic {
-            margin-top: 4px;
+            margin-top: $space-smallest;
             display: flex;
             justify-content: center;
             align-items: center;
   
             span {
-              margin-right: 4px;
+              margin-right: $space-smallest;
             }
   
           img {
-            border-radius: 50px;
+            border-radius: $border-radius-circle;
           }
         }
       }
@@ -555,19 +164,19 @@
     text-align: center;
 
     .sectionTitle {
-      margin-bottom: 8px;
+      margin-bottom: $space-small;
       color: blue;
     }
 
     .crateSummary {
       width: 50%;
       display: inline-block;
-      margin: 8px;
+      margin: $space-small;
       background-color: lightblue;
       height: 200px;
       max-height: 200px;
       place-self: center;
-      padding-top: 8px;
+      padding-top: $space-small;
 
       .crateSummaryIcons {
         display: flex;
@@ -575,20 +184,20 @@
         align-items: center;
 
         .profilePicIcon {
-          height: 36px;
-          width: 36px;
+          height: $space-larger;
+          width: $space-larger;
           display: flex;
           justify-content: center;
           align-items: center;
           color: white;
           background-color: grey;
-          border-radius: 50px;
-          margin-right: 16px;
+          border-radius: $border-radius-circle;
+          margin-right: $space-medium;
         }
 
         img {
-          border-radius: 50px;
-          margin-right: 16px;
+          border-radius: $border-radius-circle;
+          margin-right: $space-medium;
         }
 
         .favoriteItems {
@@ -596,7 +205,7 @@
           align-items: center;
 
           button {
-            margin-right: 4px;
+            margin-right: $space-smallest;
           }
         }
       }
@@ -606,7 +215,7 @@
         justify-content: flex-start;
         align-items: center;
         flex-wrap: wrap;
-        margin: 16px;
+        margin: $space-medium;
   
         .pill {
           &.standardLabel {
@@ -619,10 +228,10 @@
             color: white;
           }
   
-          margin: 4px;
+          margin: $space-smallest;
           background-color: aquamarine;
-          border-radius: 16px;
-          padding: 4px;
+          border-radius: $border-radius-pill;
+          padding: $space-smallest;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -661,7 +270,7 @@
   }
 
   .modal {
-    border-radius: 4px;
+    border-radius: $border-radius-rounded;
     // border: 1px solid var(--surface);
     background: var(--surface);
     color: var(--on-surface);
@@ -714,7 +323,7 @@
         justify-content: center;
 
         button {
-          margin: 4px;
+          margin: $space-smallest;
         }
       }
     }
@@ -751,7 +360,7 @@
   }
 
   .message {
-    border-radius: 4px;
+    border-radius: $border-radius-rounded;
     border: 1px solid var(--surface);
     background: var(--surface);
     color: var(--on-surface);
@@ -807,7 +416,6 @@
 .crateAlbumGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  // gap: 10px;
 
   .crateAlbum {
     display: flex;
@@ -820,12 +428,12 @@
       align-items: center;
       color: white;
       background-color: red;
-      border-radius: 16px;
-      height: 16px;
-      width: 16px;
+      border-radius: $border-radius-pill;
+      height: $space-medium;
+      width: $space-medium;
       position: relative;
       top: -140px;
-      left: 16px;
+      left: $space-medium;
     }
 
     .back {
@@ -838,7 +446,7 @@
       }
 
       p {
-        margin: 4px;
+        margin: $space-smallest;
       }
     }
   }
@@ -850,41 +458,41 @@
   grid-column: 1 / span 12;
 
   .profileBar {
-    height: 40px;
-    width: calc(100% - 16px);
+    height: $space-largest;
+    width: calc(100% - $space-medium);
     border: 1px grey solid;
-    border-radius: 8px;
+    border-radius: $border-radius-rounded;
     display: flex;
     align-items: center;
-    margin: 4px;   
+    margin: $space-smallest;   
 
     &:hover {
       background-color: antiquewhite;
     }
 
     .image {
-      margin-left: 16px;
-      height: 16px;
-      width: 16px;
+      margin-left: $space-medium;
+      height: $space-medium;
+      width: $space-medium;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       background-color: grey;
-      border-radius: 50px;
+      border-radius: $border-radius-circle;
     }
 
     .username {
-      margin-left: 16px;
+      margin-left: $space-medium;
       flex-grow: 1;
       text-align: left;
     }
 
     .buttons {
-      margin-right: 16px;
+      margin-right: $space-medium;
       
       button {
-        margin: 4px;
+        margin: $space-smallest;
       }
     }
   }
@@ -909,22 +517,22 @@
     background-color: azure;
   
     .addButton {
-      margin: 8px;
-      width: 24px;
-      height: 24px;
+      margin: $space-small;
+      width: $space-large;
+      height: $space-large;
     }
   
     .pill {
-      margin: 8px;
+      margin: $space-small;
       background-color: aquamarine;
-      border-radius: 16px;
-      padding: 4px;
+      border-radius: $border-radius-pill;
+      padding: $space-smallest;
       display: flex;
       align-items: center;
   
       .pillName {
         font-size: 1rem;
-        margin-right: 4px;
+        margin-right: $space-smallest;
         display: inline-block;
       }
     }
@@ -933,7 +541,7 @@
 
 .tagArray {
   width: 100%;
-  margin-top: 4px;
+  margin-top: $space-smallest;
 
   .pillArray {
     display: flex;
@@ -942,25 +550,25 @@
     background-color: azure;
 
      > button {
-      margin: 8px;
+      margin: $space-small;
     }
   
     .addButton {
-      width: 24px;
-      height: 24px;
+      width: $space-large;
+      height: $space-large;
     }
   
     .pill {
-      margin: 4px;
+      margin: $space-smallest;
       background-color: aquamarine;
-      border-radius: 16px;
-      padding: 4px;
+      border-radius: $border-radius-pill;
+      padding: $space-smallest;
       display: flex;
       align-items: center;
   
       .pillName {
         font-size: 1rem;
-        margin-right: 4px;
+        margin-right: $space-smallest;
         display: inline-block;
       }
     }
@@ -972,7 +580,7 @@
 .inputSection {
   display: flex;
   align-items: center;
-  margin: 8px;
+  margin: $space-small;
 }
 
 .menu {
@@ -996,8 +604,8 @@
   background-color: steelblue;
 
   .crateAlbumWrapper {
-    border-radius: 16px;
-    margin: 8px;
+    border-radius: $border-radius-pill;
+    margin: $space-small;
     width: 95%;
     background-color: gainsboro;
     height: 75px;
@@ -1005,30 +613,30 @@
     align-items: center;
 
     .albumRank {
-      margin: 16px;
-      width: 55px;
+      margin: $space-medium;
+      width: $space-largest;
       display: flex;
       align-items: center;
       justify-content: center;
 
       > input {
-        width: 40px;
+        width: $space-largest;
       }
     }
 
     .albumCover {
-      margin: 16px;
+      margin: $space-medium;
     }
 
     .description {
-      margin: 8px;
+      margin: $space-small;
       flex-grow: 1;
       min-width: 200px;
       
     }
 
     .closeButton {
-      margin: 16px;
+      margin: $space-medium;
     }
   }
 }
@@ -1046,7 +654,7 @@
   }
   
   .searchDiscogsButton {
-    min-height: 55px;
+    min-height: $space-largest;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1057,7 +665,7 @@
   }
 
   .searchResult {
-    padding: 4px;
+    padding: $space-small;
     width: 600px;
     display: flex;
 
@@ -1066,14 +674,14 @@
     }
 
     .description {
-      margin-left: 16px;
+      margin-left: $space-medium;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
 
       p {
-        margin: 4px 0;
+        margin: $space-smallest 0;
       }
     }
   }
@@ -1089,7 +697,7 @@
 
   .active {
     background-color: lightblue;
-    border-radius: 4px;
+    border-radius: $border-radius-rounded;
   }
 
   .inputSection {
@@ -1097,7 +705,7 @@
     justify-content: center;
 
     .backButton {
-      margin: 8px;
+      margin: $space-small;
     }
 
     > input {
@@ -1109,10 +717,10 @@
     display: flex;
 
     .pill {
-      margin: 8px;
+      margin: $space-small;
       background-color: aquamarine;
-      border-radius: 16px;
-      padding: 4px;
+      border-radius: $border-radius-pill;
+      padding: $space-smallest;
       display: flex;
       align-items: center;
 
@@ -1123,7 +731,7 @@
       }
     
       .pillName {
-        margin-right: 4px;
+        margin-right: $space-smallest;
         display: inline-block;
       }
     }
@@ -1138,18 +746,18 @@
     }
 
     .searchResult {
-      margin: 4px;
+      margin: $space-smallest;
       display: flex;
       align-items: center;
 
       .resultImage {
-        min-height: 55px;
-        min-width: 55px;
+        min-height: $space-largest;
+        min-width: $space-largest;
         display: grid;
         place-items: center;
 
         img {
-          border-radius: 50px;
+          border-radius: $border-radius-circle;
         }
 
         .albumImage {
@@ -1158,6 +766,7 @@
       }
       
       .resultText {
+        margin-left: $space-small;
         flex-grow: 1;
 
         .resultType {
@@ -1171,7 +780,7 @@
       justify-content: center;
       align-items: center;
       color: rgb(44, 129, 221);
-      height: 55px;
+      height: $space-largest;
     }
   }
 
@@ -1180,19 +789,19 @@
 // Profile Form stylings
 .socialLinkArea {
   width: 500px;
-  margin: 8px auto ;
+  margin: $space-small auto ;
   background-color: lightgray;
-  padding: 8px;
+  padding: $space-small;
 
   .socialLinkAdd {
-    margin: 8px;
+    margin: $space-small;
   }
 
   .socialLinkGroup {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 8px;
+    margin: $space-small;
     background-color: #eee;
 
     .socialLinkPlatform {
@@ -1200,13 +809,13 @@
       place-items: center;
       background-color: purple;
       color: white;
-      border-radius: 16px;
+      border-radius: $border-radius-pill;
 
-      padding: 0 8px;
+      padding: 0 $space-small;
     }
 
     .socialLinkUsername {
-      margin: 0 16px;
+      margin: 0 $space-medium;
     }
   }
 }
@@ -1214,12 +823,12 @@
 .crateDetailBackButtons {
   display: flex;
   justify-content: center;
-  padding: 4px;
+  padding: $space-smallest;
 
   .editButton {
     display: flex;
     align-items: center;
-    margin-left: 4px;
+    margin-left: $space-smallest;
   }
 }
 
@@ -1233,9 +842,9 @@
   margin: 0 auto;
   
   .menuItem {
-    margin: 4px;
+    margin: $space-smallest;
     width: 400px;
-    padding: 4px;
+    padding: $space-smallest;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1256,14 +865,14 @@
 }
 
 .currentProfileButton {
-  margin: 16px auto 0px;
+  margin: $space-medium auto 0px;
 }
 
 // DeleteProfile stylings
 .deleteProfileMessage {
   
   .deleteMessageDetails {
-    margin: 8px 0;
+    margin: $space-small 0;
 
     .detailsList {
       text-align: left;
@@ -1275,7 +884,7 @@
   }
 
   .deleteMessageNote {
-    margin: 4px 0;
+    margin: $space-smallest 0;
     color: salmon;
     font-weight: bold;
     font-style: italic;
@@ -1283,17 +892,17 @@
 
   .deleteMessageButtons {
     button {
-      margin: 0 4px;
+      margin: 0 $space-smallest;
       padding: 2px;
     }
   }
 }
 
 .noNoWrapper {
-  margin-top: 16px;
+  margin-top: $space-medium;
 
   .noNoButton {
-    padding: 4px;
+    padding: $space-smallest;
     color: white;
     border-color: salmon;
     background-color: lightcoral;
@@ -1305,38 +914,38 @@
 }
 
 .notificationsPane {
-  margin: 8px 0;
+  margin: $space-small 0;
 
   .notificationBar {
     background-color: #bde4ff;
     position: relative;
-    padding: 8px;
-    border-radius: 8px;
-    margin: 8px;
+    padding: $space-small;
+    border-radius: $border-radius-rounded;
+    margin: $space-small;
   
     .notificationBanner {
       display: flex;
       align-items: center;
-      padding: 4px 0;
+      padding: $space-smallest 0;
   
       .image {
-        margin-left: 8px;
-        height: 36px;
-        width: 36px;
+        margin-left: $space-small;
+        height: $space-larger;
+        width: $space-larger;
         display: flex;
         justify-content: center;
         align-items: center;
         color: white;
         background-color: grey;
-        border-radius: 50px;
+        border-radius: $border-radius-circle;
 
         img {
-          border-radius: 50px;
+          border-radius: $border-radius-circle;
         }
       }
   
       .bannerText {
-        margin-left: 16px;
+        margin-left: $space-medium;
         flex-grow: 1;
         text-align: left;
 
@@ -1347,7 +956,7 @@
       }
   
       .timestamp {
-        margin-right: 8px;
+        margin-right: $space-small;
       }
     }
   
@@ -1355,10 +964,10 @@
       display: flex;
       flex-direction: column;
       width: 500px;
-      margin: 8px auto;
+      margin: $space-small auto;
       background-color: lightgray;
-      padding: 8px;
-      border-radius: 8px;
+      padding: $space-small;
+      border-radius: $border-radius-rounded;
 
       &:hover {
         color: white;
@@ -1366,11 +975,11 @@
       }
   
       h3, p {
-        margin: 4px 0;
+        margin: $space-smallest 0;
       }
   
       p {
-        padding: 0 8px;
+        padding: 0 $space-small;
       }
   
       .crateLabels {
@@ -1379,7 +988,7 @@
         align-items: center;
         width: 500px;
         flex-wrap: wrap;
-        padding: 0 8px;
+        padding: 0 $space-small;
   
         .pill {
           &.standardLabel {
@@ -1392,10 +1001,10 @@
             color: white;
           }
   
-          margin: 4px;
+          margin: $space-smallest;
           background-color: aquamarine;
-          border-radius: 16px;
-          padding: 4px;
+          border-radius: $border-radius-pill;
+          padding: $space-smallest;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -1415,10 +1024,10 @@
       display: flex;
       flex-direction: column;
       width: 500px;
-      margin: 8px auto;
+      margin: $space-small auto;
       background-color: lightgray;
-      padding: 8px;
-      border-radius: 8px;
+      padding: $space-small;
+      border-radius: $border-radius-rounded;
 
       &:hover {
         color: white;
@@ -1428,20 +1037,20 @@
       .profileBanner {
         display: flex;
         align-items: center;
-        padding: 8px;
+        padding: $space-small;
   
         .image {
-          height: 36px;
-          min-width: 36px;
+          height: $space-larger;
+          min-width: $space-larger;
           display: flex;
           justify-content: center;
           align-items: center;
           color: white;
           background-color: grey;
-          border-radius: 50px;
+          border-radius: $border-radius-circle;
 
           img {
-            border-radius: 50px;
+            border-radius: $border-radius-circle;
           }
         }
   
@@ -1449,11 +1058,11 @@
           flex: 1 1 100%;
   
           h3, p {
-            margin: 4px 0;
+            margin: $space-smallest 0;
           }
       
           p {
-            padding: 0 8px;
+            padding: 0 $space-small;
           }
         }
       }
@@ -1461,7 +1070,7 @@
       .profileDetails {
         display: flex;
         justify-content: space-evenly;
-        margin: 4px 0;
+        margin: $space-smallest 0;
       }
     }
   }
@@ -1471,11 +1080,11 @@
 .crateDiggingPane {
   grid-template-columns: repeat(2, 1fr);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 16px;
+  grid-gap: $space-medium;
   justify-content: space-evenly;
   align-content: space-around;
-  padding: 8px;
-  margin-bottom: 8px;
+  padding: $space-small;
+  margin-bottom: $space-small;
 
   .recommendation {
     width: 200px;
@@ -1488,21 +1097,21 @@
 
     .seenIcon {
       position: absolute;
-      top: 4px;
-      right: 4px;
+      top: $space-smallest;
+      right: $space-smallest;
       color: royalblue;
     }
     
     &.curatedRecommendation {
       background-color: lightblue;
       align-items: flex-end;
-      padding-bottom: 16px;
+      padding-bottom: $space-medium;
     }
 
     &.randomRecommendation {
       background-color: lightpink;
       align-items: flex-end;
-      padding-bottom: 16px;
+      padding-bottom: $space-medium;
     }
 
     &.loadingMore {
@@ -1517,7 +1126,7 @@
   display: flex;
   background-color: #bde4ff;
   justify-content: space-between;
-  padding: 16px 0; 
+  padding: $space-medium 0; 
 
   .profilePic {
     margin-left: 10%;
@@ -1526,12 +1135,12 @@
     align-items: center;
     color: white;
     background-color: grey;
-    border-radius: 50px;
+    border-radius: $border-radius-circle;
     height: 100px;
     width: 100px;
     
     img {
-      border-radius: 50px;
+      border-radius: $border-radius-circle;
     }
   }
 
@@ -1551,7 +1160,7 @@
 .profileInfoMain {
   display: flex;
   background-color: #bde4ff;
-  padding: 16px 20%; 
+  padding: $space-medium 20%; 
   flex-direction: column;
   align-items: flex-start;
   
@@ -1560,14 +1169,14 @@
   }
 
   .bio {
-    margin: 8px 0;
+    margin: $space-small 0;
   }
 }
 
 .profileButtons {
   display: flex;
   background-color: #bde4ff;
-  padding: 16px 20%; 
+  padding: $space-medium 20%; 
   justify-content: space-evenly;
 
   button {
@@ -1576,10 +1185,10 @@
     align-items: center;
     min-width: 150px;
     height: 25px;
-    padding: 8px 0;
+    padding: $space-small 0;
 
     p {
-      margin-right: 8px;
+      margin-right: $space-small;
     }
   }
 }
@@ -1611,7 +1220,7 @@
       align-items: flex-start;
       color: unset;
       width: 100%;
-      margin: 8px;
+      margin: $space-small;
     }
 
     &:hover {
@@ -1622,10 +1231,10 @@
     .platform {
       display: flex;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: $space-smallest;
 
       p {
-        margin-left: 4px;
+        margin-left: $space-smallest;
         font-size: 0.7em;
       }
     } 
@@ -1636,10 +1245,10 @@
 .externalLinkButton {
   position: relative;
   padding: 0;
-  margin: 4px 0 0 auto;
+  margin: $space-smallest 0 0 auto;
   border: 1px solid gray;
   width: 50px;
-  border-radius: 4px;
+  border-radius: $border-radius-rounded;
 }
 
 .externalLinkMenu {
@@ -1662,7 +1271,7 @@
       align-items: flex-start;
       color: unset;
       width: 100%;
-      margin: 8px;
+      margin: $space-small;
     }
 
     &:hover {
@@ -1673,10 +1282,10 @@
     .platform {
       display: flex;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: $space-smallest;
 
       p {
-        margin-left: 4px;
+        margin-left: $space-smallest;
         font-size: 0.7em;
       }
     } 
@@ -1695,20 +1304,20 @@
     align-items: center;
     color: white;
     background-color: grey;
-    border-radius: 50px;
+    border-radius: $border-radius-circle;
     height: 100px;
     width: 100px;
   }
 
   .editButtons {
-    margin-top: 16px;
+    margin-top: $space-medium;
     display: flex;
     flex-direction: column;
 
     .deleteProfilePic {
       background-color: salmon;
       border: 1px solid $danger ;
-      border-radius: 2px;
+      border-radius: $border-radius-rounded;
       color: $l-background;
 
       &:disabled { 
@@ -1720,14 +1329,14 @@
     }
 
     button {
-      margin: 4px;
+      margin: $space-smallest;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2px 4px;
+      padding: 2px $space-smallest;
 
       span {
-        margin-left: 4px;
+        margin-left: $space-smallest;
       }
     }
   }
