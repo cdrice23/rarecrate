@@ -23,4 +23,6 @@ runs:
           node-modules-
     - name: Install modules
       shell: bash
-      run: yarn install --frozen-lockfile --ignore-scripts && yarn run prisma generate
+      run: |
+       npm install strip-ansi
+       yarn install --frozen-lockfile --ignore-scripts && yarn run prisma generate
