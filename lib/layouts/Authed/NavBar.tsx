@@ -1,55 +1,52 @@
-import { useEffect, useState } from 'react';
+import cx from 'classnames';
 import { useRouter } from 'next/router';
-import { useMutation } from '@apollo/client';
-import { Route, PublicRoute } from '@/core/enums/routes';
+import { useEffect, useState } from 'react';
+import { Archive, User as UserIcon, Plus } from '@phosphor-icons/react';
+import { Route } from '@/core/enums/routes';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 import { useLocalState } from '@/lib/context/state';
 import { NavBarProps } from '@/lib/layouts/Authed/Authed.types';
-import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 
-export const NavBar = ({ className, disableNav }: NavBarProps) => {
-  const [updateLastLoginProfile] = useMutation(UPDATE_LAST_LOGIN_PROFILE);
-  // if (!usernameMain) return null;
-  const { userId, profileIdMain, usernameMain, resetState } = useLocalState();
+const NavBar = ({ disableNav }: NavBarProps) => {
+  const { usernameMain } = useLocalState();
   const [profileUrl, setProfileUrl] = useState<string>(Route.Dig);
+
   const router = useRouter();
+  console.log(router.pathname.includes('profile'));
 
   useEffect(() => {
     if (usernameMain) {
       setProfileUrl(Route.Profile + `/${usernameMain}`);
     } else {
-      setProfileUrl(Route.Dig);
+      setProfileUrl(Route.Discover);
     }
   }, [usernameMain]);
 
-  const handleLogout = async () => {
-    resetState();
-    await updateLastLoginProfile({ variables: { userId, profileId: profileIdMain } });
-    router.push(PublicRoute.Logout);
-  };
-
   return (
-    <div className={className}>
-      <LinkButton href={Route.Notifications} disabled={disableNav}>
-        <span>Notifications</span>
+    <div className={cx('navBar')}>
+      <LinkButton
+        href={Route.Discover}
+        disabled={disableNav}
+        className={cx({ active: router.pathname.includes('discover') })}
+      >
+        <Archive size={24} />
       </LinkButton>
-      <LinkButton href={Route.Dig} disabled={disableNav}>
-        <span>Crate Digging</span>
+      <LinkButton
+        href={Route.AddCrate}
+        disabled={disableNav}
+        className={cx({ active: router.pathname.includes('create') })}
+      >
+        <Plus size={24} />
       </LinkButton>
-      <LinkButton href={Route.AddCrate} disabled={disableNav}>
-        <span>Add Crate</span>
-      </LinkButton>
-      <LinkButton href={Route.Search} disabled={disableNav}>
-        <span>Search</span>
-      </LinkButton>
-      <LinkButton href={profileUrl} disabled={disableNav}>
-        <span>Profile</span>
-      </LinkButton>
-      <LinkButton onClick={handleLogout}>
-        <span>Logout</span>
+      <LinkButton
+        href={profileUrl}
+        disabled={disableNav}
+        className={cx({ active: router.pathname.includes('profile') || router.pathname.includes('notifications') })}
+      >
+        <UserIcon size={24} />
       </LinkButton>
     </div>
   );
 };
 
-export default NavBar;
+export { NavBar };

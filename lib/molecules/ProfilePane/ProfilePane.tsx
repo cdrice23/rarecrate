@@ -1,12 +1,16 @@
 import cx from 'classnames';
 import { useState } from 'react';
-import { useQuery, useApolloClient } from '@apollo/client';
-import { DotsThreeVertical, Gear, User as UserIcon } from '@phosphor-icons/react';
+import { useRouter } from 'next/router';
+import { useQuery, useApolloClient, useMutation } from '@apollo/client';
+import { DotsThreeVertical, Gear, User as UserIcon, SignOut, Bell } from '@phosphor-icons/react';
+import { PublicRoute, Route } from '@/core/enums/routes';
+import { useLocalState } from '@/lib/context/state';
 import { Pane } from '@/lib/atoms/Pane/Pane';
 import { Modal } from '@/lib/atoms/Modal/Modal';
 import { ProfilePaneProps } from '@/lib/molecules/ProfilePane/ProfilePane.types';
 import { GET_PROFILE } from '@/db/graphql/clientOperations/profile';
 import { GET_PENDING_FOLLOW_REQUESTS } from '@/db/graphql/clientOperations/follow';
+import { UPDATE_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 import { ProfileForm } from '../ProfileForm/ProfileForm';
 import { UserSettings } from '../UserSettings/UserSettings';
 import { SocialLinkButton } from '../SocialLinkButton/SocialLinkButton';
@@ -31,6 +35,10 @@ const ProfilePane = ({
   const { data: followRequestData, refetch: refetchFollowRequests } = useQuery(GET_PENDING_FOLLOW_REQUESTS, {
     variables: { id: profileData?.id },
   });
+  const [updateLastLoginProfile] = useMutation(UPDATE_LAST_LOGIN_PROFILE);
+  const { userId, profileIdMain, resetState } = useLocalState();
+
+  const router = useRouter();
 
   const isMain = Boolean(mainProfile === profileData?.id);
   const isUserProfile = userProfiles.some(profile => profile.username === profileData?.username);
@@ -47,6 +55,12 @@ const ProfilePane = ({
     profileData,
     refetchFollowRequests,
   );
+
+  const handleLogout = async () => {
+    resetState();
+    await updateLastLoginProfile({ variables: { userId, profileId: profileIdMain } });
+    router.push(PublicRoute.Logout);
+  };
 
   return (
     <>
@@ -129,6 +143,22 @@ const ProfilePane = ({
                   </button>
                 )}
                 <SocialLinkButton socialLinks={profileData.socialLinks} />
+                {isMain && (
+                  <button
+                    onClick={() => {
+                      router.push(Route.Notifications);
+                    }}
+                  >
+                    <p>{`Notifications`}</p>
+                    <Bell />
+                  </button>
+                )}
+                {isMain && (
+                  <button onClick={handleLogout}>
+                    <p>{`Sign Out`}</p>
+                    <SignOut />
+                  </button>
+                )}
               </div>
             </Pane>
           )}

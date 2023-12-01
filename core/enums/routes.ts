@@ -12,4 +12,5 @@ export enum Route {
   AddCrate = '/create',
   NewProfile = '/new-profile',
   DeleteAccount = '/delete-account',
+  Discover = '/discover',
 }

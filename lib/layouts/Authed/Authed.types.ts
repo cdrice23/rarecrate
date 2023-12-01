@@ -6,6 +6,5 @@ export interface AuthedLayoutProps {
 }
 
 export interface NavBarProps {
-  className: string;
   disableNav: boolean;
 }

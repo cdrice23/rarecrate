@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Route } from '@/core/enums/routes';
 import { AuthedLayoutProps } from '@/lib/layouts/Authed/Authed.types';
-import NavBar from './NavBar';
+import { NavBar } from './NavBar';
 
 const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   const router = useRouter();
@@ -18,7 +18,7 @@ const AuthedLayout = ({ children, userProfiles }: AuthedLayoutProps) => {
   return (
     <>
       <div className={cx('container')}>{children}</div>
-      <NavBar className={cx('navBar')} disableNav={Boolean(userProfiles.length === 0)} />
+      <NavBar disableNav={Boolean(userProfiles.length === 0)} />
     </>
   );
 };

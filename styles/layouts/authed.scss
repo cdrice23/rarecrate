@@ -1,3 +1,23 @@
+button {
+  border: none;
+  background-color: unset;
+
+  &:hover, &:active {
+    background-color: white;
+    border-radius: $border-radius-rounded;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    svg {
+      color: #{lightnessAdjust(0.75, --inherit)};
+    }
+    &:hover, &:active {
+      background-color: unset;
+    }
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -7,17 +27,29 @@
 }
 
 .navBar {
-  background-color: thistle;
+  background-color: $primary;
   position: sticky;
-  bottom: 0px;
+  bottom: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-around;
+  width: 75%;
+  margin: 0 auto;
   padding: $space-medium;
+  border-radius: $border-radius-circle;
+  z-index: 20;
 
   a > button {
     padding: $space-small;
+  }
+
+  svg {
+    color: $secondary;
+  }
+
+  .active {
+    background-color: white;
+    border-radius: $border-radius-rounded;
   }
 }
 

@@ -6,13 +6,14 @@ $marigold: #E5CC55;
 $cream: #FFE7BD;
 $coffee: #662E0E;
 $jade-green: #939a66;
+$astronaut-blue: #1b386a;
 
-/* COLORS FROM ALEX */
+/* SWATCH - V1 */
 // COLORS - UNIVERSAL
-$primary: #57ACDC;
+$primary: #1b386a;
 $on-primary: #FFFFFF;
-$secondary: #21BFA3;
-$on-secondary: #037460;
+$secondary: #F28A0F;
+$on-secondary: #FFE7BD;
 $neutral: #A0A0A0;
 $success: #21BFA3;
 $warning: #F2C94C;
@@ -43,6 +44,43 @@ $d-border: #EAEAEA;
 $d-background-border: #E0E0E0;
 $d-background-border-light: #F7F7F7;
 $d-link: #688FCF;
+
+/* COLORS FROM ALEX */
+// // COLORS - UNIVERSAL
+// $primary: #57ACDC;
+// $on-primary: #FFFFFF;
+// $secondary: #21BFA3;
+// $on-secondary: #037460;
+// $neutral: #A0A0A0;
+// $success: #21BFA3;
+// $warning: #F2C94C;
+// $danger: #EB5757;
+
+// // COLORS - LIGHT
+// $l-bar: #0B0A10;
+// $l-on-bar: #676E7C;
+// $l-background: #F2F2F2;
+// $l-on-background: #737A7A;
+// $l-on-background-alt: #0B0A10;
+// $l-surface: #FFFFFF;
+// $l-on-surface: #242424;
+// $l-border: #EAEAEA;
+// $l-background-border: #E0E0E0;
+// $l-background-border-light: #F7F7F7;
+// $l-link: #688FCF;
+
+// // COLORS - DARK (WIP)
+// $d-bar: #57ACDC;
+// $d-on-bar: #676E7C;
+// $d-background: #242424;
+// $d-on-background: #737A7A;
+// $d-on-background-alt: #0B0A10;
+// $d-surface: #737A7A;
+// $d-on-surface: #242424;
+// $d-border: #EAEAEA;
+// $d-background-border: #E0E0E0;
+// $d-background-border-light: #F7F7F7;
+// $d-link: #688FCF;
 
 // ASSIGN COLORS TO CSS VARS
 :root {

@@ -14,7 +14,7 @@ export const handleOnMouseDown = async (item, debounceTimeout, setDebounceTimeou
   if (item.__typename === 'Crate') {
     router.push({
       pathname: Route.Profile + `/${item.creator.username}`,
-      query: { searchedCrateSelected: item.id },
+      query: { selectedCrate: item.id },
     });
     await logSelectedSearchResult({
       variables: { prismaModel: 'crate', selectedId: item.id },
