@@ -244,7 +244,7 @@ type Query {
   getProfileFavorites(currentPage: Int!, username: String!): [Crate]!
   getProfileFollowers(currentPage: Int!, username: String!): [Follow]!
   getProfileFollowing(currentPage: Int!, username: String!): [Follow]!
-  getRecommendations(currentRecsInArray: Int, profileId: Int!, usedPages: [Int]): RecommendationResults!
+  getRecommendations(profileId: Int!, usedPages: [Int]): RecommendationResults!
   getTopLabels(includeStandard: Boolean, quantity: Int): [Label]
   getTopTags(quantity: Int): [Tag]
   getUsernameById(userId: Int!): [Profile!]!
@@ -274,7 +274,6 @@ type Recommendation {
 }
 
 type RecommendationResults {
-  currentRecsInArray: Int
   recommendations: [Recommendation]
   resetRecommendations: Boolean
   usedPages: [Int]

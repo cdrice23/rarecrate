@@ -84,7 +84,6 @@ export const handleGetMoreRecommendations = async (
     variables: {
       profileId: mainProfile,
       usedPages,
-      currentRecsInArray: currentRecommendations.length,
     },
   });
 

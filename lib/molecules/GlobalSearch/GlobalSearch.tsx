@@ -110,9 +110,6 @@ const GlobalSearch = () => {
             },
           })}
         />
-        <button type="button" {...getToggleButtonProps()} aria-label="toggle menu">
-          <CaretDown />
-        </button>
       </div>
       {showFullSearchPane && (
         <FullSearchController

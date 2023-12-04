@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_RECOMMENDATIONS = gql`
-  query GetRecommendations($profileId: Int!, $usedPages: [Int], $currentRecsInArray: Int) {
-    getRecommendations(profileId: $profileId, usedPages: $usedPages, currentRecsInArray: $currentRecsInArray) {
+  query GetRecommendations($profileId: Int!, $usedPages: [Int]) {
+    getRecommendations(profileId: $profileId, usedPages: $usedPages) {
       recommendations {
         id
         recommendationType

@@ -10,7 +10,7 @@ const Header = ({ isAuth, children }: HeaderProps) => {
   const isActive: (pathname: string) => boolean = pathname => router.pathname === pathname;
   const { user } = useUser();
 
-  const homeUrl = user ? Route.Notifications : PublicRoute.Home;
+  const homeUrl = user ? Route.Discover : PublicRoute.Home;
 
   const left = (
     <div className="header-left">

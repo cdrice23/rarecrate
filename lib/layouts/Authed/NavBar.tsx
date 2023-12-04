@@ -9,10 +9,9 @@ import { NavBarProps } from '@/lib/layouts/Authed/Authed.types';
 
 const NavBar = ({ disableNav }: NavBarProps) => {
   const { usernameMain } = useLocalState();
-  const [profileUrl, setProfileUrl] = useState<string>(Route.Dig);
+  const [profileUrl, setProfileUrl] = useState<string>(Route.Discover);
 
   const router = useRouter();
-  console.log(router.pathname.includes('profile'));
 
   useEffect(() => {
     if (usernameMain) {

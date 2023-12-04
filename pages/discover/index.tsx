@@ -10,6 +10,7 @@ import { useLocalState } from '@/lib/context/state';
 import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations/profile';
 import { GET_LAST_LOGIN_PROFILE } from '@/db/graphql/clientOperations/user';
 import { CrateDiggingPane } from '@/lib/molecules/CrateDiggingPane/CrateDiggingPane';
+import { GlobalSearch } from '@/lib/molecules/GlobalSearch/GlobalSearch';
 
 interface DiscoverProps {
   userId?: number;
@@ -68,19 +69,7 @@ const DiscoverPage = ({ userId, email, prismaUserProfiles }: DiscoverProps) => {
         <h1>Loading...</h1>
       ) : profileIdMain && usernameMain ? (
         <>
-          <Pane>
-            <h1>{`Discover`}</h1>
-          </Pane>
-          <Pane>
-            <h3>Note: This will be the first page upon login.</h3>
-          </Pane>
-          <Pane>
-            <h3>{`Local State:`}</h3>
-            <p>{`userId (auth): ${userId}`}</p>
-            <p>{`email (auth): ${email}`}</p>
-            <p>{`Main Profile Id: ${profileIdMain}`}</p>
-            <p>{`Main Profile Username: ${usernameMain}`}</p>
-          </Pane>
+          <GlobalSearch />
           <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />
         </>
       ) : null}

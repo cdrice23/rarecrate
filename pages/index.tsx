@@ -4,15 +4,6 @@ import { PublicLayout } from '@/lib/layouts/Public';
 import LinkButton from '@/lib/atoms/LinkButton/LinkButton';
 
 const Landing = (props: any) => {
-  const { setUserId, setEmail, setProfileIdMain, setUsernameMain } = useLocalState();
-
-  useEffect(() => {
-    setUserId(null);
-    setEmail('');
-    setProfileIdMain(null);
-    setUsernameMain('');
-  });
-
   return (
     <PublicLayout>
       <h1>This is the Landing Page</h1>

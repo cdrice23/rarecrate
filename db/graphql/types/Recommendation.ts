@@ -39,9 +39,6 @@ export const RecommendationResults = objectType({
     t.list.field('usedPages', {
       type: 'Int',
     });
-    t.field('currentRecsInArray', {
-      type: 'Int',
-    });
     t.field('resetRecommendations', {
       type: 'Boolean',
     });
@@ -78,9 +75,8 @@ export const RecommendationQueries = extendType({
       args: {
         profileId: nonNull(intArg()),
         usedPages: list(intArg()),
-        currentRecsInArray: intArg(),
       },
-      resolve: async (_, { profileId, usedPages, currentRecsInArray }, ctx) => {
+      resolve: async (_, { profileId, usedPages }, ctx) => {
         const pageSize = 24;
 
         const totalUnseenRecommendationsCount = await ctx.prisma.recommendation.count({
@@ -93,9 +89,16 @@ export const RecommendationQueries = extendType({
         const totalPages = Math.ceil(totalUnseenRecommendationsCount / pageSize);
         let randomNumber;
 
+        if (usedPages && usedPages.length >= totalPages) {
+          return {
+            recommendations: [],
+            usedPages: usedPages,
+            resetRecommendations: false,
+          };
+        }
+
         // Check if enough unseen recs in db, if not, serve accordingly
         const insufficientUnseen = totalUnseenRecommendationsCount < pageSize;
-        const insufficientAdditionalRecs = currentRecsInArray >= totalUnseenRecommendationsCount;
         if (insufficientUnseen) {
           await ctx.prisma.recommendation.updateMany({
             where: {
@@ -128,53 +131,41 @@ export const RecommendationQueries = extendType({
           return {
             recommendations: recommendationsShuffled,
             usedPages: [randomNumber],
-            currentRecsInArray: currentRecsInArray,
             resetRecommendations: true,
           };
         } else {
-          if (insufficientAdditionalRecs) {
-            // Reset the recommendations in broswer without rerolling db recs to unseen
-            return {
-              recommendations: [],
-              usedPages: usedPages,
-              currentRecsInArray: currentRecsInArray,
-              resetRecommendations: false,
-            };
+          // Serve additional recs
+          if (!usedPages) {
+            randomNumber = Math.floor(Math.random() * totalPages) + 1;
           } else {
-            // Serve additional recs
-            if (!usedPages) {
+            do {
               randomNumber = Math.floor(Math.random() * totalPages) + 1;
-            } else {
-              do {
-                randomNumber = Math.floor(Math.random() * totalPages) + 1;
-              } while (usedPages.includes(randomNumber));
-            }
-
-            const recommendations = await ctx.prisma.recommendation.findMany({
-              where: { profileId, seen: false },
-              include: {
-                crate: true,
-              },
-              take: pageSize,
-              skip: (randomNumber - 1) * pageSize,
-            });
-
-            const recommendationsShuffled = [...recommendations];
-            for (let i = recommendationsShuffled.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              [recommendationsShuffled[i], recommendationsShuffled[j]] = [
-                recommendationsShuffled[j],
-                recommendationsShuffled[i],
-              ];
-            }
-
-            return {
-              recommendations: recommendationsShuffled || [],
-              usedPages: usedPages ? [...usedPages, randomNumber] : [randomNumber],
-              currentRecsInArray: currentRecsInArray,
-              resetRecommendations: false,
-            };
+            } while (usedPages.includes(randomNumber));
           }
+
+          const recommendations = await ctx.prisma.recommendation.findMany({
+            where: { profileId, seen: false },
+            include: {
+              crate: true,
+            },
+            take: pageSize,
+            skip: (randomNumber - 1) * pageSize,
+          });
+
+          const recommendationsShuffled = [...recommendations];
+          for (let i = recommendationsShuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [recommendationsShuffled[i], recommendationsShuffled[j]] = [
+              recommendationsShuffled[j],
+              recommendationsShuffled[i],
+            ];
+          }
+
+          return {
+            recommendations: recommendationsShuffled || [],
+            usedPages: usedPages ? [...usedPages, randomNumber] : [randomNumber],
+            resetRecommendations: false,
+          };
         }
       },
     });
