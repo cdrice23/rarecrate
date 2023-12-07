@@ -29,7 +29,6 @@ const CrateDiggingPane = ({ mainProfile, userProfiles }: CrateDiggingPaneProps) 
 
   const { markRecommendationSeen, getMoreRecommendations, loadingAdditional } = useMutations(mainProfile);
 
-  console.log('loading additional', loadingAdditional);
   useEffect(() => {
     const initialRecommendations = initialData?.getRecommendations.recommendations;
 

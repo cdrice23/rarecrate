@@ -1,3 +1,4 @@
+import OutsideClickHandler from 'react-outside-click-handler';
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -10,8 +11,9 @@ import { QuickSearchPane } from '../QuickSearchPane/QuickSearchPane';
 import { FullSearchController } from '../FullSearchController/FullSearchController';
 import { handleOnClick, handleOnChange, handleOnKeyDown } from './GlobalSearch.helpers';
 import { SearchPath } from '@/lib/molecules/GlobalSearch/GlobalSearch.types';
+import { GlobalSearchProps } from './GlobalSearch.helpers';
 
-const GlobalSearch = () => {
+const GlobalSearch = ({ showSearchResults, setShowSearchResults }: GlobalSearchProps) => {
   const {
     globalSearchPrompt,
     setGlobalSearchPrompt,
@@ -30,7 +32,7 @@ const GlobalSearch = () => {
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
   const [searchPath, setSearchPath] = useState<SearchPath>({});
 
-  const { getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
+  const { isOpen, getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
     items: inputItems || [],
   });
 
@@ -75,43 +77,46 @@ const GlobalSearch = () => {
             <CaretLeft />
           </button>
         )}
-        <input
-          {...getInputProps({
-            value: searchPrompt,
-            placeholder: 'Search Rare Crate',
-            onKeyDown: async event => {
-              handleOnKeyDown(
-                event,
-                showFullSearchPane,
-                setShowFullSearchPane,
-                setCurrentActivePane,
-                logSelectedSearchResult,
-                router,
-                inputItems,
-                highlightedIndex,
-                debounceTimeout,
-                setDebounceTimeout,
-              );
-            },
-            onChange: event => {
-              handleOnChange(
-                event,
-                setShowFullSearchPane,
-                setSearchPrompt,
-                setInputItems,
-                setQuickSearchResults,
-                searchQuery,
-                debounceTimeout,
-                setDebounceTimeout,
-              );
-            },
-            onFocus: () => {
-              setShowFullSearchPane(false);
-            },
-          })}
-        />
+        <OutsideClickHandler onOutsideClick={() => setShowSearchResults(false)}>
+          <input
+            {...getInputProps({
+              value: searchPrompt,
+              placeholder: 'Search Rare Crate',
+              onKeyDown: async event => {
+                handleOnKeyDown(
+                  event,
+                  showFullSearchPane,
+                  setShowFullSearchPane,
+                  setCurrentActivePane,
+                  logSelectedSearchResult,
+                  router,
+                  inputItems,
+                  highlightedIndex,
+                  debounceTimeout,
+                  setDebounceTimeout,
+                );
+              },
+              onChange: event => {
+                handleOnChange(
+                  event,
+                  setShowFullSearchPane,
+                  setSearchPrompt,
+                  setInputItems,
+                  setQuickSearchResults,
+                  searchQuery,
+                  debounceTimeout,
+                  setDebounceTimeout,
+                );
+              },
+              onFocus: () => {
+                setShowFullSearchPane(false);
+                setShowSearchResults(true);
+              },
+            })}
+          />
+        </OutsideClickHandler>
       </div>
-      {showFullSearchPane && (
+      {showSearchResults && showFullSearchPane && (
         <FullSearchController
           searchPath={searchPath}
           setSearchPath={setSearchPath}

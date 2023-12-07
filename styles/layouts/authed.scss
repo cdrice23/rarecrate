@@ -612,6 +612,11 @@ button {
   display: flex;
   align-items: center;
   margin: $space-small;
+
+  div > input {
+    padding: $space-small;
+    width: 80vw;
+  }
 }
 
 .menu {

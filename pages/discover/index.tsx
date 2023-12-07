@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { useQuery } from '@apollo/client';
 import { AuthedLayout } from '@/lib/layouts/Authed';
-import { Pane } from '@/lib/atoms/Pane/Pane';
 import { createContext } from '@/db/graphql/context';
-
 import authed from '../../core/helpers/authed';
 import { useLocalState } from '@/lib/context/state';
 import { GET_USERNAME_BY_ID } from '@/db/graphql/clientOperations/profile';
@@ -21,12 +19,15 @@ interface DiscoverProps {
 }
 
 const DiscoverPage = ({ userId, email, prismaUserProfiles }: DiscoverProps) => {
+  const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   // const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
   //   // real variable to get authed user
   //   variables: { userId },
   //   // variables: { userId: 1286 },
   // });
+
+  console.log(showSearchResults);
 
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
     // real variable to get authed user
@@ -69,8 +70,10 @@ const DiscoverPage = ({ userId, email, prismaUserProfiles }: DiscoverProps) => {
         <h1>Loading...</h1>
       ) : profileIdMain && usernameMain ? (
         <>
-          <GlobalSearch />
-          <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />
+          <GlobalSearch showSearchResults={showSearchResults} setShowSearchResults={setShowSearchResults} />
+          {showSearchResults === false && (
+            <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />
+          )}
         </>
       ) : null}
     </AuthedLayout>

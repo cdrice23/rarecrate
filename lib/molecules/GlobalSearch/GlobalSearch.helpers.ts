@@ -6,6 +6,11 @@ type SearchPath = {
   midTier?: { type: string; name: string; id: number };
 };
 
+export interface GlobalSearchProps {
+  showSearchResults: boolean;
+  setShowSearchResults: (value: boolean) => void;
+}
+
 export const handleOnClick = (
   currentActivePane: string,
   prevActivePane: string,

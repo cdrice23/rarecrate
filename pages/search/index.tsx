@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { useQuery } from '@apollo/client';
 import authed from '@/core/helpers/authed';
@@ -19,6 +19,7 @@ interface SearchProps {
 }
 
 const SearchPage = ({ userId, email, prismaUserProfiles }: SearchProps) => {
+  const [showSearchResults, setShowSearchResults] = useState<boolean>(false);
   const { setUserId, setEmail, setProfileIdMain, setUsernameMain, profileIdMain, usernameMain } = useLocalState();
   // const { loading, error, data } = useQuery(GET_USERNAME_BY_ID, {
   //   // real variable to get authed user
@@ -77,7 +78,7 @@ const SearchPage = ({ userId, email, prismaUserProfiles }: SearchProps) => {
             <p>{`Main Profile Id: ${profileIdMain}`}</p>
             <p>{`Main Profile Username: ${usernameMain}`}</p>
           </Pane>
-          <GlobalSearch />
+          <GlobalSearch showSearchResults={showSearchResults} setShowSearchResults={setShowSearchResults} />
         </>
       ) : null}
     </AuthedLayout>
