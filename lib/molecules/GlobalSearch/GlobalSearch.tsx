@@ -32,9 +32,11 @@ const GlobalSearch = ({ showSearchResults, setShowSearchResults }: GlobalSearchP
   const [logSelectedSearchResult] = useMutation(LOG_SELECTED_SEARCH_RESULT);
   const [searchPath, setSearchPath] = useState<SearchPath>({});
 
-  const { isOpen, getToggleButtonProps, getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
+  const { getInputProps, highlightedIndex, getMenuProps, getItemProps } = useCombobox({
     items: inputItems || [],
   });
+
+  console.log('show full search pane?', showFullSearchPane);
 
   const profileResults = data?.qsProfiles || [];
   const crateResults = data?.qsCrates || [];
@@ -57,27 +59,33 @@ const GlobalSearch = ({ showSearchResults, setShowSearchResults }: GlobalSearchP
   }, [searchPrompt]);
 
   return (
-    <div className={cx('searchPane')}>
-      <div className={cx('inputSection')}>
-        {showFullSearchPane && (
-          <button
-            className={cx('backButton')}
-            onClick={() => {
-              handleOnClick(
-                currentActivePane,
-                prevActivePane,
-                setShowFullSearchPane,
-                setSearchPath,
-                setPrevActivePane,
-                searchPath,
-                setCurrentActivePane,
-              );
-            }}
-          >
-            <CaretLeft />
-          </button>
-        )}
-        <OutsideClickHandler onOutsideClick={() => setShowSearchResults(false)}>
+    <OutsideClickHandler
+      onOutsideClick={() => {
+        console.log('outside click!');
+        setShowFullSearchPane(false);
+        setShowSearchResults(false);
+      }}
+    >
+      <div className={cx('searchPane')}>
+        <div className={cx('inputSection')}>
+          {showFullSearchPane && (
+            <button
+              className={cx('backButton')}
+              onClick={() => {
+                handleOnClick(
+                  currentActivePane,
+                  prevActivePane,
+                  setShowFullSearchPane,
+                  setSearchPath,
+                  setPrevActivePane,
+                  searchPath,
+                  setCurrentActivePane,
+                );
+              }}
+            >
+              <CaretLeft />
+            </button>
+          )}
           <input
             {...getInputProps({
               value: searchPrompt,
@@ -106,43 +114,53 @@ const GlobalSearch = ({ showSearchResults, setShowSearchResults }: GlobalSearchP
                   searchQuery,
                   debounceTimeout,
                   setDebounceTimeout,
+                  setShowSearchResults,
                 );
               },
               onFocus: () => {
-                setShowFullSearchPane(false);
                 setShowSearchResults(true);
+                setShowFullSearchPane(false);
+              },
+              onClick: () => {
+                setShowSearchResults(true);
+                setShowFullSearchPane(false);
               },
             })}
           />
-        </OutsideClickHandler>
-      </div>
-      {showSearchResults && showFullSearchPane && (
-        <FullSearchController
-          searchPath={searchPath}
-          setSearchPath={setSearchPath}
+        </div>
+        {showSearchResults && showFullSearchPane && (
+          <FullSearchController
+            searchPath={searchPath}
+            setSearchPath={setSearchPath}
+            searchPrompt={searchPrompt}
+            activePane={currentActivePane}
+            prevActivePane={prevActivePane}
+            setActivePane={setCurrentActivePane}
+            setPrevActivePane={setPrevActivePane}
+          />
+        )}
+        <QuickSearchPane
+          style={{
+            display:
+              (showSearchResults === true && showFullSearchPane === true) || showSearchResults === false
+                ? 'none'
+                : 'block',
+          }}
+          inputItems={inputItems}
+          loading={loading}
           searchPrompt={searchPrompt}
-          activePane={currentActivePane}
-          prevActivePane={prevActivePane}
-          setActivePane={setCurrentActivePane}
-          setPrevActivePane={setPrevActivePane}
+          debounceTimeout={debounceTimeout}
+          setDebounceTimeout={setDebounceTimeout}
+          getMenuProps={getMenuProps}
+          getItemProps={getItemProps}
+          highlightedIndex={highlightedIndex}
+          handleShowFullSearch={() => {
+            setCurrentActivePane('profiles');
+            setShowFullSearchPane(true);
+          }}
         />
-      )}
-      <QuickSearchPane
-        style={{ display: showFullSearchPane ? 'none' : 'block' }}
-        inputItems={inputItems}
-        loading={loading}
-        searchPrompt={searchPrompt}
-        debounceTimeout={debounceTimeout}
-        setDebounceTimeout={setDebounceTimeout}
-        getMenuProps={getMenuProps}
-        getItemProps={getItemProps}
-        highlightedIndex={highlightedIndex}
-        handleShowFullSearch={() => {
-          setCurrentActivePane('profiles');
-          setShowFullSearchPane(true);
-        }}
-      />
-    </div>
+      </div>
+    </OutsideClickHandler>
   );
 };
 

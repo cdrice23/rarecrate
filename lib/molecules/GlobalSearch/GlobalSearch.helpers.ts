@@ -71,11 +71,16 @@ export const handleOnChange = (
   searchQuery: any,
   debounceTimeout: NodeJS.Timeout,
   setDebounceTimeout: (timeout: NodeJS.Timeout) => void,
+  setShowSearchResults: (value: boolean) => void,
 ) => {
   setShowFullSearchPane(false);
   const inputValue = event.currentTarget.value;
 
+  console.log(inputValue);
+
   if (inputValue === '') {
+    console.log('blank!');
+    setShowSearchResults(false);
     clearTimeout(debounceTimeout);
     setDebounceTimeout(null);
     setSearchPrompt(inputValue);

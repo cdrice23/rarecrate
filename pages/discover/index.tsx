@@ -27,7 +27,7 @@ const DiscoverPage = ({ userId, email, prismaUserProfiles }: DiscoverProps) => {
   //   // variables: { userId: 1286 },
   // });
 
-  console.log(showSearchResults);
+  console.log('showSearchResults ?', showSearchResults);
 
   const { loading, error, data } = useQuery(GET_LAST_LOGIN_PROFILE, {
     // real variable to get authed user
@@ -71,9 +71,7 @@ const DiscoverPage = ({ userId, email, prismaUserProfiles }: DiscoverProps) => {
       ) : profileIdMain && usernameMain ? (
         <>
           <GlobalSearch showSearchResults={showSearchResults} setShowSearchResults={setShowSearchResults} />
-          {showSearchResults === false && (
-            <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />
-          )}
+          {!showSearchResults && <CrateDiggingPane mainProfile={profileIdMain} userProfiles={prismaUserProfiles} />}
         </>
       ) : null}
     </AuthedLayout>
@@ -85,8 +83,6 @@ export default DiscoverPage;
 export const getServerSideProps = authed(async context => {
   const ctx = await createContext(context.req as NextApiRequest, context.res as NextApiResponse);
   const { prismaUser, auth0User } = ctx;
-
-  console.log(auth0User);
 
   return {
     props: {
