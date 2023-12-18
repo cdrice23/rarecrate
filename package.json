@@ -7,6 +7,7 @@
     "build:nexus-typegen": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' --transpile-only db/graphql/schema.ts",
     "build": "npm run build:nexus-typegen && next build",
     "dev:build": "dotenv -e .env.development -- next build",
+    "dev:auth0:local": "ngrok http --domain=guided-mutually-bluegill.ngrok-free.app 3000",
     "start": "next start",
     "db:dev": "dotenv -e .env.development -- prisma studio",
     "db:push": "dotenv -e .env.development -- prisma db push",

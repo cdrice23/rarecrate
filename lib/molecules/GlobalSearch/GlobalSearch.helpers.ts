@@ -80,7 +80,6 @@ export const handleOnChange = (
 
   if (inputValue === '') {
     console.log('blank!');
-    setShowSearchResults(false);
     clearTimeout(debounceTimeout);
     setDebounceTimeout(null);
     setSearchPrompt(inputValue);

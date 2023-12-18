@@ -1,4 +1,5 @@
 // USE RGB COLORS LIKE THIS: rgba(var(--primary-rgb), 0.5);
+
 @function hexToRGB($hex) {
   @return red($hex), green($hex), blue($hex);
 }
