@@ -25,6 +25,7 @@ const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetail
   };
 
   const crateData = data?.getCrateDetailWithAlbums;
+  console.log(crateData);
 
   return (
     <>
@@ -82,7 +83,7 @@ const CrateDetail = ({ userProfiles, activeCrateId, show, onClose }: CrateDetail
   );
 };
 
-const CrateDetailFront = ({ data, profileId, userProfiles, handleSwitch }: CrateDetailFaceProps) => {
+export const CrateDetailFront = ({ data, profileId, userProfiles, handleSwitch }: CrateDetailFaceProps) => {
   const rankedAlbums = [...data.albums].sort((a, b) => a.rank - b.rank);
   const [createNotification] = useMutation(CREATE_NOTIFICATION);
   const addCrateToFavorites = useAddCrateToFavorites(profileId);
@@ -129,7 +130,7 @@ const CrateDetailFront = ({ data, profileId, userProfiles, handleSwitch }: Crate
   );
 };
 
-const CrateDetailBack = ({ data, handleSwitch, handleEdit, editable }: CrateDetailFaceProps) => {
+export const CrateDetailBack = ({ data, handleSwitch, handleEdit, editable }: CrateDetailFaceProps) => {
   return (
     <>
       <div className={cx('crateDetailInfo')}>
