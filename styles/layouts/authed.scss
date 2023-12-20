@@ -1412,3 +1412,76 @@ button {
     width: 25%;
   }
  }
+
+ // New CrateModal stylings
+ .crateModalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+  background: rgba(var(--bar-rgb), 0.4);
+  display: none;
+  z-index: 100;
+
+  &.show {
+    display: block;
+  }
+
+  .crateModal {
+    // border: 1px solid var(--surface);
+    background: var(--surface);
+    color: var(--on-surface);
+    display: block;
+    // width: 95%;
+    // height: 80vh;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    // min-height: 200px;
+    position: absolute;
+    bottom: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 800px;
+    overflow-y: auto;
+    padding: $space-medium;
+
+    .close {
+      position: absolute;
+      top: $space-smallest;
+      right: $space-small;
+      color: var(--on-background);
+      vertical-align: middle;
+      cursor: pointer;
+      transition: color $transition-fast;
+
+      &:hover {
+        color: var(--on-background-alt);
+      }
+    }
+
+    .modal-body {
+      
+
+      padding: $space-large;
+
+      .crateDetailInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .crateDetailButtons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          margin: $space-smallest;
+        }
+      }
+    }
+  }
+}
