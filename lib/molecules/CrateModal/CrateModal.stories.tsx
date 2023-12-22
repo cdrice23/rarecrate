@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { CrateModal as CrateModalEl } from './CrateModal';
+import { NavBar as NavBarEl } from '@/lib/layouts/Authed/NavBar';
 
 const meta: Meta<typeof CrateModalEl> = {
   component: CrateModalEl,
@@ -10,8 +11,9 @@ type Story = StoryObj<typeof CrateModalEl>;
 export const CrateModal: Story = args => (
   <div
     style={{
-      height: '100vh',
-      overflowY: 'visible',
+      // height: 'calc(100vh - 2vw)',
+      overflowY: 'scroll',
+      width: '100%',
       display: 'grid',
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '2vw',
@@ -35,6 +37,7 @@ export const CrateModal: Story = args => (
       </div>
     ))}
     <CrateModalEl {...args} />
+    <NavBarEl disableNav={false} />
   </div>
 );
 CrateModal.args = {

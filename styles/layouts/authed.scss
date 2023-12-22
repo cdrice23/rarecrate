@@ -32,7 +32,7 @@ button {
 .navBar {
   background-color: var(--background);
   border: 1.5px solid $primary;
-  position: sticky;
+  position: fixed;
   bottom: 20px;
   display: flex;
   flex-direction: row;
@@ -40,7 +40,7 @@ button {
   margin: 0 auto;
   padding: $space-small;
   border-radius: $border-radius-rounded;
-  z-index: 20;
+  z-index: 200;
   
   svg {
     color: $primary;
@@ -1430,58 +1430,30 @@ button {
   }
 
   .crateModal {
-    // border: 1px solid var(--surface);
     background: var(--surface);
     color: var(--on-surface);
-    display: block;
-    // width: 95%;
-    // height: 80vh;
-    width: 50%;
+    display: flex;
+    width: 60vw;
+    max-width: 250px;
     aspect-ratio: 1 / 1;
-    // min-height: 200px;
     position: absolute;
     bottom: 15vh;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 800px;
     overflow-y: auto;
     padding: $space-medium;
 
-    .close {
+    .crateHandle {
       position: absolute;
-      top: $space-smallest;
-      right: $space-small;
-      color: var(--on-background);
-      vertical-align: middle;
-      cursor: pointer;
-      transition: color $transition-fast;
-
-      &:hover {
-        color: var(--on-background-alt);
-      }
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--on-surface);
+      height: 8%;
+      width: 35%;
     }
 
-    .modal-body {
-      
-
-      padding: $space-large;
-
-      .crateDetailInfo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .crateDetailButtons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        button {
-          margin: $space-smallest;
-        }
-      }
+    .crateModalContent {
+      margin-top: 20%;
     }
   }
 }
