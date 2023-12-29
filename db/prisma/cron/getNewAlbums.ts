@@ -47,7 +47,8 @@ const initCronRun = async () => {
   let year = startAt.getFullYear();
   let month = String(startAt.getMonth() + 1).padStart(2, '0');
   let date = String(startAt.getDate()).padStart(2, '0');
-  const currentReleaseDate = `${year}${month}${date}`;
+  // const currentReleaseDate = `${year}${month}${date}`;
+  const currentReleaseDate = `20231229`;
   console.log(`Now evaluating: ${currentReleaseDate}`);
 
   let albumsWithIssues = [];
@@ -55,10 +56,14 @@ const initCronRun = async () => {
 
   // Step 4: Extract array of releases from HTML table
   try {
-    const response = await axios.get(`https://www.allmusic.com/newreleases/all/${currentReleaseDate}`);
+    const response = await axios.get(`https://www.allmusic.com/newreleases/all/${currentReleaseDate}`, {
+      headers: {
+        Cookie: 'allmusic_session=vf1l6ss7jr8ctemi5t4ccje1t1mgiumh',
+      },
+    });
 
     const $ = cheerio.load(response.data);
-    const table = $('.nr-table');
+    const table = $('#nrTable');
     const rows = table.find('tr');
 
     rows.each((index, row) => {
