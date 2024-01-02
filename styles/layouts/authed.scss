@@ -1420,6 +1420,7 @@ button {
   left: 0;
   height: 100vh;
   width: 100vw;
+  overflow: auto;
 
   background: rgba(var(--bar-rgb), 0.4);
   display: none;
@@ -1427,6 +1428,15 @@ button {
 
   &.show {
     display: block;
+  }
+
+  .crateAlbum {
+    position: absolute;
+    background: white;
+    color: black;
+    left: 50%;
+    transform: translateX(-50%);
+
   }
 
   .crateModal {
@@ -1441,18 +1451,23 @@ button {
     left: 50%;
     transform: translateX(-50%);
     overflow-y: auto;
-    padding: $space-medium;
-
+    z-index: 150;
+    
     .crateHandle {
       position: absolute;
+      top: $space-medium;
       left: 50%;
       transform: translateX(-50%);
       background-color: var(--on-surface);
       height: 8%;
+      min-height: 20px;
       width: 35%;
     }
-
+    
     .crateModalContent {
+      margin-left: $space-medium;
+      margin-right: $space-medium;
+      margin-bottom: $space-medium;
       margin-top: 20%;
     }
   }

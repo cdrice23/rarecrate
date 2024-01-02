@@ -1,4 +1,4 @@
-const crateDetailSample = {
+export const crateDetailSample = {
   __typename: 'Crate',
   id: '399',
   title: 'Best of January 2023',
