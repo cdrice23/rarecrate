@@ -44,34 +44,36 @@ const CrateModal = ({ content, show, onClose }: CrateModalProps) => {
   const modalHeight = useTransform(scrollY, [0, 300], [width ?? 250, 100]);
 
   return (
-    <div className={cx('crateModalWrapper', { show: !!show })}>
-      {crateDetailSample.albums.map((album, index) => (
-        <motion.div
-          key={album.id}
-          className={cx('crateAlbum')}
-          // initial="hidden"
-          // animate={index === topItemIndex ? 'show' : 'hidden'}
-          // variants={containerStyle}
-          // viewport={{ once: true, amount: 0.8 }}
-          style={{
-            zIndex: index + 100,
-            height: width,
-            width: width,
-            marginBottom: '20px',
-            marginTop: '20px',
-            bottom: `calc(15vh + ${width * (index + 1)}px)`,
-          }}
-        >
-          {`album ${album.rank}`}
-        </motion.div>
-      ))}
+    <>
+      <div className={cx('crateOverlay', { show: !!show })}></div>
       <OutsideClickHandler onOutsideClick={onClose}>
-        <motion.div className={cx('crateModal')} style={{ height: modalHeight }}>
-          <div className={cx('crateHandle')} />
-          <div className={cx('crateModalContent')}>{/* {content} */}</div>
-        </motion.div>
+        <div className={cx('crateModalWrapper', { show: !!show })} style={{ height: `90vh`, width: width }}>
+          <div className={cx('albumWrapper')} style={{ height: `calc(90vh - ${width})` }}>
+            {crateDetailSample.albums.map((album, index) => (
+              <motion.div
+                key={album.id}
+                className={cx('crateAlbum')}
+                // initial="hidden"
+                // animate={index === topItemIndex ? 'show' : 'hidden'}
+                // variants={containerStyle}
+                // viewport={{ once: true, amount: 0.8 }}
+                style={{
+                  zIndex: index + 100,
+                  height: width,
+                  width: width,
+                }}
+              >
+                {`album ${album.rank}`}
+              </motion.div>
+            ))}
+          </div>
+          <motion.div className={cx('crateModal')} style={{ height: modalHeight }}>
+            <div className={cx('crateHandle')} />
+            <div className={cx('crateModalContent')}>{/* {content} */}</div>
+          </motion.div>
+        </div>
       </OutsideClickHandler>
-    </div>
+    </>
   );
 };
 
