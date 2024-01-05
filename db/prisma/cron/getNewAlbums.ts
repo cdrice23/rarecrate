@@ -47,8 +47,7 @@ const initCronRun = async () => {
   let year = startAt.getFullYear();
   let month = String(startAt.getMonth() + 1).padStart(2, '0');
   let date = String(startAt.getDate()).padStart(2, '0');
-  // const currentReleaseDate = `${year}${month}${date}`;
-  const currentReleaseDate = `20231229`;
+  const currentReleaseDate = `${year}${month}${date}`;
   console.log(`Now evaluating: ${currentReleaseDate}`);
 
   let albumsWithIssues = [];
